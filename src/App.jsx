@@ -12,6 +12,9 @@ import DumpSection from './components/DumpSection'
 import EmailGate from './components/EmailGate'
 import AboutCourses from './pages/AboutCourses'
 import About from './pages/About'
+import TermsOfService from './pages/TermsOfService'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import RefundPolicy from './pages/RefundPolicy'
 import PlannerPage from './pages/PlannerPage'
 import DumpWorkspacePage from './pages/DumpWorkspacePage'
 import CourseModulePage from './pages/CourseModulePage'
@@ -42,6 +45,9 @@ export default function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/about" element={<About />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/refund" element={<RefundPolicy />} />
             <Route path="/courses" element={<AboutCourses />} />
             <Route path="/planner" element={<PlannerPage />} />
             <Route path="/course/:moduleId" element={<CourseModulePage />} />

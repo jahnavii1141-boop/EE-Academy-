@@ -95,8 +95,9 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-6 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-steel/60">
           <p>© {new Date().getFullYear()} <span className="font-serif">The Extended Essay Academy</span>. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-cream transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-cream transition-colors">Terms of Service</a>
+            <Link to="/privacy" className="hover:text-cream transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-cream transition-colors">Terms of Service</Link>
+            <Link to="/refund" className="hover:text-cream transition-colors">Refund Policy</Link>
           </div>
         </div>
       </div>
