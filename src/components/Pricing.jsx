@@ -1,23 +1,25 @@
-import { Shield } from 'lucide-react'
 import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 
 const FEATURES_BASIC = [
-  'Full course access (24 hours)',
-  '5 guided writing exercises',
-  'Downloadable essay templates',
-  'Community forum access',
-  'Certificate of completion',
+  'Full course — all 13 modules',
+  'Study Calendar',
+  'Citation quick-reference guide',
 ]
 
-const FEATURES_PRO = [
+const FEATURES_PREMIUM = [
   'Everything in Basic',
-  '1-on-1 essay feedback session (60 min)',
-  'Written feedback on your draft',
-  'Private student Slack group',
-  'Viva voce preparation session',
-  'Lifetime updates',
+  'EE Dump Workspace (interactive tool)',
+  'Source Tracker (spreadsheet tool)',
+  'EE Planner (timeline tool)',
+  'All 12 AI copy-paste prompts',
+  'Full 32/34 EE analysis with real commentary',
+  'All templates & SOPs (downloadable)',
 ]
+
+// Replace with your real Lemon Squeezy checkout URLs when ready
+export const LS_BASIC_URL = '#pricing'
+export const LS_PREMIUM_URL = '#pricing'
 
 function CheckItem({ text }) {
   return (
@@ -35,10 +37,24 @@ export default function Pricing() {
     <section id="pricing" className="bg-cream py-20 px-6">
       <div className="max-w-4xl mx-auto">
         <AnimateIn>
-          <h2 className="section-heading">Simple, Honest Pricing</h2>
+          <h2 className="section-heading">Pricing Plans</h2>
           <p className="section-subheading">
             One-time payment. Lifetime access. No hidden fees.
           </p>
+        </AnimateIn>
+
+        {/* Free tier callout */}
+        <AnimateIn delay={0.05}>
+          <div className="mb-6 rounded-2xl border border-navy/10 bg-parchment/60 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+            <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
+            <div>
+              <p className="text-sm font-semibold text-navy">Start for free — no card required</p>
+              <p className="text-xs text-ink-soft mt-0.5">Includes Modules 1, 2 & 3 in full + the EE Planner tool</p>
+            </div>
+            <a href="/course/module-1" className="sm:ml-auto text-xs font-semibold text-navy underline underline-offset-2 flex-shrink-0">
+              Start free →
+            </a>
+          </div>
         </AnimateIn>
 
         <StaggerContainer className="grid md:grid-cols-2 gap-4 items-stretch">
@@ -49,50 +65,40 @@ export default function Pricing() {
           >
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
-              <div className="flex items-end gap-1 mb-6">
-                <span className="text-5xl font-serif font-bold text-navy">$97</span>
-                <span className="text-ink-soft text-sm mb-2">one-time</span>
+              <div className="flex items-end gap-2 mb-1">
+                <span className="text-5xl font-serif font-bold text-navy">$49</span>
+                <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
+              <p className="text-xs text-ink-soft mb-6">Regular price $67</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href="#" className="block text-center btn-primary">Enroll in Basic</a>
+            <a href={LS_BASIC_URL} className="block text-center btn-primary">Enroll in Basic</a>
           </motion.div>
 
-          {/* Pro */}
+          {/* Premium */}
           <motion.div
             variants={staggerItem}
             className="bento-card bg-parchment flex flex-col justify-between border-2 border-navy/15 relative hover:-translate-y-1"
           >
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-navy text-cream text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-navy text-cream text-xs font-bold px-4 py-1.5 rounded-full shadow-md whitespace-nowrap">
               Most Popular
             </span>
             <div>
-              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Pro</p>
-              <div className="flex items-end gap-1 mb-6">
-                <span className="text-5xl font-serif font-bold text-navy">$197</span>
-                <span className="text-ink-soft text-sm mb-2">one-time</span>
+              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
+              <div className="flex items-end gap-2 mb-1">
+                <span className="text-5xl font-serif font-bold text-navy">$71</span>
+                <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
+              <p className="text-xs text-ink-soft mb-6">Regular price $89</p>
               <ul className="space-y-3 mb-8">
-                {FEATURES_PRO.map((f, i) => <CheckItem key={i} text={f} />)}
+                {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href="#" className="block text-center btn-primary">Enroll in Pro</a>
+            <a href={LS_PREMIUM_URL} className="block text-center btn-primary">Enroll in Premium</a>
           </motion.div>
         </StaggerContainer>
-
-        <AnimateIn delay={0.2}>
-          <div className="mt-8 text-center">
-            <p className="text-ink-soft text-sm max-w-md mx-auto flex items-center justify-center gap-2">
-              <Shield className="w-4 h-4 text-navy/50 flex-shrink-0" />
-              <span>
-                <span className="font-semibold text-navy">30-day money-back guarantee.</span>{' '}
-                Not satisfied? Email us and we'll refund you in full — no questions asked.
-              </span>
-            </p>
-          </div>
-        </AnimateIn>
       </div>
     </section>
   )

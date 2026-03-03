@@ -34,6 +34,7 @@ const MODULES = [
   },
   {
     id: 'module-3',
+    free: true,
     title: 'Module 3 — Choosing Your Subject & Finding Your Topic',
     lessons: [
       'The Venn Diagram: Interest, Strength & EE-Friendliness',

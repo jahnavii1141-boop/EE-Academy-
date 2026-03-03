@@ -1,5 +1,14 @@
-const COURSE_LINKS = ['Curriculum', 'Instructor', 'Testimonials', 'Pricing']
-const COMPANY_LINKS = ['About', 'Blog', 'Careers', 'Contact']
+import { Link } from 'react-router-dom'
+
+const COURSE_LINKS = [
+  { label: 'Curriculum', href: '#curriculum' },
+  { label: 'Pricing', href: '#pricing' },
+]
+const COMPANY_LINKS = [
+  { label: 'About', href: '/about', internal: true },
+  { label: 'Blog', href: '#' },
+  { label: 'Contact', href: '#' },
+]
 
 export default function Footer() {
   return (
@@ -43,8 +52,8 @@ export default function Footer() {
           <h3 className="font-serif text-cream font-semibold text-sm mb-4">Course</h3>
           <ul className="space-y-3">
             {COURSE_LINKS.map(link => (
-              <li key={link}>
-                <a href={`#${link.toLowerCase()}`} className="text-sm text-steel hover:text-cream transition-colors">{link}</a>
+              <li key={link.label}>
+                <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
               </li>
             ))}
           </ul>
@@ -55,8 +64,11 @@ export default function Footer() {
           <h3 className="font-serif text-cream font-semibold text-sm mb-4">Company</h3>
           <ul className="space-y-3">
             {COMPANY_LINKS.map(link => (
-              <li key={link}>
-                <a href="#" className="text-sm text-steel hover:text-cream transition-colors">{link}</a>
+              <li key={link.label}>
+                {link.internal
+                  ? <Link to={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
+                  : <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
+                }
               </li>
             ))}
           </ul>

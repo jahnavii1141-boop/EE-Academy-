@@ -1,24 +1,28 @@
 import { useMotionValue, useMotionTemplate, motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Plus } from "lucide-react";
 import { cn } from "../../lib/utils";
 
-export const EvervaultCard = ({ text, className }) => {
+export const EvervaultCard = ({ text, revealText, className }) => {
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
   const [randomString, setRandomString] = useState("");
 
   useEffect(() => {
-    let str = generateRandomString(1500);
+    let str = revealText
+      ? repeatToLength(revealText, 1500)
+      : generateRandomString(1500);
     setRandomString(str);
-  }, []);
+  }, [revealText]);
 
   function onMouseMove({ currentTarget, clientX, clientY }) {
     let { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
-    const str = generateRandomString(1500);
-    setRandomString(str);
+    // Only randomise if no custom revealText
+    if (!revealText) {
+      setRandomString(generateRandomString(1500));
+    }
   }
 
   return (
@@ -81,6 +85,12 @@ export const generateRandomString = (length) => {
   }
   return result;
 };
+
+function repeatToLength(str, length) {
+  let result = "";
+  while (result.length < length) result += str + "  ";
+  return result.slice(0, length);
+}
 
 export const Icon = ({ className, ...rest }) => {
   return <Plus className={cn("text-parchment/60", className)} {...rest} />;

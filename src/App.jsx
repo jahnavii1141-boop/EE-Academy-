@@ -9,7 +9,9 @@ import EvervaultCTA from './components/EvervaultCTA'
 import Pricing from './components/Pricing'
 import PlannerSection from './components/PlannerSection'
 import DumpSection from './components/DumpSection'
+import EmailGate from './components/EmailGate'
 import AboutCourses from './pages/AboutCourses'
+import About from './pages/About'
 import PlannerPage from './pages/PlannerPage'
 import DumpWorkspacePage from './pages/DumpWorkspacePage'
 import CourseModulePage from './pages/CourseModulePage'
@@ -26,6 +28,7 @@ function LandingPage() {
       <DumpSection />
       <EvervaultCTA />
       <Pricing />
+      <EmailGate />
     </main>
   )
 }
@@ -38,6 +41,7 @@ export default function App() {
         <div className="flex-1">
           <Routes>
             <Route path="/" element={<LandingPage />} />
+            <Route path="/about" element={<About />} />
             <Route path="/courses" element={<AboutCourses />} />
             <Route path="/planner" element={<PlannerPage />} />
             <Route path="/course/:moduleId" element={<CourseModulePage />} />

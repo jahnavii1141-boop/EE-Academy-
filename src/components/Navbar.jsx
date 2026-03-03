@@ -7,7 +7,6 @@ const ANCHOR_LINKS = [
   { label: 'Curriculum', href: '#curriculum' },
   { label: 'EE Planner', href: '#planner' },
   { label: 'EE Dump', href: '#dump' },
-  { label: 'Instructor', href: '#instructor' },
   { label: 'Pricing', href: '#pricing' },
 ]
 
@@ -43,6 +42,14 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
+          <Link
+            to="/about"
+            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+              location.pathname === '/about' ? 'text-navy' : 'text-ink-soft hover:text-navy'
+            }`}
+          >
+            About
+          </Link>
           <Link
             to="/courses"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
@@ -123,6 +130,9 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-cream/95 backdrop-blur-md border-t border-navy/10 px-6 py-5 flex flex-col gap-5">
+          <Link to="/about" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+            About
+          </Link>
           <Link to="/courses" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             All Courses
           </Link>

@@ -122,6 +122,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-3',
     number: '03',
+    free: true,
     title: 'Choosing Your Subject & Finding Your Topic',
     tagline: 'The right topic makes the difference between stress and an A.',
     content: [
