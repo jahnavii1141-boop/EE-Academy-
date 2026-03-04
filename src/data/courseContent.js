@@ -238,6 +238,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-5',
     number: '05',
+    free: true,
     title: 'The EE Dump Research System',
     tagline: 'The most fun part of the entire EE process.',
     content: [

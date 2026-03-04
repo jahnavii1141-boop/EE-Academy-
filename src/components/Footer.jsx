@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 
 const COURSE_LINKS = [
-  { label: 'Curriculum', href: '#curriculum' },
-  { label: 'Pricing', href: '#pricing' },
+  { label: 'Dashboard', href: '/dashboard', internal: true },
+  { label: 'Curriculum', href: '/curriculum', internal: true },
+  { label: 'Pricing', href: '/pricing', internal: true },
 ]
 const COMPANY_LINKS = [
   { label: 'About', href: '/about', internal: true },
@@ -53,7 +54,10 @@ export default function Footer() {
           <ul className="space-y-3">
             {COURSE_LINKS.map(link => (
               <li key={link.label}>
-                <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
+                {link.internal
+                  ? <Link to={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
+                  : <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
+                }
               </li>
             ))}
           </ul>

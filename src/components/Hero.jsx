@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import AnimateIn from './ui/AnimateIn'
 
 export default function Hero() {
@@ -36,8 +37,8 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4">
-                <a href="#pricing" className="btn-primary-light">Start Learning Today</a>
-                <a href="#curriculum" className="btn-outline-light">View Curriculum</a>
+                <Link to="/dashboard" className="btn-primary-light">Access Class Now</Link>
+                <Link to="/curriculum" className="btn-outline-light">View Curriculum</Link>
               </div>
             </AnimateIn>
           </div>

@@ -4,12 +4,9 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Feature108 from './components/blocks/Feature108'
 import WhatYoullLearn from './components/WhatYoullLearn'
+import Instructor from './components/Instructor'
+import Testimonials from './components/Testimonials'
 import Curriculum from './components/Curriculum'
-import EvervaultCTA from './components/EvervaultCTA'
-import Pricing from './components/Pricing'
-import PlannerSection from './components/PlannerSection'
-import DumpSection from './components/DumpSection'
-import EmailGate from './components/EmailGate'
 import AboutCourses from './pages/AboutCourses'
 import About from './pages/About'
 import TermsOfService from './pages/TermsOfService'
@@ -18,6 +15,9 @@ import RefundPolicy from './pages/RefundPolicy'
 import PlannerPage from './pages/PlannerPage'
 import DumpWorkspacePage from './pages/DumpWorkspacePage'
 import CourseModulePage from './pages/CourseModulePage'
+import Dashboard from './pages/Dashboard'
+import DashboardSection from './pages/DashboardSection'
+import PricingPage from './pages/PricingPage'
 import ProtectedRoute from './components/ProtectedRoute'
 
 function LandingPage() {
@@ -26,12 +26,16 @@ function LandingPage() {
       <Hero />
       <Feature108 />
       <WhatYoullLearn />
+      <Instructor />
+      <Testimonials />
+    </main>
+  )
+}
+
+function CurriculumPage() {
+  return (
+    <main className="min-h-screen bg-navy">
       <Curriculum />
-      <PlannerSection />
-      <DumpSection />
-      <EvervaultCTA />
-      <Pricing />
-      <EmailGate />
     </main>
   )
 }
@@ -51,6 +55,10 @@ export default function App() {
             <Route path="/courses" element={<AboutCourses />} />
             <Route path="/planner" element={<PlannerPage />} />
             <Route path="/course/:moduleId" element={<CourseModulePage />} />
+            <Route path="/curriculum" element={<CurriculumPage />} />
+            <Route path="/pricing" element={<PricingPage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/dashboard/:sectionId" element={<DashboardSection />} />
             <Route path="/dump" element={
               <ProtectedRoute>
                 <DumpWorkspacePage />

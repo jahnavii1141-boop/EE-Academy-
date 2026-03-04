@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 import { useAuth, SignInButton } from '@clerk/clerk-react'
 import { COURSE_MODULES } from '../data/courseContent'
-import { useParams } from 'react-router-dom'
+import { useModuleProgress } from '../hooks/useModuleProgress'
 
 // ─── Content block renderers ──────────────────────────────────────────────────
 
@@ -128,9 +129,9 @@ function PaywallBanner({ moduleTitle }) {
               Sign In to Access
             </button>
           </SignInButton>
-          <a href="/#pricing" className="btn-outline text-sm">
+          <Link to="/pricing" className="btn-outline text-sm">
             View Pricing
-          </a>
+          </Link>
         </div>
         <p className="text-xs text-navy/40 mt-4">30-day money-back guarantee · Lifetime access</p>
       </div>
@@ -143,11 +144,17 @@ function PaywallBanner({ moduleTitle }) {
 export default function CourseModulePage() {
   const { moduleId } = useParams()
   const { isSignedIn, isLoaded } = useAuth()
+  const { markVisited } = useModuleProgress()
 
   const moduleIndex = COURSE_MODULES.findIndex(m => m.id === moduleId)
   const module = COURSE_MODULES[moduleIndex]
   const prevModule = COURSE_MODULES[moduleIndex - 1]
   const nextModule = COURSE_MODULES[moduleIndex + 1]
+
+  // Mark this module as visited in progress tracker when page loads
+  useEffect(() => {
+    if (module) markVisited(module.id)
+  }, [module?.id]) // eslint-disable-line react-hooks/exhaustive-deps
 
   if (!module) {
     return (

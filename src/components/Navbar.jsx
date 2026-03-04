@@ -2,12 +2,9 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { SignedIn, UserButton } from '@clerk/clerk-react'
 
-const ANCHOR_LINKS = [
+// Home page only shows these anchor links (sections still present on home)
+const HOME_ANCHOR_LINKS = [
   { label: "What You'll Learn", href: '#learn' },
-  { label: 'Curriculum', href: '#curriculum' },
-  { label: 'EE Planner', href: '#planner' },
-  { label: 'EE Dump', href: '#dump' },
-  { label: 'Pricing', href: '#pricing' },
 ]
 
 export default function Navbar() {
@@ -16,6 +13,7 @@ export default function Navbar() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const isCourses = location.pathname === '/courses'
+  const isDashboard = location.pathname.startsWith('/dashboard')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -58,6 +56,14 @@ export default function Navbar() {
           >
             All Courses
           </Link>
+          <Link
+            to="/dashboard"
+            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+              isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'
+            }`}
+          >
+            Dashboard
+          </Link>
           {!isHome && (
             <Link
               to="/planner"
@@ -79,7 +85,7 @@ export default function Navbar() {
             </Link>
           )}
           {isHome &&
-            ANCHOR_LINKS.map((link) => (
+            HOME_ANCHOR_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
@@ -99,11 +105,11 @@ export default function Navbar() {
             />
           </SignedIn>
           {isHome ? (
-            <a href="#pricing" className="btn-primary text-sm">
+            <Link to="/pricing" className="btn-primary text-sm">
               Enroll Now
-            </a>
+            </Link>
           ) : (
-            <Link to="/" className="btn-primary text-sm">
+            <Link to="/dashboard" className="btn-primary text-sm">
               Get Started
             </Link>
           )}
@@ -136,6 +142,9 @@ export default function Navbar() {
           <Link to="/courses" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             All Courses
           </Link>
+          <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+            Dashboard
+          </Link>
           {!isHome && (
             <Link to="/planner" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
               EE Planner
@@ -147,7 +156,7 @@ export default function Navbar() {
             </Link>
           )}
           {isHome &&
-            ANCHOR_LINKS.map((link) => (
+            HOME_ANCHOR_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
                 {link.label}
               </a>
@@ -159,9 +168,9 @@ export default function Navbar() {
             </div>
           </SignedIn>
           {isHome ? (
-            <a href="#pricing" className="btn-primary text-sm text-center">Enroll Now</a>
+            <Link to="/pricing" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Enroll Now</Link>
           ) : (
-            <Link to="/" className="btn-primary text-sm text-center">Get Started</Link>
+            <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</Link>
           )}
         </div>
       )}
