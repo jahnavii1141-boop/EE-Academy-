@@ -108,8 +108,8 @@ export const DASHBOARD_SECTIONS = [
     interactiveTools: [
       { label: 'EE Planner', href: '/planner', icon: 'Calendar' },
       { label: 'EE Dump Workspace', href: '/dump', icon: 'FileText' },
-      { label: 'Source Tracker', href: '#', icon: 'Link' },
-      { label: 'Study Calendar', href: '#', icon: 'Clock' },
+      { label: 'Study Calendar', href: '/study-calendar', icon: 'Clock' },
+      { label: 'Source Tracker', href: '#', icon: 'Link', comingSoon: true },
     ],
   },
 ]

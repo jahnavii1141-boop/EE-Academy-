@@ -4,8 +4,6 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Feature108 from './components/blocks/Feature108'
 import WhatYoullLearn from './components/WhatYoullLearn'
-import Instructor from './components/Instructor'
-import Testimonials from './components/Testimonials'
 import Curriculum from './components/Curriculum'
 import AboutCourses from './pages/AboutCourses'
 import About from './pages/About'
@@ -14,6 +12,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import RefundPolicy from './pages/RefundPolicy'
 import PlannerPage from './pages/PlannerPage'
 import DumpWorkspacePage from './pages/DumpWorkspacePage'
+import StudyCalendarPage from './pages/StudyCalendarPage'
 import CourseModulePage from './pages/CourseModulePage'
 import Dashboard from './pages/Dashboard'
 import DashboardSection from './pages/DashboardSection'
@@ -26,8 +25,6 @@ function LandingPage() {
       <Hero />
       <Feature108 />
       <WhatYoullLearn />
-      <Instructor />
-      <Testimonials />
     </main>
   )
 }
@@ -54,6 +51,7 @@ export default function App() {
             <Route path="/refund" element={<RefundPolicy />} />
             <Route path="/courses" element={<AboutCourses />} />
             <Route path="/planner" element={<PlannerPage />} />
+            <Route path="/study-calendar" element={<StudyCalendarPage />} />
             <Route path="/course/:moduleId" element={<CourseModulePage />} />
             <Route path="/curriculum" element={<CurriculumPage />} />
             <Route path="/pricing" element={<PricingPage />} />

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EE Planner — The Extended Essay Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Fraunces:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f8f7f4;
+    --white: #ffffff;
+    --text: #1a1a2e;
+    --text-sec: #4a4a68;
+    --text-muted: #8e8ea0;
+    --border: #e8e6e1;
+    --border-hover: #d0cec8;
+    --blue: #2563eb;
+    --blue-light: #eff4ff;
+    --blue-mid: #dbeafe;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --orange: #ea580c;
+    --orange-light: #fff7ed;
+    --orange-border: #fed7aa;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --rose: #e11d48;
+    --rose-light: #fff1f2;
+    --blue-border: #bfdbfe;
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+    --radius: 12px;
+    --radius-lg: 16px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', -apple-system, sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; min-height: 100vh; }
+  ::selection { background: var(--blue-mid); }
+  .btn-small { padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; transition: all 0.15s; }
+  .btn-ghost { background: none; color: var(--text-sec); }
+  .btn-ghost:hover { background: var(--blue-light); color: var(--blue); }
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 24px 80px; }
+  .hero { text-align: center; margin-bottom: 40px; padding: 40px 20px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 600; margin-bottom: 16px; letter-spacing: 0.3px; }
+  .hero h1 { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .hero p { font-size: 16px; color: var(--text-sec); max-width: 520px; margin: 0 auto; }
+  .setup-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden; margin-bottom: 24px; }
+  .setup-header { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .setup-header h2 { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 700; }
+  .setup-step-badge { font-size: 12px; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 4px 12px; border-radius: 6px; }
+  .setup-body { padding: 24px; }
+  .steps-bar { display: flex; gap: 4px; margin-bottom: 32px; }
+  .step-pip { flex: 1; height: 4px; border-radius: 2px; background: var(--border); transition: background 0.3s; }
+  .step-pip.active { background: var(--blue); }
+  .step-pip.done { background: var(--green); }
+  .form-group { margin-bottom: 24px; }
+  .form-label { display: block; font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
+  .form-hint { font-size: 13px; color: var(--text-muted); margin-bottom: 12px; }
+  .form-input { width: 100%; padding: 12px 16px; border: 1.5px solid var(--border); border-radius: 10px; font-size: 15px; font-family: inherit; color: var(--text); background: var(--white); transition: all 0.15s; outline: none; }
+  .form-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px var(--blue-light); }
+  .option-grid { display: flex; flex-direction: column; gap: 8px; }
+  .option-card { display: flex; align-items: center; gap: 14px; padding: 16px 18px; border-radius: var(--radius); border: 1.5px solid var(--border); cursor: pointer; transition: all 0.15s; background: var(--white); }
+  .option-card:hover { border-color: var(--border-hover); background: #fafaf8; }
+  .option-card.selected { border-color: var(--blue); background: var(--blue-light); }
+  .option-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .option-card:nth-child(1) .option-icon { background: var(--blue-light); }
+  .option-card:nth-child(2) .option-icon { background: var(--green-light); }
+  .option-card:nth-child(3) .option-icon { background: var(--orange-light); }
+  .option-card:nth-child(4) .option-icon { background: var(--purple-light); }
+  .option-card:nth-child(5) .option-icon { background: var(--rose-light); }
+  .option-text { flex: 1; }
+  .option-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .option-desc { font-size: 12px; color: var(--text-muted); margin-top: 1px; }
+  .option-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .option-card.selected .option-radio { border-color: var(--blue); background: var(--blue); }
+  .option-card.selected .option-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: white; }
+  .chip-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { padding: 10px 18px; border-radius: 20px; border: 1.5px solid var(--border); font-size: 13px; font-weight: 600; color: var(--text-sec); cursor: pointer; transition: all 0.15s; background: var(--white); display: flex; align-items: center; gap: 6px; }
+  .chip:hover { border-color: var(--border-hover); }
+  .chip.selected { border-color: var(--blue); background: var(--blue-light); color: var(--blue); }
+  .chip-emoji { font-size: 15px; }
+  .btn { padding: 14px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; font-family: inherit; transition: all 0.15s; display: inline-flex; align-items: center; gap: 8px; }
+  .btn-primary { background: var(--blue); color: #fff; width: 100%; justify-content: center; }
+  .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: none; }
+  .btn-secondary { background: var(--white); color: var(--text-sec); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--border-hover); color: var(--text); }
+  .btn-row { display: flex; gap: 10px; margin-top: 24px; }
+  .btn-row .btn-primary { flex: 1; }
+  .alert-banner { padding: 16px 20px; border-radius: var(--radius); margin-bottom: 20px; display: none; font-size: 14px; font-weight: 500; line-height: 1.5; }
+  .alert-banner.warning { background: var(--orange-light); border: 1px solid var(--orange-border); color: #9a3412; display: block; }
+  .alert-banner.info { background: var(--blue-light); border: 1px solid var(--blue-border); color: #1e40af; display: block; }
+  .alert-banner strong { font-weight: 700; }
+  .timeline-container { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-md); overflow: hidden; }
+  .timeline-header { padding: 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .timeline-header h2 { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 700; }
+  .timeline-export { display: flex; gap: 8px; }
+  .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--border); }
+  .stat-item { padding: 20px 24px; border-right: 1px solid var(--border); }
+  .stat-item:last-child { border-right: none; }
+  .stat-val { font-family: 'Fraunces', serif; font-size: 28px; font-weight: 700; color: var(--text); }
+  .stat-label { font-size: 12px; color: var(--text-muted); font-weight: 500; margin-top: 2px; }
+  .phase-block { border-bottom: 1px solid var(--border); }
+  .phase-block:last-child { border-bottom: none; }
+  .phase-header { padding: 18px 24px; display: flex; align-items: center; gap: 12px; cursor: pointer; transition: background 0.1s; }
+  .phase-header:hover { background: #fafaf8; }
+  .phase-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .phase-dot.foundations { background: var(--blue); }
+  .phase-dot.topic { background: var(--green); }
+  .phase-dot.research { background: var(--orange); }
+  .phase-dot.writing { background: var(--purple); }
+  .phase-dot.polish { background: var(--rose); }
+  .phase-dot.submit { background: #0ea5e9; }
+  .phase-name { font-size: 14px; font-weight: 700; color: var(--text); flex: 1; }
+  .phase-module-tag { font-size: 11px; font-weight: 600; color: var(--text-muted); background: var(--bg); padding: 2px 8px; border-radius: 4px; }
+  .phase-dates { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+  .phase-chevron { color: var(--text-muted); font-size: 14px; transition: transform 0.2s; }
+  .phase-block.open .phase-chevron { transform: rotate(90deg); }
+  .phase-tasks { padding: 0 24px 18px; display: none; }
+  .phase-block.open .phase-tasks { display: block; }
+  .task-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 16px; border-radius: 10px; margin-bottom: 4px; transition: background 0.1s; }
+  .task-item:hover { background: var(--bg); }
+  .task-check { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border); flex-shrink: 0; margin-top: 1px; cursor: pointer; transition: all 0.15s; display: flex; align-items: center; justify-content: center; }
+  .task-check.checked { background: var(--green); border-color: var(--green); color: white; font-size: 11px; }
+  .task-check.checked::after { content: '✓'; }
+  .task-text { flex: 1; }
+  .task-title { font-size: 14px; font-weight: 500; color: var(--text); }
+  .task-item.completed .task-title { text-decoration: line-through; color: var(--text-muted); }
+  .task-module { font-size: 11px; color: var(--blue); font-weight: 600; margin-top: 2px; }
+  .task-time { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+  .task-date { font-size: 12px; color: var(--text-muted); font-weight: 500; white-space: nowrap; margin-top: 2px; }
+  .progress-section { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 16px; }
+  .progress-bar-bg { flex: 1; height: 8px; border-radius: 4px; background: var(--border); }
+  .progress-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--purple)); transition: width 0.5s ease; }
+  .progress-label { font-size: 13px; font-weight: 600; color: var(--text-sec); white-space: nowrap; }
+  .view { display: none; }
+  .view.active { display: block; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .animate-in { animation: fadeUp 0.4s ease forwards; }
+  @media (max-width: 640px) { .hero h1 { font-size: 28px; } .stats-row { grid-template-columns: repeat(2, 1fr); } .stat-item:nth-child(2) { border-right: none; } }
+</style>
+</head>
+<body>
+<div class="main">
+  <div class="view active" id="viewSetup">
+    <div class="hero animate-in">
+      <div class="hero-badge">📅 Free Tool</div>
+      <h1>Plan your entire EE,<br>stress-free.</h1>
+      <p>Set your deadline, tell us where you're at, and we'll build a week-by-week timeline mapped to the course.</p>
+    </div>
+    <div class="setup-card animate-in" style="animation-delay:0.1s">
+      <div class="setup-header">
+        <h2>Build your plan</h2>
+        <div class="setup-step-badge" id="stepLabel">Step 1 of 3</div>
+      </div>
+      <div class="setup-body">
+        <div class="steps-bar">
+          <div class="step-pip active" id="pip1"></div>
+          <div class="step-pip" id="pip2"></div>
+          <div class="step-pip" id="pip3"></div>
+        </div>
+        <div id="step1">
+          <div class="form-group">
+            <label class="form-label">When is your EE due?</label>
+            <p class="form-hint">Your final submission deadline.</p>
+            <input type="date" class="form-input" id="deadlineInput">
+          </div>
+          <div class="form-group">
+            <label class="form-label">When do you want to start?</label>
+            <p class="form-hint">Today works. Tomorrow works. Just don't say "next month."</p>
+            <input type="date" class="form-input" id="startInput">
+          </div>
+          <div class="alert-banner" id="timeAlert"></div>
+          <button class="btn btn-primary" id="toStep2" disabled onclick="goStep(2)">Continue →</button>
+        </div>
+        <div id="step2" style="display:none">
+          <div class="form-group">
+            <label class="form-label">Where are you at right now?</label>
+            <p class="form-hint">Be honest — we'll skip what you've already done.</p>
+            <div class="option-grid">
+              <div class="option-card" data-val="start" onclick="pickStage(this)"><div class="option-icon">🌱</div><div class="option-text"><div class="option-title">Just starting</div><div class="option-desc">No topic or RQ yet</div></div><div class="option-radio"></div></div>
+              <div class="option-card" data-val="topic" onclick="pickStage(this)"><div class="option-icon">🎯</div><div class="option-text"><div class="option-title">Have a topic</div><div class="option-desc">Subject chosen, RQ needs work</div></div><div class="option-radio"></div></div>
+              <div class="option-card" data-val="research" onclick="pickStage(this)"><div class="option-icon">🔬</div><div class="option-text"><div class="option-title">Researching</div><div class="option-desc">RQ locked, gathering sources</div></div><div class="option-radio"></div></div>
+              <div class="option-card" data-val="writing" onclick="pickStage(this)"><div class="option-icon">✍️</div><div class="option-text"><div class="option-title">Writing</div><div class="option-desc">Structure done, writing the essay</div></div><div class="option-radio"></div></div>
+              <div class="option-card" data-val="editing" onclick="pickStage(this)"><div class="option-icon">🔍</div><div class="option-text"><div class="option-title">Editing & polishing</div><div class="option-desc">Draft done, reviewing</div></div><div class="option-radio"></div></div>
+            </div>
+          </div>
+          <div class="btn-row"><button class="btn btn-secondary" onclick="goStep(1)">← Back</button><button class="btn btn-primary" id="toStep3" disabled onclick="goStep(3)">Continue →</button></div>
+        </div>
+        <div id="step3" style="display:none">
+          <div class="form-group">
+            <label class="form-label">Where do you need the most help?</label>
+            <p class="form-hint">Pick up to 3. We'll prioritise these.</p>
+            <div class="chip-grid">
+              <div class="chip" data-val="rq" onclick="toggleChip(this)"><span class="chip-emoji">💡</span> Research Question</div>
+              <div class="chip" data-val="research" onclick="toggleChip(this)"><span class="chip-emoji">📚</span> Research & Sources</div>
+              <div class="chip" data-val="structure" onclick="toggleChip(this)"><span class="chip-emoji">🏗️</span> Structure</div>
+              <div class="chip" data-val="writing" onclick="toggleChip(this)"><span class="chip-emoji">✍️</span> Writing Quality</div>
+              <div class="chip" data-val="formatting" onclick="toggleChip(this)"><span class="chip-emoji">📝</span> Citations & Format</div>
+              <div class="chip" data-val="rppf" onclick="toggleChip(this)"><span class="chip-emoji">🪞</span> RPPF & Reflections</div>
+            </div>
+          </div>
+          <div class="btn-row"><button class="btn btn-secondary" onclick="goStep(2)">← Back</button><button class="btn btn-primary" id="generateBtn" disabled onclick="generate()">Generate my plan ✨</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="view" id="viewTimeline">
+    <div class="alert-banner" id="planAlert"></div>
+    <div class="timeline-container animate-in">
+      <div class="timeline-header"><h2>Your EE Timeline</h2><div class="timeline-export"><button class="btn-small btn-ghost" onclick="exportPlan()">📄 Export</button><button class="btn-small btn-ghost" onclick="resetPlanner()">↻ Redo</button></div></div>
+      <div class="progress-section"><span class="progress-label" id="progressLabel">0 / 0</span><div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill" style="width:0%"></div></div><span class="progress-label" id="progressPct">0%</span></div>
+      <div class="stats-row" id="statsRow"></div>
+      <div id="phasesContainer"></div>
+    </div>
+  </div>
+</div>
+<script>
+let stage = null, focuses = [];
+const deadlineInput = document.getElementById('deadlineInput');
+const startInput = document.getElementById('startInput');
+const today = new Date();
+const todayStr = today.toISOString().split('T')[0];
+startInput.value = todayStr; startInput.min = todayStr;
+function checkStep1() {
+  const alert = document.getElementById('timeAlert');
+  alert.className = 'alert-banner'; alert.innerHTML = '';
+  const ok = deadlineInput.value && startInput.value && new Date(deadlineInput.value) > new Date(startInput.value);
+  if (ok) {
+    const d = Math.floor((new Date(deadlineInput.value) - new Date(startInput.value)) / 86400000);
+    if (d <= 3) { alert.className = 'alert-banner warning'; alert.innerHTML = `<strong>⚡ Crunch time.</strong> ${d} day${d===1?'':'s'} — you'll get the One-Day Protocol. Essentials only.`; }
+    else if (d <= 14) { alert.className = 'alert-banner info'; alert.innerHTML = `<strong>⏱️ Tight.</strong> ${d} days — we'll cut non-essentials and focus on marks.`; }
+  }
+  document.getElementById('toStep2').disabled = !ok;
+}
+deadlineInput.addEventListener('input', checkStep1);
+startInput.addEventListener('input', checkStep1);
+function pickStage(el) {
+  document.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected'); stage = el.dataset.val;
+  document.getElementById('toStep3').disabled = false;
+}
+function toggleChip(el) {
+  const v = el.dataset.val;
+  if (el.classList.contains('selected')) { el.classList.remove('selected'); focuses = focuses.filter(f=>f!==v); }
+  else { if (focuses.length >= 3) return; el.classList.add('selected'); focuses.push(v); }
+  document.getElementById('generateBtn').disabled = focuses.length === 0;
+}
+function goStep(n) {
+  [1,2,3].forEach(i => { document.getElementById('step'+i).style.display = i===n?'block':'none'; const p=document.getElementById('pip'+i); p.className='step-pip'; if(i<n)p.classList.add('done'); if(i===n)p.classList.add('active'); });
+  document.getElementById('stepLabel').textContent = `Step ${n} of 3`;
+}
+const FULL_PHASES = [
+  { name:'Foundations & Mindset', color:'foundations', pct:0.10, minStage:'start', tasks:[
+    {t:'Module 1: Mindset — think like an examiner, not a student',mod:'Module 1',time:30},
+    {t:'Module 2: Break down IB criteria — how A\'s are actually given',mod:'Module 2',time:45},
+    {t:'Module 2: Analyse the IB guide — circle what matters',mod:'Module 2',time:30},
+    {t:'Mindset shift: "I\'m an academic writing a research paper"',mod:'Module 1',time:15},
+  ]},
+  { name:'Topic & Research Question', color:'topic', pct:0.15, minStage:'start', tasks:[
+    {t:'Module 3: Venn diagram — Interest × EE-Friendly × Best Score',mod:'Module 3',time:30},
+    {t:'Module 3: Analyse good + bad essays on Clastify',mod:'Module 3',time:45},
+    {t:'Module 4: Find your topic from daily life (the John method)',mod:'Module 4',time:30},
+    {t:'Module 4: Draft your Research Question',mod:'Module 4',time:30},
+    {t:'Module 4: Narrow and refine — make it specific and yours',mod:'Module 4',time:30},
+    {t:'Get RQ approved by supervisor',mod:'Supervisor',time:20},
+  ]},
+  { name:'Research & EE Dump', color:'research', pct:0.20, minStage:'topic', tasks:[
+    {t:'Module 5: Create Project A folder + EE Dump document',mod:'Module 5',time:15},
+    {t:'Module 5: Break RQ into 5 sub-topics',mod:'Module 5',time:20},
+    {t:'Module 5: EE Dump — Retrieve & Dump sub-topics 1-2',mod:'Module 5',time:90},
+    {t:'Module 5: EE Dump — Retrieve & Dump sub-topics 3-5',mod:'Module 5',time:90},
+    {t:'Module 6: Google research — definitions, context, policy docs',mod:'Module 6',time:60},
+    {t:'Module 6: Scholar Shift — search narrowly, open 3 papers max',mod:'Module 6',time:60},
+    {t:'Module 6: For each source — core claim, evidence, limitation',mod:'Module 6',time:45},
+    {t:'Module 6: Verify each sub-RQ has 2-3 sources',mod:'Module 6',time:20},
+    {t:'Log all sources in Source Tracker tool',mod:'Tool',time:30},
+  ]},
+  { name:'Structure & Outline', color:'writing', pct:0.10, minStage:'research', tasks:[
+    {t:'Module 7: Map sections → criteria A, B, C, D',mod:'Module 7',time:30},
+    {t:'Module 7: Build structure — Intro → Lit Review → Method → Analysis → Discussion → Conclusion',mod:'Module 7',time:45},
+    {t:'Module 7: Outline each section with bullet points',mod:'Module 7',time:30},
+    {t:'Module 11: RPPF Reflection 1 — write about your planning process',mod:'Module 11',time:30},
+  ]},
+  { name:'Writing Your EE', color:'writing', pct:0.30, minStage:'research', tasks:[
+    {t:'Module 8+10: Introduction — storytelling hook → RQ reveal',mod:'Modules 8 & 10',time:90},
+    {t:'Module 8: Literature Review — argue and evaluate, don\'t summarise',mod:'Module 8',time:120},
+    {t:'Module 8: Methodology — justify your approach with examples',mod:'Module 8',time:60},
+    {t:'Module 8: Analysis / Case Study — part 1',mod:'Module 8',time:90},
+    {t:'Module 8: Analysis / Case Study — part 2',mod:'Module 8',time:90},
+    {t:'Module 8: Discussion — connect findings back to RQ',mod:'Module 8',time:60},
+    {t:'Module 10: Conclusion — answer your RQ directly',mod:'Module 10',time:60},
+    {t:'Module 11: RPPF Reflection 2 — mid-process challenges',mod:'Module 11',time:30},
+  ]},
+  { name:'Polish & Review', color:'polish', pct:0.10, minStage:'writing', tasks:[
+    {t:'Word count check — target 3,800-3,950',mod:'Module 9',time:20},
+    {t:'Module 9: Format — font, spacing, headings, bold/italics',mod:'Module 9',time:30},
+    {t:'Module 9: Check every citation',mod:'Module 9',time:45},
+    {t:'Module 9: Bibliography — alphabetical, consistent',mod:'Module 9',time:30},
+    {t:'Module 9: Academic integrity self-check',mod:'Module 9',time:15},
+    {t:'Full proofread — read it out loud',mod:'Review',time:45},
+    {t:'Get a second pair of eyes on it',mod:'Review',time:30},
+  ]},
+  { name:'Submit & Viva Voce', color:'submit', pct:0.05, minStage:'editing', tasks:[
+    {t:'Final formatting checklist (15 min)',mod:'Module 9',time:15},
+    {t:'Module 11: Prepare for viva voce — know your essay cold',mod:'Module 11',time:30},
+    {t:'Submit final essay',mod:'Submission',time:10},
+    {t:'Module 11: RPPF Reflection 3 — write after viva voce',mod:'Module 11',time:30},
+  ]}
+];
+const ONE_DAY = [{ name:'⚡ One-Day Protocol', color:'research', pct:1.0, tasks:[
+  {t:'Speed-read Module 1 — lock in examiner mindset',mod:'Module 1',time:15},
+  {t:'Skim Module 2 — memorise the 4 criteria',mod:'Module 2',time:15},
+  {t:'Finalise your RQ — no more changes after this',mod:'Module 4',time:15},
+  {t:'Emergency EE Dump — 30 min Google + 30 min Scholar',mod:'Modules 5 & 6',time:60},
+  {t:'Skeleton structure — 6 section headings with bullet notes',mod:'Module 7',time:20},
+  {t:'Write Introduction — storytelling hook, ~300 words',mod:'Modules 8 & 10',time:30},
+  {t:'Write Literature Review — ~600 words, argue don\'t describe',mod:'Module 8',time:45},
+  {t:'Write Methodology — ~400 words, justify approach',mod:'Module 8',time:30},
+  {t:'Write Analysis — ~1500 words, this is the bulk',mod:'Module 8',time:90},
+  {t:'Write Discussion — ~500 words, connect to RQ',mod:'Module 8',time:30},
+  {t:'Write Conclusion — ~400 words, answer your RQ',mod:'Module 10',time:20},
+  {t:'Format, cite, bibliography — use checklist',mod:'Module 9',time:30},
+  {t:'Write all 3 RPPF reflections back to back',mod:'Module 11',time:30},
+  {t:'Final read-through + submit',mod:'Submission',time:20},
+]}];
+const stageOrder = ['start','topic','research','writing','editing'];
+function generate() {
+  const deadline = new Date(deadlineInput.value), startDate = new Date(startInput.value);
+  const totalDays = Math.floor((deadline - startDate) / 86400000);
+  if (totalDays < 1) return;
+  const isOneDay = totalDays <= 3;
+  let phases;
+  if (isOneDay) { phases = JSON.parse(JSON.stringify(ONE_DAY)); }
+  else {
+    const si = stageOrder.indexOf(stage);
+    phases = FULL_PHASES.filter(p => stageOrder.indexOf(p.minStage) >= si).map(p => ({...p, tasks:[...p.tasks]}));
+    if (totalDays <= 14) phases.forEach(p => { p.tasks = p.tasks.filter(t => !t.t.includes('second pair of eyes') && !t.t.includes('Clastify')); });
+  }
+  const pa = document.getElementById('planAlert');
+  if (isOneDay) { pa.className='alert-banner warning'; pa.innerHTML='<strong>⚡ One-Day Protocol.</strong> Survival mode — essentials only. Follow the order exactly.'; }
+  else if (totalDays<=14) { pa.className='alert-banner info'; pa.innerHTML=`<strong>⏱️ Compressed plan.</strong> ${totalDays} days. Non-essentials removed.`; }
+  else { pa.className='alert-banner'; }
+  renderTimeline(phases, startDate, totalDays);
+  document.getElementById('viewSetup').classList.remove('active');
+  document.getElementById('viewTimeline').classList.add('active');
+}
+function renderTimeline(phases, startDate, totalDays) {
+  const mn=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let off=0, tc=0; phases.forEach(p=>tc+=p.tasks.length);
+  const tp = phases.reduce((s,p)=>s+p.pct,0);
+  document.getElementById('statsRow').innerHTML=`
+    <div class="stat-item"><div class="stat-val">${totalDays}</div><div class="stat-label">Days</div></div>
+    <div class="stat-item"><div class="stat-val">${Math.max(1,Math.ceil(totalDays/7))}</div><div class="stat-label">Weeks</div></div>
+    <div class="stat-item"><div class="stat-val">${tc}</div><div class="stat-label">Tasks</div></div>
+    <div class="stat-item"><div class="stat-val">${phases.length}</div><div class="stat-label">Phases</div></div>`;
+  const c = document.getElementById('phasesContainer'); c.innerHTML='';
+  phases.forEach((phase,pi) => {
+    const pd = Math.max(1, Math.round(totalDays*(phase.pct/tp)));
+    const ps = new Date(startDate.getTime()+off*864e5);
+    const pe = new Date(startDate.getTime()+Math.min(off+pd-1,totalDays-1)*864e5);
+    const tm = phase.tasks.reduce((s,t)=>s+(t.time||30),0);
+    const h=Math.floor(tm/60), m=tm%60, ts=h>0?h+'h'+(m>0?' '+m+'m':''):m+'m';
+    const b = document.createElement('div');
+    b.className='phase-block'+(pi===0?' open':'');
+    b.innerHTML=`
+      <div class="phase-header" onclick="this.parentElement.classList.toggle('open')">
+        <div class="phase-dot ${phase.color}"></div>
+        <div class="phase-name">${phase.name}</div>
+        <span class="phase-module-tag">${ts}</span>
+        <div class="phase-dates">${mn[ps.getMonth()]} ${ps.getDate()} — ${mn[pe.getMonth()]} ${pe.getDate()}</div>
+        <div class="phase-chevron">▶</div>
+      </div>
+      <div class="phase-tasks">${phase.tasks.map((t,ti)=>{
+        const td=new Date(ps.getTime()+Math.floor(ti*pd/phase.tasks.length)*864e5);
+        return `<div class="task-item"><div class="task-check" onclick="toggleTask(this)"></div><div class="task-text"><div class="task-title">${t.t}</div><div class="task-module">${t.mod}</div><div class="task-time">${t.time||30} min</div></div><div class="task-date">${mn[td.getMonth()]} ${td.getDate()}</div></div>`;
+      }).join('')}</div>`;
+    c.appendChild(b); off+=pd;
+  });
+  document.getElementById('progressLabel').textContent=`0 / ${tc} tasks`;
+}
+function toggleTask(el) { el.classList.toggle('checked'); el.closest('.task-item').classList.toggle('completed'); updateProgress(); }
+function updateProgress() {
+  const t=document.querySelectorAll('.task-check').length, d=document.querySelectorAll('.task-check.checked').length, p=t>0?Math.round(d/t*100):0;
+  document.getElementById('progressLabel').textContent=`${d} / ${t} tasks`;
+  document.getElementById('progressPct').textContent=`${p}%`;
+  document.getElementById('progressFill').style.width=`${p}%`;
+}
+function exportPlan() {
+  let t=`EE TIMELINE — The Extended Essay Academy\n${'='.repeat(50)}\n\n`;
+  document.querySelectorAll('.phase-block').forEach(b=>{
+    t+=`\n${b.querySelector('.phase-name').textContent} (${b.querySelector('.phase-dates').textContent})\n${'-'.repeat(40)}\n`;
+    b.querySelectorAll('.task-item').forEach(i=>{
+      const ck=i.querySelector('.task-check').classList.contains('checked')?'✓':'○';
+      t+=`  ${ck} ${i.querySelector('.task-title').textContent}\n      ${i.querySelector('.task-module').textContent} — ${i.querySelector('.task-date').textContent}\n`;
+    });
+  });
+  const bl=new Blob([t],{type:'text/plain'}), a=document.createElement('a'); a.href=URL.createObjectURL(bl); a.download='ee-timeline.txt'; a.click();
+}
+function resetPlanner() {
+  stage=null; focuses=[];
+  document.querySelectorAll('.option-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.chip').forEach(c=>c.classList.remove('selected'));
+  deadlineInput.value=''; startInput.value=todayStr; goStep(1); checkStep1();
+  document.getElementById('toStep3').disabled=true;
+  document.getElementById('generateBtn').disabled=true;
+  document.getElementById('viewTimeline').classList.remove('active');
+  document.getElementById('viewSetup').classList.add('active');
+  document.getElementById('planAlert').className='alert-banner';
+}
+</script>
+</body>
+</html>

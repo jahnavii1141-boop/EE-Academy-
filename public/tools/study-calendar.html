@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Calendar — The Extended Essay Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700&family=Instrument+Serif&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fafafa; --surface: #ffffff; --text: #111; --text-2: #444;
+    --text-3: #888; --text-4: #bbb; --border: #eee; --border-2: #ddd;
+    --accent: #111; --accent-soft: #f5f5f5;
+    --blue: #2563eb; --blue-bg: #eff4ff;
+    --green: #16a34a; --green-bg: #f0fdf4;
+    --orange: #ea580c; --orange-bg: #fff7ed;
+    --purple: #7c3aed; --purple-bg: #faf5ff;
+    --rose: #e11d48; --cyan: #0891b2; --cyan-bg: #ecfeff;
+    --r: 14px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', -apple-system, sans-serif; font-size: 15px; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #dbeafe; }
+  .page { max-width: 720px; margin: 0 auto; padding: 48px 24px 120px; }
+  .hero { margin-bottom: 48px; }
+  .hero-eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-3); margin-bottom: 12px; }
+  .hero h1 { font-family: 'Instrument Serif', serif; font-size: 44px; font-weight: 400; color: var(--text); line-height: 1.15; margin-bottom: 12px; }
+  .hero p { font-size: 16px; color: var(--text-2); max-width: 480px; }
+  .section { margin-bottom: 48px; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--text-4); margin-bottom: 16px; }
+  .section-title { font-family: 'Instrument Serif', serif; font-size: 24px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
+  .section-desc { font-size: 14px; color: var(--text-3); margin-bottom: 20px; }
+  .section-divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+  .stage-grid { display: flex; flex-direction: column; gap: 6px; }
+  .stage-opt { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-radius: 12px; border: 1.5px solid var(--border); cursor: pointer; transition: all 0.2s; background: var(--surface); }
+  .stage-opt:hover { border-color: var(--border-2); }
+  .stage-opt.sel { border-color: var(--text); background: var(--accent-soft); }
+  .stage-emoji { font-size: 22px; flex-shrink: 0; }
+  .stage-info { flex: 1; }
+  .stage-name { font-size: 14px; font-weight: 600; color: var(--text); }
+  .stage-hint { font-size: 12px; color: var(--text-3); }
+  .stage-radio { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--border-2); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; }
+  .stage-opt.sel .stage-radio { border-color: var(--text); background: var(--text); }
+  .stage-opt.sel .stage-radio::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: white; }
+  .focus-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .focus-chip { padding: 10px 20px; border-radius: 24px; border: 1.5px solid var(--border); background: var(--surface); font-size: 13px; font-weight: 500; color: var(--text-2); cursor: pointer; transition: all 0.2s; }
+  .focus-chip:hover { border-color: var(--border-2); }
+  .focus-chip.sel { border-color: var(--text); background: var(--accent-soft); color: var(--text); font-weight: 600; }
+  .cal-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .cal-month { font-family: 'Instrument Serif', serif; font-size: 22px; font-weight: 400; }
+  .cal-nav { background: none; border: 1px solid var(--border); border-radius: 8px; width: 36px; height: 36px; cursor: pointer; font-size: 16px; color: var(--text-2); display: flex; align-items: center; justify-content: center; transition: all 0.15s; }
+  .cal-nav:hover { border-color: var(--text); color: var(--text); }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-day-hd { text-align: center; font-size: 11px; font-weight: 600; color: var(--text-4); text-transform: uppercase; letter-spacing: 0.5px; padding: 8px 0; }
+  .cal-day { aspect-ratio: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--text-2); cursor: pointer; transition: all 0.15s; position: relative; }
+  .cal-day:hover { background: var(--accent-soft); }
+  .cal-day.other { color: var(--text-4); pointer-events: none; }
+  .cal-day.past { color: var(--text-4); pointer-events: none; opacity: 0.4; }
+  .cal-day.today { font-weight: 700; color: var(--text); }
+  .cal-day.today::after { content: ''; position: absolute; bottom: 4px; width: 4px; height: 4px; border-radius: 50%; background: var(--text); }
+  .cal-day.sel { background: var(--text); color: white; font-weight: 600; }
+  .cal-day.sel:hover { background: #333; }
+  .cal-summary { margin-top: 20px; padding: 16px 20px; border-radius: 12px; background: var(--accent-soft); display: flex; align-items: center; justify-content: space-between; }
+  .cal-summary-text { font-size: 14px; color: var(--text-2); }
+  .cal-summary-text strong { color: var(--text); font-weight: 700; }
+  .cal-summary-sub { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .action-btn { width: 100%; padding: 16px; border-radius: 12px; border: none; background: var(--text); color: white; font-size: 15px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.2s; margin-top: 24px; }
+  .action-btn:hover { background: #333; transform: translateY(-1px); }
+  .action-btn:disabled { opacity: 0.2; cursor: not-allowed; transform: none; }
+  .back-btn { background: none; border: 1px solid var(--border); color: var(--text-2); padding: 12px 24px; border-radius: 10px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.15s; margin-top: 12px; }
+  .back-btn:hover { border-color: var(--text); color: var(--text); }
+  .sched-counters { display: flex; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+  .sc-val { font-family: 'Instrument Serif', serif; font-size: 32px; color: var(--text); }
+  .sc-label { font-size: 11px; font-weight: 600; letter-spacing: 0.8px; text-transform: uppercase; color: var(--text-4); }
+  .day-block { margin-bottom: 28px; }
+  .day-header { display: flex; align-items: baseline; gap: 12px; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .day-date { font-family: 'Instrument Serif', serif; font-size: 20px; color: var(--text); }
+  .day-weekday { font-size: 12px; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: 0.5px; }
+  .day-total { font-size: 12px; color: var(--text-4); margin-left: auto; }
+  .lesson { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); }
+  .lesson:last-child { border-bottom: none; }
+  .lesson-dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+  .lesson-dot.research { background: var(--cyan); }
+  .lesson-dot.structure { background: var(--orange); }
+  .lesson-dot.writing { background: var(--purple); }
+  .lesson-dot.review { background: var(--green); }
+  .lesson-dot.submission { background: var(--rose); }
+  .lesson-info { flex: 1; }
+  .lesson-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .lesson-meta { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+  .lesson-time { font-size: 12px; font-weight: 600; color: var(--text-3); background: var(--accent-soft); padding: 4px 10px; border-radius: 6px; white-space: nowrap; margin-top: 2px; }
+  .lesson-check { width: 20px; height: 20px; border-radius: 6px; border: 1.5px solid var(--border-2); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.15s; margin-top: 2px; flex-shrink: 0; }
+  .lesson-check.done { background: var(--green); border-color: var(--green); }
+  .lesson-check.done::after { content: '✓'; color: white; font-size: 11px; font-weight: 700; }
+  .lesson.completed .lesson-title { text-decoration: line-through; color: var(--text-4); }
+  .progress-bar { margin-bottom: 32px; }
+  .progress-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .progress-label { font-size: 12px; font-weight: 600; color: var(--text-3); }
+  .progress-track { height: 6px; border-radius: 3px; background: var(--border); }
+  .progress-fill { height: 100%; border-radius: 3px; background: var(--text); transition: width 0.4s ease; }
+  .step { display: none; }
+  .step.active { display: block; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  .animate { animation: slideIn 0.3s ease forwards; }
+  @media (max-width: 600px) { .hero h1 { font-size: 32px; } .sched-counters { gap: 20px; } .sc-val { font-size: 26px; } .cal-day { font-size: 13px; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <div class="hero-eyebrow">Free Tool</div>
+    <h1>Study Calendar</h1>
+    <p>Pick the days you can work. We'll map every lesson to your schedule with time estimates. No guessing, no overwhelm.</p>
+  </div>
+  <div class="step active" id="step1">
+    <div class="section">
+      <div class="section-label">Step 1</div>
+      <div class="section-title">Where are you at?</div>
+      <div class="section-desc">This determines where your schedule starts.</div>
+      <div class="stage-grid" id="stageGrid">
+        <div class="stage-opt" onclick="pickStage(this,'start')"><span class="stage-emoji">🌱</span><div class="stage-info"><div class="stage-name">Just starting</div><div class="stage-hint">No topic or RQ yet</div></div><div class="stage-radio"></div></div>
+        <div class="stage-opt" onclick="pickStage(this,'topic')"><span class="stage-emoji">🎯</span><div class="stage-info"><div class="stage-name">Have a topic</div><div class="stage-hint">Subject chosen, RQ needs refinement</div></div><div class="stage-radio"></div></div>
+        <div class="stage-opt" onclick="pickStage(this,'research')"><span class="stage-emoji">🔬</span><div class="stage-info"><div class="stage-name">Researching</div><div class="stage-hint">RQ locked, gathering sources</div></div><div class="stage-radio"></div></div>
+        <div class="stage-opt" onclick="pickStage(this,'writing')"><span class="stage-emoji">✍️</span><div class="stage-info"><div class="stage-name">Writing</div><div class="stage-hint">Structure done, writing the essay</div></div><div class="stage-radio"></div></div>
+        <div class="stage-opt" onclick="pickStage(this,'editing')"><span class="stage-emoji">🔍</span><div class="stage-info"><div class="stage-name">Editing</div><div class="stage-hint">Draft done, polishing</div></div><div class="stage-radio"></div></div>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="section" style="margin-top:32px">
+      <div class="section-title">What needs the most work?</div>
+      <div class="section-desc">Pick up to 3 — we'll prioritise these in your schedule.</div>
+      <div class="focus-grid">
+        <div class="focus-chip" onclick="toggleFocus(this,'rq')">💡 Research Question</div>
+        <div class="focus-chip" onclick="toggleFocus(this,'research')">📚 Research</div>
+        <div class="focus-chip" onclick="toggleFocus(this,'structure')">🏗️ Structure</div>
+        <div class="focus-chip" onclick="toggleFocus(this,'writing')">✍️ Writing</div>
+        <div class="focus-chip" onclick="toggleFocus(this,'formatting')">📝 Format & Citations</div>
+        <div class="focus-chip" onclick="toggleFocus(this,'rppf')">🪞 RPPF</div>
+      </div>
+    </div>
+    <button class="action-btn" id="toStep2" disabled onclick="goStep(2)">Pick your dates →</button>
+  </div>
+  <div class="step" id="step2">
+    <div class="section">
+      <div class="section-label">Step 2</div>
+      <div class="section-title">Pick the days you can work</div>
+      <div class="section-desc">Click dates on the calendar. Even 30 minutes counts.</div>
+      <div class="cal-header">
+        <button class="cal-nav" onclick="changeMonth(-1)">←</button>
+        <div class="cal-month" id="calMonth"></div>
+        <button class="cal-nav" onclick="changeMonth(1)">→</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-summary">
+        <div>
+          <div class="cal-summary-text"><strong id="dayCount">0</strong> days selected</div>
+          <div class="cal-summary-sub" id="timeEst"></div>
+        </div>
+      </div>
+    </div>
+    <button class="action-btn" id="genBtn" disabled onclick="generate()">Generate my schedule</button>
+    <button class="back-btn" onclick="goStep(1)">← Back</button>
+  </div>
+  <div class="step" id="step3">
+    <div class="section">
+      <div class="section-label">Your Schedule</div>
+      <div class="section-title">Here's your plan</div>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-top">
+        <span class="progress-label" id="progLabel">0 / 0 lessons</span>
+        <span class="progress-label" id="progPct">0%</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div class="sched-counters" id="schedCounters"></div>
+    <div id="schedOutput"></div>
+    <button class="back-btn" onclick="goStep(2)" style="margin-top:32px">← Change dates</button>
+  </div>
+</div>
+<script>
+let stage = null, focuses = [], selDates = [];
+let cMonth = new Date().getMonth(), cYear = new Date().getFullYear();
+const LESSONS = [
+  {id:'mindset',t:'Mindset & Examiner Thinking',mod:1,min:20,ph:'research',desc:'Think like an examiner, not a student',tags:[]},
+  {id:'criteria',t:'Criteria & Grading Breakdown',mod:2,min:25,ph:'research',desc:'How marks are actually given',tags:[]},
+  {id:'subject',t:'Choosing Your Subject',mod:3,min:30,ph:'research',desc:'Venn diagram method + Clastify',tags:['rq']},
+  {id:'rq-draft',t:'Draft Your Research Question',mod:4,min:40,ph:'research',desc:'Frame, narrow, test your RQ',tags:['rq']},
+  {id:'rq-refine',t:'RQ Refinement',mod:4,min:30,ph:'research',desc:'Sharpen with AI + supervisor',tags:['rq']},
+  {id:'supervisor',t:'Working With Your Supervisor',mod:4,min:15,ph:'research',desc:'Managing sessions & feedback',tags:['rq']},
+  {id:'dump-setup',t:'Set Up EE Dump Workspace',mod:5,min:20,ph:'research',desc:'Project A folder + sub-topics',tags:['research']},
+  {id:'dump-do',t:'Execute Your EE Dump',mod:5,min:120,ph:'research',desc:'Retrieve & dump — aim for 3+ sessions',tags:['research']},
+  {id:'scholar',t:'Google Scholar Strategy',mod:6,min:35,ph:'research',desc:'The funnel method & scholar shift',tags:['research']},
+  {id:'source-eval',t:'Source Evaluation & Logging',mod:6,min:25,ph:'research',desc:'Core claim, evidence, limitation',tags:['research']},
+  {id:'structure',t:'Build Your EE Structure',mod:7,min:40,ph:'structure',desc:'Map sections to criteria A-D',tags:['structure']},
+  {id:'lit-plan',t:'Plan Literature Review',mod:8,min:30,ph:'structure',desc:'Organise sources into arguments',tags:['structure','writing']},
+  {id:'methodology',t:'Choose & Justify Methodology',mod:8,min:25,ph:'structure',desc:'Pick tools, write justification',tags:['structure']},
+  {id:'intro',t:'Write Your Introduction',mod:10,min:45,ph:'writing',desc:'Choose your hook, draft opening',tags:['writing']},
+  {id:'lit-review',t:'Write Literature Review',mod:8,min:60,ph:'writing',desc:"Evaluate, don't summarise",tags:['writing']},
+  {id:'analysis',t:'Write Your Analysis',mod:8,min:90,ph:'writing',desc:'Apply tools, interrogate findings',tags:['writing']},
+  {id:'discussion',t:'Write Discussion Section',mod:8,min:50,ph:'writing',desc:'Evaluate findings, connect to RQ',tags:['writing']},
+  {id:'conclusion',t:'Write Your Conclusion',mod:10,min:30,ph:'writing',desc:'Answer your RQ directly',tags:['writing']},
+  {id:'rppf1',t:'RPPF Reflection 1',mod:11,min:30,ph:'writing',desc:'Why your topic, how you found your RQ',tags:['rppf']},
+  {id:'rppf2',t:'RPPF Reflection 2',mod:11,min:30,ph:'writing',desc:'Mid-process challenges & growth',tags:['rppf']},
+  {id:'format',t:'Formatting & Style Pass',mod:9,min:40,ph:'review',desc:'Font, spacing, headings, bold/italics',tags:['formatting']},
+  {id:'citations',t:'Citations & Bibliography',mod:9,min:45,ph:'review',desc:'MLA format, in-text, Works Cited',tags:['formatting']},
+  {id:'integrity',t:'Academic Integrity Check',mod:9,min:20,ph:'review',desc:'Turnitin, paraphrasing, AI rules',tags:['formatting']},
+  {id:'wordcount',t:'Word Count & Trimming',mod:8,min:25,ph:'review',desc:'Hit 3800-3950, cut strategically',tags:['writing']},
+  {id:'proofread',t:'Final Proofread',mod:9,min:20,ph:'review',desc:'Read aloud, 15-min formatting check',tags:['formatting']},
+  {id:'rppf3',t:'RPPF Reflection 3',mod:11,min:25,ph:'submission',desc:'Written after viva voce',tags:['rppf']},
+  {id:'viva',t:'Viva Voce Prep',mod:11,min:20,ph:'submission',desc:'What they ask, how to prepare',tags:['rppf']},
+  {id:'submit',t:'Final Submission',mod:14,min:15,ph:'submission',desc:'Run checklist, submit',tags:[]},
+];
+const STAGE_MAP = {
+  start: LESSONS.map(l=>l.id),
+  topic: LESSONS.filter(l=>!['mindset','criteria','subject'].includes(l.id)).map(l=>l.id),
+  research: LESSONS.filter(l=>!['mindset','criteria','subject','rq-draft','rq-refine','supervisor'].includes(l.id)).map(l=>l.id),
+  writing: LESSONS.filter(l=>['intro','lit-review','analysis','discussion','conclusion','rppf1','rppf2','format','citations','integrity','wordcount','proofread','rppf3','viva','submit'].includes(l.id)).map(l=>l.id),
+  editing: LESSONS.filter(l=>['format','citations','integrity','wordcount','proofread','rppf3','viva','submit'].includes(l.id)).map(l=>l.id),
+};
+function getLessons() {
+  const ids = STAGE_MAP[stage]||STAGE_MAP.start;
+  return LESSONS.filter(l=>ids.includes(l.id));
+}
+function pickStage(el, s) {
+  document.querySelectorAll('.stage-opt').forEach(o=>o.classList.remove('sel'));
+  el.classList.add('sel'); stage = s; checkReady();
+}
+function toggleFocus(el, f) {
+  if (el.classList.contains('sel')) { el.classList.remove('sel'); focuses=focuses.filter(x=>x!==f); }
+  else { if (focuses.length>=3) return; el.classList.add('sel'); focuses.push(f); }
+  checkReady();
+}
+function checkReady() { document.getElementById('toStep2').disabled = !(stage && focuses.length>0); }
+function goStep(n) {
+  document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));
+  document.getElementById('step'+n).classList.add('active');
+  if (n===2) renderCal();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+const MN = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+function renderCal() {
+  const grid = document.getElementById('calGrid');
+  document.getElementById('calMonth').textContent = MN[cMonth]+' '+cYear;
+  const today = new Date(); today.setHours(0,0,0,0);
+  const first = new Date(cYear,cMonth,1).getDay();
+  const dim = new Date(cYear,cMonth+1,0).getDate();
+  const prevDim = new Date(cYear,cMonth,0).getDate();
+  let h = DN.map(d=>`<div class="cal-day-hd">${d}</div>`).join('');
+  for (let i=first-1;i>=0;i--) h+=`<div class="cal-day other">${prevDim-i}</div>`;
+  for (let d=1;d<=dim;d++) {
+    const dt = new Date(cYear,cMonth,d);
+    const ds = dt.toISOString().split('T')[0];
+    const past = dt<today;
+    const isToday = dt.getTime()===today.getTime();
+    let cls = 'cal-day';
+    if (past) cls+=' past';
+    if (isToday) cls+=' today';
+    if (selDates.includes(ds)) cls+=' sel';
+    h+=`<div class="${cls}" data-d="${ds}" onclick="toggleDate(this)">${d}</div>`;
+  }
+  const total = first+dim;
+  for (let i=1;i<=(7-total%7)%7;i++) h+=`<div class="cal-day other">${i}</div>`;
+  grid.innerHTML=h;
+  updateCalSummary();
+}
+function toggleDate(el) {
+  if (el.classList.contains('past')||el.classList.contains('other')) return;
+  const d=el.dataset.d;
+  if (selDates.includes(d)) { selDates=selDates.filter(x=>x!==d); el.classList.remove('sel'); }
+  else { selDates.push(d); el.classList.add('sel'); }
+  selDates.sort();
+  updateCalSummary();
+}
+function updateCalSummary() {
+  document.getElementById('dayCount').textContent=selDates.length;
+  const lessons=getLessons();
+  const tm=lessons.reduce((s,l)=>s+l.min,0);
+  const h=Math.floor(tm/60), m=tm%60;
+  document.getElementById('timeEst').textContent=`${lessons.length} lessons · ~${h}h${m>0?' '+m+'m':''} total`;
+  document.getElementById('genBtn').disabled=selDates.length<1;
+}
+function changeMonth(dir) {
+  cMonth+=dir;
+  if(cMonth>11){cMonth=0;cYear++;}
+  if(cMonth<0){cMonth=11;cYear--;}
+  renderCal();
+}
+function generate() {
+  let lessons = getLessons().map(l=>{ let pri=0; focuses.forEach(f=>{if(l.tags.includes(f))pri++;}); return {...l,pri}; });
+  const PO={research:0,structure:1,writing:2,review:3,submission:4};
+  lessons.sort((a,b)=>{const d=PO[a.ph]-PO[b.ph]; return d!==0?d:b.pri-a.pri;});
+  if (selDates.length===0) return;
+  if (selDates.length<=2 && lessons.length>10) {
+    lessons = lessons.filter(l=>!['supervisor','source-eval','integrity','wordcount'].includes(l.id));
+  }
+  const schedule = selDates.map(d=>({date:d,lessons:[]}));
+  lessons.forEach((l,i)=>{ schedule[i%schedule.length].lessons.push(l); });
+  goStep(3);
+  renderSchedule(schedule, lessons.length);
+}
+function renderSchedule(schedule, totalLessons) {
+  const WD=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const SM=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const totalMin=schedule.reduce((s,d)=>s+d.lessons.reduce((s2,l)=>s2+l.min,0),0);
+  const h=Math.floor(totalMin/60),m=totalMin%60;
+  document.getElementById('schedCounters').innerHTML=`
+    <div><div class="sc-val">${selDates.length}</div><div class="sc-label">Days</div></div>
+    <div><div class="sc-val">${totalLessons}</div><div class="sc-label">Lessons</div></div>
+    <div><div class="sc-val">${h}h${m>0?' '+m+'m':''}</div><div class="sc-label">Total time</div></div>
+  `;
+  document.getElementById('progLabel').textContent=`0 / ${totalLessons} lessons`;
+  const out=document.getElementById('schedOutput');
+  out.innerHTML=schedule.map(day=>{
+    if(day.lessons.length===0) return '';
+    const dt=new Date(day.date+'T12:00:00');
+    const dayMin=day.lessons.reduce((s,l)=>s+l.min,0);
+    const dh=Math.floor(dayMin/60), dm=dayMin%60;
+    return `<div class="day-block animate">
+      <div class="day-header">
+        <div class="day-date">${SM[dt.getMonth()]} ${dt.getDate()}</div>
+        <div class="day-weekday">${WD[dt.getDay()]}</div>
+        <div class="day-total">${dh>0?dh+'h ':''}${dm>0?dm+'m':''}</div>
+      </div>
+      ${day.lessons.map(l=>`<div class="lesson">
+        <div class="lesson-check" onclick="toggleLesson(this)"></div>
+        <div class="lesson-dot ${l.ph}"></div>
+        <div class="lesson-info">
+          <div class="lesson-title">${l.t}</div>
+          <div class="lesson-meta">Module ${l.mod} · ${l.desc}</div>
+        </div>
+        <div class="lesson-time">${l.min} min</div>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+}
+function toggleLesson(el) {
+  el.classList.toggle('done');
+  el.closest('.lesson').classList.toggle('completed');
+  const total=document.querySelectorAll('.lesson-check').length;
+  const done=document.querySelectorAll('.lesson-check.done').length;
+  const pct=total?Math.round(done/total*100):0;
+  document.getElementById('progLabel').textContent=`${done} / ${total} lessons`;
+  document.getElementById('progPct').textContent=pct+'%';
+  document.getElementById('progFill').style.width=pct+'%';
+}
+renderCal();
+</script>
+</body>
+</html>

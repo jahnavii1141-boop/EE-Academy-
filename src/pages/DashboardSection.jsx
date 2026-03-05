@@ -309,16 +309,26 @@ export default function DashboardSection() {
                     Interactive Tools
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {section.interactiveTools.map((tool) => (
-                      <Link
-                        key={tool.label}
-                        to={tool.href}
-                        className="flex items-center gap-3 border border-navy/10 rounded-xl px-4 py-3 hover:bg-navy/5 transition-colors group"
-                      >
-                        <span className="text-sm font-semibold text-navy flex-1">{tool.label}</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-navy/30 group-hover:text-navy/60 transition-colors" />
-                      </Link>
-                    ))}
+                    {section.interactiveTools.map((tool) =>
+                      tool.comingSoon ? (
+                        <div
+                          key={tool.label}
+                          className="flex items-center gap-3 border border-navy/10 rounded-xl px-4 py-3 opacity-50 cursor-not-allowed"
+                        >
+                          <span className="text-sm font-semibold text-navy flex-1">{tool.label}</span>
+                          <span className="text-[10px] font-semibold text-navy/40 bg-navy/8 px-2 py-0.5 rounded-full">Soon</span>
+                        </div>
+                      ) : (
+                        <Link
+                          key={tool.label}
+                          to={tool.href}
+                          className="flex items-center gap-3 border border-navy/10 rounded-xl px-4 py-3 hover:bg-navy/5 transition-colors group"
+                        >
+                          <span className="text-sm font-semibold text-navy flex-1">{tool.label}</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-navy/30 group-hover:text-navy/60 transition-colors" />
+                        </Link>
+                      )
+                    )}
                   </div>
                 </div>
               )}

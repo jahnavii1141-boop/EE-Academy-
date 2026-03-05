@@ -64,26 +64,6 @@ export default function Navbar() {
           >
             Dashboard
           </Link>
-          {!isHome && (
-            <Link
-              to="/planner"
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-                location.pathname === '/planner' ? 'text-navy' : 'text-ink-soft hover:text-navy'
-              }`}
-            >
-              EE Planner
-            </Link>
-          )}
-          {!isHome && (
-            <Link
-              to="/dump"
-              className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-                location.pathname === '/dump' ? 'text-navy' : 'text-ink-soft hover:text-navy'
-              }`}
-            >
-              EE Dump
-            </Link>
-          )}
           {isHome &&
             HOME_ANCHOR_LINKS.map((link) => (
               <a
@@ -145,16 +125,6 @@ export default function Navbar() {
           <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard
           </Link>
-          {!isHome && (
-            <Link to="/planner" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-              EE Planner
-            </Link>
-          )}
-          {!isHome && (
-            <Link to="/dump" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-              EE Dump
-            </Link>
-          )}
           {isHome &&
             HOME_ANCHOR_LINKS.map((link) => (
               <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">

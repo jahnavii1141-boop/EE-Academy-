@@ -8,8 +8,8 @@ const CARD_CLASS_3 = '[grid-area:stack] translate-x-24 translate-y-20 hover:tran
 
 const EE_COURSE = {
   id: 'extended-essay',
-  title: 'Extended Essay Masterclass',
-  subtitle: '14 Modules · 72 Lessons · Built by a 32/34 student',
+  title: 'Premium Extended Essay Course',
+  subtitle: '14 Modules · Built by a 32/34 student',
   level: 'All Levels',
   duration: '24h',
   students: '4,200+',

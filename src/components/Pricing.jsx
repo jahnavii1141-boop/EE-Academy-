@@ -2,15 +2,15 @@ import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 
 const FEATURES_BASIC = [
-  'Full course — all 13 modules',
-  'Study Calendar',
+  'Premium Extended Essay Course — all 14 modules',
+  'Study Calendar tool',
   'Citation quick-reference guide',
 ]
 
 const FEATURES_PREMIUM = [
   'Everything in Basic',
   'EE Dump Workspace (interactive tool)',
-  'Source Tracker (spreadsheet tool)',
+  'Source Tracker (coming soon)',
   'EE Planner (timeline tool)',
   'All 12 AI copy-paste prompts',
   'Full 32/34 EE analysis with real commentary',
@@ -49,7 +49,7 @@ export default function Pricing() {
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
             <div>
               <p className="text-sm font-semibold text-navy">Start for free — no card required</p>
-              <p className="text-xs text-ink-soft mt-0.5">Includes Modules 1, 2 & 3 in full + the EE Planner tool</p>
+              <p className="text-xs text-ink-soft mt-0.5">Includes Modules 1, 2, 3 & 5 in full + the EE Planner tool</p>
             </div>
             <a href="/course/module-1" className="sm:ml-auto text-xs font-semibold text-navy underline underline-offset-2 flex-shrink-0">
               Start free →
@@ -66,10 +66,10 @@ export default function Pricing() {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">$49</span>
+                <span className="text-5xl font-serif font-bold text-navy">$87</span>
                 <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price $67</p>
+              <p className="text-xs text-ink-soft mb-6">Regular price $120</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
@@ -88,10 +88,10 @@ export default function Pricing() {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">$71</span>
+                <span className="text-5xl font-serif font-bold text-navy">$145</span>
                 <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price $89</p>
+              <p className="text-xs text-ink-soft mb-6">Regular price $195</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
