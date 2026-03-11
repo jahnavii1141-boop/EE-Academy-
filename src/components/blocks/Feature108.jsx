@@ -104,23 +104,18 @@ export default function Feature108({
           </div>
         </AnimateIn>
 
-        {/* Tab panels — no wrapper box, content sits directly on cream bg */}
+        {/* Tab panels */}
         <AnimateIn delay={0.15}>
           {tabs.map(tab => (
             <TabsContent key={tab.value} value={tab.value} active={active}
-              className="grid place-items-center gap-12 lg:grid-cols-2 lg:gap-16"
+              className="max-w-2xl mx-auto text-center"
             >
-              <div className="flex flex-col gap-5">
+              <div className="flex flex-col items-center gap-5">
                 <Badge variant="secondary" className="w-fit">{tab.content.badge}</Badge>
                 <h3 className="text-2xl font-serif font-bold text-navy lg:text-4xl">{tab.content.title}</h3>
                 <p className="text-ink-soft lg:text-base">{tab.content.description}</p>
-                <Button size="lg" className="mt-2 w-fit">{tab.content.buttonText}</Button>
+                <Button size="lg" className="mt-2">{tab.content.buttonText}</Button>
               </div>
-              <img
-                src={tab.content.imageSrc}
-                alt={tab.content.imageAlt}
-                className="rounded-xl w-full object-cover aspect-video shadow-md"
-              />
             </TabsContent>
           ))}
         </AnimateIn>

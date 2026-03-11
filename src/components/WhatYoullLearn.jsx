@@ -15,14 +15,8 @@ const OUTCOMES = [
 export default function WhatYoullLearn() {
   return (
     <section id="learn" className="bg-parchment py-20 px-6 relative overflow-hidden">
-      {/* Decorative feather accent */}
-      <img
-        src="/feather-md.png"
-        alt=""
-        className="absolute top-8 right-8 h-40 w-auto opacity-[0.07] pointer-events-none select-none"
-      />
 
-      <div className="max-w-6xl mx-auto relative z-10">
+<div className="max-w-6xl mx-auto relative z-10">
         <h2 className="section-heading">What You'll Learn</h2>
         <p className="section-subheading">
           By the end of the programme, you'll have the skills and confidence to submit an Extended Essay you're proud of.
