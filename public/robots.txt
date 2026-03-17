@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Private/auth-gated routes
+Disallow: /dashboard/
+Disallow: /planner
+Disallow: /dump
+Disallow: /study-calendar
+Disallow: /course/
+
+Sitemap: https://theextendedessay.com/sitemap.xml
