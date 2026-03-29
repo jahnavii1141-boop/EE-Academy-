@@ -33,11 +33,16 @@ const SECTIONS = [
   },
   {
     number: '7',
+    title: 'Refund Policy',
+    body: 'We offer a 7-day satisfaction guarantee from the date of purchase, subject to the conditions outlined in our Refund Policy. Please review the full refund terms at theextendedessay.com/refund before purchasing.',
+  },
+  {
+    number: '8',
     title: 'Modifications',
     body: 'We reserve the right to update these terms at any time. Continued use of our products after changes constitutes acceptance of the updated terms.',
   },
   {
-    number: '8',
+    number: '9',
     title: 'Contact',
     body: null,
     contact: 'hello@theextendedessay.com',

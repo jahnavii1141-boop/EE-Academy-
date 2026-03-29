@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
+import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 
 const FEATURES_BASIC = [
   'Premium Extended Essay Course — all 14 modules',
@@ -16,10 +17,6 @@ const FEATURES_PREMIUM = [
   'Full 32/34 EE analysis with real commentary',
   'All templates & SOPs (downloadable)',
 ]
-
-// Replace with your real Lemon Squeezy checkout URLs when ready
-export const LS_BASIC_URL = '#pricing'
-export const LS_PREMIUM_URL = '#pricing'
 
 function CheckItem({ text }) {
   return (
@@ -66,15 +63,15 @@ export default function Pricing() {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">$87</span>
+                <span className="text-5xl font-serif font-bold text-navy">${PRICING.basic.earlyBird}</span>
                 <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price $120</p>
+              <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.basic.regular}</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href={LS_BASIC_URL} className="block text-center btn-primary">Enroll in Basic</a>
+            <a href={PADDLE_CONFIG.basicUrl} className="block text-center btn-primary">Enroll in Basic</a>
           </motion.div>
 
           {/* Premium */}
@@ -88,15 +85,15 @@ export default function Pricing() {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">$145</span>
+                <span className="text-5xl font-serif font-bold text-navy">${PRICING.premium.earlyBird}</span>
                 <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price $195</p>
+              <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.premium.regular}</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href={LS_PREMIUM_URL} className="block text-center btn-primary">Enroll in Premium</a>
+            <a href={PADDLE_CONFIG.premiumUrl} className="block text-center btn-primary">Enroll in Premium</a>
           </motion.div>
         </StaggerContainer>
       </div>

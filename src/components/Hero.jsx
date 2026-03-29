@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import AnimateIn from './ui/AnimateIn'
+import WaitlistHero from './WaitlistHero'
 
 export default function Hero() {
   return (
@@ -62,6 +63,7 @@ export default function Hero() {
                 <Link to="/dashboard" className="btn-primary-light">Access Class Now</Link>
                 <Link to="/curriculum" className="btn-outline-light">View Curriculum</Link>
               </div>
+              <WaitlistHero />
             </AnimateIn>
           </div>
 

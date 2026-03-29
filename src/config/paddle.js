@@ -1,0 +1,26 @@
+// Paddle payment configuration
+// Replace placeholder URLs with real Paddle checkout links when ready
+// Set VITE_PADDLE_BASIC_URL and VITE_PADDLE_PREMIUM_URL in .env.local
+
+export const PADDLE_CONFIG = {
+  basicUrl: import.meta.env.VITE_PADDLE_BASIC_URL || '#pricing',
+  premiumUrl: import.meta.env.VITE_PADDLE_PREMIUM_URL || '#pricing',
+  vendorId: import.meta.env.VITE_PADDLE_VENDOR_ID || '',
+}
+
+export const PRICING = {
+  basic: {
+    price: 89,
+    earlyBird: 71,
+    regular: 120,
+    label: 'Basic',
+    currency: '$',
+  },
+  premium: {
+    price: 145,
+    earlyBird: 145,
+    regular: 195,
+    label: 'Premium',
+    currency: '$',
+  },
+}

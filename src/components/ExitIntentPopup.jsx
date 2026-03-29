@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { submitEmail, hasJoinedWaitlist, WAITLIST_COPY } from '../config/email'
 
-export default function EmailGate({ source = 'scroll-gate' }) {
+export default function ExitIntentPopup() {
   const [visible, setVisible] = useState(false)
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -10,17 +10,30 @@ export default function EmailGate({ source = 'scroll-gate' }) {
   useEffect(() => {
     if (hasJoinedWaitlist()) return
 
-    const onScroll = () => {
-      const scrolled = window.scrollY + window.innerHeight
-      const total = document.documentElement.scrollHeight
-      if (scrolled / total > 0.45) {
+    let triggered = false
+
+    // Desktop: mouse leaves viewport near top
+    const handleMouseOut = (e) => {
+      if (triggered) return
+      if (e.clientY < 5 && e.relatedTarget === null) {
+        triggered = true
         setVisible(true)
-        window.removeEventListener('scroll', onScroll)
       }
     }
 
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    // Mobile: after 60 seconds on page
+    const timer = setTimeout(() => {
+      if (!triggered && !hasJoinedWaitlist()) {
+        triggered = true
+        setVisible(true)
+      }
+    }, 60000)
+
+    document.addEventListener('mouseout', handleMouseOut)
+    return () => {
+      document.removeEventListener('mouseout', handleMouseOut)
+      clearTimeout(timer)
+    }
   }, [])
 
   async function handleSubmit(e) {
@@ -29,19 +42,29 @@ export default function EmailGate({ source = 'scroll-gate' }) {
       setError('Please enter a valid email.')
       return
     }
-    await submitEmail(email, source, ['waitlist', 'early-bird'])
+    await submitEmail(email, 'exit-intent', ['waitlist', 'early-bird'])
     setSubmitted(true)
-    setTimeout(() => setVisible(false), 1800)
+    setTimeout(() => setVisible(false), 2000)
   }
 
   if (!visible) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-4 sm:p-0">
-      <div className="absolute inset-0 bg-navy/60 backdrop-blur-sm" onClick={() => setVisible(false)} />
-
-      <div className="relative bg-cream rounded-2xl shadow-2xl max-w-md w-full mx-auto p-8 border border-navy/10">
-        <img src="/feather-md.png" alt="" className="absolute top-4 right-4 h-20 w-auto opacity-10 pointer-events-none" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div
+        className="absolute inset-0 bg-navy/70 backdrop-blur-sm"
+        onClick={() => setVisible(false)}
+      />
+      <div className="relative bg-cream rounded-2xl shadow-2xl max-w-md w-full p-8 border border-navy/10">
+        <button
+          onClick={() => setVisible(false)}
+          className="absolute top-4 right-4 text-navy/30 hover:text-navy transition-colors"
+          aria-label="Close"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </button>
 
         {submitted ? (
           <div className="text-center py-4">
@@ -50,20 +73,20 @@ export default function EmailGate({ source = 'scroll-gate' }) {
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </div>
-            <p className="font-serif text-xl font-bold text-navy mb-1">You're in.</p>
+            <p className="font-serif text-xl font-bold text-navy mb-1">You're in!</p>
             <p className="text-navy/60 text-sm">{WAITLIST_COPY.successMessage}</p>
           </div>
         ) : (
           <>
             <div className="mb-6">
               <span className="inline-flex items-center bg-parchment text-navy text-xs font-bold px-3 py-1 rounded-full mb-4 tracking-wide">
-                Free access
+                Wait — before you go
               </span>
               <h2 className="font-serif text-2xl font-bold text-navy leading-tight mb-2">
-                {WAITLIST_COPY.headline}
+                Don't miss early bird pricing
               </h2>
               <p className="text-navy/60 text-sm leading-relaxed">
-                {WAITLIST_COPY.subline}
+                {WAITLIST_COPY.subline}. Join over 200+ IB students already on the waitlist.
               </p>
             </div>
 
@@ -80,7 +103,9 @@ export default function EmailGate({ source = 'scroll-gate' }) {
                 {WAITLIST_COPY.cta} — It's Free
               </button>
             </form>
-            <p className="text-center text-xs text-navy/40 mt-4">No spam. Unsubscribe anytime.</p>
+            <p className="text-center text-xs text-navy/40 mt-4">
+              No spam. Unsubscribe anytime.
+            </p>
           </>
         )}
       </div>

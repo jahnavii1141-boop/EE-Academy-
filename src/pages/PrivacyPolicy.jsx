@@ -6,7 +6,7 @@ const SECTIONS = [
     title: 'Information We Collect',
     body: 'We collect only what is necessary to deliver our products and communicate with you:',
     bullets: [
-      'Purchase information: name, email address, and payment details (processed securely by Lemon Squeezy — we do not store your credit card information)',
+      'Purchase information: name, email address, and payment details (processed securely by Paddle — we do not store your credit card information)',
       'Email address: if you sign up for our mailing list or free resources',
       'Usage data: basic website analytics (pages visited, time on site) through privacy-friendly analytics tools',
     ],
@@ -26,7 +26,7 @@ const SECTIONS = [
     title: 'Third-Party Services',
     body: 'We use the following third-party services:',
     bullets: [
-      'Lemon Squeezy: payment processing and product delivery',
+      'Paddle: payment processing and product delivery',
       'Vercel: website hosting',
       'Analytics tools: to understand how visitors use our site',
     ],
@@ -35,7 +35,7 @@ const SECTIONS = [
   {
     number: '4',
     title: 'Data Security',
-    body: 'We take reasonable measures to protect your personal information. Payment processing is handled entirely by Lemon Squeezy, which uses industry-standard encryption and security practices.',
+    body: 'We take reasonable measures to protect your personal information. Payment processing is handled entirely by Paddle, which uses industry-standard encryption and security practices.',
   },
   {
     number: '5',

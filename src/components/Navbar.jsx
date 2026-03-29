@@ -57,6 +57,14 @@ export default function Navbar() {
             All Courses
           </Link>
           <Link
+            to="/guides/extended-essay-introduction"
+            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+              location.pathname.startsWith('/guides') ? 'text-navy' : 'text-ink-soft hover:text-navy'
+            }`}
+          >
+            Guides
+          </Link>
+          <Link
             to="/dashboard"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'

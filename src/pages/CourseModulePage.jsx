@@ -3,104 +3,9 @@ import { useEffect } from 'react'
 import { useAuth, SignInButton } from '@clerk/clerk-react'
 import { COURSE_MODULES } from '../data/courseContent'
 import { useModuleProgress } from '../hooks/useModuleProgress'
-
-// ─── Content block renderers ──────────────────────────────────────────────────
-
-function Paragraph({ text }) {
-  return <p className="text-navy/75 leading-[1.85] mb-5 text-[1.0625rem]">{text}</p>
-}
-
-function SectionHeading({ text }) {
-  return (
-    <h3 className="font-serif text-2xl font-bold text-navy mt-12 mb-4 leading-snug">
-      {text}
-    </h3>
-  )
-}
-
-function Callout({ text }) {
-  return (
-    <div className="my-8 relative pl-6 border-l-[3px] border-navy/30">
-      {text.split('\n\n').map((line, i) => (
-        <p key={i} className={`font-serif text-navy text-lg leading-relaxed italic ${i > 0 ? 'mt-3' : ''}`}>
-          {line}
-        </p>
-      ))}
-    </div>
-  )
-}
-
-function BulletList({ items }) {
-  return (
-    <ul className="my-5 space-y-3">
-      {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3.5 text-navy/75 leading-relaxed">
-          <span className="mt-[0.45rem] w-1.5 h-1.5 rounded-full bg-navy/40 flex-shrink-0" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
-  )
-}
-
-function CriteriaGrid({ items }) {
-  return (
-    <div className="my-8 grid sm:grid-cols-2 gap-3">
-      {items.map((item, i) => (
-        <div key={i} className="bg-parchment/40 border border-navy/8 rounded-2xl p-5">
-          <div className="flex flex-wrap items-center gap-2 mb-2.5">
-            <span className="font-semibold text-navy text-sm">{item.label}</span>
-            {item.marks && (
-              <span className="text-xs bg-navy/8 text-navy/70 px-2.5 py-0.5 rounded-full font-medium">
-                {item.marks}
-              </span>
-            )}
-          </div>
-          <p className="text-navy/65 text-sm leading-relaxed">{item.text}</p>
-        </div>
-      ))}
-    </div>
-  )
-}
-
-function BeforeAfter({ before, after }) {
-  return (
-    <div className="my-8 grid sm:grid-cols-2 gap-4">
-      {/* Before */}
-      <div className="rounded-2xl border-2 border-red-200 bg-red-50/60 p-5">
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-red-500 uppercase tracking-wider mb-3">
-          <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-          </svg>
-          {before.label}
-        </span>
-        <p className="text-navy/70 text-sm leading-relaxed font-serif italic">{before.text}</p>
-      </div>
-      {/* After */}
-      <div className="rounded-2xl border-2 border-green-200 bg-green-50/60 p-5">
-        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-green-600 uppercase tracking-wider mb-3">
-          <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
-            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-          </svg>
-          {after.label}
-        </span>
-        <p className="text-navy/70 text-sm leading-relaxed font-serif italic">{after.text}</p>
-      </div>
-    </div>
-  )
-}
-
-function ContentBlock({ block }) {
-  switch (block.type) {
-    case 'heading':    return <SectionHeading text={block.text} />
-    case 'paragraph':  return <Paragraph text={block.text} />
-    case 'callout':    return <Callout text={block.text} />
-    case 'list':       return <BulletList items={block.items} />
-    case 'criteria':   return <CriteriaGrid items={block.items} />
-    case 'before-after': return <BeforeAfter before={block.before} after={block.after} />
-    default:           return null
-  }
-}
+import ContentRenderer from '../components/blocks/ContentRenderer'
+import SEOHead from '../components/SEOHead'
+import PostModuleGate from '../components/PostModuleGate'
 
 // ─── Paywall banner ───────────────────────────────────────────────────────────
 
@@ -175,6 +80,19 @@ export default function CourseModulePage() {
 
   return (
     <div className="min-h-screen bg-cream">
+      <SEOHead
+        title={`Module ${module.number}: ${module.title}`}
+        description={module.tagline}
+        canonical={`/course/${module.id}`}
+        noindex={isPaid}
+        jsonLd={{
+          '@context': 'https://schema.org',
+          '@type': 'Course',
+          name: module.title,
+          description: module.tagline,
+          provider: { '@type': 'Organization', name: 'The Extended Essay Academy' },
+        }}
+      />
 
       {/* ── Progress top bar ── */}
       <div className="sticky top-14 z-10 bg-cream/90 backdrop-blur-sm border-b border-navy/8 shadow-sm">
@@ -251,10 +169,11 @@ export default function CourseModulePage() {
 
         {/* Article body */}
         <article>
-          {visibleContent.map((block, i) => (
-            <ContentBlock key={i} block={block} />
-          ))}
+          <ContentRenderer content={visibleContent} />
         </article>
+
+        {/* Waitlist CTA after Module 2 */}
+        {module.id === 'module-2' && !isGated && <PostModuleGate />}
 
         {/* Paywall (only if gated) */}
         {isGated && <PaywallBanner moduleTitle={module.title} />}

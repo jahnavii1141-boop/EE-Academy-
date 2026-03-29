@@ -10,6 +10,13 @@ const COMPANY_LINKS = [
   { label: 'Blog', href: '#' },
   { label: 'Contact', href: '#' },
 ]
+const GUIDE_LINKS = [
+  { label: 'How to Write an EE Introduction', href: '/guides/extended-essay-introduction' },
+  { label: 'EE Structure Template', href: '/guides/extended-essay-structure' },
+  { label: 'Research Question Examples', href: '/guides/research-question-examples' },
+  { label: 'RPPF Guide', href: '/guides/rppf-guide' },
+  { label: 'EE Criteria Breakdown', href: '/guides/ee-criteria-breakdown' },
+]
 
 export default function Footer() {
   return (
@@ -17,7 +24,7 @@ export default function Footer() {
       {/* Decorative divider */}
       <div className="w-16 h-px bg-gradient-to-r from-transparent via-parchment/40 to-transparent mx-auto" />
 
-      <div className="max-w-7xl mx-auto px-6 py-14 grid sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <div className="max-w-7xl mx-auto px-6 py-14 grid sm:grid-cols-2 md:grid-cols-5 gap-10">
         {/* Brand */}
         <div className="sm:col-span-2 md:col-span-1">
           <a href="#" className="flex items-center gap-2.5">
@@ -73,6 +80,18 @@ export default function Footer() {
                   ? <Link to={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
                   : <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
                 }
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Free Guides */}
+        <div className="hidden md:block">
+          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Free Guides</h3>
+          <ul className="space-y-3">
+            {GUIDE_LINKS.map(link => (
+              <li key={link.label}>
+                <Link to={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
               </li>
             ))}
           </ul>
