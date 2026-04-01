@@ -12,7 +12,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'gif',
-        src: 'https://giphy.com/embed/xT0xeJpnrWC3niaR3i',
+        src: 'https://giphy.com/embed/uZmwmfbxh3xkiI1pFM',
         alt: 'Tom Brady celebration — Let\'s go energy',
         caption: "That's the energy. Let's get your A.",
       },
@@ -130,7 +130,29 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Is it hard to get an A on your Extended Essay? It\'s challenging, yes. But you can absolutely get an A if you approach it strategically. The key is understanding exactly how you\'re being graded.',
+        text: 'Is it hard to get an A in your extended essay? Very hard. …is something you\'ll never hear me say. Is it challenging? Yes. But c\'mon, you\'re balancing 6 subjects — 3 HL and 3 SL — as well as IAs for every single one, while balancing college applications and a personal life. You can easily get an A in your EE if you curate your approach.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Let\'s look at how we can do that using everything the IB has given us. They constantly give us clues that we can accumulate as our 20 percent: a formal piece of academic writing and how the EE is intended to promote academic research and writing skills.',
+      },
+      {
+        type: 'image',
+        src: '/images/ib-ee-description.png',
+        alt: 'IB official Extended Essay course description and aims',
+        caption: 'The IB tells us exactly what they expect — a formal piece of academic writing.',
+      },
+      {
+        type: 'heading',
+        text: 'The Mindset Shift That Changes Everything',
+      },
+      {
+        type: 'paragraph',
+        text: 'The single best way you can write your extended essay is not as a student writing an extended essay for the IB, but rather as an award-winning academic who is writing their 20th academic paper that is expected to finally get them the Nobel for the discoveries made and the quality of research.',
+      },
+      {
+        type: 'paragraph',
+        text: 'This mindset shift — from writing it just as another assignment to a piece of academic research — along with the criteria IB has given us, is the 20% that contributes to 80% of a stellar extended essay.',
       },
       {
         type: 'heading',
@@ -206,6 +228,33 @@ export const COURSE_MODULES = [
       },
       {
         type: 'heading',
+        text: 'The IB Research Process',
+      },
+      {
+        type: 'paragraph',
+        text: 'IB gives us exactly what we need to do and what they expect from us to get an A. While these instructions give us a direction to follow, I\'m going to detail each and every point of the research process in the further modules.',
+      },
+      {
+        type: 'image',
+        src: '/images/ib-research-process.png',
+        alt: 'IB research process overview showing the steps from choosing a topic to carrying out research',
+        caption: 'The IB research process — every step circled here maps to specific criteria.',
+      },
+      {
+        type: 'step-process',
+        steps: [
+          { title: 'Choose a broad topic then refine and focus it', text: 'This points back to a broad interest of yours. DON\'T use AI for this — your EE is a reflection of you.' },
+          { title: 'Decide the appropriate pathway', text: 'Interdisciplinary or subject-focused. Ideally focus on one subject — interdisciplinary requires double the analysis.' },
+          { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic is connecting the two.' },
+          { title: 'Undertake some preparatory reading', text: 'Use Clastify to study high and low-scoring essays in your subject before you commit.' },
+          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. We cover this in depth in Module 4.' },
+          { title: 'Plan the research and writing process', text: 'Create efficient systems and SOPs for your EE — this is what Module 7 is all about.' },
+          { title: 'Plan a structure for the essay', text: 'This may change as the research develops. That\'s normal and expected.' },
+          { title: 'Carry out the research', text: 'The EE Dump system (Module 5) makes this the most fun part of the entire process.' },
+        ],
+      },
+      {
+        type: 'heading',
         text: 'Using the Criteria as Your Blueprint',
       },
       {
@@ -272,6 +321,12 @@ export const COURSE_MODULES = [
         title: 'Your Ideal EE Topic',
         formula: 'Genuine Interest + Academic Strength + EE-Friendly Subject',
         description: 'Your topic should sit at the intersection of these three circles. The closer to the centre, the less stress for the same marks.',
+      },
+      {
+        type: 'image',
+        src: '/images/venn-diagram-ee-topic.svg',
+        alt: 'Venn diagram showing intersection of genuine interest, academic strength, and EE-friendly subjects',
+        caption: 'Your EE subject should sit as close to the centre as possible. If your topic lives on the edges, expect higher stress for the same marks.',
       },
       {
         type: 'icon-card',
@@ -625,8 +680,44 @@ export const COURSE_MODULES = [
         ],
       },
       {
+        type: 'heading',
+        text: 'What Google Is Actually For',
+      },
+      {
+        type: 'list',
+        items: [
+          'Definitions',
+          'Context',
+          'Policy documents',
+          'Government data',
+          'Think tanks',
+          'Intro-level understanding',
+        ],
+      },
+      {
+        type: 'heading',
+        text: 'What Google Is NOT For',
+      },
+      {
+        type: 'list',
+        items: [
+          'Academic arguments',
+          'Causal claims without data',
+          'Theoretical frameworks',
+          'Peer-reviewed evidence',
+        ],
+      },
+      {
         type: 'warning-box',
         text: 'Some students skip Level 1 and jump straight to academic sources. That\'s a mistake — context framing and problem outline matter. But Level 1 alone isn\'t enough either.',
+      },
+      {
+        type: 'heading',
+        text: 'The Scholar Shift',
+      },
+      {
+        type: 'paragraph',
+        text: 'The Scholar Shift is the most satisfying part of research — when you move from Google to Google Scholar, where you\'re exposed to previous research and policy papers from PhD professors and students. This is a gold mine if you use it the right way. Since most students don\'t get to this level of depth, the people grading your paper are already going to be impressed.',
       },
       {
         type: 'heading',
@@ -680,8 +771,34 @@ export const COURSE_MODULES = [
         ],
       },
       {
+        type: 'heading',
+        text: 'A Source Is EE-Worthy If...',
+      },
+      {
+        type: 'list',
+        items: [
+          'It has a clear argument',
+          'It uses data or theory',
+          'It acknowledges limitations',
+          'It can be evaluated, not just summarised',
+        ],
+      },
+      {
+        type: 'heading',
+        text: 'Red Flags',
+      },
+      {
+        type: 'list',
+        items: [
+          'Blog posts with no citations',
+          'News articles used as analysis',
+          'Papers older than 15 years (unless foundational)',
+          'Sources that only confirm your argument — you need counterpoints too',
+        ],
+      },
+      {
         type: 'tip-box',
-        text: 'A source is worth using if it has a clear argument, uses data or theory, acknowledges limitations, and can be evaluated rather than just summarised. Red flags: blog posts with no citations, news articles used as analysis.',
+        text: 'The point of academic papers is not to copy the knowledge or findings, but to cite certain findings and explain why your paper is still relevant right now — and set the stage to present your findings and posit your theory.',
       },
       {
         type: 'key-takeaway',
@@ -947,11 +1064,71 @@ export const COURSE_MODULES = [
       },
       {
         type: 'heading',
+        text: 'MLA Citation Formats',
+      },
+      {
+        type: 'paragraph',
+        text: 'Here are the key MLA citation formats you\'ll use most often:',
+      },
+      {
+        type: 'comparison-table',
+        headers: ['Source Type', 'Format'],
+        rows: [
+          ['Book', 'Surname, First Name. Title of Book. Publisher, Year.'],
+          ['Journal Article', 'Surname, First Name. "Title of Article." Journal Name, vol. X, no. Y, Year, pp. X–Y.'],
+          ['Website', 'Surname, First Name. "Title of Page." Website Name, Day Month Year, URL.'],
+          ['Annual Report', 'Company Name. Title of Report. Year. URL.'],
+        ],
+      },
+      {
+        type: 'tip-box',
+        text: 'Use a citation generator like EasyBib or Scribbr\'s MLA generator to format your citations. Then double-check them manually because generators aren\'t perfect. This saves hours and reduces errors — and this is why the EE Dump method is so valuable, because you\'re keeping all the links handy.',
+      },
+      {
+        type: 'heading',
+        text: 'Block Quotes & Footnotes',
+      },
+      {
+        type: 'paragraph',
+        text: 'For quotes longer than 4 lines, use a block quote: indent the entire quote, no quotation marks, and place the citation after the final period. But honestly? Minimise block quotes in your EE. They eat up word count and examiners want to hear YOUR analysis, not long chunks of someone else\'s words.',
+      },
+      {
+        type: 'paragraph',
+        text: 'You can also use footnotes (technically Chicago style, but the IB accepts either). Footnotes work really well for Business Management because they keep the text clean while still showing your sources. Number them consecutively and keep them brief.',
+      },
+      {
+        type: 'heading',
+        text: 'Figures, Tables, and Charts',
+      },
+      {
+        type: 'list',
+        items: [
+          'Label everything. Every figure gets "Fig 1, Fig 2." Every table gets "Table 1, Table 2."',
+          'Captions go below figures and above tables (standard academic convention)',
+          'Reference them in your text — don\'t just drop a chart in and move on',
+          'Source your visuals. If you made it: "Author\'s calculations based on [source]." If pulled from elsewhere, cite it.',
+          'Keep them relevant. Every visual should serve a purpose. Examiners can tell when you\'re padding.',
+        ],
+      },
+      {
+        type: 'heading',
         text: 'Academic Integrity',
       },
       {
         type: 'warning-box',
         text: 'What counts as misconduct: copying from Clastify, having AI write portions of your essay, paraphrasing too closely, fabricating data, or submitting substantially co-written work. The consequences are severe — don\'t risk your diploma.',
+      },
+      {
+        type: 'heading',
+        text: 'Turnitin — Use It to Your Advantage',
+      },
+      {
+        type: 'paragraph',
+        text: 'Your school will likely run your EE through Turnitin. Before you submit your final draft, ask your supervisor if you can check your Turnitin score. Anything under 15–20% similarity is generally fine (some matching is inevitable with common phrases and properly cited quotes). If it\'s higher, review what\'s being flagged and paraphrase more thoroughly.',
+      },
+      {
+        type: 'tip-box',
+        text: 'Nothing worse than writing a great paragraph and not being able to remember where you got the data from. This is why the EE Dump method is so critical — your sources are always linked right there.',
       },
       {
         type: 'heading',
@@ -1091,7 +1268,17 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The RPPF — Reflections on Planning and Progress Form — is the most important part of Criterion E. It shows that you genuinely went through the process: faced challenges, thought about solutions, tried things, learned from what didn\'t work, and grew as a researcher.',
+        text: 'The RPPF — Reflections on Planning and Progress Form — is the most important part of Criterion E and the easiest 6 points you will ever get. The main point of the RPPF is to ensure you\'ve actually gone through the process of creating a research paper such as the EE.',
+      },
+      {
+        type: 'image',
+        src: '/images/ib-rppf-process.png',
+        alt: 'IB RPPF reflection process description showing what reflections should cover',
+        caption: 'The IB\'s own description of what your reflections should demonstrate.',
+      },
+      {
+        type: 'paragraph',
+        text: 'Reflection is the process by which students recapture their experience and think about its impact on them as learners. The reflection sessions give students the opportunity to reflect on their engagement with the research process, consider the effectiveness of their choices, and re-examine their ideas and decide whether changes are needed.',
       },
       {
         type: 'heading',
@@ -1138,13 +1325,45 @@ export const COURSE_MODULES = [
         text: 'Example: The Process in Words',
       },
       {
+        type: 'heading',
+        text: 'John\'s Natural Thought Process',
+      },
+      {
+        type: 'paragraph',
+        text: 'Let\'s take our earlier example. John went from a broad RQ to a focused one — but what if he didn\'t use AI? What if he just used trial and error to focus his RQ? This is the kind of thinking your RPPF should capture.',
+      },
+      {
+        type: 'paragraph',
+        text: 'John started with: "To what extent did social media influence voter psychology and election outcomes in the 2024 US elections?" and needed to refine it into something researchable. Here\'s what that natural thought process looks like:',
+      },
+      {
+        type: 'callout',
+        text: '"Okay, so here we talk about social media and election outcomes. Can we be more specific in terms of both? Um, I don\'t know, maybe not.\n\nWhen I say social media, I\'m talking about the people who produce content on social media and how that affects the user\'s decision-making.\n\nSo basically how users felt after reacting to the content made by creators. Right — but how do we measure that? Is it even possible to measure that? Something like sentiment?\n\nWell, we could use interactions — like the more views it had? But no, that doesn\'t work, because anything can pop up on your feed; it doesn\'t mean you have a particular sentiment over it.\n\nOh wait, what about likes? Likes can definitely account for some sentiment.\n\nSo could we find some sort of connection between the likes and engagement of a video and what a person voted for?\n\nHow can we get the data of who voted for whom? Well, someone told me they release it after an election every time.\n\nSo I need some tool to analyse both sets of data. Uh, let me open my textbook!"',
+      },
+      {
+        type: 'paragraph',
+        text: 'So you get the idea. This would be the average person\'s thought process. Your RPPF is this, but more formal — the thinking and creative process that goes behind your work. Your RPPF can show whether your work is genuine or not.',
+      },
+      {
+        type: 'heading',
+        text: 'Turning Thoughts Into a Formal Reflection',
+      },
+      {
+        type: 'paragraph',
+        text: 'The way you would write the reflection above would be something like this:',
+      },
+      {
         type: 'quote-highlight',
-        text: '"I wanted the strongest possible RQ to analyse the correlation between social media influence and voter behaviour. My initial formulation felt strong, but my supervisor believed the lack of specificity could derail my analysis. While I initially disagreed, I formulated alternative versions to see which would better serve the research..."',
-        attribution: 'Sample Reflection 1 opening — showing the process',
+        text: '"I wanted the best possible RQ to help me analyse the information at hand and the correlation that I wanted to showcase between social media and the subsequent influence on voters. I initially formulated the RQ \'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections.\' I was excited since I believed it was a strong start and proposed it to my teacher. My teacher, however, believed the lack of detailing could completely derail me later on during the analysis. The generality of the RQ didn\'t seem detrimental to me because I believed the RQ was quite straightforward and easy to research. However, I did formulate other RQs to see which would better suit the purpose of the research paper and the consequent findings..."',
+        attribution: 'Sample Reflection 1 — turning your natural thought process into formal writing',
+      },
+      {
+        type: 'paragraph',
+        text: 'See what happened? You\'re basically documenting the same thinking process — the adversities, why certain challenges came up, and how you approached them. The reflections show the IB your problem-solving skills as well as your mindset towards creating the EE.',
       },
       {
         type: 'tip-box',
-        text: 'You\'re documenting the process: adversities, why challenges emerged, how you approached them, and the back-and-forth involved. The cycle is: what went wrong → what you tried → what you learned → how you grew.',
+        text: 'You have an opportunity to showcase the adversities you faced in the process and your approach to overcoming them, and the back-and-forth involved in creating a paper such as yours. The cycle is: what went wrong → what you tried → what you learned → how you grew.',
       },
       {
         type: 'key-takeaway',
@@ -1212,63 +1431,204 @@ export const COURSE_MODULES = [
       },
       {
         type: 'heading',
-        text: 'The 12 Prompts — Stage 1: Brainstorming & RQ Refinement',
+        text: 'Stage 1: Brainstorming & RQ Refinement',
       },
       {
-        type: 'step-process',
-        steps: [
-          { title: 'Prompt 1: Finding Your Niche', text: 'Use AI to brainstorm connections between your personal interests and IB subjects. Give it your interests and ask for creative EE angles.' },
-          { title: 'Prompt 2: RQ Stress-Test', text: 'Paste your draft RQ and ask AI to simulate an examiner critique. Where would they push back? What\'s unclear?' },
-          { title: 'Prompt 3: Narrowing Down', text: 'If your RQ is too broad, ask AI to suggest 3 more specific versions — then pick the one that resonates with YOUR interests.' },
-        ],
+        type: 'paragraph',
+        text: 'This is where AI is honestly the most useful. Not to give you a research question — but to stress-test the one you already have.',
       },
       {
         type: 'heading',
-        text: 'The 12 Prompts — Stage 2: Research & Structure',
+        text: 'Prompt 1: Finding Your Niche From Your Interests',
       },
       {
-        type: 'step-process',
-        steps: [
-          { title: 'Prompt 4: Finding Research Gaps', text: 'Ask AI what areas of your topic are understudied. This helps you position your EE as filling a genuine gap.' },
-          { title: 'Prompt 5: Structure Builder', text: 'Share your RQ and key findings. Ask AI to suggest a section-by-section structure mapped to the criteria.' },
-          { title: 'Prompt 6: Literature Review Organisation', text: 'Paste your source summaries and ask AI to group them thematically. It can spot connections you missed.' },
-        ],
+        type: 'paragraph',
+        text: 'When to use: You have a broad interest but no idea how to turn it into an EE topic.',
       },
       {
-        type: 'heading',
-        text: 'The 12 Prompts — Stage 3: Writing & Refinement',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Prompt 7: Introduction Feedback', text: 'Paste your introduction and ask for examiner-style feedback. What works? What needs strengthening?' },
-          { title: 'Prompt 8: Argument Strength Check', text: 'Paste a section and ask: "Where is the argument weakest? What would a critical reader challenge?"' },
-          { title: 'Prompt 9: Paragraph Analysis', text: 'Paste individual paragraphs for detailed feedback on clarity, evidence use, and analytical depth.' },
-          { title: 'Prompt 10: Counter-Argument Generator', text: 'Ask AI to argue against your thesis. This strengthens your discussion and shows critical thinking.' },
-        ],
+        type: 'callout',
+        text: 'I\'m an IB student starting my Extended Essay. I\'m interested in [YOUR INTEREST — e.g., video games, fashion, basketball, cooking]. My strongest HL subjects are [YOUR HL SUBJECTS].\n\nDon\'t give me a research question. Instead, give me 5 creative angles where my interest could intersect with my strongest subject(s) in a way that\'s specific enough for a 4,000-word research paper. For each angle, explain what makes it interesting and what kind of data or analysis might be possible.',
       },
       {
         type: 'heading',
-        text: 'The 12 Prompts — Stage 4: Final Review',
+        text: 'Prompt 2: RQ Stress-Test',
       },
       {
-        type: 'step-process',
-        steps: [
-          { title: 'Prompt 11: Full Examiner Simulation', text: 'Paste your entire essay and ask for criterion-by-criterion scoring with specific improvement suggestions.' },
-          { title: 'Prompt 12: RPPF Reflection Helper', text: 'Describe your EE journey and ask AI to help you structure it into the three reflections format.' },
-        ],
+        type: 'paragraph',
+        text: 'When to use: You have a draft RQ and want it torn apart before your supervisor does.',
+      },
+      {
+        type: 'callout',
+        text: 'Here\'s my draft Extended Essay research question: "[YOUR RQ]"\n\nAct as an experienced IB Extended Essay examiner. Evaluate this RQ against these specific concerns:\n1. Is it too broad? If so, what specifically makes it too broad?\n2. Is it researchable within 4,000 words with sources a high school student can access?\n3. Does it allow for analysis and evaluation, or does it just invite description?\n4. What would you expect to see in the essay that answers this question?\n5. Give me 3 more focused versions of this RQ that would score higher.',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 3: The "So What?" Test',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You want to know if your RQ has enough depth.',
+      },
+      {
+        type: 'callout',
+        text: 'My Extended Essay research question is: "[YOUR RQ]"\n\nAsk me "so what?" five times — each time digging deeper into why this research matters, why anyone should care, and what new understanding it could contribute. After the five "so whats," tell me whether my RQ has enough depth for a 4,000-word research paper or if I need to rethink it.',
+      },
+      {
+        type: 'heading',
+        text: 'Stage 2: Research & Finding Sources',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 4: Source Decoder',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You found a dense academic paper and can\'t understand what it\'s actually saying.',
+      },
+      {
+        type: 'callout',
+        text: 'I\'m researching for my IB Extended Essay on [YOUR TOPIC]. I found this passage in an academic paper:\n\n"[PASTE THE PASSAGE]"\n\nExplain this in plain English. Then tell me:\n1. What is the core argument or finding?\n2. How might this be relevant to my research question: "[YOUR RQ]"?\n3. What are the limitations of this claim?',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 5: Finding Gaps in Your Research',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You\'ve done your EE Dump and want to check if you\'re missing anything.',
+      },
+      {
+        type: 'callout',
+        text: 'I\'m writing my IB Extended Essay. My RQ is: "[YOUR RQ]"\n\nHere are the main topics and sources I\'ve gathered so far:\n[PASTE YOUR EE DUMP SUMMARY — just the subtopics and key points]\n\nWhat significant angles or perspectives am I missing? What would an examiner expect to see that isn\'t covered here? Are there any obvious counterarguments or limitations I should address?',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 6: Generating Search Terms for Google Scholar',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You\'ve exhausted your obvious search terms and can\'t find more sources.',
+      },
+      {
+        type: 'callout',
+        text: 'I\'m searching Google Scholar for sources for my Extended Essay. My RQ is: "[YOUR RQ]"\n\nI\'ve already searched for: [LIST YOUR SEARCH TERMS]\n\nGenerate 10 alternative academic search terms I haven\'t thought of. Include specific theoretical frameworks, methodologies, or related concepts that might lead me to relevant papers. For each term, briefly explain what kind of source it might surface.',
       },
       {
         type: 'warning-box',
-        text: 'Each prompt forces AI to critique, question, and challenge you — never to write for you. That\'s the line. Never cross it.',
+        text: 'NEVER ask AI to give you sources, citations, or references. It will make them up and they will look real. Every single source in your EE must be something YOU found and verified yourself on Google or Google Scholar.',
+      },
+      {
+        type: 'heading',
+        text: 'Stage 3: Structuring & Outlining',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 7: Testing Your Structure Against the Criteria',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You\'ve drafted your EE structure and want to check it hits all the assessment criteria.',
+      },
+      {
+        type: 'callout',
+        text: 'I\'m writing my IB Extended Essay. Here\'s my current structure:\n\n[PASTE YOUR SECTION OUTLINE]\n\nEvaluate this structure against the IB EE assessment criteria:\n- Criterion A: Knowledge and Understanding\n- Criterion B: Application and Analysis\n- Criterion C: Synthesis and Evaluation\n- Criterion D: Communication\n\nFor each section, tell me:\n1. Which criterion/criteria does it primarily address?\n2. Is there any criterion that isn\'t being covered enough?\n3. Are there any sections that seem redundant?\n4. What\'s missing?',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 8: Flow and Logic Check',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You want to make sure your argument builds logically.',
+      },
+      {
+        type: 'callout',
+        text: 'Here\'s the section-by-section breakdown of my Extended Essay:\n\n[LIST EACH SECTION AND WHAT IT COVERS]\n\nDoes this order make logical sense? Would a reader moving from section 1 to the final section follow a clear, building argument? If not, suggest a better order and explain why.',
+      },
+      {
+        type: 'heading',
+        text: 'Stage 4: Reviewing & Critiquing Your Drafts',
+      },
+      {
+        type: 'paragraph',
+        text: 'This is where AI becomes incredibly powerful. Using it as a tough critic BEFORE you submit.',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 9: The Examiner Simulation',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You\'ve written a section or your full draft and want honest, brutal feedback.',
+      },
+      {
+        type: 'callout',
+        text: 'You are a senior IB Extended Essay examiner with 15 years of experience. You\'ve graded thousands of essays and you have zero patience for mediocrity.\n\nHere is a section from my Extended Essay:\n\n"[PASTE YOUR SECTION]"\n\nMy research question is: "[YOUR RQ]"\n\nGrade this section against the EE criteria and give me:\n1. What grade band would this fall in (A/B/C/D/E) and why?\n2. The three biggest weaknesses\n3. Specific sentences or paragraphs that are weak and WHY they\'re weak\n4. What\'s missing that an examiner would expect to see\n5. One thing that\'s actually done well (if anything)\n\nDo not be nice. Be accurate.',
+      },
+      {
+        type: 'tip-box',
+        text: 'This is the single most valuable prompt in this entire module. "Do not be nice. Be accurate." forces AI to actually critique instead of giving you participation trophy feedback.',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 10: Description vs Analysis Checker',
+      },
+      {
+        type: 'callout',
+        text: '"[PASTE YOUR SECTION]"\n\nHighlight every sentence that is purely descriptive (just stating facts or summarising sources) versus analytical (evaluating, comparing, drawing conclusions, making original arguments).\n\nWhat percentage of this section is description vs analysis? For the descriptive parts, show me how I could transform each one into analysis.',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 11: Academic Tone Audit',
+      },
+      {
+        type: 'callout',
+        text: 'Review this section of my Extended Essay for academic tone:\n\n"[PASTE YOUR SECTION]"\n\nIdentify any instances of: casual language, first person where it shouldn\'t be, vague claims without evidence, repetitive phrasing, or sentences that sound like they were written for a blog rather than an academic paper.\n\nFor each instance, quote the problematic phrase and give me a more academic alternative. But don\'t make it sound robotic — it should still be clear and readable.',
+      },
+      {
+        type: 'heading',
+        text: 'Stage 5: RPPF Reflection Writing',
+      },
+      {
+        type: 'heading',
+        text: 'Prompt 12: Reflection Brainstorm',
+      },
+      {
+        type: 'paragraph',
+        text: 'When to use: You need to write your RPPF reflection but don\'t know where to start.',
+      },
+      {
+        type: 'callout',
+        text: 'I\'m writing my RPPF (Reflections on Planning and Progress Form) for my IB Extended Essay. Here\'s what happened during my EE process so far:\n\n[DESCRIBE YOUR JOURNEY — challenges, changes, discoveries, frustrations]\n\nDon\'t write my reflection for me. Instead, ask me 10 specific questions about my experience that would help me write a more thoughtful, detailed reflection. Focus on: intellectual growth, challenges overcome, methodology decisions, and how my thinking evolved.',
+      },
+      {
+        type: 'warning-box',
+        text: 'Do NOT let AI write your RPPF for you. Your RPPF reflection should be 100% your own words describing your real experience. Use AI to help you think about what to include — not to generate the text.',
+      },
+      {
+        type: 'heading',
+        text: 'The Right Mindset',
+      },
+      {
+        type: 'paragraph',
+        text: 'Think of AI like a gym buddy. A gym buddy doesn\'t lift the weights for you — if they did, you wouldn\'t get stronger. They spot you, push you to do one more rep, and tell you when your form is off. That\'s exactly how AI should work in your EE process.',
+      },
+      {
+        type: 'list',
+        items: [
+          'Don\'t ask AI to paraphrase your sources for you. That\'s YOUR job. If you can\'t put a source in your own words, you don\'t understand it well enough to use it.',
+          'Don\'t use AI to "improve" or "rewrite" your paragraphs. The moment AI touches your actual writing, it\'s no longer your EE. Use it for feedback and critique, then make the improvements yourself.',
+          'Screenshot nothing, learn everything. The point of using AI is to learn and improve your thinking, not to create shortcuts you can screenshot.',
+        ],
       },
       {
         type: 'key-takeaway',
         items: [
-          'AI is your thinking partner, not your writer',
+          'AI is your thinking partner, not your writer — like a gym buddy who spots you',
           'Always start with YOUR ideas — bring your drafts and thoughts first',
-          'Use the 12 prompts across 4 stages: brainstorm, research, writing, review',
+          'Use the 12 prompts across 5 stages: brainstorm, research, structure, review, RPPF',
           'Never paste AI output into your EE — use it to think better, not copy answers',
+          'The prompts force AI to critique and challenge — never to write for you',
         ],
       },
     ],

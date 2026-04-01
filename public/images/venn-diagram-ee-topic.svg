@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 440" font-family="Inter, system-ui, sans-serif">
+  <rect width="600" height="440" fill="#F4F3E8" rx="12"/>
+
+  <!-- Three overlapping circles -->
+  <circle cx="240" cy="200" r="140" fill="#2E3250" fill-opacity="0.08" stroke="#2E3250" stroke-opacity="0.2" stroke-width="1.5"/>
+  <circle cx="360" cy="200" r="140" fill="#2E3250" fill-opacity="0.08" stroke="#2E3250" stroke-opacity="0.2" stroke-width="1.5"/>
+  <circle cx="300" cy="310" r="140" fill="#2E3250" fill-opacity="0.08" stroke="#2E3250" stroke-opacity="0.2" stroke-width="1.5"/>
+
+  <!-- Centre highlight -->
+  <circle cx="300" cy="240" r="38" fill="#2E3250" fill-opacity="0.12" stroke="#2E3250" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Labels for each circle -->
+  <text x="190" y="135" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">Genuine</text>
+  <text x="190" y="153" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">Interest</text>
+
+  <text x="410" y="135" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">Academic</text>
+  <text x="410" y="153" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">Strength</text>
+
+  <text x="300" y="390" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">EE-Friendly</text>
+  <text x="300" y="408" text-anchor="middle" fill="#2E3250" fill-opacity="0.7" font-size="14" font-weight="600">Subject</text>
+
+  <!-- Centre label -->
+  <text x="300" y="236" text-anchor="middle" fill="#2E3250" font-size="11" font-weight="700" letter-spacing="0.5">YOUR IDEAL</text>
+  <text x="300" y="252" text-anchor="middle" fill="#2E3250" font-size="11" font-weight="700" letter-spacing="0.5">EE TOPIC</text>
+</svg>
