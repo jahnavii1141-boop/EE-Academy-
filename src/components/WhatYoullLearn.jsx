@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { StaggerContainer, staggerItem } from './ui/AnimateIn'
 
+const MotionDiv = motion.div
+
 const OUTCOMES = [
   { text: 'Choose a focused, scoreable research question', bg: 'bg-cream' },
   { text: 'Structure your argument with academic rigour', bg: 'bg-card-2' },
@@ -15,8 +17,7 @@ const OUTCOMES = [
 export default function WhatYoullLearn() {
   return (
     <section id="learn" className="bg-parchment py-20 px-6 relative overflow-hidden">
-
-<div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto relative z-10">
         <h2 className="section-heading">What You'll Learn</h2>
         <p className="section-subheading">
           By the end of the programme, you'll have the skills and confidence to submit an Extended Essay you're proud of.
@@ -24,7 +25,7 @@ export default function WhatYoullLearn() {
 
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {OUTCOMES.map(({ text, bg }, i) => (
-            <motion.div
+            <MotionDiv
               key={i}
               variants={staggerItem}
               className={`bento-card ${bg} flex flex-col justify-between min-h-[120px] border border-navy/5`}
@@ -35,7 +36,7 @@ export default function WhatYoullLearn() {
                   <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                 </svg>
               </span>
-            </motion.div>
+            </MotionDiv>
           ))}
         </StaggerContainer>
       </div>

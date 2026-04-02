@@ -59,7 +59,7 @@ function SidebarTOC({ toc, activeModuleId }) {
       <p className="text-[10px] font-semibold text-navy/35 uppercase tracking-widest mb-3 px-1">
         Contents
       </p>
-      {toc.map((item, idx) => (
+      {toc.map((item) => (
         <div key={item.moduleId} className="mb-4">
           {/* Module title */}
           <button

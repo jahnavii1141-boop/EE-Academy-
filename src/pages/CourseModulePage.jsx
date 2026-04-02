@@ -10,7 +10,7 @@ import PostModuleGate from '../components/PostModuleGate'
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
 
 function ModuleSidebar({ currentIndex, isSignedIn, isLoaded }) {
-  const { progress, isVisited } = useModuleProgress()
+  const { isVisited } = useModuleProgress()
   const visitedCount = COURSE_MODULES.filter(m => isVisited(m.id)).length
   const pct = Math.round((visitedCount / COURSE_MODULES.length) * 100)
 
@@ -166,6 +166,7 @@ export default function CourseModulePage() {
 
   // Close drawer on route change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDrawerOpen(false)
   }, [moduleId])
 

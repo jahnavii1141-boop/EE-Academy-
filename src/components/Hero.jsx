@@ -60,7 +60,7 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4">
-                <Link to="/dashboard" className="btn-primary-light">Access Class Now</Link>
+                <Link to="/dashboard" className="btn-primary-light">Access Free Class Now</Link>
                 <Link to="/curriculum" className="btn-outline-light">View Curriculum</Link>
               </div>
               <WaitlistHero />

@@ -1,34 +1,32 @@
-import { useMotionValue, useMotionTemplate, motion } from "framer-motion";
-import { useState, useEffect } from "react";
-import { Plus } from "lucide-react";
-import { cn } from "../../lib/utils";
+/* eslint-disable react-refresh/only-export-components */
+import { useMotionValue, useMotionTemplate, motion } from 'framer-motion'
+import { useState } from 'react'
+import { Plus } from 'lucide-react'
+import { cn } from '../../lib/utils'
+
+const MotionDiv = motion.div
 
 export const EvervaultCard = ({ text, revealText, className }) => {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
-  const [randomString, setRandomString] = useState("");
-
-  useEffect(() => {
-    let str = revealText
-      ? repeatToLength(revealText, 1500)
-      : generateRandomString(1500);
-    setRandomString(str);
-  }, [revealText]);
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  const [randomString, setRandomString] = useState(() =>
+    revealText ? repeatToLength(revealText, 1500) : generateRandomString(1500)
+  )
 
   function onMouseMove({ currentTarget, clientX, clientY }) {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
     // Only randomise if no custom revealText
     if (!revealText) {
-      setRandomString(generateRandomString(1500));
+      setRandomString(generateRandomString(1500))
     }
   }
 
   return (
     <div
       className={cn(
-        "p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative",
+        'p-0.5 bg-transparent aspect-square flex items-center justify-center w-full h-full relative',
         className
       )}
     >
@@ -49,49 +47,49 @@ export const EvervaultCard = ({ text, revealText, className }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export function CardPattern({ mouseX, mouseY, randomString }) {
-  let maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+  const maskImage = useMotionTemplate`radial-gradient(250px at ${mouseX}px ${mouseY}px, white, transparent)`
+  const style = { maskImage, WebkitMaskImage: maskImage }
 
   return (
     <div className="pointer-events-none">
       <div className="absolute inset-0 rounded-2xl [mask-image:linear-gradient(white,transparent)] group-hover/card:opacity-50"></div>
-      <motion.div
+      <MotionDiv
         className="absolute inset-0 rounded-2xl bg-gradient-to-r from-navy to-steel opacity-0 group-hover/card:opacity-100 backdrop-blur-xl transition duration-500"
         style={style}
       />
-      <motion.div
+      <MotionDiv
         className="absolute inset-0 rounded-2xl opacity-0 mix-blend-overlay group-hover/card:opacity-100"
         style={style}
       >
         <p className="absolute inset-x-0 text-xs h-full break-words whitespace-pre-wrap text-parchment font-mono font-bold transition duration-500">
           {randomString}
         </p>
-      </motion.div>
+      </MotionDiv>
     </div>
-  );
+  )
 }
 
 const characters =
-  "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
 
 export const generateRandomString = (length) => {
-  let result = "";
+  let result = ''
   for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
+    result += characters.charAt(Math.floor(Math.random() * characters.length))
   }
-  return result;
-};
+  return result
+}
 
 function repeatToLength(str, length) {
-  let result = "";
-  while (result.length < length) result += str + "  ";
-  return result.slice(0, length);
+  let result = ''
+  while (result.length < length) result += `${str}  `
+  return result.slice(0, length)
 }
 
 export const Icon = ({ className, ...rest }) => {
-  return <Plus className={cn("text-parchment/60", className)} {...rest} />;
-};
+  return <Plus className={cn('text-parchment/60', className)} {...rest} />
+}

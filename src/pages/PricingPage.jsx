@@ -17,7 +17,7 @@ export default function PricingPage() {
           </p>
         </AnimateIn>
       </div>
-      <Pricing />
+      <Pricing showEarlyBird />
     </div>
   )
 }

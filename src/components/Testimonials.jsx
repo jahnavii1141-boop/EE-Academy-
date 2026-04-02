@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 import { useCountUp } from '../hooks/useCountUp'
 
+const MotionDiv = motion.div
+
 const TESTIMONIALS = [
   {
     quote: 'I went from a C to an A on my EE. The module on assessment criteria was a game-changer — I finally understood what examiners actually want.',
@@ -54,7 +56,7 @@ export default function Testimonials() {
 
         <StaggerContainer className="grid md:grid-cols-3 gap-4 mb-12">
           {TESTIMONIALS.map((t, i) => (
-            <motion.div
+            <MotionDiv
               key={i}
               variants={staggerItem}
               className="bento-card bg-cream/8 flex flex-col justify-between border border-cream/10"
@@ -85,7 +87,7 @@ export default function Testimonials() {
                   <p className="text-xs text-steel">{t.role}</p>
                 </div>
               </div>
-            </motion.div>
+            </MotionDiv>
           ))}
         </StaggerContainer>
 

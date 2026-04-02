@@ -3,8 +3,9 @@
 // Set VITE_PADDLE_BASIC_URL and VITE_PADDLE_PREMIUM_URL in .env.local
 
 export const PADDLE_CONFIG = {
-  basicUrl: import.meta.env.VITE_PADDLE_BASIC_URL || '#pricing',
-  premiumUrl: import.meta.env.VITE_PADDLE_PREMIUM_URL || '#pricing',
+  defaultUrl: import.meta.env.VITE_PADDLE_DEFAULT_URL || '/pricing',
+  basicUrl: import.meta.env.VITE_PADDLE_BASIC_URL || import.meta.env.VITE_PADDLE_DEFAULT_URL || '/pricing',
+  premiumUrl: import.meta.env.VITE_PADDLE_PREMIUM_URL || import.meta.env.VITE_PADDLE_DEFAULT_URL || '/pricing',
   vendorId: import.meta.env.VITE_PADDLE_VENDOR_ID || '',
 }
 

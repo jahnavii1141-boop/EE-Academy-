@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimateIn from './ui/AnimateIn'
 
+const MotionDiv = motion.div
+
 const MODULES = [
   {
     id: 'module-1',
@@ -258,7 +260,7 @@ export default function Curriculum() {
 
                 <AnimatePresence>
                   {openIndex === i && (
-                    <motion.div
+                    <MotionDiv
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -286,7 +288,7 @@ export default function Curriculum() {
                           </svg>
                         </Link>
                       </div>
-                    </motion.div>
+                    </MotionDiv>
                   )}
                 </AnimatePresence>
               </div>

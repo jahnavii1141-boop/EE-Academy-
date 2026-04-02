@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 
+const MotionDiv = motion.div
+
 const FEATURES_BASIC = [
   'Premium Extended Essay Course — all 14 modules',
   'Study Calendar tool',
@@ -29,7 +31,7 @@ function CheckItem({ text }) {
   )
 }
 
-export default function Pricing() {
+export default function Pricing({ showEarlyBird = false }) {
   return (
     <section id="pricing" className="bg-cream py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -56,26 +58,34 @@ export default function Pricing() {
 
         <StaggerContainer className="grid md:grid-cols-2 gap-4 items-stretch">
           {/* Basic */}
-          <motion.div
+          <MotionDiv
             variants={staggerItem}
             className="bento-card bg-card-2 flex flex-col justify-between hover:-translate-y-1 border border-navy/8"
           >
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">${PRICING.basic.earlyBird}</span>
-                <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
+                <span className="text-5xl font-serif font-bold text-navy">
+                  ${showEarlyBird ? PRICING.basic.earlyBird : PRICING.basic.price}
+                </span>
+                {showEarlyBird && (
+                  <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
+                )}
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.basic.regular}</p>
+              {showEarlyBird ? (
+                <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.basic.regular}</p>
+              ) : (
+                <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
+              )}
               <ul className="space-y-3 mb-8">
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
             <a href={PADDLE_CONFIG.basicUrl} className="block text-center btn-primary">Enroll in Basic</a>
-          </motion.div>
+          </MotionDiv>
 
           {/* Premium */}
-          <motion.div
+          <MotionDiv
             variants={staggerItem}
             className="bento-card bg-parchment flex flex-col justify-between border-2 border-navy/15 relative hover:-translate-y-1"
           >
@@ -85,16 +95,24 @@ export default function Pricing() {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">${PRICING.premium.earlyBird}</span>
-                <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
+                <span className="text-5xl font-serif font-bold text-navy">
+                  ${showEarlyBird ? PRICING.premium.earlyBird : PRICING.premium.price}
+                </span>
+                {showEarlyBird && (
+                  <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
+                )}
               </div>
-              <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.premium.regular}</p>
+              {showEarlyBird ? (
+                <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.premium.regular}</p>
+              ) : (
+                <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
+              )}
               <ul className="space-y-3 mb-8">
                 {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
             <a href={PADDLE_CONFIG.premiumUrl} className="block text-center btn-primary">Enroll in Premium</a>
-          </motion.div>
+          </MotionDiv>
         </StaggerContainer>
       </div>
     </section>
