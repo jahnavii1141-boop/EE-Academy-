@@ -42,7 +42,7 @@ export default function ExitIntentPopup() {
       setError('Please enter a valid email.')
       return
     }
-    await submitEmail(email, 'exit-intent', ['waitlist', 'early-bird'])
+    await submitEmail(email, 'exit-intent', ['waitlist'])
     setSubmitted(true)
     setTimeout(() => setVisible(false), 2000)
   }
@@ -83,7 +83,7 @@ export default function ExitIntentPopup() {
                 Wait — before you go
               </span>
               <h2 className="font-serif text-2xl font-bold text-navy leading-tight mb-2">
-                Don't miss early bird pricing
+                Don't miss your free EE resources
               </h2>
               <p className="text-navy/60 text-sm leading-relaxed">
                 {WAITLIST_COPY.subline}. Join over 200+ IB students already on the waitlist.

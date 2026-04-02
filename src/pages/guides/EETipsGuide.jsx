@@ -44,6 +44,7 @@ const CONTENT = [
 ]
 
 const RELATED = [
+  { href: '/guides/how-to-get-an-a-in-extended-essay', title: 'How to Get an A in the Extended Essay', description: 'A practical step-by-step A-grade system.' },
   { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'The section-by-section guide.' },
   { href: '/guides/rppf-guide', title: 'Complete RPPF Guide', description: 'Earn all 6 marks on your reflections.' },
 ]

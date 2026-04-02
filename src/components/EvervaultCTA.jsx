@@ -68,7 +68,7 @@ export default function EvervaultCTA() {
             </AnimateIn>
 
             <AnimateIn delay={0.25}>
-              <a href="#pricing" className="btn-primary-light">
+              <a href="/pricing" className="btn-primary-light">
                 Start Learning Today
               </a>
             </AnimateIn>

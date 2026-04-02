@@ -7,6 +7,7 @@ import Feature108 from './components/blocks/Feature108'
 import WhatYoullLearn from './components/WhatYoullLearn'
 import ExitIntentPopup from './components/ExitIntentPopup'
 import SEOHead from './components/SEOHead'
+import ResultsStrip from './components/ResultsStrip'
 
 // Lazy-loaded pages
 const Curriculum = lazy(() => import('./components/Curriculum'))
@@ -22,6 +23,7 @@ const CourseModulePage = lazy(() => import('./pages/CourseModulePage'))
 const Dashboard = lazy(() => import('./pages/Dashboard'))
 const DashboardSection = lazy(() => import('./pages/DashboardSection'))
 const PricingPage = lazy(() => import('./pages/PricingPage'))
+const GuidesHub = lazy(() => import('./pages/GuidesHub'))
 const ProtectedRoute = lazy(() => import('./components/ProtectedRoute'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
@@ -36,6 +38,7 @@ const EESubjectsGuide = lazy(() => import('./pages/guides/EESubjectsGuide'))
 const EEWordCountGuide = lazy(() => import('./pages/guides/EEWordCountGuide'))
 const EEConclusionGuide = lazy(() => import('./pages/guides/EEConclusionGuide'))
 const EEResearchMethodsGuide = lazy(() => import('./pages/guides/EEResearchMethodsGuide'))
+const GetAExtendedEssayGuide = lazy(() => import('./pages/guides/GetAExtendedEssayGuide'))
 
 function LoadingSpinner() {
   return (
@@ -75,6 +78,7 @@ function LandingPage() {
         jsonLd={COURSE_JSON_LD}
       />
       <Hero />
+      <ResultsStrip />
       <Feature108 />
       <WhatYoullLearn />
     </main>
@@ -109,6 +113,7 @@ export default function App() {
               <Route path="/course/:moduleId" element={<CourseModulePage />} />
               <Route path="/curriculum" element={<CurriculumPage />} />
               <Route path="/pricing" element={<PricingPage />} />
+              <Route path="/guides" element={<GuidesHub />} />
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/dashboard/:sectionId" element={<DashboardSection />} />
               <Route path="/dump" element={
@@ -128,6 +133,7 @@ export default function App() {
               <Route path="/guides/ee-word-count" element={<EEWordCountGuide />} />
               <Route path="/guides/ee-conclusion" element={<EEConclusionGuide />} />
               <Route path="/guides/ee-research-methods" element={<EEResearchMethodsGuide />} />
+              <Route path="/guides/how-to-get-an-a-in-extended-essay" element={<GetAExtendedEssayGuide />} />
 
               {/* 404 */}
               <Route path="*" element={<NotFoundPage />} />

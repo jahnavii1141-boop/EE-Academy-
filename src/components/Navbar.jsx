@@ -57,7 +57,7 @@ export default function Navbar() {
             All Courses
           </Link>
           <Link
-            to="/guides/extended-essay-introduction"
+            to="/guides"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               location.pathname.startsWith('/guides') ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
@@ -132,6 +132,9 @@ export default function Navbar() {
           </Link>
           <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard
+          </Link>
+          <Link to="/guides" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+            Guides
           </Link>
           {isHome &&
             HOME_ANCHOR_LINKS.map((link) => (

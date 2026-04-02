@@ -137,7 +137,7 @@ function PaywallBanner({ moduleTitle }) {
             </button>
           </SignInButton>
           <Link to="/pricing" className="btn-outline text-sm">
-            View Pricing
+            View Plans
           </Link>
         </div>
         <p className="text-xs text-navy/35 mt-4">7-day money-back guarantee · Lifetime access</p>

@@ -9,6 +9,7 @@ export default function GuidePage({
   canonical,
   content = [],
   relatedGuides = [],
+  faqItems = [],
 }) {
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -19,10 +20,29 @@ export default function GuidePage({
     publisher: { '@type': 'Organization', name: 'The Extended Essay Academy' },
     datePublished: '2026-03-29',
   }
+  const faqJsonLd = faqItems.length > 0
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: faqItems.map((item) => ({
+          '@type': 'Question',
+          name: item.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: item.answer,
+          },
+        })),
+      }
+    : null
 
   return (
     <div className="min-h-screen bg-cream">
-      <SEOHead title={title} description={description} canonical={canonical} jsonLd={jsonLd} />
+      <SEOHead
+        title={title}
+        description={description}
+        canonical={canonical}
+        jsonLd={faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd}
+      />
 
       {/* Hero */}
       <div className="bg-navy-deep py-16 px-6">
@@ -64,6 +84,21 @@ export default function GuidePage({
                   <p className="text-sm font-medium text-navy">{g.title}</p>
                   <p className="text-xs text-navy/50 mt-1">{g.description}</p>
                 </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* FAQ */}
+        {faqItems.length > 0 && (
+          <div className="mt-12 rounded-2xl border border-navy/10 bg-white/60 p-6">
+            <h2 className="font-serif text-xl font-bold text-navy mb-4">Frequently Asked Questions</h2>
+            <div className="space-y-4">
+              {faqItems.map((item, i) => (
+                <div key={i}>
+                  <h3 className="text-sm font-semibold text-navy mb-1">{item.question}</h3>
+                  <p className="text-sm text-navy/65 leading-relaxed">{item.answer}</p>
+                </div>
               ))}
             </div>
           </div>

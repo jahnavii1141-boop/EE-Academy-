@@ -31,7 +31,7 @@ function CheckItem({ text }) {
   )
 }
 
-export default function Pricing({ showEarlyBird = false }) {
+export default function Pricing() {
   return (
     <section id="pricing" className="bg-cream py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -65,18 +65,9 @@ export default function Pricing({ showEarlyBird = false }) {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">
-                  ${showEarlyBird ? PRICING.basic.earlyBird : PRICING.basic.price}
-                </span>
-                {showEarlyBird && (
-                  <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
-                )}
+                <span className="text-5xl font-serif font-bold text-navy">${PRICING.basic.price}</span>
               </div>
-              {showEarlyBird ? (
-                <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.basic.regular}</p>
-              ) : (
-                <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
-              )}
+              <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
@@ -95,18 +86,9 @@ export default function Pricing({ showEarlyBird = false }) {
             <div>
               <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
               <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">
-                  ${showEarlyBird ? PRICING.premium.earlyBird : PRICING.premium.price}
-                </span>
-                {showEarlyBird && (
-                  <span className="text-xs font-semibold text-emerald-600 mb-2 bg-emerald-50 px-2 py-0.5 rounded-full">Early Bird</span>
-                )}
+                <span className="text-5xl font-serif font-bold text-navy">${PRICING.premium.price}</span>
               </div>
-              {showEarlyBird ? (
-                <p className="text-xs text-ink-soft mb-6">Regular price ${PRICING.premium.regular}</p>
-              ) : (
-                <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
-              )}
+              <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
               <ul className="space-y-3 mb-8">
                 {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>

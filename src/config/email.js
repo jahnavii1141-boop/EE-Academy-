@@ -31,7 +31,7 @@ export function hasJoinedWaitlist() {
 
 export const WAITLIST_COPY = {
   headline: 'Join the waitlist',
-  subline: 'Get early bird pricing ($71 instead of $89) + a free EE planning tool',
+  subline: 'Get free EE planning tools and early access updates',
   cta: 'Join Waitlist',
   successMessage: "You're on the list! Check your inbox.",
   placeholder: 'your@email.com',

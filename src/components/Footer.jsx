@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const COURSE_LINKS = [
   { label: 'Dashboard', href: '/dashboard', internal: true },
   { label: 'Curriculum', href: '/curriculum', internal: true },
-  { label: 'Pricing', href: '/pricing', internal: true },
+  { label: 'Plans', href: '/pricing', internal: true },
 ]
 const COMPANY_LINKS = [
   { label: 'About', href: '/about', internal: true },
@@ -11,11 +11,11 @@ const COMPANY_LINKS = [
   { label: 'Contact', href: '#' },
 ]
 const GUIDE_LINKS = [
+  { label: 'How to Get an A in Extended Essay', href: '/guides/how-to-get-an-a-in-extended-essay' },
   { label: 'How to Write an EE Introduction', href: '/guides/extended-essay-introduction' },
   { label: 'EE Structure Template', href: '/guides/extended-essay-structure' },
   { label: 'Research Question Examples', href: '/guides/research-question-examples' },
   { label: 'RPPF Guide', href: '/guides/rppf-guide' },
-  { label: 'EE Criteria Breakdown', href: '/guides/ee-criteria-breakdown' },
 ]
 
 export default function Footer() {

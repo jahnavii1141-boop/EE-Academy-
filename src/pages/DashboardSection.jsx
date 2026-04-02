@@ -199,7 +199,7 @@ function SectionPaywall({ accessLevel }) {
         to="/pricing"
         className="inline-flex items-center gap-2 bg-navy text-cream font-semibold text-sm px-5 py-2.5 rounded-xl hover:bg-navy/85 transition-colors"
       >
-        View Pricing
+        View Plans
         <ChevronRight className="w-4 h-4" />
       </Link>
     </div>
