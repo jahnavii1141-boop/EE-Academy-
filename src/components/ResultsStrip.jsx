@@ -2,9 +2,9 @@ import { Link } from 'react-router-dom'
 import AnimateIn from './ui/AnimateIn'
 
 const RESULTS = [
-  { jump: 'IB 4 -> 6', time: 'in 2 weeks' },
-  { jump: 'IB 5 -> 7', time: 'in 1 week' },
-  { jump: 'IB 3 -> 6', time: 'in 3 weeks' },
+  { jump: 'Predicted D to Final B', time: 'in 2 weeks' },
+  { jump: 'Predicted C to Final A', time: 'in 1 week' },
+  { jump: 'Predicted D to Final A', time: 'in 3 weeks' },
 ]
 
 export default function ResultsStrip() {
@@ -15,14 +15,14 @@ export default function ResultsStrip() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6">
             <div>
               <p className="text-xs font-semibold tracking-widest uppercase text-parchment/70 mb-2">
-                Real Student Outcomes
+                Why This Hits Different
               </p>
               <h2 className="font-serif text-2xl md:text-3xl text-cream font-bold">
-                Grade jumps with a clear system
+                Built from the exact system that took me from a predicted C to a final A
               </h2>
             </div>
             <p className="text-sm text-steel max-w-lg">
-              Structured lessons, criteria-first writing, and practical templates built for IB Extended Essay success.
+              This is not generic EE advice. It is the step-by-step system behind a 32/34 essay, built to help IB students understand what examiners want and fix the mistakes that quietly drag grades down.
             </p>
           </div>
         </AnimateIn>
@@ -40,11 +40,11 @@ export default function ResultsStrip() {
 
         <AnimateIn delay={0.15}>
           <div className="flex flex-wrap items-center gap-3">
-            <Link to="/course/module-1" className="btn-primary-light text-sm">
-              Start Free Module
+            <Link to="/dashboard" className="btn-primary-light text-sm">
+              Start Free
             </Link>
             <Link to="/pricing" className="btn-outline-light text-sm">
-              Get Full Access
+              See Full System
             </Link>
           </div>
         </AnimateIn>

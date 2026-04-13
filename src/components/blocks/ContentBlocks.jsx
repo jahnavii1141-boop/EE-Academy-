@@ -16,7 +16,7 @@ const ICON_MAP = {
 // ─── Base block types ──────────────────────────────────────────────────────────
 
 export function Paragraph({ text }) {
-  return <p className="text-navy/75 leading-[1.85] mb-5 text-[1.0625rem]">{text}</p>
+  return <p className="text-navy/90 leading-[1.85] mb-5 text-[1.0625rem]">{text}</p>
 }
 
 export function SectionHeading({ text }) {
@@ -31,7 +31,7 @@ export function Callout({ text }) {
   return (
     <div className="my-8 relative pl-6 border-l-[3px] border-navy/20">
       {text.split('\n\n').map((line, i) => (
-        <p key={i} className={`font-serif text-navy/80 text-lg leading-relaxed italic ${i > 0 ? 'mt-3' : ''}`}>
+        <p key={i} className={`font-serif text-navy/90 text-lg leading-relaxed italic ${i > 0 ? 'mt-3' : ''}`}>
           {line}
         </p>
       ))}
@@ -43,7 +43,7 @@ export function BulletList({ items }) {
   return (
     <ul className="my-5 space-y-3">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3.5 text-navy/75 leading-relaxed">
+        <li key={i} className="flex items-start gap-3.5 text-navy/85 leading-relaxed">
           <span className="mt-[0.45rem] w-1.5 h-1.5 rounded-full bg-navy/30 flex-shrink-0" />
           <span>{item}</span>
         </li>
@@ -65,7 +65,7 @@ export function CriteriaGrid({ items }) {
               </span>
             )}
           </div>
-          <p className="text-navy/60 text-sm leading-relaxed">{item.text}</p>
+          <p className="text-navy/80 text-sm leading-relaxed">{item.text}</p>
         </div>
       ))}
     </div>
@@ -82,7 +82,7 @@ export function BeforeAfter({ before, after }) {
           </svg>
           {before.label}
         </span>
-        <p className="text-navy/65 text-sm leading-relaxed italic">{before.text}</p>
+        <p className="text-navy/80 text-sm leading-relaxed italic">{before.text}</p>
       </div>
       <div className="rounded-xl border border-green-200/80 bg-green-50/40 p-5">
         <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-500 uppercase tracking-wider mb-3">
@@ -91,7 +91,7 @@ export function BeforeAfter({ before, after }) {
           </svg>
           {after.label}
         </span>
-        <p className="text-navy/65 text-sm leading-relaxed italic">{after.text}</p>
+        <p className="text-navy/80 text-sm leading-relaxed italic">{after.text}</p>
       </div>
     </div>
   )
@@ -107,7 +107,7 @@ export function IconCard({ icon, title, text }) {
         <Icon className="w-4.5 h-4.5 text-navy/40 flex-shrink-0 mt-0.5" />
         <div>
           <h4 className="font-semibold text-navy text-sm mb-1">{title}</h4>
-          <p className="text-navy/55 text-sm leading-relaxed">{text}</p>
+          <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
         </div>
       </div>
     </div>
@@ -119,7 +119,7 @@ export function StatHighlight({ stat, label }) {
     <div className="text-center py-5 px-4">
       <p className="font-serif text-3xl font-bold text-navy mb-1">{stat}</p>
       <div className="w-8 h-px bg-navy/15 mx-auto mb-2" />
-      <p className="text-navy/50 text-sm">{label}</p>
+      <p className="text-navy/75 text-sm">{label}</p>
     </div>
   )
 }
@@ -141,7 +141,7 @@ export function StepProcess({ steps }) {
           {/* Content */}
           <div className="pb-6 pt-0.5 flex-1">
             <h4 className="font-semibold text-navy text-sm mb-1">{step.title}</h4>
-            <p className="text-navy/55 text-sm leading-relaxed">{step.text}</p>
+            <p className="text-navy/80 text-sm leading-relaxed">{step.text}</p>
           </div>
         </div>
       ))}
@@ -155,7 +155,7 @@ export function TipBox({ text }) {
       <Lightbulb className="w-4 h-4 text-emerald-500/70 flex-shrink-0 mt-0.5" />
       <div>
         <p className="text-xs font-semibold text-emerald-600/80 uppercase tracking-wider mb-1">Tip</p>
-        <p className="text-navy/60 text-sm leading-relaxed">{text}</p>
+        <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
       </div>
     </div>
   )
@@ -167,7 +167,7 @@ export function WarningBox({ text }) {
       <AlertTriangle className="w-4 h-4 text-amber-500/70 flex-shrink-0 mt-0.5" />
       <div>
         <p className="text-xs font-semibold text-amber-600/80 uppercase tracking-wider mb-1">Note</p>
-        <p className="text-navy/60 text-sm leading-relaxed">{text}</p>
+        <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
       </div>
     </div>
   )
@@ -199,7 +199,7 @@ export function GifBlock({ src, alt, caption }) {
         />
       )}
       {caption && (
-        <figcaption className="text-center text-navy/45 text-xs mt-2.5 italic">{caption}</figcaption>
+        <figcaption className="text-center text-navy/60 text-xs mt-2.5 italic">{caption}</figcaption>
       )}
     </figure>
   )
@@ -216,7 +216,7 @@ export function ImageBlock({ src, alt, caption, maxWidth }) {
         loading="lazy"
       />
       {caption && (
-        <figcaption className="text-center text-navy/45 text-xs mt-2.5 italic">{caption}</figcaption>
+        <figcaption className="text-center text-navy/60 text-xs mt-2.5 italic">{caption}</figcaption>
       )}
     </figure>
   )
@@ -230,7 +230,7 @@ export function NumberedSteps({ items }) {
           <span className="w-5 h-5 rounded-full border border-navy/15 text-navy/50 font-semibold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
             {i + 1}
           </span>
-          <span className="text-navy/70 text-sm leading-relaxed">{item}</span>
+          <span className="text-navy/85 text-sm leading-relaxed">{item}</span>
         </li>
       ))}
     </ol>
@@ -254,7 +254,7 @@ export function ComparisonTable({ headers, rows }) {
           {rows.map((row, ri) => (
             <tr key={ri}>
               {row.map((cell, ci) => (
-                <td key={ci} className="px-4 py-3 text-navy/65 border-b border-navy/5">
+                <td key={ci} className="px-4 py-3 text-navy/80 border-b border-navy/5">
                   {cell}
                 </td>
               ))}
@@ -274,7 +274,7 @@ export function FormulaBox({ title, formula, description }) {
       )}
       <p className="font-serif text-navy text-lg font-semibold leading-snug mb-2">{formula}</p>
       {description && (
-        <p className="text-navy/50 text-sm leading-relaxed">{description}</p>
+        <p className="text-navy/75 text-sm leading-relaxed">{description}</p>
       )}
     </div>
   )
@@ -283,9 +283,9 @@ export function FormulaBox({ title, formula, description }) {
 export function QuoteHighlight({ text, attribution }) {
   return (
     <blockquote className="my-8 pl-6 border-l-2 border-navy/15">
-      <p className="font-serif text-navy/75 text-lg italic leading-relaxed mb-2">{text}</p>
+      <p className="font-serif text-navy/90 text-lg italic leading-relaxed mb-2">{text}</p>
       {attribution && (
-        <cite className="text-navy/40 text-sm not-italic">— {attribution}</cite>
+        <cite className="text-navy/60 text-sm not-italic">— {attribution}</cite>
       )}
     </blockquote>
   )
@@ -300,7 +300,7 @@ export function KeyTakeaway({ items }) {
       </div>
       <ul className="space-y-2">
         {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-navy/65 text-sm leading-relaxed">
+          <li key={i} className="flex items-start gap-2.5 text-navy/80 text-sm leading-relaxed">
             <span className="mt-[0.45rem] w-1 h-1 rounded-full bg-navy/30 flex-shrink-0" />
             <span>{item}</span>
           </li>
@@ -355,7 +355,7 @@ export function ProgressCheck({ moduleId, items }) {
                 className="mt-0.5 w-4 h-4 rounded border-navy/15 text-navy/50 focus:ring-navy/20 cursor-pointer"
               />
               <span className={`text-sm leading-relaxed transition-colors ${
-                checked.includes(i) ? 'text-navy/35 line-through' : 'text-navy/65'
+                checked.includes(i) ? 'text-navy/45 line-through' : 'text-navy/80'
               }`}>
                 {item}
               </span>

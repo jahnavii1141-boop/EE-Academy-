@@ -54,7 +54,7 @@ export default function Navbar() {
               isCourses ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
           >
-            All Courses
+            Resource Lab
           </Link>
           <Link
             to="/guides"
@@ -93,8 +93,8 @@ export default function Navbar() {
             />
           </SignedIn>
           {isHome ? (
-            <Link to="/pricing" className="btn-primary text-sm">
-              Enroll Now
+            <Link to="/dashboard" className="btn-primary text-sm">
+              Start Free
             </Link>
           ) : (
             <Link to="/dashboard" className="btn-primary text-sm">
@@ -128,7 +128,7 @@ export default function Navbar() {
             About
           </Link>
           <Link to="/courses" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-            All Courses
+            Resource Lab
           </Link>
           <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard
@@ -149,7 +149,7 @@ export default function Navbar() {
             </div>
           </SignedIn>
           {isHome ? (
-            <Link to="/pricing" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Enroll Now</Link>
+            <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start Free</Link>
           ) : (
             <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</Link>
           )}

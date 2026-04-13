@@ -33,13 +33,13 @@ const DEFAULT_TABS = [
   {
     value: 'tab-1',
     icon: <Zap className="h-auto w-4 shrink-0" />,
-    label: 'Master the EE',
+    label: 'Bonus Vault Tools',
     content: {
-      badge: 'Core Skills',
-      title: 'Write an Extended Essay that stands out.',
+      badge: 'Premium Bonus Vault',
+      title: 'The tools are not extras. They are what make the system feel usable.',
       description:
-        'Learn how to choose a compelling research question, structure your argument, and produce a polished academic essay that earns top marks.',
-      buttonText: 'See Plans',
+        'Inside the Bonus Vault, you get the EE Planner, Study Calendar, EE Dump Workspace, and Source Tracker so you can stop juggling notes, tabs, and deadlines in your head.',
+      buttonText: 'See Full System',
       imageSrc: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
       imageAlt: 'Student studying at desk',
     },
@@ -47,13 +47,13 @@ const DEFAULT_TABS = [
   {
     value: 'tab-2',
     icon: <Pointer className="h-auto w-4 shrink-0" />,
-    label: 'Research Skills',
+    label: 'Weekly Direction',
     content: {
-      badge: 'Expert Techniques',
-      title: 'Find and evaluate sources like a scholar.',
+      badge: 'Know What To Do Next',
+      title: 'Know exactly what to do each week until submission.',
       description:
-        'Master academic databases, citation styles, and critical evaluation of sources. Build the research foundation that underpins every great EE.',
-      buttonText: 'Explore Tools',
+        'The timeline and study planning tools turn a vague deadline into a week-by-week plan, so you stop drifting and start making progress.',
+      buttonText: 'See How It Works',
       imageSrc: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80',
       imageAlt: 'Library books and research',
     },
@@ -61,13 +61,13 @@ const DEFAULT_TABS = [
   {
     value: 'tab-3',
     icon: <Layout className="h-auto w-4 shrink-0" />,
-    label: 'Score Maximiser',
+    label: 'Protect Marks',
     content: {
-      badge: 'Assessment Insights',
-      title: 'Understand exactly what examiners want.',
+      badge: 'Fix Hidden Grade Drops',
+      title: 'Never lose marks on citations, structure, or weak analysis again.',
       description:
-        'Unpack the IB assessment criteria with real exemplars, annotated model essays, and examiner tips. Know what A looks like before you write a word.',
-      buttonText: 'See Options',
+        'Use the bibliography help, criteria-first lessons, and the One-Day Protocol to catch the small mistakes that are drastically reducing your grade.',
+      buttonText: 'See the System',
       imageSrc: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
       imageAlt: 'Graded paper and pen',
     },
@@ -75,9 +75,9 @@ const DEFAULT_TABS = [
 ]
 
 export default function Feature108({
-  badge = 'The Extended Essay Academy',
-  heading = 'Everything you need to ace your Extended Essay',
-  description = 'A structured, expert-led programme for IB students who want more than a pass.',
+  badge = 'The EE System',
+  heading = 'This system fixes exactly what IB students struggle with',
+  description = 'Not just lessons. A full blueprint, a Bonus Vault of tools, and a clearer system for getting your EE done properly.',
   tabs = DEFAULT_TABS,
 }) {
   const [active, setActive] = useState(tabs[0].value)

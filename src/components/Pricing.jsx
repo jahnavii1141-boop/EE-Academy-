@@ -5,7 +5,7 @@ import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 const MotionDiv = motion.div
 
 const FEATURES_BASIC = [
-  'Premium Extended Essay Course — all 14 modules',
+  'Extended Essay Resource Lab — all 14 modules',
   'Study Calendar tool',
   'Citation quick-reference guide',
 ]

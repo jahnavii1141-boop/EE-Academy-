@@ -218,7 +218,7 @@ export default function Curriculum() {
     <section id="curriculum" className="bg-navy py-20 px-6">
       <div className="max-w-3xl mx-auto">
         <AnimateIn>
-          <h2 className="section-heading-light">Course Curriculum</h2>
+          <h2 className="section-heading-light">Resource Lab Curriculum</h2>
           <p className="section-subheading-light">
             {MODULES.length} modules · {totalLessons} lessons · Built by a real student who scored 32/34
           </p>

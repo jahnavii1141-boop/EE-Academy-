@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import AnimateIn from './ui/AnimateIn'
-import WaitlistHero from './WaitlistHero'
 
 export default function Hero() {
   return (
@@ -40,30 +39,31 @@ export default function Hero() {
           <div>
             <AnimateIn>
               <span className="inline-flex items-center bg-parchment/10 text-parchment text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-parchment/20 tracking-wide">
-                ★ Premium Extended Essay Course
+                Predicted a C. Finished with an A and 32/34.
               </span>
             </AnimateIn>
 
             <AnimateIn delay={0.1}>
               <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-cream leading-[1.1] mb-6">
-                Master Your<br />
+                Stop guessing your<br />
                 <span className="gradient-text">Extended Essay.</span>
               </h1>
             </AnimateIn>
 
             <AnimateIn delay={0.2}>
               <p className="text-lg text-steel leading-relaxed max-w-lg mb-8">
-                The only structured programme designed specifically for IB students.
-                Go from uncertain to confident — with expert guidance every step of the way.
+                The Extended Essay System is the step-by-step blueprint I used to go from a predicted C to a final A and 32/34.
+                It gives you the structure, tools, and clear next steps to stop second-guessing and know exactly what to do.
               </p>
             </AnimateIn>
 
             <AnimateIn delay={0.3}>
-              <div className="flex flex-wrap items-center gap-4">
-                <Link to="/dashboard" className="btn-primary-light">Access Free Class Now</Link>
-                <Link to="/curriculum" className="btn-outline-light">View Curriculum</Link>
+              <div className="flex flex-wrap items-center gap-4 mb-4">
+                <Link to="/dashboard" className="btn-primary-light">Start Free</Link>
               </div>
-              <WaitlistHero />
+              <p className="text-sm text-steel/90 max-w-md">
+                Start with the free resources and see how the system works before you unlock everything.
+              </p>
             </AnimateIn>
           </div>
 

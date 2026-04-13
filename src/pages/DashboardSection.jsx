@@ -46,6 +46,10 @@ function isStepLocked(module, accessLevel, isSignedIn) {
   return !isSignedIn
 }
 
+function stripDashboardLabel(label) {
+  return label.replace(/^Module \d+: /, '').replace(/^AI Module: /, '')
+}
+
 // ─── Sidebar TOC ────────────────────────────────────────────────────────────
 
 function SidebarTOC({ toc, activeModuleId }) {
@@ -95,7 +99,7 @@ function SidebarTOC({ toc, activeModuleId }) {
 
 // ─── Step Card ───────────────────────────────────────────────────────────────
 
-function StepCard({ module, stepNumber, isLocked, isVisited }) {
+function StepCard({ module, stepNumber, isLocked, isVisited, displayTitle }) {
   const subHeadings = module.content
     .filter((b) => b.type === 'heading')
     .slice(0, 3)
@@ -137,7 +141,7 @@ function StepCard({ module, stepNumber, isLocked, isVisited }) {
 
       {/* Title + tagline */}
       <h3 className="font-serif text-lg font-bold text-navy mb-1 leading-snug">
-        {module.title}
+        {displayTitle || module.title}
       </h3>
       <p className="text-sm text-navy/55 mb-4 leading-relaxed">{module.tagline}</p>
 
@@ -298,6 +302,7 @@ export default function DashboardSection() {
                     stepNumber={index + 1}
                     isLocked={locked}
                     isVisited={visited}
+                    displayTitle={stripDashboardLabel(section.stepLabels?.[index] || '')}
                   />
                 )
               })}

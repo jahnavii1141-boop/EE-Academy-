@@ -19,7 +19,7 @@ function ModuleSidebar({ currentIndex, isSignedIn, isLoaded }) {
       {/* Module list */}
       <div className="flex-1 overflow-y-auto py-5 px-4 space-y-0.5">
         <p className="text-[0.65rem] font-semibold text-navy/35 uppercase tracking-[0.15em] mb-3 px-2">
-          Course Modules
+          Lab Modules
         </p>
         {COURSE_MODULES.map((m, i) => {
           const isCurrent = i === currentIndex
@@ -125,7 +125,7 @@ function PaywallBanner({ moduleTitle }) {
           </svg>
         </div>
         <h3 className="font-serif text-xl font-bold text-navy mb-2">
-          This module is part of the full course
+          This module is part of the full Resource Lab
         </h3>
         <p className="text-navy/55 text-sm max-w-sm mx-auto mb-6 leading-relaxed">
           Enroll to unlock <span className="font-medium text-navy">{moduleTitle}</span> and all 12 other modules — including the 32/34 essay analysis, AI prompt library, and every template.
@@ -175,7 +175,7 @@ export default function CourseModulePage() {
       <div className="min-h-screen bg-cream flex items-center justify-center">
         <div className="text-center">
           <p className="text-navy/50 mb-4">Module not found.</p>
-          <Link to="/courses" className="btn-primary">Back to Courses</Link>
+          <Link to="/courses" className="btn-primary">Back to Resource Lab</Link>
         </div>
       </div>
     )

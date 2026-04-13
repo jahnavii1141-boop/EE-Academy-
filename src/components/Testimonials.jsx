@@ -14,7 +14,7 @@ const TESTIMONIALS = [
     score: 'A — 32/34',
   },
   {
-    quote: "My supervisor was barely available, so I relied on this course completely. The step-by-step writing modules were exactly what I needed to structure my argument.",
+    quote: "My supervisor was barely available, so I relied on these resources completely. The step-by-step writing modules were exactly what I needed to structure my argument.",
     name: 'Marcus R.',
     role: 'IB Student, Year 2',
     initials: 'MR',
@@ -22,7 +22,7 @@ const TESTIMONIALS = [
     score: 'A — 30/34',
   },
   {
-    quote: "I was so stressed about the RPPF and viva voce — this course walked me through everything. I submitted feeling prepared, not panicked.",
+    quote: "I was so stressed about the RPPF and viva voce — this resource lab walked me through everything. I submitted feeling prepared, not panicked.",
     name: 'Priya M.',
     role: 'IB Student, Year 2',
     initials: 'PM',

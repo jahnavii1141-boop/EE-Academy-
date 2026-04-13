@@ -9,7 +9,7 @@ const SECTIONS = [
   {
     number: '2',
     title: 'Products & Delivery',
-    body: 'We sell digital educational products including online course content, interactive tools, templates, and downloadable resources. All products are delivered digitally. Upon successful payment, you will receive access to the purchased content via email or through our website.',
+    body: 'We sell digital educational products including online learning content, interactive tools, templates, and downloadable resources. All products are delivered digitally. Upon successful payment, you will receive access to the purchased content via email or through our website.',
   },
   {
     number: '3',

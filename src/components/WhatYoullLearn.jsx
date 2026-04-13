@@ -4,23 +4,23 @@ import { StaggerContainer, staggerItem } from './ui/AnimateIn'
 const MotionDiv = motion.div
 
 const OUTCOMES = [
-  { text: 'Choose a focused, scoreable research question', bg: 'bg-cream' },
-  { text: 'Structure your argument with academic rigour', bg: 'bg-card-2' },
-  { text: 'Find and cite credible sources correctly', bg: 'bg-cream' },
-  { text: 'Write a compelling introduction and conclusion', bg: 'bg-card-2' },
-  { text: 'Meet IB assessment criteria at every level', bg: 'bg-cream' },
-  { text: 'Produce a polished, examiner-ready final draft', bg: 'bg-card-2' },
-  { text: 'Navigate the reflection and viva voce process', bg: 'bg-cream' },
-  { text: 'Submit with confidence — and earn a top grade', bg: 'bg-card-2' },
+  { text: "You don't know if your research question is actually good enough", bg: 'bg-cream' },
+  { text: "You're writing, but you're not sure if your essay is analytical or just descriptive", bg: 'bg-card-2' },
+  { text: "You don't fully understand what examiners are looking for", bg: 'bg-cream' },
+  { text: 'You keep doing work, but still feel behind and unsure', bg: 'bg-card-2' },
+  { text: 'You are scared of wasting time on the wrong structure or evidence', bg: 'bg-cream' },
+  { text: 'You want a high grade, but the whole process feels messy', bg: 'bg-card-2' },
+  { text: 'You need a clear system, not more random advice', bg: 'bg-cream' },
+  { text: 'This is exactly what the EE System fixes', bg: 'bg-card-2' },
 ]
 
 export default function WhatYoullLearn() {
   return (
     <section id="learn" className="bg-parchment py-20 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="section-heading">What You'll Learn</h2>
+        <h2 className="section-heading">If your Extended Essay feels like this...</h2>
         <p className="section-subheading">
-          By the end of the programme, you'll have the skills and confidence to submit an Extended Essay you're proud of.
+          Most IB students are not failing because they are lazy. They are stuck because nobody has shown them a clear process to follow.
         </p>
 
         <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

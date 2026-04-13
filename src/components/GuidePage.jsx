@@ -104,14 +104,14 @@ export default function GuidePage({
           </div>
         )}
 
-        {/* Course CTA */}
+        {/* Resource Lab CTA */}
         <div className="mt-12 rounded-2xl bg-navy text-center p-8">
           <h3 className="font-serif text-xl font-bold text-cream mb-2">Ready to go deeper?</h3>
           <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
-            This guide covers the basics. Our full 14-module course gives you the complete system, tools, and templates to get an A.
+            This guide covers the basics. The full Resource Lab gives you the complete system, tools, and templates to get an A.
           </p>
           <Link to="/courses" className="btn-primary-light text-sm">
-            Explore the Full Course
+            Explore the Resource Lab
           </Link>
         </div>
       </div>

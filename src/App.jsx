@@ -5,6 +5,9 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Feature108 from './components/blocks/Feature108'
 import WhatYoullLearn from './components/WhatYoullLearn'
+import Testimonials from './components/Testimonials'
+import HomeFAQ from './components/HomeFAQ'
+import EvervaultCTA from './components/EvervaultCTA'
 import ExitIntentPopup from './components/ExitIntentPopup'
 import SEOHead from './components/SEOHead'
 import ResultsStrip from './components/ResultsStrip'
@@ -52,7 +55,7 @@ const COURSE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: 'The Extended Essay Academy',
-  description: 'The only structured programme designed specifically for IB students to master the Extended Essay. 14 modules covering research, writing, structure, and strategy.',
+  description: 'A structured IB Extended Essay resource lab with 14 modules covering research, writing, structure, and strategy.',
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',
@@ -72,15 +75,19 @@ function LandingPage() {
   return (
     <main>
       <SEOHead
-        title="IB Extended Essay Course — Master Your EE"
-        description="The only structured programme for IB Extended Essay success. 14 modules, expert guidance, proven 32/34 system. Built by a real IB student."
+        title="The Extended Essay Academy : Premium IB EE resources"
+        description="Premium IB EE resources with 14 modules, expert guidance, and a proven 32/34 system built by a real IB student."
         canonical="/"
         jsonLd={COURSE_JSON_LD}
+        appendSiteName={false}
       />
       <Hero />
       <ResultsStrip />
       <Feature108 />
       <WhatYoullLearn />
+      <Testimonials />
+      <HomeFAQ />
+      <EvervaultCTA />
     </main>
   )
 }

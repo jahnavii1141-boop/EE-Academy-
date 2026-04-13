@@ -120,7 +120,7 @@ export default function Dashboard() {
       <div className="max-w-6xl mx-auto px-6 pt-12 pb-8">
         <div className="mb-2">
           <span className="inline-flex items-center bg-parchment text-navy text-xs font-semibold px-3 py-1.5 rounded-full border border-navy/12 tracking-wide mb-4">
-            ★ Premium Extended Essay Course
+            ★ Free Resource Lab
           </span>
         </div>
         <h1 className="font-serif text-3xl lg:text-4xl font-bold text-navy mb-2">
@@ -128,7 +128,7 @@ export default function Dashboard() {
           <span className="text-navy/50 font-normal">Start learning.</span>
         </h1>
         <p className="text-sm text-ink-soft max-w-lg">
-          Premium Extended Essay Course · 14 modules · Built by a real 32/34 IB student.
+          Free Resource Lab · 14 modules · Built by a real 32/34 IB student.
           Work through each section in order for the best results.
         </p>
       </div>

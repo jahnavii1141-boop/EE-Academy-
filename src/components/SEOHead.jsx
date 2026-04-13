@@ -12,8 +12,11 @@ export default function SEOHead({
   ogType = 'website',
   jsonLd,
   noindex = false,
+  appendSiteName = true,
 }) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+  const fullTitle = title
+    ? appendSiteName ? `${title} | ${SITE_NAME}` : title
+    : SITE_NAME
   const fullCanonical = canonical
     ? canonical.startsWith('http') ? canonical : `${BASE_URL}${canonical}`
     : undefined

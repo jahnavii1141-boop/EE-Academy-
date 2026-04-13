@@ -55,9 +55,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Course links */}
+        {/* Resource links */}
         <div>
-          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Course</h3>
+          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Resources</h3>
           <ul className="space-y-3">
             {COURSE_LINKS.map(link => (
               <li key={link.label}>
@@ -100,7 +100,7 @@ export default function Footer() {
         {/* Newsletter */}
         <div>
           <h3 className="font-serif text-cream font-semibold text-sm mb-4">Stay Updated</h3>
-          <p className="text-sm text-steel mb-3">EE tips and course updates in your inbox.</p>
+          <p className="text-sm text-steel mb-3">EE tips and resource updates in your inbox.</p>
           <div className="flex gap-2">
             <input
               type="email"

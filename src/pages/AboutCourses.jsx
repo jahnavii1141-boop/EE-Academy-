@@ -8,7 +8,7 @@ const CARD_CLASS_3 = '[grid-area:stack] translate-x-24 translate-y-20 hover:tran
 
 const EE_COURSE = {
   id: 'extended-essay',
-  title: 'Premium Extended Essay Course',
+  title: 'Extended Essay Free Resource Lab',
   subtitle: '14 Modules · Built by a 32/34 student',
   level: 'All Levels',
   duration: '24h',
@@ -30,17 +30,17 @@ export default function AboutCourses() {
       <div className="max-w-6xl mx-auto px-6 pt-16 pb-12 text-center">
         <span className="inline-flex items-center gap-1.5 bg-parchment text-navy text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-navy/10">
           <Sparkles className="size-3" />
-          Extended Essay Programme
+          Free Resource Lab
         </span>
         <h1 className="text-4xl lg:text-5xl font-serif font-bold text-navy leading-tight mb-4 tracking-tight">
-          The Course
+          Free Resource Lab
         </h1>
         <p className="text-base text-ink-soft max-w-xl mx-auto leading-relaxed">
           Hover the stacked cards to explore modules. Click to begin learning.
         </p>
       </div>
 
-      {/* Single course — centred */}
+      {/* Single resource lab card — centred */}
       <div className="max-w-md mx-auto px-6 pb-20">
         <div className={`bento-card ${EE_COURSE.accent} flex flex-col justify-between group border border-navy/8`}>
           {/* Top: meta */}
@@ -71,7 +71,7 @@ export default function AboutCourses() {
             className="mt-6 flex items-center justify-between bg-navy/8 hover:bg-navy/15 transition-colors rounded-xl px-4 py-3"
           >
             <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-navy">Start Course</span>
+              <span className="text-sm font-semibold text-navy">Start Learning</span>
               <span className="text-xs font-semibold text-green-700 bg-green-100 border border-green-200 px-2 py-0.5 rounded-full">
                 Free Preview
               </span>

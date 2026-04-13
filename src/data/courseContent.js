@@ -8,7 +8,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'callout',
-        text: 'This course was built by a real IB student who scored 32/34 on their Extended Essay. Everything here — the methods, the frameworks, the templates, the advice — comes from what actually worked, not from theory.',
+        text: 'This resource lab was built by a real IB student who scored 32/34 on their Extended Essay. Everything here — the methods, the frameworks, the templates, the advice — comes from what actually worked, not from theory.',
       },
       {
         type: 'gif',
@@ -32,7 +32,7 @@ export const COURSE_MODULES = [
         type: 'formula-box',
         title: 'The 80/20 Rule',
         formula: '20% of your effort → 80% of your marks',
-        description: 'This course identifies exactly which 20% to focus on — the research question, structure, and criteria mapping — so you get maximum marks with minimum stress.',
+        description: 'This resource lab identifies exactly which 20% to focus on — the research question, structure, and criteria mapping — so you get maximum marks with minimum stress.',
       },
       {
         type: 'icon-card',
@@ -88,7 +88,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'heading',
-        text: 'What This Course Covers',
+        text: 'What This Resource Lab Covers',
       },
       {
         type: 'step-process',
@@ -106,7 +106,7 @@ export const COURSE_MODULES = [
         items: [
           'Your EE is a research paper, not a school assignment — write it like one',
           'The Pareto principle applies: focus on the 20% that drives 80% of your marks',
-          'This course gives you the exact system used to score 32/34',
+          'This resource lab gives you the exact system used to score 32/34',
           'Every module builds on the last — follow them in order',
         ],
       },
@@ -139,7 +139,7 @@ export const COURSE_MODULES = [
       {
         type: 'image',
         src: '/images/ib-ee-description.png',
-        alt: 'IB official Extended Essay course description and aims',
+        alt: 'IB official Extended Essay description and aims',
         caption: 'The IB tells us exactly what they expect — a formal piece of academic writing.',
       },
       {
@@ -1710,7 +1710,7 @@ export const COURSE_MODULES = [
         rows: [
           [
             'Included SHEIN in a market share chart but barely discussed them.',
-            'I deliberately left SHEIN out — their pricing strategy is fundamentally different. Analysing it would have opened a discussion my RQ didn\'t ask about. Stay disciplined about scope.',
+            'I deliberately left SHEIN out — their market strategy is fundamentally different. Analysing it would have opened a discussion my RQ didn\'t ask about. Stay disciplined about scope.',
           ],
         ],
       },
@@ -1774,7 +1774,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Every template below is built from the system used to get 32/34 and designed around the process covered in this course. They\'re not generic — they\'re specific to the EE Academy method.',
+        text: 'Every template below is built from the system used to get 32/34 and designed around the process covered in this resource lab. They\'re not generic — they\'re specific to the EE Academy method.',
       },
       {
         type: 'heading',

@@ -15,7 +15,7 @@ export default function NotFoundPage() {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Link to="/" className="btn-primary text-sm">Back to Home</Link>
-          <Link to="/courses" className="btn-outline text-sm">View Courses</Link>
+          <Link to="/courses" className="btn-outline text-sm">View Resources</Link>
         </div>
       </div>
     </div>

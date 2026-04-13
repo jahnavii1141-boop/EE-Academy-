@@ -27,16 +27,47 @@ const PHASES = [
   { name: 'Submission', color: '#10b981', startMilestone: 15, endMilestone: 15 },
 ]
 
-// --- Palette constants (remapped to site theme) ---
-const C = {
-  cream:      '#F4F3E8',
-  steel:      '#9BAAB8',
-  steelMuted: 'rgba(155,170,184,0.6)',
-  cardBg:     'rgba(244,243,232,0.03)',
-  cardBorder: 'rgba(244,243,232,0.08)',
-  inputBg:    'rgba(244,243,232,0.06)',
-  inputBorder:'rgba(244,243,232,0.12)',
-  barBg:      'rgba(244,243,232,0.06)',
+const PALETTES = {
+  dark: {
+    cream: '#F4F3E8',
+    primaryText: '#F4F3E8',
+    steel: '#9BAAB8',
+    steelMuted: 'rgba(155,170,184,0.6)',
+    cardBg: 'rgba(244,243,232,0.03)',
+    cardBorder: 'rgba(244,243,232,0.08)',
+    inputBg: 'rgba(244,243,232,0.06)',
+    inputBorder: 'rgba(244,243,232,0.12)',
+    inputText: '#ffffff',
+    barBg: 'rgba(244,243,232,0.06)',
+    line: 'rgba(244,243,232,0.06)',
+    activeToggleBg: 'rgba(221,217,196,0.15)',
+    activeToggleText: '#DDD9C4',
+    toggleText: 'rgba(155,170,184,0.6)',
+    actionBg: '#F4F3E8',
+    actionText: '#2E3250',
+    emptyDot: 'rgba(244,243,232,0.1)',
+    uncheckedBorder: 'rgba(244,243,232,0.2)',
+  },
+  light: {
+    cream: '#1a1a2e',
+    primaryText: '#1a1a2e',
+    steel: '#4a4a68',
+    steelMuted: '#8e8ea0',
+    cardBg: '#ffffff',
+    cardBorder: '#e8e6e1',
+    inputBg: '#ffffff',
+    inputBorder: '#e8e6e1',
+    inputText: '#1a1a2e',
+    barBg: '#f2efe9',
+    line: '#ebe7df',
+    activeToggleBg: '#eff4ff',
+    activeToggleText: '#2563eb',
+    toggleText: '#8e8ea0',
+    actionBg: '#1a1a2e',
+    actionText: '#ffffff',
+    emptyDot: '#ffffff',
+    uncheckedBorder: '#d0cec8',
+  },
 }
 
 function getPhaseForMilestone(index) {
@@ -56,7 +87,8 @@ function addWeeks(date, weeks) {
   return d
 }
 
-export default function EEPlanner() {
+export default function EEPlanner({ theme = 'dark' }) {
+  const C = PALETTES[theme] || PALETTES.dark
   const [submissionDate, setSubmissionDate] = useState('')
   const [milestones, setMilestones] = useState(DEFAULT_MILESTONES)
   const [showAddForm, setShowAddForm] = useState(false)
@@ -96,7 +128,7 @@ export default function EEPlanner() {
   const daysUntilSubmission = parsedDate ? Math.ceil((parsedDate - today) / (1000 * 60 * 60 * 24)) : null
 
   return (
-    <div style={{ color: C.cream, fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+    <div style={{ color: C.primaryText, fontFamily: "'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
       {/* Date picker + countdown */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end', flexWrap: 'wrap', marginBottom: 28 }}>
         <div>
@@ -109,7 +141,7 @@ export default function EEPlanner() {
             onChange={e => setSubmissionDate(e.target.value)}
             style={{
               padding: '10px 14px', borderRadius: 9999, border: `1px solid ${C.inputBorder}`,
-              background: C.inputBg, color: '#fff', fontSize: 14, outline: 'none',
+              background: C.inputBg, color: C.inputText, fontSize: 14, outline: 'none',
               width: 200,
             }}
           />
@@ -122,7 +154,7 @@ export default function EEPlanner() {
           }}>
             <span style={{
               fontSize: 20, fontWeight: 700,
-              fontFamily: "'Cormorant Garamond', Georgia, serif",
+              fontFamily: "'Fraunces', 'Cormorant Garamond', Georgia, serif",
               color: daysUntilSubmission < 30 ? '#ef4444' : daysUntilSubmission < 90 ? '#f59e0b' : '#10b981',
             }}>
               {daysUntilSubmission}
@@ -159,8 +191,8 @@ export default function EEPlanner() {
             {['timeline', 'checklist'].map(v => (
               <button key={v} onClick={() => setView(v)} style={{
                 padding: '8px 18px', border: 'none', cursor: 'pointer', fontSize: 13, fontWeight: 600,
-                background: view === v ? 'rgba(221,217,196,0.15)' : 'transparent',
-                color: view === v ? '#DDD9C4' : C.steelMuted, transition: 'all 0.2s',
+                background: view === v ? C.activeToggleBg : 'transparent',
+                color: view === v ? C.activeToggleText : C.toggleText, transition: 'all 0.2s',
               }}>
                 {v === 'timeline' ? '📅 Timeline' : '✅ Checklist'}
               </button>
@@ -168,7 +200,7 @@ export default function EEPlanner() {
           </div>
           <button onClick={() => setShowAddForm(!showAddForm)} style={{
             padding: '8px 16px', borderRadius: 9999, border: 'none',
-            background: C.cream, color: '#2E3250', fontSize: 13, fontWeight: 600,
+            background: C.actionBg, color: C.actionText, fontSize: 13, fontWeight: 600,
             cursor: 'pointer', transition: 'all 0.2s',
           }}>
             + Add Deadline
@@ -263,7 +295,7 @@ export default function EEPlanner() {
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: 20, flexShrink: 0 }}>
                   <div style={{
                     width: 14, height: 14, borderRadius: '50%', flexShrink: 0,
-                    background: m.done ? '#10b981' : isThisWeek ? phase.color : 'rgba(244,243,232,0.1)',
+                  background: m.done ? '#10b981' : isThisWeek ? phase.color : C.emptyDot,
                     border: isThisWeek && !m.done ? `2px solid ${phase.color}` : '2px solid transparent',
                     boxShadow: isThisWeek ? `0 0 12px ${phase.color}40` : 'none',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -272,7 +304,7 @@ export default function EEPlanner() {
                     {m.done && '✓'}
                   </div>
                   {i < sortedMilestones.length - 1 && (
-                    <div style={{ width: 2, flex: 1, minHeight: 32, background: 'rgba(244,243,232,0.06)' }} />
+                    <div style={{ width: 2, flex: 1, minHeight: 32, background: C.line }} />
                   )}
                 </div>
                 {/* Card */}
@@ -307,7 +339,7 @@ export default function EEPlanner() {
                       </div>
                       <p style={{
                         fontSize: 14, fontWeight: 500, margin: 0,
-                        color: m.done ? C.steelMuted : C.cream,
+                        color: m.done ? C.steelMuted : C.primaryText,
                         textDecoration: m.done ? 'line-through' : 'none',
                       }}>
                         {m.label}
@@ -352,7 +384,7 @@ export default function EEPlanner() {
               <div key={phase.name} style={{ marginBottom: 24 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                   <div style={{ width: 12, height: 12, borderRadius: 3, background: phase.color }} />
-                  <span style={{ fontSize: 13, fontWeight: 700, color: C.cream, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: C.primaryText, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     {phase.name}
                   </span>
                   <span style={{ fontSize: 11, color: C.steelMuted }}>{doneCount}/{phaseMilestones.length}</span>
@@ -369,7 +401,7 @@ export default function EEPlanner() {
                       <div style={{
                         width: 20, height: 20, borderRadius: 6, flexShrink: 0,
                         background: m.done ? '#10b981' : 'transparent',
-                        border: `2px solid ${m.done ? '#10b981' : 'rgba(244,243,232,0.2)'}`,
+                        border: `2px solid ${m.done ? '#10b981' : C.uncheckedBorder}`,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
                         fontSize: 11, color: '#fff', fontWeight: 700,
                       }}>
@@ -378,7 +410,7 @@ export default function EEPlanner() {
                       <div style={{ flex: 1 }}>
                         <p style={{
                           fontSize: 14, margin: 0, fontWeight: 500,
-                          color: m.done ? C.steelMuted : C.cream,
+                          color: m.done ? C.steelMuted : C.primaryText,
                           textDecoration: m.done ? 'line-through' : 'none',
                         }}>
                           {m.label}
@@ -396,7 +428,7 @@ export default function EEPlanner() {
             <div style={{ marginBottom: 24 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
                 <div style={{ width: 12, height: 12, borderRadius: 3, background: '#06b6d4' }} />
-                <span style={{ fontSize: 13, fontWeight: 700, color: C.cream, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+                <span style={{ fontSize: 13, fontWeight: 700, color: C.primaryText, textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                   Your Deadlines
                 </span>
               </div>
@@ -412,7 +444,7 @@ export default function EEPlanner() {
                     <div style={{
                       width: 20, height: 20, borderRadius: 6, flexShrink: 0,
                       background: m.done ? '#10b981' : 'transparent',
-                      border: `2px solid ${m.done ? '#10b981' : 'rgba(244,243,232,0.2)'}`,
+                      border: `2px solid ${m.done ? '#10b981' : C.uncheckedBorder}`,
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       fontSize: 11, color: '#fff', fontWeight: 700,
                     }}>
@@ -421,7 +453,7 @@ export default function EEPlanner() {
                     <div style={{ flex: 1 }}>
                       <p style={{
                         fontSize: 14, margin: 0, fontWeight: 500,
-                        color: m.done ? C.steelMuted : C.cream,
+                        color: m.done ? C.steelMuted : C.primaryText,
                         textDecoration: m.done ? 'line-through' : 'none',
                       }}>
                         {m.label}

@@ -19,7 +19,7 @@ const CONTENT = [
   { type: 'icon-card', icon: 'Zap', title: 'Check Your Genuine Interest', text: 'Not an IB subject — what shows up on your social media? What do you talk about with friends? Fashion, gaming, politics, cooking?' },
   { type: 'icon-card', icon: 'GraduationCap', title: 'Check Your Academic Strength', text: 'Which subject do you score highest in with the least effort? Where does analysis come naturally?' },
   { type: 'icon-card', icon: 'Target', title: 'Check Clastify', text: 'Filter by subject. Look at 30+ essays and 20-25 essays. Understand what works and what doesn\'t.' },
-  { type: 'tip-box', text: 'The magic happens when you connect a real interest to an IB subject. A student who loves sneakers can write a Business EE on Nike\'s pricing strategy. A gamer can write a Psychology EE on cognitive effects of video games.' },
+  { type: 'tip-box', text: 'The magic happens when you connect a real interest to an IB subject. A student who loves sneakers can write a Business EE on Nike\'s market strategy. A gamer can write a Psychology EE on cognitive effects of video games.' },
   { type: 'warning-box', text: 'If your topic lives on the edges of the Venn diagram — you\'re passionate but it\'s in a weak subject, or it scores well but you couldn\'t care less — expect higher stress for the same marks.' },
   { type: 'key-takeaway', items: [
     'Use the Venn diagram: interest + strength + EE-friendly',

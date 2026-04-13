@@ -4,13 +4,13 @@ const SECTIONS = [
   {
     number: '1',
     title: '7-Day Satisfaction Guarantee',
-    body: 'We offer a 7-day satisfaction guarantee from the date of purchase. If you are not satisfied with the course, you may request a full refund within 7 days of your original purchase date.',
+    body: 'We offer a 7-day satisfaction guarantee from the date of purchase. If you are not satisfied with the resources, you may request a full refund within 7 days of your original purchase date.',
     callout: true,
   },
   {
     number: '2',
     title: 'Completion Threshold',
-    body: 'Refund eligibility requires that you have not accessed more than 50% of the course content. If more than 50% of modules have been accessed at the time of your refund request, the refund will not be granted.',
+    body: 'Refund eligibility requires that you have not accessed more than 50% of the learning content. If more than 50% of modules have been accessed at the time of your refund request, the refund will not be granted.',
   },
   {
     number: '3',

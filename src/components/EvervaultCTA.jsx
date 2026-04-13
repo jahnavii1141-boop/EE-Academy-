@@ -1,22 +1,4 @@
-import { EvervaultCard, Icon } from "./ui/evervault-card";
 import AnimateIn from "./ui/AnimateIn";
-
-const MODULE_REVEAL_TEXT = [
-  "M1: Examiner Mindset",
-  "M2: IB Criteria & Grading",
-  "M3: Subject & Topic Selection",
-  "M4: The EE Dump Method",
-  "M5: Crafting Your Research Question",
-  "M6: Source Evaluation & Research Skills",
-  "M7: Essay Structure & Argumentation",
-  "M8: Writing the Introduction",
-  "M9: Body Paragraphs & Analysis",
-  "M10: Discussion & Conclusion",
-  "M11: Referencing & Citations",
-  "M12: RPPF Reflections",
-  "M13: Editing & Polishing",
-  "M14: Final Submission Strategy",
-].join("  ·  ")
 
 export default function EvervaultCTA() {
   return (
@@ -28,32 +10,58 @@ export default function EvervaultCTA() {
           <div>
             <AnimateIn>
               <span className="inline-flex items-center bg-parchment/10 text-parchment text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-parchment/20 tracking-wide">
-                Why EE Academy?
+                LAST-MINUTE RESCUE
               </span>
             </AnimateIn>
 
             <AnimateIn delay={0.1}>
               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-cream leading-tight mb-5">
-                The structured path from<br />
-                <span className="text-steel">uncertain to submitted.</span>
+                One day left on your EE?<br />
+                <span className="text-steel">Use The 1-Day Protocol.</span>
               </h2>
             </AnimateIn>
 
             <AnimateIn delay={0.15}>
               <p className="text-steel text-base leading-relaxed mb-8 max-w-md">
-                Most students tackle the Extended Essay alone. Our programme gives
-                you the examiner-backed framework, guided writing exercises, and
-                real feedback that changes outcomes.
+                A fast rescue system for students who are out of time and need to fix the mistakes that are dragging their grade down before submission.
               </p>
+            </AnimateIn>
+
+            <AnimateIn delay={0.18}>
+              <div className="grid sm:grid-cols-2 gap-3 mb-8 max-w-2xl">
+                {[
+                  {
+                    title: 'EE Planner',
+                    text: 'Get a personalised EE plan based on your progress and deadline.',
+                  },
+                  {
+                    title: 'Study Calendar',
+                    text: 'Know exactly what to do each week until submission.',
+                  },
+                  {
+                    title: 'EE Dump Workspace',
+                    text: 'Turn scattered ideas into a usable structure before you start drafting.',
+                  },
+                  {
+                    title: 'Source Tracker',
+                    text: 'Keep your research organised so you stop losing evidence, quotes, and references.',
+                  },
+                ].map((tool) => (
+                  <div key={tool.title} className="rounded-xl border border-parchment/15 bg-cream/5 p-4">
+                    <p className="text-sm font-semibold text-cream mb-1">{tool.title}</p>
+                    <p className="text-xs text-steel leading-relaxed">{tool.text}</p>
+                  </div>
+                ))}
+              </div>
             </AnimateIn>
 
             <AnimateIn delay={0.2}>
               <ul className="space-y-4 mb-10">
                 {[
-                  "Examiner-informed teaching — know exactly what earns marks",
-                  "Step-by-step modules that remove the guesswork",
-                  "Real feedback on my 32/34 EE from Claude Opus 4.6 with added commentary and lessons",
-                  "Structured AI prompts to use AI ethically and to your advantage",
+                  "Find the weak analysis, vague phrasing, and structure issues costing you marks",
+                  "Fix the small mistakes that make your EE feel weaker than it is",
+                  "Know what to prioritise when you do not have time to do everything",
+                  "Use the highest-impact edits first so your final draft is tighter, clearer, and more examiner-friendly",
                 ].map((benefit, i) => (
                   <li key={i} className="flex items-start gap-3 text-sm text-cream/80">
                     <span className="mt-0.5 w-5 h-5 rounded-full bg-parchment/15 border border-parchment/25 flex items-center justify-center flex-shrink-0">
@@ -67,25 +75,61 @@ export default function EvervaultCTA() {
               </ul>
             </AnimateIn>
 
+            <AnimateIn delay={0.22}>
+              <p className="text-sm font-semibold text-parchment/90 mb-6">
+                Built from the system behind a predicted C to final A and 32/34.
+              </p>
+            </AnimateIn>
+
             <AnimateIn delay={0.25}>
               <a href="/pricing" className="btn-primary-light">
-                Start Learning Today
+                Get The 1-Day Protocol
               </a>
             </AnimateIn>
           </div>
 
-          {/* Right: EvervaultCard — hover to reveal module names */}
+          {/* Right: real tool screenshots */}
           <AnimateIn delay={0.15} className="flex justify-center">
-            <div className="border border-parchment/20 flex flex-col items-start max-w-sm w-full mx-auto p-4 relative h-[30rem]">
-              <Icon className="absolute h-6 w-6 -top-3 -left-3" />
-              <Icon className="absolute h-6 w-6 -bottom-3 -left-3" />
-              <Icon className="absolute h-6 w-6 -top-3 -right-3" />
-              <Icon className="absolute h-6 w-6 -bottom-3 -right-3" />
+            <div className="max-w-xl w-full mx-auto relative">
+              <div className="absolute inset-0 bg-parchment/8 blur-3xl rounded-[32px]" />
+              <div className="relative grid gap-4">
+                <div className="rounded-[24px] border border-parchment/20 bg-cream/5 p-3 shadow-2xl">
+                  <div className="mb-3 flex items-center justify-between px-1">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-parchment/65">Bonus Vault</p>
+                      <p className="text-sm font-semibold text-cream">EE Planner</p>
+                    </div>
+                    <span className="rounded-full border border-parchment/15 bg-parchment/10 px-2.5 py-1 text-[11px] font-semibold text-parchment">
+                      Native tool
+                    </span>
+                  </div>
+                  <img
+                    src="/images/planner-tool.png"
+                    alt="EE Planner screenshot"
+                    className="w-full rounded-[18px] border border-parchment/10"
+                  />
+                </div>
 
-              <EvervaultCard text="EE" revealText={MODULE_REVEAL_TEXT} className="flex-1 w-full" />
+                <div className="md:absolute md:-bottom-10 md:-right-10 w-full md:w-[72%] rounded-[24px] border border-parchment/20 bg-cream/5 p-3 shadow-2xl">
+                  <div className="mb-3 flex items-center justify-between px-1">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-widest text-parchment/65">Bonus Vault</p>
+                      <p className="text-sm font-semibold text-cream">Study Calendar</p>
+                    </div>
+                    <span className="rounded-full border border-parchment/15 bg-parchment/10 px-2.5 py-1 text-[11px] font-semibold text-parchment">
+                      Tool view
+                    </span>
+                  </div>
+                  <img
+                    src="/images/study-calendar-tool.png"
+                    alt="Study Calendar screenshot"
+                    className="w-full rounded-[18px] border border-parchment/10"
+                  />
+                </div>
+              </div>
 
-              <p className="mt-3 text-xs text-steel text-center w-full">
-                Hover to reveal all 14 modules inside
+              <p className="mt-5 text-xs text-steel text-center w-full md:pt-16">
+                The Bonus Vault sits on top of the blueprint, so you are not just learning what to do. You have tools to actually do it.
               </p>
             </div>
           </AnimateIn>
