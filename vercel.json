@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!sitemap\\.xml|robots\\.txt|tools/|assets/).*)",
+      "source": "/((?!api/|sitemap\\.xml|robots\\.txt|tools/|assets/|images/|about(?:/|$)|courses(?:/|$)|pricing(?:/|$)|curriculum(?:/|$)|guides(?:/|$)|terms(?:/|$)|privacy(?:/|$)|refund(?:/|$)).*)",
       "destination": "/index.html"
     }
   ]

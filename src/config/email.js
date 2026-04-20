@@ -1,21 +1,18 @@
-// Email provider integration
-// TODO: Wire to ConvertKit, Mailchimp, or your preferred email service
-// Replace the submitEmail function body with your API call
-
 const STORAGE_KEY = 'ee_waitlist_joined'
 
-export async function submitEmail(email, source = 'unknown', tags = []) {
-  // TODO: Replace with real API call to your email provider
-  // Example for ConvertKit:
-  // const res = await fetch('https://api.convertkit.com/v3/forms/YOUR_FORM_ID/subscribe', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify({ api_key: 'YOUR_API_KEY', email, tags }),
-  // })
+export async function submitEmail(email, source = 'unknown') {
+  try {
+    const res = await fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, source }),
+    })
+    if (!res.ok) throw new Error('API error')
+  } catch (err) {
+    console.error('[Email Capture] Failed:', err)
+  }
 
-  console.log('[Email Capture]', { email, source, tags })
-
-  // Mark as joined in localStorage
+  // Mark as joined in localStorage regardless (don't block UX on network errors)
   localStorage.setItem(STORAGE_KEY, JSON.stringify({
     email,
     source,
