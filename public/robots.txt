@@ -2,11 +2,26 @@ User-agent: *
 Allow: /
 Allow: /guides/
 
-# Private/auth-gated routes
+# Free course modules — indexable
+Allow: /course/module-1
+Allow: /course/module-2
+Allow: /course/module-3
+Allow: /course/module-5
+
+# Paid/auth-gated routes
+Disallow: /course/module-4
+Disallow: /course/module-6
+Disallow: /course/module-7
+Disallow: /course/module-8
+Disallow: /course/module-9
+Disallow: /course/module-10
+Disallow: /course/module-11
+Disallow: /course/module-13
+Disallow: /course/module-14
+Disallow: /course/ai-module
 Disallow: /dashboard/
 Disallow: /planner
 Disallow: /dump
 Disallow: /study-calendar
-Disallow: /course/
 
-Sitemap: https://theextendedessay.com/sitemap.xml
+Sitemap: https://www.theextendedessay.com/sitemap.xml

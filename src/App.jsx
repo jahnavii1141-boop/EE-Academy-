@@ -55,17 +55,17 @@ const COURSE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: 'The Extended Essay Academy',
-  description: 'A structured IB Extended Essay resource lab with 14 modules covering research, writing, structure, and strategy.',
+  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and exam criteria — built by a 32/34 Cambridge graduate.',
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',
-    url: 'https://theextendedessay.com',
+    url: 'https://www.theextendedessay.com',
   },
   offers: {
     '@type': 'Offer',
-    price: '71',
+    price: '89',
     priceCurrency: 'USD',
-    availability: 'https://schema.org/PreOrder',
+    availability: 'https://schema.org/InStock',
   },
   numberOfCredits: 14,
   educationalLevel: 'High School',
@@ -75,8 +75,8 @@ function LandingPage() {
   return (
     <main>
       <SEOHead
-        title="The Extended Essay Academy : Premium IB EE resources"
-        description="Premium IB EE resources with 14 modules, expert guidance, and a proven 32/34 system built by a real IB student."
+        title="IB Extended Essay Course — The 32/34 System | The Extended Essay Academy"
+        description="Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 Cambridge graduate. 14 structured modules covering research, writing, criteria, and RPPF."
         canonical="/"
         jsonLd={COURSE_JSON_LD}
         appendSiteName={false}

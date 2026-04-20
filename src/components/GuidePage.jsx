@@ -16,8 +16,13 @@ export default function GuidePage({
     '@type': 'Article',
     headline: title,
     description,
-    author: { '@type': 'Organization', name: 'The Extended Essay Academy' },
-    publisher: { '@type': 'Organization', name: 'The Extended Essay Academy' },
+    author: {
+      '@type': 'Person',
+      name: 'The Extended Essay Academy Founder',
+      description: '32/34 IB Extended Essay · Cambridge University graduate',
+      url: 'https://www.theextendedessay.com/about',
+    },
+    publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://www.theextendedessay.com' },
     datePublished: '2026-03-29',
   }
   const faqJsonLd = faqItems.length > 0
@@ -58,6 +63,9 @@ export default function GuidePage({
             {title}
           </h1>
           <p className="text-steel mt-3 text-lg leading-relaxed">{description}</p>
+          <p className="text-steel/60 text-xs mt-4">
+            Written by the founder · 32/34 IB Extended Essay · Cambridge University
+          </p>
         </div>
       </div>
 
@@ -104,8 +112,26 @@ export default function GuidePage({
           </div>
         )}
 
+        {/* Internal hub links */}
+        <div className="mt-12 flex flex-col sm:flex-row gap-3">
+          <Link
+            to="/curriculum"
+            className="flex-1 rounded-xl border border-navy/12 bg-parchment/40 hover:bg-parchment/70 transition-colors px-5 py-4 text-center"
+          >
+            <p className="text-sm font-semibold text-navy">See the full 14-module curriculum →</p>
+            <p className="text-xs text-navy/50 mt-1">Every topic, every module, mapped to IB criteria</p>
+          </Link>
+          <Link
+            to="/pricing"
+            className="flex-1 rounded-xl border border-navy/20 bg-navy/5 hover:bg-navy/10 transition-colors px-5 py-4 text-center"
+          >
+            <p className="text-sm font-semibold text-navy">Get full access →</p>
+            <p className="text-xs text-navy/50 mt-1">From $89 · 30-day money-back guarantee</p>
+          </Link>
+        </div>
+
         {/* Resource Lab CTA */}
-        <div className="mt-12 rounded-2xl bg-navy text-center p-8">
+        <div className="mt-8 rounded-2xl bg-navy text-center p-8">
           <h3 className="font-serif text-xl font-bold text-cream mb-2">Ready to go deeper?</h3>
           <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
             This guide covers the basics. The full Resource Lab gives you the complete system, tools, and templates to get an A.

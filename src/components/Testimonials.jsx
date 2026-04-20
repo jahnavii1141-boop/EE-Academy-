@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
-import { useCountUp } from '../hooks/useCountUp'
 
 const MotionDiv = motion.div
 
@@ -31,13 +30,10 @@ const TESTIMONIALS = [
   },
 ]
 
-function StatCounter({ end, suffix, label }) {
-  const { ref, value } = useCountUp(end, 1.5)
+function TrustCard({ stat, label }) {
   return (
-    <div ref={ref} className="bento-card bg-cream/8 text-center py-6 border border-cream/10">
-      <p className="text-2xl font-serif font-bold text-cream">
-        {value.toLocaleString()}{suffix}
-      </p>
+    <div className="bento-card bg-cream/8 text-center py-6 border border-cream/10">
+      <p className="text-2xl font-serif font-bold text-cream">{stat}</p>
       <p className="text-xs text-steel mt-1">{label}</p>
     </div>
   )
@@ -50,7 +46,7 @@ export default function Testimonials() {
         <AnimateIn>
           <h2 className="section-heading-light">What Students Say</h2>
           <p className="section-subheading-light">
-            Join thousands of IB students who've transformed their Extended Essay results.
+            Real feedback from IB students who used the system.
           </p>
         </AnimateIn>
 
@@ -91,16 +87,13 @@ export default function Testimonials() {
           ))}
         </StaggerContainer>
 
-        {/* Stats bar with counters */}
+        {/* Honest trust signals */}
         <AnimateIn delay={0.1}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCounter end={4200} suffix="+" label="Students Enrolled" />
-            <StatCounter end={49} suffix="/5" label="Average Rating" />
-            <StatCounter end={94} suffix="%" label="Completion Rate" />
-            <div className="bento-card bg-cream/8 text-center py-6 border border-cream/10">
-              <p className="text-2xl font-serif font-bold text-cream">30-Day</p>
-              <p className="text-xs text-steel mt-1">Money-Back Guarantee</p>
-            </div>
+            <TrustCard stat="32/34" label="Founder's actual EE score" />
+            <TrustCard stat="14" label="Modules — complete curriculum" />
+            <TrustCard stat="Cambridge" label="University — founder credential" />
+            <TrustCard stat="30-Day" label="Money-Back Guarantee" />
           </div>
         </AnimateIn>
       </div>

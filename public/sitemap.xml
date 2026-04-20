@@ -1,97 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://theextendedessay.com/</loc>
+    <loc>https://www.theextendedessay.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/courses</loc>
+    <loc>https://www.theextendedessay.com/pricing</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/courses</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/pricing</loc>
+    <loc>https://www.theextendedessay.com/curriculum</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/research-question-examples</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/how-to-get-an-a-in-extended-essay</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/curriculum</loc>
+    <loc>https://www.theextendedessay.com/guides/extended-essay-introduction</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/about</loc>
+    <loc>https://www.theextendedessay.com/guides/extended-essay-structure</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/rppf-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/extended-essay-tips</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-criteria-breakdown</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-subjects-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-word-count</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-conclusion</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-research-methods</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Free course modules — publicly indexable -->
+  <url>
+    <loc>https://www.theextendedessay.com/course/module-1</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/guides/extended-essay-introduction</loc>
+    <loc>https://www.theextendedessay.com/course/module-2</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/guides/extended-essay-structure</loc>
+    <loc>https://www.theextendedessay.com/course/module-3</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/guides/research-question-examples</loc>
+    <loc>https://www.theextendedessay.com/course/module-5</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/guides/rppf-guide</loc>
+    <loc>https://www.theextendedessay.com/about</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/guides/extended-essay-tips</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/ee-criteria-breakdown</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/ee-subjects-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/ee-word-count</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/ee-conclusion</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/ee-research-methods</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/guides/how-to-get-an-a-in-extended-essay</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://theextendedessay.com/terms</loc>
+    <loc>https://www.theextendedessay.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/privacy</loc>
+    <loc>https://www.theextendedessay.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://theextendedessay.com/refund</loc>
+    <loc>https://www.theextendedessay.com/refund</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

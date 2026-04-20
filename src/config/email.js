@@ -30,9 +30,9 @@ export function hasJoinedWaitlist() {
 }
 
 export const WAITLIST_COPY = {
-  headline: 'Join the waitlist',
-  subline: 'Get free EE planning tools and early access updates',
-  cta: 'Join Waitlist',
-  successMessage: "You're on the list! Check your inbox.",
+  headline: 'Start with what actually worked',
+  subline: 'Get instant access to free modules from the system that scored 32/34 — no card needed',
+  cta: 'Get Free Access',
+  successMessage: "You're in! Head to the dashboard to start your free modules.",
   placeholder: 'your@email.com',
 }
