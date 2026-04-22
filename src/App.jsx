@@ -5,7 +5,6 @@ import Footer from './components/Footer'
 import Hero from './components/Hero'
 import Feature108 from './components/blocks/Feature108'
 import WhatYoullLearn from './components/WhatYoullLearn'
-import Testimonials from './components/Testimonials'
 import HomeFAQ from './components/HomeFAQ'
 import EvervaultCTA from './components/EvervaultCTA'
 import ExitIntentPopup from './components/ExitIntentPopup'
@@ -85,7 +84,6 @@ function LandingPage() {
       <ResultsStrip />
       <Feature108 />
       <WhatYoullLearn />
-      <Testimonials />
       <HomeFAQ />
       <EvervaultCTA />
     </main>

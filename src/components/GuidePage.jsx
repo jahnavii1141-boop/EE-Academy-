@@ -16,12 +16,7 @@ export default function GuidePage({
     '@type': 'Article',
     headline: title,
     description,
-    author: {
-      '@type': 'Person',
-      name: 'The Extended Essay Academy Founder',
-      description: '32/34 IB Extended Essay · Cambridge University graduate',
-      url: 'https://www.theextendedessay.com/about',
-    },
+    author: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://www.theextendedessay.com' },
     publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://www.theextendedessay.com' },
     datePublished: '2026-03-29',
   }
@@ -63,9 +58,6 @@ export default function GuidePage({
             {title}
           </h1>
           <p className="text-steel mt-3 text-lg leading-relaxed">{description}</p>
-          <p className="text-steel/60 text-xs mt-4">
-            Written by the founder · 32/34 IB Extended Essay · Cambridge University
-          </p>
         </div>
       </div>
 

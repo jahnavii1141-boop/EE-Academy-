@@ -92,7 +92,7 @@ const ROUTES = [
     title: 'IB Extended Essay Research Methods Guide',
     description: 'Choose better IB Extended Essay research methods and understand how to justify them clearly in your essay.',
   },
-  // Free course modules — publicly indexable
+  // All course modules — publicly indexable
   {
     route: '/course/module-1',
     title: 'IB Extended Essay Mindset & How to Think Like an Examiner | Module 1',
@@ -109,9 +109,59 @@ const ROUTES = [
     description: 'A step-by-step framework for choosing the right IB Extended Essay subject and narrowing your topic to something researchable and score-worthy.',
   },
   {
+    route: '/course/module-4',
+    title: 'IB Extended Essay Research Question Mastery | Module 4',
+    description: 'How to craft a focused, analytical research question that scores well across all IB EE criteria. Includes before/after examples and common mistakes to avoid.',
+  },
+  {
     route: '/course/module-5',
     title: 'The EE Dump Research System | Module 5',
-    description: 'The proprietary EE Dump method — a structured research system that organises your sources, arguments, and evidence before you start writing.',
+    description: 'The EE Dump method — a structured research system that organises your sources, arguments, and evidence before you start writing.',
+  },
+  {
+    route: '/course/module-6',
+    title: 'IB Extended Essay Sources & Research Strategy | Module 6',
+    description: 'How to find, evaluate, and use academic sources for your IB Extended Essay. Includes a research funnel framework and source quality checklist.',
+  },
+  {
+    route: '/course/module-7',
+    title: 'IB Extended Essay Structure & Essay Planning | Module 7',
+    description: 'A section-by-section IB Extended Essay structure guide. Learn how to plan your essay so every part maps directly to the assessment criteria.',
+  },
+  {
+    route: '/course/module-8',
+    title: 'IB Extended Essay Writing: Analysis vs Description | Module 8',
+    description: 'The most common reason IB students lose marks is writing descriptively instead of analytically. Module 8 shows you exactly how to fix this.',
+  },
+  {
+    route: '/course/module-9',
+    title: 'IB Extended Essay Citations, Formatting & Academic Style | Module 9',
+    description: 'MLA citation format, block quote rules, word count compliance, and formatting standards for the IB Extended Essay.',
+  },
+  {
+    route: '/course/module-10',
+    title: 'IB Extended Essay Introduction & Hook Writing | Module 10',
+    description: 'How to write an IB Extended Essay introduction that hooks the examiner and sets up your research question clearly and confidently.',
+  },
+  {
+    route: '/course/module-11',
+    title: 'IB Extended Essay RPPF Reflections Guide | Module 11',
+    description: 'How to write all three RPPF reflections for Criterion E. Includes a real example of the natural thought process turned into formal reflection writing.',
+  },
+  {
+    route: '/course/ai-module',
+    title: 'How to Use AI for Your IB Extended Essay (The Right Way)',
+    description: '12 copy-paste AI prompts designed specifically for the IB Extended Essay — for research, structure, analysis, and revision. Use AI strategically, not as a shortcut.',
+  },
+  {
+    route: '/course/module-13',
+    title: 'Real 32/34 IB Extended Essay — Full Examiner Analysis | Module 13',
+    description: 'A full examiner-style breakdown of a real 32/34 IB Extended Essay. See exactly what earned marks, what lost them, and how to apply those lessons to your own essay.',
+  },
+  {
+    route: '/course/module-14',
+    title: 'IB Extended Essay Final Checklist & Submission | Module 14',
+    description: 'The final pre-submission checklist for your IB Extended Essay. Templates, SOPs, and a step-by-step process to submit with confidence.',
   },
   {
     route: '/terms',
