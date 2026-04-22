@@ -1,0 +1,13 @@
+import Curriculum from '../../src/components/Curriculum'
+export const metadata = {
+  title: 'IB Extended Essay Curriculum | 14-Module System',
+  description: 'Explore the 14-module IB Extended Essay curriculum covering topic selection, research, structure, writing, citations, and final polish.',
+  alternates: { canonical: 'https://www.theextendedessay.com/curriculum' },
+}
+export default function CurriculumPage() {
+  return (
+    <main className="min-h-screen bg-navy">
+      <Curriculum />
+    </main>
+  )
+}

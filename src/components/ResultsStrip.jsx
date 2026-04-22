@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 
 const RESULTS = [
@@ -40,10 +42,10 @@ export default function ResultsStrip() {
 
         <AnimateIn delay={0.15}>
           <div className="flex flex-wrap items-center gap-3">
-            <Link to="/dashboard" className="btn-primary-light text-sm">
+            <Link href="/dashboard" className="btn-primary-light text-sm">
               Start Free
             </Link>
-            <Link to="/pricing" className="btn-outline-light text-sm">
+            <Link href="/pricing" className="btn-outline-light text-sm">
               See Full System
             </Link>
           </div>

@@ -1,4 +1,6 @@
-import { useAuth, RedirectToSignIn } from '@clerk/clerk-react'
+'use client'
+
+import { useAuth, RedirectToSignIn } from '@clerk/nextjs'
 
 export default function ProtectedRoute({ children }) {
   const { isLoaded, isSignedIn } = useAuth()

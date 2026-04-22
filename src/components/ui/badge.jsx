@@ -1,4 +1,5 @@
-/* eslint-disable react-refresh/only-export-components */
+'use client'
+
 import { cva } from 'class-variance-authority'
 import { cn } from '../../lib/utils'
 

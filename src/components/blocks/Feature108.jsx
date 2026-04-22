@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { Layout, Pointer, Zap } from 'lucide-react'
 import { Badge } from '../ui/badge'

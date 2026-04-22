@@ -1,5 +1,7 @@
+'use client'
+
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import AnimateIn from './ui/AnimateIn'
 

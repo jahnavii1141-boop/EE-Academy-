@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 
 const FEATURES = [
@@ -95,7 +95,7 @@ export default function DumpSection() {
               ))}
             </ul>
 
-            <Link to="/dump" className="btn-primary inline-flex items-center gap-2">
+            <Link href="/dump" className="btn-primary inline-flex items-center gap-2">
               Open EE Dump Workspace
               <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />

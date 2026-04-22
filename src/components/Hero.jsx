@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 
 export default function Hero() {
@@ -59,7 +61,7 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
-                <Link to="/dashboard" className="btn-primary-light">Start Free</Link>
+                <Link href="/dashboard" className="btn-primary-light">Start Free</Link>
               </div>
               <p className="text-sm text-steel/90 max-w-md">
                 Start with the free resources and see how the system works before you unlock everything.

@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
+import { useState } from 'react'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
+import { getPaddle } from '../lib/paddle'
 
 const MotionDiv = motion.div
 
@@ -28,6 +30,45 @@ function CheckItem({ text }) {
       </svg>
       {text}
     </li>
+  )
+}
+
+function CheckoutButton({ tier, href, priceId, children, className }) {
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleCheckout = async () => {
+    if (isLoading) return
+    setIsLoading(true)
+
+    try {
+      if (PADDLE_CONFIG.clientToken && priceId) {
+        const Paddle = await getPaddle({
+          environment: PADDLE_CONFIG.environment,
+          clientToken: PADDLE_CONFIG.clientToken,
+        })
+
+        if (Paddle) {
+          Paddle.Checkout.open({
+            items: [{ priceId, quantity: 1 }],
+            settings: {
+              displayMode: 'overlay',
+              theme: 'light',
+            },
+          })
+          return
+        }
+      }
+
+      window.location.href = href
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  return (
+    <button type="button" onClick={handleCheckout} disabled={isLoading} className={className}>
+      {isLoading ? 'Opening checkout...' : children}
+    </button>
   )
 }
 
@@ -72,7 +113,14 @@ export default function Pricing() {
                 {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href={PADDLE_CONFIG.basicUrl} className="block text-center btn-primary">Enroll in Basic</a>
+            <CheckoutButton
+              tier="basic"
+              href={PADDLE_CONFIG.basicUrl}
+              priceId={PADDLE_CONFIG.basicPriceId}
+              className="block w-full text-center btn-primary disabled:opacity-70"
+            >
+              Enroll in Basic
+            </CheckoutButton>
           </MotionDiv>
 
           {/* Premium */}
@@ -93,7 +141,14 @@ export default function Pricing() {
                 {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
-            <a href={PADDLE_CONFIG.premiumUrl} className="block text-center btn-primary">Enroll in Premium</a>
+            <CheckoutButton
+              tier="premium"
+              href={PADDLE_CONFIG.premiumUrl}
+              priceId={PADDLE_CONFIG.premiumPriceId}
+              className="block w-full text-center btn-primary disabled:opacity-70"
+            >
+              Enroll in Premium
+            </CheckoutButton>
           </MotionDiv>
         </StaggerContainer>
       </div>

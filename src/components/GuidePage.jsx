@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import SEOHead from './SEOHead'
 import ContentRenderer from './blocks/ContentRenderer'
 import PostModuleGate from './PostModuleGate'
@@ -48,9 +50,9 @@ export default function GuidePage({
       <div className="bg-navy-deep py-16 px-6">
         <div className="max-w-3xl mx-auto">
           <nav className="flex items-center gap-2 text-steel/60 text-xs mb-6">
-            <Link to="/" className="hover:text-steel transition-colors">Home</Link>
+            <Link href="/" className="hover:text-steel transition-colors">Home</Link>
             <span>/</span>
-            <Link to="/guides/extended-essay-introduction" className="hover:text-steel transition-colors">Guides</Link>
+            <Link href="/guides/extended-essay-introduction" className="hover:text-steel transition-colors">Guides</Link>
             <span>/</span>
             <span className="text-steel">{title}</span>
           </nav>
@@ -107,14 +109,14 @@ export default function GuidePage({
         {/* Internal hub links */}
         <div className="mt-12 flex flex-col sm:flex-row gap-3">
           <Link
-            to="/curriculum"
+            href="/curriculum"
             className="flex-1 rounded-xl border border-navy/12 bg-parchment/40 hover:bg-parchment/70 transition-colors px-5 py-4 text-center"
           >
             <p className="text-sm font-semibold text-navy">See the full 14-module curriculum →</p>
             <p className="text-xs text-navy/50 mt-1">Every topic, every module, mapped to IB criteria</p>
           </Link>
           <Link
-            to="/pricing"
+            href="/pricing"
             className="flex-1 rounded-xl border border-navy/20 bg-navy/5 hover:bg-navy/10 transition-colors px-5 py-4 text-center"
           >
             <p className="text-sm font-semibold text-navy">Get full access →</p>
@@ -128,7 +130,7 @@ export default function GuidePage({
           <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
             This guide covers the basics. The full Resource Lab gives you the complete system, tools, and templates to get an A.
           </p>
-          <Link to="/courses" className="btn-primary-light text-sm">
+          <Link href="/courses" className="btn-primary-light text-sm">
             Explore the Resource Lab
           </Link>
         </div>

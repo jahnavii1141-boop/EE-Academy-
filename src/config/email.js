@@ -12,17 +12,19 @@ export async function submitEmail(email, source = 'unknown') {
     console.error('[Email Capture] Failed:', err)
   }
 
-  // Mark as joined in localStorage regardless (don't block UX on network errors)
-  localStorage.setItem(STORAGE_KEY, JSON.stringify({
-    email,
-    source,
-    joinedAt: new Date().toISOString(),
-  }))
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      email,
+      source,
+      joinedAt: new Date().toISOString(),
+    }))
+  }
 
   return { success: true }
 }
 
 export function hasJoinedWaitlist() {
+  if (typeof window === 'undefined') return false
   return !!localStorage.getItem(STORAGE_KEY)
 }
 

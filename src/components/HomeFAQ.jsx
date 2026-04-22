@@ -1,4 +1,6 @@
-import { Link } from 'react-router-dom'
+'use client'
+
+import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 
 const FAQ_ITEMS = [
@@ -42,8 +44,8 @@ export default function HomeFAQ() {
 
         <AnimateIn delay={0.2}>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to="/course/module-1" className="btn-primary text-sm">Start Free</Link>
-            <Link to="/pricing" className="btn-outline text-sm">Get Full Access</Link>
+            <Link href="/course/module-1" className="btn-primary text-sm">Start Free</Link>
+            <Link href="/pricing" className="btn-outline text-sm">Get Full Access</Link>
           </div>
         </AnimateIn>
       </div>

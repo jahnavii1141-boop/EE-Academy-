@@ -1,6 +1,9 @@
+'use client'
+
 import { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { SignedIn, UserButton } from '@clerk/clerk-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { UserButton, useUser } from '@clerk/nextjs'
 
 // Home page only shows these anchor links (sections still present on home)
 const HOME_ANCHOR_LINKS = [
@@ -10,10 +13,11 @@ const HOME_ANCHOR_LINKS = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
-  const location = useLocation()
-  const isHome = location.pathname === '/'
-  const isCourses = location.pathname === '/courses'
-  const isDashboard = location.pathname.startsWith('/dashboard')
+  const pathname = usePathname()
+  const { isSignedIn } = useUser()
+  const isHome = pathname === '/'
+  const isCourses = pathname === '/courses'
+  const isDashboard = pathname.startsWith('/dashboard')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -31,7 +35,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
         {/* Brand with feather logo */}
-        <Link to="/" className="flex items-center gap-2.5">
+        <Link href="/" className="flex items-center gap-2.5">
           <img src="/feather-nav.png" alt="" className="h-8 w-auto" />
           <span className="font-serif text-lg font-semibold text-navy tracking-tight leading-tight">
             The Extended Essay Academy
@@ -41,15 +45,15 @@ export default function Navbar() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8">
           <Link
-            to="/about"
+            href="/about"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-              location.pathname === '/about' ? 'text-navy' : 'text-ink-soft hover:text-navy'
+              pathname === '/about' ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
           >
             About
           </Link>
           <Link
-            to="/courses"
+            href="/courses"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               isCourses ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
@@ -57,15 +61,15 @@ export default function Navbar() {
             Resource Lab
           </Link>
           <Link
-            to="/guides"
+            href="/guides"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-              location.pathname.startsWith('/guides') ? 'text-navy' : 'text-ink-soft hover:text-navy'
+              pathname.startsWith('/guides') ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
           >
             Guides
           </Link>
           <Link
-            to="/dashboard"
+            href="/dashboard"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'
             }`}
@@ -85,19 +89,19 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <SignedIn>
+          {isSignedIn && (
             <UserButton
               appearance={{
                 elements: { avatarBox: { width: 32, height: 32 } },
               }}
             />
-          </SignedIn>
+          )}
           {isHome ? (
-            <Link to="/dashboard" className="btn-primary text-sm">
+            <Link href="/dashboard" className="btn-primary text-sm">
               Start Free
             </Link>
           ) : (
-            <Link to="/dashboard" className="btn-primary text-sm">
+            <Link href="/dashboard" className="btn-primary text-sm">
               Get Started
             </Link>
           )}
@@ -124,16 +128,16 @@ export default function Navbar() {
       {/* Mobile menu */}
       {menuOpen && (
         <div className="md:hidden bg-cream/95 backdrop-blur-md border-t border-navy/10 px-6 py-5 flex flex-col gap-5">
-          <Link to="/about" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+          <Link href="/about" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             About
           </Link>
-          <Link to="/courses" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+          <Link href="/courses" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Resource Lab
           </Link>
-          <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+          <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard
           </Link>
-          <Link to="/guides" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+          <Link href="/guides" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Guides
           </Link>
           {isHome &&
@@ -142,16 +146,16 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-          <SignedIn>
+          {isSignedIn && (
             <div className="flex items-center gap-2">
               <UserButton appearance={{ elements: { avatarBox: { width: 28, height: 28 } } }} />
               <span className="text-sm text-ink-soft">Account</span>
             </div>
-          </SignedIn>
+          )}
           {isHome ? (
-            <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start Free</Link>
+            <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start Free</Link>
           ) : (
-            <Link to="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</Link>
+            <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</Link>
           )}
         </div>
       )}
