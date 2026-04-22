@@ -18,7 +18,7 @@ export async function POST(request) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'The Extended Essay Academy <onboarding@resend.dev>',
+        from: 'The Extended Essay Academy <hello@theextendedessay.com>',
         to: ['hello@theextendedessay.com'],
         subject: `New signup: ${email}`,
         html: `<p><strong>Email:</strong> ${email}</p><p><strong>Source:</strong> ${source}</p>`,
