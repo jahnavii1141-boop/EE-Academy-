@@ -80,7 +80,7 @@ export default function GuidePage({
               {relatedGuides.map((g, i) => (
                 <Link
                   key={i}
-                  to={g.href}
+                  href={g.href}
                   className="rounded-xl border border-navy/10 hover:border-navy/25 bg-parchment/30 hover:bg-parchment/50 transition-all px-5 py-4"
                 >
                   <p className="text-sm font-medium text-navy">{g.title}</p>

@@ -20,7 +20,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- High-intent guide pages -->
+  <!-- High-intent guide pages — original -->
+
   <url>
     <loc>https://www.theextendedessay.com/guides/research-question-examples</loc>
     <changefreq>monthly</changefreq>
@@ -75,6 +76,102 @@
     <loc>https://www.theextendedessay.com/guides/ee-research-methods</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <!-- New guides — from course content -->
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-dump-method</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/how-to-use-google-scholar-ee</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-literature-review</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-formatting-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-citations-mla</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-ai-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-mindset</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-business-management</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-economics</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-psychology</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-history</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-biology</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-checklist</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-planning-timeline</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-academic-writing</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-supervisor-tips</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-abstract</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-clastify-guide</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.theextendedessay.com/guides/ee-analysis-vs-description</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
   <!-- All course modules — publicly indexable -->
   <url>
