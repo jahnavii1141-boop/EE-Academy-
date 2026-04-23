@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo, useEffect, useRef } from 'react'
+import { useAuth } from '@clerk/nextjs'
 
 // --- Palette constants (remapped to site theme) ---
 const C = {
@@ -72,42 +73,100 @@ const textareaStyle = {
 // ════════════════════════════════════════════════════════════
 export default function EEDumpWorkspace() {
   // ── State ──
+  const { isSignedIn } = useAuth()
   const [currentView, setCurrentView] = useState('dump')
   const [researchQuestion, setResearchQuestion] = useState('')
   const [subtopics, setSubtopics] = useState([])
   const [notes, setNotes] = useState({ connections: '', findings: '', questions: '' })
   const saveIndicatorRef = useRef(null)
 
-  // ── Load from localStorage on mount ──
+  // ── Flatten subtopics → flat rows for Supabase ──
+  const flattenEntries = useCallback((subs) => {
+    const rows = []
+    subs.forEach(s => {
+      s.entries.forEach(e => {
+        rows.push({
+          subtopic: s.title,
+          subtopic_color: s.color,
+          source_name: e.source,
+          key_info: e.info,
+          link: e.link,
+          source_type: e.sourceType,
+          used: e.used,
+        })
+      })
+    })
+    return rows
+  }, [])
+
+  // ── Load: localStorage first, then Supabase if signed in ──
   useEffect(() => {
     try {
       const raw = localStorage.getItem(STORAGE_KEY)
-      if (!raw) return
-      const data = JSON.parse(raw)
-      if (data.researchQuestion) setResearchQuestion(data.researchQuestion)
-      if (data.subtopics) setSubtopics(data.subtopics)
-      if (data.notes) setNotes(data.notes)
+      if (raw) {
+        const data = JSON.parse(raw)
+        if (data.researchQuestion) setResearchQuestion(data.researchQuestion)
+        if (data.subtopics) setSubtopics(data.subtopics)
+        if (data.notes) setNotes(data.notes)
+      }
     } catch { /* ignore corrupt data */ }
-  }, [])
+
+    if (!isSignedIn) return
+    fetch('/api/dump')
+      .then(r => r.json())
+      .then(({ entries }) => {
+        if (!entries || entries.length === 0) return
+        const subtopicMap = {}
+        entries.forEach(e => {
+          if (!subtopicMap[e.subtopic]) {
+            subtopicMap[e.subtopic] = {
+              id: generateId(), title: e.subtopic,
+              color: e.subtopic_color, open: true, entries: [],
+            }
+          }
+          subtopicMap[e.subtopic].entries.push({
+            id: generateId(), source: e.source_name, info: e.key_info,
+            link: e.link, sourceType: e.source_type, used: e.used,
+          })
+        })
+        const rebuilt = Object.values(subtopicMap)
+        setSubtopics(rebuilt)
+      })
+      .catch(() => {})
+  }, [isSignedIn])
 
   // ── Auto-save every 30s ──
   useEffect(() => {
     const interval = setInterval(() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ researchQuestion, subtopics, notes }))
+      if (isSignedIn) {
+        fetch('/api/dump', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ entries: flattenEntries(subtopics) }),
+        }).catch(() => {})
+      }
     }, 30000)
     return () => clearInterval(interval)
-  }, [researchQuestion, subtopics, notes])
+  }, [researchQuestion, subtopics, notes, isSignedIn, flattenEntries])
 
   // ── Manual save ──
   const saveDump = useCallback(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({ researchQuestion, subtopics, notes }))
+    if (isSignedIn) {
+      fetch('/api/dump', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entries: flattenEntries(subtopics) }),
+      }).catch(() => {})
+    }
     if (saveIndicatorRef.current) {
       saveIndicatorRef.current.textContent = '✓ Saved!'
       setTimeout(() => {
         if (saveIndicatorRef.current) saveIndicatorRef.current.textContent = '💾 Save Progress'
       }, 1500)
     }
-  }, [researchQuestion, subtopics, notes])
+  }, [researchQuestion, subtopics, notes, isSignedIn, flattenEntries])
 
   // ── Stats ──
   const stats = useMemo(() => {

@@ -1,4 +1,5 @@
-import { useState, useCallback, useMemo } from 'react'
+import { useState, useCallback, useMemo, useEffect } from 'react'
+import { useAuth } from '@clerk/nextjs'
 
 const DEFAULT_MILESTONES = [
   { id: 'm1', label: 'Choose EE Subject & Topic Area', type: 'official', weeksBefore: 28, done: false },
@@ -88,6 +89,7 @@ function addWeeks(date, weeks) {
 }
 
 export default function EEPlanner({ theme = 'dark' }) {
+  const { isSignedIn } = useAuth()
   const C = PALETTES[theme] || PALETTES.dark
   const [submissionDate, setSubmissionDate] = useState('')
   const [milestones, setMilestones] = useState(DEFAULT_MILESTONES)
@@ -96,11 +98,52 @@ export default function EEPlanner({ theme = 'dark' }) {
   const [newWeeksBefore, setNewWeeksBefore] = useState(10)
   const [view, setView] = useState('timeline')
 
+  // ── Load from Supabase on sign-in ──
+  useEffect(() => {
+    if (!isSignedIn) return
+    fetch('/api/planner')
+      .then(r => r.json())
+      .then(({ milestones: remote }) => {
+        if (!remote || remote.length === 0) return
+        setMilestones(remote.map(m => ({
+          id: m.id,
+          label: m.label,
+          type: m.is_custom ? 'custom' : 'official',
+          weeksBefore: m.weeks_before,
+          done: m.completed,
+        })))
+      })
+      .catch(() => {})
+  }, [isSignedIn])
+
+  // ── Save to Supabase when milestones change ──
+  const savePlanner = useCallback((mils) => {
+    if (!isSignedIn) return
+    fetch('/api/planner', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        milestones: mils.map((m, i) => ({
+          label: m.label,
+          phase: getPhaseForMilestone(i)?.name || 'Research & Planning',
+          weeks_before: m.weeksBefore ?? null,
+          completed: m.done,
+          is_custom: m.type === 'custom',
+          due_date: null,
+        })),
+      }),
+    }).catch(() => {})
+  }, [isSignedIn])
+
   const parsedDate = submissionDate ? new Date(submissionDate + 'T00:00:00') : null
 
   const toggleDone = useCallback((id) => {
-    setMilestones(prev => prev.map(m => m.id === id ? { ...m, done: !m.done } : m))
-  }, [])
+    setMilestones(prev => {
+      const next = prev.map(m => m.id === id ? { ...m, done: !m.done } : m)
+      savePlanner(next)
+      return next
+    })
+  }, [savePlanner])
 
   const addCustomMilestone = useCallback(() => {
     if (!newLabel.trim()) return
