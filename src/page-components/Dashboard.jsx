@@ -15,8 +15,6 @@ const SPACES = [
     label: 'Home',
     description: 'Your RQ, subject, supervisor, and deadline — all in one view.',
     href: '/dashboard/home',
-    accent: '#F97316',
-    accentBg: 'rgba(249,115,22,0.08)',
     tag: 'Start here',
   },
   {
@@ -25,8 +23,6 @@ const SPACES = [
     label: 'EE Dump',
     description: 'Paste a URL or DOI — citation appears automatically. Research without chaos.',
     href: '/dump',
-    accent: '#3B82F6',
-    accentBg: 'rgba(59,130,246,0.08)',
     tag: null,
   },
   {
@@ -35,8 +31,6 @@ const SPACES = [
     label: 'Planner',
     description: 'Set phase deadlines, see your full timeline, track what\'s done.',
     href: '/planner',
-    accent: '#8B5CF6',
-    accentBg: 'rgba(139,92,246,0.08)',
     tag: null,
   },
   {
@@ -45,8 +39,6 @@ const SPACES = [
     label: 'Templates',
     description: 'RPPF reflections, essay outline, argument map — all fillable inline.',
     href: '/dashboard/templates',
-    accent: '#6366F1',
-    accentBg: 'rgba(99,102,241,0.08)',
     tag: null,
   },
   {
@@ -55,8 +47,6 @@ const SPACES = [
     label: 'Modules',
     description: '14 modules. The complete EE system — written to actually make sense.',
     href: '/dashboard/modules',
-    accent: '#10B981',
-    accentBg: 'rgba(16,185,129,0.08)',
     tag: null,
   },
   {
@@ -65,8 +55,6 @@ const SPACES = [
     label: 'Share',
     description: 'One link. Your supervisor sees your workspace — no account needed.',
     href: '/dashboard/share',
-    accent: '#F59E0B',
-    accentBg: 'rgba(245,158,11,0.08)',
     tag: null,
   },
 ]
@@ -101,42 +89,31 @@ function SpaceCard({ space, locked }) {
   const Icon = space.icon
   const inner = (
     <div
-      className={`relative rounded-2xl p-5 flex flex-col min-h-[190px] border transition-all duration-200 overflow-hidden ${
+      className={`relative rounded-2xl p-5 flex flex-col min-h-[190px] border transition-all duration-200 ${
         locked
-          ? 'opacity-40 cursor-not-allowed border-white/5 bg-white/[0.03]'
-          : 'cursor-pointer border-white/8 bg-white/[0.04] hover:bg-white/[0.07] hover:border-white/15 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/20'
+          ? 'opacity-30 cursor-not-allowed border-white/5 bg-white/[0.02]'
+          : 'cursor-pointer border-white/[0.07] bg-white/[0.03] hover:bg-white/[0.06] hover:border-white/[0.12] hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-black/30'
       }`}
     >
-      {/* Subtle glow */}
-      {!locked && (
-        <div
-          className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-20 blur-2xl pointer-events-none"
-          style={{ background: space.accent, transform: 'translate(30%, -30%)' }}
-        />
-      )}
-
-      <div className="flex items-start justify-between mb-5 relative">
-        <div
-          className="w-9 h-9 rounded-xl flex items-center justify-center"
-          style={{ background: space.accentBg, border: `1px solid ${space.accent}22` }}
-        >
-          <Icon className="w-4 h-4" style={{ color: space.accent }} strokeWidth={1.8} />
+      <div className="flex items-start justify-between mb-5">
+        <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-white/[0.06] border border-white/[0.08]">
+          <Icon className="w-4 h-4 text-white/60" strokeWidth={1.6} />
         </div>
         <div className="flex items-center gap-2">
           {space.tag && (
-            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: space.accentBg, color: space.accent }}>
+            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-white/[0.07] text-white/50 border border-white/[0.08]">
               {space.tag}
             </span>
           )}
-          {locked && <Lock className="w-3.5 h-3.5 text-white/20" strokeWidth={1.8} />}
+          {locked && <Lock className="w-3.5 h-3.5 text-white/15" strokeWidth={1.6} />}
         </div>
       </div>
 
-      <h3 className="font-serif text-[15px] font-bold text-white mb-1.5 relative">{space.label}</h3>
-      <p className="text-xs text-white/45 leading-relaxed flex-1 relative">{space.description}</p>
+      <h3 className="text-sm font-semibold text-white/90 mb-1.5 tracking-[-0.01em]">{space.label}</h3>
+      <p className="text-xs text-white/35 leading-relaxed flex-1">{space.description}</p>
 
       {!locked && (
-        <div className="flex items-center gap-1 text-[11px] font-medium mt-4 relative" style={{ color: space.accent }}>
+        <div className="flex items-center gap-1 text-[11px] font-medium text-white/30 mt-4 group-hover:text-white/50 transition-colors">
           Open <ChevronRight className="w-3 h-3" />
         </div>
       )}
@@ -144,7 +121,7 @@ function SpaceCard({ space, locked }) {
   )
 
   if (locked) return <div>{inner}</div>
-  return <Link href={space.href}>{inner}</Link>
+  return <Link href={space.href} className="group">{inner}</Link>
 }
 
 export default function Dashboard() {
@@ -181,18 +158,15 @@ export default function Dashboard() {
   const showBanner = !hasPaid && daysLeft !== null && daysLeft <= 5
 
   return (
-    <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #0f1117 0%, #13172a 50%, #0f1117 100%)' }}>
-      {/* Ambient glow top */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20 blur-[100px] pointer-events-none" style={{ background: 'radial-gradient(ellipse, #6366f1 0%, transparent 70%)' }} />
-
-      <div className="max-w-5xl mx-auto px-6 pt-14 pb-20 relative">
+    <div className="min-h-screen bg-[#0c0c0c]">
+      <div className="max-w-5xl mx-auto px-6 pt-14 pb-20">
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-2.5 mb-5">
-            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
-              <Zap className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+            <div className="w-6 h-6 rounded-lg bg-white/[0.08] border border-white/[0.08] flex items-center justify-center">
+              <Zap className="w-3.5 h-3.5 text-white/60" strokeWidth={2} />
             </div>
-            <span className="text-xs font-bold text-white/40 uppercase tracking-widest">EE HQ</span>
+            <span className="text-xs font-semibold text-white/30 uppercase tracking-widest">EE HQ</span>
           </div>
           <h1 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-2">
             {firstName ? `Hey ${firstName}.` : 'Your workspace.'}
