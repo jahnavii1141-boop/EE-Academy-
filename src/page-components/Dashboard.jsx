@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2,
-  ChevronRight, Clock, Lock, Zap,
+  ChevronRight, Clock, Lock, Zap, TrendingUp,
 } from 'lucide-react'
 
 const SPACES = [
@@ -124,6 +124,26 @@ function SpaceCard({ space, locked }) {
   return <Link href={space.href} className="group">{inner}</Link>
 }
 
+function StatBar({ stats }) {
+  // Only show if at least one stat has a real value
+  const hasData = stats.some(s => s.value !== null && s.value !== '—')
+  if (!hasData) return null
+
+  return (
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/[0.05] rounded-2xl overflow-hidden border border-white/[0.07] mb-8">
+      {stats.map((stat, i) => (
+        <div key={i} className="bg-[#0c0c0c] px-5 py-4">
+          <p className="text-[10px] font-semibold text-white/30 uppercase tracking-widest mb-1.5">{stat.label}</p>
+          <p className={`font-serif text-2xl font-bold leading-none mb-1 ${stat.urgent ? 'text-red-400' : 'text-white'}`}>
+            {stat.value ?? '—'}
+          </p>
+          {stat.sub && <p className="text-[11px] text-white/25">{stat.sub}</p>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
 export default function Dashboard() {
   const { user } = useUser()
   const { isSignedIn } = useAuth()
@@ -131,9 +151,12 @@ export default function Dashboard() {
   const [daysLeft, setDaysLeft] = useState(null)
   const [trialEnded, setTrialEnded] = useState(false)
   const [hasPaid, setHasPaid] = useState(false)
+  const [stats, setStats] = useState(null)
 
   useEffect(() => {
     if (!isSignedIn) return
+
+    // Trial check
     fetch('/api/trial')
       .then(r => r.json())
       .then(({ trial_started_at, has_paid }) => {
@@ -145,14 +168,58 @@ export default function Dashboard() {
         }
         const elapsed = Math.floor((Date.now() - new Date(trial_started_at)) / 86400000)
         const remaining = 14 - elapsed
-        if (remaining <= 0 && !has_paid) {
-          setTrialEnded(true)
-          setDaysLeft(0)
-        } else {
-          setDaysLeft(Math.max(0, remaining))
-        }
+        if (remaining <= 0 && !has_paid) { setTrialEnded(true); setDaysLeft(0) }
+        else setDaysLeft(Math.max(0, remaining))
       })
       .catch(() => {})
+
+    // Stats — parallel fetch workspace, dump, planner, progress
+    Promise.all([
+      fetch('/api/workspace').then(r => r.json()),
+      fetch('/api/dump').then(r => r.json()),
+      fetch('/api/planner').then(r => r.json()),
+      fetch('/api/progress').then(r => r.json()),
+    ]).then(([ws, dump, planner, progress]) => {
+      const deadline = ws.workspace?.submission_deadline
+      const daysToDeadline = deadline
+        ? Math.ceil((new Date(deadline) - new Date()) / 86400000)
+        : null
+
+      const sources = (dump.entries ?? []).length
+      const milestones = planner.milestones ?? []
+      const done = milestones.filter(m => m.completed).length
+      const plannerPct = milestones.length > 0
+        ? Math.round((done / milestones.length) * 100)
+        : null
+      const modulesVisited = Object.keys(progress.progress ?? {}).length
+
+      setStats([
+        {
+          label: 'Days to deadline',
+          value: daysToDeadline !== null ? daysToDeadline : '—',
+          sub: deadline ? new Date(deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Set in Home',
+          urgent: daysToDeadline !== null && daysToDeadline <= 30,
+        },
+        {
+          label: 'Sources logged',
+          value: sources > 0 ? sources : '—',
+          sub: sources > 0 ? 'in EE Dump' : 'Add in EE Dump',
+          urgent: false,
+        },
+        {
+          label: 'Planner progress',
+          value: plannerPct !== null ? `${plannerPct}%` : '—',
+          sub: plannerPct !== null ? `${done} of ${milestones.length} milestones` : 'Set up Planner',
+          urgent: false,
+        },
+        {
+          label: 'Modules visited',
+          value: modulesVisited > 0 ? modulesVisited : '—',
+          sub: modulesVisited > 0 ? `of 14 modules` : 'Start in Modules',
+          urgent: false,
+        },
+      ])
+    }).catch(() => {})
   }, [isSignedIn])
 
   const showBanner = !hasPaid && daysLeft !== null && daysLeft <= 5
@@ -161,7 +228,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-[#0c0c0c]">
       <div className="max-w-5xl mx-auto px-6 pt-14 pb-20">
         {/* Header */}
-        <div className="mb-10">
+        <div className="mb-8">
           <div className="flex items-center gap-2.5 mb-5">
             <div className="w-6 h-6 rounded-lg bg-white/[0.08] border border-white/[0.08] flex items-center justify-center">
               <Zap className="w-3.5 h-3.5 text-white/60" strokeWidth={2} />
@@ -175,6 +242,9 @@ export default function Dashboard() {
             Everything for your Extended Essay — in one place.
           </p>
         </div>
+
+        {/* Stats bar — only renders once data loads and has values */}
+        {stats && <StatBar stats={stats} />}
 
         {showBanner && <TrialBanner daysLeft={daysLeft} />}
 
