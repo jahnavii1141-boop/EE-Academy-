@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2,
-  ChevronRight, Clock, Lock,
+  ChevronRight, Clock, Lock, Zap,
 } from 'lucide-react'
 
 const SPACES = [
@@ -13,71 +13,75 @@ const SPACES = [
     id: 'home',
     icon: Home,
     label: 'Home',
-    description: 'Your EE at a glance. RQ, subject, supervisor, deadline.',
+    description: 'Your RQ, subject, supervisor, and deadline — all in one view.',
     href: '/dashboard/home',
-    color: 'bg-[#FFF4E6] border-orange-200',
-    iconBg: 'bg-orange-100',
-    iconColor: 'text-orange-600',
+    accent: '#F97316',
+    accentBg: 'rgba(249,115,22,0.08)',
+    tag: 'Start here',
   },
   {
     id: 'dump',
     icon: Database,
     label: 'EE Dump',
-    description: 'Research organiser. Paste a URL or DOI — citation generates automatically.',
+    description: 'Paste a URL or DOI — citation appears automatically. Research without chaos.',
     href: '/dump',
-    color: 'bg-[#E6F0FF] border-blue-200',
-    iconBg: 'bg-blue-100',
-    iconColor: 'text-blue-600',
+    accent: '#3B82F6',
+    accentBg: 'rgba(59,130,246,0.08)',
+    tag: null,
   },
   {
     id: 'planner',
     icon: Calendar,
     label: 'Planner',
-    description: 'Block work sessions, set phase deadlines, see your full timeline.',
+    description: 'Set phase deadlines, see your full timeline, track what\'s done.',
     href: '/planner',
-    color: 'bg-[#F0E6FF] border-purple-200',
-    iconBg: 'bg-purple-100',
-    iconColor: 'text-purple-600',
+    accent: '#8B5CF6',
+    accentBg: 'rgba(139,92,246,0.08)',
+    tag: null,
   },
   {
     id: 'templates',
     icon: FileText,
     label: 'Templates',
-    description: 'Fillable SOPs — RPPF reflections, essay outline, argument map.',
+    description: 'RPPF reflections, essay outline, argument map — all fillable inline.',
     href: '/dashboard/templates',
-    color: 'bg-[#F0F0FF] border-indigo-200',
-    iconBg: 'bg-indigo-100',
-    iconColor: 'text-indigo-600',
+    accent: '#6366F1',
+    accentBg: 'rgba(99,102,241,0.08)',
+    tag: null,
   },
   {
     id: 'modules',
     icon: BookOpen,
     label: 'Modules',
-    description: '14 modules — the complete EE system, written in plain language.',
+    description: '14 modules. The complete EE system — written to actually make sense.',
     href: '/dashboard/modules',
-    color: 'bg-[#E6FFF0] border-green-200',
-    iconBg: 'bg-green-100',
-    iconColor: 'text-green-600',
+    accent: '#10B981',
+    accentBg: 'rgba(16,185,129,0.08)',
+    tag: null,
   },
   {
     id: 'share',
     icon: Share2,
     label: 'Share',
-    description: 'Generate a view-only link for your supervisor. They see everything.',
+    description: 'One link. Your supervisor sees your workspace — no account needed.',
     href: '/dashboard/share',
-    color: 'bg-[#FFF9E6] border-yellow-200',
-    iconBg: 'bg-yellow-100',
-    iconColor: 'text-yellow-600',
+    accent: '#F59E0B',
+    accentBg: 'rgba(245,158,11,0.08)',
+    tag: null,
   },
 ]
 
 function TrialBanner({ daysLeft }) {
   const urgent = daysLeft <= 3
   return (
-    <div className={`rounded-xl px-5 py-3 flex items-center justify-between gap-4 mb-6 border ${urgent ? 'bg-red-50 border-red-200' : 'bg-amber-50 border-amber-200'}`}>
-      <div className="flex items-center gap-2.5">
-        <Clock className={`w-4 h-4 flex-shrink-0 ${urgent ? 'text-red-500' : 'text-amber-500'}`} />
-        <p className={`text-sm font-semibold ${urgent ? 'text-red-700' : 'text-amber-700'}`}>
+    <div className={`rounded-2xl px-5 py-4 flex items-center justify-between gap-4 mb-8 border backdrop-blur-sm ${
+      urgent
+        ? 'bg-red-500/10 border-red-500/20 text-red-300'
+        : 'bg-amber-500/10 border-amber-500/20 text-amber-300'
+    }`}>
+      <div className="flex items-center gap-3">
+        <Clock className="w-4 h-4 flex-shrink-0" />
+        <p className="text-sm font-medium">
           {daysLeft > 0
             ? `${daysLeft} day${daysLeft === 1 ? '' : 's'} left in your free trial`
             : 'Your free trial has ended'}
@@ -85,7 +89,7 @@ function TrialBanner({ daysLeft }) {
       </div>
       <Link
         href="/pricing"
-        className={`text-xs font-bold px-3 py-1.5 rounded-lg flex-shrink-0 transition-colors ${urgent ? 'bg-red-600 text-white hover:bg-red-700' : 'bg-amber-600 text-white hover:bg-amber-700'}`}
+        className="text-xs font-bold px-4 py-2 rounded-xl flex-shrink-0 transition-all bg-white/10 hover:bg-white/20 text-white border border-white/10"
       >
         {daysLeft > 0 ? 'Keep access →' : 'Unlock EE HQ →'}
       </Link>
@@ -96,18 +100,44 @@ function TrialBanner({ daysLeft }) {
 function SpaceCard({ space, locked }) {
   const Icon = space.icon
   const inner = (
-    <div className={`${space.color} border rounded-2xl p-6 flex flex-col min-h-[180px] transition-all duration-200 ${locked ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer hover:shadow-md hover:-translate-y-0.5'}`}>
-      <div className="flex items-start justify-between mb-4">
-        <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${space.iconBg}`}>
-          <Icon className={`w-5 h-5 ${space.iconColor}`} strokeWidth={1.8} />
-        </div>
-        {locked && <Lock className="w-4 h-4 text-navy/30" strokeWidth={1.8} />}
-      </div>
-      <h3 className="font-serif text-base font-bold text-navy mb-1">{space.label}</h3>
-      <p className="text-xs text-navy/60 leading-relaxed flex-1">{space.description}</p>
+    <div
+      className={`relative rounded-2xl p-5 flex flex-col min-h-[190px] border transition-all duration-200 overflow-hidden ${
+        locked
+          ? 'opacity-40 cursor-not-allowed border-white/5 bg-white/[0.03]'
+          : 'cursor-pointer border-white/8 bg-white/[0.04] hover:bg-white/[0.07] hover:border-white/15 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-black/20'
+      }`}
+    >
+      {/* Subtle glow */}
       {!locked && (
-        <div className="flex items-center gap-1 text-xs font-medium text-navy/50 mt-4">
-          Open <ChevronRight className="w-3.5 h-3.5" />
+        <div
+          className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-20 blur-2xl pointer-events-none"
+          style={{ background: space.accent, transform: 'translate(30%, -30%)' }}
+        />
+      )}
+
+      <div className="flex items-start justify-between mb-5 relative">
+        <div
+          className="w-9 h-9 rounded-xl flex items-center justify-center"
+          style={{ background: space.accentBg, border: `1px solid ${space.accent}22` }}
+        >
+          <Icon className="w-4 h-4" style={{ color: space.accent }} strokeWidth={1.8} />
+        </div>
+        <div className="flex items-center gap-2">
+          {space.tag && (
+            <span className="text-[10px] font-bold px-2 py-0.5 rounded-full" style={{ background: space.accentBg, color: space.accent }}>
+              {space.tag}
+            </span>
+          )}
+          {locked && <Lock className="w-3.5 h-3.5 text-white/20" strokeWidth={1.8} />}
+        </div>
+      </div>
+
+      <h3 className="font-serif text-[15px] font-bold text-white mb-1.5 relative">{space.label}</h3>
+      <p className="text-xs text-white/45 leading-relaxed flex-1 relative">{space.description}</p>
+
+      {!locked && (
+        <div className="flex items-center gap-1 text-[11px] font-medium mt-4 relative" style={{ color: space.accent }}>
+          Open <ChevronRight className="w-3 h-3" />
         </div>
       )}
     </div>
@@ -151,23 +181,31 @@ export default function Dashboard() {
   const showBanner = !hasPaid && daysLeft !== null && daysLeft <= 5
 
   return (
-    <div className="min-h-screen bg-cream">
-      <div className="max-w-5xl mx-auto px-6 pt-12 pb-16">
-        <div className="mb-6">
-          <span className="inline-flex items-center bg-navy text-cream text-xs font-bold px-3 py-1.5 rounded-full mb-4 tracking-wide">
-            EE HQ
-          </span>
-          <h1 className="font-serif text-3xl lg:text-4xl font-bold text-navy mb-2">
-            {firstName ? `Hey ${firstName}.` : 'Your EE HQ.'}
+    <div className="min-h-screen" style={{ background: 'linear-gradient(160deg, #0f1117 0%, #13172a 50%, #0f1117 100%)' }}>
+      {/* Ambient glow top */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] opacity-20 blur-[100px] pointer-events-none" style={{ background: 'radial-gradient(ellipse, #6366f1 0%, transparent 70%)' }} />
+
+      <div className="max-w-5xl mx-auto px-6 pt-14 pb-20 relative">
+        {/* Header */}
+        <div className="mb-10">
+          <div className="flex items-center gap-2.5 mb-5">
+            <div className="w-6 h-6 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center">
+              <Zap className="w-3.5 h-3.5 text-white" strokeWidth={2.5} />
+            </div>
+            <span className="text-xs font-bold text-white/40 uppercase tracking-widest">EE HQ</span>
+          </div>
+          <h1 className="font-serif text-3xl lg:text-4xl font-bold text-white mb-2">
+            {firstName ? `Hey ${firstName}.` : 'Your workspace.'}
           </h1>
-          <p className="text-sm text-ink-soft">
-            Everything you need for your Extended Essay — in one place.
+          <p className="text-sm text-white/40">
+            Everything for your Extended Essay — in one place.
           </p>
         </div>
 
         {showBanner && <TrialBanner daysLeft={daysLeft} />}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {/* Space grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {SPACES.map((space) => (
             <SpaceCard
               key={space.id}
@@ -178,7 +216,7 @@ export default function Dashboard() {
         </div>
 
         {!trialEnded && !hasPaid && daysLeft !== null && daysLeft > 5 && (
-          <p className="text-center text-xs text-navy/40 mt-10">
+          <p className="text-center text-xs text-white/20 mt-12">
             Free trial · {daysLeft} day{daysLeft === 1 ? '' : 's'} remaining
           </p>
         )}
