@@ -2,7 +2,9 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ArrowLeft, ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp } from 'lucide-react'
+import { useAccess } from '../hooks/useAccess'
+import UpgradeGate from '../components/UpgradeGate'
 
 const TEMPLATES = [
   {
@@ -90,13 +92,24 @@ function TemplateBlock({ template }) {
 }
 
 export default function DashboardTemplates() {
-  return (
-    <div className="min-h-screen bg-cream">
-      <div className="max-w-2xl mx-auto px-6 pt-10 pb-20">
-        <Link href="/dashboard" className="flex items-center gap-1.5 text-xs text-navy/50 hover:text-navy mb-8 transition-colors">
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to EE HQ
-        </Link>
+  const { hasPremium, loading } = useAccess()
 
+  if (loading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <div className="w-6 h-6 rounded-full border-2 border-navy/20 border-t-navy/60 animate-spin" />
+      </div>
+    )
+  }
+
+  if (!hasPremium) {
+    return <UpgradeGate requiredTier="premium" toolName="Templates & SOPs" />
+  }
+
+  return (
+    <div className="h-full overflow-y-auto">
+      <div className="max-w-2xl mx-auto px-8 pt-8 pb-16">
+        <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-2">Templates</p>
         <h1 className="font-serif text-2xl font-bold text-navy mb-1">Templates</h1>
         <p className="text-sm text-ink-soft mb-8">
           Fillable SOPs — click to expand, type directly, auto-saved to your browser.

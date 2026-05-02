@@ -1,0 +1,39 @@
+import { auth } from '@clerk/nextjs/server'
+import { createServiceClient } from '../../../src/lib/supabase'
+
+export async function GET() {
+  const { userId } = await auth()
+  if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const supabase = createServiceClient()
+  const { data, error } = await supabase
+    .from('user_workspace')
+    .select('essay_text, essay_updated_at')
+    .eq('clerk_user_id', userId)
+    .single()
+
+  if (error && error.code !== 'PGRST116') {
+    return Response.json({ error: error.message }, { status: 500 })
+  }
+
+  return Response.json({ essay_text: data?.essay_text ?? '', essay_updated_at: data?.essay_updated_at ?? null })
+}
+
+export async function POST(request) {
+  const { userId } = await auth()
+  if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const { essay_text } = await request.json()
+  const supabase = createServiceClient()
+
+  const { error } = await supabase
+    .from('user_workspace')
+    .upsert({
+      clerk_user_id: userId,
+      essay_text: essay_text ?? '',
+      essay_updated_at: new Date().toISOString(),
+    }, { onConflict: 'clerk_user_id' })
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json({ ok: true })
+}

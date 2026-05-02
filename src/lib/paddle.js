@@ -1,6 +1,6 @@
 const PADDLE_SRC = 'https://cdn.paddle.com/paddle/v2/paddle.js'
 
-let paddlePromise
+let initialized = false
 
 function loadScript() {
   if (typeof window === 'undefined') return Promise.resolve(null)
@@ -9,8 +9,17 @@ function loadScript() {
   return new Promise((resolve, reject) => {
     const existing = document.querySelector(`script[src="${PADDLE_SRC}"]`)
     if (existing) {
-      existing.addEventListener('load', () => resolve(window.Paddle), { once: true })
-      existing.addEventListener('error', reject, { once: true })
+      // Script tag exists but Paddle may not be ready yet
+      const check = setInterval(() => {
+        if (window.Paddle) {
+          clearInterval(check)
+          resolve(window.Paddle)
+        }
+      }, 50)
+      setTimeout(() => {
+        clearInterval(check)
+        reject(new Error('Paddle script timeout'))
+      }, 10000)
       return
     }
 
@@ -18,24 +27,33 @@ function loadScript() {
     script.src = PADDLE_SRC
     script.async = true
     script.onload = () => resolve(window.Paddle)
-    script.onerror = reject
+    script.onerror = () => reject(new Error('Paddle script failed to load'))
     document.head.appendChild(script)
   })
 }
 
 export async function getPaddle({ environment, clientToken }) {
-  if (!clientToken) return null
+  if (!clientToken) {
+    console.error('Paddle: no client token configured')
+    return null
+  }
 
-  if (!paddlePromise) {
-    paddlePromise = loadScript().then((Paddle) => {
-      if (!Paddle) return null
+  try {
+    const Paddle = await loadScript()
+    if (!Paddle) return null
+
+    if (!initialized) {
+      // Only set sandbox environment — production is default
       if (environment && environment !== 'production') {
         Paddle.Environment.set(environment)
       }
       Paddle.Initialize({ token: clientToken })
-      return Paddle
-    })
-  }
+      initialized = true
+    }
 
-  return paddlePromise
+    return Paddle
+  } catch (err) {
+    console.error('Paddle init error:', err)
+    return null
+  }
 }

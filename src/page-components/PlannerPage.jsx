@@ -1,6 +1,8 @@
 'use client'
 
 import EEPlanner from '../components/EEPlanner'
+import { useAccess } from '../hooks/useAccess'
+import UpgradeGate from '../components/UpgradeGate'
 
 const PHASES = [
   { label: 'Research', color: '#2563eb' },
@@ -17,6 +19,20 @@ const STATS = [
 ]
 
 export default function PlannerPage() {
+  const { hasPremium, loading } = useAccess()
+
+  if (loading) {
+    return (
+      <div className="h-full flex items-center justify-center">
+        <div className="w-6 h-6 rounded-full border-2 border-navy/20 border-t-navy/60 animate-spin" />
+      </div>
+    )
+  }
+
+  if (!hasPremium) {
+    return <UpgradeGate requiredTier="premium" toolName="EE Planner" />
+  }
+
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-[#1a1a2e]">
       <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">

@@ -17,16 +17,18 @@ export const PADDLE_CONFIG = {
 export const PRICING = {
   basic: {
     price: 89,
-    earlyBird: 71,
+    earlyBird: 89,
     regular: 120,
-    label: 'Basic',
+    label: 'Standard',
     currency: '$',
+    includes: 'Full 14-module curriculum',
   },
   premium: {
-    price: 145,
-    earlyBird: 145,
-    regular: 195,
+    price: 149,
+    earlyBird: 149,
+    regular: 199,
     label: 'Premium',
     currency: '$',
+    includes: 'Full curriculum + AI analysis + all tools',
   },
 }

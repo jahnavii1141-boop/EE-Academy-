@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { ArrowLeft, Lock, CheckCircle } from 'lucide-react'
+import { Lock, CheckCircle } from 'lucide-react'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 
 const MODULES = [
@@ -25,12 +25,9 @@ export default function DashboardModules() {
   const { isVisited } = useModuleProgress()
 
   return (
-    <div className="min-h-screen bg-cream">
-      <div className="max-w-2xl mx-auto px-6 pt-10 pb-20">
-        <Link href="/dashboard" className="flex items-center gap-1.5 text-xs text-navy/50 hover:text-navy mb-8 transition-colors">
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to EE HQ
-        </Link>
-
+    <div className="h-full overflow-y-auto">
+      <div className="max-w-2xl mx-auto px-8 pt-8 pb-16">
+        <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-2">Modules</p>
         <h1 className="font-serif text-2xl font-bold text-navy mb-1">Modules</h1>
         <p className="text-sm text-ink-soft mb-8">
           14 modules — the complete EE system. Start with Module 1.

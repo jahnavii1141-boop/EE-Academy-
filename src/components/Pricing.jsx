@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import { useAuth } from '@clerk/nextjs'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 import { getPaddle } from '../lib/paddle'
@@ -7,19 +8,17 @@ import { getPaddle } from '../lib/paddle'
 const MotionDiv = motion.div
 
 const FEATURES_BASIC = [
-  'Extended Essay Resource Lab — all 14 modules',
-  'Study Calendar tool',
-  'Citation quick-reference guide',
+  'Full 14-module EE curriculum',
+  'Every guide, framework & checklist',
+  'Lifetime access — one-time payment',
 ]
 
 const FEATURES_PREMIUM = [
-  'Everything in Basic',
-  'EE Dump Workspace (interactive tool)',
-  'Source Tracker (coming soon)',
-  'EE Planner (timeline tool)',
-  'All 12 AI copy-paste prompts',
-  'Full 32/34 EE analysis with real commentary',
+  'Everything in Standard',
+  'EE Dump research workspace',
+  'EE Planner (timeline & deadline tool)',
   'All templates & SOPs (downloadable)',
+  'AI analysis prompts + 32/34 EE breakdown',
 ]
 
 function CheckItem({ text }) {
@@ -33,8 +32,9 @@ function CheckItem({ text }) {
   )
 }
 
-function CheckoutButton({ tier, href, priceId, children, className }) {
+function CheckoutButton({ href, priceId, children, className }) {
   const [isLoading, setIsLoading] = useState(false)
+  const { userId } = useAuth()
 
   const handleCheckout = async () => {
     if (isLoading) return
@@ -50,9 +50,11 @@ function CheckoutButton({ tier, href, priceId, children, className }) {
         if (Paddle) {
           Paddle.Checkout.open({
             items: [{ priceId, quantity: 1 }],
+            customData: userId ? { clerk_user_id: userId } : undefined,
             settings: {
               displayMode: 'overlay',
               theme: 'light',
+              successUrl: `${window.location.origin}/dashboard?payment=success`,
             },
           })
           return
@@ -104,7 +106,7 @@ export default function Pricing() {
             className="bento-card bg-card-2 flex flex-col justify-between hover:-translate-y-1 border border-navy/8"
           >
             <div>
-              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Basic</p>
+              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Standard</p>
               <div className="flex items-end gap-2 mb-1">
                 <span className="text-5xl font-serif font-bold text-navy">${PRICING.basic.price}</span>
               </div>
@@ -119,7 +121,7 @@ export default function Pricing() {
               priceId={PADDLE_CONFIG.basicPriceId}
               className="block w-full text-center btn-primary disabled:opacity-70"
             >
-              Enroll in Basic
+              Enroll — Standard
             </CheckoutButton>
           </MotionDiv>
 

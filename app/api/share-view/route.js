@@ -22,7 +22,7 @@ export async function GET(request) {
 
   // Fetch all public data for this user
   const [workspaceRes, dumpRes, plannerRes] = await Promise.all([
-    supabase.from('user_workspace').select('research_question, subject, supervisor_name, submission_deadline').eq('clerk_user_id', userId).single(),
+    supabase.from('user_workspace').select('research_question, subject, supervisor_name, submission_deadline, essay_text, essay_updated_at').eq('clerk_user_id', userId).single(),
     supabase.from('dump_entries').select('*').eq('clerk_user_id', userId).order('sort_order', { ascending: true }),
     supabase.from('planner_milestones').select('*').eq('clerk_user_id', userId).order('sort_order', { ascending: true }),
   ])

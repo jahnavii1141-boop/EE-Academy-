@@ -6,10 +6,11 @@ import { useEffect, useState } from 'react'
 import { useAuth, SignInButton } from '@clerk/nextjs'
 import { COURSE_MODULES } from '../data/courseContent'
 import { useModuleProgress } from '../hooks/useModuleProgress'
+import { useAccess } from '../hooks/useAccess'
 import ContentRenderer from '../components/blocks/ContentRenderer'
 import PostModuleGate from '../components/PostModuleGate'
 
-function ModuleSidebar({ currentIndex, isSignedIn, isLoaded }) {
+function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
   const { isVisited } = useModuleProgress()
   const visitedCount = COURSE_MODULES.filter(m => isVisited(m.id)).length
   const pct = Math.round((visitedCount / COURSE_MODULES.length) * 100)
@@ -23,7 +24,8 @@ function ModuleSidebar({ currentIndex, isSignedIn, isLoaded }) {
         {COURSE_MODULES.map((m, i) => {
           const isCurrent = i === currentIndex
           const visited = isVisited(m.id)
-          const isLocked = !m.free && isLoaded && !isSignedIn
+          const isAi = m.id === 'ai-module'
+          const isLocked = isLoaded && !m.free && (isAi ? !hasPremium : !hasStandard)
 
           return (
             <Link
@@ -73,7 +75,7 @@ function ModuleSidebar({ currentIndex, isSignedIn, isLoaded }) {
   )
 }
 
-function MobileModuleDrawer({ isOpen, onClose, currentIndex, isSignedIn, isLoaded }) {
+function MobileModuleDrawer({ isOpen, onClose, currentIndex, isLoaded, hasStandard, hasPremium }) {
   if (!isOpen) return null
   return (
     <div className="fixed inset-0 z-50 lg:hidden">
@@ -88,14 +90,16 @@ function MobileModuleDrawer({ isOpen, onClose, currentIndex, isSignedIn, isLoade
           </button>
         </div>
         <div className="h-[calc(100%-3.5rem)] overflow-y-auto">
-          <ModuleSidebar currentIndex={currentIndex} isSignedIn={isSignedIn} isLoaded={isLoaded} />
+          <ModuleSidebar currentIndex={currentIndex} isLoaded={isLoaded} hasStandard={hasStandard} hasPremium={hasPremium} />
         </div>
       </div>
     </div>
   )
 }
 
-function PaywallBanner({ moduleTitle }) {
+function PaywallBanner({ isPremiumOnly }) {
+  const { isSignedIn } = useAuth()
+
   return (
     <div className="relative mt-2 mb-8">
       <div className="absolute -top-24 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-cream pointer-events-none z-10" />
@@ -107,16 +111,20 @@ function PaywallBanner({ moduleTitle }) {
           </svg>
         </div>
         <h3 className="font-serif text-xl font-bold text-navy mb-2">
-          This module is part of the full Resource Lab
+          {isPremiumOnly ? 'Premium module' : 'Unlock the full curriculum'}
         </h3>
         <p className="text-navy/55 text-sm max-w-sm mx-auto mb-6 leading-relaxed">
-          Enroll to unlock <span className="font-medium text-navy">{moduleTitle}</span> and all 12 other modules.
+          {isPremiumOnly
+            ? <>This module is included in the <span className="font-medium text-navy">Premium plan</span>.</>
+            : <>Enroll in <span className="font-medium text-navy">Standard or Premium</span> to unlock all 14 modules.</>}
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <SignInButton mode="modal">
-            <button className="btn-primary text-sm">Sign In to Access</button>
-          </SignInButton>
-          <Link href="/pricing" className="btn-outline text-sm">View Plans</Link>
+          {!isSignedIn && (
+            <SignInButton mode="modal">
+              <button className="btn-primary text-sm">Sign In</button>
+            </SignInButton>
+          )}
+          <Link href="/pricing" className="btn-primary text-sm">{isPremiumOnly ? 'Upgrade to Premium →' : 'View Plans →'}</Link>
         </div>
         <p className="text-xs text-navy/35 mt-4">30-day money-back guarantee · Lifetime access</p>
       </div>
@@ -127,7 +135,8 @@ function PaywallBanner({ moduleTitle }) {
 export default function CourseModulePage() {
   const params = useParams()
   const moduleId = params.moduleId
-  const { isSignedIn, isLoaded } = useAuth()
+  const { isLoaded } = useAuth()
+  const { hasStandard, hasPremium, loading: accessLoading } = useAccess()
   const { markVisited } = useModuleProgress()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
@@ -155,8 +164,24 @@ export default function CourseModulePage() {
     )
   }
 
-  const isPaid = !module.free
-  const isGated = isPaid && isLoaded && !isSignedIn
+  // Access tiers:
+  // - free: always accessible (modules 1, 2, 3, 5)
+  // - standard (basic): all non-AI paid modules — requires has_paid + tier basic|premium
+  // - premium: AI module only — requires has_paid + tier premium
+  const isAiModule = module.id === 'ai-module'
+  const isPaidModule = !module.free
+
+  // Determine if this module is gated for the current user
+  let isGated = false
+  if (isAiModule) {
+    isGated = isLoaded && !accessLoading && !hasPremium
+  } else if (isPaidModule) {
+    isGated = isLoaded && !accessLoading && !hasStandard
+  }
+
+  // If not yet loaded, don't show gate (prevents flash)
+  if (!isLoaded || accessLoading) isGated = false
+
   const visibleContent = isGated ? module.content.slice(0, 3) : module.content
 
   return (
@@ -192,7 +217,7 @@ export default function CourseModulePage() {
 
       <div className="max-w-screen-2xl mx-auto flex">
         <aside className="hidden lg:block w-64 flex-shrink-0 border-r border-navy/6 sticky top-[calc(3.5rem+2.75rem)] h-[calc(100vh-3.5rem-2.75rem)]">
-          <ModuleSidebar currentIndex={moduleIndex} isSignedIn={isSignedIn} isLoaded={isLoaded} />
+          <ModuleSidebar currentIndex={moduleIndex} isLoaded={isLoaded} hasStandard={hasStandard} hasPremium={hasPremium} />
         </aside>
 
         <main className="flex-1 min-w-0">
@@ -201,7 +226,8 @@ export default function CourseModulePage() {
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-xs font-semibold text-navy/35 uppercase tracking-wider">Module {module.number}</span>
                 {module.free && <span className="text-[0.65rem] font-semibold text-emerald-600/70 bg-emerald-50 border border-emerald-200/50 px-2 py-0.5 rounded-full">Free</span>}
-                {isPaid && <span className="text-[0.65rem] font-semibold text-navy/40 bg-navy/5 border border-navy/8 px-2 py-0.5 rounded-full">Pro</span>}
+                {isAiModule && <span className="text-[0.65rem] font-semibold text-purple-600/70 bg-purple-50 border border-purple-200/50 px-2 py-0.5 rounded-full">Premium</span>}
+                {isPaidModule && !isAiModule && <span className="text-[0.65rem] font-semibold text-navy/40 bg-navy/5 border border-navy/8 px-2 py-0.5 rounded-full">Standard</span>}
               </div>
               <h1 className="font-serif text-3xl md:text-4xl font-bold text-navy leading-tight mb-3">{module.title}</h1>
               <p className="text-navy/50 text-lg leading-relaxed">{module.tagline}</p>
@@ -213,8 +239,8 @@ export default function CourseModulePage() {
             </article>
 
             {module.id === 'module-2' && !isGated && <PostModuleGate />}
-            {isGated && <PaywallBanner moduleTitle={module.title} />}
-            {isPaid && !isLoaded && (
+            {isGated && <PaywallBanner isPremiumOnly={isAiModule} />}
+            {isPaidModule && (!isLoaded || accessLoading) && (
               <div className="flex justify-center py-12">
                 <div className="w-6 h-6 rounded-full border-2 border-navy/10 border-t-navy/40" style={{ animation: 'spin 0.8s linear infinite' }} />
               </div>
@@ -255,7 +281,7 @@ export default function CourseModulePage() {
         </main>
       </div>
 
-      <MobileModuleDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} currentIndex={moduleIndex} isSignedIn={isSignedIn} isLoaded={isLoaded} />
+      <MobileModuleDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} currentIndex={moduleIndex} isLoaded={isLoaded} hasStandard={hasStandard} hasPremium={hasPremium} />
     </div>
   )
 }

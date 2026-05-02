@@ -2,8 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import Link from 'next/link'
-import { ArrowLeft, Save, CheckCircle } from 'lucide-react'
+import { Save, CheckCircle } from 'lucide-react'
 
 const SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science',
@@ -58,21 +57,18 @@ export default function DashboardHome() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-cream flex items-center justify-center">
-        <div className="w-7 h-7 rounded-full border-[3px] border-navy/15 border-t-navy/50" style={{ animation: 'spin 0.8s linear infinite' }} />
+      <div className="h-full flex items-center justify-center">
+        <div className="w-6 h-6 rounded-full border-2 border-navy/20 border-t-navy/60 animate-spin" />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-cream">
-      <div className="max-w-2xl mx-auto px-6 pt-10 pb-20">
-        <Link href="/dashboard" className="flex items-center gap-1.5 text-xs text-navy/50 hover:text-navy mb-8 transition-colors">
-          <ArrowLeft className="w-3.5 h-3.5" /> Back to EE HQ
-        </Link>
-
-        <h1 className="font-serif text-2xl font-bold text-navy mb-1">Home</h1>
-        <p className="text-sm text-ink-soft mb-8">Your EE at a glance. Fill this in — everything else in EE HQ uses it.</p>
+    <div className="h-full overflow-y-auto">
+      <div className="max-w-2xl mx-auto px-8 pt-8 pb-16">
+        <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-2">Home</p>
+        <h1 className="font-serif text-2xl font-bold text-navy mb-1">Your EE</h1>
+        <p className="text-sm text-ink-soft mb-8">Fill this in first — everything else in EE HQ uses it.</p>
 
         {/* Deadline countdown */}
         {daysUntilDeadline !== null && (
@@ -154,23 +150,6 @@ export default function DashboardHome() {
           </button>
         </div>
 
-        {/* Quick nav to other spaces */}
-        <div className="mt-12 rounded-2xl border border-navy/10 bg-parchment/30 p-5">
-          <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Your spaces</p>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { label: 'EE Dump', href: '/dump' },
-              { label: 'Planner', href: '/planner' },
-              { label: 'Templates', href: '/dashboard/templates' },
-              { label: 'Modules', href: '/dashboard/modules' },
-              { label: 'Share', href: '/dashboard/share' },
-            ].map(s => (
-              <Link key={s.href} href={s.href} className="text-sm font-medium text-navy hover:underline">
-                {s.label} →
-              </Link>
-            ))}
-          </div>
-        </div>
       </div>
     </div>
   )

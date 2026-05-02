@@ -1,7 +1,5 @@
 import Providers from './providers'
-import Navbar from '../src/components/Navbar'
-import Footer from '../src/components/Footer'
-import ExitIntentPopup from '../src/components/ExitIntentPopup'
+import ConditionalShell from '../src/components/ConditionalShell'
 import '../src/index.css'
 
 export const metadata = {
@@ -13,22 +11,17 @@ export const metadata = {
   metadataBase: new URL('https://www.theextendedessay.com'),
 }
 
+// Clerk requires dynamic rendering for auth header access
+export const dynamic = 'force-dynamic'
+
 export default function RootLayout({ children }) {
   return (
     <Providers>
       <html lang="en">
         <body>
-          <div className="min-h-screen bg-cream flex flex-col">
-            <Navbar />
-            <div className="flex-1">{children}</div>
-            <Footer />
-            <ExitIntentPopup />
-          </div>
+          <ConditionalShell>{children}</ConditionalShell>
         </body>
       </html>
     </Providers>
   )
 }
-
-// Prevent static generation of the layout since Clerk needs dynamic request context
-export const dynamic = 'force-dynamic'
