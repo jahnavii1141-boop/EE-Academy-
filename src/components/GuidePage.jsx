@@ -18,8 +18,8 @@ export default function GuidePage({
     '@type': 'Article',
     headline: title,
     description,
-    author: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://www.theextendedessay.com' },
-    publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://www.theextendedessay.com' },
+    author: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
+    publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
     datePublished: '2026-03-29',
   }
   const faqJsonLd = faqItems.length > 0

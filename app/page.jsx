@@ -8,12 +8,12 @@ import ResultsStrip from '../src/components/ResultsStrip'
 export const metadata = {
   title: 'IB Extended Essay Course — The 32/34 System | The Extended Essay Academy',
   description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student. 14 structured modules covering research, writing, criteria, and RPPF.',
-  alternates: { canonical: 'https://www.theextendedessay.com/' },
+  alternates: { canonical: 'https://theextendedessay.com/' },
   openGraph: {
     title: 'IB Extended Essay Course — The 32/34 System',
     description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student.',
-    url: 'https://www.theextendedessay.com/',
-    images: [{ url: 'https://www.theextendedessay.com/feather-hero.png' }],
+    url: 'https://theextendedessay.com/',
+    images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
   },
 }
 
@@ -25,7 +25,7 @@ const COURSE_JSON_LD = {
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',
-    url: 'https://www.theextendedessay.com',
+    url: 'https://theextendedessay.com',
   },
   offers: {
     '@type': 'Offer',

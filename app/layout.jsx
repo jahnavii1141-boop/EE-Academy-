@@ -8,7 +8,7 @@ export const metadata = {
     template: '%s | The Extended Essay Academy',
   },
   description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student.',
-  metadataBase: new URL('https://www.theextendedessay.com'),
+  metadataBase: new URL('https://theextendedessay.com'),
 }
 
 // Clerk requires dynamic rendering for auth header access

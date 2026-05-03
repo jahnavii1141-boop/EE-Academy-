@@ -13,7 +13,7 @@ export default function DashboardShare() {
   const [copied, setCopied] = useState(false)
 
   const shareUrl = token
-    ? `${typeof window !== 'undefined' ? window.location.origin : 'https://www.theextendedessay.com'}/share/${token}`
+    ? `${typeof window !== 'undefined' ? window.location.origin : 'https://theextendedessay.com'}/share/${token}`
     : null
 
   useEffect(() => {

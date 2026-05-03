@@ -3,7 +3,7 @@ import path from 'node:path'
 
 const DIST_DIR = path.resolve('dist')
 const INDEX_PATH = path.join(DIST_DIR, 'index.html')
-const BASE_URL = 'https://www.theextendedessay.com'
+const BASE_URL = 'https://theextendedessay.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/feather-hero.png`
 
 const ROUTES = [

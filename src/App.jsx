@@ -58,7 +58,7 @@ const COURSE_JSON_LD = {
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',
-    url: 'https://www.theextendedessay.com',
+    url: 'https://theextendedessay.com',
   },
   offers: {
     '@type': 'Offer',

@@ -144,7 +144,7 @@ export default function ShareViewPage() {
         )}
 
         <p className="text-center text-xs text-navy/30 mt-12">
-          Powered by <a href="https://www.theextendedessay.com" className="underline hover:text-navy/50">The Extended Essay Academy</a>
+          Powered by <a href="https://theextendedessay.com" className="underline hover:text-navy/50">The Extended Essay Academy</a>
         </p>
       </div>
     </div>

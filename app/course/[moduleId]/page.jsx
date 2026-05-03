@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     title: `Module ${module.number}: ${module.title}`,
     description: module.tagline,
     alternates: {
-      canonical: `https://www.theextendedessay.com/course/${moduleId}`,
+      canonical: `https://theextendedessay.com/course/${moduleId}`,
     },
   }
 }

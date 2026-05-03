@@ -165,12 +165,12 @@ export async function generateMetadata({ params }) {
   return {
     title: `${guide.title} | The Extended Essay Academy`,
     description: guide.description,
-    alternates: { canonical: `https://www.theextendedessay.com/guides/${params.slug}` },
+    alternates: { canonical: `https://theextendedessay.com/guides/${params.slug}` },
     openGraph: {
       title: guide.title,
       description: guide.description,
-      url: `https://www.theextendedessay.com/guides/${params.slug}`,
-      images: [{ url: 'https://www.theextendedessay.com/feather-hero.png' }],
+      url: `https://theextendedessay.com/guides/${params.slug}`,
+      images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
     },
   }
 }
