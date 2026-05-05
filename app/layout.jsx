@@ -1,3 +1,4 @@
+import Script from 'next/script'
 import Providers from './providers'
 import ConditionalShell from '../src/components/ConditionalShell'
 import '../src/index.css'
@@ -19,6 +20,7 @@ export default function RootLayout({ children }) {
     <Providers>
       <html lang="en">
         <body>
+          <Script src="https://cdn.paddle.com/paddle/v2/paddle.js" strategy="afterInteractive" />
           <ConditionalShell>{children}</ConditionalShell>
         </body>
       </html>
