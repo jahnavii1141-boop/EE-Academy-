@@ -19,7 +19,20 @@ export default function RootLayout({ children }) {
     <Providers>
       <html lang="en">
         <head>
-          <script src="https://cdn.paddle.com/paddle/v2/paddle.js" async></script>
+          <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+          <script dangerouslySetInnerHTML={{ __html: `
+            window.__paddleToken = '${process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN}';
+            function __initPaddle() {
+              if (window.__paddleInitialized) return;
+              Paddle.Initialize({ token: window.__paddleToken });
+              window.__paddleInitialized = true;
+            }
+            if (typeof Paddle !== 'undefined') {
+              __initPaddle();
+            } else {
+              document.querySelector('script[src*="paddle.js"]').addEventListener('load', __initPaddle);
+            }
+          `}} />
         </head>
         <body>
           <ConditionalShell>{children}</ConditionalShell>

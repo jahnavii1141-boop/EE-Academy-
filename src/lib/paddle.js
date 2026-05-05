@@ -42,13 +42,14 @@ export async function getPaddle({ environment, clientToken }) {
     const Paddle = await loadScript()
     if (!Paddle) return null
 
-    if (!initialized) {
+    if (!initialized && !window.__paddleInitialized) {
       // Only set sandbox environment — production is default
       if (environment && environment !== 'production') {
         Paddle.Environment.set(environment)
       }
       Paddle.Initialize({ token: clientToken })
       initialized = true
+      window.__paddleInitialized = true
     }
 
     return Paddle
