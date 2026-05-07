@@ -11,7 +11,7 @@ const NAV = [
   { id: 'home',      label: 'Home',      icon: Home,      href: '/dashboard/home' },
   { id: 'modules',   label: 'Modules',   icon: BookOpen,  href: '/dashboard/modules' },
   { id: 'essay',     label: 'My Essay',  icon: PenLine,   href: '/dashboard/essay' },
-  { id: 'dump',      label: 'EE Dump',   icon: Database,  href: '/dump' },
+  { id: 'dump',      label: 'Citations',  icon: Database,  href: '/dump' },
   { id: 'planner',   label: 'Planner',   icon: Calendar,  href: '/planner' },
   { id: 'templates', label: 'Templates', icon: FileText,  href: '/dashboard/templates' },
   { id: 'share',     label: 'Share',     icon: Share2,    href: '/dashboard/share' },
