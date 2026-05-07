@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { Save, CheckCircle, Clock, Share2 } from 'lucide-react'
 import Link from 'next/link'
 
 const WORD_LIMIT = 4000
@@ -18,10 +17,14 @@ export default function DashboardEssay() {
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState(null)
+  const [focused, setFocused] = useState(false)
   const autoSaveTimer = useRef(null)
 
   useEffect(() => {
-    if (!isSignedIn) return
+    if (!isSignedIn) {
+      setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
+      return
+    }
     fetch('/api/essay')
       .then(r => r.json())
       .then(({ essay_text, essay_updated_at }) => {
@@ -49,94 +52,102 @@ export default function DashboardEssay() {
     const val = e.target.value
     setText(val)
     if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current)
-    autoSaveTimer.current = setTimeout(() => save(val), 2000)
+    autoSaveTimer.current = setTimeout(() => save(val), 1500)
   }
 
   const words = wordCount(text)
   const isDirty = text !== savedText
   const pct = Math.min(100, Math.round((words / WORD_LIMIT) * 100))
+  const overLimit = words > WORD_LIMIT
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center">
-        <div className="w-6 h-6 rounded-full border-2 border-navy/20 border-t-navy/60 animate-spin" />
+      <div className="h-full flex items-center justify-center" style={{ background: '#fafafa' }}>
+        <div className="w-5 h-5 rounded-full border-2 border-t-transparent"
+          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
       </div>
     )
   }
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col" style={{ background: '#fff' }}>
 
-      {/* Top bar */}
-      <div className="flex-shrink-0 flex items-center justify-between px-8 pt-6 pb-4 border-b border-navy/8">
-        <div>
-          <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-0.5">My Essay</p>
-          <h1 className="font-serif text-xl font-bold text-navy">Essay Draft</h1>
-        </div>
+      {/* Minimal top bar */}
+      <div className="flex-shrink-0 flex items-center justify-between px-8 py-3"
+        style={{ borderBottom: '1px solid #f5f5f5' }}>
         <div className="flex items-center gap-4">
-          {/* Word count */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1.5">
-              <div className="w-24 h-1.5 bg-parchment rounded-full overflow-hidden">
-                <div
-                  className={`h-full rounded-full transition-all ${words > WORD_LIMIT ? 'bg-red-400' : 'bg-navy/60'}`}
-                  style={{ width: `${pct}%` }}
-                />
-              </div>
-              <span className={`text-xs font-semibold tabular-nums ${words > WORD_LIMIT ? 'text-red-500' : 'text-ink-soft'}`}>
-                {words.toLocaleString()} / {WORD_LIMIT.toLocaleString()}
-              </span>
-            </div>
-          </div>
-
-          {/* Save state */}
-          <div className="flex items-center gap-1.5 text-xs text-ink-muted">
+          <p className="text-xs font-medium" style={{ color: '#aaa' }}>My Essay</p>
+          <div className="flex items-center gap-1.5">
             {saving ? (
-              <><Clock className="w-3.5 h-3.5 animate-pulse" strokeWidth={2} /> Saving…</>
+              <span className="text-[11px]" style={{ color: '#ccc' }}>Saving…</span>
             ) : isDirty ? (
-              <span className="text-amber-600 font-medium">Unsaved changes</span>
+              <span className="text-[11px]" style={{ color: '#f59e0b' }}>Unsaved</span>
             ) : lastSaved ? (
-              <><CheckCircle className="w-3.5 h-3.5 text-green-500" strokeWidth={2} /> Saved {lastSaved.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}</>
+              <span className="text-[11px]" style={{ color: '#aaa' }}>
+                Saved {lastSaved.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+              </span>
             ) : null}
           </div>
+        </div>
 
-          <button
-            onClick={() => save(text)}
-            disabled={saving || !isDirty}
-            className="flex items-center gap-1.5 text-xs font-bold bg-navy text-cream px-4 py-2 rounded-xl hover:bg-navy-light transition-colors disabled:opacity-40"
-          >
-            <Save className="w-3.5 h-3.5" strokeWidth={2} />
-            Save
-          </button>
-
-          <Link
-            href="/dashboard/share"
-            className="flex items-center gap-1.5 text-xs font-semibold text-ink-soft border border-navy/15 hover:border-navy hover:text-navy px-4 py-2 rounded-xl transition-colors"
-          >
-            <Share2 className="w-3.5 h-3.5" strokeWidth={1.8} />
-            Share
+        <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <div className="h-1 rounded-full overflow-hidden" style={{ width: 60, background: '#f0f0f0' }}>
+              <div className="h-full rounded-full transition-all"
+                style={{ width: `${pct}%`, background: overLimit ? '#ef4444' : '#0a0a0a' }} />
+            </div>
+            <span className="text-[11px] tabular-nums" style={{ color: overLimit ? '#ef4444' : '#aaa' }}>
+              {words.toLocaleString()} / {WORD_LIMIT.toLocaleString()}
+            </span>
+          </div>
+          <Link href="/dashboard/share"
+            className="text-[11px] font-medium"
+            style={{ color: '#ccc' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+            onMouseLeave={e => e.currentTarget.style.color = '#ccc'}>
+            Share →
           </Link>
         </div>
       </div>
 
-      {/* Editor */}
-      <div className="flex-1 overflow-hidden px-8 py-6">
-        <textarea
-          value={text}
-          onChange={handleChange}
-          placeholder={`Start writing your Extended Essay here...\n\nThis is your space — write freely. It autosaves every 2 seconds. Your supervisor can see this through your share link.\n\nIB Extended Essays are typically 3,500–4,000 words.`}
-          className="w-full h-full resize-none bg-white border border-navy/10 rounded-2xl px-8 py-6 text-sm text-navy leading-7 placeholder:text-ink-muted/50 focus:outline-none focus:border-navy/30 shadow-sm font-sans"
-          spellCheck
-        />
+      {/* Writing area — full Notion-style */}
+      <div className="flex-1 overflow-y-auto">
+        <div style={{ maxWidth: 680, width: '100%', margin: '0 auto', padding: '52px 40px 80px' }}>
+          <textarea
+            value={text}
+            onChange={handleChange}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}
+            placeholder={
+              focused
+                ? ''
+                : 'Start typing your Extended Essay here…\n\nThis is your space — write freely.\nAutosaves every 1.5 seconds.\nShare with your supervisor via the link above.\n\nIB Extended Essays are typically 3,500–4,000 words.'
+            }
+            className="w-full resize-none focus:outline-none"
+            style={{
+              background: 'transparent',
+              border: 'none',
+              color: '#0a0a0a',
+              fontSize: 16,
+              lineHeight: 1.85,
+              fontFamily: 'Georgia, "Times New Roman", serif',
+              letterSpacing: '-0.005em',
+              minHeight: 'calc(100vh - 200px)',
+            }}
+            spellCheck
+          />
+        </div>
       </div>
 
-      {/* Bottom hint */}
-      <div className="flex-shrink-0 px-8 pb-4 flex items-center justify-between">
-        <p className="text-[11px] text-ink-muted">Autosaves every 2 seconds. Visible to your supervisor via the Share link.</p>
-        {words > WORD_LIMIT && (
-          <p className="text-[11px] text-red-500 font-semibold">{words - WORD_LIMIT} words over limit</p>
-        )}
-      </div>
+      {/* Bottom */}
+      {overLimit && (
+        <div className="flex-shrink-0 px-8 pb-3 flex justify-end"
+          style={{ borderTop: '1px solid #f5f5f5' }}>
+          <p className="text-[11px] font-medium" style={{ color: '#ef4444' }}>
+            {words - WORD_LIMIT} words over the limit
+          </p>
+        </div>
+      )}
     </div>
   )
 }
