@@ -9,4 +9,4 @@ Disallow: /planner
 Disallow: /dump
 Disallow: /study-calendar
 
-Sitemap: https://www.theextendedessay.com/sitemap.xml
+Sitemap: https://theextendedessay.com/sitemap.xml

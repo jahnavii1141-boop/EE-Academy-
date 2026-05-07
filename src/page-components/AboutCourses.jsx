@@ -69,7 +69,7 @@ export default function AboutCourses() {
 
           {/* Bottom: CTA */}
           <Link
-            to={EE_COURSE.startHref}
+            href={EE_COURSE.startHref}
             className="mt-6 flex items-center justify-between bg-navy/8 hover:bg-navy/15 transition-colors rounded-xl px-4 py-3"
           >
             <div className="flex items-center gap-2">

@@ -40,7 +40,7 @@ export default function LegalPage({ title, updated, sections }) {
                 {LEGAL_LINKS.map(l => (
                   <li key={l.href}>
                     <Link
-                      to={l.href}
+                      href={l.href}
                       className={`text-sm transition-colors block py-1 ${
                         l.label === title
                           ? 'text-navy font-semibold'
@@ -110,7 +110,7 @@ export default function LegalPage({ title, updated, sections }) {
               <p className="text-xs font-bold text-navy/40 uppercase tracking-[0.15em] mb-3">Other legal pages</p>
               <div className="flex flex-wrap gap-3">
                 {LEGAL_LINKS.filter(l => l.label !== title).map(l => (
-                  <Link key={l.href} to={l.href} className="text-sm text-navy underline underline-offset-2">
+                  <Link key={l.href} href={l.href} className="text-sm text-navy underline underline-offset-2">
                     {l.label}
                   </Link>
                 ))}

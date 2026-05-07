@@ -281,7 +281,7 @@ export default function Curriculum() {
                           ))}
                         </ul>
                         <Link
-                          to={`/course/${module.id}`}
+                          href={`/course/${module.id}`}
                           className="inline-flex items-center gap-2 text-sm font-semibold text-cream hover:text-parchment transition-colors group"
                         >
                           {module.free ? 'Start Module' : 'Preview Module'}
