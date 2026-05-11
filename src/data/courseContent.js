@@ -106,7 +106,7 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about — using the Venn diagram and Clastify.' },
-          { title: 'Research Question Mastery', text: 'Craft an RQ that sets you up for success — specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
+          { title: 'How to Find Your Research Question', text: 'Craft an RQ that sets you up for success — specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
           { title: 'The EE Dump System', text: 'Our signature research method that makes writing effortless. The most fun part of the entire process.' },
           { title: 'Research Strategy', text: 'Google vs. Scholar vs. PDF-only searches. The Scholar Shift that most students never reach.' },
           { title: 'Structure & Writing', text: 'Map every section to specific criteria. Seven sections, each with a job. No purposeless writing.' },
@@ -251,7 +251,7 @@ export const COURSE_MODULES = [
           { title: 'Decide the appropriate pathway', text: 'Interdisciplinary or subject-focused. The guidance: focus on one subject unless you can truly do justice to two. Interdisciplinary EEs require double the analytical work.' },
           { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic happens when you connect the two — fashion and Business Management, gaming and Psychology, music and Physics.' },
           { title: 'Undertake some preparatory reading', text: 'Use Clastify before you commit. Study high and low-scoring essays in your potential subject. Understand the patterns before you pick your lane.' },
-          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4 is entirely dedicated to this. Don\'t rush it.' },
+          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4 — How to Find Your Research Question — is entirely dedicated to this. Don\'t rush it.' },
           { title: 'Plan the research and writing process', text: 'Build efficient systems from the start. Module 7 walks you through the structure that earned 32/34.' },
           { title: 'Plan a structure for the essay', text: 'Your structure will evolve as your research develops — that\'s expected and normal. Build the skeleton first, then let the research fill it out.' },
           { title: 'Carry out the research', text: 'The EE Dump system in Module 5 makes this the most intellectually enjoyable part of the entire process.' },
@@ -429,7 +429,7 @@ export const COURSE_MODULES = [
     id: 'module-4',
     number: '04',
     free: true,
-    title: 'Research Question Mastery',
+    title: 'How to Find Your Research Question',
     tagline: 'Your RQ is the foundation everything else is built on.',
     content: [
       {
