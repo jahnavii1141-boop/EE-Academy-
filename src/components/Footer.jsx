@@ -12,13 +12,6 @@ const COMPANY_LINKS = [
   { label: 'Blog', href: '#' },
   { label: 'Contact', href: '#' },
 ]
-const GUIDE_LINKS = [
-  { label: 'How to Get an A in Extended Essay', href: '/guides/how-to-get-an-a-in-extended-essay' },
-  { label: 'How to Write an EE Introduction', href: '/guides/extended-essay-introduction' },
-  { label: 'EE Structure Template', href: '/guides/extended-essay-structure' },
-  { label: 'Research Question Examples', href: '/guides/research-question-examples' },
-  { label: 'RPPF Guide', href: '/guides/rppf-guide' },
-]
 
 export default function Footer() {
   return (
@@ -61,17 +54,6 @@ export default function Footer() {
                   ? <Link href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
                   : <a href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</a>
                 }
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div className="hidden md:block">
-          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Free Guides</h3>
-          <ul className="space-y-3">
-            {GUIDE_LINKS.map(link => (
-              <li key={link.label}>
-                <Link href={link.href} className="text-sm text-steel hover:text-cream transition-colors">{link.label}</Link>
               </li>
             ))}
           </ul>

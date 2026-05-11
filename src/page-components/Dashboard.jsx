@@ -4,63 +4,23 @@ import { useUser, useAuth } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { ArrowRight, BookOpen, Database, Calendar, FileText, Share2, PenLine, Clock } from 'lucide-react'
+import { getTheme } from '@/lib/subjectThemes'
 
 const TOOLS = [
-  {
-    id: 'modules',
-    icon: BookOpen,
-    label: 'Modules',
-    sub: '14-module EE system',
-    href: '/dashboard/modules',
-    accent: '#0a0a0a',
-  },
-  {
-    id: 'essay',
-    icon: PenLine,
-    label: 'My Essay',
-    sub: 'Draft & save your essay',
-    href: '/dashboard/essay',
-    accent: '#0a0a0a',
-  },
-  {
-    id: 'dump',
-    icon: Database,
-    label: 'EE Dump',
-    sub: 'Paste a URL — citation appears',
-    href: '/dump',
-    accent: '#0a0a0a',
-  },
-  {
-    id: 'planner',
-    icon: Calendar,
-    label: 'Planner',
-    sub: 'Deadlines & milestones',
-    href: '/planner',
-    accent: '#0a0a0a',
-  },
-  {
-    id: 'templates',
-    icon: FileText,
-    label: 'Templates',
-    sub: 'RPPF, outline, argument map',
-    href: '/dashboard/templates',
-    accent: '#0a0a0a',
-  },
-  {
-    id: 'share',
-    icon: Share2,
-    label: 'Share',
-    sub: 'View-only link for supervisor',
-    href: '/dashboard/share',
-    accent: '#0a0a0a',
-  },
+  { id: 'modules',   icon: BookOpen,  label: 'Modules',     sub: '14-module EE system',          href: '/dashboard/modules' },
+  { id: 'essay',     icon: PenLine,   label: 'My Essay',    sub: 'Draft & save your essay',       href: '/dashboard/essay' },
+  { id: 'dump',      icon: Database,  label: 'Citations',   sub: 'Paste a URL — citation appears', href: '/dump' },
+  { id: 'planner',   icon: Calendar,  label: 'Planner',     sub: 'Deadlines & milestones',         href: '/planner' },
+  { id: 'templates', icon: FileText,  label: 'Templates',   sub: 'RPPF, outline, argument map',    href: '/dashboard/templates' },
+  { id: 'share',     icon: Share2,    label: 'Share',       sub: 'View-only link for supervisor',  href: '/dashboard/share' },
 ]
 
 function Stat({ label, value, sub, urgent }) {
   return (
-    <div className="flex flex-col" style={{ borderRight: '1px solid #f0f0f0', padding: '0 32px 0 0' }}>
+    <div className="flex flex-col">
       <p className="text-[10px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#bbb' }}>{label}</p>
-      <p className="text-2xl font-semibold tabular-nums leading-none mb-1" style={{ color: urgent ? '#dc2626' : '#0a0a0a', letterSpacing: '-0.03em' }}>{value}</p>
+      <p className="text-2xl font-semibold tabular-nums leading-none mb-1"
+        style={{ color: urgent ? '#dc2626' : '#0a0a0a', letterSpacing: '-0.03em' }}>{value}</p>
       <p className="text-xs" style={{ color: '#aaa' }}>{sub}</p>
     </div>
   )
@@ -115,34 +75,50 @@ export default function Dashboard() {
       setModulesVisited(visited)
       setStats([
         { label: 'Days left', value: daysToDeadline !== null ? String(daysToDeadline) : '—', sub: deadline ? new Date(deadline).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : 'Set deadline →', urgent: daysToDeadline !== null && daysToDeadline <= 30 },
-        { label: 'Sources', value: sources > 0 ? String(sources) : '—', sub: sources > 0 ? 'logged in EE Dump' : 'Add in EE Dump →', urgent: false },
+        { label: 'Sources', value: sources > 0 ? String(sources) : '—', sub: sources > 0 ? 'logged in Citations' : 'Add in Citations →', urgent: false },
         { label: 'Planner', value: plannerPct !== null ? `${plannerPct}%` : '—', sub: plannerPct !== null ? `${done}/${milestones.length} done` : 'Set up Planner →', urgent: false },
-        { label: 'Modules', value: visited > 0 ? `${visited}/14` : '—', sub: visited > 0 ? 'completed' : 'Start Module 1 →', urgent: false },
+        { label: 'Modules', value: visited > 0 ? `${visited}/14` : '—', sub: visited > 0 ? 'visited' : 'Start Module 1 →', urgent: false },
       ])
     }).catch(() => {})
   }, [isSignedIn])
 
+  const theme = getTheme(subject)
   const showTrialBanner = !hasPaid && daysLeft !== null && daysLeft <= 5
   const locked = trialEnded && !hasPaid
 
   return (
     <div className="min-h-full px-10 pt-10 pb-16" style={{ maxWidth: 920 }}>
 
-      {/* Header */}
+      {/* Header — subject-accented */}
       <div className="mb-10">
         <p className="text-xs font-medium mb-4" style={{ color: '#bbb', letterSpacing: '0.05em' }}>
           {new Date().toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'long' }).toUpperCase()}
         </p>
-        <h1 className="font-semibold leading-none mb-3" style={{ fontSize: 32, color: '#0a0a0a', letterSpacing: '-0.03em' }}>
-          {firstName ? `Good to see you, ${firstName}.` : 'Your workspace.'}
-        </h1>
+
+        <div className="flex items-start gap-4">
+          {/* Subject accent bar */}
+          {subject && (
+            <div className="w-1 rounded-full flex-shrink-0 mt-2" style={{ height: 40, background: theme.accent }} />
+          )}
+          <div>
+            <h1 className="font-semibold leading-none mb-2" style={{ fontSize: 32, color: '#0a0a0a', letterSpacing: '-0.03em' }}>
+              {firstName ? `Good to see you, ${firstName}.` : 'Your workspace.'}
+            </h1>
+            {subject && (
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-medium mb-3"
+                style={{ background: theme.light, color: theme.color }}>
+                {theme.emoji} {subject}
+              </div>
+            )}
+          </div>
+        </div>
 
         {rq ? (
-          <div className="mt-4 flex items-start gap-3" style={{ maxWidth: 560 }}>
-            <div className="w-1 flex-shrink-0 rounded-full mt-1" style={{ height: 36, background: '#e5e5e5' }} />
+          <div className="mt-3 flex items-start gap-3" style={{ maxWidth: 580 }}>
+            <div className="w-0.5 flex-shrink-0 rounded-full mt-1" style={{ height: 40, background: theme.accent || '#e5e5e5' }} />
             <div>
               <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#bbb' }}>
-                {subject ? `${subject} · Research Question` : 'Research Question'}
+                Research Question
               </p>
               <p className="text-sm leading-relaxed" style={{ color: '#555' }}>{rq}</p>
             </div>
@@ -173,7 +149,7 @@ export default function Dashboard() {
 
       {/* Stats */}
       {stats && stats.some(s => s.value !== '—') && (
-        <div className="flex items-start gap-0 mb-10 pb-10" style={{ borderBottom: '1px solid #f0f0f0' }}>
+        <div className="flex items-start mb-10 pb-10" style={{ borderBottom: '1px solid #f0f0f0' }}>
           {stats.map((s, i) => (
             <div key={i} style={{ flex: 1, paddingLeft: i === 0 ? 0 : 28, paddingRight: 28, borderRight: i < stats.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
               <Stat {...s} />
@@ -237,15 +213,16 @@ export default function Dashboard() {
             </Link>
           )
         })}
+
       </div>
 
-      {/* Start prompt if nothing set up yet */}
+      {/* Empty state */}
       {!rq && (
         <div className="mt-10 flex items-center gap-4 px-5 py-4 rounded-xl" style={{ background: '#fff', border: '1px solid #f0f0f0', maxWidth: 480 }}>
           <div className="w-1 self-stretch rounded-full flex-shrink-0" style={{ background: '#0a0a0a' }} />
           <div>
             <p className="text-sm font-medium mb-0.5" style={{ color: '#0a0a0a' }}>Start with Home</p>
-            <p className="text-xs" style={{ color: '#aaa' }}>Add your research question, subject, supervisor and deadline to unlock your full dashboard.</p>
+            <p className="text-xs" style={{ color: '#aaa' }}>Add your subject, RQ, supervisor and deadline to unlock your full workspace.</p>
           </div>
           <Link href="/dashboard/home" className="flex-shrink-0">
             <ArrowRight size={15} color="#0a0a0a" />

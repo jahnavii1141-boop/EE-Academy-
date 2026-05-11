@@ -6,12 +6,12 @@ import EvervaultCTA from '../src/components/EvervaultCTA'
 import ResultsStrip from '../src/components/ResultsStrip'
 
 export const metadata = {
-  title: 'IB Extended Essay Course — The 32/34 System | The Extended Essay Academy',
-  description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student. 14 structured modules covering research, writing, criteria, and RPPF.',
+  title: 'IB Extended Essay Course | 32/34 System | EE Academy',
+  description: 'Ace your IB Extended Essay with the proven 14-module system built by a 32/34 student. Start free today — no card needed.',
   alternates: { canonical: 'https://theextendedessay.com/' },
   openGraph: {
-    title: 'IB Extended Essay Course — The 32/34 System',
-    description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student.',
+    title: 'IB Extended Essay Course | 32/34 System | EE Academy',
+    description: 'Ace your IB Extended Essay with the proven 14-module system built by a 32/34 student. Start free today.',
     url: 'https://theextendedessay.com/',
     images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
   },
@@ -21,7 +21,7 @@ const COURSE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: 'The Extended Essay Academy',
-  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and exam criteria.',
+  description: 'A self-study IB Extended Essay program with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and exam criteria.',
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',

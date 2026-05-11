@@ -10,6 +10,9 @@ const isProtectedRoute = createRouteMatcher([
   '/share(.*)',
 ])
 
+// Sign-in and sign-up are public — Clerk handles them
+const isAuthRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)'])
+
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
     await auth.protect()

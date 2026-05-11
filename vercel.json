@@ -1,5 +1,11 @@
 {
   "buildCommand": "next build",
   "outputDirectory": ".next",
-  "installCommand": "npm install"
+  "installCommand": "npm install",
+  "crons": [
+    {
+      "path": "/api/email-sequence",
+      "schedule": "0 10 * * *"
+    }
+  ]
 }

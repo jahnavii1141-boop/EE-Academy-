@@ -61,14 +61,6 @@ export default function Navbar() {
             Resource Lab
           </Link>
           <Link
-            href="/guides"
-            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-              pathname.startsWith('/guides') ? 'text-navy' : 'text-ink-soft hover:text-navy'
-            }`}
-          >
-            Guides
-          </Link>
-          <Link
             href="/dashboard"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'
@@ -136,9 +128,6 @@ export default function Navbar() {
           </Link>
           <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard
-          </Link>
-          <Link href="/guides" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-            Guides
           </Link>
           {isHome &&
             HOME_ANCHOR_LINKS.map((link) => (

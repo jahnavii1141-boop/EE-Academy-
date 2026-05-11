@@ -5,7 +5,7 @@ import {
   GraduationCap, Award, Clipboard, Layout, Quote, ArrowRight,
 } from 'lucide-react'
 
-// ─── Icon map for icon-card blocks ─────────────────────────────────────────────
+// ─── Icon map ──────────────────────────────────────────────────────────────────
 
 const ICON_MAP = {
   Target, Brain, Search, PenLine, FileText, CheckCircle2, Zap, BookOpen,
@@ -13,38 +13,57 @@ const ICON_MAP = {
   BookmarkCheck, Quote, ArrowRight,
 }
 
-// ─── Base block types ──────────────────────────────────────────────────────────
+// ─── Paragraph ─────────────────────────────────────────────────────────────────
 
 export function Paragraph({ text }) {
-  return <p className="text-navy/90 leading-[1.85] mb-5 text-[1.0625rem]">{text}</p>
+  return (
+    <p className="text-[#1a1a1a]/85 leading-[1.9] mb-6 text-[1.0625rem] font-normal">
+      {text}
+    </p>
+  )
 }
+
+// ─── Heading ───────────────────────────────────────────────────────────────────
 
 export function SectionHeading({ text }) {
   return (
-    <h3 className="font-serif text-2xl font-bold text-navy mt-12 mb-4 leading-snug">
+    <h3 className="font-semibold text-[#0a0a0a] text-xl mt-14 mb-5 leading-snug tracking-[-0.02em]">
       {text}
     </h3>
   )
 }
 
+// ─── Callout — monospace code-block style ──────────────────────────────────────
+
 export function Callout({ text }) {
   return (
-    <div className="my-8 relative pl-6 border-l-[3px] border-navy/20">
-      {text.split('\n\n').map((line, i) => (
-        <p key={i} className={`font-serif text-navy/90 text-lg leading-relaxed italic ${i > 0 ? 'mt-3' : ''}`}>
-          {line}
-        </p>
-      ))}
+    <div className="my-8 rounded-xl overflow-hidden border border-[#e8e8e8]">
+      {/* header bar */}
+      <div className="flex items-center gap-1.5 px-4 py-3 border-b border-[#e8e8e8]" style={{ background: '#f8f8f8' }}>
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#ff5f57' }} />
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#ffbd2e' }} />
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#28ca42' }} />
+      </div>
+      {/* content */}
+      <div className="p-5 bg-white">
+        {text.split('\n\n').map((line, i) => (
+          <p key={i} className={`font-mono text-[0.875rem] text-[#1a1a1a] leading-[1.8] whitespace-pre-wrap ${i > 0 ? 'mt-4' : ''}`}>
+            {line}
+          </p>
+        ))}
+      </div>
     </div>
   )
 }
 
+// ─── Bullet list ───────────────────────────────────────────────────────────────
+
 export function BulletList({ items }) {
   return (
-    <ul className="my-5 space-y-3">
+    <ul className="my-6 space-y-3 pl-1">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3.5 text-navy/85 leading-relaxed">
-          <span className="mt-[0.45rem] w-1.5 h-1.5 rounded-full bg-navy/30 flex-shrink-0" />
+        <li key={i} className="flex items-start gap-3 text-[#1a1a1a]/80 leading-relaxed text-[0.9375rem]">
+          <span className="mt-[0.55rem] w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#d4d4d4' }} />
           <span>{item}</span>
         </li>
       ))}
@@ -52,96 +71,125 @@ export function BulletList({ items }) {
   )
 }
 
+// ─── Criteria grid ─────────────────────────────────────────────────────────────
+
 export function CriteriaGrid({ items }) {
+  const COLORS = [
+    { bg: '#f0f7ff', border: '#bfdbfe', dot: '#3b82f6' },
+    { bg: '#f0fdf4', border: '#bbf7d0', dot: '#22c55e' },
+    { bg: '#fff7ed', border: '#fed7aa', dot: '#f97316' },
+    { bg: '#fdf4ff', border: '#e9d5ff', dot: '#a855f7' },
+    { bg: '#fef2f2', border: '#fecaca', dot: '#ef4444' },
+  ]
   return (
     <div className="my-8 grid sm:grid-cols-2 gap-3">
-      {items.map((item, i) => (
-        <div key={i} className="border border-navy/8 rounded-xl p-5">
-          <div className="flex flex-wrap items-center gap-2 mb-2">
-            <span className="font-semibold text-navy text-sm">{item.label}</span>
-            {item.marks && (
-              <span className="text-xs bg-navy/6 text-navy/60 px-2.5 py-0.5 rounded-full font-medium">
-                {item.marks}
-              </span>
-            )}
+      {items.map((item, i) => {
+        const c = COLORS[i % COLORS.length]
+        return (
+          <div key={i} className="rounded-xl p-5 border" style={{ background: c.bg, borderColor: c.border }}>
+            <div className="flex items-center gap-2 mb-2.5">
+              <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ background: c.dot }} />
+              <span className="font-semibold text-[#0a0a0a] text-sm">{item.label}</span>
+              {item.marks && (
+                <span className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full bg-white/70 text-[#555]">
+                  {item.marks}
+                </span>
+              )}
+            </div>
+            <p className="text-[#1a1a1a]/75 text-sm leading-relaxed">{item.text}</p>
           </div>
-          <p className="text-navy/80 text-sm leading-relaxed">{item.text}</p>
-        </div>
-      ))}
+        )
+      })}
     </div>
   )
 }
+
+// ─── Before / After ────────────────────────────────────────────────────────────
 
 export function BeforeAfter({ before, after }) {
   return (
     <div className="my-8 grid sm:grid-cols-2 gap-4">
-      <div className="rounded-xl border border-red-200/80 bg-red-50/40 p-5">
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-red-400 uppercase tracking-wider mb-3">
-          <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+      {/* Before */}
+      <div className="rounded-xl overflow-hidden border border-red-200">
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-red-100" style={{ background: '#fff5f5' }}>
+          <svg className="w-3.5 h-3.5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
-          {before.label}
-        </span>
-        <p className="text-navy/80 text-sm leading-relaxed italic">{before.text}</p>
+          <span className="text-xs font-semibold text-red-500 uppercase tracking-wider">{before.label}</span>
+        </div>
+        <div className="p-4 bg-white">
+          <p className="text-[#1a1a1a]/75 text-sm leading-relaxed">{before.text}</p>
+        </div>
       </div>
-      <div className="rounded-xl border border-green-200/80 bg-green-50/40 p-5">
-        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-green-500 uppercase tracking-wider mb-3">
-          <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+      {/* After */}
+      <div className="rounded-xl overflow-hidden border border-green-200">
+        <div className="flex items-center gap-2 px-4 py-2.5 border-b border-green-100" style={{ background: '#f0fdf4' }}>
+          <svg className="w-3.5 h-3.5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
           </svg>
-          {after.label}
-        </span>
-        <p className="text-navy/80 text-sm leading-relaxed italic">{after.text}</p>
-      </div>
-    </div>
-  )
-}
-
-// ─── Visual block types (toned down, course-like) ──────────────────────────────
-
-export function IconCard({ icon, title, text }) {
-  const Icon = ICON_MAP[icon] || Target
-  return (
-    <div className="border border-navy/8 rounded-xl p-5 transition-colors hover:bg-parchment/20">
-      <div className="flex items-start gap-3.5">
-        <Icon className="w-4.5 h-4.5 text-navy/40 flex-shrink-0 mt-0.5" />
-        <div>
-          <h4 className="font-semibold text-navy text-sm mb-1">{title}</h4>
-          <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
+          <span className="text-xs font-semibold text-green-600 uppercase tracking-wider">{after.label}</span>
+        </div>
+        <div className="p-4 bg-white">
+          <p className="text-[#1a1a1a]/75 text-sm leading-relaxed">{after.text}</p>
         </div>
       </div>
     </div>
   )
 }
 
-export function StatHighlight({ stat, label }) {
+// ─── Icon Card ─────────────────────────────────────────────────────────────────
+
+export function IconCard({ icon, title, text }) {
+  const Icon = ICON_MAP[icon] || Target
   return (
-    <div className="text-center py-5 px-4">
-      <p className="font-serif text-3xl font-bold text-navy mb-1">{stat}</p>
-      <div className="w-8 h-px bg-navy/15 mx-auto mb-2" />
-      <p className="text-navy/75 text-sm">{label}</p>
+    <div className="flex items-start gap-4 rounded-xl bg-white border border-[#efefef] px-4 py-4 hover:border-[#d8d8d8] hover:bg-[#fafafa] transition-all group">
+      {/* Icon badge */}
+      <div className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#e8e8e8] bg-white group-hover:border-[#d0d0d0] transition-colors">
+        <Icon className="w-4 h-4" style={{ color: '#0a0a0a' }} strokeWidth={1.75} />
+      </div>
+      {/* Text */}
+      <div className="min-w-0">
+        <h4 className="font-semibold text-[#0a0a0a] text-[0.8125rem] mb-0.5 tracking-[-0.01em] leading-snug">{title}</h4>
+        <p className="text-[#777] text-[0.8125rem] leading-relaxed">{text}</p>
+      </div>
     </div>
   )
 }
 
+// ─── Stat Highlight ────────────────────────────────────────────────────────────
+
+export function StatHighlight({ stat, label }) {
+  return (
+    <div className="relative overflow-hidden rounded-xl bg-[#0a0a0a] px-6 py-7 transition-transform hover:scale-[1.01]">
+      {/* subtle background texture */}
+      <div className="absolute inset-0 opacity-[0.03]"
+        style={{ backgroundImage: 'radial-gradient(circle at 80% 20%, #fff 0%, transparent 60%)' }} />
+      <p className="font-bold text-white leading-none mb-2" style={{ fontSize: 42, letterSpacing: '-0.05em' }}>
+        {stat}
+      </p>
+      <div className="w-8 h-px mb-2" style={{ background: 'rgba(255,255,255,0.15)' }} />
+      <p className="text-[0.75rem] font-medium" style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.4 }}>{label}</p>
+    </div>
+  )
+}
+
+// ─── Step Process ──────────────────────────────────────────────────────────────
+
 export function StepProcess({ steps }) {
   return (
-    <div className="my-8 space-y-0">
+    <div className="my-8 rounded-xl border border-[#e8e8e8] overflow-hidden divide-y divide-[#f5f5f5]">
       {steps.map((step, i) => (
-        <div key={i} className="flex gap-4">
-          {/* Timeline */}
-          <div className="flex flex-col items-center flex-shrink-0">
-            <div className="w-7 h-7 rounded-full border-2 border-navy/20 bg-cream flex items-center justify-center text-navy/60 font-semibold text-xs flex-shrink-0">
-              {i + 1}
-            </div>
-            {i < steps.length - 1 && (
-              <div className="w-px flex-1 bg-navy/10 my-1" />
-            )}
-          </div>
+        <div key={i} className="flex items-start gap-4 px-5 py-4 bg-white hover:bg-[#fafafa] transition-colors">
+          {/* Number badge */}
+          <span
+            className="flex-shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold mt-0.5"
+            style={{ background: '#0a0a0a', color: '#fff', minWidth: 24 }}>
+            {i + 1}
+          </span>
           {/* Content */}
-          <div className="pb-6 pt-0.5 flex-1">
-            <h4 className="font-semibold text-navy text-sm mb-1">{step.title}</h4>
-            <p className="text-navy/80 text-sm leading-relaxed">{step.text}</p>
+          <div>
+            <h4 className="font-semibold text-[#0a0a0a] text-sm mb-0.5 tracking-[-0.01em]">{step.title}</h4>
+            <p className="text-[#666] text-sm leading-relaxed">{step.text}</p>
           </div>
         </div>
       ))}
@@ -149,36 +197,46 @@ export function StepProcess({ steps }) {
   )
 }
 
+// ─── Tip Box ───────────────────────────────────────────────────────────────────
+
 export function TipBox({ text }) {
   return (
-    <div className="my-6 flex gap-3 border-l-2 border-emerald-400/60 pl-5 py-3">
-      <Lightbulb className="w-4 h-4 text-emerald-500/70 flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-emerald-600/80 uppercase tracking-wider mb-1">Tip</p>
-        <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
+    <div className="my-6 rounded-xl border border-[#d1fae5] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#d1fae5]" style={{ background: '#ecfdf5' }}>
+        <Lightbulb className="w-3.5 h-3.5 text-emerald-600" />
+        <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wider">Tip</span>
+      </div>
+      <div className="p-4 bg-white">
+        <p className="text-[#1a1a1a]/80 text-sm leading-relaxed">{text}</p>
       </div>
     </div>
   )
 }
 
+// ─── Warning Box ───────────────────────────────────────────────────────────────
+
 export function WarningBox({ text }) {
   return (
-    <div className="my-6 flex gap-3 border-l-2 border-amber-400/60 pl-5 py-3">
-      <AlertTriangle className="w-4 h-4 text-amber-500/70 flex-shrink-0 mt-0.5" />
-      <div>
-        <p className="text-xs font-semibold text-amber-600/80 uppercase tracking-wider mb-1">Note</p>
-        <p className="text-navy/80 text-sm leading-relaxed">{text}</p>
+    <div className="my-6 rounded-xl border border-[#fde68a] overflow-hidden">
+      <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#fde68a]" style={{ background: '#fffbeb' }}>
+        <AlertTriangle className="w-3.5 h-3.5 text-amber-600" />
+        <span className="text-xs font-semibold text-amber-700 uppercase tracking-wider">Watch out</span>
+      </div>
+      <div className="p-4 bg-white">
+        <p className="text-[#1a1a1a]/80 text-sm leading-relaxed">{text}</p>
       </div>
     </div>
   )
 }
+
+// ─── GIF ───────────────────────────────────────────────────────────────────────
 
 export function GifBlock({ src, alt, caption }) {
   const isGiphy = src?.includes('giphy.com/embed')
   return (
-    <figure className="my-8">
+    <figure className="my-8 rounded-xl overflow-hidden border border-[#e8e8e8]">
       {isGiphy ? (
-        <div className="relative w-full overflow-hidden rounded-lg" style={{ paddingBottom: '56%' }}>
+        <div className="relative w-full" style={{ paddingBottom: '56%' }}>
           <iframe
             src={src}
             className="absolute inset-0 w-full h-full"
@@ -191,70 +249,78 @@ export function GifBlock({ src, alt, caption }) {
           />
         </div>
       ) : (
-        <img
-          src={src}
-          alt={alt || ''}
-          className="w-full rounded-lg"
-          loading="lazy"
-        />
+        <img src={src} alt={alt || ''} className="w-full" loading="lazy" />
       )}
       {caption && (
-        <figcaption className="text-center text-navy/60 text-xs mt-2.5 italic">{caption}</figcaption>
+        <figcaption className="text-center text-[#888] text-xs py-2.5 px-4 border-t border-[#f0f0f0]" style={{ background: '#fafafa' }}>
+          {caption}
+        </figcaption>
       )}
     </figure>
   )
 }
 
+// ─── Image ─────────────────────────────────────────────────────────────────────
+
 export function ImageBlock({ src, alt, caption, maxWidth }) {
   return (
-    <figure className="my-8">
+    <figure className="my-8 rounded-xl overflow-hidden border border-[#e8e8e8]">
       <img
         src={src}
         alt={alt || ''}
-        className="w-full rounded-lg"
+        className="w-full"
         style={maxWidth ? { maxWidth } : undefined}
         loading="lazy"
       />
       {caption && (
-        <figcaption className="text-center text-navy/60 text-xs mt-2.5 italic">{caption}</figcaption>
+        <figcaption className="text-center text-[#888] text-xs py-2.5 px-4 border-t border-[#f0f0f0]" style={{ background: '#fafafa' }}>
+          {caption}
+        </figcaption>
       )}
     </figure>
   )
 }
 
+// ─── Numbered Steps ────────────────────────────────────────────────────────────
+
 export function NumberedSteps({ items }) {
   return (
-    <ol className="my-6 space-y-3">
+    <ol className="my-6 space-y-3 pl-1">
       {items.map((item, i) => (
         <li key={i} className="flex items-start gap-3">
-          <span className="w-5 h-5 rounded-full border border-navy/15 text-navy/50 font-semibold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span
+            className="w-5 h-5 rounded flex items-center justify-center font-semibold text-xs flex-shrink-0 mt-0.5 border"
+            style={{ background: '#f5f5f5', borderColor: '#e0e0e0', color: '#555' }}
+          >
             {i + 1}
           </span>
-          <span className="text-navy/85 text-sm leading-relaxed">{item}</span>
+          <span className="text-[#1a1a1a]/80 text-sm leading-relaxed">{item}</span>
         </li>
       ))}
     </ol>
   )
 }
 
+// ─── Comparison Table ──────────────────────────────────────────────────────────
+
 export function ComparisonTable({ headers, rows }) {
   return (
-    <div className="my-8 overflow-x-auto">
+    <div className="my-8 overflow-x-auto rounded-xl border border-[#e8e8e8]">
       <table className="w-full text-sm border-collapse">
         <thead>
-          <tr>
+          <tr style={{ background: '#f8f8f8' }}>
             {headers.map((h, i) => (
-              <th key={i} className="bg-navy/5 font-semibold text-navy text-left px-4 py-3 border-b border-navy/10 first:rounded-tl-lg last:rounded-tr-lg">
+              <th key={i} className="font-semibold text-[#0a0a0a] text-left px-4 py-3 border-b border-[#e8e8e8] text-xs uppercase tracking-wide">
                 {h}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white divide-y divide-[#f0f0f0]">
           {rows.map((row, ri) => (
-            <tr key={ri}>
+            <tr key={ri} className="hover:bg-[#fafafa] transition-colors">
               {row.map((cell, ci) => (
-                <td key={ci} className="px-4 py-3 text-navy/80 border-b border-navy/5">
+                <td key={ci} className="px-4 py-3 text-[#1a1a1a]/75 text-sm leading-relaxed">
                   {cell}
                 </td>
               ))}
@@ -266,97 +332,103 @@ export function ComparisonTable({ headers, rows }) {
   )
 }
 
+// ─── Formula Box ───────────────────────────────────────────────────────────────
+
 export function FormulaBox({ title, formula, description }) {
   return (
-    <div className="my-8 bg-parchment/40 rounded-xl p-6 border-l-3 border-navy/25">
+    <div className="my-8 rounded-xl overflow-hidden" style={{ border: '1px solid #e8e8e8', borderLeft: '3px solid #0a0a0a' }}>
       {title && (
-        <p className="text-navy/45 text-xs font-semibold uppercase tracking-widest mb-2">{title}</p>
+        <div className="px-5 py-2.5 border-b border-[#e8e8e8]" style={{ background: '#f8f8f8' }}>
+          <p className="text-[10px] font-semibold text-[#999] uppercase tracking-widest">{title}</p>
+        </div>
       )}
-      <p className="font-serif text-navy text-lg font-semibold leading-snug mb-2">{formula}</p>
-      {description && (
-        <p className="text-navy/75 text-sm leading-relaxed">{description}</p>
-      )}
+      <div className="px-5 py-5 bg-white">
+        <p className="font-mono text-[#0a0a0a] text-[1rem] font-semibold leading-snug" style={{ letterSpacing: '-0.02em' }}>
+          {formula}
+        </p>
+        {description && (
+          <p className="text-[#666] text-sm leading-relaxed mt-3 pt-3 border-t border-[#f5f5f5]">{description}</p>
+        )}
+      </div>
     </div>
   )
 }
+
+// ─── Quote Highlight ───────────────────────────────────────────────────────────
 
 export function QuoteHighlight({ text, attribution }) {
   return (
-    <blockquote className="my-8 pl-6 border-l-2 border-navy/15">
-      <p className="font-serif text-navy/90 text-lg italic leading-relaxed mb-2">{text}</p>
-      {attribution && (
-        <cite className="text-navy/60 text-sm not-italic">— {attribution}</cite>
-      )}
-    </blockquote>
-  )
-}
-
-export function KeyTakeaway({ items }) {
-  return (
-    <div className="my-8 border-l-3 border-navy/20 bg-parchment/20 rounded-r-xl pl-5 pr-5 py-5">
-      <div className="flex items-center gap-2 mb-3">
-        <BookmarkCheck className="w-4 h-4 text-navy/40" />
-        <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest">Key Takeaways</p>
+    <div className="my-10 -mx-2 sm:mx-0 rounded-2xl overflow-hidden" style={{ background: '#0a0a0a' }}>
+      {/* top accent line */}
+      <div className="h-[3px] w-full" style={{ background: 'linear-gradient(90deg, #fff 0%, rgba(255,255,255,0.1) 100%)' }} />
+      <div className="px-7 py-8">
+        {/* big quote mark */}
+        <span className="block font-serif text-6xl leading-none mb-2 select-none" style={{ color: 'rgba(255,255,255,0.12)', marginLeft: -4 }}>
+          &ldquo;
+        </span>
+        <blockquote>
+          <p className="font-serif text-white text-xl leading-[1.65] tracking-[-0.01em]">
+            {text}
+          </p>
+          {attribution && (
+            <cite className="block mt-4 text-xs font-medium not-italic" style={{ color: 'rgba(255,255,255,0.4)' }}>
+              — {attribution}
+            </cite>
+          )}
+        </blockquote>
       </div>
-      <ul className="space-y-2">
-        {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-navy/80 text-sm leading-relaxed">
-            <span className="mt-[0.45rem] w-1 h-1 rounded-full bg-navy/30 flex-shrink-0" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   )
 }
+
+// ─── Key Takeaway ──────────────────────────────────────────────────────────────
+
+export function KeyTakeaway({ items }) {
+  return (
+    <div className="my-10 rounded-xl overflow-hidden border border-[#e8e8e8]">
+      <div className="flex items-center gap-2.5 px-5 py-3.5 border-b border-[#e8e8e8]" style={{ background: '#0a0a0a' }}>
+        <BookmarkCheck className="w-3.5 h-3.5" style={{ color: 'rgba(255,255,255,0.6)' }} />
+        <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: 'rgba(255,255,255,0.6)' }}>
+          Key Takeaways
+        </p>
+      </div>
+      <div className="p-5 bg-white">
+        <ul className="space-y-3">
+          {items.map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-sm text-[#1a1a1a]/80 leading-relaxed">
+              <svg className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: '#22c55e' }} viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+// ─── Progress Check (legacy, kept for compatibility) ───────────────────────────
 
 export function ProgressCheck({ moduleId, items }) {
   const storageKey = `ee_check_${moduleId}`
   const [checked, setChecked] = useState(() => {
-    try {
-      return JSON.parse(localStorage.getItem(storageKey) || '[]')
-    } catch {
-      return []
-    }
+    try { return JSON.parse(localStorage.getItem(storageKey) || '[]') } catch { return [] }
   })
-
   useEffect(() => {
     localStorage.setItem(storageKey, JSON.stringify(checked))
   }, [checked, storageKey])
-
-  const toggle = (idx) => {
-    setChecked(prev =>
-      prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]
-    )
-  }
-
-  const pct = items.length ? Math.round((checked.length / items.length) * 100) : 0
-
+  const toggle = (idx) => setChecked(prev => prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx])
   return (
-    <div className="my-8 border border-navy/8 rounded-xl p-5">
-      <div className="flex items-center justify-between mb-4">
-        <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest">Self-Check</p>
-        <span className="text-xs text-navy/40">{pct}%</span>
-      </div>
-      <div className="h-1 bg-navy/6 rounded-full mb-4">
-        <div
-          className="h-full bg-navy/25 rounded-full transition-all duration-300"
-          style={{ width: `${pct}%` }}
-        />
-      </div>
+    <div className="my-8 rounded-xl border border-[#e8e8e8] p-5 bg-white">
+      <p className="text-xs font-semibold text-[#999] uppercase tracking-widest mb-4">Self-Check</p>
       <ul className="space-y-2.5">
         {items.map((item, i) => (
           <li key={i}>
-            <label className="flex items-start gap-3 cursor-pointer group">
-              <input
-                type="checkbox"
-                checked={checked.includes(i)}
-                onChange={() => toggle(i)}
-                className="mt-0.5 w-4 h-4 rounded border-navy/15 text-navy/50 focus:ring-navy/20 cursor-pointer"
-              />
-              <span className={`text-sm leading-relaxed transition-colors ${
-                checked.includes(i) ? 'text-navy/45 line-through' : 'text-navy/80'
-              }`}>
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input type="checkbox" checked={checked.includes(i)} onChange={() => toggle(i)}
+                className="mt-0.5 w-4 h-4 rounded border-[#ddd] cursor-pointer" />
+              <span className={`text-sm leading-relaxed ${checked.includes(i) ? 'line-through text-[#bbb]' : 'text-[#1a1a1a]/80'}`}>
                 {item}
               </span>
             </label>
@@ -367,29 +439,29 @@ export function ProgressCheck({ moduleId, items }) {
   )
 }
 
-// ─── Master switch renderer ─────────────────────────────────────────────────
+// ─── Master switch renderer ────────────────────────────────────────────────────
 
 export default function ContentBlock({ block }) {
   switch (block.type) {
-    case 'heading':         return <SectionHeading text={block.text} />
-    case 'paragraph':       return <Paragraph text={block.text} />
-    case 'callout':         return <Callout text={block.text} />
-    case 'list':            return <BulletList items={block.items} />
-    case 'criteria':        return <CriteriaGrid items={block.items} />
-    case 'before-after':    return <BeforeAfter before={block.before} after={block.after} />
-    case 'icon-card':       return <IconCard icon={block.icon} title={block.title} text={block.text} />
-    case 'stat-highlight':  return <StatHighlight stat={block.stat} label={block.label} />
-    case 'step-process':    return <StepProcess steps={block.steps} />
-    case 'tip-box':         return <TipBox text={block.text} />
-    case 'warning-box':     return <WarningBox text={block.text} />
-    case 'gif':             return <GifBlock src={block.src} alt={block.alt} caption={block.caption} />
-    case 'image':           return <ImageBlock src={block.src} alt={block.alt} caption={block.caption} maxWidth={block.maxWidth} />
-    case 'numbered-steps':  return <NumberedSteps items={block.items} />
+    case 'heading':          return <SectionHeading text={block.text} />
+    case 'paragraph':        return <Paragraph text={block.text} />
+    case 'callout':          return <Callout text={block.text} />
+    case 'list':             return <BulletList items={block.items} />
+    case 'criteria':         return <CriteriaGrid items={block.items} />
+    case 'before-after':     return <BeforeAfter before={block.before} after={block.after} />
+    case 'icon-card':        return <IconCard icon={block.icon} title={block.title} text={block.text} />
+    case 'stat-highlight':   return <StatHighlight stat={block.stat} label={block.label} />
+    case 'step-process':     return <StepProcess steps={block.steps} />
+    case 'tip-box':          return <TipBox text={block.text} />
+    case 'warning-box':      return <WarningBox text={block.text} />
+    case 'gif':              return <GifBlock src={block.src} alt={block.alt} caption={block.caption} />
+    case 'image':            return <ImageBlock src={block.src} alt={block.alt} caption={block.caption} maxWidth={block.maxWidth} />
+    case 'numbered-steps':   return <NumberedSteps items={block.items} />
     case 'comparison-table': return <ComparisonTable headers={block.headers} rows={block.rows} />
-    case 'formula-box':     return <FormulaBox title={block.title} formula={block.formula} description={block.description} />
-    case 'quote-highlight': return <QuoteHighlight text={block.text} attribution={block.attribution} />
-    case 'key-takeaway':    return <KeyTakeaway items={block.items} />
-    case 'progress-check':  return <ProgressCheck moduleId={block.moduleId} items={block.items} />
-    default:                return null
+    case 'formula-box':      return <FormulaBox title={block.title} formula={block.formula} description={block.description} />
+    case 'quote-highlight':  return <QuoteHighlight text={block.text} attribution={block.attribution} />
+    case 'key-takeaway':     return <KeyTakeaway items={block.items} />
+    case 'progress-check':   return <ProgressCheck moduleId={block.moduleId} items={block.items} />
+    default:                 return null
   }
 }

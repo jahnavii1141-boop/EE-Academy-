@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" shape-rendering="geometricPrecision">
+  <!-- Navy rounded background -->
+  <rect width="64" height="64" rx="12" fill="#1A2744"/>
+
+  <!-- Feather quill — cream colored -->
+  <!-- Main quill shaft -->
+  <line x1="20" y1="50" x2="44" y2="14" stroke="#DDD9C4" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Left barbs -->
+  <path d="M32 32 Q24 30 20 34" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M35 26 Q26 24 22 28" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M29 38 Q22 37 19 41" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M26 43 Q20 43 18 47" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Right barbs -->
+  <path d="M32 32 Q40 28 42 22" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M35 26 Q42 22 43 17" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M29 38 Q37 34 39 29" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M26 43 Q34 40 36 35" stroke="#DDD9C4" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+
+  <!-- Nib tip at bottom -->
+  <path d="M20 50 Q18 54 22 53 Q21 51 20 50Z" fill="#DDD9C4"/>
+</svg>

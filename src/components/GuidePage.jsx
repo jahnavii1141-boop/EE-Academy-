@@ -69,6 +69,17 @@ export default function GuidePage({
           <ContentRenderer content={content} />
         </article>
 
+        {/* Author byline */}
+        <div className="flex items-center gap-3 mt-10 mb-2 pb-8 border-b border-navy/8">
+          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-cream text-sm font-bold flex-shrink-0">
+            G
+          </div>
+          <div>
+            <p className="text-sm font-semibold text-navy">Written by Gia</p>
+            <p className="text-xs text-navy/50">32/34 IB Extended Essay · The Extended Essay Academy</p>
+          </div>
+        </div>
+
         {/* Waitlist CTA */}
         <PostModuleGate />
 

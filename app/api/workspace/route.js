@@ -33,7 +33,7 @@ export async function POST(request) {
       research_question: body.research_question ?? '',
       subject: body.subject ?? '',
       supervisor_name: body.supervisor_name ?? '',
-      submission_deadline: body.submission_deadline ?? null,
+      submission_deadline: body.submission_deadline || null,
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
     .select()

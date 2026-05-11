@@ -3,13 +3,14 @@
 import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
 import Footer from './Footer'
-import ExitIntentPopup from './ExitIntentPopup'
+
+const NO_SHELL_PATHS = ['/dashboard', '/dump', '/planner', '/sign-in', '/sign-up', '/onboarding']
 
 export default function ConditionalShell({ children }) {
   const pathname = usePathname()
-  const isDashboard = pathname?.startsWith('/dashboard') || pathname?.startsWith('/dump') || pathname?.startsWith('/planner')
+  const hideShell = NO_SHELL_PATHS.some(p => pathname?.startsWith(p))
 
-  if (isDashboard) {
+  if (hideShell) {
     return <>{children}</>
   }
 
@@ -18,7 +19,6 @@ export default function ConditionalShell({ children }) {
       <Navbar />
       <div className="flex-1">{children}</div>
       <Footer />
-      <ExitIntentPopup />
     </div>
   )
 }
