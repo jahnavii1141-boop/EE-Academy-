@@ -2,7 +2,8 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
   '/dashboard(.*)',
-  '/course(.*)',
+  // /course/* is intentionally PUBLIC — Googlebot must be able to crawl it.
+  // Access gating is handled inside CourseModulePage via PaywallBanner.
   '/dump(.*)',
   '/planner(.*)',
   '/study-calendar(.*)',
