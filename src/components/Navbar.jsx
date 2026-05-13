@@ -81,21 +81,20 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          {isSignedIn && (
-            <UserButton
-              appearance={{
-                elements: { avatarBox: { width: 32, height: 32 } },
-              }}
-            />
-          )}
-          {isHome ? (
-            <Link href="/dashboard" className="btn-primary text-sm">
-              Start Free
-            </Link>
+          {isSignedIn ? (
+            <>
+              <UserButton appearance={{ elements: { avatarBox: { width: 32, height: 32 } } }} />
+              <Link href="/dashboard" className="btn-primary text-sm">Dashboard</Link>
+            </>
           ) : (
-            <Link href="/dashboard" className="btn-primary text-sm">
-              Get Started
-            </Link>
+            <>
+              <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
+                Sign in
+              </Link>
+              <Link href="/sign-up" className="btn-primary text-sm">
+                {isHome ? 'Start Free' : 'Get Started'}
+              </Link>
+            </>
           )}
         </div>
 
@@ -135,16 +134,21 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
-          {isSignedIn && (
-            <div className="flex items-center gap-2">
-              <UserButton appearance={{ elements: { avatarBox: { width: 28, height: 28 } } }} />
-              <span className="text-sm text-ink-soft">Account</span>
-            </div>
-          )}
-          {isHome ? (
-            <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start Free</Link>
+          {isSignedIn ? (
+            <>
+              <div className="flex items-center gap-2">
+                <UserButton appearance={{ elements: { avatarBox: { width: 28, height: 28 } } }} />
+                <span className="text-sm text-ink-soft">Account</span>
+              </div>
+              <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Dashboard</Link>
+            </>
           ) : (
-            <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</Link>
+            <>
+              <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
+              <Link href="/sign-up" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">
+                {isHome ? 'Start Free' : 'Get Started'}
+              </Link>
+            </>
           )}
         </div>
       )}

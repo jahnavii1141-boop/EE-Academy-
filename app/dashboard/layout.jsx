@@ -9,15 +9,20 @@ import {
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
-const NAV = [
-  { id: 'home',      label: 'Home',        icon: Home,      href: '/dashboard/home' },
-  { id: 'modules',   label: 'Modules',     icon: BookOpen,  href: '/dashboard/modules' },
-  { id: 'essay',     label: 'My Essay',    icon: PenLine,   href: '/dashboard/essay' },
-  { id: 'dump',      label: 'Citations',   icon: Database,  href: '/dump' },
-  { id: 'planner',   label: 'Planner',     icon: Calendar,  href: '/planner' },
-  { id: 'templates', label: 'Templates',   icon: FileText,  href: '/dashboard/templates' },
-  { id: 'share',     label: 'Share',       icon: Share2,    href: '/dashboard/share' },
+const NAV_MAIN = [
+  { id: 'home',    label: 'Home',    icon: Home,    href: '/dashboard/home' },
+  { id: 'modules', label: 'Modules', icon: BookOpen, href: '/dashboard/modules' },
+  { id: 'essay',   label: 'My Essay', icon: PenLine, href: '/dashboard/essay' },
 ]
+
+const NAV_PRO = [
+  { id: 'dump',      label: 'Citations',  icon: Database, href: '/dump' },
+  { id: 'planner',   label: 'Planner',    icon: Calendar, href: '/planner' },
+  { id: 'templates', label: 'Templates',  icon: FileText, href: '/dashboard/templates' },
+  { id: 'share',     label: 'Share',      icon: Share2,   href: '/dashboard/share' },
+]
+
+const ALL_NAV = [...NAV_MAIN, ...NAV_PRO]
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
@@ -40,7 +45,7 @@ export default function DashboardLayout({ children }) {
 
   const theme = getTheme(subject)
 
-  const activeId = NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
+  const activeId = ALL_NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
     ?? (pathname === '/dashboard' ? 'home' : null)
 
   return (
@@ -70,7 +75,7 @@ export default function DashboardLayout({ children }) {
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
           <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mb-2" style={{ color: '#bbb' }}>Menu</p>
-          {NAV.map(item => {
+          {NAV_MAIN.map(item => {
             const Icon = item.icon
             const active = activeId === item.id
             return (
@@ -92,6 +97,28 @@ export default function DashboardLayout({ children }) {
             )
           })}
 
+          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>Pro Features</p>
+          {NAV_PRO.map(item => {
+            const Icon = item.icon
+            const active = activeId === item.id
+            return (
+              <Link
+                key={item.id}
+                href={item.href}
+                className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
+                style={{
+                  background: active ? '#0a0a0a' : 'transparent',
+                  color: active ? '#fff' : '#555',
+                  fontWeight: active ? 500 : 400,
+                }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#0a0a0a' } }}
+                onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
+              >
+                <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
+                <span>{item.label}</span>
+              </Link>
+            )
+          })}
         </nav>
 
         {/* Bottom */}
