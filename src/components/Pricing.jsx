@@ -1,52 +1,80 @@
-import { motion } from 'framer-motion'
+'use client'
+
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
+import Link from 'next/link'
 import AnimateIn, { StaggerContainer, staggerItem } from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 import { getPaddle } from '../lib/paddle'
+import { motion } from 'framer-motion'
 
 const MotionDiv = motion.div
 
-const FEATURES_BASIC = [
-  'Full 14-module EE curriculum',
-  'Every guide, framework & checklist',
-  'Lifetime access — one-time payment',
+// ── Features per tier ────────────────────────────────────────────────────────
+const METHOD_FEATURES = [
+  '14-module EE curriculum',
+  'EE Planner — week-by-week timeline',
+  'Research Question Checker',
+  'Essay editor with autosave',
+  'Citation generator',
+  'Lifetime access',
 ]
 
-const FEATURES_PREMIUM = [
-  'Everything in Standard',
-  'EE Dump research workspace',
-  'EE Planner (timeline & deadline tool)',
+const METHOD_AI_FEATURES = [
+  'Everything in Method',
+  'AI Grade Scan — criteria-by-criteria',
+  'Polish Pass — language & argument tightening',
+  'Supervisor Reply Drafter',
   'All templates & SOPs (downloadable)',
-  'AI analysis prompts + 32/34 EE breakdown',
+  '32/34 essay full breakdown',
 ]
 
-function CheckItem({ text }) {
+const METHOD_ME_FEATURES = [
+  'Everything in Method+AI',
+  '3 × 45-min sessions with the founder',
+  'Essay read-through before each session',
+  'RQ + argument review in Session 1',
+  'Draft feedback in Session 2',
+  'Final polish + submission check in Session 3',
+]
+
+function Check() {
   return (
-    <li className="flex items-start gap-2.5 text-sm text-ink-soft">
-      <svg className="w-4 h-4 text-navy flex-shrink-0 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-      </svg>
+    <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
+      <circle cx="8" cy="8" r="8" fill="#0a0a0a" fillOpacity="0.08" />
+      <path d="M5 8l2 2 4-4" stroke="#0a0a0a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  )
+}
+
+function CheckItem({ text, light }) {
+  return (
+    <li className="flex items-start gap-2.5 text-sm" style={{ color: light ? 'rgba(255,255,255,0.85)' : '#555' }}>
+      {light ? (
+        <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="8" fill="rgba(255,255,255,0.15)" />
+          <path d="M5 8l2 2 4-4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ) : <Check />}
       {text}
     </li>
   )
 }
 
-function CheckoutButton({ href, priceId, children, className }) {
+// ── Checkout button (Paddle overlay or fallback URL) ─────────────────────────
+function CheckoutButton({ href, priceId, children, className, style }) {
   const [isLoading, setIsLoading] = useState(false)
   const { userId } = useAuth()
 
   const handleCheckout = async () => {
     if (isLoading) return
     setIsLoading(true)
-
     try {
       if (PADDLE_CONFIG.clientToken && priceId) {
         const Paddle = await getPaddle({
           environment: PADDLE_CONFIG.environment,
           clientToken: PADDLE_CONFIG.clientToken,
         })
-
         if (Paddle) {
           Paddle.Checkout.open({
             items: [{ priceId, quantity: 1 }],
@@ -60,7 +88,6 @@ function CheckoutButton({ href, priceId, children, className }) {
           return
         }
       }
-
       window.location.href = href
     } finally {
       setIsLoading(false)
@@ -68,91 +95,128 @@ function CheckoutButton({ href, priceId, children, className }) {
   }
 
   return (
-    <button type="button" onClick={handleCheckout} disabled={isLoading} className={className}>
-      {isLoading ? 'Opening checkout...' : children}
+    <button type="button" onClick={handleCheckout} disabled={isLoading}
+      className={className} style={style}>
+      {isLoading ? 'Opening…' : children}
     </button>
   )
 }
 
+// ── Main Pricing section ─────────────────────────────────────────────────────
 export default function Pricing() {
   return (
-    <section id="pricing" className="bg-cream py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <AnimateIn>
-          <h2 className="section-heading">Pricing Plans</h2>
-          <p className="section-subheading">
-            One-time payment. Lifetime access. No hidden fees.
-          </p>
-        </AnimateIn>
+    <section id="pricing" className="py-16 px-6" style={{ background: '#fafafa' }}>
+      <div className="max-w-5xl mx-auto">
 
-        {/* Free tier callout */}
-        <AnimateIn delay={0.05}>
-          <div className="mb-6 rounded-2xl border border-navy/10 bg-parchment/60 px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+        {/* Free tier nudge */}
+        <AnimateIn delay={0.0}>
+          <div className="mb-8 rounded-xl border border-emerald-200 bg-emerald-50 px-5 py-3.5
+            flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
-            <div>
-              <p className="text-sm font-semibold text-navy">Start for free — no card required</p>
-              <p className="text-xs text-ink-soft mt-0.5">Includes Modules 1, 2, 3 & 5 in full + the EE Planner tool</p>
-            </div>
-            <a href="/course/module-1" className="sm:ml-auto text-xs font-semibold text-navy underline underline-offset-2 flex-shrink-0">
+            <p className="text-sm text-emerald-800">
+              <strong>Try it first.</strong> Modules 1–3 and 5 are completely free — no card, no login required.
+            </p>
+            <Link href="/course/module-1"
+              className="sm:ml-auto text-xs font-semibold text-emerald-700 underline underline-offset-2 flex-shrink-0 whitespace-nowrap">
               Start free →
-            </a>
+            </Link>
           </div>
         </AnimateIn>
 
-        <StaggerContainer className="grid md:grid-cols-2 gap-4 items-stretch">
-          {/* Basic */}
-          <MotionDiv
-            variants={staggerItem}
-            className="bento-card bg-card-2 flex flex-col justify-between hover:-translate-y-1 border border-navy/8"
-          >
-            <div>
-              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3">Standard</p>
-              <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">${PRICING.basic.price}</span>
+        {/* 3-column grid */}
+        <StaggerContainer className="grid md:grid-cols-3 gap-4 items-stretch">
+
+          {/* ── Method ── */}
+          <MotionDiv variants={staggerItem}
+            className="rounded-2xl border border-navy/10 bg-white flex flex-col p-6">
+            <div className="flex-1">
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: '#aaa' }}>Method</p>
+              <div className="flex items-end gap-1.5 mb-0.5">
+                <span className="text-4xl font-serif font-bold text-navy">${PRICING.method.price}</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
-              <ul className="space-y-3 mb-8">
-                {FEATURES_BASIC.map((f, i) => <CheckItem key={i} text={f} />)}
+              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>one-time · lifetime access</p>
+              <ul className="space-y-2.5 mb-8">
+                {METHOD_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
             </div>
             <CheckoutButton
-              tier="basic"
               href={PADDLE_CONFIG.basicUrl}
               priceId={PADDLE_CONFIG.basicPriceId}
-              className="block w-full text-center btn-primary disabled:opacity-70"
+              className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all border border-navy/20 text-navy hover:bg-navy hover:text-white"
             >
-              Enroll — Standard
+              Enroll in Method
             </CheckoutButton>
           </MotionDiv>
 
-          {/* Premium */}
-          <MotionDiv
-            variants={staggerItem}
-            className="bento-card bg-parchment flex flex-col justify-between border-2 border-navy/15 relative hover:-translate-y-1"
-          >
-            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-navy text-cream text-xs font-bold px-4 py-1.5 rounded-full shadow-md whitespace-nowrap">
+          {/* ── Method+AI (hero) ── */}
+          <MotionDiv variants={staggerItem}
+            className="rounded-2xl flex flex-col p-6 relative"
+            style={{ background: '#0a0a0a' }}>
+            <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 text-[11px] font-bold px-4 py-1.5
+              rounded-full whitespace-nowrap"
+              style={{ background: '#fff', color: '#0a0a0a', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
               Most Popular
             </span>
-            <div>
-              <p className="text-xs font-semibold text-navy/50 uppercase tracking-widest mb-3 mt-3">Premium</p>
-              <div className="flex items-end gap-2 mb-1">
-                <span className="text-5xl font-serif font-bold text-navy">${PRICING.premium.price}</span>
+            <div className="flex-1">
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+AI</p>
+              <div className="flex items-end gap-1.5 mb-0.5">
+                <span className="text-4xl font-serif font-bold text-white">${PRICING.methodAI.price}</span>
               </div>
-              <p className="text-xs text-ink-soft mb-6">One-time payment · Lifetime access</p>
-              <ul className="space-y-3 mb-8">
-                {FEATURES_PREMIUM.map((f, i) => <CheckItem key={i} text={f} />)}
+              <p className="text-[12px] mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>one-time · lifetime access</p>
+              <p className="text-[11px] mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>
+                or {PRICING.methodAI.installments.count} × ${PRICING.methodAI.installments.each}
+              </p>
+              <ul className="space-y-2.5 mb-8">
+                {METHOD_AI_FEATURES.map((f, i) => <CheckItem key={i} text={f} light />)}
               </ul>
             </div>
             <CheckoutButton
-              tier="premium"
               href={PADDLE_CONFIG.premiumUrl}
               priceId={PADDLE_CONFIG.premiumPriceId}
-              className="block w-full text-center btn-primary disabled:opacity-70"
+              className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all"
+              style={{ background: '#fff', color: '#0a0a0a' }}
             >
-              Enroll in Premium
+              Enroll in Method+AI
             </CheckoutButton>
           </MotionDiv>
+
+          {/* ── Method+Me (anchor) ── */}
+          <MotionDiv variants={staggerItem}
+            className="rounded-2xl border border-navy/10 bg-white flex flex-col p-6">
+            <div className="flex-1">
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: '#aaa' }}>Method+Me</p>
+              <div className="flex items-end gap-1.5 mb-0.5">
+                <span className="text-4xl font-serif font-bold text-navy">${PRICING.methodMe.price}</span>
+              </div>
+              <p className="text-[12px] mb-1" style={{ color: '#aaa' }}>one-time · lifetime access</p>
+              <p className="text-[11px] mb-5" style={{ color: '#bbb' }}>
+                or {PRICING.methodMe.installments.count} × ${PRICING.methodMe.installments.each}
+              </p>
+              <ul className="space-y-2.5 mb-8">
+                {METHOD_ME_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
+              </ul>
+            </div>
+            <CheckoutButton
+              href={PADDLE_CONFIG.mentorUrl}
+              priceId={PADDLE_CONFIG.mentorPriceId}
+              className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all border border-navy/20 text-navy hover:bg-navy hover:text-white"
+            >
+              Book Method+Me
+            </CheckoutButton>
+          </MotionDiv>
+
         </StaggerContainer>
+
+        {/* Squad nudge — one line, below the grid */}
+        <AnimateIn delay={0.2}>
+          <p className="text-center text-sm mt-5" style={{ color: '#aaa' }}>
+            Buying with two friends?{' '}
+            <Link href="/pricing#squad" className="underline underline-offset-2 hover:text-navy transition-colors">
+              See The Squad →
+            </Link>
+          </p>
+        </AnimateIn>
+
       </div>
     </section>
   )

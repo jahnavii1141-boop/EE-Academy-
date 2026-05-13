@@ -100,6 +100,19 @@ export async function POST(request) {
     return Response.json({ error: error.message }, { status: 500 })
   }
 
+  // ── Stop marketing sequence for this buyer ──────────────────────────────────
+  // Paddle includes the customer email in transaction.customer.email.
+  // We mark the subscriber row paid_at so the cron skips future marketing emails.
+  // Rule: the moment someone pays, all marketing sequences stop.
+  const customerEmail = transaction?.customer?.email
+  if (customerEmail) {
+    await supabase
+      .from('subscribers')
+      .update({ paid_at: new Date().toISOString() })
+      .eq('email', customerEmail)
+      .is('paid_at', null) // only update if not already marked
+  }
+
   console.log(`Paddle webhook: granted ${tier} to ${clerkUserId}`)
   return Response.json({ success: true })
 }

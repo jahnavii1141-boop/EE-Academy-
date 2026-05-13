@@ -40,12 +40,15 @@ export async function GET(request) {
   let sent3 = 0
   const errors = []
 
-  // ── Day 3: subscribed >= 3 days ago, day-3 email not yet sent, not unsubscribed ──
+  // ── Day 3: subscribed >= 3 days ago, day-3 email not yet sent, not unsubscribed, not yet a customer ──
+  // Rule: the moment someone pays, marketing sequences stop. Only post-purchase emails run.
+  // We filter out subscribers where paid_at IS NOT NULL (set by paddle-webhook on purchase).
   const { data: day3Subscribers, error: e1 } = await supabase
     .from('subscribers')
     .select('id, email')
     .is('email_2_sent_at', null)
     .is('unsubscribed_at', null)
+    .is('paid_at', null)
     .lte('subscribed_at', new Date(Date.now() - 3 * 24 * 60 * 60 * 1000).toISOString())
 
   if (e1) {
@@ -70,12 +73,13 @@ export async function GET(request) {
     }
   }
 
-  // ── Day 7: subscribed >= 7 days ago, day-7 email not yet sent, not unsubscribed ──
+  // ── Day 7: subscribed >= 7 days ago, day-7 email not yet sent, not unsubscribed, not yet a customer ──
   const { data: day7Subscribers, error: e2 } = await supabase
     .from('subscribers')
     .select('id, email')
     .is('email_3_sent_at', null)
     .is('unsubscribed_at', null)
+    .is('paid_at', null)
     .lte('subscribed_at', new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString())
 
   if (e2) {

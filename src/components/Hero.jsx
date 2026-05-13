@@ -47,24 +47,24 @@ export default function Hero() {
 
             <AnimateIn delay={0.1}>
               <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-cream leading-[1.1] mb-6">
-                Stop guessing your<br />
-                <span className="gradient-text">Extended Essay.</span>
+                The EE without<br />
+                <span className="gradient-text">the panic.</span>
               </h1>
             </AnimateIn>
 
             <AnimateIn delay={0.2}>
               <p className="text-lg text-steel leading-relaxed max-w-lg mb-8">
-                The Extended Essay System is the step-by-step blueprint I used to go from a predicted C to a final A and 32/34.
-                It gives you the structure, tools, and clear next steps to stop second-guessing and know exactly what to do.
+                Pick the help you want. We build the plan. We catch what your supervisor will.
               </p>
             </AnimateIn>
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
                 <Link href="/dashboard" className="btn-primary-light">Start Free</Link>
+                <Link href="/pricing" className="btn-outline-light text-sm">See the system</Link>
               </div>
-              <p className="text-sm text-steel/90 max-w-md">
-                Start with the free resources and see how the system works before you unlock everything.
+              <p className="text-sm text-steel/70 max-w-md">
+                Modules 1–3 and 5 are free — no card needed.
               </p>
             </AnimateIn>
           </div>

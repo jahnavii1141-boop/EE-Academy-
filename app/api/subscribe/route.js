@@ -70,7 +70,7 @@ function day3Html(email) {
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If you want to go deeper — Modules 4–9 cover the full research and writing process,
-        including how I structured my own 32/34 essay. That's in the Standard plan ($89, one-time).
+        including how I structured my own 32/34 essay. That's in Method ($89, one-time).
       </p>
       <a href="https://theextendedessay.com/pricing"
         style="font-size:14px;color:#0a0a0a;border-bottom:1px solid #0a0a0a;text-decoration:none">
@@ -95,17 +95,17 @@ function day7Html(email) {
         One week in. I want to be straight with you — the free modules give you the foundation,
         but most students who score well have a clear system for the research and writing phases.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What Standard unlocks ($89, one-time):</strong></p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What Method unlocks ($89, one-time):</strong></p>
       <ul style="font-size:15px;line-height:1.8;margin:0 0 24px;padding-left:20px;color:#333">
         <li>Modules 4–9 (research, argument, structure, writing)</li>
-        <li>My essay editor with autosave</li>
-        <li>Citation generator + bibliography</li>
+        <li>EE Planner + Research Question Checker</li>
+        <li>Essay editor with autosave</li>
         <li>The exact framework I used to score 32/34</li>
       </ul>
       <a href="https://theextendedessay.com/pricing"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;
                padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:28px">
-        Unlock Standard — $89 →
+        Unlock Method — $89 →
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If now's not the right time, no pressure — your free access stays forever.
