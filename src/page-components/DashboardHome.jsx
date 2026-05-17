@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
+import { useSearchParams, useRouter } from 'next/navigation'
 import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -15,6 +16,8 @@ const SUBJECTS = [
 
 export default function DashboardHome() {
   const { isSignedIn } = useAuth()
+  const searchParams = useSearchParams()
+  const router = useRouter()
   const [form, setForm] = useState({
     research_question: '',
     subject: '',
@@ -24,6 +27,30 @@ export default function DashboardHome() {
   const [saved, setSaved] = useState(false)
   const [loading, setLoading] = useState(true)
   const [editing, setEditing] = useState(false)
+  const [paymentVerifying, setPaymentVerifying] = useState(false)
+  const [paymentSuccess, setPaymentSuccess] = useState(false)
+
+  // ── Verify Paddle payment on return from checkout ──────────────────────────
+  // Paddle appends ?_ptxn=txn_xxx to the successUrl automatically.
+  // We verify the transaction server-side and grant access without relying on webhook alone.
+  useEffect(() => {
+    const ptxn = searchParams.get('_ptxn')
+    if (!ptxn || !isSignedIn) return
+
+    setPaymentVerifying(true)
+    fetch(`/api/verify-payment?txn=${ptxn}`)
+      .then(r => r.json())
+      .then(({ verified }) => {
+        if (verified) {
+          setPaymentSuccess(true)
+          // Strip the query param and reload workspace
+          router.replace('/dashboard/home')
+          setTimeout(() => setPaymentSuccess(false), 6000)
+        }
+      })
+      .catch(() => {})
+      .finally(() => setPaymentVerifying(false))
+  }, [searchParams, isSignedIn, router])
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -64,10 +91,13 @@ export default function DashboardHome() {
 
   const theme = getTheme(form.subject)
 
-  if (loading) {
+  if (loading || paymentVerifying) {
     return (
-      <div className="h-full flex items-center justify-center">
+      <div className="h-full flex flex-col items-center justify-center gap-3">
         <div className="w-6 h-6 rounded-full border-2 border-black/10 border-t-black/40 animate-spin" />
+        {paymentVerifying && (
+          <p className="text-sm" style={{ color: '#aaa' }}>Confirming your payment…</p>
+        )}
       </div>
     )
   }
@@ -75,6 +105,20 @@ export default function DashboardHome() {
   return (
     <div className="h-full overflow-y-auto">
       <div className="max-w-2xl mx-auto px-8 pt-8 pb-20">
+
+        {/* Payment success banner */}
+        {paymentSuccess && (
+          <div className="mb-6 rounded-xl px-5 py-4 flex items-center gap-3"
+            style={{ background: '#f0fdf4', border: '1px solid #86efac' }}>
+            <span className="text-xl">🎉</span>
+            <div>
+              <p className="text-sm font-bold" style={{ color: '#15803d' }}>Payment confirmed — welcome!</p>
+              <p className="text-xs mt-0.5" style={{ color: '#16a34a' }}>
+                Your access is now active. All modules and tools are unlocked.
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Subject hero banner */}
         {form.subject && (
