@@ -16,7 +16,15 @@ export async function GET() {
     return Response.json({ error: error.message }, { status: 500 })
   }
 
-  return Response.json({ workspace: data || null })
+  // Admin override — founder always gets premium regardless of DB state
+  const adminIds = (process.env.ADMIN_CLERK_USER_IDS || '').split(',').map(s => s.trim()).filter(Boolean)
+  const workspace = data || null
+  if (adminIds.includes(userId) && workspace) {
+    workspace.has_paid = true
+    workspace.tier = 'premium'
+  }
+
+  return Response.json({ workspace })
 }
 
 export async function POST(request) {
