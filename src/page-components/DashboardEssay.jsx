@@ -1,333 +1,326 @@
 'use client'
 
-import { useState, useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback, useRef, useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
+import { useEditor, EditorContent } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import Underline from '@tiptap/extension-underline'
+import TextAlign from '@tiptap/extension-text-align'
+import Placeholder from '@tiptap/extension-placeholder'
+import CharacterCount from '@tiptap/extension-character-count'
 
 const WORD_LIMIT = 4000
 
-function wordCount(text) {
-  return text.trim() === '' ? 0 : text.trim().split(/\s+/).length
-}
-
-// ── Toolbar button ──────────────────────────────────────────────────────────
-function ToolBtn({ title, active, onClick, children }) {
+// ── Toolbar button ─────────────────────────────────────────────────────────
+function ToolBtn({ active, title, onClick, children, disabled }) {
   return (
     <button
       type="button"
       title={title}
       onClick={onClick}
-      className="flex items-center justify-center rounded transition-all"
+      disabled={disabled}
+      className="flex items-center justify-center rounded transition-all select-none"
       style={{
-        width: 28, height: 28,
+        width: 28, height: 28, flexShrink: 0,
         background: active ? '#0a0a0a' : 'transparent',
         color: active ? '#fff' : '#555',
-        border: 'none',
-        cursor: 'pointer',
-        fontSize: 13,
-        fontWeight: 600,
+        border: 'none', cursor: disabled ? 'default' : 'pointer',
+        fontSize: 12, fontWeight: 600,
+        opacity: disabled ? 0.3 : 1,
       }}
-      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f0f0f0'; e.currentTarget.style.color = '#0a0a0a' } }}
-      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = active ? '#0a0a0a' : 'transparent'; e.currentTarget.style.color = active ? '#fff' : '#555' } }}
+      onMouseEnter={e => { if (!active && !disabled) { e.currentTarget.style.background = '#f0f0f0'; e.currentTarget.style.color = '#0a0a0a' } }}
+      onMouseLeave={e => { if (!active && !disabled) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
     >
       {children}
     </button>
   )
 }
 
-function Divider() {
-  return <div style={{ width: 1, height: 18, background: '#e8e8e8', margin: '0 4px' }} />
+function Sep() {
+  return <div style={{ width: 1, height: 16, background: '#e8e8e8', flexShrink: 0, margin: '0 2px' }} />
 }
 
-// ── Insert text around selection ───────────────────────────────────────────
-function wrapSelection(textarea, before, after = '') {
-  const start = textarea.selectionStart
-  const end = textarea.selectionEnd
-  const sel = textarea.value.slice(start, end)
-  const newVal = textarea.value.slice(0, start) + before + sel + after + textarea.value.slice(end)
-  // Use native input setter so React picks up the change
-  const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set
-  nativeInputValueSetter.call(textarea, newVal)
-  textarea.dispatchEvent(new Event('input', { bubbles: true }))
-  // Restore cursor
-  setTimeout(() => {
-    textarea.focus()
-    textarea.selectionStart = start + before.length
-    textarea.selectionEnd = start + before.length + sel.length
-  }, 0)
-}
-
-function insertAtLineStart(textarea, prefix) {
-  const start = textarea.selectionStart
-  const lineStart = textarea.value.lastIndexOf('\n', start - 1) + 1
-  const lineEnd = textarea.value.indexOf('\n', start)
-  const end = lineEnd === -1 ? textarea.value.length : lineEnd
-  const line = textarea.value.slice(lineStart, end)
-
-  // Toggle: if already prefixed, remove; otherwise add
-  let newLine, newCursor
-  if (line.startsWith(prefix)) {
-    newLine = line.slice(prefix.length)
-    newCursor = start - prefix.length
-  } else {
-    newLine = prefix + line
-    newCursor = start + prefix.length
-  }
-
-  const newVal = textarea.value.slice(0, lineStart) + newLine + textarea.value.slice(end)
-  const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value').set
-  nativeInputValueSetter.call(textarea, newVal)
-  textarea.dispatchEvent(new Event('input', { bubbles: true }))
-  setTimeout(() => {
-    textarea.focus()
-    textarea.selectionStart = textarea.selectionEnd = Math.max(lineStart, newCursor)
-  }, 0)
+// ── Word count from HTML string ────────────────────────────────────────────
+function countWords(html) {
+  if (!html) return 0
+  const text = html.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()
+  return text === '' ? 0 : text.split(' ').length
 }
 
 // ── Main component ─────────────────────────────────────────────────────────
 export default function DashboardEssay() {
   const { isSignedIn } = useAuth()
-  const [text, setText] = useState('')
-  const [savedText, setSavedText] = useState('')
-  const [loading, setLoading] = useState(true)
+  const [savedHtml, setSavedHtml] = useState('')
   const [saving, setSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState(null)
-  const [focused, setFocused] = useState(false)
-  const [fontFamily, setFontFamily] = useState('serif') // 'serif' | 'sans'
-  const [fontSize, setFontSize] = useState(16)
+  const [loading, setLoading] = useState(true)
+  const [isDirty, setIsDirty] = useState(false)
   const autoSaveTimer = useRef(null)
-  const textareaRef = useRef(null)
 
+  // ── Save ──────────────────────────────────────────────────────────────
+  const save = useCallback(async (html) => {
+    setSaving(true)
+    await fetch('/api/essay', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ essay_text: html }),
+    }).catch(() => {})
+    setSavedHtml(html)
+    setLastSaved(new Date())
+    setSaving(false)
+    setIsDirty(false)
+  }, [])
+
+  // ── Editor ────────────────────────────────────────────────────────────
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        heading: { levels: [1, 2, 3] },
+        bulletList: { keepMarks: true },
+        orderedList: { keepMarks: true },
+      }),
+      Underline,
+      TextAlign.configure({ types: ['heading', 'paragraph'] }),
+      CharacterCount.configure({ limit: null }),
+      Placeholder.configure({
+        placeholder: 'Start typing your Extended Essay here…\n\nThis is your space. Autosaves every 2 seconds.',
+        emptyEditorClass: 'is-editor-empty',
+      }),
+    ],
+    content: '',
+    editorProps: {
+      attributes: {
+        class: 'tiptap-essay',
+        spellcheck: 'true',
+      },
+    },
+    onUpdate({ editor }) {
+      setIsDirty(true)
+      const html = editor.getHTML()
+      if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current)
+      autoSaveTimer.current = setTimeout(() => save(html), 2000)
+    },
+  })
+
+  // ── Load essay ────────────────────────────────────────────────────────
   useEffect(() => {
     if (!isSignedIn) { setLoading(false); return }
     fetch('/api/essay')
       .then(r => r.json())
       .then(({ essay_text, essay_updated_at }) => {
-        setText(essay_text ?? '')
-        setSavedText(essay_text ?? '')
+        if (essay_text && editor) {
+          editor.commands.setContent(essay_text)
+          setSavedHtml(essay_text)
+        }
         if (essay_updated_at) setLastSaved(new Date(essay_updated_at))
       })
       .catch(() => {})
       .finally(() => setLoading(false))
-  }, [isSignedIn])
+  }, [isSignedIn, editor])
 
-  const save = useCallback(async (content) => {
-    setSaving(true)
-    await fetch('/api/essay', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ essay_text: content }),
-    }).catch(() => {})
-    setSavedText(content)
-    setLastSaved(new Date())
-    setSaving(false)
-  }, [])
-
-  const handleChange = (e) => {
-    const val = e.target.value
-    setText(val)
-    if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current)
-    autoSaveTimer.current = setTimeout(() => save(val), 1500)
-  }
-
-  const ta = () => textareaRef.current
-
-  const words = wordCount(text)
-  const isDirty = text !== savedText
-  const pct = Math.min(100, Math.round((words / WORD_LIMIT) * 100))
-  const overLimit = words > WORD_LIMIT
-
-  // IB word count zones
-  let barColor = '#22c55e'   // green  < 3000
-  if (words >= 3000) barColor = '#f59e0b'  // amber 3000-3800
-  if (words >= 3800) barColor = '#0a0a0a'  // black 3800-4000 (ideal)
-  if (overLimit)     barColor = '#ef4444'  // red   > 4000
-
-  const fontStyle = {
-    serif: { fontFamily: 'Georgia, "Times New Roman", serif', letterSpacing: '-0.005em' },
-    sans:  { fontFamily: '"Inter", "Helvetica Neue", sans-serif', letterSpacing: '-0.01em' },
-  }[fontFamily]
-
-  if (loading) {
+  if (loading || !editor) {
     return (
-      <div className="h-full flex items-center justify-center" style={{ background: '#fafafa' }}>
+      <div className="h-full flex items-center justify-center" style={{ background: '#fff' }}>
         <div className="w-5 h-5 rounded-full border-2"
           style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
       </div>
     )
   }
 
+  const words = editor.storage.characterCount
+    ? countWords(editor.getHTML())
+    : 0
+  const pct = Math.min(100, Math.round((words / WORD_LIMIT) * 100))
+  const overLimit = words > WORD_LIMIT
+
+  let barColor = '#22c55e'
+  if (words >= 3000) barColor = '#f59e0b'
+  if (words >= 3800) barColor = '#0a0a0a'
+  if (overLimit) barColor = '#ef4444'
+
+  const isActive = (type, opts) => editor.isActive(type, opts)
+
   return (
-    <div className="h-full flex flex-col" style={{ background: '#fff' }}>
+    <>
+      {/* Inject editor styles */}
+      <style>{`
+        .tiptap-essay {
+          outline: none;
+          min-height: calc(100vh - 200px);
+          font-family: Georgia, "Times New Roman", serif;
+          font-size: 16px;
+          line-height: 1.9;
+          color: #0a0a0a;
+          letter-spacing: -0.005em;
+        }
+        .tiptap-essay p { margin: 0 0 1em; }
+        .tiptap-essay h1 { font-family: Georgia, serif; font-size: 1.6em; font-weight: 700; margin: 1.4em 0 0.5em; line-height: 1.2; }
+        .tiptap-essay h2 { font-family: Georgia, serif; font-size: 1.25em; font-weight: 700; margin: 1.2em 0 0.4em; line-height: 1.3; }
+        .tiptap-essay h3 { font-family: Georgia, serif; font-size: 1.05em; font-weight: 700; margin: 1em 0 0.3em; line-height: 1.4; }
+        .tiptap-essay ul { padding-left: 1.4em; margin: 0 0 1em; }
+        .tiptap-essay ol { padding-left: 1.4em; margin: 0 0 1em; }
+        .tiptap-essay li { margin-bottom: 0.25em; }
+        .tiptap-essay blockquote {
+          border-left: 3px solid #0a0a0a;
+          margin: 1.2em 0;
+          padding: 0.4em 0 0.4em 1.2em;
+          color: #555;
+          font-style: italic;
+        }
+        .tiptap-essay hr { border: none; border-top: 1px solid #e8e8e8; margin: 2em 0; }
+        .tiptap-essay strong { font-weight: 700; }
+        .tiptap-essay em { font-style: italic; }
+        .tiptap-essay u { text-decoration: underline; }
+        .tiptap-essay p.is-editor-empty:first-child::before {
+          content: attr(data-placeholder);
+          float: left;
+          color: #bbb;
+          pointer-events: none;
+          height: 0;
+          white-space: pre-line;
+        }
+        .tiptap-essay .ProseMirror-focused { outline: none; }
+      `}</style>
 
-      {/* ── Top bar ─────────────────────────────────────────────────────── */}
-      <div className="flex-shrink-0 flex items-center justify-between px-6 py-2"
-        style={{ borderBottom: '1px solid #f0f0f0' }}>
-        <div className="flex items-center gap-3">
-          <p className="text-xs font-semibold" style={{ color: '#999', letterSpacing: '0.04em', textTransform: 'uppercase', fontSize: 10 }}>My Essay</p>
-          <div style={{ width: 1, height: 14, background: '#e8e8e8' }} />
-          {saving ? (
-            <span className="text-[11px]" style={{ color: '#ccc' }}>Saving…</span>
-          ) : isDirty ? (
-            <span className="text-[11px]" style={{ color: '#f59e0b' }}>Unsaved</span>
-          ) : lastSaved ? (
-            <span className="text-[11px]" style={{ color: '#bbb' }}>
-              Saved {lastSaved.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
-            </span>
-          ) : null}
-        </div>
-        <Link href="/dashboard/share"
-          className="text-[11px] font-medium transition-colors"
-          style={{ color: '#ccc' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
-          onMouseLeave={e => e.currentTarget.style.color = '#ccc'}>
-          Share with supervisor →
-        </Link>
-      </div>
+      <div className="h-full flex flex-col" style={{ background: '#fff' }}>
 
-      {/* ── Formatting toolbar ──────────────────────────────────────────── */}
-      <div className="flex-shrink-0 flex items-center gap-1 px-6 py-1.5"
-        style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
-
-        {/* Bold / Italic / Underline (markdown-style wrapping) */}
-        <ToolBtn title="Bold (Ctrl+B)" onClick={() => wrapSelection(ta(), '**', '**')}><b>B</b></ToolBtn>
-        <ToolBtn title="Italic (Ctrl+I)" onClick={() => wrapSelection(ta(), '_', '_')}><i>I</i></ToolBtn>
-        <ToolBtn title="Underline" onClick={() => wrapSelection(ta(), '<u>', '</u>')}><u style={{ textDecorationThickness: 2 }}>U</u></ToolBtn>
-
-        <Divider />
-
-        {/* Headings */}
-        <ToolBtn title="Heading 1" onClick={() => insertAtLineStart(ta(), '# ')}>H1</ToolBtn>
-        <ToolBtn title="Heading 2" onClick={() => insertAtLineStart(ta(), '## ')}>H2</ToolBtn>
-        <ToolBtn title="Heading 3" onClick={() => insertAtLineStart(ta(), '### ')}>H3</ToolBtn>
-
-        <Divider />
-
-        {/* Lists */}
-        <ToolBtn title="Bullet list" onClick={() => insertAtLineStart(ta(), '• ')}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75">
-            <circle cx="2" cy="4" r="1" fill="currentColor" stroke="none"/>
-            <line x1="5" y1="4" x2="13" y2="4"/>
-            <circle cx="2" cy="8" r="1" fill="currentColor" stroke="none"/>
-            <line x1="5" y1="8" x2="13" y2="8"/>
-            <circle cx="2" cy="12" r="1" fill="currentColor" stroke="none"/>
-            <line x1="5" y1="12" x2="13" y2="12"/>
-          </svg>
-        </ToolBtn>
-        <ToolBtn title="Numbered list" onClick={() => insertAtLineStart(ta(), '1. ')}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75">
-            <text x="0" y="6" fontSize="6" fill="currentColor" stroke="none" fontFamily="sans-serif">1.</text>
-            <line x1="5" y1="4" x2="13" y2="4"/>
-            <text x="0" y="10.5" fontSize="6" fill="currentColor" stroke="none" fontFamily="sans-serif">2.</text>
-            <line x1="5" y1="8" x2="13" y2="8"/>
-            <text x="0" y="15" fontSize="6" fill="currentColor" stroke="none" fontFamily="sans-serif">3.</text>
-            <line x1="5" y1="12" x2="13" y2="12"/>
-          </svg>
-        </ToolBtn>
-
-        <Divider />
-
-        {/* Quote */}
-        <ToolBtn title="Block quote" onClick={() => insertAtLineStart(ta(), '> ')}>
-          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor" stroke="none">
-            <path d="M1 3h2v3H1zm4 0h2v3H5zM1 4.5c0 2.5 1.5 4 3 4v-1c-1 0-2-1-2-3H1zm4 0c0 2.5 1.5 4 3 4v-1c-1 0-2-1-2-3H5z"/>
-          </svg>
-        </ToolBtn>
-
-        {/* Divider line */}
-        <ToolBtn title="Horizontal rule" onClick={() => {
-          const t = ta(); const pos = t.selectionStart
-          const ins = '\n---\n'
-          wrapSelection(t, ins, '')
-        }}>—</ToolBtn>
-
-        <Divider />
-
-        {/* Font family toggle */}
-        <button
-          type="button"
-          title="Toggle font"
-          onClick={() => setFontFamily(f => f === 'serif' ? 'sans' : 'serif')}
-          className="rounded transition-all text-[11px] font-medium px-2"
-          style={{
-            height: 28, background: 'transparent', border: '1px solid #e8e8e8',
-            color: '#555', cursor: 'pointer',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a'; e.currentTarget.style.color = '#0a0a0a' }}
-          onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8'; e.currentTarget.style.color = '#555' }}
-        >
-          {fontFamily === 'serif' ? 'Serif' : 'Sans'}
-        </button>
-
-        {/* Font size */}
-        <select
-          value={fontSize}
-          onChange={e => setFontSize(Number(e.target.value))}
-          className="rounded text-[11px]"
-          style={{
-            height: 28, border: '1px solid #e8e8e8', background: 'transparent',
-            color: '#555', cursor: 'pointer', paddingLeft: 6, paddingRight: 4,
-          }}
-        >
-          {[13, 14, 15, 16, 17, 18].map(s => (
-            <option key={s} value={s}>{s}px</option>
-          ))}
-        </select>
-
-        {/* Spacer */}
-        <div className="flex-1" />
-
-        {/* Word count with IB zone label */}
-        <div className="flex items-center gap-2">
-          <div style={{ textAlign: 'right' }}>
-            <span className="text-[11px] tabular-nums font-medium"
-              style={{ color: overLimit ? '#ef4444' : '#555' }}>
-              {words.toLocaleString()}
-            </span>
-            <span className="text-[11px]" style={{ color: '#bbb' }}> / {WORD_LIMIT.toLocaleString()} words</span>
+        {/* ── Top bar ─────────────────────────────────────────────── */}
+        <div className="flex-shrink-0 flex items-center justify-between px-6 py-2"
+          style={{ borderBottom: '1px solid #f0f0f0' }}>
+          <div className="flex items-center gap-3">
+            <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#bbb' }}>My Essay</p>
+            <div style={{ width: 1, height: 12, background: '#e8e8e8' }} />
+            {saving ? (
+              <span className="text-[11px]" style={{ color: '#ccc' }}>Saving…</span>
+            ) : isDirty ? (
+              <span className="text-[11px]" style={{ color: '#f59e0b' }}>Unsaved</span>
+            ) : lastSaved ? (
+              <span className="text-[11px]" style={{ color: '#bbb' }}>
+                Saved {lastSaved.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+              </span>
+            ) : null}
           </div>
-          <div className="h-1.5 rounded-full overflow-hidden" style={{ width: 64, background: '#f0f0f0' }}>
-            <div className="h-full rounded-full transition-all duration-300"
-              style={{ width: `${pct}%`, background: barColor }} />
+          <Link href="/dashboard/share"
+            className="text-[11px] font-medium transition-colors"
+            style={{ color: '#bbb' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+            onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
+            Share with supervisor →
+          </Link>
+        </div>
+
+        {/* ── Formatting toolbar ───────────────────────────────────── */}
+        <div className="flex-shrink-0 flex flex-wrap items-center gap-0.5 px-4 py-1.5"
+          style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
+
+          {/* Text style */}
+          <ToolBtn active={isActive('bold')} title="Bold (Ctrl+B)" onClick={() => editor.chain().focus().toggleBold().run()}><b>B</b></ToolBtn>
+          <ToolBtn active={isActive('italic')} title="Italic (Ctrl+I)" onClick={() => editor.chain().focus().toggleItalic().run()}><i style={{ fontFamily: 'Georgia, serif' }}>I</i></ToolBtn>
+          <ToolBtn active={isActive('underline')} title="Underline (Ctrl+U)" onClick={() => editor.chain().focus().toggleUnderline().run()}><u style={{ textDecorationThickness: 2 }}>U</u></ToolBtn>
+
+          <Sep />
+
+          {/* Headings */}
+          <ToolBtn active={isActive('heading', { level: 1 })} title="Heading 1" onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}>H1</ToolBtn>
+          <ToolBtn active={isActive('heading', { level: 2 })} title="Heading 2" onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}>H2</ToolBtn>
+          <ToolBtn active={isActive('heading', { level: 3 })} title="Heading 3" onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}>H3</ToolBtn>
+
+          <Sep />
+
+          {/* Lists */}
+          <ToolBtn active={isActive('bulletList')} title="Bullet list" onClick={() => editor.chain().focus().toggleBulletList().run()}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.75">
+              <circle cx="2" cy="4" r="1" fill="currentColor" stroke="none"/><line x1="5" y1="4" x2="13" y2="4"/>
+              <circle cx="2" cy="8" r="1" fill="currentColor" stroke="none"/><line x1="5" y1="8" x2="13" y2="8"/>
+              <circle cx="2" cy="12" r="1" fill="currentColor" stroke="none"/><line x1="5" y1="12" x2="13" y2="12"/>
+            </svg>
+          </ToolBtn>
+          <ToolBtn active={isActive('orderedList')} title="Numbered list" onClick={() => editor.chain().focus().toggleOrderedList().run()}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <text x="0" y="5.5" fontSize="5.5" fill="currentColor" fontFamily="sans-serif">1.</text>
+              <line x1="6" y1="4" x2="13" y2="4" stroke="currentColor" strokeWidth="1.5"/>
+              <text x="0" y="9.5" fontSize="5.5" fill="currentColor" fontFamily="sans-serif">2.</text>
+              <line x1="6" y1="8" x2="13" y2="8" stroke="currentColor" strokeWidth="1.5"/>
+              <text x="0" y="13.5" fontSize="5.5" fill="currentColor" fontFamily="sans-serif">3.</text>
+              <line x1="6" y1="12" x2="13" y2="12" stroke="currentColor" strokeWidth="1.5"/>
+            </svg>
+          </ToolBtn>
+
+          <Sep />
+
+          {/* Block quote */}
+          <ToolBtn active={isActive('blockquote')} title="Block quote" onClick={() => editor.chain().focus().toggleBlockquote().run()}>
+            <svg width="13" height="12" viewBox="0 0 13 12" fill="currentColor">
+              <path d="M0 0h4v5H2c0 1.1.9 2 2 2v2C1.8 9 0 7.2 0 5V0zm7 0h4v5H9c0 1.1.9 2 2 2v2C8.8 9 7 7.2 7 5V0z"/>
+            </svg>
+          </ToolBtn>
+
+          {/* Horizontal rule */}
+          <ToolBtn active={false} title="Divider" onClick={() => editor.chain().focus().setHorizontalRule().run()}>—</ToolBtn>
+
+          <Sep />
+
+          {/* Alignment */}
+          <ToolBtn active={isActive({ textAlign: 'left' })} title="Align left" onClick={() => editor.chain().focus().setTextAlign('left').run()}>
+            <svg width="13" height="11" viewBox="0 0 13 11" fill="currentColor">
+              <rect x="0" y="0" width="13" height="1.5" rx="0.75"/>
+              <rect x="0" y="3" width="9" height="1.5" rx="0.75"/>
+              <rect x="0" y="6" width="13" height="1.5" rx="0.75"/>
+              <rect x="0" y="9" width="7" height="1.5" rx="0.75"/>
+            </svg>
+          </ToolBtn>
+          <ToolBtn active={isActive({ textAlign: 'center' })} title="Align center" onClick={() => editor.chain().focus().setTextAlign('center').run()}>
+            <svg width="13" height="11" viewBox="0 0 13 11" fill="currentColor">
+              <rect x="0" y="0" width="13" height="1.5" rx="0.75"/>
+              <rect x="2" y="3" width="9" height="1.5" rx="0.75"/>
+              <rect x="0" y="6" width="13" height="1.5" rx="0.75"/>
+              <rect x="3" y="9" width="7" height="1.5" rx="0.75"/>
+            </svg>
+          </ToolBtn>
+
+          <Sep />
+
+          {/* Undo / Redo */}
+          <ToolBtn active={false} title="Undo (Ctrl+Z)" onClick={() => editor.chain().focus().undo().run()} disabled={!editor.can().undo()}>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <path d="M2 6a4.5 4.5 0 108 0"/><path d="M2 3v3h3"/>
+            </svg>
+          </ToolBtn>
+          <ToolBtn active={false} title="Redo (Ctrl+Shift+Z)" onClick={() => editor.chain().focus().redo().run()} disabled={!editor.can().redo()}>
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
+              <path d="M11 6a4.5 4.5 0 10-8 0"/><path d="M11 3v3H8"/>
+            </svg>
+          </ToolBtn>
+
+          {/* Spacer + word count */}
+          <div style={{ flex: 1 }} />
+          <div className="flex items-center gap-2">
+            <div className="h-1.5 rounded-full overflow-hidden" style={{ width: 56, background: '#f0f0f0' }}>
+              <div className="h-full rounded-full transition-all duration-300" style={{ width: `${pct}%`, background: barColor }} />
+            </div>
+            <span className="text-[11px] tabular-nums" style={{ color: overLimit ? '#ef4444' : '#999' }}>
+              {words.toLocaleString()}<span style={{ color: '#ddd' }}> / {WORD_LIMIT.toLocaleString()}</span>
+            </span>
           </div>
         </div>
-      </div>
 
-      {/* ── Writing area ────────────────────────────────────────────────── */}
-      <div className="flex-1 overflow-y-auto">
-        <div style={{ maxWidth: 700, width: '100%', margin: '0 auto', padding: '48px 40px 100px' }}>
-          <textarea
-            ref={textareaRef}
-            value={text}
-            onChange={handleChange}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setFocused(false)}
-            placeholder={focused ? '' :
-              'Start typing your Extended Essay here…\n\nAutosaves every 1.5 seconds.\nShare with your supervisor via the link above.\n\nIB Extended Essays are 3,500–4,000 words.'}
-            className="w-full resize-none focus:outline-none"
-            style={{
-              background: 'transparent',
-              border: 'none',
-              color: '#0a0a0a',
-              fontSize,
-              lineHeight: 1.9,
-              ...fontStyle,
-              minHeight: 'calc(100vh - 220px)',
-            }}
-            spellCheck
-          />
+        {/* ── Writing area ─────────────────────────────────────────── */}
+        <div className="flex-1 overflow-y-auto cursor-text" onClick={() => editor.commands.focus()}>
+          <div style={{ maxWidth: 700, width: '100%', margin: '0 auto', padding: '48px 40px 100px' }}>
+            <EditorContent editor={editor} />
+          </div>
         </div>
-      </div>
 
-      {/* ── Over-limit warning ──────────────────────────────────────────── */}
-      {overLimit && (
-        <div className="flex-shrink-0 px-8 pb-2 flex justify-end"
-          style={{ borderTop: '1px solid #f5f5f5' }}>
-          <p className="text-[11px] font-medium" style={{ color: '#ef4444' }}>
-            {(words - WORD_LIMIT).toLocaleString()} words over the IB limit
-          </p>
-        </div>
-      )}
-    </div>
+        {/* ── Over-limit warning ───────────────────────────────────── */}
+        {overLimit && (
+          <div className="flex-shrink-0 px-8 py-2 flex justify-end" style={{ borderTop: '1px solid #f5f5f5' }}>
+            <p className="text-[11px] font-medium" style={{ color: '#ef4444' }}>
+              {(words - WORD_LIMIT).toLocaleString()} words over the IB limit
+            </p>
+          </div>
+        )}
+      </div>
+    </>
   )
 }

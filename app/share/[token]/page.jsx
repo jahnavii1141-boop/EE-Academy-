@@ -70,6 +70,19 @@ export default function ShareViewPage() {
 
   return (
     <div className="min-h-screen bg-cream">
+      <style>{`
+        .share-essay { font-family: Georgia, serif; font-size: 15px; line-height: 1.85; color: #1a1a1a; }
+        .share-essay p { margin: 0 0 1em; }
+        .share-essay h1 { font-size: 1.5em; font-weight: 700; margin: 1.4em 0 0.5em; }
+        .share-essay h2 { font-size: 1.2em; font-weight: 700; margin: 1.2em 0 0.4em; }
+        .share-essay h3 { font-size: 1.05em; font-weight: 700; margin: 1em 0 0.3em; }
+        .share-essay ul, .share-essay ol { padding-left: 1.4em; margin: 0 0 1em; }
+        .share-essay li { margin-bottom: 0.25em; }
+        .share-essay blockquote { border-left: 3px solid #0a0a0a; margin: 1.2em 0; padding: 0.3em 0 0.3em 1em; color: #555; font-style: italic; }
+        .share-essay hr { border: none; border-top: 1px solid #e8e8e8; margin: 1.8em 0; }
+        .share-essay strong { font-weight: 700; }
+        .share-essay em { font-style: italic; }
+      `}</style>
       {/* Header */}
       <div className="bg-navy py-8 px-6 mb-10">
         <div className="max-w-3xl mx-auto">
@@ -139,7 +152,22 @@ export default function ShareViewPage() {
           </Section>
         )}
 
-        {dump.length === 0 && planner.length === 0 && (
+        {/* Essay draft */}
+        {workspace?.essay_text && workspace.essay_text !== '<p></p>' && (
+          <Section title="Essay Draft">
+            <div
+              className="share-essay rounded-xl border border-navy/10 bg-white/60 px-7 py-6"
+              dangerouslySetInnerHTML={{ __html: workspace.essay_text }}
+            />
+            {workspace.essay_updated_at && (
+              <p className="text-xs text-navy/30 mt-2">
+                Last updated {new Date(workspace.essay_updated_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
+              </p>
+            )}
+          </Section>
+        )}
+
+        {dump.length === 0 && planner.length === 0 && !workspace?.essay_text && (
           <p className="text-center text-sm text-navy/40 py-20">No data added yet.</p>
         )}
 
