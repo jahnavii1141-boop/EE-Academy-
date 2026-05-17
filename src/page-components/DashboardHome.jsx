@@ -37,7 +37,7 @@ export default function DashboardHome() {
     const ptxn = searchParams.get('_ptxn')
     if (!ptxn || !isSignedIn) return
 
-    setPaymentVerifying(true)
+    setPaymentVerifying(true) // eslint-disable-line react-hooks/set-state-in-effect
     fetch(`/api/verify-payment?txn=${ptxn}`)
       .then(r => r.json())
       .then(({ verified }) => {

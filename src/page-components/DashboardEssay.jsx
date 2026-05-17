@@ -105,6 +105,7 @@ export default function DashboardEssay() {
 
   // ── Load essay ────────────────────────────────────────────────────────
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!isSignedIn) { setLoading(false); return }
     fetch('/api/essay')
       .then(r => r.json())
