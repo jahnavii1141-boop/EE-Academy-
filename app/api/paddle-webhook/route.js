@@ -38,10 +38,19 @@ async function verifyPaddleSignature(request, rawBody) {
 }
 
 // Map Paddle price IDs to tiers
+// Falls back to 'method' (basic access) if price ID is unknown — never silently fail a real payment
 function getTierFromPriceId(priceId) {
-  if (priceId === process.env.NEXT_PUBLIC_PADDLE_PREMIUM_PRICE_ID) return 'premium'
-  if (priceId === process.env.NEXT_PUBLIC_PADDLE_BASIC_PRICE_ID) return 'basic'
-  return null
+  const premiumId = process.env.NEXT_PUBLIC_PADDLE_PREMIUM_PRICE_ID
+  const basicId   = process.env.NEXT_PUBLIC_PADDLE_BASIC_PRICE_ID
+  const mentorId  = process.env.NEXT_PUBLIC_PADDLE_MENTOR_PRICE_ID
+
+  if (mentorId  && priceId === mentorId)  return 'premium' // Method+Me gets premium
+  if (premiumId && priceId === premiumId) return 'premium' // Method+AI
+  if (basicId   && priceId === basicId)   return 'method'  // Method
+
+  // Price IDs not configured — still grant basic access rather than dropping the payment
+  console.warn(`Paddle webhook: unrecognised price ID "${priceId}" — granting method tier. Set env vars to fix.`)
+  return 'method'
 }
 
 export async function POST(request) {
@@ -69,18 +78,15 @@ export async function POST(request) {
   const clerkUserId = customData.clerk_user_id
 
   if (!clerkUserId) {
-    console.error('Paddle webhook: no clerk_user_id in custom_data', transaction?.id)
-    return Response.json({ error: 'No user ID' }, { status: 400 })
+    // Log the full transaction so we can manually grant access if needed
+    console.error('Paddle webhook: no clerk_user_id in custom_data. Transaction ID:', transaction?.id, '| Customer email:', transaction?.customer?.email)
+    // Still return 200 so Paddle doesn't keep retrying — we'll handle manually
+    return Response.json({ received: true, warning: 'No user ID — manual grant needed' })
   }
 
   // Get the price ID from the first line item
   const priceId = transaction?.items?.[0]?.price?.id
   const tier = getTierFromPriceId(priceId)
-
-  if (!tier) {
-    console.error('Paddle webhook: unknown price ID', priceId)
-    return Response.json({ error: 'Unknown price' }, { status: 400 })
-  }
 
   const supabase = createServiceClient()
 
