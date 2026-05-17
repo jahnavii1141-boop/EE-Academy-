@@ -9,8 +9,8 @@ const COURSE_LINKS = [
 ]
 const COMPANY_LINKS = [
   { label: 'About', href: '/about', internal: true },
+  { label: 'Contact', href: '/contact', internal: true },
   { label: 'Blog', href: '#' },
-  { label: 'Contact', href: '#' },
 ]
 
 export default function Footer() {
@@ -29,6 +29,11 @@ export default function Footer() {
           <p className="mt-3 text-sm text-steel leading-relaxed">
             Expert guidance for IB students who want to master their Extended Essay and earn top marks.
           </p>
+          <a href="mailto:hello@theextendedessay.com"
+            className="inline-flex items-center gap-1.5 mt-4 text-xs text-steel/70 hover:text-cream transition-colors">
+            hello@theextendedessay.com
+          </a>
+          <p className="text-xs text-steel/50 mt-1">We reply within 24 hours.</p>
         </div>
 
         <div>
