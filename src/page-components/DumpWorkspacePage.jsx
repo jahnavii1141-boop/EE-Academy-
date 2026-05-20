@@ -195,28 +195,15 @@ export default function DumpWorkspacePage() {
     persist(next)
   }
 
-  const mlaList = entries.map(e => formatMLA({
-    source_name: e.source_name,
-    author: e.subtopic,   // subtopic field repurposed as author storage in legacy data — fallback
-    year: '',
-    url: e.link,
-    publisher: '',
-    source_type: e.source_type,
-  }))
-
-  // For new entries that have author stored properly
   const bibliographyText = entries
-    .map((e, i) => {
-      const citation = formatMLA({
-        source_name: e.source_name,
-        author: e.author || '',
-        year: e.year || '',
-        url: e.link || '',
-        publisher: e.publisher || '',
-        source_type: e.source_type,
-      })
-      return citation || e.source_name
-    })
+    .map(e => formatMLA({
+      source_name: e.source_name,
+      author:      e.author      || '',
+      year:        e.year        || '',
+      url:         e.link        || '',
+      publisher:   e.publisher   || '',
+      source_type: e.source_type,
+    }) || e.source_name)
     .join('\n\n')
 
   const copyBibliography = async () => {

@@ -29,14 +29,17 @@ export async function POST(request) {
   if (body.entries && body.entries.length > 0) {
     const rows = body.entries.map((e, i) => ({
       clerk_user_id: userId,
-      subtopic: e.subtopic ?? '',
+      source_name:    e.source_name    ?? '',
+      author:         e.author         ?? '',
+      year:           e.year           ?? '',
+      publisher:      e.publisher      ?? '',
+      link:           e.link           ?? e.url ?? '',
+      source_type:    e.source_type    ?? 'Website',
+      key_info:       e.key_info       ?? '',
+      subtopic:       e.subtopic       ?? '',
       subtopic_color: e.subtopic_color ?? '#6366f1',
-      source_name: e.source_name ?? '',
-      key_info: e.key_info ?? '',
-      link: e.link ?? '',
-      source_type: e.source_type ?? 'Website',
-      used: e.used ?? false,
-      sort_order: i,
+      used:           e.used           ?? false,
+      sort_order:     i,
     }))
 
     const { error } = await supabase.from('dump_entries').insert(rows)
