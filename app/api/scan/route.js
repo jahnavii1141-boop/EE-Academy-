@@ -234,8 +234,9 @@ export async function POST(req) {
 
       const buffer = Buffer.from(await file.arrayBuffer())
 
-      // Dynamic import avoids pdf-parse test-file issues with Next.js bundler
-      const pdfParse = (await import('pdf-parse/lib/pdf-parse.js')).default
+      // Dynamic import — pdf-parse is in serverExternalPackages so Next.js
+      // won't bundle it, avoiding the test-file resolution issue
+      const pdfParse = (await import('pdf-parse')).default
       const parsed = await pdfParse(buffer)
       essay_text = parsed.text
     } else {
