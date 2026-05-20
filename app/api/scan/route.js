@@ -234,10 +234,12 @@ export async function POST(req) {
 
       const buffer = Buffer.from(await file.arrayBuffer())
 
-      // Dynamic import — pdf-parse is in serverExternalPackages so Next.js
-      // won't bundle it, avoiding the test-file resolution issue
-      const pdfParse = (await import('pdf-parse')).default
-      const parsed = await pdfParse(buffer)
+      // pdf-parse v2: use PDFParse class with { data: buffer }
+      // serverExternalPackages ensures it's not bundled by Next.js
+      const { PDFParse } = await import('pdf-parse')
+      const parser = new PDFParse({ data: buffer })
+      const parsed = await parser.getText()
+      await parser.destroy()
       essay_text = parsed.text
     } else {
       // ── Plain JSON path ──────────────────────────────────────────────────
