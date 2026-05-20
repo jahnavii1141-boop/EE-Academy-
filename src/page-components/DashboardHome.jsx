@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ScanLine, Bot } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ScanLine } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const SUBJECTS = [
@@ -350,7 +350,6 @@ export default function DashboardHome() {
                 { href: '/dump', icon: Database, label: 'EE Dump', desc: 'Organise your sources' },
                 { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
                 { href: '/dashboard/scan', icon: ScanLine, label: 'EE Scan', desc: 'Get examiner feedback', isNew: true },
-                { href: '/dashboard/agent', icon: Bot, label: 'EE Mentor', desc: 'AI writing coach' },
                 { href: '/dashboard/modules', icon: BookOpen, label: 'Modules', desc: 'Guided EE lessons' },
                 { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
               ].map(({ href, icon: Icon, label, desc, isNew }) => (

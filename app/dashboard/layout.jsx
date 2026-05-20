@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  ScanLine, Bot,
+  ScanLine,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -17,7 +17,6 @@ const NAV_MAIN = [
   { id: 'dump',    label: 'EE Dump',    icon: Database,  href: '/dump' },
   { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/planner' },
   { id: 'scan',    label: 'EE Scan',    icon: ScanLine,  href: '/dashboard/scan', isNew: true },
-  { id: 'agent',   label: 'EE Mentor',  icon: Bot,       href: '/dashboard/agent' },
 ]
 
 const NAV_MORE = [
