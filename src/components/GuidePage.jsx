@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import SEOHead from './SEOHead'
 import ContentRenderer from './blocks/ContentRenderer'
 import PostModuleGate from './PostModuleGate'
 
@@ -13,14 +12,33 @@ export default function GuidePage({
   relatedGuides = [],
   faqItems = [],
 }) {
+  const canonicalUrl = canonical || 'https://theextendedessay.com/guides'
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
     description,
-    author: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
+    url: canonicalUrl,
+    author: {
+      '@type': 'Person',
+      name: 'Gia',
+      description: 'Scored 32/34 on the IB Extended Essay. Founder of The Extended Essay Academy.',
+      url: 'https://theextendedessay.com/about',
+      sameAs: ['https://theextendedessay.com/about'],
+    },
     publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
     datePublished: '2026-03-29',
+    dateModified: new Date().toISOString().split('T')[0],
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://theextendedessay.com' },
+      { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://theextendedessay.com/guides' },
+      { '@type': 'ListItem', position: 3, name: title, item: canonicalUrl },
+    ],
   }
   const faqJsonLd = faqItems.length > 0
     ? {
@@ -37,14 +55,18 @@ export default function GuidePage({
       }
     : null
 
+  const allJsonLd = [jsonLd, breadcrumbJsonLd, ...(faqJsonLd ? [faqJsonLd] : [])]
+
   return (
     <div className="min-h-screen bg-cream">
-      <SEOHead
-        title={title}
-        description={description}
-        canonical={canonical}
-        jsonLd={faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd}
-      />
+      {/* Structured data — Google parses JSON-LD in body as well as head */}
+      {allJsonLd.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
 
       {/* Hero */}
       <div className="bg-navy-deep py-16 px-6">
@@ -52,7 +74,7 @@ export default function GuidePage({
           <nav className="flex items-center gap-2 text-steel/60 text-xs mb-6">
             <Link href="/" className="hover:text-steel transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/guides/extended-essay-introduction" className="hover:text-steel transition-colors">Guides</Link>
+            <Link href="/guides" className="hover:text-steel transition-colors">Guides</Link>
             <span>/</span>
             <span className="text-steel">{title}</span>
           </nav>
