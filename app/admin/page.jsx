@@ -18,12 +18,17 @@ export default function AdminPage() {
 
   const grantSelf = async () => {
     setGrantStatus('loading')
-    const res = await fetch('/api/admin/grant-self')
-    const data = await res.json()
-    if (data.success) {
-      setGrantStatus('done')
-      setInfo(i => ({ ...i, is_admin: true }))
-    } else {
+    try {
+      const res = await fetch('/api/admin/grant-self', { method: 'POST' })
+      const data = await res.json()
+      if (data.success) {
+        setGrantStatus('done')
+      } else {
+        console.error('Grant error:', data)
+        setGrantStatus('error')
+      }
+    } catch (e) {
+      console.error(e)
       setGrantStatus('error')
     }
   }
@@ -67,7 +72,7 @@ export default function AdminPage() {
         </table>
       )}
 
-      {info?.is_admin && (
+      {info && (
         <button
           onClick={grantSelf}
           disabled={grantStatus === 'loading' || grantStatus === 'done'}

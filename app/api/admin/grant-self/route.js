@@ -4,7 +4,10 @@ import { createServiceClient } from '../../../../src/lib/supabase'
 // GET /api/admin/grant-self
 // Visit this URL while signed in — grants you premium instantly.
 
-export async function GET() {
+export async function POST(req) { return handler(req) }
+export async function GET(req) { return handler(req) }
+
+async function handler() {
   const { userId } = await auth()
   if (!userId) return Response.json({ error: 'Not signed in — log in first' }, { status: 401 })
 
