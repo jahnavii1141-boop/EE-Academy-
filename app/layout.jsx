@@ -16,8 +16,10 @@ export const metadata = {
   },
 }
 
-// Clerk requires dynamic rendering for auth header access
-export const dynamic = 'force-dynamic'
+// ClerkProvider is a client component — no force-dynamic needed on root layout.
+// Auth is handled client-side (useAuth) and in middleware. Removing force-dynamic
+// lets guide pages and module pages be statically pre-rendered at build time,
+// which eliminates cold-start 5xx timeouts when Google crawls many pages at once.
 
 export default function RootLayout({ children }) {
   return (
