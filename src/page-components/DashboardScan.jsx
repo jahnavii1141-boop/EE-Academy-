@@ -1,8 +1,8 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { ScanLine } from 'lucide-react'
+import { ScanLine, Upload, X } from 'lucide-react'
 
 const BAND_COLORS = {
   Excellent: '#16a34a',
@@ -37,6 +37,9 @@ export default function DashboardScan() {
   const [scanning, setScanning] = useState(false)
   const [result, setResult] = useState(null)
   const [error, setError] = useState('')
+  const [pdfFile, setPdfFile] = useState(null)   // File object when PDF selected
+  const [inputMode, setInputMode] = useState('text') // 'text' | 'pdf'
+  const fileInputRef = useRef(null)
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -56,17 +59,43 @@ export default function DashboardScan() {
   }, [isSignedIn])
 
   const wordCount = essayText.trim() ? essayText.trim().split(/\s+/).filter(Boolean).length : 0
+  const canScan = inputMode === 'pdf' ? !!pdfFile : wordCount >= 50
+
+  const handleFileChange = (e) => {
+    const file = e.target.files?.[0]
+    if (!file) return
+    if (file.type !== 'application/pdf') {
+      setError('Please upload a PDF file.')
+      return
+    }
+    setPdfFile(file)
+    setError('')
+  }
+
+  const clearPdf = () => {
+    setPdfFile(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
 
   const handleScan = async () => {
     setScanning(true)
     setError('')
     setResult(null)
     try {
-      const res = await fetch('/api/scan', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ essay_text: essayText, subject, research_question: rq }),
-      })
+      let res
+      if (inputMode === 'pdf' && pdfFile) {
+        const fd = new FormData()
+        fd.append('pdf', pdfFile)
+        fd.append('subject', subject)
+        fd.append('research_question', rq)
+        res = await fetch('/api/scan', { method: 'POST', body: fd })
+      } else {
+        res = await fetch('/api/scan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ essay_text: essayText, subject, research_question: rq }),
+        })
+      }
       const data = await res.json()
       if (!res.ok || data.error) {
         setError(data.error || 'Something went wrong. Please try again.')
@@ -83,6 +112,7 @@ export default function DashboardScan() {
   const handleRescan = () => {
     setResult(null)
     setError('')
+    clearPdf()
   }
 
   return (
@@ -104,39 +134,106 @@ export default function DashboardScan() {
         {/* Input area — hide when results shown */}
         {!result && (
           <div className="rounded-2xl overflow-hidden mb-4" style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
-            <div className="px-5 py-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <p className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>Your essay</p>
-              {subject && (
-                <p className="text-[11px] mt-0.5" style={{ color: '#aaa' }}>
-                  {subject}{rq ? ` — ${rq.slice(0, 60)}${rq.length > 60 ? '…' : ''}` : ''}
-                </p>
-              )}
+            {/* Header + tabs */}
+            <div className="px-5 py-4 flex items-center justify-between" style={{ borderBottom: '1px solid #f0f0f0' }}>
+              <div>
+                <p className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>Your essay</p>
+                {subject && (
+                  <p className="text-[11px] mt-0.5" style={{ color: '#aaa' }}>
+                    {subject}{rq ? ` — ${rq.slice(0, 60)}${rq.length > 60 ? '…' : ''}` : ''}
+                  </p>
+                )}
+              </div>
+              {/* Mode toggle */}
+              <div className="flex rounded-lg overflow-hidden" style={{ border: '1px solid #e8e8e8' }}>
+                {['text', 'pdf'].map(mode => (
+                  <button
+                    key={mode}
+                    onClick={() => { setInputMode(mode); setError('') }}
+                    className="text-xs font-semibold px-3 py-1.5 transition-all"
+                    style={{
+                      background: inputMode === mode ? '#0a0a0a' : '#fff',
+                      color: inputMode === mode ? '#fff' : '#888',
+                    }}
+                  >
+                    {mode === 'text' ? 'Paste text' : 'Upload PDF'}
+                  </button>
+                ))}
+              </div>
             </div>
+
             <div className="px-5 py-4">
-              <textarea
-                value={essayText}
-                onChange={e => setEssayText(e.target.value)}
-                placeholder="Paste your essay here…"
-                className="w-full focus:outline-none text-sm resize-none"
-                style={{
-                  minHeight: 300,
-                  color: '#0a0a0a',
-                  background: 'transparent',
-                  lineHeight: '1.7',
-                }}
-              />
+              {inputMode === 'text' ? (
+                <textarea
+                  value={essayText}
+                  onChange={e => setEssayText(e.target.value)}
+                  placeholder="Paste your essay here…"
+                  className="w-full focus:outline-none text-sm resize-none"
+                  style={{ minHeight: 300, color: '#0a0a0a', background: 'transparent', lineHeight: '1.7' }}
+                />
+              ) : (
+                <div>
+                  {/* Hidden file input */}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="application/pdf"
+                    onChange={handleFileChange}
+                    className="sr-only"
+                  />
+                  {pdfFile ? (
+                    /* File selected — show name + clear */
+                    <div className="flex items-center gap-3 rounded-xl px-4 py-4"
+                      style={{ background: '#f5f5f5', border: '1px solid #e8e8e8' }}>
+                      <Upload size={16} style={{ color: '#555', flexShrink: 0 }} />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium truncate" style={{ color: '#0a0a0a' }}>{pdfFile.name}</p>
+                        <p className="text-[11px]" style={{ color: '#aaa' }}>
+                          {(pdfFile.size / 1024).toFixed(0)} KB — text will be extracted on scan
+                        </p>
+                      </div>
+                      <button onClick={clearPdf} className="flex-shrink-0 p-1 rounded-lg hover:bg-white transition-colors">
+                        <X size={14} style={{ color: '#aaa' }} />
+                      </button>
+                    </div>
+                  ) : (
+                    /* Drop zone */
+                    <button
+                      onClick={() => fileInputRef.current?.click()}
+                      className="w-full rounded-xl flex flex-col items-center justify-center gap-3 transition-all"
+                      style={{
+                        minHeight: 200,
+                        border: '2px dashed #e0e0e0',
+                        background: '#fafafa',
+                        cursor: 'pointer',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a'; e.currentTarget.style.background = '#f5f5f5' }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#e0e0e0'; e.currentTarget.style.background = '#fafafa' }}
+                    >
+                      <Upload size={24} style={{ color: '#bbb' }} />
+                      <div className="text-center">
+                        <p className="text-sm font-semibold" style={{ color: '#555' }}>Click to upload your EE PDF</p>
+                        <p className="text-xs mt-1" style={{ color: '#bbb' }}>PDF files only · text is extracted automatically</p>
+                      </div>
+                    </button>
+                  )}
+                </div>
+              )}
+
               <div className="flex items-center justify-between mt-3 pt-3" style={{ borderTop: '1px solid #f5f5f5' }}>
                 <span className="text-xs" style={{ color: '#bbb' }}>
-                  {wordCount > 0 ? `${wordCount.toLocaleString()} words` : 'No text yet'}
+                  {inputMode === 'pdf'
+                    ? pdfFile ? 'Ready to scan' : 'No file selected'
+                    : wordCount > 0 ? `${wordCount.toLocaleString()} words` : 'No text yet'}
                 </span>
                 <button
                   onClick={handleScan}
-                  disabled={wordCount < 50 || scanning}
+                  disabled={!canScan || scanning}
                   className="flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
                   style={{
-                    background: wordCount < 50 || scanning ? '#f0f0f0' : '#0a0a0a',
-                    color: wordCount < 50 || scanning ? '#aaa' : '#fff',
-                    cursor: wordCount < 50 || scanning ? 'not-allowed' : 'pointer',
+                    background: !canScan || scanning ? '#f0f0f0' : '#0a0a0a',
+                    color: !canScan || scanning ? '#aaa' : '#fff',
+                    cursor: !canScan || scanning ? 'not-allowed' : 'pointer',
                   }}
                 >
                   <ScanLine size={14} strokeWidth={2} />
