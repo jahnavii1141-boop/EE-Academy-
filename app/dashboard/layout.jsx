@@ -6,31 +6,36 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
+  ScanLine, Bot,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const NAV_MAIN = [
-  { id: 'home',    label: 'Home',    icon: Home,    href: '/dashboard/home' },
-  { id: 'modules', label: 'Modules', icon: BookOpen, href: '/dashboard/modules' },
-  { id: 'essay',   label: 'My Essay', icon: PenLine, href: '/dashboard/essay' },
+  { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
+  { id: 'modules', label: 'Modules',    icon: BookOpen,  href: '/dashboard/modules' },
+  { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
+  { id: 'dump',    label: 'EE Dump',    icon: Database,  href: '/dump' },
+  { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/planner' },
+  { id: 'scan',    label: 'EE Scan',    icon: ScanLine,  href: '/dashboard/scan', isNew: true },
+  { id: 'agent',   label: 'EE Mentor',  icon: Bot,       href: '/dashboard/agent' },
 ]
 
-const NAV_PRO = [
-  { id: 'dump',      label: 'Citations',  icon: Database, href: '/dump' },
-  { id: 'planner',   label: 'Planner',    icon: Calendar, href: '/planner' },
-  { id: 'templates', label: 'Templates',  icon: FileText, href: '/dashboard/templates' },
-  { id: 'share',     label: 'Share',      icon: Share2,   href: '/dashboard/share' },
+const NAV_MORE = [
+  { id: 'templates', label: 'Templates', icon: FileText, href: '/dashboard/templates' },
+  { id: 'share',     label: 'Share',     icon: Share2,   href: '/dashboard/share' },
 ]
 
-const ALL_NAV = [...NAV_MAIN, ...NAV_PRO]
+const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
   const { isSignedIn } = useAuth()
   const pathname = usePathname()
-  const firstName = user?.firstName || 'Your'
+  const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
   const [isPremium, setIsPremium] = useState(false)
+  const [wordCount, setWordCount] = useState(null)
+  const [daysLeft, setDaysLeft] = useState(null)
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -39,6 +44,19 @@ export default function DashboardLayout({ children }) {
       .then(({ workspace }) => {
         setSubject(workspace?.subject || '')
         setIsPremium(!!workspace?.has_paid && workspace?.tier === 'premium')
+        if (workspace?.submission_deadline) {
+          const d = Math.ceil((new Date(workspace.submission_deadline) - new Date()) / 86400000)
+          setDaysLeft(d)
+        }
+      })
+      .catch(() => {})
+    fetch('/api/essay')
+      .then(r => r.json())
+      .then(({ essay_text }) => {
+        if (essay_text) {
+          const words = essay_text.trim().split(/\s+/).filter(Boolean).length
+          setWordCount(words)
+        }
       })
       .catch(() => {})
   }, [isSignedIn])
@@ -60,7 +78,7 @@ export default function DashboardLayout({ children }) {
           <Link href="/dashboard" className="block">
             <p className="font-medium text-xs tracking-tight mb-0.5" style={{ color: '#999' }}>EE Academy</p>
             <p className="font-semibold text-sm leading-tight truncate" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
-              {firstName}&apos;s workspace
+              {firstName ? `${firstName}'s workspace` : 'My workspace'}
             </p>
           </Link>
           {subject && (
@@ -70,11 +88,32 @@ export default function DashboardLayout({ children }) {
               <span>{subject}</span>
             </div>
           )}
+
+          {/* Stats pills */}
+          {(wordCount !== null || daysLeft !== null) && (
+            <div className="mt-2 flex flex-wrap gap-1.5">
+              {wordCount !== null && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium"
+                  style={{ background: '#f5f5f5', color: '#555' }}>
+                  {wordCount.toLocaleString()} words
+                </span>
+              )}
+              {daysLeft !== null && (
+                <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-medium"
+                  style={{
+                    background: daysLeft <= 30 ? '#fef2f2' : '#f5f5f5',
+                    color: daysLeft <= 30 ? '#dc2626' : '#555',
+                  }}>
+                  {daysLeft > 0 ? `${daysLeft}d left` : daysLeft === 0 ? 'Due today' : `${Math.abs(daysLeft)}d late`}
+                </span>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
-          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mb-2" style={{ color: '#bbb' }}>Menu</p>
+          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mb-2" style={{ color: '#bbb' }}>My Work</p>
           {NAV_MAIN.map(item => {
             const Icon = item.icon
             const active = activeId === item.id
@@ -93,12 +132,18 @@ export default function DashboardLayout({ children }) {
               >
                 <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
                 <span>{item.label}</span>
+                {item.isNew && (
+                  <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#0a0a0a', color: active ? '#fff' : '#fff' }}>
+                    New
+                  </span>
+                )}
               </Link>
             )
           })}
 
-          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>Pro Features</p>
-          {NAV_PRO.map(item => {
+          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>More</p>
+          {NAV_MORE.map(item => {
             const Icon = item.icon
             const active = activeId === item.id
             return (

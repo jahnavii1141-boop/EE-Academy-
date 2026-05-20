@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen } from 'lucide-react'
+import Link from 'next/link'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ScanLine, Bot } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const SUBJECTS = [
@@ -29,6 +30,7 @@ export default function DashboardHome() {
   const [editing, setEditing] = useState(false)
   const [paymentVerifying, setPaymentVerifying] = useState(false)
   const [paymentSuccess, setPaymentSuccess] = useState(false)
+  const [essayText, setEssayText] = useState('')
 
   // ── Verify Paddle payment on return from checkout ──────────────────────────
   // Paddle appends ?_ptxn=txn_xxx to the successUrl automatically.
@@ -72,6 +74,10 @@ export default function DashboardHome() {
       })
       .catch(() => {})
       .finally(() => setLoading(false))
+    fetch('/api/essay')
+      .then(r => r.json())
+      .then(({ essay_text }) => { if (essay_text) setEssayText(essay_text) })
+      .catch(() => {})
   }, [isSignedIn])
 
   const save = useCallback(async () => {
@@ -311,15 +317,60 @@ export default function DashboardHome() {
           </div>
         )}
 
-        {/* Tip when set up */}
+        {/* Draft preview card */}
         {!editing && form.research_question && (
-          <div className="rounded-xl px-5 py-4"
-            style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
-            <p className="text-xs font-semibold mb-1" style={{ color: '#0a0a0a' }}>Everything here powers your workspace</p>
-            <p className="text-xs leading-relaxed" style={{ color: '#aaa' }}>
-              Your subject, RQ, and deadline are used across Modules, the Planner, and your EE Mentor. Keep them up to date as your essay evolves.
-            </p>
-          </div>
+          <>
+            <Link href="/dashboard/essay" className="block mb-4 rounded-xl px-5 py-4 transition-all group"
+              style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#bbb' }}>My Essay</p>
+                {essayText && (
+                  <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: '#f5f5f5', color: '#888' }}>
+                    {essayText.trim().split(/\s+/).filter(Boolean).length.toLocaleString()} words
+                  </span>
+                )}
+              </div>
+              {essayText ? (
+                <>
+                  <p className="text-sm leading-relaxed mb-2" style={{ color: '#0a0a0a' }}>
+                    {essayText.trim().slice(0, 120)}{essayText.trim().length > 120 ? '…' : ''}
+                  </p>
+                  <p className="text-xs font-semibold" style={{ color: '#555' }}>Continue writing →</p>
+                </>
+              ) : (
+                <p className="text-sm" style={{ color: '#aaa' }}>No draft yet — Start your essay →</p>
+              )}
+            </Link>
+
+            {/* Quick links grid */}
+            <div className="grid grid-cols-2 gap-2">
+              {[
+                { href: '/dump', icon: Database, label: 'EE Dump', desc: 'Organise your sources' },
+                { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
+                { href: '/dashboard/scan', icon: ScanLine, label: 'EE Scan', desc: 'Get examiner feedback', isNew: true },
+                { href: '/dashboard/agent', icon: Bot, label: 'EE Mentor', desc: 'AI writing coach' },
+                { href: '/dashboard/modules', icon: BookOpen, label: 'Modules', desc: 'Guided EE lessons' },
+                { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
+              ].map(({ href, icon: Icon, label, desc, isNew }) => (
+                <Link key={href} href={href}
+                  className="block rounded-xl px-4 py-3 transition-all"
+                  style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a' }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
+                  <div className="flex items-center gap-1.5 mb-1">
+                    <Icon size={13} style={{ color: '#555' }} strokeWidth={1.75} />
+                    <span className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>{label}</span>
+                    {isNew && (
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: '#0a0a0a', color: '#fff' }}>New</span>
+                    )}
+                  </div>
+                  <p className="text-[11px] leading-snug" style={{ color: '#aaa' }}>{desc}</p>
+                </Link>
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>
