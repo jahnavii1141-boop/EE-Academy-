@@ -347,7 +347,7 @@ export default function DashboardHome() {
             {/* Quick links grid */}
             <div className="grid grid-cols-2 gap-2">
               {[
-                { href: '/dump', icon: Database, label: 'EE Dump', desc: 'Organise your sources' },
+                { href: '/dump', icon: Database, label: 'Citations', desc: 'Generate citations from URLs' },
                 { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
                 { href: '/dashboard/scan', icon: ScanLine, label: 'EE Scan', desc: 'Get examiner feedback', isNew: true },
                 { href: '/dashboard/modules', icon: BookOpen, label: 'Modules', desc: 'Guided EE lessons' },

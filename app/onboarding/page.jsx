@@ -29,6 +29,19 @@ export default function OnboardingPage() {
   })
   const [generatingDots, setGeneratingDots] = useState(0)
 
+  // Skip onboarding if workspace already set up
+  useEffect(() => {
+    if (!isSignedIn) return
+    fetch('/api/workspace')
+      .then(r => r.json())
+      .then(({ workspace }) => {
+        if (workspace?.research_question && workspace?.subject) {
+          router.replace('/dashboard')
+        }
+      })
+      .catch(() => {})
+  }, [isSignedIn, router])
+
   // Animate dots during generating step
   useEffect(() => {
     if (step !== 'generating') return
