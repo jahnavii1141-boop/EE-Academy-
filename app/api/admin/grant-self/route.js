@@ -5,6 +5,9 @@ import { createServiceClient } from '../../../../src/lib/supabase'
 // Open this URL in the browser while logged in as admin — instantly grants premium.
 // Only works if your clerk_user_id is in ADMIN_CLERK_USER_IDS env var.
 
+// Handle both GET (browser nav) and POST (fetch from admin page)
+export async function POST(req) { return GET(req) }
+
 export async function GET() {
   const { userId } = await auth()
   if (!userId) return Response.json({ error: 'Not logged in' }, { status: 401 })
