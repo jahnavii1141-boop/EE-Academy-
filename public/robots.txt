@@ -3,10 +3,13 @@ Allow: /
 Allow: /guides/
 Allow: /course/
 
-# Auth-gated tools only
+# Auth-gated tools — Google should not crawl or index these
 Disallow: /dashboard/
 Disallow: /planner
 Disallow: /dump
 Disallow: /study-calendar
+Disallow: /onboarding
+Disallow: /share/
+Disallow: /api/
 
 Sitemap: https://theextendedessay.com/sitemap.xml
