@@ -1,6 +1,7 @@
 import Hero from '../src/components/Hero'
 import Feature108 from '../src/components/blocks/Feature108'
 import WhatYoullLearn from '../src/components/WhatYoullLearn'
+import FeaturedGuides from '../src/components/FeaturedGuides'
 import HomeFAQ from '../src/components/HomeFAQ'
 import EvervaultCTA from '../src/components/EvervaultCTA'
 import ResultsStrip from '../src/components/ResultsStrip'
@@ -49,6 +50,7 @@ export default function HomePage() {
         <ResultsStrip />
         <Feature108 />
         <WhatYoullLearn />
+        <FeaturedGuides />
         <HomeFAQ />
         <EvervaultCTA />
       </main>

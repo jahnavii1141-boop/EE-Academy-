@@ -97,7 +97,7 @@ export default function sitemap() {
   }))
 
   // Free modules are fully public and indexable; paid modules still serve content (paywalled mid-page)
-  const freeModules = new Set(['module-1', 'module-2', 'module-3', 'module-5'])
+  const freeModules = new Set(['module-1', 'module-2', 'module-3', 'module-4', 'module-5'])
   const modulePages = MODULE_IDS.map(id => ({
     url: `${BASE}/course/${id}`,
     lastModified: NOW,
