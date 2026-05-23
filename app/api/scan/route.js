@@ -234,12 +234,10 @@ export async function POST(req) {
 
       const buffer = Buffer.from(await file.arrayBuffer())
 
-      // pdf-parse v2: use PDFParse class with { data: buffer }
-      // serverExternalPackages ensures it's not bundled by Next.js
-      const { PDFParse } = await import('pdf-parse')
-      const parser = new PDFParse({ data: buffer })
-      const parsed = await parser.getText()
-      await parser.destroy()
+      // pdf-parse v1 — simple, battle-tested on Vercel
+      // serverExternalPackages prevents Next.js from bundling it
+      const pdfParse = (await import('pdf-parse')).default
+      const parsed = await pdfParse(buffer)
       essay_text = parsed.text
     } else {
       // ── Plain JSON path ──────────────────────────────────────────────────
