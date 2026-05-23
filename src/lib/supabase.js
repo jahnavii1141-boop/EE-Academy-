@@ -18,6 +18,9 @@ export const supabase = new Proxy({}, {
 })
 
 // Server-side client with service role (bypasses RLS)
+// Read env vars at call time (not module load time) so they're available at runtime
 export function createServiceClient() {
-  return createClient(supabaseUrl, process.env.SUPABASE_SERVICE_ROLE_KEY)
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+  return createClient(url, key)
 }
