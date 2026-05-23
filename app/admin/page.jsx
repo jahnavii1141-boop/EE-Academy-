@@ -26,10 +26,12 @@ export default function AdminPage() {
       } else {
         console.error('Grant error:', data)
         setGrantStatus('error')
+        setInfo(i => ({ ...i, grantError: data.error || JSON.stringify(data) }))
       }
     } catch (e) {
       console.error(e)
       setGrantStatus('error')
+      setInfo(i => ({ ...i, grantError: e.message }))
     }
   }
 
@@ -68,6 +70,16 @@ export default function AdminPage() {
                 {info.is_admin ? '✓ YES' : '✗ NO — copy your user ID above into ADMIN_CLERK_USER_IDS in Vercel'}
               </td>
             </tr>
+            <tr>
+              <td style={{ padding: '8px 12px', background: '#f5f5f5', fontWeight: 600 }}>Supabase URL</td>
+              <td style={{ padding: '8px 12px', wordBreak: 'break-all', color: info.supabase_url === 'NOT SET' ? 'red' : 'inherit' }}>{info.supabase_url}</td>
+            </tr>
+            <tr>
+              <td style={{ padding: '8px 12px', background: '#f5f5f5', fontWeight: 600 }}>Service key set?</td>
+              <td style={{ padding: '8px 12px', color: info.supabase_service_key_set ? 'green' : 'red', fontWeight: 700 }}>
+                {info.supabase_service_key_set ? '✓ YES' : '✗ NO — add SUPABASE_SERVICE_ROLE_KEY to Vercel env vars'}
+              </td>
+            </tr>
           </tbody>
         </table>
       )}
@@ -94,7 +106,9 @@ export default function AdminPage() {
       )}
 
       {grantStatus === 'error' && (
-        <p style={{ color: 'red', marginTop: 12 }}>Failed — check Vercel logs.</p>
+        <p style={{ color: 'red', marginTop: 12, fontSize: 12, wordBreak: 'break-all' }}>
+          Failed: {info?.grantError || 'unknown error — check Vercel logs'}
+        </p>
       )}
     </div>
   )

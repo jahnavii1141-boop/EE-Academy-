@@ -14,5 +14,7 @@ export async function GET() {
     your_user_id: userId,
     admin_ids_configured: adminIds,
     is_admin: adminIds.includes(userId),
+    supabase_url: process.env.NEXT_PUBLIC_SUPABASE_URL || 'NOT SET',
+    supabase_service_key_set: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
   })
 }
