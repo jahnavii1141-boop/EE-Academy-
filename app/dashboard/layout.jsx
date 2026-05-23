@@ -42,7 +42,7 @@ export default function DashboardLayout({ children }) {
       .then(r => r.json())
       .then(({ workspace }) => {
         setSubject(workspace?.subject || '')
-        setIsPremium(!!workspace?.has_paid && workspace?.tier === 'premium')
+        setIsPremium(!!workspace?.has_paid)
         if (workspace?.submission_deadline) {
           const d = Math.ceil((new Date(workspace.submission_deadline) - new Date()) / 86400000)
           setDaysLeft(d)

@@ -1,10 +1,3 @@
-// Grant premium directly via Supabase — no API endpoint needed.
-// Run with no args to grant ALL users premium (easiest):
-//   node scripts/grant-premium.mjs
-//
-// Or pass a specific clerk_user_id:
-//   node scripts/grant-premium.mjs user_2abc123xyz
-
 import { createClient } from '@supabase/supabase-js'
 
 const SUPABASE_URL = 'https://akiwzservvontpbsfxjg.supabase.co'
@@ -13,21 +6,18 @@ const SERVICE_KEY  = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const supabase = createClient(SUPABASE_URL, SERVICE_KEY)
 const targetId = process.argv[2] || null
 
-// List all existing users first
 const { data: users, error: listErr } = await supabase
   .from('user_workspace')
-  .select('clerk_user_id, subject, tier, has_paid')
+  .select('clerk_user_id, subject, has_paid')
 
 if (listErr) { console.error('❌ Could not list users:', listErr.message); process.exit(1) }
 
 console.log('\nUsers in workspace table:')
 users.forEach((u, i) => {
-  console.log(`  ${i + 1}. ${u.clerk_user_id}  subject=${u.subject || '—'}  tier=${u.tier || '—'}  paid=${u.has_paid}`)
+  console.log(`  ${i + 1}. ${u.clerk_user_id}  subject=${u.subject || '—'}  paid=${u.has_paid}`)
 })
 
-const targets = targetId
-  ? users.filter(u => u.clerk_user_id === targetId)
-  : users
+const targets = targetId ? users.filter(u => u.clerk_user_id === targetId) : users
 
 if (targets.length === 0) {
   console.log(targetId ? `\n❌ No user found with ID: ${targetId}` : '\n❌ No users in workspace table yet.')
@@ -39,12 +29,7 @@ console.log(`\nGranting premium to ${targets.length} user(s)…`)
 for (const u of targets) {
   const { error } = await supabase
     .from('user_workspace')
-    .update({
-      has_paid: true,
-      tier: 'premium',
-      paid_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    })
+    .update({ has_paid: true, updated_at: new Date().toISOString() })
     .eq('clerk_user_id', u.clerk_user_id)
 
   if (error) console.error(`  ❌ ${u.clerk_user_id}: ${error.message}`)

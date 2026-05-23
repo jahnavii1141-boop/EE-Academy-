@@ -15,8 +15,6 @@ async function handler() {
       .upsert({
         clerk_user_id: userId,
         has_paid: true,
-        tier: 'premium',
-        paid_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
       }, { onConflict: 'clerk_user_id' })
 
