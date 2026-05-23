@@ -89,9 +89,6 @@ export default function PlannerPage() {
           <EEPlanner theme="light" />
         </div>
 
-        <p className="mt-6 text-sm text-[#8e8ea0] max-w-2xl">
-          This is the first tool being integrated directly into the product. Next up, I can bring this same sharper tool feel into the actual course experience too.
-        </p>
       </div>
     </div>
   )

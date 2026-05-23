@@ -234,11 +234,10 @@ export async function POST(req) {
 
       const buffer = Buffer.from(await file.arrayBuffer())
 
-      // pdf-parse v1 — simple, battle-tested on Vercel
-      // serverExternalPackages prevents Next.js from bundling it
-      const pdfParse = (await import('pdf-parse')).default
-      const parsed = await pdfParse(buffer)
-      essay_text = parsed.text
+      // unpdf — serverless-native PDF text extraction, no browser API deps
+      const { extractText } = await import('unpdf')
+      const { text } = await extractText(new Uint8Array(buffer))
+      essay_text = text
     } else {
       // ── Plain JSON path ──────────────────────────────────────────────────
       const body = await req.json()
