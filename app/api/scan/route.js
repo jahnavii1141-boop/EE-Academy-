@@ -236,7 +236,7 @@ export async function POST(req) {
 
       // unpdf — serverless-native PDF text extraction, no browser API deps
       const { extractText } = await import('unpdf')
-      const { text } = await extractText(new Uint8Array(buffer))
+      const { text } = await extractText(new Uint8Array(buffer), { mergePages: true })
       essay_text = text
     } else {
       // ── Plain JSON path ──────────────────────────────────────────────────
