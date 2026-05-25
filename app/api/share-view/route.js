@@ -21,8 +21,10 @@ export async function GET(request) {
   const userId = tokenRow.clerk_user_id
 
   // Fetch all public data for this user
+  // Use select('*') so missing optional columns (essay_text, essay_updated_at)
+  // don't cause a hard error if the schema migration hasn't run yet.
   const [workspaceRes, dumpRes, plannerRes] = await Promise.all([
-    supabase.from('user_workspace').select('research_question, subject, supervisor_name, submission_deadline, essay_text, essay_updated_at').eq('clerk_user_id', userId).single(),
+    supabase.from('user_workspace').select('*').eq('clerk_user_id', userId).single(),
     supabase.from('dump_entries').select('*').eq('clerk_user_id', userId).order('sort_order', { ascending: true }),
     supabase.from('planner_milestones').select('*').eq('clerk_user_id', userId).order('sort_order', { ascending: true }),
   ])
