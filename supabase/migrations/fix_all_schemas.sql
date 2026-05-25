@@ -3,14 +3,15 @@
 -- Dashboard → SQL Editor → New query → paste → Run
 -- ============================================================
 
--- ── 1. user_workspace: ensure essay + payment columns exist ──
+-- ── 1. user_workspace: ensure all app columns exist ──
 alter table user_workspace
   add column if not exists essay_text        text          default null,
   add column if not exists essay_updated_at  timestamptz   default null,
   add column if not exists has_paid          boolean       not null default false,
   add column if not exists tier              text          default null,
   add column if not exists paid_at           timestamptz   default null,
-  add column if not exists agent_free_uses   integer       default 0;
+  add column if not exists agent_free_uses   integer       default 0,
+  add column if not exists share_token       text          default null;
 
 -- ── 2. planner_milestones: add all columns the app actually writes ──
 -- Original schema had: id, clerk_user_id, title, due_date, completed, created_at
