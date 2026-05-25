@@ -37,8 +37,9 @@ export function useAccess() {
   return {
     ...state,
     // Can access full course (all modules)
-    hasStandard: state.hasPaid && (state.tier === 'basic' || state.tier === 'premium'),
-    // Can access tools + AI
-    hasPremium: state.hasPaid && state.tier === 'premium',
+    hasStandard: state.hasPaid,
+    // Can access tools + AI — anyone who has paid gets full access
+    // (DB schema has no tier column, only has_paid)
+    hasPremium: state.hasPaid,
   }
 }
