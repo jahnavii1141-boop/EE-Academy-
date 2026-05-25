@@ -84,20 +84,19 @@ export async function POST(request) {
     return Response.json({ received: true, warning: 'No user ID — manual grant needed' })
   }
 
-  // Get the price ID from the first line item
+  // Get the price ID from the first line item (used for logging only)
   const priceId = transaction?.items?.[0]?.price?.id
   const tier = getTierFromPriceId(priceId)
 
   const supabase = createServiceClient()
 
   // Upsert — create row if user never opened dashboard, or update existing
+  // NOTE: user_workspace schema only has has_paid (no tier/paid_at columns)
   const { error } = await supabase
     .from('user_workspace')
     .upsert({
       clerk_user_id: clerkUserId,
       has_paid: true,
-      tier,
-      paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
 
