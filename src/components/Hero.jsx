@@ -39,12 +39,6 @@ export default function Hero() {
 
           {/* Left: Text content */}
           <div>
-            <AnimateIn>
-              <span className="inline-flex items-center bg-parchment/10 text-parchment text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-parchment/20 tracking-wide">
-                Predicted a C. Finished with an A and 32/34.
-              </span>
-            </AnimateIn>
-
             <AnimateIn delay={0.1}>
               <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-cream leading-[1.1] mb-6">
                 The EE without<br />
