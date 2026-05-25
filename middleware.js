@@ -8,7 +8,8 @@ const isProtectedRoute = createRouteMatcher([
   '/planner(.*)',
   '/study-calendar(.*)',
   '/onboarding(.*)',
-  '/share(.*)',
+  // NOTE: /share/* is intentionally PUBLIC — supervisors view it without an account.
+  // The share token provides its own access control.
 ])
 
 // Sign-in and sign-up are public — Clerk handles them
