@@ -93,9 +93,6 @@ export default function EEPlanner({ theme = 'dark' }) {
   const C = PALETTES[theme] || PALETTES.dark
   const [submissionDate, setSubmissionDate] = useState('')
   const [milestones, setMilestones] = useState(DEFAULT_MILESTONES)
-  const [showAddForm, setShowAddForm] = useState(false)
-  const [newLabel, setNewLabel] = useState('')
-  const [newWeeksBefore, setNewWeeksBefore] = useState(10)
   const [view, setView] = useState('timeline')
 
   // ── Load from Supabase on sign-in ──
@@ -144,15 +141,6 @@ export default function EEPlanner({ theme = 'dark' }) {
       return next
     })
   }, [savePlanner])
-
-  const addCustomMilestone = useCallback(() => {
-    if (!newLabel.trim()) return
-    const id = 'custom_' + Date.now()
-    setMilestones(prev => [...prev, { id, label: newLabel, type: 'custom', weeksBefore: newWeeksBefore, done: false }])
-    setNewLabel('')
-    setNewWeeksBefore(10)
-    setShowAddForm(false)
-  }, [newLabel, newWeeksBefore])
 
   const removeMilestone = useCallback((id) => {
     setMilestones(prev => prev.filter(m => m.id !== id))
@@ -227,9 +215,9 @@ export default function EEPlanner({ theme = 'dark' }) {
         </div>
       )}
 
-      {/* View Toggle + Add */}
+      {/* View Toggle */}
       {parsedDate && (
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20, flexWrap: 'wrap', gap: 12 }}>
+        <div style={{ display: 'flex', alignItems: 'center', marginBottom: 20 }}>
           <div style={{ display: 'flex', background: C.cardBg, borderRadius: 8, overflow: 'hidden', border: `1px solid ${C.cardBorder}` }}>
             {['timeline', 'checklist'].map(v => (
               <button key={v} onClick={() => setView(v)} style={{
@@ -241,65 +229,6 @@ export default function EEPlanner({ theme = 'dark' }) {
               </button>
             ))}
           </div>
-          <button onClick={() => setShowAddForm(!showAddForm)} style={{
-            padding: '8px 16px', borderRadius: 9999, border: 'none',
-            background: C.actionBg, color: C.actionText, fontSize: 13, fontWeight: 600,
-            cursor: 'pointer', transition: 'all 0.2s',
-          }}>
-            + Add Deadline
-          </button>
-        </div>
-      )}
-
-      {/* Add Form */}
-      {showAddForm && parsedDate && (
-        <div style={{
-          padding: 20, borderRadius: 12, marginBottom: 20,
-          background: C.cardBg, border: `1px solid ${C.cardBorder}`,
-        }}>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'flex-end', flexWrap: 'wrap' }}>
-            <div style={{ flex: 1, minWidth: 200 }}>
-              <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.steelMuted, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 6 }}>
-                Task Name
-              </label>
-              <input
-                value={newLabel}
-                onChange={e => setNewLabel(e.target.value)}
-                placeholder="e.g., College app deadline"
-                style={{
-                  width: '100%', padding: '10px 14px', borderRadius: 9999,
-                  border: `1px solid ${C.inputBorder}`, background: C.inputBg,
-                  color: '#fff', fontSize: 14, outline: 'none', boxSizing: 'border-box',
-                }}
-              />
-            </div>
-            <div>
-              <label style={{ display: 'block', fontSize: 11, fontWeight: 600, color: C.steelMuted, textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: 6 }}>
-                Weeks Before
-              </label>
-              <input
-                type="number" min={0} max={52} value={newWeeksBefore}
-                onChange={e => setNewWeeksBefore(parseInt(e.target.value) || 0)}
-                style={{
-                  width: 80, padding: '10px 14px', borderRadius: 9999,
-                  border: `1px solid ${C.inputBorder}`, background: C.inputBg,
-                  color: '#fff', fontSize: 14, outline: 'none',
-                }}
-              />
-            </div>
-            <button onClick={addCustomMilestone} style={{
-              padding: '10px 20px', borderRadius: 9999, border: 'none',
-              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', color: '#fff',
-              fontSize: 13, fontWeight: 600, cursor: 'pointer',
-            }}>
-              Add
-            </button>
-          </div>
-          {parsedDate && newWeeksBefore > 0 && (
-            <p style={{ fontSize: 12, color: C.steelMuted, marginTop: 8, marginBottom: 0 }}>
-              This task will be due on {formatDate(addWeeks(parsedDate, -newWeeksBefore))}
-            </p>
-          )}
         </div>
       )}
 
@@ -527,7 +456,7 @@ export default function EEPlanner({ theme = 'dark' }) {
           background: C.cardBg, border: `1px solid ${C.cardBorder}`,
           fontSize: 12, color: C.steelMuted, lineHeight: 1.6,
         }}>
-          <strong style={{ color: C.steel }}>How to use:</strong> Click any task to mark it complete. Add your own deadlines (college apps, exams, personal milestones) with the "+ Add Deadline" button. The timeline automatically adjusts based on your submission date.
+          <strong style={{ color: C.steel }}>How to use:</strong> Set your submission date above and everything maps backwards automatically. Click any task to mark it complete. The timeline highlights what's due this week.
         </div>
       )}
     </div>
