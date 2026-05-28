@@ -160,23 +160,25 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }) {
-  const guide = GUIDE_META[params.slug]
+  const { slug } = await params
+  const guide = GUIDE_META[slug]
   if (!guide) return {}
   return {
     title: `${guide.title} | The Extended Essay Academy`,
     description: guide.description,
-    alternates: { canonical: `https://theextendedessay.com/guides/${params.slug}` },
+    alternates: { canonical: `https://theextendedessay.com/guides/${slug}` },
     openGraph: {
       title: guide.title,
       description: guide.description,
-      url: `https://theextendedessay.com/guides/${params.slug}`,
+      url: `https://theextendedessay.com/guides/${slug}`,
       images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
     },
   }
 }
 
 export default async function GuidePage({ params }) {
-  const guide = GUIDE_META[params.slug]
+  const { slug } = await params
+  const guide = GUIDE_META[slug]
   if (!guide) notFound()
 
   const { default: GuideComponent } = await guide.Component()
