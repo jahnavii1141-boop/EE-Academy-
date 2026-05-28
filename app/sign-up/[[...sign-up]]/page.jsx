@@ -4,6 +4,8 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Create Account | The Extended Essay Academy',
   description: 'Create a free account on The Extended Essay Academy and start your IB Extended Essay with a proven 32/34 system.',
+  robots: { index: false, follow: false },
+  alternates: { canonical: 'https://theextendedessay.com/sign-up' },
 }
 
 export default function SignUpPage() {

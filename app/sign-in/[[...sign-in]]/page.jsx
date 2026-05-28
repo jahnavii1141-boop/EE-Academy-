@@ -4,6 +4,8 @@ import Link from 'next/link'
 export const metadata = {
   title: 'Sign In | The Extended Essay Academy',
   description: 'Sign in to your Extended Essay Academy account to access your course, dashboard, and EE tools.',
+  robots: { index: false, follow: false },
+  alternates: { canonical: 'https://theextendedessay.com/sign-in' },
 }
 
 export default function SignInPage() {

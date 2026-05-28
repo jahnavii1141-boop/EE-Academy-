@@ -12,4 +12,8 @@ Disallow: /onboarding
 Disallow: /share/
 Disallow: /api/
 
+# Auth pages — noindex via meta tag; also block crawling of parameterised variants
+Disallow: /sign-in
+Disallow: /sign-up
+
 Sitemap: https://theextendedessay.com/sitemap.xml
