@@ -14,8 +14,8 @@ const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
   { id: 'modules', label: 'Modules',    icon: BookOpen,  href: '/dashboard/modules' },
   { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
-  { id: 'dump',    label: 'Citations',   icon: Database,  href: '/dump' },
-  { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/planner' },
+  { id: 'dump',    label: 'Citations',   icon: Database,  href: '/dashboard/dump' },
+  { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner' },
   { id: 'scan',    label: 'EE Scan',    icon: ScanLine,  href: '/dashboard/scan', isNew: true },
 ]
 
