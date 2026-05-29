@@ -29,14 +29,6 @@ const METHOD_AI_FEATURES = [
   '32/34 essay full breakdown',
 ]
 
-const METHOD_ME_FEATURES = [
-  'Everything in Method+AI',
-  '3 × 45-min sessions with the founder',
-  'Essay read-through before each session',
-  'RQ + argument review in Session 1',
-  'Draft feedback in Session 2',
-  'Final polish + submission check in Session 3',
-]
 
 function Check() {
   return (
@@ -133,8 +125,8 @@ export default function Pricing() {
           </div>
         </AnimateIn>
 
-        {/* 3-column grid */}
-        <StaggerContainer className="grid md:grid-cols-3 gap-4 items-stretch">
+        {/* 2-column grid */}
+        <StaggerContainer className="grid md:grid-cols-2 gap-4 items-stretch max-w-2xl mx-auto">
 
           {/* ── Method ── */}
           <MotionDiv variants={staggerItem}
@@ -190,30 +182,6 @@ export default function Pricing() {
             </CheckoutButton>
           </MotionDiv>
 
-          {/* ── Method+Me (anchor) ── */}
-          <MotionDiv variants={staggerItem}
-            className="rounded-2xl border border-navy/10 bg-white flex flex-col p-6">
-            <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: '#aaa' }}>Method+Me</p>
-              <div className="flex items-end gap-1.5 mb-0.5">
-                <span className="text-4xl font-serif font-bold text-navy">${PRICING.methodMe.price}</span>
-              </div>
-              <p className="text-[12px] mb-1" style={{ color: '#aaa' }}>one-time · lifetime access</p>
-              <p className="text-[11px] mb-5" style={{ color: '#bbb' }}>
-                or {PRICING.methodMe.installments.count} × ${PRICING.methodMe.installments.each}
-              </p>
-              <ul className="space-y-2.5 mb-8">
-                {METHOD_ME_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
-              </ul>
-            </div>
-            <CheckoutButton
-              href={PADDLE_CONFIG.mentorUrl}
-              priceId={PADDLE_CONFIG.mentorPriceId}
-              className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all border border-navy/20 text-navy hover:bg-navy hover:text-white"
-            >
-              Book Method+Me
-            </CheckoutButton>
-          </MotionDiv>
 
         </StaggerContainer>
 
