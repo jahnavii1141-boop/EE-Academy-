@@ -68,6 +68,14 @@ function CheckoutButton({ href, priceId, children, className, style }) {
 
   const handleCheckout = async () => {
     if (isLoading) return
+
+    // Must be signed in so clerk_user_id is passed to Paddle custom_data.
+    // Without it the webhook can't grant access.
+    if (!userId) {
+      window.location.href = `/sign-up?redirect_url=${encodeURIComponent('/pricing')}`
+      return
+    }
+
     setIsLoading(true)
     try {
       if (PADDLE_CONFIG.clientToken && priceId) {
@@ -78,11 +86,13 @@ function CheckoutButton({ href, priceId, children, className, style }) {
         if (Paddle) {
           Paddle.Checkout.open({
             items: [{ priceId, quantity: 1 }],
-            customData: userId ? { clerk_user_id: userId } : undefined,
+            customData: { clerk_user_id: userId },
             settings: {
               displayMode: 'overlay',
               theme: 'light',
-              successUrl: `${window.location.origin}/dashboard?payment=success`,
+              // Paddle appends ?_ptxn=txn_xxx — DashboardHome reads it and
+              // calls /api/verify-payment as a backup if the webhook is slow.
+              successUrl: `${window.location.origin}/dashboard/home`,
             },
           })
           return
