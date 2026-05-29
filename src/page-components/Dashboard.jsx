@@ -9,8 +9,8 @@ import { getTheme } from '@/lib/subjectThemes'
 const TOOLS = [
   { id: 'modules',   icon: BookOpen,  label: 'Modules',     sub: '14-module EE system',          href: '/dashboard/modules' },
   { id: 'essay',     icon: PenLine,   label: 'My Essay',    sub: 'Draft & save your essay',       href: '/dashboard/essay' },
-  { id: 'dump',      icon: Database,  label: 'Citations',   sub: 'Paste a URL — citation appears', href: '/dump' },
-  { id: 'planner',   icon: Calendar,  label: 'Planner',     sub: 'Deadlines & milestones',         href: '/planner' },
+  { id: 'dump',      icon: Database,  label: 'Citations',   sub: 'Paste a URL — citation appears', href: '/dashboard/dump' },
+  { id: 'planner',   icon: Calendar,  label: 'Planner',     sub: 'Deadlines & milestones',         href: '/dashboard/planner' },
   { id: 'templates', icon: FileText,  label: 'Templates',   sub: 'RPPF, outline, argument map',    href: '/dashboard/templates' },
   { id: 'share',     icon: Share2,    label: 'Share',       sub: 'View-only link for supervisor',  href: '/dashboard/share' },
 ]
