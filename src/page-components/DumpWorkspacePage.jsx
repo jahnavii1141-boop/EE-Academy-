@@ -228,7 +228,7 @@ export default function DumpWorkspacePage() {
         style={{ borderBottom: '1px solid #f0f0f0', background: '#fff' }}>
         <div className="flex items-center gap-3">
           <p className="text-xs font-semibold" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
-            Citation Generator
+            EE Dump
           </p>
           <span className="text-[11px] px-2 py-0.5 rounded-full" style={{ background: '#f5f5f5', color: '#888' }}>
             MLA format
