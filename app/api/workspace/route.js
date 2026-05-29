@@ -27,6 +27,22 @@ export async function GET() {
   return Response.json({ workspace })
 }
 
+export async function PATCH(request) {
+  const { userId } = await auth()
+  if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
+
+  const body = await request.json()
+  const supabase = createServiceClient()
+
+  const { error } = await supabase
+    .from('user_workspace')
+    .update({ ...body, updated_at: new Date().toISOString() })
+    .eq('clerk_user_id', userId)
+
+  if (error) return Response.json({ error: error.message }, { status: 500 })
+  return Response.json({ success: true })
+}
+
 export async function POST(request) {
   const { userId } = await auth()
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })

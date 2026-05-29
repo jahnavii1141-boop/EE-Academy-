@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  ScanLine, MessageSquare, ChevronDown, ChevronUp,
+  ScanLine, MessageSquare, ChevronDown, ChevronUp, X,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -37,6 +37,19 @@ export default function DashboardLayout({ children }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const [supervisorRemarks, setSupervisorRemarks] = useState(null)
   const [remarksOpen, setRemarksOpen] = useState(false)
+
+  const dismissRemarks = () => {
+    setSupervisorRemarks(null)
+    fetch('/api/workspace', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        supervisor_remarks: null,
+        supervisor_name: null,
+        supervisor_remarks_at: null,
+      }),
+    }).catch(() => {})
+  }
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -178,20 +191,32 @@ export default function DashboardLayout({ children }) {
         {/* Supervisor remarks panel */}
         {supervisorRemarks && (
           <div className="mx-2 mb-2 rounded-xl overflow-hidden" style={{ border: '1px solid #fbbf24', background: '#fffbeb' }}>
-            <button
-              onClick={() => setRemarksOpen(o => !o)}
-              className="w-full flex items-center gap-2 px-3 py-2.5 text-left"
-              style={{ background: 'transparent' }}
-            >
-              <MessageSquare size={13} style={{ color: '#d97706', flexShrink: 0 }} />
-              <span className="flex-1 text-[11px] font-semibold truncate" style={{ color: '#92400e' }}>
-                {supervisorRemarks.name} left feedback
-              </span>
-              {remarksOpen
-                ? <ChevronUp size={12} style={{ color: '#d97706', flexShrink: 0 }} />
-                : <ChevronDown size={12} style={{ color: '#d97706', flexShrink: 0 }} />
-              }
-            </button>
+            <div className="flex items-center">
+              <button
+                onClick={() => setRemarksOpen(o => !o)}
+                className="flex-1 flex items-center gap-2 px-3 py-2.5 text-left"
+                style={{ background: 'transparent' }}
+              >
+                <MessageSquare size={13} style={{ color: '#d97706', flexShrink: 0 }} />
+                <span className="flex-1 text-[11px] font-semibold truncate" style={{ color: '#92400e' }}>
+                  {supervisorRemarks.name} left feedback
+                </span>
+                {remarksOpen
+                  ? <ChevronUp size={12} style={{ color: '#d97706', flexShrink: 0 }} />
+                  : <ChevronDown size={12} style={{ color: '#d97706', flexShrink: 0 }} />
+                }
+              </button>
+              <button
+                onClick={dismissRemarks}
+                title="Dismiss"
+                className="pr-2.5 py-2.5 pl-1"
+                style={{ color: '#d97706', opacity: 0.6 }}
+                onMouseEnter={e => e.currentTarget.style.opacity = '1'}
+                onMouseLeave={e => e.currentTarget.style.opacity = '0.6'}
+              >
+                <X size={12} />
+              </button>
+            </div>
             {remarksOpen && (
               <div className="px-3 pb-3">
                 <p className="text-[11px] leading-relaxed" style={{ color: '#78350f', whiteSpace: 'pre-wrap' }}>
