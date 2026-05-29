@@ -4,6 +4,81 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
 
+function SupervisorRemarksForm({ token }) {
+  const [name, setName] = useState('')
+  const [remarks, setRemarks] = useState('')
+  const [status, setStatus] = useState('idle') // idle | saving | done | error
+
+  const submit = async () => {
+    if (!remarks.trim()) return
+    setStatus('saving')
+    try {
+      const res = await fetch('/api/share-remarks', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token, remarks, supervisor_name: name }),
+      })
+      const data = await res.json()
+      if (data.success) setStatus('done')
+      else setStatus('error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'done') {
+    return (
+      <div className="rounded-2xl p-6 text-center" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+        <p className="text-sm font-semibold text-green-800 mb-1">Remarks sent ✓</p>
+        <p className="text-xs text-green-700">Your student will see your feedback in their dashboard.</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="rounded-2xl p-6" style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
+      <p className="text-[10px] font-semibold uppercase tracking-widest mb-1" style={{ color: '#bbb' }}>Supervisor Remarks</p>
+      <p className="text-sm mb-4" style={{ color: '#888' }}>
+        Add feedback for your student. They'll see it highlighted in their dashboard.
+      </p>
+      <input
+        value={name}
+        onChange={e => setName(e.target.value)}
+        placeholder="Your name (optional)"
+        className="w-full text-sm px-3 py-2 rounded-xl mb-3 focus:outline-none"
+        style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }}
+      />
+      <textarea
+        value={remarks}
+        onChange={e => setRemarks(e.target.value)}
+        placeholder="Your feedback, suggestions, or questions for the student…"
+        rows={5}
+        maxLength={2000}
+        className="w-full text-sm px-3 py-2 rounded-xl mb-1 focus:outline-none resize-none"
+        style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a', lineHeight: 1.6 }}
+      />
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-[11px]" style={{ color: '#ccc' }}>{remarks.length}/2000</span>
+      </div>
+      {status === 'error' && (
+        <p className="text-xs text-red-500 mb-3">Something went wrong — please try again.</p>
+      )}
+      <button
+        onClick={submit}
+        disabled={!remarks.trim() || status === 'saving'}
+        className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all"
+        style={{
+          background: remarks.trim() && status !== 'saving' ? '#0a0a0a' : '#f0f0f0',
+          color: remarks.trim() && status !== 'saving' ? '#fff' : '#bbb',
+          cursor: remarks.trim() && status !== 'saving' ? 'pointer' : 'not-allowed',
+        }}
+      >
+        {status === 'saving' ? 'Sending…' : 'Send remarks to student'}
+      </button>
+    </div>
+  )
+}
+
 function Section({ title, children }) {
   return (
     <div className="mb-8">
@@ -171,7 +246,12 @@ export default function ShareViewPage() {
           <p className="text-center text-sm text-navy/40 py-20">No data added yet.</p>
         )}
 
-        <p className="text-center text-xs text-navy/30 mt-12">
+        {/* Supervisor remarks form */}
+        <div className="mt-12 mb-8">
+          <SupervisorRemarksForm token={token} />
+        </div>
+
+        <p className="text-center text-xs text-navy/30 mt-4">
           Powered by <a href="https://theextendedessay.com" className="underline hover:text-navy/50">The Extended Essay Academy</a>
         </p>
       </div>

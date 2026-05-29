@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  ScanLine,
+  ScanLine, MessageSquare, ChevronDown, ChevronUp,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -35,6 +35,8 @@ export default function DashboardLayout({ children }) {
   const [isPremium, setIsPremium] = useState(false)
   const [wordCount, setWordCount] = useState(null)
   const [daysLeft, setDaysLeft] = useState(null)
+  const [supervisorRemarks, setSupervisorRemarks] = useState(null)
+  const [remarksOpen, setRemarksOpen] = useState(false)
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -46,6 +48,14 @@ export default function DashboardLayout({ children }) {
         if (workspace?.submission_deadline) {
           const d = Math.ceil((new Date(workspace.submission_deadline) - new Date()) / 86400000)
           setDaysLeft(d)
+        }
+        if (workspace?.supervisor_remarks) {
+          setSupervisorRemarks({
+            text: workspace.supervisor_remarks,
+            name: workspace.supervisor_name || 'Supervisor',
+            at: workspace.supervisor_remarks_at,
+          })
+          setRemarksOpen(true)
         }
       })
       .catch(() => {})
@@ -164,6 +174,38 @@ export default function DashboardLayout({ children }) {
             )
           })}
         </nav>
+
+        {/* Supervisor remarks panel */}
+        {supervisorRemarks && (
+          <div className="mx-2 mb-2 rounded-xl overflow-hidden" style={{ border: '1px solid #fbbf24', background: '#fffbeb' }}>
+            <button
+              onClick={() => setRemarksOpen(o => !o)}
+              className="w-full flex items-center gap-2 px-3 py-2.5 text-left"
+              style={{ background: 'transparent' }}
+            >
+              <MessageSquare size={13} style={{ color: '#d97706', flexShrink: 0 }} />
+              <span className="flex-1 text-[11px] font-semibold truncate" style={{ color: '#92400e' }}>
+                {supervisorRemarks.name} left feedback
+              </span>
+              {remarksOpen
+                ? <ChevronUp size={12} style={{ color: '#d97706', flexShrink: 0 }} />
+                : <ChevronDown size={12} style={{ color: '#d97706', flexShrink: 0 }} />
+              }
+            </button>
+            {remarksOpen && (
+              <div className="px-3 pb-3">
+                <p className="text-[11px] leading-relaxed" style={{ color: '#78350f', whiteSpace: 'pre-wrap' }}>
+                  {supervisorRemarks.text}
+                </p>
+                {supervisorRemarks.at && (
+                  <p className="text-[10px] mt-2" style={{ color: '#d97706' }}>
+                    {new Date(supervisorRemarks.at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        )}
 
         {/* Bottom */}
         <div className="px-2 pb-4 pt-3" style={{ borderTop: '1px solid #f0f0f0' }}>

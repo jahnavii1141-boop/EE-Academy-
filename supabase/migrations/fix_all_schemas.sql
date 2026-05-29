@@ -11,7 +11,10 @@ alter table user_workspace
   add column if not exists tier              text          default null,
   add column if not exists paid_at           timestamptz   default null,
   add column if not exists agent_free_uses   integer       default 0,
-  add column if not exists share_token       text          default null;
+  add column if not exists share_token            text          default null,
+  add column if not exists supervisor_remarks     text          default null,
+  add column if not exists supervisor_name        text          default null,
+  add column if not exists supervisor_remarks_at  timestamptz   default null;
 
 -- ── 2. planner_milestones: add all columns the app actually writes ──
 -- Original schema had: id, clerk_user_id, title, due_date, completed, created_at
