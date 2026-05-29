@@ -22,57 +22,65 @@ function analyseEssay(essay, subject = '', rq = '') {
 
   // ── Criterion A — Focus and Method (0–6) ─────────────────────────────────
   let scoreA = 0
-  const analyticalRQ = /to what extent|how does|how do|why does|what is the (effect|impact|relationship|role|significance)|in what ways|how (effectively|far)|to what degree/i
+  const analyticalRQ = /to what extent|how does|how do|why does|what is the (effect|impact|relationship|role|significance)|in what ways|how (effectively|far)|to what degree|what factors|how has|how have|what role/i
   if (analyticalRQ.test(essay)) scoreA += 2
   else if (/what is|who was|when did|describe|outline/i.test(essay.slice(0, 300))) scoreA += 0
   else scoreA += 1
 
-  const methodTerms = countMatches(lower, ['methodology', 'method', 'framework', 'approach', 'primary source', 'secondary source', 'qualitative', 'quantitative', 'case study', 'analysis', 'theoretical'])
-  scoreA += Math.min(2, Math.floor(methodTerms / 3))
+  const methodTerms = countMatches(lower, ['methodology', 'method', 'framework', 'approach', 'primary source', 'secondary source', 'qualitative', 'quantitative', 'case study', 'analysis', 'theoretical', 'examine', 'investigate', 'evaluate'])
+  scoreA += Math.min(2, Math.floor(methodTerms / 2))  // lowered threshold: 2 terms = +1, 4 = +2
 
   if (words >= 3500 && words <= 4200) scoreA += 2
-  else if (words >= 3000 && words <= 4500) scoreA += 1
+  else if (words >= 2800 && words <= 4400) scoreA += 1
   scoreA = Math.min(6, scoreA)
 
   // ── Criterion B — Knowledge and Understanding (0–6) ───────────────────────
   let scoreB = 0
+
+  // Broad citation detection — catches APA, MLA, footnotes, ibid, numbered refs, verbal citations
   const citationPatterns = [
-    /\([A-Z][a-z]+,?\s+\d{4}\)/g,
-    /\[[0-9]+\]/g,
-    /\(p\.\s*\d+\)/gi,
-    /according to|as argued by|as stated by|as noted by|as cited in/gi,
+    /\([A-Z][a-zA-Z\s&]+,?\s+\d{4}[a-z]?\)/g,     // (Smith, 2024) or (Smith & Jones, 2024)
+    /\[[0-9]+\]/g,                                    // [1] footnote style
+    /\(p{1,2}\.\s*\d+\)/gi,                          // (p. 42) or (pp. 42-45)
+    /according to|as argued by|as stated by|as noted by|as cited in|as (shown|demonstrated) by/gi,
+    /ibid\.|op\.\s*cit\.|et al\./gi,                 // academic shorthand
+    /\d+\s+[A-Z][a-z]+.*\(\d{4}\)/g,                // numbered bibliography entries
   ]
   let citations = 0
   for (const p of citationPatterns) { const m = essay.match(p); if (m) citations += m.length }
-  if (citations >= 12) scoreB += 2
-  else if (citations >= 6) scoreB += 1
+  // Lowered thresholds: real essays vary hugely in citation style
+  if (citations >= 8) scoreB += 2
+  else if (citations >= 3) scoreB += 1
 
-  if (/works cited|bibliography|references|sources consulted/i.test(essay)) scoreB += 1
+  if (/works cited|bibliography|references|sources consulted|works referenced/i.test(essay)) scoreB += 1
 
   const academicTerms = countMatches(lower, [
     'theory', 'evidence', 'demonstrates', 'illustrates', 'reveals', 'indicates',
     'significant', 'correlation', 'hypothesis', 'literature', 'scholar', 'academic',
     'empirical', 'data', 'research', 'study', 'findings', 'argues', 'contends',
-    'asserts', 'posits', 'proposes',
+    'asserts', 'posits', 'proposes', 'analysis', 'analytical', 'examine', 'evaluate',
+    'conclude', 'conclusion', 'support', 'contradict', 'consistent', 'inconsistent',
   ])
-  if (academicTerms >= 20) scoreB += 2
-  else if (academicTerms >= 10) scoreB += 1
+  if (academicTerms >= 14) scoreB += 2
+  else if (academicTerms >= 7) scoreB += 1
 
   const subjectTerms = {
-    'biology': ['cell', 'enzyme', 'protein', 'dna', 'rna', 'organism', 'ecosystem', 'genetics', 'metaboli'],
-    'chemistry': ['reaction', 'compound', 'molecule', 'bond', 'element', 'concentration', 'equilibrium', 'oxidation'],
-    'economics': ['market', 'supply', 'demand', 'gdp', 'inflation', 'elasticity', 'externality', 'equilibrium', 'price'],
-    'history': ['war', 'revolution', 'government', 'empire', 'treaty', 'political', 'social movement', 'historical'],
-    'psychology': ['cognitive', 'behaviour', 'behavior', 'experiment', 'participant', 'study', 'schema', 'bias', 'emotion'],
-    'physics': ['force', 'velocity', 'acceleration', 'energy', 'mass', 'momentum', 'wave', 'quantum', 'electric'],
-    'business management': ['profit', 'revenue', 'stakeholder', 'management', 'strategy', 'market share', 'competitive'],
-    'english a': ['imagery', 'metaphor', 'symbolism', 'narrator', 'theme', 'character', 'literary', 'prose', 'verse'],
+    'biology': ['cell', 'enzyme', 'protein', 'dna', 'rna', 'organism', 'ecosystem', 'genetics', 'metaboli', 'photosynthesis', 'respiration'],
+    'chemistry': ['reaction', 'compound', 'molecule', 'bond', 'element', 'concentration', 'equilibrium', 'oxidation', 'reduction', 'titration'],
+    'economics': ['market', 'supply', 'demand', 'gdp', 'inflation', 'elasticity', 'externality', 'equilibrium', 'price', 'consumer', 'producer', 'revenue'],
+    'history': ['war', 'revolution', 'government', 'empire', 'treaty', 'political', 'social movement', 'historical', 'century', 'policy', 'regime'],
+    'psychology': ['cognitive', 'behaviour', 'behavior', 'experiment', 'participant', 'study', 'schema', 'bias', 'emotion', 'memory', 'perception', 'social'],
+    'physics': ['force', 'velocity', 'acceleration', 'energy', 'mass', 'momentum', 'wave', 'quantum', 'electric', 'magnetic', 'frequency'],
+    'business management': ['profit', 'revenue', 'stakeholder', 'management', 'strategy', 'market share', 'competitive', 'brand', 'consumer', 'sales', 'cost'],
+    'english a': ['imagery', 'metaphor', 'symbolism', 'narrator', 'theme', 'character', 'literary', 'prose', 'verse', 'tone', 'motif', 'allegory'],
+    'mathematics': ['function', 'equation', 'derivative', 'integral', 'theorem', 'proof', 'variable', 'matrix', 'vector', 'probability'],
+    'computer science': ['algorithm', 'data structure', 'complexity', 'binary', 'recursive', 'network', 'sorting', 'encryption'],
   }
   const subjectKey = Object.keys(subjectTerms).find(k => subject.toLowerCase().includes(k))
   if (subjectKey) {
     const subjectHits = countMatches(lower, subjectTerms[subjectKey])
-    if (subjectHits >= 8) scoreB += 1
-  } else if (academicTerms >= 5) scoreB += 1
+    if (subjectHits >= 5) scoreB += 1    // lowered from 8
+  } else if (academicTerms >= 7) scoreB += 1
   scoreB = Math.min(6, scoreB)
 
   // ── Criterion C — Critical Thinking (0–12) ────────────────────────────────
@@ -84,46 +92,58 @@ function analyseEssay(essay, subject = '', rq = '') {
     'in contrast', 'on the other hand', 'conversely', 'alternatively',
     'suggests', 'implies', 'indicates', 'demonstrates', 'reveals',
     'this shows', 'this means', 'this supports', 'this contradicts',
+    'this suggests', 'which suggests', 'which indicates', 'which demonstrates',
+    'it follows', 'by extension', 'crucially', 'significantly', 'notably',
   ])
   const analyticalDensity = (analyticalWords / words) * 1000
-  if (analyticalDensity >= 20) scoreC += 4
-  else if (analyticalDensity >= 12) scoreC += 3
-  else if (analyticalDensity >= 6) scoreC += 2
+  // Recalibrated: a strong essay at ~3800 words needs ~46 connector words for density 12
+  if (analyticalDensity >= 16) scoreC += 4
+  else if (analyticalDensity >= 9) scoreC += 3
+  else if (analyticalDensity >= 5) scoreC += 2
   else scoreC += 1
 
   const evaluationWords = countMatches(lower, [
-    'limitation', 'limitations', 'weakness', 'strength', 'assumption', 'bias',
-    'reliable', 'validity', 'accurate', 'counterargument', 'counter-argument',
+    'limitation', 'limitations', 'weakness', 'weakness', 'strength', 'assumption', 'bias',
+    'reliable', 'validity', 'valid', 'accurate', 'accuracy', 'counterargument', 'counter-argument',
     'one might argue', 'critics argue', 'some scholars', 'it could be argued',
-    'to some extent', 'partially', 'nuanced',
+    'to some extent', 'partially', 'nuanced', 'complex', 'problematic',
+    'it is worth noting', 'must be noted', 'caveat', 'however', 'qualify',
   ])
-  if (evaluationWords >= 8) scoreC += 3
-  else if (evaluationWords >= 4) scoreC += 2
-  else if (evaluationWords >= 2) scoreC += 1
+  if (evaluationWords >= 6) scoreC += 3
+  else if (evaluationWords >= 3) scoreC += 2
+  else if (evaluationWords >= 1) scoreC += 1
 
   const synthesisWords = countMatches(lower, [
     'compared to', 'in comparison', 'similar to', 'similarly', 'unlike',
     'in contrast to', 'both', 'neither', 'either', 'respectively',
-    'taken together', 'overall', 'in sum', 'collectively',
+    'taken together', 'overall', 'in sum', 'collectively', 'across',
+    'whereas', 'while', 'at the same time', 'by contrast',
   ])
-  if (synthesisWords >= 6) scoreC += 3
+  if (synthesisWords >= 5) scoreC += 3
   else if (synthesisWords >= 3) scoreC += 2
-  else scoreC += 1
+  else if (synthesisWords >= 1) scoreC += 1
 
-  if (countMatches(lower, ['however', 'on the other hand', 'one might argue', 'critics argue']) >= 3) scoreC += 2
+  // Counterargument bonus
+  if (countMatches(lower, ['however', 'on the other hand', 'one might argue', 'critics argue', 'it could be argued', 'some argue']) >= 2) scoreC += 2
   scoreC = Math.min(12, scoreC)
 
   // ── Criterion D — Presentation (0–4) ─────────────────────────────────────
   let scoreD = 0
-  if (words >= 3800 && words <= 4000) scoreD += 2
-  else if (words >= 3500 && words <= 4200) scoreD += 1
-  const headingLines = essay.split('\n').filter(l => l.trim().length > 0 && l.trim().length < 80 && /^[A-Z]/.test(l.trim()) && !l.trim().endsWith('.'))
-  if (headingLines.length >= 4) scoreD += 1
-  if (citations >= 4) scoreD += 1
+  if (words >= 3700 && words <= 4100) scoreD += 2
+  else if (words >= 3000 && words <= 4400) scoreD += 1
+
+  // Lenient heading detection — PDF extraction often merges lines
+  const headingLines = essay.split('\n').filter(l => {
+    const t = l.trim()
+    return t.length >= 3 && t.length < 100 && /^[A-Z0-9]/.test(t) && !t.endsWith(',') && !/[.!?]$/.test(t) || /^[IVX]+\.\s|^\d+\.\s[A-Z]/.test(t)
+  })
+  if (headingLines.length >= 3) scoreD += 1    // lowered from 4
+  if (citations >= 3) scoreD += 1              // lowered from 4
   scoreD = Math.min(4, scoreD)
 
   // ── Criterion E — Engagement/RPPF (0–6) ──────────────────────────────────
-  const scoreE = 3
+  // RPPF is always assessed separately — we give a fair base score
+  const scoreE = 4
 
   // ── Totals & grade ────────────────────────────────────────────────────────
   const total = scoreA + scoreB + scoreC + scoreD + scoreE
