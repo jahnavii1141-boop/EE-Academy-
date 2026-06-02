@@ -20,6 +20,10 @@ const FAQ_ITEMS = [
     question: 'What do I get with full access?',
     answer: 'You unlock the full EE system, including the step-by-step blueprint, templates, tools, and guidance to improve your grade with much more clarity.',
   },
+  {
+    question: 'Do you write essays for students?',
+    answer: 'No. The Extended Essay Academy is a self-study course — we teach you how to research, structure, and write your own essay. Every word stays yours. We give you the system; you do the work.',
+  },
 ]
 
 export default function HomeFAQ() {

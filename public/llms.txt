@@ -1,0 +1,47 @@
+# The Extended Essay Academy
+> A self-study course for IB students writing their Extended Essay. 14 structured modules covering research, structure, academic writing, and IB assessment criteria. Built by a student who scored 32/34.
+
+This is an educational platform — not an essay writing service. Students learn to write their own essays.
+
+## Core Course
+- [Module 1: Introduction & Mindset](https://theextendedessay.com/course/module-1)
+- [Module 2: IB Criteria & Grading](https://theextendedessay.com/course/module-2)
+- [Module 3: Choosing Your Subject & Topic](https://theextendedessay.com/course/module-3)
+- [Module 4: Finding Your Research Question](https://theextendedessay.com/course/module-4)
+- [Module 5: The EE Dump Research System](https://theextendedessay.com/course/module-5)
+- [Module 6: How to Research Like a Top Student](https://theextendedessay.com/course/module-6)
+- [Module 7: Building Your EE Structure](https://theextendedessay.com/course/module-7)
+- [Module 8: Writing Each Section](https://theextendedessay.com/course/module-8)
+- [Module 9: Format, Citations & Academic Integrity](https://theextendedessay.com/course/module-9)
+- [Module 10: Introduction & Conclusion](https://theextendedessay.com/course/module-10)
+- [Module 11: RPPF Mastery](https://theextendedessay.com/course/module-11)
+- [Module 13: 32/34 Essay Breakdown](https://theextendedessay.com/course/module-13)
+- [Module 14: Templates, Tools & Checklists](https://theextendedessay.com/course/module-14)
+
+## Free Guides
+- [How to Write an EE Introduction](https://theextendedessay.com/guides/extended-essay-introduction)
+- [EE Structure Template](https://theextendedessay.com/guides/extended-essay-structure)
+- [Research Question Examples](https://theextendedessay.com/guides/research-question-examples)
+- [RPPF Guide](https://theextendedessay.com/guides/rppf-guide)
+- [How to Get an A in the EE](https://theextendedessay.com/guides/how-to-get-an-a-in-extended-essay)
+- [EE Criteria Explained](https://theextendedessay.com/guides/ee-criteria-breakdown)
+- [Best IB EE Subjects](https://theextendedessay.com/guides/ee-subjects-guide)
+- [EE Word Count Guide](https://theextendedessay.com/guides/ee-word-count)
+- [How to Write an EE Conclusion](https://theextendedessay.com/guides/ee-conclusion)
+- [EE Research Methods](https://theextendedessay.com/guides/ee-research-methods)
+- [EE Dump Method](https://theextendedessay.com/guides/ee-dump-method)
+- [Google Scholar for EE](https://theextendedessay.com/guides/how-to-use-google-scholar-ee)
+- [EE Literature Review](https://theextendedessay.com/guides/ee-literature-review)
+- [EE Formatting Guide](https://theextendedessay.com/guides/ee-formatting-guide)
+- [MLA Citations Guide](https://theextendedessay.com/guides/ee-citations-mla)
+- [How to Use AI for Your EE](https://theextendedessay.com/guides/ee-ai-guide)
+- [EE Mindset Guide](https://theextendedessay.com/guides/ee-mindset)
+- [EE Business Management Guide](https://theextendedessay.com/guides/ee-business-management)
+- [EE Economics Guide](https://theextendedessay.com/guides/ee-economics)
+- [EE Submission Checklist](https://theextendedessay.com/guides/ee-checklist)
+- [EE Planning Timeline](https://theextendedessay.com/guides/ee-planning-timeline)
+- [Academic Writing for EE](https://theextendedessay.com/guides/ee-academic-writing)
+- [Working With Your Supervisor](https://theextendedessay.com/guides/ee-supervisor-tips)
+- [EE Abstract Guide](https://theextendedessay.com/guides/ee-abstract)
+- [How to Use Clastify](https://theextendedessay.com/guides/ee-clastify-guide)
+- [Analysis vs Description](https://theextendedessay.com/guides/ee-analysis-vs-description)

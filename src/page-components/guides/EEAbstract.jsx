@@ -40,6 +40,8 @@ const CONTENT = [
 const RELATED = [
   { href: '/guides/extended-essay-introduction', title: 'How to Write an EE Introduction', description: 'The introduction vs the abstract — what each does.' },
   { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'Where the abstract sits in the overall document structure.' },
+  { href: '/guides/extended-essay-structure', title: 'EE Structure Guide', description: 'How the abstract fits into your overall essay layout.' },
+  { href: '/guides/ee-checklist', title: 'EE Submission Checklist', description: 'Final checks before you submit — including the abstract.' },
 ]
 
 const FAQ = [

@@ -35,6 +35,8 @@ const CONTENT = [
 const RELATED = [
   { href: '/guides/extended-essay-tips', title: 'Top 20 EE Tips', description: 'Advice from A-grade students.' },
   { href: '/guides/ee-criteria-breakdown', title: 'Criteria Breakdown', description: 'Understand all five assessment criteria.' },
+  { href: '/guides/ee-checklist', title: 'EE Submission Checklist', description: 'Make sure your RPPF is complete before you submit.' },
+  { href: '/guides/extended-essay-structure', title: 'EE Structure Guide', description: 'How the RPPF fits into the overall essay submission.' },
 ]
 
 export default function RPPFGuide() {

@@ -44,6 +44,8 @@ const CONTENT = [
 const RELATED = [
   { href: '/guides/ee-subjects-guide', title: 'Best Subjects for Your EE', description: 'How to choose the right subject for your strengths.' },
   { href: '/guides/extended-essay-tips', title: 'Top 20 EE Tips', description: 'Advice from A-grade students.' },
+  { href: '/guides/ee-dump-method', title: 'The EE Dump Research Method', description: 'How to research once your RQ is locked in.' },
+  { href: '/guides/extended-essay-structure', title: 'EE Structure Guide', description: 'How to build your essay around your research question.' },
 ]
 
 export default function ResearchQuestionExamples() {

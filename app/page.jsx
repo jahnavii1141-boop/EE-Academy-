@@ -135,6 +135,14 @@ const FAQ_JSON_LD = {
         text: 'IB recommends approximately 40 hours for the Extended Essay. Most students spread this across 4–6 months. The EE Academy\'s 14-module system helps you use those hours efficiently from topic selection to final submission.',
       },
     },
+    {
+      '@type': 'Question',
+      name: 'Do you write essays for students?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. The Extended Essay Academy is a self-study course — we teach you how to research, structure, and write your own essay. Every word stays yours. We give you the system; you do the work.',
+      },
+    },
   ],
 }
 
