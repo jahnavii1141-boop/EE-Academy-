@@ -18,7 +18,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/ResearchQuestionExamples'),
   },
   'rppf-guide': {
-    title: 'IB Extended Essay RPPF Guide',
+    title: 'IB Extended Essay RPPF: Score All 6 Criterion E Marks',
     description: 'Learn how to write stronger RPPF reflections and improve Criterion E with clearer thinking, better reflection, and stronger examples.',
     Component: () => import('../../../src/page-components/guides/RPPFGuide'),
   },
@@ -28,17 +28,17 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EETipsGuide'),
   },
   'ee-criteria-breakdown': {
-    title: 'IB Extended Essay Criteria Explained',
+    title: 'IB Extended Essay Criteria — How Each Mark Is Awarded',
     description: 'Understand the IB Extended Essay criteria clearly so you know how marks are actually awarded across all five categories.',
     Component: () => import('../../../src/page-components/guides/EECriteriaGuide'),
   },
   'ee-subjects-guide': {
-    title: 'Best IB Extended Essay Subjects',
+    title: 'Best IB Extended Essay Subjects: A Complete Comparison',
     description: 'Compare IB Extended Essay subject options, understand what makes a subject viable, and choose one that gives you the best chance of scoring well.',
     Component: () => import('../../../src/page-components/guides/EESubjectsGuide'),
   },
   'ee-word-count': {
-    title: 'IB Extended Essay Word Count Guide',
+    title: 'IB Extended Essay Word Count: Rules & Section Balance',
     description: 'Understand the IB Extended Essay word count rules, section balance, and the mistakes that can make your final draft weaker.',
     Component: () => import('../../../src/page-components/guides/EEWordCountGuide'),
   },
@@ -89,22 +89,22 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEAIGuide'),
   },
   'ee-mindset': {
-    title: 'How to Think About the IB Extended Essay (The Mindset Shift)',
+    title: 'The IB Extended Essay Mindset Shift: From C to A',
     description: 'The biggest reason students underperform isn\'t intelligence — it\'s the wrong mental model. The mindset shift that separates C from A.',
     Component: () => import('../../../src/page-components/guides/EEMindset'),
   },
   'ee-business-management': {
-    title: 'IB Extended Essay Business Management Guide',
+    title: 'IB Extended Essay Business Management: The Complete Guide',
     description: 'The framework stack, RQ structure, data sources, and the original finding principle behind a 32/34 Business Management EE.',
     Component: () => import('../../../src/page-components/guides/EEBusinessManagement'),
   },
   'ee-economics': {
-    title: 'IB Extended Essay Economics Guide',
+    title: 'IB Extended Essay Economics: Frameworks & A-Grade Structure',
     description: 'Economics EEs reward rigorous theory + real data. The sub-RQ method, key frameworks, best data sources, and A-band analysis structure.',
     Component: () => import('../../../src/page-components/guides/EEEconomics'),
   },
   'ee-psychology': {
-    title: 'IB Extended Essay Psychology Guide',
+    title: 'IB Extended Essay Psychology: Analysis & Evaluation Guide',
     description: 'Psychology EEs succeed by evaluating research, not just reporting it. The three levels of analysis, how to evaluate studies, and how to build arguments from conflicting evidence.',
     Component: () => import('../../../src/page-components/guides/EEPsychology'),
   },
@@ -119,12 +119,12 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEBiology'),
   },
   'ee-checklist': {
-    title: 'IB Extended Essay Submission Checklist',
+    title: 'IB Extended Essay Submission Checklist — Before You Submit',
     description: 'Before you submit, run through this checklist: RQ framing, formatting, citations, word count, and the 15-minute read-through that protects your grade.',
     Component: () => import('../../../src/page-components/guides/EEChecklist'),
   },
   'ee-planning-timeline': {
-    title: 'IB Extended Essay Timeline and Planning Guide',
+    title: 'IB Extended Essay Timeline: 6-Phase, 16-Week Plan',
     description: 'The EE broken into 6 phases across 16 weeks. A reverse-engineered timeline showing exactly what to do each week — from topic selection to submission.',
     Component: () => import('../../../src/page-components/guides/EEPlanningTimeline'),
   },
@@ -139,7 +139,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EESupervisorGuide'),
   },
   'ee-abstract': {
-    title: 'IB Extended Essay Abstract: Do You Need One?',
+    title: 'IB Extended Essay Abstract: Do You Still Need One?',
     description: 'The IB removed the mandatory EE abstract in 2018. Whether your school still requires one, how to write a strong 200-word abstract, and the key differences from an introduction.',
     Component: () => import('../../../src/page-components/guides/EEAbstract'),
   },
@@ -149,7 +149,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEClastifyGuide'),
   },
   'ee-analysis-vs-description': {
-    title: 'Analysis vs Description in the IB Extended Essay',
+    title: 'IB Extended Essay: Analysis vs Description — Key Differences',
     description: '"Merely descriptive" is the most common reason EEs drop from A to B. The 5 analytical moves, paragraph testing method, and evaluative vocabulary for examiners.',
     Component: () => import('../../../src/page-components/guides/EEAnalysisGuide'),
   },
