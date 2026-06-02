@@ -7,12 +7,12 @@ import EvervaultCTA from '../src/components/EvervaultCTA'
 import ResultsStrip from '../src/components/ResultsStrip'
 
 export const metadata = {
-  title: 'IB Extended Essay Course | 32/34 System | EE Academy',
-  description: 'Ace your IB Extended Essay with the proven 14-module system built by a 32/34 student. Start free today — no card needed.',
+  title: 'The Extended Essay Academy | Free IB EE Modules',
+  description: 'The step-by-step system for your IB Extended Essay. 14 modules covering research, structure, writing, and criteria. Start free today.',
   alternates: { canonical: 'https://theextendedessay.com/' },
   openGraph: {
-    title: 'IB Extended Essay Course | 32/34 System | EE Academy',
-    description: 'Ace your IB Extended Essay with the proven 14-module system built by a 32/34 student. Start free today.',
+    title: 'The Extended Essay Academy | Free IB EE Modules',
+    description: 'The step-by-step system for your IB Extended Essay. 14 modules covering research, structure, writing, and criteria. Start free today.',
     url: 'https://theextendedessay.com/',
     images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
   },
