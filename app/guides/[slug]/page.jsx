@@ -4,57 +4,57 @@ import { notFound } from 'next/navigation'
 const GUIDE_META = {
   'extended-essay-introduction': {
     title: 'How to Write an Extended Essay Introduction',
-    description: 'Learn how to write a stronger IB Extended Essay introduction with better hooks, clearer context, and a sharper research question setup.',
+    description: 'A weak EE introduction loses marks before your argument begins. The 4-part structure, hook formula, and research question framing that examiners reward.',
     Component: () => import('../../../src/page-components/guides/EEIntroductionGuide'),
   },
   'extended-essay-structure': {
     title: 'IB Extended Essay Structure Template & Guide',
-    description: 'Use a section-by-section IB Extended Essay structure template and learn how to map each part of your essay to the markscheme.',
+    description: 'A clear EE structure is the difference between a C and an A. Section-by-section template, word count guidance, and how to map each part to the markscheme.',
     Component: () => import('../../../src/page-components/guides/EEStructureGuide'),
   },
   'research-question-examples': {
     title: 'Extended Essay Research Question Examples',
-    description: 'Use strong Extended Essay research question examples to avoid vague topics and build a question that can actually score well.',
+    description: '50+ Extended Essay research question examples across 8 IB subjects — with before/after comparisons and a 5-point stress test to validate your RQ.',
     Component: () => import('../../../src/page-components/guides/ResearchQuestionExamples'),
   },
   'rppf-guide': {
     title: 'IB Extended Essay RPPF: Score All 6 Criterion E Marks',
-    description: 'Learn how to write stronger RPPF reflections and improve Criterion E with clearer thinking, better reflection, and stronger examples.',
+    description: 'Criterion E is 6 marks — the easiest in the IB. The three-reflection structure, the examiner formula, and sample openings that earn full marks on the RPPF.',
     Component: () => import('../../../src/page-components/guides/RPPFGuide'),
   },
   'extended-essay-tips': {
     title: 'IB Extended Essay Tips That Actually Improve Your Grade',
-    description: 'Use practical IB Extended Essay tips to improve your structure, analysis, citations, reflections, and final score.',
+    description: '20 IB Extended Essay tips targeting the most common mark-loss areas — structure, analysis depth, RPPF reflections, citations, and examiner expectations.',
     Component: () => import('../../../src/page-components/guides/EETipsGuide'),
   },
   'ee-criteria-breakdown': {
     title: 'IB Extended Essay Criteria — How Each Mark Is Awarded',
-    description: 'Understand the IB Extended Essay criteria clearly so you know how marks are actually awarded across all five categories.',
+    description: 'IB Extended Essay criteria A–E explained: mark allocations, what examiners actually reward, and the mistakes that cost students the most marks.',
     Component: () => import('../../../src/page-components/guides/EECriteriaGuide'),
   },
   'ee-subjects-guide': {
     title: 'Best IB Extended Essay Subjects: A Complete Comparison',
-    description: 'Compare IB Extended Essay subject options, understand what makes a subject viable, and choose one that gives you the best chance of scoring well.',
+    description: 'Choosing the wrong EE subject is the most expensive mistake you can make. Subject-by-subject breakdown of difficulty, scoring potential, and what actually works.',
     Component: () => import('../../../src/page-components/guides/EESubjectsGuide'),
   },
   'ee-word-count': {
     title: 'IB Extended Essay Word Count: Rules & Section Balance',
-    description: 'Understand the IB Extended Essay word count rules, section balance, and the mistakes that can make your final draft weaker.',
+    description: '4,000 words — not a word over. What counts toward the limit, section balance guide, and the silent word count mistakes that quietly weaken your grade.',
     Component: () => import('../../../src/page-components/guides/EEWordCountGuide'),
   },
   'ee-conclusion': {
     title: 'How to Write an Extended Essay Conclusion',
-    description: 'Write a stronger IB Extended Essay conclusion that answers the research question directly and closes your argument with more authority.',
+    description: 'Most EE conclusions fail by restating the intro or adding new ideas. The 3-part closing structure that answers your RQ and ends with authority.',
     Component: () => import('../../../src/page-components/guides/EEConclusionGuide'),
   },
   'ee-research-methods': {
     title: 'IB Extended Essay Research Methods Guide',
-    description: 'Choose better IB Extended Essay research methods and understand how to justify them clearly in your essay.',
+    description: 'Your methodology must match your research question — or examiners dock marks immediately. How to choose, apply, and justify EE research methods correctly.',
     Component: () => import('../../../src/page-components/guides/EEResearchMethodsGuide'),
   },
   'how-to-get-an-a-in-extended-essay': {
     title: 'How to Get an A in the Extended Essay (Step-by-Step)',
-    description: 'Learn how to get an A in the IB Extended Essay with a practical 7-step system, clearer marks strategy, and an examiner-focused checklist.',
+    description: 'Getting an A in the IB Extended Essay is a system, not luck. The 7-step approach — from RQ to RPPF — used by students who score in the top band.',
     Component: () => import('../../../src/page-components/guides/GetAExtendedEssayGuide'),
   },
   // New guides — from course content
@@ -80,7 +80,7 @@ const GUIDE_META = {
   },
   'ee-citations-mla': {
     title: 'IB Extended Essay Citations and MLA Formatting Guide',
-    description: 'How to format in-text citations, block quotes, and your Works Cited page using MLA style — with academic integrity rules.',
+    description: 'MLA citations done wrong can trigger an academic integrity flag. In-text citations, block quotes, Works Cited structure, and what IB considers misconduct.',
     Component: () => import('../../../src/page-components/guides/EECitationsMLA'),
   },
   'ee-ai-guide': {
@@ -105,7 +105,7 @@ const GUIDE_META = {
   },
   'ee-psychology': {
     title: 'IB Extended Essay Psychology: Analysis & Evaluation Guide',
-    description: 'Psychology EEs succeed by evaluating research, not just reporting it. The three levels of analysis, how to evaluate studies, and how to build arguments from conflicting evidence.',
+    description: 'Psychology EEs fail when they summarise rather than evaluate. Three analysis levels, study evaluation methods, and building arguments from conflicting evidence.',
     Component: () => import('../../../src/page-components/guides/EEPsychology'),
   },
   'ee-history': {
@@ -140,7 +140,7 @@ const GUIDE_META = {
   },
   'ee-abstract': {
     title: 'IB Extended Essay Abstract: Do You Still Need One?',
-    description: 'The IB removed the mandatory EE abstract in 2018. Whether your school still requires one, how to write a strong 200-word abstract, and the key differences from an introduction.',
+    description: 'The IB no longer requires an EE abstract — but many schools do. How to write a strong 200-word abstract and exactly how it differs from your introduction.',
     Component: () => import('../../../src/page-components/guides/EEAbstract'),
   },
   'ee-clastify-guide': {
