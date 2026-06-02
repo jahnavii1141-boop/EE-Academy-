@@ -8,7 +8,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEIntroductionGuide'),
   },
   'extended-essay-structure': {
-    title: 'IB Extended Essay Structure Template & Guide',
+    title: 'IB Extended Essay Structure: Section-by-Section Template',
     description: 'A clear EE structure is the difference between a C and an A. Section-by-section template, word count guidance, and how to map each part to the markscheme.',
     Component: () => import('../../../src/page-components/guides/EEStructureGuide'),
   },
@@ -33,7 +33,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EECriteriaGuide'),
   },
   'ee-subjects-guide': {
-    title: 'Best IB Extended Essay Subjects: A Complete Comparison',
+    title: 'Best IB Extended Essay Subjects: How to Choose the Right One',
     description: 'Choosing the wrong EE subject is the most expensive mistake you can make. Subject-by-subject breakdown of difficulty, scoring potential, and what actually works.',
     Component: () => import('../../../src/page-components/guides/EESubjectsGuide'),
   },
@@ -48,7 +48,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEConclusionGuide'),
   },
   'ee-research-methods': {
-    title: 'IB Extended Essay Research Methods Guide',
+    title: 'IB Extended Essay Research Methods: Choose, Apply & Justify',
     description: 'Your methodology must match your research question — or examiners dock marks immediately. How to choose, apply, and justify EE research methods correctly.',
     Component: () => import('../../../src/page-components/guides/EEResearchMethodsGuide'),
   },
@@ -74,12 +74,12 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EELiteratureReview'),
   },
   'ee-formatting-guide': {
-    title: 'IB Extended Essay Formatting Guide',
+    title: 'IB Extended Essay Format: Font, Margins, Headings & Spacing',
     description: 'Formatting is free marks. The non-negotiable rules: font, spacing, margins, title page, headings, and the 15-minute pre-submission checklist.',
     Component: () => import('../../../src/page-components/guides/EEFormattingGuide'),
   },
   'ee-citations-mla': {
-    title: 'IB Extended Essay Citations and MLA Formatting Guide',
+    title: 'MLA Citations for IB Extended Essay: In-Text & Works Cited',
     description: 'MLA citations done wrong can trigger an academic integrity flag. In-text citations, block quotes, Works Cited structure, and what IB considers misconduct.',
     Component: () => import('../../../src/page-components/guides/EECitationsMLA'),
   },
@@ -94,7 +94,7 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EEMindset'),
   },
   'ee-business-management': {
-    title: 'IB Extended Essay Business Management: The Complete Guide',
+    title: 'IB Extended Essay Business Management: Frameworks & A-Grade RQ',
     description: 'The framework stack, RQ structure, data sources, and the original finding principle behind a 32/34 Business Management EE.',
     Component: () => import('../../../src/page-components/guides/EEBusinessManagement'),
   },
