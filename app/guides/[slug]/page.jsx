@@ -182,5 +182,34 @@ export default async function GuidePage({ params }) {
   if (!guide) notFound()
 
   const { default: GuideComponent } = await guide.Component()
-  return <GuideComponent />
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.title,
+    description: guide.description,
+    url: `https://theextendedessay.com/guides/${slug}`,
+    image: 'https://theextendedessay.com/feather-hero.png',
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Extended Essay Academy',
+      url: 'https://theextendedessay.com',
+      logo: { '@type': 'ImageObject', url: 'https://theextendedessay.com/icon.svg' },
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'The Extended Essay Academy',
+      url: 'https://theextendedessay.com',
+    },
+    educationalLevel: 'High School',
+    about: { '@type': 'Thing', name: 'IB Extended Essay' },
+    isPartOf: { '@type': 'Course', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
+  }
+
+  return (
+    <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <GuideComponent />
+    </>
+  )
 }
