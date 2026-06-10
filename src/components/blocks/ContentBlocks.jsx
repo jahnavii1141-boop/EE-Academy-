@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import {
   Lightbulb, AlertTriangle, Star, BookmarkCheck, Target, Brain,
   Search, PenLine, FileText, CheckCircle2, Zap, BookOpen,
-  GraduationCap, Award, Clipboard, Layout, Quote, ArrowRight,
+  GraduationCap, Award, Clipboard, Layout, Quote, ArrowRight, Sparkles,
 } from 'lucide-react'
 
 // ─── Icon map ──────────────────────────────────────────────────────────────────
@@ -208,6 +209,35 @@ export function TipBox({ text }) {
       </div>
       <div className="p-4 bg-white">
         <p className="text-[#1a1a1a]/80 text-sm leading-relaxed">{text}</p>
+      </div>
+    </div>
+  )
+}
+
+// ─── CTA Box ───────────────────────────────────────────────────────────────────
+
+export function CtaBox({ label, text, href, buttonText }) {
+  return (
+    <div className="my-6 rounded-xl overflow-hidden" style={{ border: '1px solid #e8e8e8', background: '#fafafa' }}>
+      <div className="flex items-center justify-between gap-4 px-5 py-4">
+        <div className="flex items-start gap-3 min-w-0">
+          <div className="mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: '#0a0a0a' }}>
+            <Sparkles className="w-3.5 h-3.5 text-white" />
+          </div>
+          <div className="min-w-0">
+            {label && <p className="text-[10px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#aaa' }}>{label}</p>}
+            <p className="text-sm font-medium leading-snug" style={{ color: '#0a0a0a' }}>{text}</p>
+          </div>
+        </div>
+        {href && (
+          <Link
+            href={href}
+            className="flex-shrink-0 inline-flex items-center gap-1.5 text-xs font-semibold px-4 py-2 rounded-lg transition-all"
+            style={{ background: '#0a0a0a', color: '#fff', whiteSpace: 'nowrap', textDecoration: 'none' }}
+          >
+            {buttonText || 'Try it free'} <ArrowRight className="w-3 h-3" />
+          </Link>
+        )}
       </div>
     </div>
   )
@@ -454,6 +484,7 @@ export default function ContentBlock({ block }) {
     case 'step-process':     return <StepProcess steps={block.steps} />
     case 'tip-box':          return <TipBox text={block.text} />
     case 'warning-box':      return <WarningBox text={block.text} />
+    case 'cta-box':          return <CtaBox label={block.label} text={block.text} href={block.href} buttonText={block.buttonText} />
     case 'gif':              return <GifBlock src={block.src} alt={block.alt} caption={block.caption} />
     case 'image':            return <ImageBlock src={block.src} alt={block.alt} caption={block.caption} maxWidth={block.maxWidth} />
     case 'numbered-steps':   return <NumberedSteps items={block.items} />

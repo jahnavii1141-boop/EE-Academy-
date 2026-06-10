@@ -46,6 +46,7 @@ const CONTENT = [
     ['Annual Report', 'Company Name. Title of Report. Year. URL.'],
     ['No author (website)', '"Title of Page." Website Name, Day Month Year, URL.'],
   ]},
+  { type: 'cta-box', label: 'Free tool', text: 'Generate your MLA bibliography automatically — paste your sources into the EE Dump and it builds your Works Cited list for you.', href: '/dashboard/dump', buttonText: 'Open citation generator' },
   { type: 'heading', text: 'Academic Integrity Rules' },
   { type: 'icon-card', icon: 'AlertCircle', title: 'What Counts as Misconduct', text: 'Copying essays or sections from essay banks like Clastify, having AI write your essay or significant portions, paraphrasing so closely it\'s the same text without quotes, fabricating data or citations.' },
   { type: 'icon-card', icon: 'CheckCircle', title: 'Cite Everything', text: 'If an idea, fact, statistic, or argument came from anywhere other than your own head, cite it. Over-citing is always better than under-citing.' },
