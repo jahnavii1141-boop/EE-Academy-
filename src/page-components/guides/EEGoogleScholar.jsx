@@ -38,6 +38,7 @@ const CONTENT = [
   { type: 'tip-box', text: 'The limitation you note becomes your critical evaluation in the essay. "While Smith (2019) argues X using Y methodology, this approach has limitations because Z." That single sentence pattern is worth marks under Criterion C.' },
   { type: 'heading', text: 'When to Stop Researching' },
   { type: 'paragraph', text: 'You stop when each of your sub-questions has 2-3 solid sources. Not 10. Not 20. Two or three strong, peer-reviewed, evaluable sources per subtopic is more than enough for a 4,000-word essay.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Google for context, Google Scholar for academic arguments — never mix these up',
     'Search narrowly with specific terminology, not broad topic names',

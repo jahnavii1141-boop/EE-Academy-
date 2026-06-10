@@ -21,6 +21,7 @@ const CONTENT = [
   { type: 'tip-box', text: 'Your introduction should make the examiner think "this is interesting — I want to see what they found." If it reads like a summary of what your essay will cover, rewrite it.' },
   { type: 'heading', text: 'Common Mistakes to Avoid' },
   { type: 'warning-box', text: 'Don\'t start with a dictionary definition. Don\'t list every tool you\'ll use. Don\'t make it longer than 500-600 words. Don\'t save your RQ for the very last sentence without building toward it.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Choose a hook type that matches your subject',
     'Build toward your RQ naturally — don\'t just state it',

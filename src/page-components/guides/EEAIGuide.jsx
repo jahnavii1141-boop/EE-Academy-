@@ -39,6 +39,7 @@ const CONTENT = [
   { type: 'heading', text: 'What AI Cannot Do For Your EE' },
   { type: 'warning-box', text: 'Never: ask AI to write any part of your essay, find or generate sources (it hallucinates), give you statistics or data, paraphrase your sources, or "improve" your paragraphs by rewriting them. The moment AI touches your actual writing, it\'s no longer your EE.' },
   { type: 'paragraph', text: 'Think of AI like a gym buddy. A gym buddy doesn\'t lift the weights for you — if they did, you wouldn\'t get stronger. They spot your form, tell you what\'s weak, and push your thinking. But you do the heavy lifting. That\'s what AI should be for your EE.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Use AI to stress-test your RQ, not to generate it',
     'Use AI to critique your draft — "be accurate, not nice" is the key phrase',

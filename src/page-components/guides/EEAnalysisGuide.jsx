@@ -38,6 +38,7 @@ const CONTENT = [
     '"The weight of evidence suggests that..."',
     '"This outcome can be attributed to..."',
   ]},
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     '"Merely descriptive" is the most common reason IB EEs lose marks',
     'Every fact you state should be followed by what that fact means for your argument',

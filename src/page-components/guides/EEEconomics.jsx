@@ -44,6 +44,7 @@ const CONTENT = [
     { title: 'Conclusion with Limitations', text: 'Answer your RQ directly. Then acknowledge the limitations of your analysis and what further research could address.' },
   ]},
   { type: 'warning-box', text: 'The most common error in Economics EEs is description without evaluation. "India\'s inflation rate fell from X% to Y% during this period" is description. "This decline is consistent with the Phillips Curve prediction but may partially reflect supply-side recovery rather than purely monetary transmission" is analysis.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Specific policy + specific country + specific time range = a workable RQ',
     'Divide into 4-5 sub-RQs and find sources that answer each one',

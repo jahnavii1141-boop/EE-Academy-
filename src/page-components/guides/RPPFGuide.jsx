@@ -24,6 +24,7 @@ const CONTENT = [
   { type: 'heading', text: 'Sample Reflection Opening' },
   { type: 'quote-highlight', text: '"I wanted the strongest possible RQ to analyse the correlation between social media influence and voter behaviour. My supervisor believed the lack of specificity could derail my analysis. While I initially disagreed, I formulated alternative versions to see which would better serve the research..."', attribution: 'Example Reflection 1 — showing the process' },
   { type: 'warning-box', text: 'Don\'t just describe what happened. Show the thinking behind your decisions. Examiners want to see intellectual engagement, not a timeline of events.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'The RPPF is worth 6 marks — don\'t leave them on the table',
     'Write three reflections: early, mid, and final stage',

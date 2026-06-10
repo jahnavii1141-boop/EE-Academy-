@@ -33,6 +33,7 @@ const CONTENT = [
     'Would an examiner find this interesting? Creativity matters.',
   ]},
   { type: 'tip-box', text: 'Take your draft RQ to your supervisor immediately. They can help you focus and refine it. We often underestimate how focused a research question needs to be.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Strong RQs are specific, analytical, researchable, and original',
     'Use "to what extent" or "how" — avoid "what" questions',

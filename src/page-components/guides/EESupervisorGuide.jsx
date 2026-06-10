@@ -26,6 +26,7 @@ const CONTENT = [
   { type: 'warning-box', text: 'Never: disappear for weeks without contact (this creates a bad impression they\'ll document), ask your supervisor to write sections of your essay for you (academic misconduct), ignore feedback without explanation, change your RQ significantly after it\'s been approved without informing them.' },
   { type: 'heading', text: 'Getting More Than the Minimum' },
   { type: 'paragraph', text: 'IB mandates 3 meetings. Most supervisors are willing to have more if you come prepared and use their time well. The difference between "can I have another meeting?" and "I\'ve revised based on your feedback and have three specific questions — could we meet briefly?" is significant. The second approach respects their time and almost always gets a yes.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Your supervisor writes your predicted grade — maintain a professional, collaborative relationship',
     'Get your RQ approved in Meeting 1 before you start any research',

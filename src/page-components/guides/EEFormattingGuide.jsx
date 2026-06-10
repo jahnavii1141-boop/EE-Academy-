@@ -42,6 +42,7 @@ const CONTENT = [
     'Source your visuals: "Figure 3: Author\'s calculations based on Inditex 2023 Annual Report."',
   ]},
   { type: 'heading', text: 'The 15-Minute Pre-Submission Checklist' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Times New Roman, 12pt throughout',
     'Double-spaced throughout',

@@ -37,6 +37,7 @@ const CONTENT = [
     'Use AI as a thinking partner, never a writer. Ask it to critique, not to create.',
   ]},
   { type: 'tip-box', text: 'The students who get A\'s aren\'t the smartest. They\'re the ones who approached it strategically, researched with purpose, and didn\'t leave marks on the table from careless mistakes.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Treat it as a research paper, not a school assignment',
     'Research first (EE Dump), structure second, write third',

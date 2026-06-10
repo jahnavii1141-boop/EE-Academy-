@@ -37,6 +37,7 @@ const CONTENT = [
   ]},
   { type: 'heading', text: 'Common Mistakes in Business EEs' },
   { type: 'warning-box', text: 'Avoid these: writing a company report instead of answering your RQ; introducing frameworks in the methodology but not applying them fully; analysing only one company without comparison data; using only Google sources with no academic citations; concluding that "Company X succeeds because it\'s good at business" without specific, evidence-backed reasons.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Use "to what extent" RQs — they demand evaluation, not description',
     'Combine financial ratio analysis (quantitative) with framework application (qualitative)',

@@ -40,6 +40,7 @@ const CONTENT = [
     'Any limitation or bias to be aware of',
   ]},
   { type: 'warning-box', text: 'Red flags: blog posts with no citations, news articles used as analysis (they\'re fine for context), papers that only describe without arguing, anything without a clear methodology.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Research through three levels: Google → Scholar → PDF-only',
     'Use the EE Dump method before formal research',

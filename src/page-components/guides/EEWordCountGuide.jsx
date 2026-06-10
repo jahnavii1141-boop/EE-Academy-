@@ -49,6 +49,7 @@ const CONTENT = [
     'Word count is under 4,000',
     'One final spell-check and proofread',
   ]},
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     '4,000 words is a hard limit — don\'t exceed it',
     'Times New Roman 12pt, double-spaced, left-aligned, 1-inch margins',

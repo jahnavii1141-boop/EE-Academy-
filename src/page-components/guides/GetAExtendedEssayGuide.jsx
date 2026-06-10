@@ -184,6 +184,7 @@ const CONTENT = [
     type: 'heading',
     text: 'A-Grade Checklist: Run This Before Submission',
   },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   {
     type: 'key-takeaway',
     items: [

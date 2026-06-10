@@ -40,6 +40,7 @@ const CONTENT = [
   { type: 'warning-box', text: 'Avoid these in your EE: "In today\'s modern world...", "Since the dawn of time...", "It is widely known that...", "As we can clearly see...", "Obviously...", "Interestingly...". These are filler phrases that weaken academic writing. Remove them wherever they appear.' },
   { type: 'heading', text: 'The Length Test' },
   { type: 'paragraph', text: 'Academic writing is dense — it says a lot in few words. If you\'re at 3,000 words and feel like you haven\'t said much, you\'re probably describing too much and analysing too little. If you\'re at 4,200 words and struggling to cut, you likely have paragraphs that don\'t directly serve your RQ.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Description states facts. Analysis evaluates what facts mean for your argument.',
     'Use claim-evidence-explanation as your paragraph template',

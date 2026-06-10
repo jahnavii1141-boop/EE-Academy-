@@ -28,6 +28,7 @@ const CONTENT = [
   { type: 'heading', text: 'What to Cite' },
   { type: 'paragraph', text: 'Aim for 3-5 strong academic sources in your literature review. These should be peer-reviewed papers or established academic texts — not news articles or websites. Every source you introduce in the literature review should appear in your analysis. Don\'t introduce a framework here and then never use it.' },
   { type: 'warning-box', text: 'Don\'t promise tools you won\'t deliver. If you introduce Porter\'s Five Forces in your literature review, examiners expect to see it applied in your analysis. Only introduce frameworks you will actually use. This is one of the most common causes of lost marks.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'A literature review engages with sources — it doesn\'t just summarise them',
     'Evaluate sources against each other: show you can see their limitations',

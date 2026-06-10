@@ -30,6 +30,7 @@ const CONTENT = [
     { title: 'Criterion E: RPPF', text: 'Three reflections showing challenge → attempt → learning → growth.' },
   ]},
   { type: 'tip-box', text: 'After writing each section, ask: "Which criterion am I targeting, and would an examiner see it clearly?" If the answer isn\'t obvious, rewrite until it is.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Total: 34 marks across 5 criteria (27+ for an A)',
     'Criterion D (4 marks) is the easiest — pure formatting and structure',

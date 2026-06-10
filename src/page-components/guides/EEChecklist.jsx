@@ -81,6 +81,7 @@ const CONTENT = [
   { type: 'heading', text: 'Final Read-Through' },
   { type: 'warning-box', text: 'Do this once, before you submit. Read your entire essay aloud or have someone else read it. You will catch: "it\'s" vs "its" errors, typos and autocorrect mistakes, sentences that don\'t make sense, inconsistencies between sections. This takes 15-20 minutes. It is the easiest mark protection available to you.' },
   { type: 'tip-box', text: 'Specifically check for: consistent use of the same company/person/concept names throughout, consistent capitalisation of proper nouns, consistency between what you promise in your methodology and what you actually deliver in your analysis.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Formatting check: 5 minutes — font, spacing, margins, page numbers',
     'Citations check: 10 minutes — one style used, every citation has a bibliography entry',

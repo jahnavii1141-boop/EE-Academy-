@@ -22,6 +22,7 @@ const CONTENT = [
   { type: 'heading', text: 'The Right Mindset for Using Clastify' },
   { type: 'paragraph', text: 'Think of Clastify like looking at previous years\' exam papers. You don\'t memorise the answers from past papers and repeat them — you use them to understand what questions look like, what good answers contain, and how to prepare your own original response. That\'s exactly how to use Clastify.' },
   { type: 'tip-box', text: 'One specific technique: find an A-grade essay on a similar topic in your subject and write down 5 things it does well. Then check whether your own essay plan does those same 5 things. You\'re not copying anything — you\'re benchmarking your own approach against a proven standard.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Use Clastify to understand A-grade standards, not to borrow content',
     'Filter by your subject AND grade — always read A-grades in your specific subject',

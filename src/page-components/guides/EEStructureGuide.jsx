@@ -30,6 +30,7 @@ const CONTENT = [
   { type: 'stat-highlight', stat: '15%', label: 'Introduction + Conclusion combined' },
   { type: 'stat-highlight', stat: '50%', label: 'Literature Review + Methodology + Discussion' },
   { type: 'warning-box', text: 'The most common structural mistake: spending too many words on description and not enough on analysis. If your literature review is longer than your analysis section, rebalance.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Follow the 7-section structure: Intro → Lit Review → Methodology → Analysis → Discussion → Conclusion → References',
     'Map every section to specific criteria',

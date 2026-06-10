@@ -24,6 +24,7 @@ const CONTENT = [
   { type: 'heading', text: 'The Arc Test' },
   { type: 'tip-box', text: 'If someone read only your introduction and conclusion, they should understand the full arc of your essay. Test this: give a friend just those two sections and see if they follow your argument.' },
   { type: 'before-after', before: { label: 'Weak conclusion', text: '"In conclusion, ZARA has a good business strategy and is a successful company. More research could be done on this topic."' }, after: { label: 'Strong conclusion', text: '"The evidence suggests that ZARA\'s competitive dominance stems primarily from its supply chain model rather than its product design, with an inventory turnover ratio that reveals unexpected inefficiencies despite market leadership."' }},
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Follow the framework: direct answer + evidence + limitations + future research',
     'Synthesise, don\'t repeat your introduction',

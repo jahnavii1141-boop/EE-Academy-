@@ -35,6 +35,7 @@ const CONTENT = [
   { type: 'warning-box', text: 'Starting to write in week 3 because you feel ready: you\'re not. Your research isn\'t done yet. Changing your RQ after week 4: too late, you\'ll lose weeks of research. Skipping the outline and going straight to writing: your essay will be poorly structured. Leaving the RPPF until the night before: it will be shallow and obvious, costing you Criterion E marks.' },
   { type: 'heading', text: 'Buffer Time Is Not Optional' },
   { type: 'paragraph', text: 'Every timeline needs buffer weeks built in. You\'re an IB student managing 6 subjects, IAs, CAS, and college applications simultaneously. Things will take longer than expected. If you hit weeks 10-11 on schedule, use any extra time to go deeper on your analysis — not to start earlier on writing.' },
+  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     'Reverse-engineer from your submission deadline — know your exact end date first',
     'The Dump (research phase) should be fully complete before you write a single word',
