@@ -10,6 +10,76 @@ import {
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
+// ── Email capture gate (shown to users with no Clerk session + no saved email) ──
+function EmailCaptureGate({ onCapture }) {
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const trimmed = email.trim()
+    if (!trimmed || !trimmed.includes('@')) {
+      setError('Enter a valid email to continue.')
+      return
+    }
+    localStorage.setItem('eeAcademy_freeEmail', trimmed)
+    onCapture(trimmed)
+  }
+
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
+      <div style={{
+        background: '#fff', borderRadius: 20, padding: '48px 40px', maxWidth: 380, width: '100%',
+        margin: '0 16px', border: '1px solid #efefef', boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
+      }}>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <p style={{ fontSize: 11, color: '#bbb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>EE Academy</p>
+          <p style={{ fontSize: 22, fontWeight: 700, color: '#0a0a0a', letterSpacing: '-0.02em', marginBottom: 8 }}>
+            Start for free
+          </p>
+          <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
+            Access free modules and research tools.<br />No card, no commitment.
+          </p>
+        </div>
+
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            value={email}
+            onChange={e => { setEmail(e.target.value); setError('') }}
+            placeholder="your@email.com"
+            autoFocus
+            style={{
+              width: '100%', padding: '12px 14px', borderRadius: 12,
+              border: `1px solid ${error ? '#fca5a5' : '#e0e0e0'}`,
+              fontSize: 14, outline: 'none', background: '#fafafa', color: '#0a0a0a',
+              marginBottom: error ? 6 : 10, boxSizing: 'border-box', display: 'block',
+            }}
+          />
+          {error && <p style={{ fontSize: 12, color: '#ef4444', marginBottom: 10 }}>{error}</p>}
+          <button
+            type="submit"
+            style={{
+              width: '100%', padding: '12px', background: '#0a0a0a', color: '#fff',
+              border: 'none', borderRadius: 12, fontSize: 14, fontWeight: 600,
+              cursor: 'pointer', letterSpacing: '-0.01em',
+            }}
+          >
+            Get free access →
+          </button>
+        </form>
+
+        <p style={{ textAlign: 'center', marginTop: 20, fontSize: 12, color: '#aaa' }}>
+          Already have an account?{' '}
+          <Link href="/sign-in" style={{ color: '#0a0a0a', fontWeight: 500, textDecoration: 'none' }}>
+            Sign in →
+          </Link>
+        </p>
+      </div>
+    </div>
+  )
+}
+
 const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
   { id: 'modules', label: 'Modules',    icon: BookOpen,  href: '/dashboard/modules' },
@@ -28,7 +98,7 @@ const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
-  const { isSignedIn } = useAuth()
+  const { isLoaded, isSignedIn } = useAuth()
   const pathname = usePathname()
   const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
@@ -37,6 +107,9 @@ export default function DashboardLayout({ children }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const [supervisorRemarks, setSupervisorRemarks] = useState(null)
   const [remarksOpen, setRemarksOpen] = useState(false)
+  // Gate: null = loading, string = free email, false = needs gate
+  const [freeEmail, setFreeEmail] = useState(null)
+  const [gateChecked, setGateChecked] = useState(false)
 
   const dismissRemarks = () => {
     setSupervisorRemarks(null)
@@ -50,6 +123,16 @@ export default function DashboardLayout({ children }) {
       }),
     }).catch(() => {})
   }
+
+  // Gate check — runs once Clerk has loaded
+  useEffect(() => {
+    if (!isLoaded) return
+    if (!isSignedIn) {
+      const saved = localStorage.getItem('eeAcademy_freeEmail')
+      setFreeEmail(saved || false)
+    }
+    setGateChecked(true)
+  }, [isLoaded, isSignedIn])
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -87,6 +170,21 @@ export default function DashboardLayout({ children }) {
 
   const activeId = ALL_NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
     ?? (pathname === '/dashboard' ? 'home' : null)
+
+  // Wait for Clerk to initialise before deciding what to render
+  if (!gateChecked) {
+    return (
+      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
+        <div className="w-5 h-5 rounded-full border-2"
+          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
+      </div>
+    )
+  }
+
+  // Not Clerk-authed and no free email → show email capture gate
+  if (!isSignedIn && !freeEmail) {
+    return <EmailCaptureGate onCapture={(email) => setFreeEmail(email)} />
+  }
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#fafafa', color: '#0a0a0a' }}>
@@ -234,13 +332,22 @@ export default function DashboardLayout({ children }) {
 
         {/* Bottom */}
         <div className="px-2 pb-4 pt-3" style={{ borderTop: '1px solid #f0f0f0' }}>
-          {!isPremium && (
+          {(!isSignedIn || !isPremium) && (
             <Link
               href="/pricing"
               className="flex items-center justify-center w-full text-xs font-semibold py-2 rounded-lg mb-2 transition-all"
               style={{ background: '#0a0a0a', color: '#fff', letterSpacing: '-0.01em' }}
             >
-              Upgrade plan
+              {isSignedIn ? 'Upgrade plan' : 'Upgrade to premium'}
+            </Link>
+          )}
+          {!isSignedIn && (
+            <Link
+              href="/sign-in"
+              className="flex items-center justify-center w-full text-xs py-1.5 rounded-lg transition-all mb-1"
+              style={{ color: '#aaa' }}
+            >
+              Sign in to your account →
             </Link>
           )}
           <Link

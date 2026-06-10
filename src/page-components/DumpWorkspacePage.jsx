@@ -2,7 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import { Copy, Trash2, Plus, ExternalLink, BookOpen, X, Check, Quote } from 'lucide-react'
+import { Copy, Trash2, Plus, ExternalLink, BookOpen, X, Check, Quote, Lock } from 'lucide-react'
+import Link from 'next/link'
+
+const FREE_DUMP_LIMIT = 3
 
 const SUBTOPIC_COLORS = [
   '#6366f1', '#0ea5e9', '#10b981', '#f59e0b', '#ef4444',
@@ -214,37 +217,102 @@ function EntryCard({ entry, onRemove, onToggleUsed }) {
   )
 }
 
+// ── Dump limit paywall ─────────────────────────────────────────────────────
+function DumpPaywall() {
+  return (
+    <div style={{
+      position: 'absolute', inset: 0, zIndex: 10,
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      background: 'rgba(250,250,250,0.88)', backdropFilter: 'blur(6px)',
+    }}>
+      <div style={{
+        background: '#fff', borderRadius: 20, padding: '40px 36px', maxWidth: 340,
+        width: '100%', margin: '0 16px', textAlign: 'center',
+        border: '1px solid #f0f0f0', boxShadow: '0 8px 40px rgba(0,0,0,0.08)',
+      }}>
+        <div style={{
+          width: 48, height: 48, borderRadius: 14, background: '#f5f5f5',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px',
+        }}>
+          <Lock size={20} style={{ color: '#0a0a0a' }} />
+        </div>
+        <p style={{ fontSize: 16, fontWeight: 700, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 8 }}>
+          Free limit reached
+        </p>
+        <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6, marginBottom: 24 }}>
+          Free users can save up to {FREE_DUMP_LIMIT} research entries. Upgrade to dump unlimited paragraphs and build your full bibliography.
+        </p>
+        <Link
+          href="/pricing"
+          style={{
+            display: 'block', width: '100%', padding: '11px 0',
+            background: '#0a0a0a', color: '#fff', borderRadius: 12,
+            fontSize: 13, fontWeight: 600, textDecoration: 'none',
+            letterSpacing: '-0.01em',
+          }}
+        >
+          Unlock unlimited →
+        </Link>
+        <p style={{ fontSize: 11, color: '#bbb', marginTop: 14 }}>
+          One-time payment · Lifetime access
+        </p>
+      </div>
+    </div>
+  )
+}
+
 // ── Main ────────────────────────────────────────────────────────────────────
 export default function DumpWorkspacePage() {
   const { isSignedIn } = useAuth()
   const [entries, setEntries] = useState([])
+  const [isPremium, setIsPremium] = useState(false)
   const [loading, setLoading] = useState(true)
   const [saving, setSaving] = useState(false)
   const [showAdd, setShowAdd] = useState(false)
+  const [showPaywall, setShowPaywall] = useState(false)
   const [activeTab, setActiveTab] = useState('dump')
   const [filterSubtopic, setFilterSubtopic] = useState('All')
   const [copied, setCopied] = useState(false)
 
+  const isAtLimit = !isPremium && entries.length >= FREE_DUMP_LIMIT
+
   useEffect(() => {
-    if (!isSignedIn) return
-    fetch('/api/dump')
-      .then(r => r.json())
-      .then(({ entries }) => setEntries(entries || []))
-      .catch(() => {})
-      .finally(() => setLoading(false))
+    if (isSignedIn) {
+      // Clerk user — fetch from API
+      Promise.all([
+        fetch('/api/dump').then(r => r.json()),
+        fetch('/api/workspace').then(r => r.json()),
+      ]).then(([dumpData, wsData]) => {
+        setEntries(dumpData.entries || [])
+        setIsPremium(!!wsData.workspace?.has_paid)
+      }).catch(() => {}).finally(() => setLoading(false))
+    } else {
+      // Free email user — localStorage mode
+      try {
+        const saved = localStorage.getItem('eeAcademy_dump')
+        setEntries(saved ? JSON.parse(saved) : [])
+      } catch { /* ignore */ }
+      setLoading(false)
+    }
   }, [isSignedIn])
 
   const persist = useCallback(async (newEntries) => {
-    setSaving(true)
-    await fetch('/api/dump', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ entries: newEntries }),
-    }).catch(() => {})
-    setSaving(false)
-  }, [])
+    if (isSignedIn) {
+      setSaving(true)
+      await fetch('/api/dump', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ entries: newEntries }),
+      }).catch(() => {})
+      setSaving(false)
+    } else {
+      // localStorage mode for free users
+      try { localStorage.setItem('eeAcademy_dump', JSON.stringify(newEntries)) } catch { /* ignore */ }
+    }
+  }, [isSignedIn])
 
   const addEntry = (entry) => {
+    if (isAtLimit) { setShowPaywall(true); return }
     const next = [...entries, entry]
     setEntries(next)
     persist(next)
@@ -313,7 +381,9 @@ export default function DumpWorkspacePage() {
   }
 
   return (
-    <div className="h-full flex flex-col" style={{ background: '#fafafa' }}>
+    <div className="h-full flex flex-col" style={{ background: '#fafafa', position: 'relative' }}>
+      {/* Paywall overlay — shown when free limit is hit */}
+      {(isAtLimit || showPaywall) && <DumpPaywall />}
 
       {/* Top bar */}
       <div className="flex-shrink-0 flex items-center justify-between px-6 py-3"
@@ -340,11 +410,18 @@ export default function DumpWorkspacePage() {
           {saving && <span className="text-[11px]" style={{ color: '#ccc' }}>Saving…</span>}
           <span className="text-[11px] tabular-nums" style={{ color: '#aaa' }}>
             {entries.length} {entries.length === 1 ? 'entry' : 'entries'}
+            {!isPremium && (
+              <span style={{ color: entries.length >= FREE_DUMP_LIMIT ? '#ef4444' : '#bbb' }}>
+                {' '}· {FREE_DUMP_LIMIT - entries.length > 0 ? `${FREE_DUMP_LIMIT - entries.length} free left` : 'limit reached'}
+              </span>
+            )}
           </span>
-          <button onClick={() => setShowAdd(true)}
+          <button
+            onClick={() => isAtLimit ? setShowPaywall(true) : setShowAdd(true)}
             className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 rounded-lg"
             style={{ background: '#0a0a0a', color: '#fff' }}>
-            <Plus size={12} /> Dump a paragraph
+            {isAtLimit ? <Lock size={12} /> : <Plus size={12} />}
+            {isAtLimit ? 'Unlock more' : 'Dump a paragraph'}
           </button>
         </div>
       </div>
@@ -361,7 +438,7 @@ export default function DumpWorkspacePage() {
                   Found a useful paragraph in an article? Paste it here, tag the subtopic, note the source. Build the dump first — write later.
                 </p>
               </div>
-              <button onClick={() => setShowAdd(true)}
+              <button onClick={() => isAtLimit ? setShowPaywall(true) : setShowAdd(true)}
                 className="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-xl"
                 style={{ background: '#0a0a0a', color: '#fff' }}>
                 <Plus size={14} /> Dump your first paragraph

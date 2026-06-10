@@ -1,7 +1,8 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
-  '/dashboard(.*)',
+  // /dashboard(.*) is intentionally NOT here — soft-gated client-side.
+  // Free users enter with email capture; Clerk sign-in only required for premium features.
   // /course/* is intentionally PUBLIC — Googlebot must be able to crawl it.
   // Access gating is handled inside CourseModulePage via PaywallBanner.
   '/dump(.*)',
