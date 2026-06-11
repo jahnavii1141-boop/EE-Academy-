@@ -98,7 +98,7 @@ const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
-  const { isLoaded, isSignedIn } = useAuth()
+  const { isSignedIn } = useAuth()
   const pathname = usePathname()
   const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
@@ -107,9 +107,6 @@ export default function DashboardLayout({ children }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const [supervisorRemarks, setSupervisorRemarks] = useState(null)
   const [remarksOpen, setRemarksOpen] = useState(false)
-  // Gate: null = loading, string = free email, false = needs gate
-  const [freeEmail, setFreeEmail] = useState(null)
-  const [gateChecked, setGateChecked] = useState(false)
 
   const dismissRemarks = () => {
     setSupervisorRemarks(null)
@@ -123,16 +120,6 @@ export default function DashboardLayout({ children }) {
       }),
     }).catch(() => {})
   }
-
-  // Gate check — runs once Clerk has loaded
-  useEffect(() => {
-    if (!isLoaded) return
-    if (!isSignedIn) {
-      const saved = localStorage.getItem('eeAcademy_freeEmail')
-      setFreeEmail(saved || false)
-    }
-    setGateChecked(true)
-  }, [isLoaded, isSignedIn])
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -170,21 +157,6 @@ export default function DashboardLayout({ children }) {
 
   const activeId = ALL_NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
     ?? (pathname === '/dashboard' ? 'home' : null)
-
-  // Wait for Clerk to initialise before deciding what to render
-  if (!gateChecked) {
-    return (
-      <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
-        <div className="w-5 h-5 rounded-full border-2"
-          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
-      </div>
-    )
-  }
-
-  // Not Clerk-authed and no free email → show email capture gate
-  if (!isSignedIn && !freeEmail) {
-    return <EmailCaptureGate onCapture={(email) => setFreeEmail(email)} />
-  }
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#fafafa', color: '#0a0a0a' }}>
@@ -332,13 +304,13 @@ export default function DashboardLayout({ children }) {
 
         {/* Bottom */}
         <div className="px-2 pb-4 pt-3" style={{ borderTop: '1px solid #f0f0f0' }}>
-          {(!isSignedIn || !isPremium) && (
+          {!isPremium && (
             <Link
               href="/pricing"
               className="flex items-center justify-center w-full text-xs font-semibold py-2 rounded-lg mb-2 transition-all"
               style={{ background: '#0a0a0a', color: '#fff', letterSpacing: '-0.01em' }}
             >
-              {isSignedIn ? 'Upgrade plan' : 'Upgrade to premium'}
+              {isSignedIn ? 'Upgrade plan' : 'Get full access'}
             </Link>
           )}
           {!isSignedIn && (
@@ -347,7 +319,7 @@ export default function DashboardLayout({ children }) {
               className="flex items-center justify-center w-full text-xs py-1.5 rounded-lg transition-all mb-1"
               style={{ color: '#aaa' }}
             >
-              Sign in to your account →
+              Sign in →
             </Link>
           )}
           <Link
