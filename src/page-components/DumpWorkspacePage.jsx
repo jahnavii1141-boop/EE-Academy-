@@ -290,7 +290,7 @@ export default function DumpWorkspacePage() {
       // Free email user — localStorage mode
       try {
         const saved = localStorage.getItem('eeAcademy_dump')
-        setEntries(saved ? JSON.parse(saved) : [])
+        setEntries(saved ? JSON.parse(saved) : []) // eslint-disable-line react-hooks/set-state-in-effect
       } catch { /* ignore */ }
       setLoading(false)
     }

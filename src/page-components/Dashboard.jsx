@@ -125,7 +125,7 @@ export default function Dashboard() {
     if (isSignedIn) return
     const captured = localStorage.getItem('eeAcademy_emailCaptured')
     const dismissed = localStorage.getItem('eeAcademy_bannerDismissed')
-    if (!captured && !dismissed) setShowEmailBanner(true)
+    if (!captured && !dismissed) setShowEmailBanner(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [isSignedIn])
 
   const dismissBanner = () => {
