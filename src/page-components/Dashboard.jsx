@@ -3,8 +3,89 @@
 import { useUser, useAuth } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, BookOpen, Database, Calendar, FileText, Share2, PenLine, Clock } from 'lucide-react'
+import { ArrowRight, BookOpen, Database, Calendar, FileText, Share2, PenLine, Clock, X, Check } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
+
+// ── Email capture banner ───────────────────────────────────────────────────
+function EmailCaptureBanner({ onDismiss }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // idle | loading | done
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const trimmed = email.trim()
+    if (!trimmed || !trimmed.includes('@')) return
+    setStatus('loading')
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed, source: 'dashboard-banner' }),
+      })
+      localStorage.setItem('eeAcademy_emailCaptured', '1')
+      setStatus('done')
+      setTimeout(onDismiss, 2500)
+    } catch {
+      setStatus('idle')
+    }
+  }
+
+  if (status === 'done') {
+    return (
+      <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl mb-6"
+        style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+        <Check size={14} style={{ color: '#16a34a', flexShrink: 0 }} />
+        <p className="text-sm" style={{ color: '#15803d' }}>You're in — check your inbox for a welcome email from Gia.</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="flex items-start gap-4 px-5 py-4 rounded-xl mb-6"
+      style={{ background: '#fff', border: '1px solid #e5e5e5' }}>
+      <div className="flex-1 min-w-0">
+        <p className="text-xs font-semibold mb-0.5" style={{ color: '#0a0a0a' }}>
+          Get EE tips straight to your inbox
+        </p>
+        <p className="text-[11px] mb-3" style={{ color: '#aaa' }}>
+          Free advice from a 32/34 student — research, structure, common mistakes. No spam.
+        </p>
+        <form onSubmit={handleSubmit} className="flex items-center gap-2">
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="your@email.com"
+            style={{
+              flex: 1, maxWidth: 220, padding: '7px 12px', borderRadius: 8,
+              border: '1px solid #e0e0e0', background: '#fafafa',
+              fontSize: 12, color: '#0a0a0a', outline: 'none',
+            }}
+          />
+          <button
+            type="submit"
+            disabled={status === 'loading'}
+            style={{
+              padding: '7px 14px', background: '#0a0a0a', color: '#fff',
+              borderRadius: 8, fontSize: 12, fontWeight: 600, border: 'none',
+              cursor: status === 'loading' ? 'wait' : 'pointer', whiteSpace: 'nowrap',
+            }}
+          >
+            {status === 'loading' ? '…' : 'Get free tips →'}
+          </button>
+        </form>
+      </div>
+      <button
+        onClick={onDismiss}
+        style={{ color: '#ccc', flexShrink: 0, marginTop: 2, background: 'none', border: 'none', cursor: 'pointer' }}
+        onMouseEnter={e => e.currentTarget.style.color = '#888'}
+        onMouseLeave={e => e.currentTarget.style.color = '#ccc'}
+      >
+        <X size={14} />
+      </button>
+    </div>
+  )
+}
 
 const TOOLS = [
   { id: 'modules',   icon: BookOpen,  label: 'Modules',     sub: '14-module EE system',          href: '/dashboard/modules' },
@@ -37,6 +118,20 @@ export default function Dashboard() {
   const [daysLeft, setDaysLeft] = useState(null)
   const [trialEnded, setTrialEnded] = useState(false)
   const [modulesVisited, setModulesVisited] = useState(0)
+  const [showEmailBanner, setShowEmailBanner] = useState(false)
+
+  // Email banner: show for non-signed-in users who haven't submitted or dismissed
+  useEffect(() => {
+    if (isSignedIn) return
+    const captured = localStorage.getItem('eeAcademy_emailCaptured')
+    const dismissed = localStorage.getItem('eeAcademy_bannerDismissed')
+    if (!captured && !dismissed) setShowEmailBanner(true)
+  }, [isSignedIn])
+
+  const dismissBanner = () => {
+    localStorage.setItem('eeAcademy_bannerDismissed', '1')
+    setShowEmailBanner(false)
+  }
 
   useEffect(() => {
     if (!isSignedIn) return
@@ -132,6 +227,11 @@ export default function Dashboard() {
           </Link>
         )}
       </div>
+
+      {/* Email capture banner — non-signed-in users only */}
+      {showEmailBanner && (
+        <EmailCaptureBanner onDismiss={dismissBanner} />
+      )}
 
       {/* Trial banner */}
       {showTrialBanner && (
