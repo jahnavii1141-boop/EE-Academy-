@@ -44,13 +44,12 @@ function getTierFromPriceId(priceId) {
   const basicId   = process.env.NEXT_PUBLIC_PADDLE_BASIC_PRICE_ID
   const mentorId  = process.env.NEXT_PUBLIC_PADDLE_MENTOR_PRICE_ID
 
-  if (mentorId  && priceId === mentorId)  return 'premium' // Method+Me gets premium
-  if (premiumId && priceId === premiumId) return 'premium' // Method+AI
-  if (basicId   && priceId === basicId)   return 'method'  // Method
+  if (mentorId  && priceId === mentorId)  return 'premium'
+  if (premiumId && priceId === premiumId) return 'premium'
+  if (basicId   && priceId === basicId)   return 'basic'
 
-  // Price IDs not configured — still grant basic access rather than dropping the payment
-  console.warn(`Paddle webhook: unrecognised price ID "${priceId}" — granting method tier. Set env vars to fix.`)
-  return 'method'
+  console.warn(`Paddle webhook: unrecognised price ID "${priceId}" — granting basic tier. Set env vars to fix.`)
+  return 'basic'
 }
 
 export async function POST(request) {

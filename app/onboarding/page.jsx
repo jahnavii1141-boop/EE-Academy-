@@ -57,24 +57,24 @@ function OnboardingPageInner() {
     if (step !== 'generating') return
     let cancelled = false
     const save = async () => {
-      try {
-        // Verify Paddle payment if returning from checkout (?_ptxn=txn_xxx)
-        const ptxn = searchParams.get('_ptxn')
-        if (ptxn) {
-          try {
-            const res = await fetch(`/api/verify-payment?txn=${ptxn}`)
-            const data = await res.json()
-            if (!res.ok || !data.verified) {
-              console.error('verify-payment failed:', data)
-              setPaymentError(true)
-              return // stop — don't advance without confirmed access
-            }
-          } catch (err) {
-            console.error('verify-payment error:', err)
+      // Verify Paddle payment if returning from checkout (?_ptxn=txn_xxx)
+      const ptxn = searchParams.get('_ptxn')
+      if (ptxn) {
+        try {
+          const res = await fetch(`/api/verify-payment?txn=${ptxn}`)
+          const data = await res.json()
+          if (!res.ok || !data.verified) {
+            console.error('verify-payment failed:', data)
             setPaymentError(true)
-            return
+            return false // payment failed — do not advance
           }
+        } catch (err) {
+          console.error('verify-payment error:', err)
+          setPaymentError(true)
+          return false // network error — do not advance
         }
+      }
+      try {
         await fetch('/api/workspace', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -87,14 +87,14 @@ function OnboardingPageInner() {
         })
         await fetch('/api/trial', { method: 'POST' }).catch(() => {})
       } catch {
-        // save failed — still continue so we don't block the user
+        // workspace save failed — still advance, access is already granted
       }
-      if (!cancelled) setStep('done')
+      return true
     }
     // Minimum 1.5s on the "generating" screen for UX, then move once save resolves
     const minDelay = new Promise(r => setTimeout(r, 1500))
-    Promise.all([save(), minDelay]).then(() => {
-      if (!cancelled) setStep('done')
+    Promise.all([save(), minDelay]).then(([ok]) => {
+      if (ok !== false && !cancelled) setStep('done')
     })
     return () => { cancelled = true }
   }, [step])

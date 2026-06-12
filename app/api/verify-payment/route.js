@@ -8,8 +8,8 @@ function getTierFromPriceId(priceId) {
   const mentorId  = process.env.NEXT_PUBLIC_PADDLE_MENTOR_PRICE_ID
   if (mentorId  && priceId === mentorId)  return 'premium'
   if (premiumId && priceId === premiumId) return 'premium'
-  if (basicId   && priceId === basicId)   return 'method'
-  return 'method' // fallback — always grant something rather than nothing
+  if (basicId   && priceId === basicId)   return 'basic'
+  return 'basic' // fallback — always grant something rather than nothing
 }
 
 // GET /api/verify-payment?txn=txn_xxx
@@ -34,11 +34,11 @@ export async function GET(request) {
     await supabase.from('user_workspace').upsert({
       clerk_user_id: userId,
       has_paid: true,
-      tier: 'method',
+      tier: 'basic',
       paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
-    return Response.json({ verified: true, tier: 'method', note: 'optimistic_grant' })
+    return Response.json({ verified: true, tier: 'basic', note: 'optimistic_grant' })
   }
 
   const isProduction = process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT === 'production'
