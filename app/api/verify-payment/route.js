@@ -58,7 +58,9 @@ export async function GET(request) {
 
   const { data: txn } = await paddleRes.json()
 
-  if (txn?.status !== 'completed') {
+  const PAID_STATUSES = ['completed', 'billed']
+  if (!PAID_STATUSES.includes(txn?.status)) {
+    console.error('verify-payment: unexpected transaction status', txn?.status, 'for txn', txnId)
     return Response.json({ verified: false, status: txn?.status }, { status: 200 })
   }
 
