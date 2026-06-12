@@ -29,6 +29,7 @@ function OnboardingPageInner() {
     submission_deadline: '',
   })
   const [generatingDots, setGeneratingDots] = useState(0)
+  const [paymentError, setPaymentError] = useState(false)
 
   // Skip onboarding if workspace already set up (unless returning from checkout)
   useEffect(() => {
@@ -60,7 +61,19 @@ function OnboardingPageInner() {
         // Verify Paddle payment if returning from checkout (?_ptxn=txn_xxx)
         const ptxn = searchParams.get('_ptxn')
         if (ptxn) {
-          await fetch(`/api/verify-payment?txn=${ptxn}`).catch(() => {})
+          try {
+            const res = await fetch(`/api/verify-payment?txn=${ptxn}`)
+            const data = await res.json()
+            if (!res.ok || !data.verified) {
+              console.error('verify-payment failed:', data)
+              setPaymentError(true)
+              return // stop — don't advance without confirmed access
+            }
+          } catch (err) {
+            console.error('verify-payment error:', err)
+            setPaymentError(true)
+            return
+          }
         }
         await fetch('/api/workspace', {
           method: 'POST',
@@ -266,7 +279,28 @@ function OnboardingPageInner() {
         )}
 
         {/* GENERATING */}
-        {step === 'generating' && (
+        {step === 'generating' && paymentError && (
+          <div className="text-center">
+            <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-8"
+              style={{ background: '#fef2f2', border: '1px solid #fecaca' }}>
+              <span className="text-2xl">⚠️</span>
+            </div>
+            <h2 className="font-semibold mb-3" style={{ fontSize: 22, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+              Payment received — access setup failed
+            </h2>
+            <p className="text-sm mb-6 leading-relaxed" style={{ color: '#888' }}>
+              Your payment went through but we couldn&apos;t activate your account automatically.
+              Email us and we&apos;ll fix it within the hour.
+            </p>
+            <a href="mailto:hello@theextendedessay.com?subject=Payment received but no access"
+              className="inline-block px-6 py-3 rounded-xl text-sm font-semibold"
+              style={{ background: '#0a0a0a', color: '#fff', textDecoration: 'none' }}>
+              Contact us →
+            </a>
+          </div>
+        )}
+
+        {step === 'generating' && !paymentError && (
           <div className="text-center">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-8"
               style={{ background: '#0a0a0a' }}>
