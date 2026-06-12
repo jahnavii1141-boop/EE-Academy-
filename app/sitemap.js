@@ -1,5 +1,4 @@
 // Dynamic sitemap — served at /sitemap.xml and takes precedence over public/sitemap.xml
-// Add new guides/modules here; they'll appear in Google's index automatically.
 
 const BASE = 'https://theextendedessay.com'
 const NOW = new Date().toISOString()
@@ -47,24 +46,6 @@ const GUIDE_SLUGS = [
   'ee-supervisor-tips',
 ]
 
-// All course module IDs — keep in sync with src/data/courseContent.js
-const MODULE_IDS = [
-  'module-1',
-  'module-2',
-  'module-3',
-  'module-4',
-  'module-5',
-  'module-6',
-  'module-7',
-  'module-8',
-  'module-9',
-  'module-10',
-  'module-11',
-  'ai-module',
-  'module-13',
-  'module-14',
-]
-
 export default function sitemap() {
   const staticPages = [
     { url: `${BASE}/`,           lastModified: NOW, changeFrequency: 'weekly',  priority: 1.0 },
@@ -96,14 +77,5 @@ export default function sitemap() {
     priority: highIntentSlugs.has(slug) ? 0.9 : 0.8,
   }))
 
-  // Free modules are fully public and indexable; paid modules still serve content (paywalled mid-page)
-  const freeModules = new Set(['module-1', 'module-2', 'module-3', 'module-4', 'module-5'])
-  const modulePages = MODULE_IDS.map(id => ({
-    url: `${BASE}/course/${id}`,
-    lastModified: NOW,
-    changeFrequency: 'monthly',
-    priority: freeModules.has(id) ? 0.8 : 0.6,
-  }))
-
-  return [...staticPages, ...guidePages, ...modulePages]
+  return [...staticPages, ...guidePages]
 }

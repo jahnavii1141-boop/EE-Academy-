@@ -1,81 +1,68 @@
 import CourseModulePage from '../../../src/page-components/CourseModulePage'
 import { COURSE_MODULES } from '../../../src/data/courseContent'
+import { COURSE_CATALOG } from '../../../src/data/courseCatalog'
+import { auth } from '@clerk/nextjs/server'
+import { notFound } from 'next/navigation'
+import { createServiceClient } from '../../../src/lib/supabase'
+import { resolveCourseAccess } from '../../../src/lib/resolveCourseAccess'
 
-// Pre-render all 14 module pages at build time — eliminates cold-start 5xx
-export async function generateStaticParams() {
-  return COURSE_MODULES.map(m => ({ moduleId: m.id }))
-}
+export const dynamic = 'force-dynamic'
 
 export async function generateMetadata({ params }) {
   const { moduleId } = await params
-  const module = COURSE_MODULES.find(m => m.id === moduleId)
+  const module = COURSE_CATALOG.find(m => m.id === moduleId)
 
   if (!module) {
-    return { title: 'Module Not Found' }
+    return {
+      title: 'Module Not Found',
+      robots: { index: false, follow: false },
+    }
   }
 
   return {
     title: `Module ${module.number}: ${module.title}`,
     description: module.tagline,
-    alternates: {
-      canonical: `https://theextendedessay.com/course/${moduleId}`,
-    },
+    robots: { index: false, follow: false },
   }
 }
 
 export default async function CoursePage({ params }) {
   const { moduleId } = await params
-  const module = COURSE_MODULES.find(m => m.id === moduleId)
+  const catalogModule = COURSE_CATALOG.find(m => m.id === moduleId)
+  if (!catalogModule) notFound()
 
-  const jsonLd = module
-    ? {
-        '@context': 'https://schema.org',
-        '@type': 'LearningResource',
-        name: `Module ${module.number}: ${module.title}`,
-        description: module.tagline,
-        url: `https://theextendedessay.com/course/${moduleId}`,
-        learningResourceType: 'Course',
-        educationalLevel: 'High School',
-        isPartOf: {
-          '@type': 'Course',
-          name: 'The Extended Essay Academy',
-          url: 'https://theextendedessay.com',
-          provider: {
-            '@type': 'Organization',
-            name: 'The Extended Essay Academy',
-            url: 'https://theextendedessay.com',
-          },
-        },
-        author: {
-          '@type': 'Person',
-          name: 'Gia',
-          description: 'Scored 32/34 on the IB Extended Essay. Founder of The Extended Essay Academy.',
-          url: 'https://theextendedessay.com',
-        },
-        ...(module.free
-          ? { isAccessibleForFree: true }
-          : {
-              isAccessibleForFree: false,
-              offers: {
-                '@type': 'Offer',
-                price: '89',
-                priceCurrency: 'USD',
-                availability: 'https://schema.org/InStock',
-                url: 'https://theextendedessay.com/pricing',
-              },
-            }),
-      }
-    : null
+  const { userId } = await auth()
+  let hasPaid = false
+
+  if (userId) {
+    const adminIds = (process.env.ADMIN_CLERK_USER_IDS || '')
+      .split(',')
+      .map(id => id.trim())
+      .filter(Boolean)
+
+    if (adminIds.includes(userId)) {
+      hasPaid = true
+    } else {
+      const supabase = createServiceClient()
+      const { data } = await supabase
+        .from('user_workspace')
+        .select('has_paid')
+        .eq('clerk_user_id', userId)
+        .maybeSingle()
+
+      hasPaid = data?.has_paid === true
+    }
+  }
+
+  const fullModule = COURSE_MODULES.find(m => m.id === moduleId)
+  const { canAccess, module } = resolveCourseAccess(catalogModule, fullModule, hasPaid)
 
   return (
-    <>
-      {jsonLd && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
-      )}
-      <CourseModulePage />
-    </>
+    <CourseModulePage
+      module={module}
+      hasPaid={hasPaid}
+      isSignedIn={Boolean(userId)}
+      isGated={!canAccess}
+    />
   )
 }

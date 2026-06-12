@@ -7,7 +7,7 @@ import { useAccess } from '../hooks/useAccess'
 const MODULES = [
   { id: 'module-1',  num: 1,   title: 'The Examiner Lens',           description: 'How IB examiners actually read and mark your essay.',                    free: true },
   { id: 'module-2',  num: 2,   title: 'Inside the Markscheme',       description: 'Break down every criterion. Know exactly what earns marks.',              free: true },
-  { id: 'module-3',  num: 3,   title: 'Topic Selection',             description: 'Pick a topic that\'s researchable, scoreable, and interesting.',          free: true },
+  { id: 'module-3',  num: 3,   title: 'Topic Selection',             description: 'Pick a topic that\'s researchable, scoreable, and interesting.',          free: false },
   { id: 'module-4',  num: 4,   title: 'Research Question Design',    description: 'Write a focused, analytical RQ that sets your essay up to win.',          free: false },
   { id: 'module-5',  num: 5,   title: 'The EE Dump Method',          description: 'A system for gathering sources without drowning in them.',                free: true },
   { id: 'module-6',  num: 6,   title: 'Evidence and Research',       description: 'Find, evaluate, and use academic sources properly.',                      free: false },

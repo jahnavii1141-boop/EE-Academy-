@@ -29,7 +29,7 @@ export default function SignInPage() {
         routing="path"
         path="/sign-in"
         signUpUrl="/sign-up"
-        forceRedirectUrl="/dashboard"
+        fallbackRedirectUrl="/course/module-1"
         appearance={{
           variables: {
             colorPrimary: '#0a0a0a',
@@ -48,9 +48,6 @@ export default function SignInPage() {
         }}
       />
 
-      <p style={{ marginTop: 24, fontSize: 12, color: '#aaa', textAlign: 'center' }}>
-        <Link href="/" style={{ color: '#888' }}>← Back to theextendedessay.com</Link>
-      </p>
     </div>
   )
 }

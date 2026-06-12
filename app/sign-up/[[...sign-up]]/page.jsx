@@ -21,7 +21,7 @@ export default function SignUpPage() {
           </span>
         </Link>
         <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 300 }}>
-          Create your free account and start the 14-module EE system.
+          Create your free account and start the EE system.
         </p>
       </div>
 
@@ -29,7 +29,7 @@ export default function SignUpPage() {
         routing="path"
         path="/sign-up"
         signInUrl="/sign-in"
-        forceRedirectUrl="/onboarding"
+        fallbackRedirectUrl="/onboarding"
         appearance={{
           variables: {
             colorPrimary: '#0a0a0a',
@@ -48,9 +48,6 @@ export default function SignUpPage() {
         }}
       />
 
-      <p style={{ marginTop: 24, fontSize: 12, color: '#aaa', textAlign: 'center' }}>
-        <Link href="/" style={{ color: '#888' }}>← Back to theextendedessay.com</Link>
-      </p>
     </div>
   )
 }

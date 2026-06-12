@@ -55,20 +55,4 @@
   <url><loc>https://theextendedessay.com/guides/ee-ai-guide</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://theextendedessay.com/guides/ee-clastify-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
-  <!-- ── Course modules (all publicly crawlable) ─ -->
-  <url><loc>https://theextendedessay.com/course/module-1</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-2</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-3</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-4</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-5</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-6</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-7</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-8</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-9</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-10</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-11</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/ai-module</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-13</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://theextendedessay.com/course/module-14</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-
 </urlset>

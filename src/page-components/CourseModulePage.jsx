@@ -1,12 +1,10 @@
 'use client'
 
 import Link from 'next/link'
-import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
-import { useAuth, SignInButton } from '@clerk/nextjs'
-import { COURSE_MODULES } from '../data/courseContent'
+import { SignInButton } from '@clerk/nextjs'
+import { COURSE_CATALOG } from '../data/courseCatalog'
 import { useModuleProgress } from '../hooks/useModuleProgress'
-import { useAccess } from '../hooks/useAccess'
 import ContentRenderer from '../components/blocks/ContentRenderer'
 import PostModuleGate from '../components/PostModuleGate'
 
@@ -14,8 +12,8 @@ import PostModuleGate from '../components/PostModuleGate'
 
 function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
   const { isVisited } = useModuleProgress()
-  const visitedCount = COURSE_MODULES.filter(m => isVisited(m.id)).length
-  const pct = Math.round((visitedCount / COURSE_MODULES.length) * 100)
+  const visitedCount = COURSE_CATALOG.filter(m => isVisited(m.id)).length
+  const pct = Math.round((visitedCount / COURSE_CATALOG.length) * 100)
 
   const SECTIONS = [
     { label: 'Foundation',  ids: ['module-1', 'module-2', 'module-3'] },
@@ -50,20 +48,20 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
             style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #0a0a0a, #555)' }}
           />
         </div>
-        <p className="text-[10px] mt-1.5" style={{ color: '#ccc' }}>{visitedCount} of {COURSE_MODULES.length} completed</p>
+        <p className="text-[10px] mt-1.5" style={{ color: '#ccc' }}>{visitedCount} of {COURSE_CATALOG.length} completed</p>
       </div>
 
       {/* Module list */}
       <div className="flex-1 overflow-y-auto py-4 px-3">
         {SECTIONS.map(section => {
-          const mods = COURSE_MODULES.filter(m => section.ids.includes(m.id))
+          const mods = COURSE_CATALOG.filter(m => section.ids.includes(m.id))
           return (
             <div key={section.label} className="mb-5">
               <p className="text-[9px] font-semibold uppercase tracking-widest px-2 mb-2" style={{ color: '#ccc' }}>
                 {section.label}
               </p>
               {mods.map((m) => {
-                const idx = COURSE_MODULES.findIndex(mod => mod.id === m.id)
+                const idx = COURSE_CATALOG.findIndex(mod => mod.id === m.id)
                 const isCurrent = idx === currentIndex
                 const visited = isVisited(m.id)
                 const isAi = m.id === 'ai-module'
@@ -146,8 +144,7 @@ function MobileModuleDrawer({ isOpen, onClose, currentIndex, isLoaded, hasStanda
 
 // ─── Paywall Banner ────────────────────────────────────────────────────────────
 
-function PaywallBanner({ isPremiumOnly }) {
-  const { isSignedIn } = useAuth()
+function PaywallBanner({ isPremiumOnly, isSignedIn }) {
   return (
     <div className="relative mt-4 mb-8">
       {/* Fade overlay */}
@@ -192,48 +189,20 @@ function PaywallBanner({ isPremiumOnly }) {
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 
-export default function CourseModulePage() {
-  const params = useParams()
-  const moduleId = params.moduleId
-  const { isLoaded } = useAuth()
-  const { hasStandard, hasPremium, loading: accessLoading } = useAccess()
+export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated }) {
+  const moduleId = module.id
   const { markVisited } = useModuleProgress()
   const [drawerOpen, setDrawerOpen] = useState(false)
 
-  const moduleIndex = COURSE_MODULES.findIndex(m => m.id === moduleId)
-  const module = COURSE_MODULES[moduleIndex]
-  const prevModule = COURSE_MODULES[moduleIndex - 1]
-  const nextModule = COURSE_MODULES[moduleIndex + 1]
+  const moduleIndex = COURSE_CATALOG.findIndex(m => m.id === moduleId)
+  const prevModule = COURSE_CATALOG[moduleIndex - 1]
+  const nextModule = COURSE_CATALOG[moduleIndex + 1]
 
   useEffect(() => { if (module) markVisited(module.id) }, [module?.id]) // eslint-disable-line
   useEffect(() => { setDrawerOpen(false) }, [moduleId]) // eslint-disable-line
 
-  if (!module) {
-    return (
-      <div className="min-h-screen flex items-center justify-center" style={{ background: '#fafafa' }}>
-        <div className="text-center">
-          <p className="text-sm mb-4" style={{ color: '#aaa' }}>Module not found.</p>
-          <Link href="/dashboard/modules"
-            className="text-sm font-semibold px-4 py-2 rounded-xl"
-            style={{ background: '#0a0a0a', color: '#fff' }}>
-            Back to modules
-          </Link>
-        </div>
-      </div>
-    )
-  }
-
   const isAiModule = module.id === 'ai-module'
   const isPaidModule = !module.free
-  let isGated = false
-  if (isAiModule) {
-    isGated = isLoaded && !accessLoading && !hasPremium
-  } else if (isPaidModule) {
-    isGated = isLoaded && !accessLoading && !hasStandard
-  }
-  if (!isLoaded || accessLoading) isGated = false
-
-  const visibleContent = isGated ? module.content.slice(0, 3) : module.content
 
   return (
     <div className="min-h-screen" style={{ background: '#fafafa' }}>
@@ -272,7 +241,7 @@ export default function CourseModulePage() {
           {/* Right: progress dots + counter */}
           <div className="flex items-center gap-3 flex-shrink-0">
             <div className="hidden lg:flex items-center gap-1">
-              {COURSE_MODULES.map((m, i) => (
+              {COURSE_CATALOG.map((m, i) => (
                 <Link key={m.id} href={`/course/${m.id}`} title={m.title}>
                   <span className="block rounded-full transition-all duration-200"
                     style={{
@@ -284,7 +253,7 @@ export default function CourseModulePage() {
               ))}
             </div>
             <span className="text-xs tabular-nums font-medium" style={{ color: '#ccc' }}>
-              {moduleIndex + 1} / {COURSE_MODULES.length}
+              {moduleIndex + 1} / {COURSE_CATALOG.length}
             </span>
           </div>
         </div>
@@ -298,9 +267,9 @@ export default function CourseModulePage() {
           style={{ width: 252, top: 45, height: 'calc(100vh - 45px)' }}>
           <ModuleSidebar
             currentIndex={moduleIndex}
-            isLoaded={isLoaded}
-            hasStandard={hasStandard}
-            hasPremium={hasPremium}
+            isLoaded
+            hasStandard={hasPaid}
+            hasPremium={hasPaid}
           />
         </aside>
 
@@ -358,19 +327,11 @@ export default function CourseModulePage() {
 
             {/* ── Content ── */}
             <article>
-              <ContentRenderer content={visibleContent} />
+              <ContentRenderer content={module.content} />
             </article>
 
             {module.id === 'module-2' && !isGated && <PostModuleGate />}
-            {isGated && <PaywallBanner isPremiumOnly={isAiModule} />}
-
-            {/* Loading spinner for paid modules */}
-            {isPaidModule && (!isLoaded || accessLoading) && (
-              <div className="flex justify-center py-16">
-                <div className="w-5 h-5 rounded-full border-2 border-t-transparent animate-spin"
-                  style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a' }} />
-              </div>
-            )}
+            {isGated && <PaywallBanner isPremiumOnly={isAiModule} isSignedIn={isSignedIn} />}
 
             {/* ── Prev / Next navigation ── */}
             {(!isGated || module.free) && (
@@ -440,9 +401,9 @@ export default function CourseModulePage() {
         isOpen={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         currentIndex={moduleIndex}
-        isLoaded={isLoaded}
-        hasStandard={hasStandard}
-        hasPremium={hasPremium}
+        isLoaded
+        hasStandard={hasPaid}
+        hasPremium={hasPaid}
       />
     </div>
   )

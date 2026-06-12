@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useUser, useAuth } from '@clerk/nextjs'
 
 const SUBJECTS = [
@@ -18,6 +18,7 @@ export default function OnboardingPage() {
   const { user } = useUser()
   const { isSignedIn } = useAuth()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const firstName = user?.firstName || ''
 
   const [step, setStep] = useState('welcome')
@@ -29,18 +30,19 @@ export default function OnboardingPage() {
   })
   const [generatingDots, setGeneratingDots] = useState(0)
 
-  // Skip onboarding if workspace already set up
+  // Skip onboarding if workspace already set up (unless returning from checkout)
   useEffect(() => {
     if (!isSignedIn) return
+    if (searchParams.get('_ptxn')) return // coming from payment — let them see onboarding
     fetch('/api/workspace')
       .then(r => r.json())
       .then(({ workspace }) => {
         if (workspace?.research_question && workspace?.subject) {
-          router.replace('/dashboard')
+          router.replace('/course/module-1')
         }
       })
       .catch(() => {})
-  }, [isSignedIn, router])
+  }, [isSignedIn, router, searchParams])
 
   // Animate dots during generating step
   useEffect(() => {
@@ -55,6 +57,11 @@ export default function OnboardingPage() {
     let cancelled = false
     const save = async () => {
       try {
+        // Verify Paddle payment if returning from checkout (?_ptxn=txn_xxx)
+        const ptxn = searchParams.get('_ptxn')
+        if (ptxn) {
+          await fetch(`/api/verify-payment?txn=${ptxn}`).catch(() => {})
+        }
         await fetch('/api/workspace', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -81,7 +88,7 @@ export default function OnboardingPage() {
 
   useEffect(() => {
     if (step !== 'done') return
-    const timer = setTimeout(() => router.push('/dashboard'), 1000)
+    const timer = setTimeout(() => router.push('/course/module-1'), 1000)
     return () => clearTimeout(timer)
   }, [step])
 

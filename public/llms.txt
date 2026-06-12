@@ -3,21 +3,6 @@
 
 This is an educational platform — not an essay writing service. Students learn to write their own essays.
 
-## Core Course
-- [Module 1: Introduction & Mindset](https://theextendedessay.com/course/module-1)
-- [Module 2: IB Criteria & Grading](https://theextendedessay.com/course/module-2)
-- [Module 3: Choosing Your Subject & Topic](https://theextendedessay.com/course/module-3)
-- [Module 4: Finding Your Research Question](https://theextendedessay.com/course/module-4)
-- [Module 5: The EE Dump Research System](https://theextendedessay.com/course/module-5)
-- [Module 6: How to Research Like a Top Student](https://theextendedessay.com/course/module-6)
-- [Module 7: Building Your EE Structure](https://theextendedessay.com/course/module-7)
-- [Module 8: Writing Each Section](https://theextendedessay.com/course/module-8)
-- [Module 9: Format, Citations & Academic Integrity](https://theextendedessay.com/course/module-9)
-- [Module 10: Introduction & Conclusion](https://theextendedessay.com/course/module-10)
-- [Module 11: RPPF Mastery](https://theextendedessay.com/course/module-11)
-- [Module 13: 32/34 Essay Breakdown](https://theextendedessay.com/course/module-13)
-- [Module 14: Templates, Tools & Checklists](https://theextendedessay.com/course/module-14)
-
 ## Free Guides
 - [How to Write an EE Introduction](https://theextendedessay.com/guides/extended-essay-introduction)
 - [EE Structure Template](https://theextendedessay.com/guides/extended-essay-structure)

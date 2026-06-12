@@ -1,76 +1,27 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
 import ContentRenderer from './blocks/ContentRenderer'
 import PostModuleGate from './PostModuleGate'
 
-const EMAIL_KEY = 'ee_waitlist_joined'
-
 function GuideEmailBanner() {
-  const [visible, setVisible] = useState(false)
-  const [email, setEmail] = useState('')
-  const [status, setStatus] = useState('idle') // idle | loading | done
-
-  useEffect(() => {
-    const joined = localStorage.getItem(EMAIL_KEY)
-    if (!joined) setVisible(true) // eslint-disable-line react-hooks/set-state-in-effect
-  }, [])
-
-  const dismiss = () => setVisible(false)
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const trimmed = email.trim()
-    if (!trimmed || !trimmed.includes('@')) return
-    setStatus('loading')
-    try {
-      await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed, source: 'guide-banner' }),
-      })
-      localStorage.setItem(EMAIL_KEY, JSON.stringify({ email: trimmed, source: 'guide-banner', joinedAt: new Date().toISOString() }))
-      setStatus('done')
-      setTimeout(dismiss, 2000)
-    } catch {
-      setStatus('idle')
-    }
-  }
-
+  const [visible, setVisible] = useState(true)
   if (!visible) return null
-
   return (
     <div className="w-full" style={{ background: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
-      <div className="max-w-3xl mx-auto px-6 py-3 flex flex-col sm:flex-row items-center gap-3">
-        {status === 'done' ? (
-          <p className="text-sm text-white/80 flex-1">Check your inbox — free modules on their way.</p>
-        ) : (
-          <>
-            <p className="text-sm font-medium text-white flex-1 whitespace-nowrap">
-              Get the full system free — 4 modules, no catch.
-            </p>
-            <form onSubmit={handleSubmit} className="flex items-center gap-2 w-full sm:w-auto">
-              <input
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="your@email.com"
-                className="flex-1 sm:w-52 text-sm px-3 py-1.5 rounded-lg focus:outline-none"
-                style={{ background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1px solid rgba(255,255,255,0.15)' }}
-              />
-              <button
-                type="submit"
-                disabled={status === 'loading'}
-                className="text-xs font-semibold px-4 py-1.5 rounded-lg whitespace-nowrap transition-all"
-                style={{ background: '#fff', color: '#0a0a0a' }}
-              >
-                {status === 'loading' ? '…' : 'Get access'}
-              </button>
-            </form>
-          </>
-        )}
-        <button onClick={dismiss} className="text-white/40 hover:text-white/70 text-xs flex-shrink-0" aria-label="Dismiss">✕</button>
+      <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
+        <p className="text-sm font-medium text-white flex-1">
+          Liking this?
+        </p>
+        <Link
+          href="/pricing"
+          className="text-xs font-semibold px-4 py-1.5 rounded-lg whitespace-nowrap transition-all flex-shrink-0"
+          style={{ background: '#fff', color: '#0a0a0a' }}
+        >
+          Access premium →
+        </Link>
+        <button onClick={() => setVisible(false)} className="text-white/40 hover:text-white/70 text-xs flex-shrink-0" aria-label="Dismiss">✕</button>
       </div>
     </div>
   )

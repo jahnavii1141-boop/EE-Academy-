@@ -29,7 +29,7 @@ function welcomeHtml(email) {
       </p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         You've got free access to Modules 1, 2, 3, and 5 — covering the mindset, IB criteria,
-        subject selection, and the research system I used. Start here:
+        subject selection, topic choice, and the research system I used. Start here:
       </p>
       <a href="https://theextendedessay.com/course/module-1"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;

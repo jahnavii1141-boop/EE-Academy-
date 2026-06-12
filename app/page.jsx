@@ -5,6 +5,7 @@ import FeaturedGuides from '../src/components/FeaturedGuides'
 import HomeFAQ from '../src/components/HomeFAQ'
 import EvervaultCTA from '../src/components/EvervaultCTA'
 import ResultsStrip from '../src/components/ResultsStrip'
+import EmailSignupModal from '../src/components/EmailSignupModal'
 
 export const metadata = {
   title: 'The Extended Essay Academy | Free IB EE Modules',
@@ -92,7 +93,7 @@ const FAQ_JSON_LD = {
       name: 'Can I start for free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Modules 1–3 and 5 are completely free. You can start immediately at theextendedessay.com/course/module-1.',
+        text: 'Yes. Modules 1, 2, 3, and 5 are completely free. You can start immediately at theextendedessay.com/course/module-1.',
       },
     },
     {
@@ -162,6 +163,7 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COURSE_JSON_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }} />
+      <EmailSignupModal />
       <main>
         <Hero />
         <ResultsStrip />

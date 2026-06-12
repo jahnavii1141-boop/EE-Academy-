@@ -91,12 +91,13 @@ export async function POST(request) {
   const supabase = createServiceClient()
 
   // Upsert — create row if user never opened dashboard, or update existing
-  // NOTE: user_workspace schema only has has_paid (no tier/paid_at columns)
   const { error } = await supabase
     .from('user_workspace')
     .upsert({
       clerk_user_id: clerkUserId,
       has_paid: true,
+      tier,
+      paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
 

@@ -1,10 +1,8 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const isProtectedRoute = createRouteMatcher([
-  // /dashboard(.*) is intentionally NOT here — soft-gated client-side.
-  // Free users enter with email capture; Clerk sign-in only required for premium features.
-  // /course/* is intentionally PUBLIC — Googlebot must be able to crawl it.
-  // Access gating is handled inside CourseModulePage via PaywallBanner.
+  // /course/* and /dashboard/* are accessible without Clerk — free email gate is in dashboard layout
+  // Paid content is stripped server-side in app/course/[moduleId]/page.jsx via resolveCourseAccess
   '/dump(.*)',
   '/planner(.*)',
   '/study-calendar(.*)',
@@ -12,9 +10,6 @@ const isProtectedRoute = createRouteMatcher([
   // NOTE: /share/* is intentionally PUBLIC — supervisors view it without an account.
   // The share token provides its own access control.
 ])
-
-// Sign-in and sign-up are public — Clerk handles them
-const isAuthRoute = createRouteMatcher(['/sign-in(.*)', '/sign-up(.*)'])
 
 export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
@@ -28,3 +23,4 @@ export const config = {
     '/(api|trpc)(.*)',
   ],
 }
+

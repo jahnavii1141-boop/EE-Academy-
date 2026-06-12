@@ -10,10 +10,9 @@ import {
   Calendar, FileText, ExternalLink,
 } from 'lucide-react'
 import { DASHBOARD_SECTIONS } from '../data/dashboardData'
-import { COURSE_MODULES } from '../data/courseContent'
+import { COURSE_CATALOG } from '../data/courseCatalog'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 
-const CIRCLED = ['①', '②', '③', '④', '⑤']
 const ICON_MAP = { Brain, Search, BookOpen, PenLine, Trophy, Star }
 
 function slugify(text) {
@@ -23,10 +22,9 @@ function slugify(text) {
 function buildTOC(moduleIds) {
   return moduleIds
     .map((id) => {
-      const mod = COURSE_MODULES.find((m) => m.id === id)
+      const mod = COURSE_CATALOG.find((m) => m.id === id)
       if (!mod) return null
-      const headings = mod.content.filter((block) => block.type === 'heading').map((block) => ({ text: block.text, slug: slugify(block.text) }))
-      return { moduleId: id, number: mod.number, title: mod.title, free: mod.free, headings }
+      return { moduleId: id, number: mod.number, title: mod.title, free: mod.free, headings: [] }
     })
     .filter(Boolean)
 }
@@ -76,8 +74,6 @@ function SidebarTOC({ toc }) {
 }
 
 function StepCard({ module, stepNumber, isLocked, isVisited, displayTitle }) {
-  const subHeadings = module.content.filter((b) => b.type === 'heading').slice(0, 3)
-
   return (
     <div id={slugify(module.title)} className={`rounded-2xl border p-6 transition-all ${isLocked ? 'border-navy/8 bg-white/40 opacity-75' : isVisited ? 'border-navy/12 bg-white/70' : 'border-navy/10 bg-white/60'}`}>
       <div className="flex items-center gap-3 mb-4">
@@ -91,17 +87,6 @@ function StepCard({ module, stepNumber, isLocked, isVisited, displayTitle }) {
 
       <h3 className="font-serif text-lg font-bold text-navy mb-1 leading-snug">{displayTitle || module.title}</h3>
       <p className="text-sm text-navy/55 mb-4 leading-relaxed">{module.tagline}</p>
-
-      {subHeadings.length > 0 && (
-        <div className="space-y-2 mb-5">
-          {subHeadings.map((h, i) => (
-            <div key={i} className={`flex items-start gap-2 text-sm transition-colors ${isLocked ? 'text-navy/30' : 'text-navy/60'}`}>
-              <span className="text-navy/30 font-mono text-xs flex-shrink-0 mt-0.5">{CIRCLED[i]}</span>
-              <span className="leading-snug">{h.text}</span>
-            </div>
-          ))}
-        </div>
-      )}
 
       {!isLocked ? (
         <Link href={`/course/${module.id}`} className="inline-flex items-center gap-2 bg-navy text-cream font-semibold text-sm px-4 py-2.5 rounded-xl hover:bg-navy/85 transition-colors">
@@ -145,7 +130,7 @@ export default function DashboardSection() {
     return null
   }
 
-  const sectionModules = section.moduleIds.map((id) => COURSE_MODULES.find((m) => m.id === id)).filter(Boolean)
+  const sectionModules = section.moduleIds.map((id) => COURSE_CATALOG.find((m) => m.id === id)).filter(Boolean)
   const toc = buildTOC(section.moduleIds)
   const progressFraction = getSectionProgress(section.moduleIds)
   const progressPercent = Math.round(progressFraction * 100)

@@ -15,7 +15,7 @@ function EmailCaptureGate({ onCapture }) {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const trimmed = email.trim()
     if (!trimmed || !trimmed.includes('@')) {
@@ -23,6 +23,13 @@ function EmailCaptureGate({ onCapture }) {
       return
     }
     localStorage.setItem('eeAcademy_freeEmail', trimmed)
+    try {
+      await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed, source: 'dashboard-gate' }),
+      })
+    } catch { /* non-blocking */ }
     onCapture(trimmed)
   }
 
@@ -98,7 +105,7 @@ const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
-  const { isSignedIn } = useAuth()
+  const { isSignedIn, isLoaded } = useAuth()
   const pathname = usePathname()
   const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
@@ -107,6 +114,19 @@ export default function DashboardLayout({ children }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const [supervisorRemarks, setSupervisorRemarks] = useState(null)
   const [remarksOpen, setRemarksOpen] = useState(false)
+  const [freeEmail, setFreeEmail] = useState(null)
+  const [emailChecked, setEmailChecked] = useState(false)
+
+  // Check localStorage for free email — runs once on mount (client-side only)
+  useEffect(() => {
+    const saved = localStorage.getItem('eeAcademy_freeEmail')
+    setFreeEmail(saved || null)
+    setEmailChecked(true)
+  }, [])
+
+  const handleEmailCapture = (email) => {
+    setFreeEmail(email)
+  }
 
   const dismissRemarks = () => {
     setSupervisorRemarks(null)
@@ -157,6 +177,16 @@ export default function DashboardLayout({ children }) {
 
   const activeId = ALL_NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
     ?? (pathname === '/dashboard' ? 'home' : null)
+
+  // Hold until Clerk + localStorage are both resolved to avoid flash
+  if (!emailChecked || !isLoaded) {
+    return <div style={{ minHeight: '100vh', background: '#fafafa' }} />
+  }
+
+  // Show full-screen email gate for visitors with no Clerk session and no saved email
+  if (!isSignedIn && !freeEmail) {
+    return <EmailCaptureGate onCapture={handleEmailCapture} />
+  }
 
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#fafafa', color: '#0a0a0a' }}>

@@ -100,7 +100,7 @@ export default function EmailSignupModal() {
         if (result.status === 'complete') {
           await setSignInActive({ session: result.createdSessionId })
           setStep('done')
-          setTimeout(() => router.push('/dashboard'), 800)
+          setTimeout(() => router.push('/course/module-1'), 800)
         }
       }
     } catch (err) {
@@ -246,7 +246,7 @@ export default function EmailSignupModal() {
             {/* What you get */}
             {step === 'email' && (
               <div className="px-8 py-4 flex items-center gap-6" style={{ borderTop: '1px solid #f0f0f0', background: '#fafafa' }}>
-                {['14 free modules', 'EE planner', 'Citation tool'].map(item => (
+                {['4 free modules', 'EE planner', 'Research tools'].map(item => (
                   <div key={item} className="flex items-center gap-1.5">
                     <div className="w-1 h-1 rounded-full flex-shrink-0" style={{ background: '#16a34a' }} />
                     <span className="text-[10px] font-medium" style={{ color: '#888' }}>{item}</span>

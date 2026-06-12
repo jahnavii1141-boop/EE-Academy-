@@ -60,14 +60,6 @@ function CheckoutButton({ href, priceId, children, className, style }) {
 
   const handleCheckout = async () => {
     if (isLoading) return
-
-    // Must be signed in so clerk_user_id is passed to Paddle custom_data.
-    // Without it the webhook can't grant access.
-    if (!userId) {
-      window.location.href = `/sign-up?redirect_url=${encodeURIComponent('/pricing')}`
-      return
-    }
-
     setIsLoading(true)
     try {
       if (PADDLE_CONFIG.clientToken && priceId) {
@@ -78,13 +70,15 @@ function CheckoutButton({ href, priceId, children, className, style }) {
         if (Paddle) {
           Paddle.Checkout.open({
             items: [{ priceId, quantity: 1 }],
-            customData: { clerk_user_id: userId },
+            // Pass clerk_user_id if already signed in — webhook uses it to grant access instantly.
+            // If not signed in, leave empty — verify-payment handles it after sign-up.
+            customData: userId ? { clerk_user_id: userId } : {},
             settings: {
               displayMode: 'overlay',
               theme: 'light',
-              // Paddle appends ?_ptxn=txn_xxx — DashboardHome reads it and
-              // calls /api/verify-payment as a backup if the webhook is slow.
-              successUrl: `${window.location.origin}/dashboard/home`,
+              // After payment → onboarding (Clerk middleware prompts sign-in if needed,
+              // preserving the ?_ptxn param so verify-payment can grant access post sign-up).
+              successUrl: `${window.location.origin}/onboarding?_ptxn={checkout.id}`,
             },
           })
           return
@@ -116,7 +110,7 @@ export default function Pricing() {
             flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
             <p className="text-sm text-emerald-800">
-              <strong>Try it first.</strong> Modules 1–3 and 5 are completely free — start immediately.
+              <strong>Try it first.</strong> Modules 1, 2, 3, and 5 are completely free — start immediately.
             </p>
             <Link href="/course/module-1"
               className="sm:ml-auto text-xs font-semibold text-emerald-700 underline underline-offset-2 flex-shrink-0 whitespace-nowrap">
@@ -132,7 +126,11 @@ export default function Pricing() {
           <MotionDiv variants={staggerItem}
             className="rounded-2xl border border-navy/10 bg-white flex flex-col p-6">
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-1" style={{ color: '#aaa' }}>Method</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>Method</p>
+              <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2"
+                style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>
+                Early bird offer
+              </span>
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-navy">${PRICING.method.price}</span>
               </div>
@@ -160,7 +158,11 @@ export default function Pricing() {
               Most Popular
             </span>
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-1 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+System</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-2 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+System</p>
+              <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2"
+                style={{ background: 'rgba(254,243,199,0.15)', color: 'rgba(253,230,138,0.9)', border: '1px solid rgba(253,230,138,0.25)' }}>
+                Early bird offer
+              </span>
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-white">${PRICING.methodAI.price}</span>
               </div>
@@ -178,7 +180,7 @@ export default function Pricing() {
               className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all"
               style={{ background: '#fff', color: '#0a0a0a' }}
             >
-              Enroll in Method+AI
+              Enroll in Method+System
             </CheckoutButton>
           </MotionDiv>
 
