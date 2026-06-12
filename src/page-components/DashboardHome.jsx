@@ -15,6 +15,164 @@ const SUBJECTS = [
   'Psychology', 'Social & Cultural Anthropology', 'Visual Arts', 'Other',
 ]
 
+// ── Start Here progression guide ─────────────────────────────────────────────
+const FREE_STEPS = [
+  { num: '01', label: 'Mindset & Examiner Thinking', href: '/course/module-1' },
+  { num: '02', label: 'IB Criteria & Grading', href: '/course/module-2' },
+  { num: '03', label: 'Choose Subject & Topic', href: '/course/module-3' },
+  { num: '05', label: 'EE Dump Research System', href: '/course/module-5' },
+]
+const PAID_STEPS = [
+  { num: '04', label: 'Research Question', href: '/course/module-4' },
+  { num: '06', label: 'Research Methods', href: '/course/module-6' },
+  { num: '07', label: 'EE Structure', href: '/course/module-7' },
+  { num: '08', label: 'Writing Each Section', href: '/course/module-8' },
+  { num: '09', label: 'Format & Citations', href: '/course/module-9' },
+  { num: '10', label: 'Intro & Conclusion', href: '/course/module-10' },
+  { num: '11', label: 'RPPF Mastery', href: '/course/module-11' },
+  { num: '13', label: '32/34 Analysis', href: '/course/module-13' },
+  { num: '14', label: 'Templates & Checklists', href: '/course/module-14' },
+]
+
+function StepChip({ step, active, color }) {
+  const style = active
+    ? { background: color === 'green' ? '#fff' : color === 'gold' ? '#fef3c7' : '#fff',
+        color: color === 'green' ? '#15803d' : color === 'gold' ? '#92400e' : '#0a0a0a',
+        border: `1px solid ${color === 'green' ? '#86efac' : color === 'gold' ? '#fde68a' : '#e0e0e0'}` }
+    : { background: '#fff', color: '#ccc', border: '1px solid #f0f0f0' }
+  return (
+    <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium"
+      style={style}>
+      <span className="font-mono text-[10px]" style={{ opacity: active ? 0.5 : 1 }}>{step.num}</span>
+      {step.label}
+      {!active && <span className="text-[10px]">🔒</span>}
+    </span>
+  )
+}
+
+function StartHereGuide({ hasPaid, isPremium }) {
+  return (
+    <div className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #e8e8e8', background: '#fff' }}>
+      <div className="px-5 py-3.5 flex items-center gap-2.5" style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
+        <span className="text-base" aria-hidden="true">🗺️</span>
+        <div>
+          <p className="text-xs font-bold" style={{ color: '#0a0a0a' }}>Start Here</p>
+          <p className="text-[11px]" style={{ color: '#aaa' }}>Your EE progression — follow in order</p>
+        </div>
+      </div>
+
+      <div className="p-5 space-y-4">
+        {/* FREE tier */}
+        <div className="rounded-xl p-4" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
+          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
+            style={{ background: '#dcfce7', color: '#15803d' }}>FREE — start here</span>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {FREE_STEPS.map((step, i) => (
+              <span key={step.num} className="flex items-center gap-1.5">
+                <Link href={step.href} style={{ textDecoration: 'none' }}>
+                  <StepChip step={step} active color="green" />
+                </Link>
+                {i < FREE_STEPS.length - 1 && (
+                  <span className="text-xs font-bold" style={{ color: '#86efac' }}>→</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Connector */}
+        <div className="flex items-center gap-3 pl-2">
+          <span className="text-sm" style={{ color: '#d1d5db' }}>↓</span>
+          {hasPaid ? (
+            <span className="text-xs font-semibold" style={{ color: '#22c55e' }}>✓ Method unlocked</span>
+          ) : (
+            <span className="text-xs" style={{ color: '#aaa' }}>
+              then unlock all modules →{' '}
+              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
+                Method $89
+              </Link>
+            </span>
+          )}
+        </div>
+
+        {/* PAID tier */}
+        <div className="rounded-xl p-4" style={{
+          background: hasPaid ? '#fafafa' : '#f9f9f9',
+          border: `1px solid ${hasPaid ? '#e0e0e0' : '#f0f0f0'}`,
+        }}>
+          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
+            style={{ background: hasPaid ? '#0a0a0a' : '#efefef', color: hasPaid ? '#fff' : '#bbb' }}>
+            METHOD · $89
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {PAID_STEPS.map((step, i) => (
+              <span key={step.num} className="flex items-center gap-1.5">
+                {hasPaid ? (
+                  <Link href={step.href} style={{ textDecoration: 'none' }}>
+                    <StepChip step={step} active color="dark" />
+                  </Link>
+                ) : (
+                  <StepChip step={step} active={false} color="dark" />
+                )}
+                {i < PAID_STEPS.length - 1 && (
+                  <span className="text-xs" style={{ color: hasPaid ? '#d1d5db' : '#efefef' }}>→</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Connector */}
+        <div className="flex items-center gap-3 pl-2">
+          <span className="text-sm" style={{ color: '#d1d5db' }}>↓</span>
+          {isPremium ? (
+            <span className="text-xs font-semibold" style={{ color: '#d97706' }}>✓ Method+System unlocked</span>
+          ) : (
+            <span className="text-xs" style={{ color: '#aaa' }}>
+              + AI tools →{' '}
+              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
+                Method+System $149
+              </Link>
+            </span>
+          )}
+        </div>
+
+        {/* PREMIUM tier */}
+        <div className="rounded-xl p-4" style={{
+          background: isPremium ? '#fffbeb' : '#f9f9f9',
+          border: `1px solid ${isPremium ? '#fde68a' : '#f0f0f0'}`,
+        }}>
+          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
+            style={{ background: isPremium ? '#fef3c7' : '#efefef', color: isPremium ? '#92400e' : '#bbb' }}>
+            METHOD+SYSTEM · $149
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5">
+            {[
+              { num: 'AI', label: 'How to Use AI the Right Way', href: '/course/ai-module' },
+              { num: '⚡', label: 'EE Grade Scan', href: '/dashboard/scan' },
+              { num: '✦', label: 'Polish Pass', href: '/dashboard/scan' },
+              { num: '📝', label: 'Supervisor Reply Drafter', href: '/dashboard/scan' },
+            ].map((item, i, arr) => (
+              <span key={item.num} className="flex items-center gap-1.5">
+                {isPremium ? (
+                  <Link href={item.href} style={{ textDecoration: 'none' }}>
+                    <StepChip step={item} active color="gold" />
+                  </Link>
+                ) : (
+                  <StepChip step={item} active={false} color="gold" />
+                )}
+                {i < arr.length - 1 && (
+                  <span className="text-xs" style={{ color: isPremium ? '#fcd34d' : '#efefef' }}>+</span>
+                )}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function DashboardHome() {
   const { isSignedIn } = useAuth()
   const searchParams = useSearchParams()
@@ -31,6 +189,8 @@ export default function DashboardHome() {
   const [paymentVerifying, setPaymentVerifying] = useState(false)
   const [paymentSuccess, setPaymentSuccess] = useState(false)
   const [essayText, setEssayText] = useState('')
+  const [hasPaid, setHasPaid] = useState(false)
+  const [isPremium, setIsPremium] = useState(false)
 
   // ── Verify Paddle payment on return from checkout ──────────────────────────
   // Paddle appends ?_ptxn=txn_xxx to the successUrl automatically.
@@ -66,6 +226,8 @@ export default function DashboardHome() {
             supervisor_name: workspace.supervisor_name ?? '',
             submission_deadline: workspace.submission_deadline ?? '',
           })
+          setHasPaid(!!workspace.has_paid)
+          setIsPremium(workspace.tier === 'premium')
           // If no RQ yet, open edit mode automatically
           if (!workspace.research_question) setEditing(true)
         } else {
@@ -125,6 +287,9 @@ export default function DashboardHome() {
             </div>
           </div>
         )}
+
+        {/* Start Here progression guide */}
+        <StartHereGuide hasPaid={hasPaid} isPremium={isPremium} />
 
         {/* Subject hero banner */}
         {form.subject && (

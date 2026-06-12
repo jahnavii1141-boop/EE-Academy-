@@ -85,6 +85,7 @@ export default function Hero() {
   }
 
   return (
+    <>
     <section className="relative overflow-hidden min-h-[70vh] flex items-center">
       {/* Dark navy base */}
       <div className="absolute inset-0 bg-navy-deep" />
@@ -169,5 +170,6 @@ export default function Hero() {
       </div>
     </section>
     {showCapture && <SimpleEmailCapture onClose={() => setShowCapture(false)} />}
+    </>
   )
 }

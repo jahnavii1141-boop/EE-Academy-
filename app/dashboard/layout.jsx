@@ -120,8 +120,8 @@ export default function DashboardLayout({ children }) {
   // Check localStorage for free email — runs once on mount (client-side only)
   useEffect(() => {
     const saved = localStorage.getItem('eeAcademy_freeEmail')
-    setFreeEmail(saved || null)
-    setEmailChecked(true)
+    setFreeEmail(saved || null) // eslint-disable-line react-hooks/set-state-in-effect
+    setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
 
   const handleEmailCapture = (email) => {

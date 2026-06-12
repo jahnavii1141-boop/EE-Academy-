@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useUser, useAuth } from '@clerk/nextjs'
 
@@ -14,7 +14,7 @@ const SUBJECTS = [
 
 const STEPS = ['welcome', 'subject', 'rq', 'deadline', 'generating', 'done']
 
-export default function OnboardingPage() {
+function OnboardingPageInner() {
   const { user } = useUser()
   const { isSignedIn } = useAuth()
   const router = useRouter()
@@ -299,5 +299,13 @@ export default function OnboardingPage() {
         )}
       </div>
     </div>
+  )
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense>
+      <OnboardingPageInner />
+    </Suspense>
   )
 }
