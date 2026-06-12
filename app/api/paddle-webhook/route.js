@@ -89,13 +89,12 @@ export async function POST(request) {
 
   const supabase = createServiceClient()
 
-  // Upsert — create row if user never opened dashboard, or update existing
+  // Step 1: commit access (no tier — cannot be blocked by schema constraints)
   const { error } = await supabase
     .from('user_workspace')
     .upsert({
       clerk_user_id: clerkUserId,
       has_paid: true,
-      tier,
       paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
@@ -104,6 +103,12 @@ export async function POST(request) {
     console.error('Paddle webhook: Supabase error', error)
     return Response.json({ error: error.message }, { status: 500 })
   }
+
+  // Step 2: set tier (best-effort — access is already granted above)
+  await supabase
+    .from('user_workspace')
+    .update({ tier, updated_at: new Date().toISOString() })
+    .eq('clerk_user_id', clerkUserId)
 
   // ── Stop marketing sequence for this buyer ──────────────────────────────────
   // Paddle includes the customer email in transaction.customer.email.

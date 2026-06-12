@@ -34,10 +34,10 @@ export async function GET(request) {
     await supabase.from('user_workspace').upsert({
       clerk_user_id: userId,
       has_paid: true,
-      tier: 'basic',
       paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
+    await supabase.from('user_workspace').update({ tier: 'basic', updated_at: new Date().toISOString() }).eq('clerk_user_id', userId)
     return Response.json({ verified: true, tier: 'basic', note: 'optimistic_grant' })
   }
 
@@ -68,14 +68,15 @@ export async function GET(request) {
   const priceId = txn?.items?.[0]?.price?.id
   const tier = getTierFromPriceId(priceId)
 
-  // Grant access
+  // Grant access — two separate writes so a tier constraint never blocks has_paid
   const supabase = createServiceClient()
+
+  // Step 1: commit access (no tier — cannot be blocked by schema constraints)
   const { error } = await supabase
     .from('user_workspace')
     .upsert({
       clerk_user_id: userId,
       has_paid: true,
-      tier,
       paid_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
@@ -84,6 +85,12 @@ export async function GET(request) {
     console.error('verify-payment: Supabase error', error)
     return Response.json({ error: error.message }, { status: 500 })
   }
+
+  // Step 2: set tier (best-effort — access is already granted above)
+  await supabase
+    .from('user_workspace')
+    .update({ tier, updated_at: new Date().toISOString() })
+    .eq('clerk_user_id', userId)
 
   console.log(`verify-payment: granted ${tier} to ${userId} via txn ${txnId}`)
   return Response.json({ verified: true, tier })
