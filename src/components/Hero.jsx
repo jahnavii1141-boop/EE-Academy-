@@ -58,7 +58,7 @@ export default function Hero() {
                 <Link href="/pricing" className="btn-outline-light text-sm">See the system</Link>
               </div>
               <p className="text-sm text-steel/70 max-w-md">
-                Modules 1–3 and 5 are free — no card needed.
+                Modules 1–3 and 5 are free — start immediately.
               </p>
             </AnimateIn>
           </div>

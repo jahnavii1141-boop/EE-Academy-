@@ -3,7 +3,10 @@
 import { useState, useEffect } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import Link from 'next/link'
-import { Copy, Trash2, Check, ExternalLink, Link2 } from 'lucide-react'
+import { Copy, Trash2, Check, ExternalLink, Link2, Lock } from 'lucide-react'
+
+const SHARE_COUNT_KEY = 'eeAcademy_shareCount'
+const FREE_SHARE_LIMIT = 3
 
 export default function DashboardShare() {
   const { isSignedIn } = useAuth()
@@ -11,28 +14,41 @@ export default function DashboardShare() {
   const [loading, setLoading] = useState(true)
   const [generating, setGenerating] = useState(false)
   const [copied, setCopied] = useState(false)
+  const [isPremium, setIsPremium] = useState(false)
+  const [shareCount, setShareCount] = useState(0)
 
   const shareUrl = token
     ? `${typeof window !== 'undefined' ? window.location.origin : 'https://theextendedessay.com'}/share/${token}`
     : null
+
+  const atFreeLimit = !isPremium && shareCount >= FREE_SHARE_LIMIT
 
   useEffect(() => {
     if (!isSignedIn) {
       setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
       return
     }
-    fetch('/api/share')
-      .then(r => r.json())
-      .then(({ token }) => setToken(token))
-      .catch(() => {})
-      .finally(() => setLoading(false))
+    const count = parseInt(localStorage.getItem(SHARE_COUNT_KEY) || '0', 10)
+    setShareCount(count) // eslint-disable-line react-hooks/set-state-in-effect
+
+    Promise.all([
+      fetch('/api/share').then(r => r.json()),
+      fetch('/api/workspace').then(r => r.json()),
+    ]).then(([shareData, wsData]) => {
+      setToken(shareData.token ?? null)
+      setIsPremium(!!wsData.workspace?.has_paid)
+    }).catch(() => {}).finally(() => setLoading(false))
   }, [isSignedIn])
 
   const generate = async () => {
+    if (atFreeLimit) return
     setGenerating(true)
     const res = await fetch('/api/share', { method: 'POST' })
     const { token } = await res.json()
     setToken(token)
+    const newCount = shareCount + 1
+    setShareCount(newCount)
+    localStorage.setItem(SHARE_COUNT_KEY, String(newCount))
     setGenerating(false)
   }
 
@@ -70,7 +86,27 @@ export default function DashboardShare() {
           Generate a view-only link. Your supervisor sees your RQ, Planner, and EE notes — no account needed. Revoke any time.
         </p>
 
-        {!token ? (
+        {/* Premium gate */}
+        {atFreeLimit && (
+          <div className="rounded-2xl p-8 text-center mb-4"
+            style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4"
+              style={{ background: '#f5f5f5' }}>
+              <Lock size={18} style={{ color: '#aaa' }} />
+            </div>
+            <p className="text-sm font-semibold mb-1" style={{ color: '#0a0a0a' }}>Free limit reached</p>
+            <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 260, margin: '4px auto 24px' }}>
+              You've used your {FREE_SHARE_LIMIT} free share link generations. Upgrade to create and revoke links without limit.
+            </p>
+            <Link href="/pricing"
+              className="inline-flex text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
+              style={{ background: '#0a0a0a', color: '#fff' }}>
+              Upgrade to unlock →
+            </Link>
+          </div>
+        )}
+
+        {!atFreeLimit && !token && (
           /* No link yet */
           <div className="rounded-2xl p-8 text-center"
             style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
@@ -82,6 +118,11 @@ export default function DashboardShare() {
             <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 220, margin: '4px auto 24px' }}>
               Create a private, view-only link for your supervisor.
             </p>
+            {!isPremium && (
+              <p className="text-[11px] mb-4" style={{ color: '#bbb' }}>
+                {FREE_SHARE_LIMIT - shareCount} of {FREE_SHARE_LIMIT} free generations remaining
+              </p>
+            )}
             <button
               onClick={generate}
               disabled={generating}
@@ -95,7 +136,9 @@ export default function DashboardShare() {
               {generating ? 'Generating…' : 'Generate share link'}
             </button>
           </div>
-        ) : (
+        )}
+
+        {!atFreeLimit && token && (
           /* Link is active */
           <div className="flex flex-col gap-3">
 
@@ -169,6 +212,12 @@ export default function DashboardShare() {
                 <ExternalLink size={12} /> Preview
               </Link>
             </div>
+
+            {!isPremium && (
+              <p className="text-[11px]" style={{ color: '#bbb' }}>
+                {Math.max(0, FREE_SHARE_LIMIT - shareCount)} of {FREE_SHARE_LIMIT} free generations remaining
+              </p>
+            )}
           </div>
         )}
       </div>

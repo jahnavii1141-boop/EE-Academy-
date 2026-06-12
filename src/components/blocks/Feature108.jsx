@@ -24,7 +24,7 @@ const PILLARS = [
     headline: 'AI reads your draft the way an examiner does.',
     body: 'The Grade Scan runs your essay against the actual IB criteria — not general feedback, but criterion-by-criterion analysis telling you exactly where marks are being dropped and what to fix. The Polish Pass handles language. The Supervisor Reply Drafter handles the awkward email.',
     features: ['AI Grade Scan (criteria-by-criteria)', 'Polish Pass — argument + language', 'Supervisor Reply Drafter', '32/34 essay full breakdown'],
-    cta: { label: 'See Method+AI', href: '/pricing' },
+    cta: { label: 'See Method+System', href: '/pricing' },
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
     imageAlt: 'Graded paper with annotations',
   },

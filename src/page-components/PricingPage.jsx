@@ -8,7 +8,7 @@ import SEOHead from '../components/SEOHead'
 
 // ── Three pillars comparison ─────────────────────────────────────────────────
 const COMPARISON = [
-  // [label, method, methodAI, methodMe]
+  // [label, method, methodSystem, methodMe]
   ['14-module EE curriculum',            true,  true,  true],
   ['EE Planner + RQ Checker',            true,  true,  true],
   ['Essay editor (autosave + share)',     true,  true,  true],
@@ -17,19 +17,17 @@ const COMPARISON = [
   ['Polish Pass + Supervisor Reply tool', false, true,  true],
   ['32/34 essay + full analysis',         false, true,  true],
   ['All templates & SOPs',               false, true,  true],
-  ['3 × 45-min sessions with founder',   false, false, true],
-  ['Essay read-through each session',    false, false, true],
 ]
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ_ITEMS = [
   {
     q: 'Is there a free option?',
-    a: 'Yes — Modules 1, 2, 3, and 5 are completely free with no card required. Start at the dashboard and access them immediately.',
+    a: 'Yes — Modules 1, 2, 3, and 5 are completely free. Start at the dashboard and access them immediately.',
   },
   {
-    q: "What's the difference between Method and Method+AI?",
-    a: 'Method is the full 14-module curriculum plus planning and writing tools. Method+AI adds the AI Grade Scan (which reads your draft against the actual IB criteria and tells you exactly where you\'re losing marks), the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
+    q: "What's the difference between Method and Method+System?",
+    a: 'Method is the full 14-module curriculum plus planning and writing tools. Method+System adds the AI Grade Scan (which reads your draft against the actual IB criteria and tells you exactly where you\'re losing marks), the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
   },
   {
     q: "What if it doesn't help me?",
@@ -37,7 +35,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Can I pay in instalments?',
-    a: 'Yes. Method+AI is available as 3 × $63. Method+Me is available as 3 × $179. Select the instalment option at checkout.',
+    a: 'Yes. Method+System is available as 3 × $63. Method+Me is available as 3 × $179. Select the instalment option at checkout.',
   },
   {
     q: 'Is this up to date with the current IB syllabus?',
@@ -74,8 +72,8 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-cream">
       <SEOHead
-        title="IB Extended Essay Course Pricing — Method / Method+AI / Method+Me | EE Academy"
-        description="Three tiers, one system. Method $89 · Method+AI $179 · Method+Me $497. Built by a 32/34 Cambridge graduate. 30-day money-back guarantee."
+        title="IB Extended Essay Course Pricing — Method / Method+System / Method+Me | EE Academy"
+        description="Three tiers, one system. Method $89 · Method+System $179 · Method+Me $497. Built by a 32/34 Cambridge graduate. 30-day money-back guarantee."
         canonical="/pricing"
       />
 
@@ -122,8 +120,9 @@ export default function PricingPage() {
               px-5 py-3 border-b border-navy/8" style={{ color: '#aaa', background: '#fafafa' }}>
               <span className="col-span-1" />
               <span className="text-center">Method</span>
-              <span className="text-center" style={{ color: '#0a0a0a' }}>Method+AI</span>
+              <span className="text-center" style={{ color: '#0a0a0a' }}>Method+System</span>
               <span className="text-center">Method+Me</span>
+
             </div>
             {COMPARISON.map(([label, method, ai, me], i) => (
               <div key={i} className="grid grid-cols-4 px-5 py-3 border-b border-navy/6 last:border-0 text-sm items-center">

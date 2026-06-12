@@ -92,7 +92,7 @@ const FAQ_JSON_LD = {
       name: 'Can I start for free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Modules 1–3 and 5 are completely free — no card, no login required. You can start immediately at theextendedessay.com/course/module-1.',
+        text: 'Yes. Modules 1–3 and 5 are completely free. You can start immediately at theextendedessay.com/course/module-1.',
       },
     },
     {
@@ -116,7 +116,7 @@ const FAQ_JSON_LD = {
       name: 'What do I get with full access?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Full access unlocks all 14 modules, the EE Planner, essay editor with autosave, the EE Dump research workspace, the AI Grade Scan tool, templates, RPPF guidance, and the complete 32/34 essay breakdown. One-time payment, lifetime access.',
+        text: 'Full access unlocks all 14 modules, the EE Planner, essay editor with autosave, the EE Dump research workspace, the AI Grade Scan tool, templates, RPPF guidance, and the complete 32/34 essay breakdown. Yearly subscription.',
       },
     },
     {

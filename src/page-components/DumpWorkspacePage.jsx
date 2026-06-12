@@ -254,7 +254,7 @@ function DumpPaywall() {
           Unlock unlimited →
         </Link>
         <p style={{ fontSize: 11, color: '#bbb', marginTop: 14 }}>
-          One-time payment · Lifetime access
+          Yearly subscription
         </p>
       </div>
     </div>

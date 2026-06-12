@@ -2,7 +2,7 @@ import PricingPage from '../../src/page-components/PricingPage'
 
 export const metadata = {
   title: 'The Extended Essay Academy — Plans & Pricing',
-  description: 'Unlock the full IB Extended Essay system, Bonus Vault tools, templates, prompts, and the 1-Day Protocol with one-time pricing.',
+  description: 'Unlock the full IB Extended Essay system — 14 modules, AI Grade Scan, planner, essay editor, and templates. Yearly subscription.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }
 
@@ -24,7 +24,7 @@ const PRODUCT_JSON_LD = {
     {
       '@type': 'Offer',
       name: 'Method',
-      description: '14-module EE curriculum, EE Planner, essay editor, research workspace, citation generator. Lifetime access.',
+      description: '14-module EE curriculum, EE Planner, essay editor, research workspace, citation generator. Yearly subscription.',
       price: '89',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
@@ -33,8 +33,8 @@ const PRODUCT_JSON_LD = {
     },
     {
       '@type': 'Offer',
-      name: 'Method+AI',
-      description: 'Everything in Method plus AI Grade Scan (criteria-by-criteria), Polish Pass, Supervisor Reply Drafter, and all templates. Lifetime access.',
+      name: 'Method+System',
+      description: 'Everything in Method plus AI Grade Scan (criteria-by-criteria), Polish Pass, Supervisor Reply Drafter, and all templates. Yearly subscription.',
       price: '179',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',

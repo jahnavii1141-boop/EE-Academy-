@@ -4,7 +4,7 @@
 //
 // PRICING (locked at launch — do not scatter prices elsewhere):
 //   Method        $89   one-time  → 14 modules + planner + RQ Checker + essay editor
-//   Method+AI    $179   one-time  → Method + AI Grade Scan + Polish Pass
+//   Method+System $179  one-time  → Method + AI Grade Scan + Polish Pass
 //   Method+Me    $497   one-time  → Method+AI + 3 founder sessions (or 3 × $179)
 //
 // Squad and School are NOT in the main grid.
@@ -40,9 +40,9 @@ export const PRICING = {
   },
   methodAI: {
     price: 179,
-    label: 'Method+AI',
-    slug: 'method-ai',
-    tagline: 'The system + examiner-grade AI.',
+    label: 'Method+System',
+    slug: 'method-system',
+    tagline: 'The complete system, with AI.',
     currency: '$',
     // 3-payment option: 3 × $63
     installments: { count: 3, each: 63 },

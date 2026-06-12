@@ -150,7 +150,7 @@ export default function DashboardModules() {
             style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
             <div>
               <p className="text-sm font-medium mb-0.5" style={{ color: '#0a0a0a' }}>Unlock all 14 modules</p>
-              <p className="text-xs" style={{ color: '#aaa' }}>One-time payment. Lifetime access. 30-day guarantee.</p>
+              <p className="text-xs" style={{ color: '#aaa' }}>Yearly subscription. 30-day guarantee.</p>
             </div>
             <Link href="/pricing"
               className="text-xs font-semibold px-4 py-2 rounded-lg flex-shrink-0 transition-all"

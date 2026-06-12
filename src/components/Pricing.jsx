@@ -17,7 +17,7 @@ const METHOD_FEATURES = [
   'Research Question Checker',
   'Essay editor with autosave',
   'Citation generator',
-  'Lifetime access',
+  'Yearly subscription',
 ]
 
 const METHOD_AI_FEATURES = [
@@ -116,7 +116,7 @@ export default function Pricing() {
             flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
             <p className="text-sm text-emerald-800">
-              <strong>Try it first.</strong> Modules 1–3 and 5 are completely free — no card, no login required.
+              <strong>Try it first.</strong> Modules 1–3 and 5 are completely free — start immediately.
             </p>
             <Link href="/course/module-1"
               className="sm:ml-auto text-xs font-semibold text-emerald-700 underline underline-offset-2 flex-shrink-0 whitespace-nowrap">
@@ -136,7 +136,7 @@ export default function Pricing() {
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-navy">${PRICING.method.price}</span>
               </div>
-              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>one-time · lifetime access</p>
+              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>yearly subscription</p>
               <ul className="space-y-2.5 mb-8">
                 {METHOD_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
@@ -160,11 +160,11 @@ export default function Pricing() {
               Most Popular
             </span>
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-1 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+AI</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-1 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+System</p>
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-white">${PRICING.methodAI.price}</span>
               </div>
-              <p className="text-[12px] mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>one-time · lifetime access</p>
+              <p className="text-[12px] mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>yearly subscription</p>
               <p className="text-[11px] mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>
                 or {PRICING.methodAI.installments.count} × ${PRICING.methodAI.installments.each}
               </p>
