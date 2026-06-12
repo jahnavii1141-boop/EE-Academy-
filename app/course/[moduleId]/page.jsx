@@ -33,6 +33,7 @@ export default async function CoursePage({ params }) {
 
   const { userId } = await auth()
   let hasPaid = false
+  let isPremium = false
 
   if (userId) {
     const adminIds = (process.env.ADMIN_CLERK_USER_IDS || '')
@@ -42,20 +43,22 @@ export default async function CoursePage({ params }) {
 
     if (adminIds.includes(userId)) {
       hasPaid = true
+      isPremium = true
     } else {
       const supabase = createServiceClient()
       const { data } = await supabase
         .from('user_workspace')
-        .select('has_paid')
+        .select('has_paid, tier')
         .eq('clerk_user_id', userId)
         .maybeSingle()
 
       hasPaid = data?.has_paid === true
+      isPremium = hasPaid && data?.tier === 'premium'
     }
   }
 
   const fullModule = COURSE_MODULES.find(m => m.id === moduleId)
-  const { canAccess, module } = resolveCourseAccess(catalogModule, fullModule, hasPaid)
+  const { canAccess, module } = resolveCourseAccess(catalogModule, fullModule, hasPaid, isPremium)
 
   return (
     <CourseModulePage

@@ -1,5 +1,6 @@
-export function resolveCourseAccess(catalogModule, fullModule, hasPaid) {
-  const canAccess = catalogModule.free || hasPaid
+export function resolveCourseAccess(catalogModule, fullModule, hasPaid, isPremium = false) {
+  const canAccess = catalogModule.free
+    || (catalogModule.premium ? isPremium : hasPaid)
 
   return {
     canAccess,

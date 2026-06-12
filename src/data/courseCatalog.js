@@ -80,6 +80,7 @@ export const COURSE_CATALOG = [
     id: 'ai-module',
     number: 'AI',
     free: false,
+    premium: true,
     title: 'How to Use AI the Right Way for Your EE',
     tagline: 'Use it like a top student, not like someone who wants to fail.',
   },
