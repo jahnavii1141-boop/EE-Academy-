@@ -22,6 +22,7 @@ function EmailCaptureBanner({ onDismiss }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: trimmed, source: 'dashboard-banner' }),
       })
+      localStorage.setItem('eeAcademy_freeEmail', trimmed)
       localStorage.setItem('eeAcademy_emailCaptured', '1')
       setStatus('done')
       setTimeout(onDismiss, 2500)
@@ -123,7 +124,7 @@ export default function Dashboard() {
   // Email banner: show for non-signed-in users who haven't submitted or dismissed
   useEffect(() => {
     if (isSignedIn) return
-    const captured = localStorage.getItem('eeAcademy_emailCaptured')
+    const captured = localStorage.getItem('eeAcademy_freeEmail') || localStorage.getItem('eeAcademy_emailCaptured')
     const dismissed = localStorage.getItem('eeAcademy_bannerDismissed')
     if (!captured && !dismissed) setShowEmailBanner(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [isSignedIn])
