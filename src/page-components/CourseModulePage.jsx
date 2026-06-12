@@ -159,12 +159,12 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
           </svg>
         </div>
         <h3 className="font-semibold text-[#0a0a0a] text-xl mb-2" style={{ letterSpacing: '-0.02em' }}>
-          {isPremiumOnly ? 'Premium module' : 'Unlock the full curriculum'}
+          {isPremiumOnly ? 'Method + System module' : 'Unlock the full curriculum'}
         </h3>
         <p className="text-sm max-w-xs mx-auto mb-8 leading-relaxed" style={{ color: '#999' }}>
           {isPremiumOnly
-            ? 'This module is included in the Premium plan — get access to the AI prompts, the 32/34 essay analysis, and more.'
-            : 'Enroll to unlock all 14 modules including the complete writing system, AI prompts, and a real 32/34 essay breakdown.'}
+            ? 'This module is included in Method + System — the complete plan with the full writing system and 32/34 essay breakdown.'
+            : 'Enroll to unlock all 14 modules including the complete writing system and a real 32/34 essay breakdown.'}
         </p>
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
           {!isSignedIn && (
@@ -178,7 +178,7 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
           <Link href="/pricing"
             className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
             style={{ background: '#0a0a0a', color: '#fff' }}>
-            {isPremiumOnly ? 'Upgrade to Premium →' : 'View plans →'}
+            {isPremiumOnly ? 'Get Method + System →' : 'View plans →'}
           </Link>
         </div>
         <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Yearly subscription</p>

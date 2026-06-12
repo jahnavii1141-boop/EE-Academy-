@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ScanLine } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const SUBJECTS = [
@@ -129,7 +129,7 @@ function StartHereGuide({ hasPaid, isPremium }) {
             <span className="text-xs font-semibold" style={{ color: '#d97706' }}>✓ Method+System unlocked</span>
           ) : (
             <span className="text-xs" style={{ color: '#aaa' }}>
-              + AI tools →{' '}
+              + the full system →{' '}
               <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
                 Method+System $149
               </Link>
@@ -146,27 +146,15 @@ function StartHereGuide({ hasPaid, isPremium }) {
             style={{ background: isPremium ? '#fef3c7' : '#efefef', color: isPremium ? '#92400e' : '#bbb' }}>
             METHOD+SYSTEM · $149
           </span>
-          <div className="flex flex-wrap items-center gap-1.5">
-            {[
-              { num: 'AI', label: 'How to Use AI the Right Way', href: '/course/ai-module' },
-              { num: '⚡', label: 'EE Grade Scan', href: '/dashboard/scan' },
-              { num: '✦', label: 'Polish Pass', href: '/dashboard/scan' },
-              { num: '📝', label: 'Supervisor Reply Drafter', href: '/dashboard/scan' },
-            ].map((item, i, arr) => (
-              <span key={item.num} className="flex items-center gap-1.5">
-                {isPremium ? (
-                  <Link href={item.href} style={{ textDecoration: 'none' }}>
-                    <StepChip step={item} active color="gold" />
-                  </Link>
-                ) : (
-                  <StepChip step={item} active={false} color="gold" />
-                )}
-                {i < arr.length - 1 && (
-                  <span className="text-xs" style={{ color: isPremium ? '#fcd34d' : '#efefef' }}>+</span>
-                )}
-              </span>
-            ))}
-          </div>
+          {isPremium ? (
+            <p className="text-sm font-medium" style={{ color: '#92400e' }}>
+              Everything in Method + the full writing system unlocked.
+            </p>
+          ) : (
+            <p className="text-sm" style={{ color: '#bbb' }}>
+              🔒 Includes everything in Method + the complete writing system.
+            </p>
+          )}
         </div>
       </div>
     </div>
@@ -514,7 +502,6 @@ export default function DashboardHome() {
               {[
                 { href: '/dump', icon: Database, label: 'Citations', desc: 'Generate citations from URLs' },
                 { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
-                { href: '/dashboard/scan', icon: ScanLine, label: 'EE Scan', desc: 'Get examiner feedback', isNew: true },
                 { href: '/dashboard/modules', icon: BookOpen, label: 'Modules', desc: 'Guided EE lessons' },
                 { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
               ].map(({ href, icon: Icon, label, desc, isNew }) => (

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  ScanLine, MessageSquare, ChevronDown, ChevronUp, X,
+  MessageSquare, ChevronDown, ChevronUp, X,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -93,7 +93,6 @@ const NAV_MAIN = [
   { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
   { id: 'dump',    label: 'EE Dump',     icon: Database,  href: '/dashboard/dump' },
   { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner' },
-  { id: 'scan',    label: 'EE Scan',    icon: ScanLine,  href: '/dashboard/scan', isNew: true },
 ]
 
 const NAV_MORE = [
