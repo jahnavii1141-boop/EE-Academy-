@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const SUBJECTS = [
@@ -52,7 +52,7 @@ function StepChip({ step, active, color }) {
 
 function StartHereGuide({ hasPaid, isPremium }) {
   return (
-    <div className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #e8e8e8', background: '#fff' }}>
+    <div id="tour-guide" className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #e8e8e8', background: '#fff' }}>
       <div className="px-5 py-3.5 flex items-center gap-2.5" style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
         <span className="text-base" aria-hidden="true">🗺️</span>
         <div>
@@ -161,6 +161,146 @@ function StartHereGuide({ hasPaid, isPremium }) {
   )
 }
 
+// ── Onboarding Tour ───────────────────────────────────────────────────────────
+const TOUR_KEY = 'eeAcademy_tourDone'
+
+const TOUR_STEPS = [
+  { target: null, emoji: '👋', title: 'Welcome to your EE workspace', body: "Quick tour — 20 seconds. We'll show you what's here." },
+  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Free modules first — then unlock the full writing system.', arrow: 'top' },
+  { target: 'tour-nav-modules', emoji: '📚', title: 'Modules', body: '14 lessons from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
+  { target: 'tour-nav-dump', emoji: '🗂️', title: 'EE Dump', body: 'Paste a paragraph from any source — auto-extracts the citation for your bibliography.', arrow: 'left' },
+  { target: 'tour-nav-essay', emoji: '✍️', title: 'My Essay', body: 'Write your draft and track your word count. Everything saves automatically.', arrow: 'left' },
+]
+
+function DashboardTour({ onDone }) {
+  const [step, setStep] = useState(0)
+  const [rect, setRect] = useState(null)
+  const current = TOUR_STEPS[step]
+  const isLast = step === TOUR_STEPS.length - 1
+  const PAD = 10
+
+  useEffect(() => {
+    if (!current.target) { setRect(null); return } // eslint-disable-line react-hooks/set-state-in-effect
+    const measure = () => {
+      const el = document.getElementById(current.target)
+      if (el) setRect(el.getBoundingClientRect()) // eslint-disable-line react-hooks/set-state-in-effect
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [step, current.target])
+
+  const next = () => { if (isLast) onDone(); else setStep(s => s + 1) }
+
+  // Tooltip card position
+  let cardStyle = {}
+  let arrowEl = null
+
+  if (!rect) {
+    cardStyle = { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }
+  } else if (current.arrow === 'top') {
+    // tooltip below element
+    cardStyle = {
+      position: 'fixed',
+      top: rect.bottom + PAD + 12,
+      left: Math.min(rect.left + rect.width / 2, window.innerWidth - 290),
+      transform: 'translateX(-50%)',
+    }
+    arrowEl = (
+      <div style={{
+        position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)',
+        width: 0, height: 0,
+        borderLeft: '8px solid transparent', borderRight: '8px solid transparent',
+        borderBottom: '8px solid #fff',
+        filter: 'drop-shadow(0 -1px 0 #e8e8e8)',
+      }} />
+    )
+  } else if (current.arrow === 'left') {
+    // tooltip to the right of element
+    cardStyle = {
+      position: 'fixed',
+      top: rect.top + rect.height / 2,
+      left: rect.right + PAD + 12,
+      transform: 'translateY(-50%)',
+    }
+    arrowEl = (
+      <div style={{
+        position: 'absolute', left: -8, top: '50%', transform: 'translateY(-50%)',
+        width: 0, height: 0,
+        borderTop: '8px solid transparent', borderBottom: '8px solid transparent',
+        borderRight: '8px solid #fff',
+        filter: 'drop-shadow(-1px 0 0 #e8e8e8)',
+      }} />
+    )
+  }
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 9990 }} onMouseDown={e => e.stopPropagation()}>
+      {/* Overlay */}
+      {!rect ? (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', zIndex: 9991 }} />
+      ) : (
+        <div style={{
+          position: 'fixed',
+          top: rect.top - PAD, left: rect.left - PAD,
+          width: rect.width + PAD * 2, height: rect.height + PAD * 2,
+          borderRadius: 14,
+          boxShadow: '0 0 0 9999px rgba(0,0,0,0.55)',
+          zIndex: 9991,
+          pointerEvents: 'none',
+          border: '2px solid rgba(255,255,255,0.25)',
+        }} />
+      )}
+
+      {/* Tooltip card */}
+      <div style={{
+        ...cardStyle,
+        zIndex: 9992,
+        background: '#fff',
+        borderRadius: 18,
+        padding: '22px 24px 18px',
+        width: 264,
+        boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+        border: '1px solid #e8e8e8',
+        position: cardStyle.position,
+      }}>
+        {arrowEl}
+        <p style={{ fontSize: 22, marginBottom: 10 }}>{current.emoji}</p>
+        <p style={{ fontWeight: 700, fontSize: 14, color: '#0a0a0a', marginBottom: 6, letterSpacing: '-0.02em' }}>
+          {current.title}
+        </p>
+        <p style={{ fontSize: 12.5, color: '#888', lineHeight: 1.65, marginBottom: 18 }}>
+          {current.body}
+        </p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <button onClick={onDone}
+            style={{ fontSize: 11.5, color: '#ccc', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+            Skip tour
+          </button>
+          <button onClick={next} style={{
+            display: 'flex', alignItems: 'center', gap: 4,
+            fontSize: 12.5, fontWeight: 600, color: '#fff',
+            background: '#0a0a0a', border: 'none', borderRadius: 10,
+            padding: '8px 16px', cursor: 'pointer',
+          }}>
+            {isLast ? 'Done' : 'Next'} {!isLast && <ChevronRight size={13} />}
+          </button>
+        </div>
+        {/* Step dots */}
+        <div style={{ display: 'flex', gap: 5, justifyContent: 'center', marginTop: 14 }}>
+          {TOUR_STEPS.map((_, i) => (
+            <span key={i} style={{
+              display: 'block', width: i === step ? 14 : 5, height: 5,
+              borderRadius: 999, transition: 'width 0.2s',
+              background: i === step ? '#0a0a0a' : '#e0e0e0',
+            }} />
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export default function DashboardHome() {
   const { isSignedIn } = useAuth()
   const searchParams = useSearchParams()
@@ -179,6 +319,7 @@ export default function DashboardHome() {
   const [essayText, setEssayText] = useState('')
   const [hasPaid, setHasPaid] = useState(false)
   const [isPremium, setIsPremium] = useState(false)
+  const [showTour, setShowTour] = useState(false)
 
   // ── Verify Paddle payment on return from checkout ──────────────────────────
   // Paddle appends ?_ptxn=txn_xxx to the successUrl automatically.
@@ -223,7 +364,10 @@ export default function DashboardHome() {
         }
       })
       .catch(() => {})
-      .finally(() => setLoading(false))
+      .finally(() => {
+        setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
+        if (!localStorage.getItem(TOUR_KEY)) setShowTour(true) // eslint-disable-line react-hooks/set-state-in-effect
+      })
     fetch('/api/essay')
       .then(r => r.json())
       .then(({ essay_text }) => { if (essay_text) setEssayText(essay_text) })
@@ -258,8 +402,14 @@ export default function DashboardHome() {
     )
   }
 
+  const doneTour = () => {
+    localStorage.setItem(TOUR_KEY, '1')
+    setShowTour(false)
+  }
+
   return (
     <div className="h-full overflow-y-auto">
+      {showTour && <DashboardTour onDone={doneTour} />}
       <div className="max-w-2xl mx-auto px-8 pt-8 pb-20">
 
         {/* Payment success banner */}

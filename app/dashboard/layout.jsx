@@ -241,6 +241,7 @@ export default function DashboardLayout({ children }) {
             return (
               <Link
                 key={item.id}
+                id={`tour-nav-${item.id}`}
                 href={item.href}
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
                 style={{
