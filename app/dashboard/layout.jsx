@@ -366,26 +366,26 @@ export default function DashboardLayout({ children }) {
       </main>
 
       {/* Mobile bottom nav */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-2 py-2"
-        style={{ background: '#fff', borderTop: '1px solid #e5e5e5' }}>
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-1 py-1 safe-area-bottom"
+        style={{ background: '#fff', borderTop: '1px solid #e5e5e5', paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}>
         {NAV_MAIN.map(item => {
           const Icon = item.icon
           const active = activeId === item.id
           return (
             <Link key={item.id} href={item.href}
-              className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all"
-              style={{ color: active ? '#0a0a0a' : '#bbb' }}>
-              <Icon size={20} strokeWidth={active ? 2 : 1.5} />
-              <span className="text-[10px] font-medium">{item.label}</span>
+              className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl transition-all"
+              style={{ color: active ? '#0a0a0a' : '#bbb', minWidth: 0 }}>
+              <Icon size={18} strokeWidth={active ? 2 : 1.5} />
+              <span className="text-[9px] font-medium truncate w-full text-center">{item.label}</span>
             </Link>
           )
         })}
         {!isPremium && (
           <Link href="/pricing"
-            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl"
-            style={{ color: '#0a0a0a' }}>
-            <span className="text-lg leading-none">⭐</span>
-            <span className="text-[10px] font-semibold">Upgrade</span>
+            className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl"
+            style={{ color: '#0a0a0a', minWidth: 0 }}>
+            <span className="text-base leading-none">⭐</span>
+            <span className="text-[9px] font-semibold">Upgrade</span>
           </Link>
         )}
       </nav>

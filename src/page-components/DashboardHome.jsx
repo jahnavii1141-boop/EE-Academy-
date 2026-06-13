@@ -357,7 +357,6 @@ export default function DashboardHome() {
         setEditing(true) // eslint-disable-line react-hooks/set-state-in-effect
       }
       setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
-      if (!localStorage.getItem(TOUR_KEY)) setShowTour(true) // eslint-disable-line react-hooks/set-state-in-effect
       return
     }
     fetch('/api/workspace')
@@ -401,6 +400,8 @@ export default function DashboardHome() {
     setSaved(true)
     setEditing(false)
     setTimeout(() => setSaved(false), 2500)
+    // Show tour after first workspace save if not seen yet
+    if (!localStorage.getItem(TOUR_KEY)) setShowTour(true)
   }, [form, isSignedIn])
 
   const daysUntilDeadline = form.submission_deadline
@@ -428,7 +429,7 @@ export default function DashboardHome() {
   return (
     <div className="h-full overflow-y-auto">
       {showTour && <DashboardTour onDone={doneTour} />}
-      <div className="max-w-2xl mx-auto px-8 pt-8 pb-20">
+      <div className="max-w-2xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8 pb-32 lg:pb-20">
 
         {/* Payment success banner */}
         {paymentSuccess && (
