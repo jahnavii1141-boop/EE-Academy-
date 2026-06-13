@@ -344,7 +344,22 @@ export default function DashboardHome() {
   }, [searchParams, isSignedIn, router])
 
   useEffect(() => {
-    if (!isSignedIn) return
+    if (!isSignedIn) {
+      // Free email-gate user — load from localStorage, open quiz immediately
+      const saved = localStorage.getItem('eeAcademy_workspace')
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved)
+          setForm(f => ({ ...f, ...parsed })) // eslint-disable-line react-hooks/set-state-in-effect
+          if (!parsed.research_question) setEditing(true) // eslint-disable-line react-hooks/set-state-in-effect
+        } catch { setEditing(true) } // eslint-disable-line react-hooks/set-state-in-effect
+      } else {
+        setEditing(true) // eslint-disable-line react-hooks/set-state-in-effect
+      }
+      setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
+      if (!localStorage.getItem(TOUR_KEY)) setShowTour(true) // eslint-disable-line react-hooks/set-state-in-effect
+      return
+    }
     fetch('/api/workspace')
       .then(r => r.json())
       .then(({ workspace }) => {
@@ -357,7 +372,6 @@ export default function DashboardHome() {
           })
           setHasPaid(!!workspace.has_paid)
           setIsPremium(workspace.tier === 'premium')
-          // If no RQ yet, open edit mode automatically
           if (!workspace.research_question) setEditing(true)
         } else {
           setEditing(true)
@@ -375,15 +389,19 @@ export default function DashboardHome() {
   }, [isSignedIn])
 
   const save = useCallback(async () => {
-    await fetch('/api/workspace', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(form),
-    })
+    if (!isSignedIn) {
+      localStorage.setItem('eeAcademy_workspace', JSON.stringify(form))
+    } else {
+      await fetch('/api/workspace', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+    }
     setSaved(true)
     setEditing(false)
     setTimeout(() => setSaved(false), 2500)
-  }, [form])
+  }, [form, isSignedIn])
 
   const daysUntilDeadline = form.submission_deadline
     ? Math.ceil((new Date(form.submission_deadline) - new Date()) / 86400000)
