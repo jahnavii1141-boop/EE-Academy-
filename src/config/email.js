@@ -1,16 +1,12 @@
 const STORAGE_KEY = 'ee_waitlist_joined'
 
-export async function submitEmail(email, source = 'unknown') {
-  try {
-    const res = await fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, source }),
-    })
-    if (!res.ok) throw new Error('API error')
-  } catch (err) {
-    console.error('[Email Capture] Failed:', err)
-  }
+export function submitEmail(email, source = 'unknown') {
+  // Fire-and-forget — Resend takes ~8s, don't block the user
+  fetch('/api/subscribe', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, source }),
+  }).catch(err => console.error('[Email Capture] Failed:', err))
 
   if (typeof window !== 'undefined') {
     localStorage.setItem(STORAGE_KEY, JSON.stringify({

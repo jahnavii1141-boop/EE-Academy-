@@ -11,24 +11,19 @@ function EmailCaptureBanner({ onDismiss }) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState('idle') // idle | loading | done
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     const trimmed = email.trim()
     if (!trimmed || !trimmed.includes('@')) return
-    setStatus('loading')
-    try {
-      await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed, source: 'dashboard-banner' }),
-      })
-      localStorage.setItem('eeAcademy_freeEmail', trimmed)
-      localStorage.setItem('eeAcademy_emailCaptured', '1')
-      setStatus('done')
-      setTimeout(onDismiss, 2500)
-    } catch {
-      setStatus('idle')
-    }
+    localStorage.setItem('eeAcademy_freeEmail', trimmed)
+    localStorage.setItem('eeAcademy_emailCaptured', '1')
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: trimmed, source: 'dashboard-banner' }),
+    }).catch(() => {})
+    setStatus('done')
+    setTimeout(onDismiss, 2500)
   }
 
   if (status === 'done') {
