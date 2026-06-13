@@ -5,7 +5,7 @@ import { useAuth } from '@clerk/nextjs'
 import { Copy, Trash2, Plus, ExternalLink, BookOpen, X, Check, Quote, Lock } from 'lucide-react'
 import Link from 'next/link'
 
-const FREE_DUMP_LIMIT = 3
+const FREE_DUMP_LIMIT = 7
 
 const SUBTOPIC_COLORS = [
   '#6366f1', '#0ea5e9', '#10b981', '#f59e0b', '#ef4444',
