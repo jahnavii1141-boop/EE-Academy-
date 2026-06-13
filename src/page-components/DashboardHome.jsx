@@ -426,6 +426,71 @@ export default function DashboardHome() {
     setShowTour(false)
   }
 
+  // New user who hasn't set up yet — show focused setup screen
+  if (editing && !form.research_question && !form.subject) {
+    return (
+      <div className="min-h-full flex flex-col items-center justify-center px-4 py-12">
+        <div className="w-full max-w-lg">
+          <div className="text-center mb-8">
+            <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: '#ccc' }}>Step 1 of 1</p>
+            <h1 className="text-2xl font-bold mb-2" style={{ color: '#0a0a0a', letterSpacing: '-0.03em' }}>Set up your workspace</h1>
+            <p className="text-sm" style={{ color: '#aaa' }}>Takes 30 seconds — helps us personalise everything for your EE.</p>
+          </div>
+          <div className="rounded-2xl overflow-hidden" style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
+            <div className="px-6 py-5 space-y-5">
+              {/* Subject */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>Your Subject</label>
+                <div className="grid grid-cols-2 gap-1.5 max-h-52 overflow-y-auto pr-1">
+                  {SUBJECTS.map(s => {
+                    const t = getTheme(s)
+                    const selected = form.subject === s
+                    return (
+                      <button key={s} onClick={() => setForm(f => ({ ...f, subject: s }))}
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-left transition-all"
+                        style={{
+                          background: selected ? t.light : '#f9f9f9',
+                          color: selected ? t.color : '#555',
+                          border: `1px solid ${selected ? t.accent : '#f0f0f0'}`,
+                          fontWeight: selected ? 600 : 400,
+                        }}>
+                        <span>{t.emoji}</span>
+                        <span className="text-xs leading-tight">{s}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+              {/* Research Question */}
+              <div>
+                <label className="block text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>
+                  Research Question <span className="font-normal normal-case tracking-normal" style={{ color: '#ccc' }}>optional</span>
+                </label>
+                <textarea
+                  value={form.research_question}
+                  onChange={e => setForm(f => ({ ...f, research_question: e.target.value }))}
+                  placeholder="To what extent does…"
+                  rows={3}
+                  className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none resize-none transition-colors"
+                  style={{ border: '1px solid #e8e8e8', color: '#0a0a0a', background: '#fafafa' }}
+                  onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                  onBlur={e => e.target.style.borderColor = '#e8e8e8'}
+                />
+              </div>
+            </div>
+            <div className="px-6 pb-6">
+              <button onClick={save}
+                className="w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
+                style={{ background: '#0a0a0a', color: '#fff' }}>
+                {form.subject ? 'Set up my workspace →' : 'Skip for now →'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="h-full overflow-y-auto">
       {showTour && <DashboardTour onDone={doneTour} />}
