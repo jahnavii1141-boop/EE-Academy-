@@ -188,9 +188,9 @@ export default function DashboardLayout({ children }) {
   return (
     <div className="flex h-screen overflow-hidden" style={{ background: '#fafafa', color: '#0a0a0a' }}>
 
-      {/* Sidebar */}
+      {/* Sidebar — desktop only */}
       <aside style={{ width: 220, borderRight: '1px solid #e5e5e5', background: '#fff' }}
-        className="flex-shrink-0 flex flex-col h-full">
+        className="hidden lg:flex flex-shrink-0 flex-col h-full">
 
         {/* Brand + subject badge */}
         <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
@@ -361,9 +361,34 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 overflow-y-auto" style={{ background: '#fafafa' }}>
+      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0" style={{ background: '#fafafa' }}>
         {children}
       </main>
+
+      {/* Mobile bottom nav */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around px-2 py-2"
+        style={{ background: '#fff', borderTop: '1px solid #e5e5e5' }}>
+        {NAV_MAIN.map(item => {
+          const Icon = item.icon
+          const active = activeId === item.id
+          return (
+            <Link key={item.id} href={item.href}
+              className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl transition-all"
+              style={{ color: active ? '#0a0a0a' : '#bbb' }}>
+              <Icon size={20} strokeWidth={active ? 2 : 1.5} />
+              <span className="text-[10px] font-medium">{item.label}</span>
+            </Link>
+          )
+        })}
+        {!isPremium && (
+          <Link href="/pricing"
+            className="flex flex-col items-center gap-0.5 px-3 py-1.5 rounded-xl"
+            style={{ color: '#0a0a0a' }}>
+            <span className="text-lg leading-none">⭐</span>
+            <span className="text-[10px] font-semibold">Upgrade</span>
+          </Link>
+        )}
+      </nav>
     </div>
   )
 }

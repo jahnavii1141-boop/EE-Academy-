@@ -88,7 +88,7 @@ function StartHereGuide({ hasPaid, isPremium }) {
           ) : (
             <span className="text-xs" style={{ color: '#aaa' }}>
               then unlock all modules →{' '}
-              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
+              <Link href={hasPaid ? '/dashboard/modules' : '/pricing'} className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
                 Method $89
               </Link>
             </span>
@@ -130,7 +130,7 @@ function StartHereGuide({ hasPaid, isPremium }) {
           ) : (
             <span className="text-xs" style={{ color: '#aaa' }}>
               + the full system →{' '}
-              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
+              <Link href={hasPaid ? '/dashboard/modules' : '/pricing'} className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
                 Method+System $149
               </Link>
             </span>
