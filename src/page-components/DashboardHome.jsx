@@ -104,22 +104,24 @@ function StartHereGuide({ hasPaid, isPremium }) {
             style={{ background: hasPaid ? '#0a0a0a' : '#efefef', color: hasPaid ? '#fff' : '#bbb' }}>
             METHOD · $89
           </span>
-          <div className="flex flex-wrap items-center gap-1.5">
-            {PAID_STEPS.map((step, i) => (
-              <span key={step.num} className="flex items-center gap-1.5">
-                {hasPaid ? (
+          {hasPaid ? (
+            <div className="flex flex-wrap items-center gap-1.5">
+              {PAID_STEPS.map((step, i) => (
+                <span key={step.num} className="flex items-center gap-1.5">
                   <Link href={step.href} style={{ textDecoration: 'none' }}>
                     <StepChip step={step} active color="dark" />
                   </Link>
-                ) : (
-                  <StepChip step={step} active={false} color="dark" />
-                )}
-                {i < PAID_STEPS.length - 1 && (
-                  <span className="text-xs" style={{ color: hasPaid ? '#d1d5db' : '#efefef' }}>→</span>
-                )}
-              </span>
-            ))}
-          </div>
+                  {i < PAID_STEPS.length - 1 && (
+                    <span className="text-xs" style={{ color: '#d1d5db' }}>→</span>
+                  )}
+                </span>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm" style={{ color: '#bbb' }}>
+              Research question, writing structure, essay drafting, citations, RPPF — 9 modules + a real 32/34 breakdown.
+            </p>
+          )}
         </div>
 
         {/* Connector */}
@@ -130,7 +132,7 @@ function StartHereGuide({ hasPaid, isPremium }) {
           ) : (
             <span className="text-xs" style={{ color: '#aaa' }}>
               + the full system →{' '}
-              <Link href={hasPaid ? '/dashboard/modules' : '/pricing'} className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
+              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
                 Method+System $149
               </Link>
             </span>
@@ -146,15 +148,11 @@ function StartHereGuide({ hasPaid, isPremium }) {
             style={{ background: isPremium ? '#fef3c7' : '#efefef', color: isPremium ? '#92400e' : '#bbb' }}>
             METHOD+SYSTEM · $149
           </span>
-          {isPremium ? (
-            <p className="text-sm font-medium" style={{ color: '#92400e' }}>
-              Everything in Method + the full writing system unlocked.
-            </p>
-          ) : (
-            <p className="text-sm" style={{ color: '#bbb' }}>
-              🔒 Includes everything in Method + the complete writing system.
-            </p>
-          )}
+          <p className="text-sm" style={{ color: isPremium ? '#92400e' : '#bbb' }}>
+            {isPremium
+              ? 'Everything unlocked — all modules + the complete writing system.'
+              : 'Everything in Method + the complete writing system.'}
+          </p>
         </div>
       </div>
     </div>
@@ -510,8 +508,8 @@ export default function DashboardHome() {
           </div>
         )}
 
-        {/* Start Here progression guide */}
-        <StartHereGuide hasPaid={hasPaid} isPremium={isPremium} />
+        {/* Start Here progression guide — only when not in edit mode */}
+        {!editing && <StartHereGuide hasPaid={hasPaid} isPremium={isPremium} />}
 
         {/* Subject hero banner */}
         {form.subject && (
