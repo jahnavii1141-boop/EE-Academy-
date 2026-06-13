@@ -24,7 +24,7 @@ function SimpleEmailCapture({ onClose }) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
     }).catch(() => {})
-    router.push('/dashboard')
+    router.push('/onboarding')
   }
 
   return (
@@ -73,9 +73,13 @@ export default function Hero() {
   const router = useRouter()
 
   const handleStartFree = () => {
-    const hasEmail = typeof window !== 'undefined' && localStorage.getItem('eeAcademy_freeEmail')
-    if (hasEmail) {
-      router.push('/dashboard')
+    if (typeof window === 'undefined') return
+    const hasEmail = localStorage.getItem('eeAcademy_freeEmail')
+    const hasWorkspace = localStorage.getItem('eeAcademy_workspace')
+    if (hasEmail && hasWorkspace) {
+      router.push('/dashboard/home')
+    } else if (hasEmail) {
+      router.push('/onboarding')
     } else {
       setShowCapture(true)
     }

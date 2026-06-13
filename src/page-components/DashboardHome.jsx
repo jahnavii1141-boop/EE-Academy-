@@ -165,6 +165,7 @@ const TOUR_KEY = 'eeAcademy_tourDone'
 const TOUR_STEPS = [
   { target: null, emoji: '👋', title: 'Welcome to your EE workspace', body: "Quick tour — 20 seconds. We'll show you what's here." },
   { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Free modules first — then unlock the full writing system.', arrow: 'top' },
+  { target: 'tour-share', emoji: '🔗', title: 'Share with your supervisor', body: 'Get a link and send it to your teacher — they can read your essay draft and leave you feedback directly.', arrow: 'top' },
   { target: 'tour-nav-modules', emoji: '📚', title: 'Modules', body: '14 lessons from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
   { target: 'tour-nav-dump', emoji: '🗂️', title: 'EE Dump', body: 'Paste a paragraph from any source — auto-extracts the citation for your bibliography.', arrow: 'left' },
   { target: 'tour-nav-essay', emoji: '✍️', title: 'My Essay', body: 'Write your draft and track your word count. Everything saves automatically.', arrow: 'left' },
@@ -318,6 +319,9 @@ export default function DashboardHome() {
   const [hasPaid, setHasPaid] = useState(false)
   const [isPremium, setIsPremium] = useState(false)
   const [showTour, setShowTour] = useState(false)
+  const [shareUrl, setShareUrl] = useState(null)
+  const [shareLoading, setShareLoading] = useState(false)
+  const [shareCopied, setShareCopied] = useState(false)
 
   // ── Verify Paddle payment on return from checkout ──────────────────────────
   // Paddle appends ?_ptxn=txn_xxx to the successUrl automatically.
@@ -343,18 +347,17 @@ export default function DashboardHome() {
 
   useEffect(() => {
     if (!isSignedIn) {
-      // Free email-gate user — load from localStorage, open quiz immediately
       const saved = localStorage.getItem('eeAcademy_workspace')
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved)
-          setForm(f => ({ ...f, ...parsed })) // eslint-disable-line react-hooks/set-state-in-effect
-          if (!parsed.research_question) setEditing(true) // eslint-disable-line react-hooks/set-state-in-effect
-        } catch { setEditing(true) } // eslint-disable-line react-hooks/set-state-in-effect
-      } else {
-        setEditing(true) // eslint-disable-line react-hooks/set-state-in-effect
+      if (!saved) {
+        // No setup done — send to onboarding
+        router.push('/onboarding')
+        return
       }
+      try {
+        setForm(f => ({ ...f, ...JSON.parse(saved) })) // eslint-disable-line react-hooks/set-state-in-effect
+      } catch (e) { console.error('workspace parse error', e) }
       setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
+      if (!localStorage.getItem(TOUR_KEY)) setShowTour(true) // eslint-disable-line react-hooks/set-state-in-effect
       return
     }
     fetch('/api/workspace')
@@ -401,6 +404,23 @@ export default function DashboardHome() {
     // Show tour after first workspace save if not seen yet
     if (!localStorage.getItem(TOUR_KEY)) setShowTour(true)
   }, [form, isSignedIn])
+
+  const generateShare = useCallback(async () => {
+    setShareLoading(true)
+    try {
+      const res = await fetch('/api/share', { method: 'POST' })
+      const { token } = await res.json()
+      if (token) setShareUrl(`${window.location.origin}/share/${token}`)
+    } catch (e) { console.error('share error', e) }
+    setShareLoading(false)
+  }, [])
+
+  const copyShare = useCallback(() => {
+    if (!shareUrl) return
+    navigator.clipboard.writeText(shareUrl)
+    setShareCopied(true)
+    setTimeout(() => setShareCopied(false), 2000)
+  }, [shareUrl])
 
   const daysUntilDeadline = form.submission_deadline
     ? Math.ceil((new Date(form.submission_deadline) - new Date()) / 86400000)
@@ -510,6 +530,43 @@ export default function DashboardHome() {
 
         {/* Start Here progression guide — only when not in edit mode */}
         {!editing && <StartHereGuide hasPaid={hasPaid} isPremium={isPremium} />}
+
+        {/* Share with supervisor */}
+        {!editing && (
+          <div id="tour-share" className="mb-8 rounded-2xl px-5 py-5"
+            style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
+            <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: '#bbb' }}>Share with supervisor</p>
+            {isSignedIn ? (
+              <>
+                <p className="text-xs mb-4" style={{ color: '#aaa' }}>
+                  Send your teacher this link — they can view your RQ, essay draft, and leave you feedback.
+                </p>
+                {shareUrl ? (
+                  <div className="flex items-center gap-2">
+                    <input readOnly value={shareUrl}
+                      className="flex-1 min-w-0 text-xs rounded-lg px-3 py-2 focus:outline-none"
+                      style={{ background: '#f5f5f5', color: '#555', border: '1px solid #f0f0f0' }} />
+                    <button onClick={copyShare}
+                      className="flex-shrink-0 text-xs font-semibold px-3 py-2 rounded-lg transition-all"
+                      style={{ background: shareCopied ? '#f0fdf4' : '#0a0a0a', color: shareCopied ? '#15803d' : '#fff' }}>
+                      {shareCopied ? '✓ Copied' : 'Copy'}
+                    </button>
+                  </div>
+                ) : (
+                  <button onClick={generateShare} disabled={shareLoading}
+                    className="text-xs font-semibold px-4 py-2 rounded-xl transition-all disabled:opacity-50"
+                    style={{ background: '#f5f5f5', color: '#555' }}>
+                    {shareLoading ? 'Generating…' : 'Get share link →'}
+                  </button>
+                )}
+              </>
+            ) : (
+              <p className="text-xs" style={{ color: '#aaa' }}>
+                <Link href="/sign-up" className="font-semibold" style={{ color: '#0a0a0a' }}>Create a free account</Link> to get a shareable link for your supervisor.
+              </p>
+            )}
+          </div>
+        )}
 
         {/* Subject hero banner */}
         {form.subject && (

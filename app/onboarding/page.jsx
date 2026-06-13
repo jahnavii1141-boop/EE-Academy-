@@ -39,7 +39,7 @@ function OnboardingPageInner() {
       .then(r => r.json())
       .then(({ workspace }) => {
         if (workspace?.research_question && workspace?.subject) {
-          router.replace('/course/module-1')
+          router.replace('/dashboard/home')
         }
       })
       .catch(() => {})
@@ -57,7 +57,18 @@ function OnboardingPageInner() {
     if (step !== 'generating') return
     let cancelled = false
     const save = async () => {
-      // Verify Paddle payment if returning from checkout (?_ptxn=txn_xxx)
+      // Free user (not signed in) — save to localStorage only
+      if (!isSignedIn) {
+        localStorage.setItem('eeAcademy_workspace', JSON.stringify({
+          subject: form.subject,
+          research_question: form.research_question,
+          supervisor_name: form.supervisor_name,
+          submission_deadline: form.submission_deadline || null,
+        }))
+        return true
+      }
+
+      // Signed-in user — verify payment if returning from checkout
       const ptxn = searchParams.get('_ptxn')
       if (ptxn) {
         try {
@@ -66,12 +77,12 @@ function OnboardingPageInner() {
           if (!res.ok || !data.verified) {
             console.error('verify-payment failed:', data)
             setPaymentError(true)
-            return false // payment failed — do not advance
+            return false
           }
         } catch (err) {
           console.error('verify-payment error:', err)
           setPaymentError(true)
-          return false // network error — do not advance
+          return false
         }
       }
       try {
@@ -101,7 +112,7 @@ function OnboardingPageInner() {
 
   useEffect(() => {
     if (step !== 'done') return
-    const timer = setTimeout(() => router.push('/course/module-1'), 1000)
+    const timer = setTimeout(() => router.push('/dashboard/home'), 1000)
     return () => clearTimeout(timer)
   }, [step])
 
