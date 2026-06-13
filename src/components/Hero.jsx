@@ -18,15 +18,12 @@ function SimpleEmailCapture({ onClose }) {
       setError('Enter a valid email to continue.')
       return
     }
-    setLoading(true)
     localStorage.setItem('eeAcademy_freeEmail', trimmed)
-    try {
-      await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
-      })
-    } catch { /* non-blocking */ }
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
+    }).catch(() => {})
     router.push('/dashboard')
   }
 

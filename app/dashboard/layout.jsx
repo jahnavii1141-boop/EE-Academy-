@@ -15,7 +15,7 @@ function EmailCaptureGate({ onCapture }) {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     const trimmed = email.trim()
     if (!trimmed || !trimmed.includes('@')) {
@@ -23,13 +23,11 @@ function EmailCaptureGate({ onCapture }) {
       return
     }
     localStorage.setItem('eeAcademy_freeEmail', trimmed)
-    try {
-      await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed, source: 'dashboard-gate' }),
-      })
-    } catch { /* non-blocking */ }
+    fetch('/api/subscribe', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: trimmed, source: 'dashboard-gate' }),
+    }).catch(() => {})
     onCapture(trimmed)
   }
 
