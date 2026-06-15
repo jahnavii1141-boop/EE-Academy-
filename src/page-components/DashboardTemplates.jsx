@@ -4,7 +4,6 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ChevronDown, ChevronUp, Download, BookMarked } from 'lucide-react'
 import { useAccess } from '../hooks/useAccess'
-import UpgradeGate from '../components/UpgradeGate'
 
 const WORKBOOKS = [
   { slug: 'anthropology',        label: 'Anthropology',        pages: 4 },
@@ -167,7 +166,21 @@ export default function DashboardTemplates() {
         {/* ── Premium: Fillable SOPs ── */}
         <div className="mt-12">
           {!hasPremium ? (
-            <UpgradeGate requiredTier="premium" toolName="Fillable SOPs" />
+            <div className="rounded-2xl border border-navy/10 bg-parchment/30 px-6 py-6">
+              <div className="flex items-center gap-2 mb-1.5">
+                <svg className="w-4 h-4 text-navy/35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0110 0v4" />
+                </svg>
+                <h2 className="font-serif text-lg font-bold text-navy">Fillable SOPs</h2>
+              </div>
+              <p className="text-sm text-ink-soft leading-relaxed mb-4">
+                RPPF reflections, essay outline, and argument map — fillable templates auto-saved to your browser. Included with Standard &amp; Premium.
+              </p>
+              <Link href="/pricing" className="inline-block bg-navy text-cream text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-navy/90 transition-colors no-underline">
+                View plans →
+              </Link>
+            </div>
           ) : (
             <>
               <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-1">Fillable SOPs</p>
