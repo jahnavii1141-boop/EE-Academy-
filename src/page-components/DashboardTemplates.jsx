@@ -2,9 +2,24 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronUp } from 'lucide-react'
+import { ChevronDown, ChevronUp, Download } from 'lucide-react'
 import { useAccess } from '../hooks/useAccess'
 import UpgradeGate from '../components/UpgradeGate'
+
+const WORKBOOKS = [
+  { slug: 'anthropology',        label: 'Anthropology',        pages: 4 },
+  { slug: 'business-management', label: 'Business Management', pages: 4 },
+  { slug: 'digital-society',     label: 'Digital Society',     pages: 4 },
+  { slug: 'economics',           label: 'Economics',           pages: 4 },
+  { slug: 'geography',           label: 'Geography',           pages: 4 },
+  { slug: 'global-politics',     label: 'Global Politics',     pages: 4 },
+  { slug: 'history',             label: 'History',             pages: 4 },
+  { slug: 'language-a',          label: 'Language A',          pages: 8 },
+  { slug: 'language-b',          label: 'Language B',          pages: 8 },
+  { slug: 'philosophy',          label: 'Philosophy',          pages: 4 },
+  { slug: 'psychology',          label: 'Psychology',          pages: 4 },
+  { slug: 'world-religion',      label: 'World Religions',     pages: 4 },
+]
 
 const TEMPLATES = [
   {
@@ -121,6 +136,32 @@ export default function DashboardTemplates() {
 
         <div className="mt-10 rounded-xl border border-navy/10 bg-parchment/30 px-5 py-4">
           <p className="text-xs text-navy/50">Templates are saved locally in your browser. Cloud sync coming soon.</p>
+        </div>
+
+        {/* ── Subject Planning Workbooks ── */}
+        <div className="mt-12">
+          <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-1">Subject workbooks</p>
+          <h2 className="font-serif text-xl font-bold text-navy mb-1">EE Planning Workbooks</h2>
+          <p className="text-sm text-ink-soft mb-6">
+            Subject-specific planning templates — download, print, and fill in alongside your research.
+          </p>
+
+          <div className="grid grid-cols-2 gap-3">
+            {WORKBOOKS.map(wb => (
+              <a
+                key={wb.slug}
+                href={`/templates/workbooks/${wb.slug}.pdf`}
+                download={`IB EE Planning Workbook — ${wb.label}.pdf`}
+                className="group flex items-center justify-between rounded-2xl border border-navy/10 bg-white/60 px-5 py-4 hover:bg-parchment/20 transition-colors no-underline"
+              >
+                <div>
+                  <p className="text-sm font-bold text-navy group-hover:text-navy transition-colors">{wb.label}</p>
+                  <p className="text-xs text-navy/40 mt-0.5">{wb.pages}-page workbook · PDF</p>
+                </div>
+                <Download className="w-4 h-4 text-navy/30 group-hover:text-navy/60 transition-colors flex-shrink-0" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>
