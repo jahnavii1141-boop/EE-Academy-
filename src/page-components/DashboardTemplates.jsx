@@ -7,7 +7,11 @@ import { useAccess } from '../hooks/useAccess'
 
 const WORKBOOKS = [
   { slug: 'anthropology',        label: 'Anthropology',        pages: 4 },
+  { slug: 'biology',             label: 'Biology',             pages: 4 },
   { slug: 'business-management', label: 'Business Management', pages: 4 },
+  { slug: 'chemistry',           label: 'Chemistry',           pages: 4 },
+  { slug: 'computer-science',    label: 'Computer Science',    pages: 4 },
+  { slug: 'design-technology',   label: 'Design Technology',   pages: 4 },
   { slug: 'digital-society',     label: 'Digital Society',     pages: 4 },
   { slug: 'economics',           label: 'Economics',           pages: 4 },
   { slug: 'geography',           label: 'Geography',           pages: 4 },
@@ -15,6 +19,7 @@ const WORKBOOKS = [
   { slug: 'history',             label: 'History',             pages: 4 },
   { slug: 'language-b',          label: 'Language B',          pages: 8 },
   { slug: 'philosophy',          label: 'Philosophy',          pages: 4 },
+  { slug: 'physics',             label: 'Physics',             pages: 4 },
   { slug: 'psychology',          label: 'Psychology',          pages: 4 },
   { slug: 'world-religion',      label: 'World Religions',     pages: 4 },
 ]

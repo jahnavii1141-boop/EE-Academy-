@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  MessageSquare, ChevronDown, ChevronUp, X, BookMarked,
+  MessageSquare, ChevronDown, ChevronUp, X, BookMarked, Award,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -88,6 +88,7 @@ function EmailCaptureGate({ onCapture }) {
 const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
   { id: 'modules', label: 'Modules',    icon: BookOpen,  href: '/dashboard/modules' },
+  { id: 'sample-ee', label: 'Example EE', icon: Award,   href: '/dashboard/sample-ee' },
   { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
   { id: 'dump',    label: 'EE Dump',     icon: Database,  href: '/dashboard/dump' },
   { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner' },
