@@ -65,7 +65,7 @@ function StartHereGuide({ hasPaid, isPremium }) {
         {/* FREE tier */}
         <div className="rounded-xl p-4" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
           <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
-            style={{ background: '#dcfce7', color: '#15803d' }}>FREE — start here</span>
+            style={{ background: '#dcfce7', color: '#15803d' }}>INCLUDED — start here</span>
           <div className="flex flex-wrap items-center gap-1.5">
             {FREE_STEPS.map((step, i) => (
               <span key={step.num} className="flex items-center gap-1.5">
@@ -164,7 +164,7 @@ const TOUR_KEY = 'eeAcademy_tourDone'
 
 const TOUR_STEPS = [
   { target: null, emoji: '👋', title: 'Welcome to your EE workspace', body: "Quick tour — 20 seconds. We'll show you what's here." },
-  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Free modules first — then unlock the full writing system.', arrow: 'top' },
+  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Start with the included modules — then unlock the full writing system.', arrow: 'top' },
   { target: 'tour-share', emoji: '🔗', title: 'Share with your supervisor', body: 'Get a link and send it to your teacher — they can read your essay draft and leave you feedback directly.', arrow: 'top' },
   { target: 'tour-nav-modules', emoji: '📚', title: 'Modules', body: '14 lessons from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
   { target: 'tour-nav-dump', emoji: '🗂️', title: 'EE Dump', body: 'Paste a paragraph from any source — auto-extracts the citation for your bibliography.', arrow: 'left' },
@@ -562,7 +562,7 @@ export default function DashboardHome() {
               </>
             ) : (
               <p className="text-xs" style={{ color: '#aaa' }}>
-                <Link href="/sign-up" className="font-semibold" style={{ color: '#0a0a0a' }}>Create a free account</Link> to get a shareable link for your supervisor.
+                <Link href="/sign-up" className="font-semibold" style={{ color: '#0a0a0a' }}>Create an account</Link> to get a shareable link for your supervisor.
               </p>
             )}
           </div>

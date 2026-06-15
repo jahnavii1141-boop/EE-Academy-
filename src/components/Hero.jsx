@@ -39,10 +39,10 @@ function SimpleEmailCapture({ onClose }) {
           EE Academy
         </p>
         <h2 className="font-semibold mb-2" style={{ fontSize: 22, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
-          Start for free.
+          Get started.
         </h2>
         <p className="text-sm mb-6 leading-relaxed" style={{ color: '#888' }}>
-          Access modules 1, 2, 3 and 5 free — no card, no commitment.
+          Access modules 1, 2, 3 and 5 — no card, no commitment.
         </p>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
@@ -60,7 +60,7 @@ function SimpleEmailCapture({ onClose }) {
           <button type="submit" disabled={loading}
             className="w-full py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50"
             style={{ background: '#0a0a0a', color: '#fff' }}>
-            {loading ? 'Setting up…' : 'Get free access →'}
+            {loading ? 'Setting up…' : 'Get access →'}
           </button>
         </form>
       </div>
@@ -136,11 +136,11 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
-                <button onClick={handleStartFree} className="btn-primary-light">Start Free</button>
+                <button onClick={handleStartFree} className="btn-primary-light">Get Started</button>
                 <Link href="/pricing" className="btn-outline-light text-sm">See the system</Link>
               </div>
               <p className="text-sm text-steel/70 max-w-md">
-                Modules 1, 2, 3, and 5 are free — start immediately.
+                Modules 1, 2, 3, and 5 — start immediately.
               </p>
             </AnimateIn>
           </div>

@@ -22,8 +22,8 @@ const COMPARISON = [
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ_ITEMS = [
   {
-    q: 'Is there a free option?',
-    a: 'Yes — Modules 1, 2, 3, and 5 are completely free. Start at the dashboard and access them immediately.',
+    q: 'Can I try before buying?',
+    a: 'Yes — Modules 1, 2, 3, and 5 are included with no card needed. Start at the dashboard and access them immediately.',
   },
   {
     q: "What's the difference between Method and Method+System?",
@@ -85,7 +85,7 @@ export default function PricingPage() {
           </h1>
           <p className="text-lg text-ink-soft max-w-xl mx-auto">
             The same 14-module system at every tier — choose how much support you want on top of it.
-            Start free, unlock when you're ready.
+            Start today, unlock when you're ready.
           </p>
         </AnimateIn>
       </div>
@@ -164,7 +164,7 @@ export default function PricingPage() {
           <p className="text-center text-sm text-ink-soft mt-6">
             Still unsure?{' '}
             <Link href="/course/module-1" className="text-navy font-medium underline underline-offset-2">
-              Start with the free modules first →
+              Start with the included modules first →
             </Link>
           </p>
         </AnimateIn>

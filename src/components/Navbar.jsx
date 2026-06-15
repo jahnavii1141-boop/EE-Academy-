@@ -92,7 +92,7 @@ export default function Navbar() {
                 Sign in
               </Link>
               <Link href="/sign-up" className="btn-primary text-sm">
-                {isHome ? 'Start Free' : 'Get Started'}
+                Get Started
               </Link>
             </>
           )}
@@ -146,7 +146,7 @@ export default function Navbar() {
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
               <Link href="/sign-up" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">
-                {isHome ? 'Start Free' : 'Get Started'}
+                Get Started
               </Link>
             </>
           )}

@@ -44,7 +44,7 @@ function EmailCaptureBanner({ onDismiss }) {
           Get EE tips straight to your inbox
         </p>
         <p className="text-[11px] mb-3" style={{ color: '#aaa' }}>
-          Free advice from a 32/34 student — research, structure, common mistakes. No spam.
+          Advice from a 32/34 student — research, structure, common mistakes. No spam.
         </p>
         <form onSubmit={handleSubmit} className="flex items-center gap-2">
           <input
@@ -67,7 +67,7 @@ function EmailCaptureBanner({ onDismiss }) {
               cursor: status === 'loading' ? 'wait' : 'pointer', whiteSpace: 'nowrap',
             }}
           >
-            {status === 'loading' ? '…' : 'Get free tips →'}
+            {status === 'loading' ? '…' : 'Get tips →'}
           </button>
         </form>
       </div>
@@ -236,7 +236,7 @@ export default function Dashboard() {
           <div className="flex items-center gap-2">
             <Clock size={13} style={{ color: daysLeft <= 3 ? '#ef4444' : '#aaa' }} />
             <span className="text-xs" style={{ color: daysLeft <= 3 ? '#ef4444' : '#777' }}>
-              {daysLeft > 0 ? `${daysLeft} day${daysLeft === 1 ? '' : 's'} left in your free trial` : 'Your free trial has ended'}
+              {daysLeft > 0 ? `${daysLeft} day${daysLeft === 1 ? '' : 's'} left in your trial` : 'Your trial has ended'}
             </span>
           </div>
           <Link href="/pricing" className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>Upgrade →</Link>

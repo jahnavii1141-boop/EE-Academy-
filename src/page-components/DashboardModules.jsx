@@ -115,7 +115,7 @@ export default function DashboardModules() {
                           {mod.free && (
                             <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
                               style={{ background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>
-                              Free
+                              Included
                             </span>
                           )}
                           {mod.premium && !mod.free && (

@@ -40,10 +40,10 @@ function EmailCaptureGate({ onCapture }) {
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <p style={{ fontSize: 11, color: '#bbb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>EE Academy</p>
           <p style={{ fontSize: 22, fontWeight: 700, color: '#0a0a0a', letterSpacing: '-0.02em', marginBottom: 8 }}>
-            Start for free
+            Get started
           </p>
           <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
-            Access free modules and research tools.<br />No card, no commitment.
+            Access modules and research tools.<br />No card, no commitment.
           </p>
         </div>
 
@@ -70,7 +70,7 @@ function EmailCaptureGate({ onCapture }) {
               cursor: 'pointer', letterSpacing: '-0.01em',
             }}
           >
-            Get free access →
+            Get access →
           </button>
         </form>
 
