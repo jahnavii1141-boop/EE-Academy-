@@ -73,7 +73,11 @@ export default function LegalPage({ title, updated, sections }) {
                     )}
 
                     {!s.callout && s.body && (
-                      <p className="text-ink-soft text-sm leading-relaxed">{s.body}</p>
+                      <div className="space-y-3">
+                        {s.body.split('\n\n').map((para, i) => (
+                          <p key={i} className="text-ink-soft text-sm leading-relaxed">{para}</p>
+                        ))}
+                      </div>
                     )}
 
                     {s.bullets && (
@@ -87,8 +91,26 @@ export default function LegalPage({ title, updated, sections }) {
                       </ul>
                     )}
 
+                    {s.sublists && s.sublists.map((group, gi) => (
+                      <div key={gi} className="space-y-2">
+                        <p className="text-sm font-semibold text-navy/70">{group.label}</p>
+                        <ul className="space-y-2">
+                          {group.bullets.map((b, i) => (
+                            <li key={i} className="flex items-start gap-2.5 text-sm text-ink-soft">
+                              <span className="w-1.5 h-1.5 rounded-full bg-navy/30 mt-2 flex-shrink-0" />
+                              {b}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+
                     {s.bodyAfter && (
-                      <p className="text-ink-soft text-sm leading-relaxed">{s.bodyAfter}</p>
+                      <div className="space-y-3">
+                        {s.bodyAfter.split('\n\n').map((para, i) => (
+                          <p key={i} className="text-ink-soft text-sm leading-relaxed">{para}</p>
+                        ))}
+                      </div>
                     )}
 
                     {s.contact && (

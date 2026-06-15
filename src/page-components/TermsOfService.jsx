@@ -20,8 +20,27 @@ const SECTIONS = [
   },
   {
     number: '4',
-    title: 'Intellectual Property',
-    body: 'All content, tools, templates, and materials are the intellectual property of The Extended Essay Academy. Purchasing a product grants you a personal, non-transferable, non-exclusive license to use the materials for your own educational purposes.',
+    title: 'Copyright Notice',
+    body: 'All content contained within The Extended Essay, including but not limited to templates, frameworks, worksheets, guides, videos, written materials, graphics, tools, and downloadable resources, is protected by copyright law.\n\nAccess to this platform grants you a personal, non-transferable licence to use these materials for your own educational purposes only.',
+    sublists: [
+      {
+        label: 'You may not:',
+        bullets: [
+          'Copy, reproduce, distribute, sell, sublicense, or share any part of the platform or its materials.',
+          'Upload materials to public websites, forums, social media platforms, AI training datasets, or file-sharing services.',
+          'Redistribute templates, worksheets, guides, or other resources to third parties.',
+          'Claim any content as your own work or creation.',
+        ],
+      },
+      {
+        label: 'You may:',
+        bullets: [
+          'Use the resources to support your own Extended Essay research and writing process.',
+          'Print or download materials for your personal academic use.',
+        ],
+      },
+    ],
+    bodyAfter: 'Unauthorised reproduction or distribution of any content may result in termination of access and further action where appropriate.\n\n© The Extended Essay. All rights reserved.',
   },
   {
     number: '5',
