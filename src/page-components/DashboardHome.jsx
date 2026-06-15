@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
@@ -233,7 +234,7 @@ function DashboardTour({ onDone }) {
     )
   }
 
-  return (
+  return createPortal(
     <div style={{ position: 'fixed', inset: 0, zIndex: 9990 }} onMouseDown={e => e.stopPropagation()}>
       {/* Overlay */}
       {!rect ? (
@@ -296,7 +297,8 @@ function DashboardTour({ onDone }) {
           ))}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 
@@ -812,6 +814,16 @@ export default function DashboardHome() {
             </div>
           </>
         )}
+
+        {/* Replay tour */}
+        <div className="mt-10 text-center">
+          <button
+            onClick={() => { localStorage.removeItem(TOUR_KEY); setShowTour(true) }}
+            className="text-[11px] text-navy/30 hover:text-navy/60 transition-colors underline underline-offset-2"
+          >
+            Replay tour
+          </button>
+        </div>
       </div>
     </div>
   )
