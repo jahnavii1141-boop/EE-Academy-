@@ -14,7 +14,6 @@ const WORKBOOKS = [
   { slug: 'geography',           label: 'Geography',           pages: 4 },
   { slug: 'global-politics',     label: 'Global Politics',     pages: 4 },
   { slug: 'history',             label: 'History',             pages: 4 },
-  { slug: 'language-a',          label: 'Language A',          pages: 8 },
   { slug: 'language-b',          label: 'Language B',          pages: 8 },
   { slug: 'philosophy',          label: 'Philosophy',          pages: 4 },
   { slug: 'psychology',          label: 'Psychology',          pages: 4 },
