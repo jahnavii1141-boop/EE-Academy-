@@ -19,16 +19,13 @@ const CONTENT = [
     { title: 'Reflection 2 — Mid Stage', text: 'How your understanding evolved, whether you adjusted your RQ, surprises during research, methodology challenges.' },
     { title: 'Reflection 3 — Final Stage', text: 'What you\'re most proud of, what you\'d do differently, how this process changed the way you think about research.' },
   ]},
-  { type: 'heading', text: 'The RPPF Formula' },
-  { type: 'formula-box', title: 'For Each Reflection', formula: 'Challenge → What You Tried → What You Learned → How You Grew', description: 'Follow this cycle for each reflection. It\'s simple, and it\'s exactly what examiners look for.' },
-  { type: 'heading', text: 'Sample Reflection Opening' },
-  { type: 'quote-highlight', text: '"I wanted the strongest possible RQ to analyse the correlation between social media influence and voter behaviour. My supervisor believed the lack of specificity could derail my analysis. While I initially disagreed, I formulated alternative versions to see which would better serve the research..."', attribution: 'Example Reflection 1 — showing the process' },
+  { type: 'heading', text: 'Reflect, Don\'t Describe' },
   { type: 'warning-box', text: 'Don\'t just describe what happened. Show the thinking behind your decisions. Examiners want to see intellectual engagement, not a timeline of events.' },
-  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full reflection formula, worked sample reflections, and a fill-in template? It\'s all inside the RPPF Mastery module.', href: '/pricing', buttonText: 'Unlock RPPF Mastery' },
   { type: 'key-takeaway', items: [
     'The RPPF is worth 6 marks — don\'t leave them on the table',
     'Write three reflections: early, mid, and final stage',
-    'Follow the formula: challenge → attempt → learning → growth',
+    'Show the thinking behind your decisions, not just events',
     'Be genuine — show your real research journey, not a fabricated one',
   ]},
 ]
@@ -44,7 +41,7 @@ export default function RPPFGuide() {
   return (
     <GuidePage
       title="Complete RPPF Guide for IB Extended Essay"
-      description="Master the Reflections on Planning and Progress Form. Learn the 3-reflection structure, see sample openings, and use the formula that earns full marks."
+      description="Master the Reflections on Planning and Progress Form. Learn the 3-reflection structure and what examiners look for across all six marks."
       canonical="/guides/rppf-guide"
       content={CONTENT}
       relatedGuides={RELATED}

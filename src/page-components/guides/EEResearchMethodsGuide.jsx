@@ -4,22 +4,8 @@ import GuidePage from '../../components/GuidePage'
 
 const CONTENT = [
   { type: 'paragraph', text: 'How you research determines the quality of everything that follows. The best EEs aren\'t written by the smartest students — they\'re written by the ones who researched most effectively. Method is what separates good from great.' },
-  { type: 'heading', text: 'The Three-Level Research Funnel' },
-  { type: 'step-process', steps: [
-    { title: 'Level 1: Google', text: 'Definitions, context, policy documents, government data, think tanks. This is your foundation — don\'t skip it, but don\'t stop here either.' },
-    { title: 'Level 2: Google Scholar', text: 'Peer-reviewed arguments, models, frameworks, academic debates. This is where depth lives and where strong essays distinguish themselves.' },
-    { title: 'Level 3: PDF-Only Searches', text: 'Full research papers, original datasets, foundational studies. Most students never reach this level — that\'s where their research suffers.' },
-  ]},
-  { type: 'heading', text: 'The EE Dump Method' },
-  { type: 'paragraph', text: 'Before you start formal research, use the EE Dump method to build your knowledge base:' },
-  { type: 'numbered-steps', items: [
-    'Break your RQ into 5 subtopics',
-    'Google each subtopic — go through all relevant links',
-    'Dump relevant information into a document with source links',
-    'Repeat on Google Scholar for academic depth',
-    'Look for unexpected connections between subtopics',
-  ]},
-  { type: 'tip-box', text: 'There is no word limit for your EE Dump. The more you dump, the more confident you\'ll be when writing. You won\'t need to keep searching during the writing phase.' },
+  { type: 'heading', text: 'Where to Look' },
+  { type: 'paragraph', text: 'Start broad and go deeper. A general web search gives you definitions, context, government data and policy documents. Google Scholar gives you peer-reviewed arguments, models and academic debate. Full research papers and original datasets — often only found as PDFs — are where the strongest essays distinguish themselves. Most students stop too early.' },
   { type: 'heading', text: 'Google Scholar Search Strategy' },
   { type: 'icon-card', icon: 'Search', title: 'Search Narrowly', text: 'Not "Inflation India" but "monetary policy transmission India inflation." Specificity gets better results.' },
   { type: 'icon-card', icon: 'FileText', title: 'Sort by Relevance', text: 'Not by date. New doesn\'t mean good. Influential doesn\'t mean outdated.' },
@@ -41,9 +27,10 @@ const CONTENT = [
   ]},
   { type: 'warning-box', text: 'Red flags: blog posts with no citations, news articles used as analysis (they\'re fine for context), papers that only describe without arguing, anything without a clear methodology.' },
   { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full research system — the step-by-step method for building your source base before you write? It\'s inside the research module.', href: '/pricing', buttonText: 'Unlock the research module' },
   { type: 'key-takeaway', items: [
-    'Research through three levels: Google → Scholar → PDF-only',
-    'Use the EE Dump method before formal research',
+    'Start broad, then go deeper: general search → Scholar → full papers',
+    'Search narrowly and sort by relevance, not date',
     'Each sub-question needs 2-3 strong sources',
     'Document core claims, evidence, and limitations for every source',
   ]},
@@ -58,7 +45,7 @@ export default function EEResearchMethodsGuide() {
   return (
     <GuidePage
       title="Extended Essay Research Methods Guide"
-      description="Master the three-level research funnel, Google Scholar search strategies, the EE Dump method, and source evaluation techniques for your IB Extended Essay."
+      description="Learn where to find strong sources, Google Scholar search strategies, search operators, and how to evaluate sources for your IB Extended Essay."
       canonical="/guides/ee-research-methods"
       content={CONTENT}
       relatedGuides={RELATED}
