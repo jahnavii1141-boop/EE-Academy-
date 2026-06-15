@@ -9,7 +9,7 @@ const CONTENT = [
   },
   {
     type: 'paragraph',
-    text: 'This guide breaks down the A grade into a concrete system: what the marks require, how each criterion works, and the seven steps that separate A-band essays from the rest. Everything here comes from the system behind a 32/34 Extended Essay.',
+    text: 'This guide breaks down the A grade into its parts: what the marks require, how each criterion works, and the habits that separate A-band essays from the rest.',
   },
   {
     type: 'heading',
@@ -74,11 +74,11 @@ const CONTENT = [
   },
   {
     type: 'heading',
-    text: 'How to Get an A in the Extended Essay: 7-Step System',
+    text: 'How to Get an A in the Extended Essay: A Step-by-Step Approach',
   },
   {
     type: 'paragraph',
-    text: 'A 32/34 essay does not happen by accident. It follows a deliberate process from the very first decision. Here is the exact sequence that works:',
+    text: 'An A-grade essay does not happen by accident. It follows a deliberate process from the very first decision. Here is a sequence that works:',
   },
   {
     type: 'step-process',
@@ -93,7 +93,7 @@ const CONTENT = [
       },
       {
         title: 'Step 3: Build your source base before you draft',
-        text: 'The biggest structural mistake in EE writing is starting to write before you have finished researching. When you write without a complete source base, you either pad sections you cannot support or you skip important counterarguments because you did not find the relevant paper yet. Use the EE Dump method: research by subtopic first, copy every useful quotation and source link into a structured document, then write from that foundation. Students who write from a full dump write faster, more confidently, and with stronger analysis.',
+        text: 'The biggest structural mistake in EE writing is starting to write before you have finished researching. When you write without a complete source base, you either pad sections you cannot support or you skip important counterarguments because you did not find the relevant paper yet. Research by subtopic first, copy every useful quotation and source link into a structured document, then write from that foundation. Students who write from a complete source base write faster, more confidently, and with stronger analysis.',
       },
       {
         title: 'Step 4: Prioritise analysis over description in every paragraph',
@@ -157,7 +157,7 @@ const CONTENT = [
   },
   {
     type: 'paragraph',
-    text: 'The seven-step system above applies across all subjects, but the specific markers of A-grade performance vary slightly by discipline:',
+    text: 'The approach above applies across all subjects, but the specific markers of A-grade performance vary slightly by discipline:',
   },
   {
     type: 'step-process',
@@ -184,7 +184,7 @@ const CONTENT = [
     type: 'heading',
     text: 'A-Grade Checklist: Run This Before Submission',
   },
-  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full step-by-step method, worked examples, and templates behind a 32/34 essay? It\'s all inside the course.', href: '/pricing', buttonText: 'See the course' },
   {
     type: 'key-takeaway',
     items: [
@@ -259,7 +259,7 @@ export default function GetAExtendedEssayGuide() {
   return (
     <GuidePage
       title="How to Get an A in the Extended Essay (Step-by-Step)"
-      description="Learn exactly how to get an A in the IB Extended Essay with a 7-step system, a full criterion breakdown, and the specific habits that separate A-grade essays from B-grade ones."
+      description="Learn how to get an A in the IB Extended Essay: a full criterion breakdown and the specific habits that separate A-grade essays from B-grade ones."
       canonical="/guides/how-to-get-an-a-in-extended-essay"
       content={CONTENT}
       relatedGuides={RELATED}
