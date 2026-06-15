@@ -31,6 +31,26 @@ function OnboardingPageInner() {
   const [generatingDots, setGeneratingDots] = useState(0)
   const [paymentError, setPaymentError] = useState(false)
 
+  // Restore in-progress onboarding from sessionStorage (survives page reloads / auth redirects)
+  useEffect(() => {
+    try {
+      const saved = sessionStorage.getItem('eeOnboarding')
+      if (saved) {
+        const { step: s, form: f } = JSON.parse(saved)
+        if (s && !['generating', 'done'].includes(s)) { setStep(s); setForm(f) }
+      }
+    } catch {}
+  }, [])
+
+  // Persist progress whenever step or form changes
+  useEffect(() => {
+    if (['generating', 'done'].includes(step)) {
+      sessionStorage.removeItem('eeOnboarding')
+    } else {
+      try { sessionStorage.setItem('eeOnboarding', JSON.stringify({ step, form })) } catch {}
+    }
+  }, [step, form])
+
   // Skip onboarding if workspace already set up (unless returning from checkout)
   useEffect(() => {
     if (!isSignedIn) return

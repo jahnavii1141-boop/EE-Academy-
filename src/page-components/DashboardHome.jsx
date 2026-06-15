@@ -196,25 +196,37 @@ function DashboardTour({ onDone }) {
   let cardStyle = {}
   let arrowEl = null
 
+  const CARD_H = 220
   if (!rect) {
     cardStyle = { position: 'fixed', top: '50%', left: '50%', transform: 'translate(-50%, -50%)' }
   } else if (current.arrow === 'top') {
-    // tooltip below element
-    cardStyle = {
-      position: 'fixed',
-      top: rect.bottom + PAD + 12,
-      left: Math.min(rect.left + rect.width / 2, window.innerWidth - 290),
-      transform: 'translateX(-50%)',
+    const leftX = Math.min(Math.max(rect.left + rect.width / 2, 148), window.innerWidth - 148)
+    const spaceBelow = window.innerHeight - rect.bottom - PAD - 12
+    if (spaceBelow >= CARD_H) {
+      // enough room below — normal position
+      cardStyle = { position: 'fixed', top: rect.bottom + PAD + 12, left: leftX, transform: 'translateX(-50%)' }
+      arrowEl = (
+        <div style={{
+          position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)',
+          width: 0, height: 0,
+          borderLeft: '8px solid transparent', borderRight: '8px solid transparent',
+          borderBottom: '8px solid #fff',
+          filter: 'drop-shadow(0 -1px 0 #e8e8e8)',
+        }} />
+      )
+    } else {
+      // flip above element
+      cardStyle = { position: 'fixed', top: Math.max(8, rect.top - PAD - 12 - CARD_H), left: leftX, transform: 'translateX(-50%)' }
+      arrowEl = (
+        <div style={{
+          position: 'absolute', bottom: -8, left: '50%', transform: 'translateX(-50%)',
+          width: 0, height: 0,
+          borderLeft: '8px solid transparent', borderRight: '8px solid transparent',
+          borderTop: '8px solid #fff',
+          filter: 'drop-shadow(0 1px 0 #e8e8e8)',
+        }} />
+      )
     }
-    arrowEl = (
-      <div style={{
-        position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%)',
-        width: 0, height: 0,
-        borderLeft: '8px solid transparent', borderRight: '8px solid transparent',
-        borderBottom: '8px solid #fff',
-        filter: 'drop-shadow(0 -1px 0 #e8e8e8)',
-      }} />
-    )
   } else if (current.arrow === 'left') {
     // tooltip to the right of element
     cardStyle = {

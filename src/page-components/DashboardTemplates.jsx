@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { ChevronDown, ChevronUp, Download } from 'lucide-react'
+import { ChevronDown, ChevronUp, Download, BookMarked } from 'lucide-react'
 import { useAccess } from '../hooks/useAccess'
 import UpgradeGate from '../components/UpgradeGate'
 
@@ -116,29 +116,30 @@ export default function DashboardTemplates() {
     )
   }
 
-  if (!hasPremium) {
-    return <UpgradeGate requiredTier="premium" toolName="Templates & SOPs" />
-  }
-
   return (
     <div className="h-full overflow-y-auto">
       <div className="max-w-2xl mx-auto px-8 pt-8 pb-16">
         <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-2">Templates</p>
         <h1 className="font-serif text-2xl font-bold text-navy mb-1">Templates</h1>
         <p className="text-sm text-ink-soft mb-8">
-          Fillable SOPs — click to expand, type directly, auto-saved to your browser.
+          Free resources below. Premium unlocks fillable SOPs auto-saved to your browser.
         </p>
 
-        <div className="space-y-3">
-          {TEMPLATES.map(t => <TemplateBlock key={t.id} template={t} />)}
-        </div>
+        {/* ── Free: Guides ── */}
+        <Link href="/guides" className="flex items-center gap-4 rounded-2xl border border-green-200 bg-green-50 px-5 py-4 mb-3 no-underline group hover:bg-green-100 transition-colors">
+          <BookMarked className="w-5 h-5 text-green-700 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center gap-2">
+              <p className="text-sm font-bold text-green-900">EE Guides</p>
+              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-green-200 text-green-800">FREE</span>
+            </div>
+            <p className="text-xs text-green-800/60 mt-0.5">Step-by-step guides for every stage of the EE process</p>
+          </div>
+          <ChevronDown className="w-4 h-4 text-green-700/40 -rotate-90 group-hover:text-green-700 transition-colors flex-shrink-0" />
+        </Link>
 
-        <div className="mt-10 rounded-xl border border-navy/10 bg-parchment/30 px-5 py-4">
-          <p className="text-xs text-navy/50">Templates are saved locally in your browser. Cloud sync coming soon.</p>
-        </div>
-
-        {/* ── Subject Planning Workbooks ── */}
-        <div className="mt-12">
+        {/* ── Free: Subject Planning Workbooks ── */}
+        <div className="mt-8">
           <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-1">Subject workbooks</p>
           <h2 className="font-serif text-xl font-bold text-navy mb-1">EE Planning Workbooks</h2>
           <p className="text-sm text-ink-soft mb-6">
@@ -161,6 +162,27 @@ export default function DashboardTemplates() {
               </a>
             ))}
           </div>
+        </div>
+
+        {/* ── Premium: Fillable SOPs ── */}
+        <div className="mt-12">
+          {!hasPremium ? (
+            <UpgradeGate requiredTier="premium" toolName="Fillable SOPs" />
+          ) : (
+            <>
+              <p className="text-[10px] font-bold text-ink-muted uppercase tracking-widest mb-1">Fillable SOPs</p>
+              <h2 className="font-serif text-xl font-bold text-navy mb-1">Essay Templates</h2>
+              <p className="text-sm text-ink-soft mb-6">
+                Click to expand, type directly, auto-saved to your browser.
+              </p>
+              <div className="space-y-3">
+                {TEMPLATES.map(t => <TemplateBlock key={t.id} template={t} />)}
+              </div>
+              <div className="mt-10 rounded-xl border border-navy/10 bg-parchment/30 px-5 py-4">
+                <p className="text-xs text-navy/50">Templates are saved locally in your browser. Cloud sync coming soon.</p>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
