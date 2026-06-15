@@ -5,12 +5,7 @@ import GuidePage from '../../components/GuidePage'
 const CONTENT = [
   { type: 'paragraph', text: 'The single biggest signal to an IB examiner that your essay is A-grade is how it sounds. Academic writing doesn\'t mean long sentences and complicated words. It means precise, analytical prose that demonstrates you\'re engaging with ideas at a research level, not a school assignment level.' },
   { type: 'heading', text: 'The Core Distinction: Description vs Analysis' },
-  { type: 'paragraph', text: 'This is the most important concept in academic writing for the EE. Every paragraph you write falls into one of two categories:' },
-  { type: 'before-after',
-    before: { label: 'Description (lower marks)', text: '"ZARA is a global fashion brand founded in 1975. It has stores in over 90 countries and sells clothing for men, women, and children. Its supply chain is very fast and allows it to get new designs into stores quickly."' },
-    after: { label: 'Analysis (higher marks)', text: '"ZARA\'s vertically integrated supply chain — which reduces the design-to-shelf cycle to approximately two weeks — constitutes a significant operational advantage. However, its inventory turnover ratio of 5.12 (Inditex Annual Report, 2023) falls below the fast fashion industry standard of 8-12, suggesting that ZARA\'s dominance may rely more heavily on brand positioning and product diversity than on production speed alone."' },
-  },
-  { type: 'paragraph', text: 'The analytical paragraph finds something unexpected, backs it with specific data, and draws a conclusion that actually answers the research question. The descriptive paragraph just states facts.' },
+  { type: 'paragraph', text: 'This is the most important concept in academic writing for the EE. Description states facts. Analysis finds something unexpected, backs it with specific cited data, and draws a conclusion that actually answers your research question. A descriptive paragraph could appear in any textbook; an analytical one could only appear in your essay.' },
   { type: 'heading', text: 'Sentence Patterns for Academic Analysis' },
   { type: 'step-process', steps: [
     { title: 'The Claim-Evidence-Explanation Pattern', text: 'Make a claim. Back it with cited evidence. Explain what the evidence means for your argument. "X suggests Y (Author, Year). This implies Z because..."' },
@@ -22,11 +17,10 @@ const CONTENT = [
   { type: 'comparison-table', headers: ['School Essay Language', 'Academic/Research Language'], rows: [
     ['"This shows that..."', '"This suggests / implies / indicates that..."'],
     ['"I think that..."', '"The evidence points toward..." / "This analysis demonstrates..."'],
-    ['"ZARA is very successful"', '"ZARA\'s market position, as evidenced by its 10.4% global market share (Statista, 2023), reflects..."'],
     ['"This is important because..."', '"The significance of this finding lies in..."'],
-    ['"In conclusion, ZARA wins because..."', '"The weight of evidence suggests that product portfolio diversity, rather than production speed alone, constitutes the primary driver of ZARA\'s competitive position."'],
+    ['"In conclusion, X wins because..."', '"The weight of evidence suggests that..."'],
   ]},
-  { type: 'heading', text: 'The Original Voice Principle' },
+  { type: 'heading', text: 'Write in Your Own Voice' },
   { type: 'paragraph', text: 'Academic writing must have YOUR voice — your analysis, your conclusions, your evaluation. The biggest weakness in IB EEs is over-reliance on sources: spending paragraph after paragraph summarising what researchers found, rather than using those findings as evidence for your own argument.' },
   { type: 'tip-box', text: 'A useful test: highlight every sentence in your essay. If more than 40% of highlighted sentences begin with the name of a researcher ("Smith argues...", "Jones found..."), you\'re reporting rather than analysing. The subject of most sentences should be the phenomenon you\'re studying, not the researchers.' },
   { type: 'heading', text: 'Paragraph Structure' },
@@ -38,9 +32,7 @@ const CONTENT = [
   ]},
   { type: 'heading', text: 'Words and Phrases to Avoid' },
   { type: 'warning-box', text: 'Avoid these in your EE: "In today\'s modern world...", "Since the dawn of time...", "It is widely known that...", "As we can clearly see...", "Obviously...", "Interestingly...". These are filler phrases that weaken academic writing. Remove them wherever they appear.' },
-  { type: 'heading', text: 'The Length Test' },
-  { type: 'paragraph', text: 'Academic writing is dense — it says a lot in few words. If you\'re at 3,000 words and feel like you haven\'t said much, you\'re probably describing too much and analysing too little. If you\'re at 4,200 words and struggling to cut, you likely have paragraphs that don\'t directly serve your RQ.' },
-  { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want worked before-and-after rewrites for your subject and the full writing system? It\'s inside the writing modules.', href: '/pricing', buttonText: 'Unlock the writing modules' },
   { type: 'key-takeaway', items: [
     'Description states facts. Analysis evaluates what facts mean for your argument.',
     'Use claim-evidence-explanation as your paragraph template',
