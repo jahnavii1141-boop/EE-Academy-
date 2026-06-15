@@ -37,9 +37,10 @@ function OnboardingPageInner() {
       const saved = sessionStorage.getItem('eeOnboarding')
       if (saved) {
         const { step: s, form: f } = JSON.parse(saved)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (s && !['generating', 'done'].includes(s)) { setStep(s); setForm(f) }
       }
-    } catch {}
+    } catch { /* ignore corrupt session data */ }
   }, [])
 
   // Persist progress whenever step or form changes
@@ -47,7 +48,7 @@ function OnboardingPageInner() {
     if (['generating', 'done'].includes(step)) {
       sessionStorage.removeItem('eeOnboarding')
     } else {
-      try { sessionStorage.setItem('eeOnboarding', JSON.stringify({ step, form })) } catch {}
+      try { sessionStorage.setItem('eeOnboarding', JSON.stringify({ step, form })) } catch { /* storage unavailable */ }
     }
   }, [step, form])
 

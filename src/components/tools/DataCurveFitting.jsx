@@ -95,7 +95,7 @@ function getRegression(pts, type) {
     const yMax = Math.max(...pts.map(p => p.y))
     const scale = yMax / (1 / (sigma * Math.sqrt(2 * Math.PI)))
     return {
-      fn: x => (scale / (sigma * Math.sqrt(2 * Math.PI))) * Math.exp(-(x - mu) ** 2 / (2 * sigma ** 2)),
+      fn: x => (scale / (sigma * Math.sqrt(2 * Math.PI))) * Math.exp(-((x - mu) ** 2) / (2 * sigma ** 2)),
       label: `y = (1/σ√2π) · e^(−(x−μ)²/2σ²)   μ=${nf(mu, 2)}, σ=${nf(sigma, 2)}`,
     }
   }
