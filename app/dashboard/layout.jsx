@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  MessageSquare, ChevronDown, ChevronUp, X,
+  MessageSquare, ChevronDown, ChevronUp, X, BookMarked,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
@@ -94,8 +94,9 @@ const NAV_MAIN = [
 ]
 
 const NAV_MORE = [
-  { id: 'templates', label: 'Templates', icon: FileText, href: '/dashboard/templates' },
-  { id: 'share',     label: 'Share',     icon: Share2,   href: '/dashboard/share' },
+  { id: 'templates', label: 'Templates',  icon: FileText,    href: '/dashboard/templates' },
+  { id: 'guides',    label: 'Guides',     icon: BookMarked,  href: '/guides', isFree: true },
+  { id: 'share',     label: 'Share',      icon: Share2,      href: '/dashboard/share' },
 ]
 
 const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
@@ -281,6 +282,12 @@ export default function DashboardLayout({ children }) {
               >
                 <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
                 <span>{item.label}</span>
+                {item.isFree && (
+                  <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#f0fdf4', color: active ? '#fff' : '#15803d' }}>
+                    Free
+                  </span>
+                )}
               </Link>
             )
           })}
