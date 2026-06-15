@@ -3,7 +3,7 @@
 import GuidePage from '../../components/GuidePage'
 
 const CONTENT = [
-  { type: 'paragraph', text: 'Before you submit your Extended Essay, run through this checklist. These are the things examiners immediately notice — and most of them take under 15 minutes to fix. This checklist is built from the same system used to score 32/34.' },
+  { type: 'paragraph', text: 'Before you submit your Extended Essay, run through this checklist. These are the things examiners immediately notice — and most of them take under 15 minutes to fix. This checklist comes from hard-won experience scoring 32/34.' },
   { type: 'heading', text: 'Research Question' },
   { type: 'key-takeaway', items: [
     'RQ uses "to what extent" or "how" — forces evaluation, not just description',

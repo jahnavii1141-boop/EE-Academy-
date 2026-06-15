@@ -3,7 +3,7 @@
 import GuidePage from '../../components/GuidePage'
 
 const CONTENT = [
-  { type: 'paragraph', text: 'Business Management is one of the most popular — and most accessible — subjects for the IB Extended Essay. The analytical frameworks are well-defined, the research is publicly available, and the marking tends to reward systematic analysis done well. A 32/34 EE on ZARA\'s business strategy was written using the approach outlined in this guide.' },
+  { type: 'paragraph', text: 'Business Management is one of the most popular — and most accessible — subjects for the IB Extended Essay. The analytical frameworks are well-defined, the research is publicly available, and the marking tends to reward systematic analysis done well.' },
   { type: 'heading', text: 'Why Business Management Works Well for the EE' },
   { type: 'icon-card', icon: 'Target', title: 'Accessible Research', text: 'Companies publish annual reports, financial statements, press releases, and industry analyses publicly. You can build a well-evidenced essay without needing institutional database access.' },
   { type: 'icon-card', icon: 'BookOpen', title: 'Clear Analytical Frameworks', text: 'IB Business gives you established tools — Porter\'s Five Forces, BCG Matrix, SWOT, financial ratios, the 4 P\'s. Using these correctly and thoroughly demonstrates Criterion A knowledge immediately.' },
@@ -24,8 +24,8 @@ const CONTENT = [
     { title: 'Value Chain Analysis', text: 'Strong for analysing how internal activities contribute to competitive advantage. Best applied to companies with distinctive operational models.' },
     { title: 'BCG Matrix', text: 'Useful for analysing product portfolio diversification. If you introduce this in your methodology, map the company\'s actual product lines onto the matrix — don\'t just mention it.' },
   ]},
-  { type: 'heading', text: 'The Original Finding Principle' },
-  { type: 'paragraph', text: 'The most impressive Business EEs don\'t just apply frameworks — they find something unexpected. When researching ZARA for a 32/34 essay, calculating ZARA\'s actual inventory turnover ratio (5.12) from Inditex\'s annual report revealed it was below the fast fashion industry standard of 8-12. That single finding — that ZARA\'s "speed" narrative doesn\'t fully hold up under the numbers — made the entire essay stand out.' },
+  { type: 'heading', text: 'Look for an Original Finding' },
+  { type: 'paragraph', text: 'The most impressive Business EEs don\'t just apply frameworks — they find something unexpected. Calculating a company\'s financial ratios yourself from its annual report and comparing them against the industry standard can reveal that the conventional narrative about that company doesn\'t fully hold up under the numbers. A finding like that makes an essay stand out.' },
   { type: 'tip-box', text: 'The best finding you can have in a Business EE is one that challenges the conventional narrative about your company. If your analysis just confirms what everyone already believes, it\'s not adding value. Look for the counterintuitive result.' },
   { type: 'heading', text: 'Data Sources for Business EEs' },
   { type: 'numbered-steps', items: [
@@ -62,7 +62,7 @@ export default function EEBusinessManagement() {
   return (
     <GuidePage
       title="IB Extended Essay Business Management Guide"
-      description="Business Management is one of the most accessible EE subjects when done right. Learn the framework stack, RQ structure, data sources, and the original finding principle behind a 32/34 Business EE."
+      description="Business Management is one of the most accessible EE subjects when done right. Learn which analytical frameworks to use, how to structure your RQ, where to find data, and how to reach an original finding."
       canonical="/guides/ee-business-management"
       content={CONTENT}
       relatedGuides={RELATED}
