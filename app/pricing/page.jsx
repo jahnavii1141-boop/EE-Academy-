@@ -1,7 +1,7 @@
 import PricingPage from '../../src/page-components/PricingPage'
 
 export const metadata = {
-  title: 'The Extended Essay Academy — Plans & Pricing',
+  title: 'IB Extended Essay Course — Plans & Pricing',
   description: 'Unlock the full IB Extended Essay system — 14 modules, AI Grade Scan, planner, essay editor, and templates. Yearly subscription.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }

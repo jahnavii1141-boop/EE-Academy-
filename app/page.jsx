@@ -8,12 +8,14 @@ import ResultsStrip from '../src/components/ResultsStrip'
 import EmailSignupModal from '../src/components/EmailSignupModal'
 
 export const metadata = {
-  title: 'The Extended Essay Academy | Free IB EE Modules',
-  description: 'The step-by-step system for your IB Extended Essay. 14 modules covering research, structure, writing, and criteria. Start free today.',
+  // Keyword-first, single brand. `absolute` avoids the template appending a
+  // second "| The Extended Essay Academy".
+  title: { absolute: 'IB Extended Essay: Free Course, Templates & 32/34 Example' },
+  description: 'Free step-by-step IB Extended Essay course — 5 free modules, 16 subject workbooks, a real 32/34 example essay, and the official IB guide. Start free, no card.',
   alternates: { canonical: 'https://theextendedessay.com/' },
   openGraph: {
-    title: 'The Extended Essay Academy | Free IB EE Modules',
-    description: 'The step-by-step system for your IB Extended Essay. 14 modules covering research, structure, writing, and criteria. Start free today.',
+    title: 'IB Extended Essay: Free Course, Templates & a Real 32/34 Example',
+    description: 'Free step-by-step IB Extended Essay course — 5 free modules, 16 subject workbooks, a real 32/34 example essay, and the official IB guide. Start free, no card.',
     url: 'https://theextendedessay.com/',
     images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
   },

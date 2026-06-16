@@ -164,7 +164,10 @@ export async function generateMetadata({ params }) {
   const guide = GUIDE_META[slug]
   if (!guide) return {}
   return {
-    title: `${guide.title} | The Extended Essay Academy`,
+    // `absolute` bypasses the root layout's "%s | The Extended Essay Academy"
+    // template so the full keyword-rich title shows in search results instead
+    // of being truncated by a trailing (and previously doubled) brand name.
+    title: { absolute: guide.title },
     description: guide.description,
     alternates: { canonical: `https://theextendedessay.com/guides/${slug}` },
     openGraph: {
