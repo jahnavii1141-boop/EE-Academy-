@@ -21,6 +21,12 @@ function OnboardingPageInner() {
   const searchParams = useSearchParams()
   const firstName = user?.firstName || ''
 
+  // Where to land after onboarding. Honour a ?next= deep link (e.g. when a
+  // visitor arrived via a shared /dashboard/* link), but only allow internal
+  // dashboard paths to avoid open-redirects. Defaults to the dashboard home.
+  const nextParam = searchParams.get('next')
+  const dest = nextParam && nextParam.startsWith('/dashboard') ? nextParam : '/dashboard/home'
+
   const [step, setStep] = useState('welcome')
   const [form, setForm] = useState({
     subject: '',
@@ -60,7 +66,7 @@ function OnboardingPageInner() {
       .then(r => r.json())
       .then(({ workspace }) => {
         if (workspace?.research_question && workspace?.subject) {
-          router.replace('/dashboard/home')
+          router.replace(dest)
         }
       })
       .catch(() => {})
@@ -133,7 +139,7 @@ function OnboardingPageInner() {
 
   useEffect(() => {
     if (step !== 'done') return
-    const timer = setTimeout(() => router.push('/dashboard/home'), 1000)
+    const timer = setTimeout(() => router.push(dest), 1000)
     return () => clearTimeout(timer)
   }, [step])
 

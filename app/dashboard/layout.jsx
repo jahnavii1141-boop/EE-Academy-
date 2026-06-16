@@ -1,7 +1,7 @@
 'use client'
 
 import { useUser, useAuth } from '@clerk/nextjs'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
@@ -107,6 +107,7 @@ export default function DashboardLayout({ children }) {
   const { user } = useUser()
   const { isSignedIn, isLoaded } = useAuth()
   const pathname = usePathname()
+  const router = useRouter()
   const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
   const [isPremium, setIsPremium] = useState(false)
@@ -124,8 +125,11 @@ export default function DashboardLayout({ children }) {
     setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
 
-  const handleEmailCapture = (email) => {
-    setFreeEmail(email)
+  const handleEmailCapture = () => {
+    // Match the homepage flow: email → onboarding → back to the linked page.
+    // The gate has already saved the email to localStorage + /api/subscribe,
+    // so onboarding (and this layout afterwards) see it as a free user.
+    router.push(`/onboarding?next=${encodeURIComponent(pathname)}`)
   }
 
   const dismissRemarks = () => {
