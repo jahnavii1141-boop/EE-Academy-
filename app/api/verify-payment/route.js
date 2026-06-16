@@ -26,19 +26,10 @@ export async function GET(request) {
 
   const apiKey = process.env.PADDLE_API_KEY
   if (!apiKey) {
-    // PADDLE_API_KEY not configured — grant access optimistically.
-    // Paddle only redirects with _ptxn after a completed payment, so this is safe.
-    // Webhook will also confirm independently when it fires.
-    console.warn('verify-payment: PADDLE_API_KEY not set — granting optimistic access for txn', txnId)
-    const supabase = createServiceClient()
-    await supabase.from('user_workspace').upsert({
-      clerk_user_id: userId,
-      has_paid: true,
-      paid_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'clerk_user_id' })
-    await supabase.from('user_workspace').update({ tier: 'basic', updated_at: new Date().toISOString() }).eq('clerk_user_id', userId)
-    return Response.json({ verified: true, tier: 'basic', note: 'optimistic_grant' })
+    // Fail closed: never grant access without verifying the transaction with Paddle.
+    // A _ptxn query param is attacker-controllable, so we must confirm it server-side.
+    console.error('[verify-payment] PADDLE_API_KEY not set — cannot verify, refusing to grant (fail closed)')
+    return Response.json({ error: 'Payment verification unavailable' }, { status: 500 })
   }
 
   const isProduction = process.env.NEXT_PUBLIC_PADDLE_ENVIRONMENT === 'production'
@@ -60,8 +51,16 @@ export async function GET(request) {
 
   const PAID_STATUSES = ['completed', 'billed']
   if (!PAID_STATUSES.includes(txn?.status)) {
-    console.error('verify-payment: unexpected transaction status', txn?.status, 'for txn', txnId)
+    console.error('[verify-payment] unexpected transaction status', txn?.status, 'for txn', txnId)
     return Response.json({ verified: false, status: txn?.status }, { status: 200 })
+  }
+
+  // Guard: if the transaction was created for a specific Clerk user, only that
+  // user may redeem it. Stops user B from claiming user A's _ptxn link.
+  const txnClerkId = txn?.custom_data?.clerk_user_id
+  if (txnClerkId && txnClerkId !== userId) {
+    console.error(`[verify-payment] txn ${txnId} belongs to ${txnClerkId}, not ${userId} — refusing`)
+    return Response.json({ error: 'Transaction does not belong to this user' }, { status: 403 })
   }
 
   // Get tier from price ID
@@ -71,18 +70,28 @@ export async function GET(request) {
   // Grant access — two separate writes so a tier constraint never blocks has_paid
   const supabase = createServiceClient()
 
+  // Idempotency: preserve the original paid_at on repeat verifications
+  const { data: existing } = await supabase
+    .from('user_workspace')
+    .select('has_paid')
+    .eq('clerk_user_id', userId)
+    .maybeSingle()
+  const alreadyPaid = existing?.has_paid === true
+
   // Step 1: commit access (no tier — cannot be blocked by schema constraints)
+  const entitlement = {
+    clerk_user_id: userId,
+    has_paid: true,
+    updated_at: new Date().toISOString(),
+  }
+  if (!alreadyPaid) entitlement.paid_at = new Date().toISOString()
+
   const { error } = await supabase
     .from('user_workspace')
-    .upsert({
-      clerk_user_id: userId,
-      has_paid: true,
-      paid_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'clerk_user_id' })
+    .upsert(entitlement, { onConflict: 'clerk_user_id' })
 
   if (error) {
-    console.error('verify-payment: Supabase error', error)
+    console.error('[verify-payment] Supabase error', error)
     return Response.json({ error: error.message }, { status: 500 })
   }
 
@@ -92,6 +101,6 @@ export async function GET(request) {
     .update({ tier, updated_at: new Date().toISOString() })
     .eq('clerk_user_id', userId)
 
-  console.log(`verify-payment: granted ${tier} to ${userId} via txn ${txnId}`)
+  console.log(`[verify-payment] ${alreadyPaid ? 'already granted (idempotent)' : 'entitlement written'}: ${tier} to ${userId} via txn ${txnId}`)
   return Response.json({ verified: true, tier })
 }

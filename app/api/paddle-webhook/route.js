@@ -4,19 +4,29 @@ import { createServiceClient } from '../../../src/lib/supabase'
 // We verify the signature, then flip has_paid=true and store the tier.
 // Docs: https://developer.paddle.com/webhooks/signature-verification
 
+// Constant-time hex string comparison — avoids leaking timing information.
+function timingSafeEqualHex(a, b) {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false
+  let mismatch = 0
+  for (let i = 0; i < a.length; i++) mismatch |= a.charCodeAt(i) ^ b.charCodeAt(i)
+  return mismatch === 0
+}
+
+// Returns: 'valid' | 'invalid' | 'misconfigured'
+// 'misconfigured' = no signing secret set → we FAIL CLOSED (never accept unsigned webhooks).
 async function verifyPaddleSignature(request, rawBody) {
   const secret = process.env.PADDLE_WEBHOOK_SECRET
-  if (!secret) return true // skip in dev if no secret set
+  if (!secret) return 'misconfigured'
 
   const signatureHeader = request.headers.get('paddle-signature')
-  if (!signatureHeader) return false
+  if (!signatureHeader) return 'invalid'
 
   // Parse ts and h1 from header: "ts=1234567890;h1=abc123..."
   const parts = Object.fromEntries(
     signatureHeader.split(';').map(p => p.split('='))
   )
   const { ts, h1 } = parts
-  if (!ts || !h1) return false
+  if (!ts || !h1) return 'invalid'
 
   // Build signed payload: ts + ":" + raw body
   const signedPayload = `${ts}:${rawBody}`
@@ -34,7 +44,7 @@ async function verifyPaddleSignature(request, rawBody) {
     .map(b => b.toString(16).padStart(2, '0'))
     .join('')
 
-  return computed === h1
+  return timingSafeEqualHex(computed, h1) ? 'valid' : 'invalid'
 }
 
 // Map Paddle price IDs to tiers
@@ -54,11 +64,19 @@ function getTierFromPriceId(priceId) {
 
 export async function POST(request) {
   const rawBody = await request.text()
+  console.log('[paddle-webhook] received')
 
-  const valid = await verifyPaddleSignature(request, rawBody)
-  if (!valid) {
+  const sigResult = await verifyPaddleSignature(request, rawBody)
+  if (sigResult === 'misconfigured') {
+    // Fail closed: without a signing secret we cannot trust ANY webhook. Never grant access.
+    console.error('[paddle-webhook] PADDLE_WEBHOOK_SECRET not set — refusing unsigned webhook (fail closed)')
+    return Response.json({ error: 'Webhook not configured' }, { status: 500 })
+  }
+  if (sigResult !== 'valid') {
+    console.error('[paddle-webhook] signature verification failed')
     return Response.json({ error: 'Invalid signature' }, { status: 401 })
   }
+  console.log('[paddle-webhook] signature verified')
 
   let event
   try {
@@ -69,6 +87,7 @@ export async function POST(request) {
 
   // Only process completed transactions
   if (event.event_type !== 'transaction.completed') {
+    console.log(`[paddle-webhook] ignoring event_type=${event.event_type}`)
     return Response.json({ received: true })
   }
 
@@ -78,29 +97,44 @@ export async function POST(request) {
 
   if (!clerkUserId) {
     // Log the full transaction so we can manually grant access if needed
-    console.error('Paddle webhook: no clerk_user_id in custom_data. Transaction ID:', transaction?.id, '| Customer email:', transaction?.customer?.email)
+    console.error('[paddle-webhook] no clerk_user_id in custom_data. Transaction ID:', transaction?.id, '| Customer email:', transaction?.customer?.email)
     // Still return 200 so Paddle doesn't keep retrying — we'll handle manually
     return Response.json({ received: true, warning: 'No user ID — manual grant needed' })
   }
 
-  // Get the price ID from the first line item (used for logging only)
+  // Get the price ID from the first line item
   const priceId = transaction?.items?.[0]?.price?.id
   const tier = getTierFromPriceId(priceId)
 
   const supabase = createServiceClient()
 
-  // Step 1: commit access (no tier — cannot be blocked by schema constraints)
+  // ── Idempotency ──────────────────────────────────────────────────────────────
+  // Duplicate webhook deliveries are expected. The has_paid flip is naturally
+  // idempotent, but we also avoid moving paid_at on redelivery so the original
+  // purchase timestamp is preserved.
+  const { data: existing } = await supabase
+    .from('user_workspace')
+    .select('has_paid, paid_at')
+    .eq('clerk_user_id', clerkUserId)
+    .maybeSingle()
+
+  const alreadyPaid = existing?.has_paid === true
+
+  // Step 1: commit access (no tier — cannot be blocked by schema constraints).
+  // Only set paid_at if this is the first time we're granting.
+  const entitlement = {
+    clerk_user_id: clerkUserId,
+    has_paid: true,
+    updated_at: new Date().toISOString(),
+  }
+  if (!alreadyPaid) entitlement.paid_at = new Date().toISOString()
+
   const { error } = await supabase
     .from('user_workspace')
-    .upsert({
-      clerk_user_id: clerkUserId,
-      has_paid: true,
-      paid_at: new Date().toISOString(),
-      updated_at: new Date().toISOString(),
-    }, { onConflict: 'clerk_user_id' })
+    .upsert(entitlement, { onConflict: 'clerk_user_id' })
 
   if (error) {
-    console.error('Paddle webhook: Supabase error', error)
+    console.error('[paddle-webhook] Supabase error', error)
     return Response.json({ error: error.message }, { status: 500 })
   }
 
@@ -109,6 +143,12 @@ export async function POST(request) {
     .from('user_workspace')
     .update({ tier, updated_at: new Date().toISOString() })
     .eq('clerk_user_id', clerkUserId)
+
+  if (alreadyPaid) {
+    console.log(`[paddle-webhook] entitlement already granted for ${clerkUserId} — idempotent no-op (tier=${tier})`)
+  } else {
+    console.log(`[paddle-webhook] entitlement written: granted ${tier} to ${clerkUserId}`)
+  }
 
   // ── Stop marketing sequence for this buyer ──────────────────────────────────
   // Paddle includes the customer email in transaction.customer.email.
@@ -121,8 +161,8 @@ export async function POST(request) {
       .update({ paid_at: new Date().toISOString() })
       .eq('email', customerEmail)
       .is('paid_at', null) // only update if not already marked
+    console.log('[paddle-webhook] marketing sequence stopped for buyer')
   }
 
-  console.log(`Paddle webhook: granted ${tier} to ${clerkUserId}`)
   return Response.json({ success: true })
 }
