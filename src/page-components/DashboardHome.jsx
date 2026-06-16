@@ -5,8 +5,9 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight, Lock, PenLine } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
+import { COURSE_CATALOG } from '@/data/courseCatalog'
 
 const SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science',
@@ -16,165 +17,116 @@ const SUBJECTS = [
   'Psychology', 'Social & Cultural Anthropology', 'Visual Arts', 'Other',
 ]
 
-// ── Start Here progression guide ─────────────────────────────────────────────
-const FREE_STEPS = [
-  { num: '01', label: 'Mindset & Examiner Thinking', href: '/course/module-1' },
-  { num: '02', label: 'IB Criteria & Grading', href: '/course/module-2' },
-  { num: '03', label: 'Choose Subject & Topic', href: '/course/module-3' },
-  { num: '04', label: 'Research Question', href: '/course/module-4' },
-  { num: '05', label: 'EE Dump Research System', href: '/course/module-5' },
-]
-const PAID_STEPS = [
-  { num: '06', label: 'Research Methods', href: '/course/module-6' },
-  { num: '07', label: 'EE Structure', href: '/course/module-7' },
-  { num: '08', label: 'Writing Each Section', href: '/course/module-8' },
-  { num: '09', label: 'Format & Citations', href: '/course/module-9' },
-  { num: '10', label: 'Intro & Conclusion', href: '/course/module-10' },
-  { num: '11', label: 'RPPF Mastery', href: '/course/module-11' },
-  { num: '13', label: '32/34 Analysis', href: '/course/module-13' },
-  { num: '14', label: 'Templates & Checklists', href: '/course/module-14' },
+// ── Free workspace library (full browsable catalogue) ────────────────────────
+const LIB_STATS = [
+  { n: '5',     l: 'free modules' },
+  { n: '16',    l: 'subject workbooks' },
+  { n: '124',   l: 'page IB guide' },
+  { n: '32/34', l: 'example essay' },
 ]
 
-function StepChip({ step, active, color }) {
-  const style = active
-    ? { background: color === 'green' ? '#fff' : color === 'gold' ? '#fef3c7' : '#fff',
-        color: color === 'green' ? '#15803d' : color === 'gold' ? '#92400e' : '#0a0a0a',
-        border: `1px solid ${color === 'green' ? '#86efac' : color === 'gold' ? '#fde68a' : '#e0e0e0'}` }
-    : { background: '#fff', color: '#ccc', border: '1px solid #f0f0f0' }
+const LIB_RESOURCES = [
+  { icon: Database,   label: 'EE Dump',          sub: 'Collect sources, auto-build your bibliography.',         href: '/dashboard/dump' },
+  { icon: FileText,   label: 'Subject workbooks', sub: 'Planning portfolios for 16 subjects, ready to print.',   href: '/dashboard/templates' },
+  { icon: Award,      label: 'Example essay',     sub: 'A real 32/34 Extended Essay — first 17 pages.',          href: '/dashboard/sample-ee' },
+  { icon: BookMarked, label: 'Official IB guide', sub: 'The complete 124-page IB guide, in full.',               href: '/dashboard/ib-guide' },
+  { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',           href: '/guides' },
+  { icon: PenLine,    label: 'Essay editor',      sub: 'Write your draft with a live IB word count.',            href: '/dashboard/essay' },
+  { icon: Calendar,   label: 'Planner',           sub: 'Map deadlines and milestones to submission day.',        href: '/dashboard/planner' },
+]
+
+const CARD_BORDER = '0.5px solid #ececec'
+
+function LibBadge({ kind }) {
+  if (kind === 'free') {
+    return <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: '#0a0a0a', color: '#fff' }}>Free</span>
+  }
+  if (kind === 'included') {
+    return <span className="inline-flex items-center gap-1 text-[10px] font-semibold" style={{ color: '#0a0a0a' }}><Check className="w-3 h-3" strokeWidth={2.5} />Included</span>
+  }
+  return <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: '#f5f5f7', color: '#8e8e93' }}><Lock className="w-2.5 h-2.5" strokeWidth={2.5} />Premium</span>
+}
+
+function LibCard({ href, badge, top, title, sub, cta }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs font-medium"
-      style={style}>
-      <span className="font-mono text-[10px]" style={{ opacity: active ? 0.5 : 1 }}>{step.num}</span>
-      {step.label}
-      {!active && <span className="text-[10px]">🔒</span>}
-    </span>
+    <Link href={href} style={{ textDecoration: 'none', border: CARD_BORDER }}
+      className="group flex flex-col rounded-2xl bg-white p-4 min-h-[168px] transition-shadow hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
+      <div className="flex items-center justify-between mb-2.5">
+        {top}
+        <LibBadge kind={badge} />
+      </div>
+      <p className="text-[13px] font-semibold leading-snug" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{title}</p>
+      <p className="text-[12px] leading-relaxed mt-1" style={{ color: '#86868b' }}>{sub}</p>
+      <span className="mt-auto inline-flex items-center justify-center w-full rounded-full py-2 text-[12px] font-semibold transition-colors group-hover:bg-[#fafafa]"
+        style={{ border: '0.5px solid #e2e2e2', color: cta === 'Unlock' ? '#8e8e93' : '#0a0a0a' }}>
+        {cta}
+      </span>
+    </Link>
   )
 }
 
-const FREE_RESOURCES = [
-  { icon: BookOpen,   label: 'Subject guides & workbooks', sub: '16 subjects · download & print', href: '/dashboard/templates' },
-  { icon: Award,      label: 'A real 32/34 example essay',  sub: 'First 17 pages, free',           href: '/dashboard/sample-ee' },
-  { icon: BookMarked, label: 'IB Official EE Guide',        sub: 'The full official guide',         href: '/dashboard/ib-guide' },
-]
-
-// Refined upsell row — neutral, hairline-separated, price on the right.
-function TierRow({ name, blurb, price, unlocked, last }) {
+function LibSectionHead({ label, title }) {
   return (
-    <div className="px-5 py-4 flex items-start justify-between gap-4"
-      style={{ borderBottom: last ? 'none' : '1px solid #f2f2f2' }}>
-      <div className="min-w-0">
-        <div className="flex items-center gap-2">
-          <p className="text-[13.5px] font-semibold" style={{ color: '#1d1d1f', letterSpacing: '-0.01em' }}>{name}</p>
-          {unlocked && (
-            <span className="inline-flex items-center gap-1 text-[11px] font-medium" style={{ color: '#86868b' }}>
-              <Check className="w-3 h-3" strokeWidth={2.5} /> Included
-            </span>
-          )}
-        </div>
-        <p className="text-[12.5px] leading-relaxed mt-1" style={{ color: '#86868b' }}>{blurb}</p>
-      </div>
-      {!unlocked && (
-        <Link href="/pricing" style={{ textDecoration: 'none' }}
-          className="flex-shrink-0 inline-flex items-center gap-1 text-[12.5px] font-semibold px-3.5 py-1.5 rounded-full transition-colors"
-        >
-          <span style={{ color: '#1d1d1f' }}>{price}</span>
-          <ArrowRight className="w-3.5 h-3.5" style={{ color: '#1d1d1f' }} strokeWidth={2} />
-        </Link>
-      )}
+    <div className="mb-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: '#aeaeb2' }}>{label}</p>
+      <h2 className="text-[18px] font-semibold mt-1" style={{ color: '#0a0a0a', letterSpacing: '-0.02em' }}>{title}</h2>
     </div>
   )
 }
 
-function StartHereGuide({ hasPaid, isPremium }) {
+function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
   return (
-    <div id="tour-guide" className="mb-8 rounded-[20px] bg-white"
-      style={{ border: '1px solid #ececec', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}>
-
-      {/* Header */}
-      <div className="px-6 pt-6 pb-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: '#aeaeb2' }}>Included free</p>
-        <h2 className="text-[19px] font-semibold" style={{ color: '#1d1d1f', letterSpacing: '-0.025em' }}>
-          Everything you need to start
-        </h2>
-        <p className="text-[13.5px] mt-1.5 leading-relaxed" style={{ color: '#86868b' }}>
-          Five full modules, the templates, a real 32/34 essay, and the official IB guide. No card needed.
-        </p>
-      </div>
-
-      {/* Free modules */}
-      <div className="px-6 pb-5">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: '#aeaeb2' }}>The five modules</p>
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
-          {FREE_STEPS.map((step, i) => (
-            <span key={step.num} className="flex items-center gap-2">
-              <Link href={step.href} style={{ textDecoration: 'none' }}>
-                <StepChip step={step} active color="dark" />
-              </Link>
-              {i < FREE_STEPS.length - 1 && <ChevronRight className="w-3.5 h-3.5" style={{ color: '#d2d2d7' }} />}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Free resources */}
-      <div className="px-6 pb-6">
-        <div className="grid sm:grid-cols-3 gap-2.5">
-          {FREE_RESOURCES.map(r => {
-            const Icon = r.icon
-            return (
-              <Link key={r.href} href={r.href} style={{ textDecoration: 'none', border: '1px solid #ececec' }}
-                className="group flex items-center gap-3 rounded-2xl bg-white p-3.5 transition-all hover:shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
-                <span className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center" style={{ background: '#f5f5f7' }}>
-                  <Icon className="w-[17px] h-[17px]" style={{ color: '#6e6e73' }} strokeWidth={1.75} />
-                </span>
-                <div className="min-w-0">
-                  <p className="text-[12.5px] font-semibold leading-snug" style={{ color: '#1d1d1f', letterSpacing: '-0.01em' }}>{r.label}</p>
-                  <p className="text-[11.5px] leading-snug mt-0.5" style={{ color: '#aeaeb2' }}>{r.sub}</p>
-                </div>
-              </Link>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* Next step — paid tiers */}
-      <div className="px-6 pb-6">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: '#aeaeb2' }}>
-          {hasPaid ? 'Your access' : 'Your next step'}
-        </p>
-
-        {hasPaid && (
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-2 mb-4">
-            {PAID_STEPS.map((step, i) => (
-              <span key={step.num} className="flex items-center gap-2">
-                <Link href={step.href} style={{ textDecoration: 'none' }}>
-                  <StepChip step={step} active color="dark" />
-                </Link>
-                {i < PAID_STEPS.length - 1 && <ChevronRight className="w-3.5 h-3.5" style={{ color: '#d2d2d7' }} />}
-              </span>
-            ))}
+    <div id="tour-guide" className="mb-8">
+      {/* Scale strip */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-8">
+        {LIB_STATS.map(s => (
+          <div key={s.l} className="rounded-xl bg-white p-3.5" style={{ border: CARD_BORDER }}>
+            <p className="text-[20px] font-semibold" style={{ color: '#0a0a0a', letterSpacing: '-0.02em' }}>{s.n}</p>
+            <p className="text-[11px] mt-0.5" style={{ color: '#a1a1a6' }}>{s.l}</p>
           </div>
-        )}
+        ))}
+      </div>
 
-        <div className="rounded-2xl" style={{ border: '1px solid #ececec' }}>
-          <TierRow
-            name="Method"
-            price="$89"
-            unlocked={hasPaid}
-            blurb="Research question, writing structure, essay drafting, citations, RPPF — 9 modules plus a real 32/34 breakdown."
-          />
-          <TierRow
-            name="Method + System"
-            price="$149"
-            unlocked={isPremium}
-            last
-            blurb="Everything in Method, plus the complete writing system and AI tools."
-          />
-        </div>
+      {/* The course — full catalogue, free + premium visible */}
+      <LibSectionHead label="The course" title="14 modules, free and premium" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-9">
+        {COURSE_CATALOG.map(m => {
+          const canOpen = m.free || (m.premium ? isPremium : hasPaid)
+          const badge = m.free ? 'free' : (canOpen ? 'included' : 'premium')
+          return (
+            <LibCard key={m.id}
+              href={canOpen ? `/course/${m.id}` : '/pricing'}
+              badge={badge}
+              top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
+              title={m.title}
+              sub={m.tagline}
+              cta={canOpen ? 'Open' : 'Unlock'}
+            />
+          )
+        })}
+      </div>
+
+      {/* Tools & resources — all free */}
+      <LibSectionHead label="Tools & resources" title="Everything else you get, free" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        {LIB_RESOURCES.map(r => {
+          const Icon = r.icon
+          return (
+            <LibCard key={r.href}
+              href={r.href}
+              badge="free"
+              top={<Icon className="w-[18px] h-[18px]" style={{ color: '#6e6e73' }} strokeWidth={1.75} />}
+              title={r.label}
+              sub={r.sub}
+              cta="Open"
+            />
+          )
+        })}
       </div>
     </div>
   )
 }
+
 
 // ── Onboarding Tour ───────────────────────────────────────────────────────────
 const TOUR_KEY = 'eeAcademy_tourDone'
@@ -559,7 +511,7 @@ export default function DashboardHome() {
         )}
 
         {/* Start Here progression guide — only when not in edit mode */}
-        {!editing && <StartHereGuide hasPaid={hasPaid} isPremium={isPremium} />}
+        {!editing && <FreeWorkspaceLibrary hasPaid={hasPaid} isPremium={isPremium} />}
 
         {/* Share with supervisor */}
         {!editing && (
