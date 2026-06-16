@@ -50,14 +50,14 @@ function LibBadge({ kind }) {
 function LibCard({ href, badge, top, title, sub, cta }) {
   return (
     <Link href={href} style={{ textDecoration: 'none', border: CARD_BORDER }}
-      className="group flex flex-col rounded-2xl bg-white p-4 min-h-[168px] transition-shadow hover:shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-      <div className="flex items-center justify-between mb-2.5">
+      className="group flex flex-col rounded-2xl bg-white p-5 min-h-[210px] transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
+      <div className="flex items-center justify-between mb-3">
         {top}
         <LibBadge kind={badge} />
       </div>
-      <p className="text-[13px] font-semibold leading-snug" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{title}</p>
-      <p className="text-[12px] leading-relaxed mt-1" style={{ color: '#86868b' }}>{sub}</p>
-      <span className="mt-auto inline-flex items-center justify-center w-full rounded-full py-2 text-[12px] font-semibold transition-colors group-hover:bg-[#fafafa]"
+      <p className="text-[15px] font-semibold leading-snug" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{title}</p>
+      <p className="text-[13px] leading-relaxed mt-1.5" style={{ color: '#86868b' }}>{sub}</p>
+      <span className="mt-auto inline-flex items-center justify-center w-full rounded-full py-2.5 text-[13px] font-semibold transition-colors group-hover:bg-[#fafafa]"
         style={{ border: '0.5px solid #e2e2e2', color: cta === 'Unlock' ? '#8e8e93' : '#0a0a0a' }}>
         {cta}
       </span>
@@ -67,9 +67,9 @@ function LibCard({ href, badge, top, title, sub, cta }) {
 
 function LibSectionHead({ label, title }) {
   return (
-    <div className="mb-4">
+    <div className="mb-5">
       <p className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: '#aeaeb2' }}>{label}</p>
-      <h2 className="text-[18px] font-semibold mt-1" style={{ color: '#0a0a0a', letterSpacing: '-0.02em' }}>{title}</h2>
+      <h2 className="text-[22px] font-semibold mt-1.5" style={{ color: '#0a0a0a', letterSpacing: '-0.025em' }}>{title}</h2>
     </div>
   )
 }
@@ -78,18 +78,18 @@ function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
   return (
     <div id="tour-guide" className="mb-8">
       {/* Scale strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
         {LIB_STATS.map(s => (
-          <div key={s.l} className="rounded-xl bg-white p-3.5" style={{ border: CARD_BORDER }}>
-            <p className="text-[20px] font-semibold" style={{ color: '#0a0a0a', letterSpacing: '-0.02em' }}>{s.n}</p>
-            <p className="text-[11px] mt-0.5" style={{ color: '#a1a1a6' }}>{s.l}</p>
+          <div key={s.l} className="rounded-2xl bg-white p-5" style={{ border: CARD_BORDER }}>
+            <p className="text-[28px] font-semibold leading-none" style={{ color: '#0a0a0a', letterSpacing: '-0.03em' }}>{s.n}</p>
+            <p className="text-[12.5px] mt-2" style={{ color: '#a1a1a6' }}>{s.l}</p>
           </div>
         ))}
       </div>
 
       {/* The course — full catalogue, free + premium visible */}
       <LibSectionHead label="The course" title="14 modules, free and premium" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-9">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
         {COURSE_CATALOG.map(m => {
           const canOpen = m.free || (m.premium ? isPremium : hasPaid)
           const badge = m.free ? 'free' : (canOpen ? 'included' : 'premium')
@@ -108,14 +108,14 @@ function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
 
       {/* Tools & resources — all free */}
       <LibSectionHead label="Tools & resources" title="Everything else you get, free" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
         {LIB_RESOURCES.map(r => {
           const Icon = r.icon
           return (
             <LibCard key={r.href}
               href={r.href}
               badge="free"
-              top={<Icon className="w-[18px] h-[18px]" style={{ color: '#6e6e73' }} strokeWidth={1.75} />}
+              top={<Icon className="w-5 h-5" style={{ color: '#6e6e73' }} strokeWidth={1.75} />}
               title={r.label}
               sub={r.sub}
               cta="Open"
@@ -494,7 +494,7 @@ export default function DashboardHome() {
   return (
     <div className="h-full overflow-y-auto">
       {showTour && <DashboardTour onDone={doneTour} />}
-      <div className="max-w-2xl mx-auto px-4 sm:px-8 pt-6 sm:pt-8 pb-32 lg:pb-20">
+      <div className="max-w-6xl mx-auto px-4 sm:px-8 lg:px-12 pt-6 sm:pt-10 pb-32 lg:pb-20">
 
         {/* Payment success banner */}
         {paymentSuccess && (
@@ -513,6 +513,7 @@ export default function DashboardHome() {
         {/* Start Here progression guide — only when not in edit mode */}
         {!editing && <FreeWorkspaceLibrary hasPaid={hasPaid} isPremium={isPremium} />}
 
+        <div className="max-w-2xl mx-auto">
         {/* Share with supervisor */}
         {!editing && (
           <div id="tour-share" className="mb-8 rounded-2xl px-5 py-5"
@@ -803,6 +804,7 @@ export default function DashboardHome() {
           >
             Replay tour
           </button>
+        </div>
         </div>
       </div>
     </div>
