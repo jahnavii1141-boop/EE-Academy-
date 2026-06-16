@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 
 const SUBJECTS = [
@@ -52,128 +52,124 @@ function StepChip({ step, active, color }) {
 }
 
 const FREE_RESOURCES = [
-  { emoji: '📚', label: 'Subject guides & workbooks', sub: '16 subjects · download & print', href: '/dashboard/templates' },
-  { emoji: '🏆', label: 'A real 32/34 example essay', sub: 'First 17 pages — read free', href: '/dashboard/sample-ee' },
-  { emoji: '📘', label: 'IB Official EE Guide', sub: 'The full official guide', href: '/dashboard/ib-guide' },
+  { icon: BookOpen,   label: 'Subject guides & workbooks', sub: '16 subjects · download & print', href: '/dashboard/templates' },
+  { icon: Award,      label: 'A real 32/34 example essay',  sub: 'First 17 pages, free',           href: '/dashboard/sample-ee' },
+  { icon: BookMarked, label: 'IB Official EE Guide',        sub: 'The full official guide',         href: '/dashboard/ib-guide' },
 ]
+
+// Refined upsell row — neutral, hairline-separated, price on the right.
+function TierRow({ name, blurb, price, unlocked, last }) {
+  return (
+    <div className="px-5 py-4 flex items-start justify-between gap-4"
+      style={{ borderBottom: last ? 'none' : '1px solid #f2f2f2' }}>
+      <div className="min-w-0">
+        <div className="flex items-center gap-2">
+          <p className="text-[13.5px] font-semibold" style={{ color: '#1d1d1f', letterSpacing: '-0.01em' }}>{name}</p>
+          {unlocked && (
+            <span className="inline-flex items-center gap-1 text-[11px] font-medium" style={{ color: '#86868b' }}>
+              <Check className="w-3 h-3" strokeWidth={2.5} /> Included
+            </span>
+          )}
+        </div>
+        <p className="text-[12.5px] leading-relaxed mt-1" style={{ color: '#86868b' }}>{blurb}</p>
+      </div>
+      {!unlocked && (
+        <Link href="/pricing" style={{ textDecoration: 'none' }}
+          className="flex-shrink-0 inline-flex items-center gap-1 text-[12.5px] font-semibold px-3.5 py-1.5 rounded-full transition-colors"
+        >
+          <span style={{ color: '#1d1d1f' }}>{price}</span>
+          <ArrowRight className="w-3.5 h-3.5" style={{ color: '#1d1d1f' }} strokeWidth={2} />
+        </Link>
+      )}
+    </div>
+  )
+}
 
 function StartHereGuide({ hasPaid, isPremium }) {
   return (
-    <div id="tour-guide" className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #bbf7d0', background: '#fff' }}>
-      <div className="px-5 py-3.5 flex items-center gap-2.5" style={{ borderBottom: '1px solid #dcfce7', background: '#f0fdf4' }}>
-        <span className="text-base" aria-hidden="true">🎁</span>
-        <div>
-          <p className="text-xs font-bold" style={{ color: '#15803d' }}>What you get — free</p>
-          <p className="text-[11px]" style={{ color: '#16a34a' }}>Five full modules, the templates, a real 32/34 essay, and the official IB guide — no card needed</p>
+    <div id="tour-guide" className="mb-8 rounded-[20px] bg-white"
+      style={{ border: '1px solid #ececec', boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}>
+
+      {/* Header */}
+      <div className="px-6 pt-6 pb-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] mb-2" style={{ color: '#aeaeb2' }}>Included free</p>
+        <h2 className="text-[19px] font-semibold" style={{ color: '#1d1d1f', letterSpacing: '-0.025em' }}>
+          Everything you need to start
+        </h2>
+        <p className="text-[13.5px] mt-1.5 leading-relaxed" style={{ color: '#86868b' }}>
+          Five full modules, the templates, a real 32/34 essay, and the official IB guide. No card needed.
+        </p>
+      </div>
+
+      {/* Free modules */}
+      <div className="px-6 pb-5">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: '#aeaeb2' }}>The five modules</p>
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-2">
+          {FREE_STEPS.map((step, i) => (
+            <span key={step.num} className="flex items-center gap-2">
+              <Link href={step.href} style={{ textDecoration: 'none' }}>
+                <StepChip step={step} active color="dark" />
+              </Link>
+              {i < FREE_STEPS.length - 1 && <ChevronRight className="w-3.5 h-3.5" style={{ color: '#d2d2d7' }} />}
+            </span>
+          ))}
         </div>
       </div>
 
-      <div className="p-5 space-y-4">
-        {/* FREE modules */}
-        <div className="rounded-xl p-4" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
-          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
-            style={{ background: '#dcfce7', color: '#15803d' }}>5 FREE MODULES — start here</span>
-          <div className="flex flex-wrap items-center gap-1.5">
-            {FREE_STEPS.map((step, i) => (
-              <span key={step.num} className="flex items-center gap-1.5">
+      {/* Free resources */}
+      <div className="px-6 pb-6">
+        <div className="grid sm:grid-cols-3 gap-2.5">
+          {FREE_RESOURCES.map(r => {
+            const Icon = r.icon
+            return (
+              <Link key={r.href} href={r.href} style={{ textDecoration: 'none', border: '1px solid #ececec' }}
+                className="group flex items-center gap-3 rounded-2xl bg-white p-3.5 transition-all hover:shadow-[0_2px_10px_rgba(0,0,0,0.05)]">
+                <span className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center" style={{ background: '#f5f5f7' }}>
+                  <Icon className="w-[17px] h-[17px]" style={{ color: '#6e6e73' }} strokeWidth={1.75} />
+                </span>
+                <div className="min-w-0">
+                  <p className="text-[12.5px] font-semibold leading-snug" style={{ color: '#1d1d1f', letterSpacing: '-0.01em' }}>{r.label}</p>
+                  <p className="text-[11.5px] leading-snug mt-0.5" style={{ color: '#aeaeb2' }}>{r.sub}</p>
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* Next step — paid tiers */}
+      <div className="px-6 pb-6">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.12em] mb-3" style={{ color: '#aeaeb2' }}>
+          {hasPaid ? 'Your access' : 'Your next step'}
+        </p>
+
+        {hasPaid && (
+          <div className="flex flex-wrap items-center gap-x-2 gap-y-2 mb-4">
+            {PAID_STEPS.map((step, i) => (
+              <span key={step.num} className="flex items-center gap-2">
                 <Link href={step.href} style={{ textDecoration: 'none' }}>
-                  <StepChip step={step} active color="green" />
+                  <StepChip step={step} active color="dark" />
                 </Link>
-                {i < FREE_STEPS.length - 1 && (
-                  <span className="text-xs font-bold" style={{ color: '#86efac' }}>→</span>
-                )}
+                {i < PAID_STEPS.length - 1 && <ChevronRight className="w-3.5 h-3.5" style={{ color: '#d2d2d7' }} />}
               </span>
             ))}
           </div>
-        </div>
+        )}
 
-        {/* FREE resources */}
-        <div className="grid sm:grid-cols-3 gap-2">
-          {FREE_RESOURCES.map(r => (
-            <Link key={r.href} href={r.href} style={{ textDecoration: 'none', border: '1px solid #dcfce7' }}
-              className="flex items-start gap-2.5 rounded-xl p-3 transition-colors hover:bg-[#f0fdf4]">
-              <span className="text-lg leading-none mt-0.5" aria-hidden="true">{r.emoji}</span>
-              <div className="min-w-0">
-                <p className="text-xs font-bold leading-snug" style={{ color: '#15803d' }}>{r.label}</p>
-                <p className="text-[11px] leading-snug mt-0.5" style={{ color: '#16a34a' }}>{r.sub}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-
-        {/* Connector — next step */}
-        <div className="flex items-center gap-3 pl-2 pt-1">
-          <span className="text-sm" style={{ color: '#d1d5db' }}>↓</span>
-          {hasPaid ? (
-            <span className="text-xs font-semibold" style={{ color: '#22c55e' }}>✓ Method unlocked</span>
-          ) : (
-            <span className="text-xs" style={{ color: '#999' }}>
-              <span className="font-semibold" style={{ color: '#666' }}>Your next step</span> — unlock the rest of the method →{' '}
-              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
-                Method $89
-              </Link>
-            </span>
-          )}
-        </div>
-
-        {/* PAID tier */}
-        <div className="rounded-xl p-4" style={{
-          background: hasPaid ? '#fafafa' : '#f9f9f9',
-          border: `1px solid ${hasPaid ? '#e0e0e0' : '#f0f0f0'}`,
-        }}>
-          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
-            style={{ background: hasPaid ? '#0a0a0a' : '#efefef', color: hasPaid ? '#fff' : '#bbb' }}>
-            METHOD · $89
-          </span>
-          {hasPaid ? (
-            <div className="flex flex-wrap items-center gap-1.5">
-              {PAID_STEPS.map((step, i) => (
-                <span key={step.num} className="flex items-center gap-1.5">
-                  <Link href={step.href} style={{ textDecoration: 'none' }}>
-                    <StepChip step={step} active color="dark" />
-                  </Link>
-                  {i < PAID_STEPS.length - 1 && (
-                    <span className="text-xs" style={{ color: '#d1d5db' }}>→</span>
-                  )}
-                </span>
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm" style={{ color: '#bbb' }}>
-              Research question, writing structure, essay drafting, citations, RPPF — 9 modules + a real 32/34 breakdown.
-            </p>
-          )}
-        </div>
-
-        {/* Connector */}
-        <div className="flex items-center gap-3 pl-2">
-          <span className="text-sm" style={{ color: '#d1d5db' }}>↓</span>
-          {isPremium ? (
-            <span className="text-xs font-semibold" style={{ color: '#d97706' }}>✓ Method+System unlocked</span>
-          ) : (
-            <span className="text-xs" style={{ color: '#aaa' }}>
-              + the full system →{' '}
-              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#92400e' }}>
-                Method+System $149
-              </Link>
-            </span>
-          )}
-        </div>
-
-        {/* PREMIUM tier */}
-        <div className="rounded-xl p-4" style={{
-          background: isPremium ? '#fffbeb' : '#f9f9f9',
-          border: `1px solid ${isPremium ? '#fde68a' : '#f0f0f0'}`,
-        }}>
-          <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
-            style={{ background: isPremium ? '#fef3c7' : '#efefef', color: isPremium ? '#92400e' : '#bbb' }}>
-            METHOD+SYSTEM · $149
-          </span>
-          <p className="text-sm" style={{ color: isPremium ? '#92400e' : '#bbb' }}>
-            {isPremium
-              ? 'Everything unlocked — all modules + the complete writing system.'
-              : 'Everything in Method + the complete writing system.'}
-          </p>
+        <div className="rounded-2xl" style={{ border: '1px solid #ececec' }}>
+          <TierRow
+            name="Method"
+            price="$89"
+            unlocked={hasPaid}
+            blurb="Research question, writing structure, essay drafting, citations, RPPF — 9 modules plus a real 32/34 breakdown."
+          />
+          <TierRow
+            name="Method + System"
+            price="$149"
+            unlocked={isPremium}
+            last
+            blurb="Everything in Method, plus the complete writing system and AI tools."
+          />
         </div>
       </div>
     </div>
