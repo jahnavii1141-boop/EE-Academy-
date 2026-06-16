@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { Lock, FileText, Download, Check } from 'lucide-react'
 import { useAccess } from '../hooks/useAccess'
 
-const PREVIEW_PAGES = [1, 2, 3, 4]
+const PREVIEW_PAGES = Array.from({ length: 17 }, (_, i) => i + 1)
 const TOTAL_PAGES = 28
 
 export default function SampleEEPage() {

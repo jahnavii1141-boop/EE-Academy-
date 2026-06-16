@@ -23,7 +23,7 @@ export const COURSE_CATALOG = [
   {
     id: 'module-4',
     number: '04',
-    free: false,
+    free: true,
     title: 'How to Find Your Research Question',
     tagline: 'Your RQ is the foundation everything else is built on.',
   },

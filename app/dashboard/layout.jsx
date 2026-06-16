@@ -97,6 +97,7 @@ const NAV_MAIN = [
 const NAV_MORE = [
   { id: 'templates', label: 'Templates',  icon: FileText,    href: '/dashboard/templates' },
   { id: 'guides',    label: 'Guides',     icon: BookMarked,  href: '/guides', isFree: true },
+  { id: 'ib-guide',  label: 'IB Official EE Guide', icon: BookOpen, href: '/dashboard/ib-guide', isFree: true },
   { id: 'share',     label: 'Share',      icon: Share2,      href: '/dashboard/share' },
 ]
 

@@ -21,10 +21,10 @@ const FREE_STEPS = [
   { num: '01', label: 'Mindset & Examiner Thinking', href: '/course/module-1' },
   { num: '02', label: 'IB Criteria & Grading', href: '/course/module-2' },
   { num: '03', label: 'Choose Subject & Topic', href: '/course/module-3' },
+  { num: '04', label: 'Research Question', href: '/course/module-4' },
   { num: '05', label: 'EE Dump Research System', href: '/course/module-5' },
 ]
 const PAID_STEPS = [
-  { num: '04', label: 'Research Question', href: '/course/module-4' },
   { num: '06', label: 'Research Methods', href: '/course/module-6' },
   { num: '07', label: 'EE Structure', href: '/course/module-7' },
   { num: '08', label: 'Writing Each Section', href: '/course/module-8' },
@@ -51,22 +51,28 @@ function StepChip({ step, active, color }) {
   )
 }
 
+const FREE_RESOURCES = [
+  { emoji: '📚', label: 'Subject guides & workbooks', sub: '16 subjects · download & print', href: '/dashboard/templates' },
+  { emoji: '🏆', label: 'A real 32/34 example essay', sub: 'First 17 pages — read free', href: '/dashboard/sample-ee' },
+  { emoji: '📘', label: 'IB Official EE Guide', sub: 'The full official guide', href: '/dashboard/ib-guide' },
+]
+
 function StartHereGuide({ hasPaid, isPremium }) {
   return (
-    <div id="tour-guide" className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #e8e8e8', background: '#fff' }}>
-      <div className="px-5 py-3.5 flex items-center gap-2.5" style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
-        <span className="text-base" aria-hidden="true">🗺️</span>
+    <div id="tour-guide" className="mb-8 rounded-2xl overflow-hidden" style={{ border: '1px solid #bbf7d0', background: '#fff' }}>
+      <div className="px-5 py-3.5 flex items-center gap-2.5" style={{ borderBottom: '1px solid #dcfce7', background: '#f0fdf4' }}>
+        <span className="text-base" aria-hidden="true">🎁</span>
         <div>
-          <p className="text-xs font-bold" style={{ color: '#0a0a0a' }}>Start Here</p>
-          <p className="text-[11px]" style={{ color: '#aaa' }}>Your EE progression — follow in order</p>
+          <p className="text-xs font-bold" style={{ color: '#15803d' }}>What you get — free</p>
+          <p className="text-[11px]" style={{ color: '#16a34a' }}>Five full modules, the templates, a real 32/34 essay, and the official IB guide — no card needed</p>
         </div>
       </div>
 
       <div className="p-5 space-y-4">
-        {/* FREE tier */}
+        {/* FREE modules */}
         <div className="rounded-xl p-4" style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
           <span className="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full mb-3"
-            style={{ background: '#dcfce7', color: '#15803d' }}>INCLUDED — start here</span>
+            style={{ background: '#dcfce7', color: '#15803d' }}>5 FREE MODULES — start here</span>
           <div className="flex flex-wrap items-center gap-1.5">
             {FREE_STEPS.map((step, i) => (
               <span key={step.num} className="flex items-center gap-1.5">
@@ -81,15 +87,29 @@ function StartHereGuide({ hasPaid, isPremium }) {
           </div>
         </div>
 
-        {/* Connector */}
-        <div className="flex items-center gap-3 pl-2">
+        {/* FREE resources */}
+        <div className="grid sm:grid-cols-3 gap-2">
+          {FREE_RESOURCES.map(r => (
+            <Link key={r.href} href={r.href} style={{ textDecoration: 'none', border: '1px solid #dcfce7' }}
+              className="flex items-start gap-2.5 rounded-xl p-3 transition-colors hover:bg-[#f0fdf4]">
+              <span className="text-lg leading-none mt-0.5" aria-hidden="true">{r.emoji}</span>
+              <div className="min-w-0">
+                <p className="text-xs font-bold leading-snug" style={{ color: '#15803d' }}>{r.label}</p>
+                <p className="text-[11px] leading-snug mt-0.5" style={{ color: '#16a34a' }}>{r.sub}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Connector — next step */}
+        <div className="flex items-center gap-3 pl-2 pt-1">
           <span className="text-sm" style={{ color: '#d1d5db' }}>↓</span>
           {hasPaid ? (
             <span className="text-xs font-semibold" style={{ color: '#22c55e' }}>✓ Method unlocked</span>
           ) : (
-            <span className="text-xs" style={{ color: '#aaa' }}>
-              then unlock all modules →{' '}
-              <Link href={hasPaid ? '/dashboard/modules' : '/pricing'} className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
+            <span className="text-xs" style={{ color: '#999' }}>
+              <span className="font-semibold" style={{ color: '#666' }}>Your next step</span> — unlock the rest of the method →{' '}
+              <Link href="/pricing" className="font-semibold underline underline-offset-2" style={{ color: '#0a0a0a' }}>
                 Method $89
               </Link>
             </span>
