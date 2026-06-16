@@ -125,11 +125,17 @@ export default function DashboardLayout({ children }) {
     setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
 
-  const handleEmailCapture = () => {
-    // Match the homepage flow: email → onboarding → back to the linked page.
-    // The gate has already saved the email to localStorage + /api/subscribe,
-    // so onboarding (and this layout afterwards) see it as a free user.
-    router.push(`/onboarding?next=${encodeURIComponent(pathname)}`)
+  const handleEmailCapture = (email) => {
+    // Generic entry (dashboard home) → full homepage flow: onboarding then back.
+    // Specific resource link → deliver the promised value immediately; the email
+    // is already captured, and onboarding can be nudged later. The gate has saved
+    // the email to localStorage + /api/subscribe before calling this.
+    const needsOnboarding = pathname === '/dashboard' || pathname === '/dashboard/home'
+    if (needsOnboarding) {
+      router.push(`/onboarding?next=${encodeURIComponent(pathname)}`)
+    } else {
+      setFreeEmail(email) // unlocks the current route in place
+    }
   }
 
   const dismissRemarks = () => {
