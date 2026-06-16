@@ -87,28 +87,24 @@ function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
         ))}
       </div>
 
-      {/* The course — full catalogue, free + premium visible */}
-      <LibSectionHead label="The course" title="14 modules, free and premium" />
+      {/* Free modules — the opening impression is all "Open" */}
+      <LibSectionHead label="Included free — start here" title="5 full modules, open now" />
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        {COURSE_CATALOG.map(m => {
-          const canOpen = m.free || (m.premium ? isPremium : hasPaid)
-          const badge = m.free ? 'free' : (canOpen ? 'included' : 'premium')
-          return (
-            <LibCard key={m.id}
-              href={canOpen ? `/course/${m.id}` : '/pricing'}
-              badge={badge}
-              top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
-              title={m.title}
-              sub={m.tagline}
-              cta={canOpen ? 'Open' : 'Unlock'}
-            />
-          )
-        })}
+        {COURSE_CATALOG.filter(m => m.free).map(m => (
+          <LibCard key={m.id}
+            href={`/course/${m.id}`}
+            badge="free"
+            top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
+            title={m.title}
+            sub={m.tagline}
+            cta="Open"
+          />
+        ))}
       </div>
 
       {/* Tools & resources — all free */}
-      <LibSectionHead label="Tools & resources" title="Everything else you get, free" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      <LibSectionHead label="Tools & resources — free" title="Everything else you get, free" />
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
         {LIB_RESOURCES.map(r => {
           const Icon = r.icon
           return (
@@ -119,6 +115,28 @@ function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
               title={r.label}
               sub={r.sub}
               cta="Open"
+            />
+          )
+        })}
+      </div>
+
+      {/* Your next step — premium modules, fully visible but framed as the upgrade */}
+      <LibSectionHead
+        label={hasPaid ? 'Your full course' : 'Your next step'}
+        title={hasPaid ? 'The complete method, unlocked' : 'Go further with the full method'}
+      />
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        {COURSE_CATALOG.filter(m => !m.free).map(m => {
+          const canOpen = m.premium ? isPremium : hasPaid
+          const badge = canOpen ? 'included' : 'premium'
+          return (
+            <LibCard key={m.id}
+              href={canOpen ? `/course/${m.id}` : '/pricing'}
+              badge={badge}
+              top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
+              title={m.title}
+              sub={m.tagline}
+              cta={canOpen ? 'Open' : 'Unlock'}
             />
           )
         })}
