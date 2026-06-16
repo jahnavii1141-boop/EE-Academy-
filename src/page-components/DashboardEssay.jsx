@@ -9,8 +9,16 @@ import Underline from '@tiptap/extension-underline'
 import TextAlign from '@tiptap/extension-text-align'
 import Placeholder from '@tiptap/extension-placeholder'
 import CharacterCount from '@tiptap/extension-character-count'
+import { calculateIBWordCount } from '../lib/ibWordCount'
 
 const WORD_LIMIT = 4000
+
+// Badge colours for the official-count threshold states.
+const FOOTER_BADGE = {
+  ok:          { color: '#334155' },
+  approaching: { background: '#FEF3C7', color: '#92400e' },
+  exceeded:    { background: '#FEE2E2', color: '#b91c1c' },
+}
 
 // ── Toolbar button ─────────────────────────────────────────────────────────
 function ToolBtn({ active, title, onClick, children, disabled }) {
@@ -41,13 +49,6 @@ function Sep() {
   return <div style={{ width: 1, height: 16, background: '#e8e8e8', flexShrink: 0, margin: '0 2px' }} />
 }
 
-// ── Word count from HTML string ────────────────────────────────────────────
-function countWords(html) {
-  if (!html) return 0
-  const text = html.replace(/<[^>]*>/g, ' ').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim()
-  return text === '' ? 0 : text.split(' ').length
-}
-
 // ── Main component ─────────────────────────────────────────────────────────
 export default function DashboardEssay() {
   const { isSignedIn } = useAuth()
@@ -56,6 +57,7 @@ export default function DashboardEssay() {
   const [lastSaved, setLastSaved] = useState(null)
   const [loading, setLoading] = useState(true)
   const [isDirty, setIsDirty] = useState(false)
+  const [ibCount, setIbCount] = useState(() => calculateIBWordCount(null))
   const autoSaveTimer = useRef(null)
 
   // ── Save ──────────────────────────────────────────────────────────────
@@ -97,6 +99,7 @@ export default function DashboardEssay() {
     },
     onUpdate({ editor }) {
       setIsDirty(true)
+      setIbCount(calculateIBWordCount(editor.getJSON()))
       const html = editor.getHTML()
       if (autoSaveTimer.current) clearTimeout(autoSaveTimer.current)
       autoSaveTimer.current = setTimeout(() => save(html), 2000)
@@ -113,6 +116,7 @@ export default function DashboardEssay() {
         if (essay_text && editor) {
           editor.commands.setContent(essay_text)
           setSavedHtml(essay_text)
+          setIbCount(calculateIBWordCount(editor.getJSON()))
         }
         if (essay_updated_at) setLastSaved(new Date(essay_updated_at))
       })
@@ -129,11 +133,10 @@ export default function DashboardEssay() {
     )
   }
 
-  const words = editor.storage.characterCount
-    ? countWords(editor.getHTML())
-    : 0
-  const pct = Math.min(100, Math.round((words / WORD_LIMIT) * 100))
-  const overLimit = words > WORD_LIMIT
+  const { coreBodyCount, excludedCount, percentOfLimit, status } = ibCount
+  const words = coreBodyCount
+  const pct = Math.min(100, percentOfLimit)
+  const overLimit = status === 'exceeded'
 
   let barColor = '#22c55e'
   if (words >= 3000) barColor = '#f59e0b'
@@ -313,14 +316,33 @@ export default function DashboardEssay() {
           </div>
         </div>
 
-        {/* ── Over-limit warning ───────────────────────────────────── */}
-        {overLimit && (
-          <div className="flex-shrink-0 px-8 py-2 flex justify-end" style={{ borderTop: '1px solid #f5f5f5' }}>
-            <p className="text-[11px] font-medium" style={{ color: '#ef4444' }}>
-              {(words - WORD_LIMIT).toLocaleString()} words over the IB limit
-            </p>
+        {/* ── IB-compliant sticky word-count footer ────────────────── */}
+        <div role="status" aria-live="polite"
+          className="flex-shrink-0 flex items-center justify-between gap-4 px-6 py-2.5"
+          style={{ background: '#fff', borderTop: '1px solid #E2E8F0' }}>
+          {/* Left — official body count + hard-limit tag */}
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="inline-flex items-center rounded-md px-2.5 py-1 text-[13px] font-semibold tabular-nums"
+              style={FOOTER_BADGE[status]}>
+              Official EE Word Count: {coreBodyCount.toLocaleString()} / {WORD_LIMIT.toLocaleString()}
+            </span>
+            {status === 'exceeded' && (
+              <span className="inline-flex items-center rounded-md px-2 py-1 text-[11px] font-semibold whitespace-nowrap"
+                style={{ background: '#FEE2E2', color: '#b91c1c' }}>
+                ⚠️ Hard Limit Exceeded for IB Submission
+              </span>
+            )}
           </div>
-        )}
+          {/* Middle — low-emphasis excluded materials */}
+          <div className="hidden md:block text-[11px] tabular-nums whitespace-nowrap" style={{ color: '#94a3b8' }}>
+            Excluded Materials (Tables/Captions): {excludedCount.toLocaleString()}
+          </div>
+          {/* Right — budget indicator */}
+          <div className="text-[11px] font-medium tabular-nums whitespace-nowrap"
+            style={{ color: status === 'exceeded' ? '#dc2626' : status === 'approaching' ? '#b45309' : '#64748b' }}>
+            {percentOfLimit}% of maximum ceiling reached
+          </div>
+        </div>
       </div>
     </>
   )
