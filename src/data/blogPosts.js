@@ -326,6 +326,215 @@ export const BLOG_POSTS = [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns across subjects.' },
     ],
   },
+  {
+    slug: 'english-literature-ee-text-choice',
+    title: 'How to Choose the Right Text for an English Literature Extended Essay',
+    description: 'Picking between dense or "impressive" texts for your English Lit EE? The four things that actually matter — and why originality comes from your RQ, not an obscure text.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'Choosing your text is the first big decision in an English Literature EE, and most students get the instinct backwards. They reach for the densest, most ambitious, most obscure text they can find, hoping it makes them look smart. That\'s rarely what wins.' },
+
+      { type: 'heading', text: 'The right text isn\'t the most ambitious' },
+      { type: 'paragraph', text: 'It\'s the one that\'s original, personally interesting to you, and connects to a strong, emotive global issue. Examiners reward students who clearly have something to say — not students who picked a difficult text to look impressive.' },
+
+      { type: 'heading', text: 'Four things to actually weigh' },
+      { type: 'numbered-steps', items: [
+        'Density of literary techniques — how much is the text actually doing on a language and structural level?',
+        'Existing critical scholarship — you need to cite for Criterion C, so a text no one has analysed is much harder',
+        'A narrow enough RQ that you can deeply analyse it in 4,000 words',
+        'Your supervisor\'s enthusiasm — they write the report and read your essay through their own lens, so this matters more than students think',
+      ]},
+
+      { type: 'heading', text: '"Overdone" isn\'t the problem you think it is' },
+      { type: 'paragraph', text: 'A popular text can feel overdone — but it\'s overdone in high school essays, not in EEs. In the Extended Essay, originality comes from your research question and your angle, not from the obscurity of the text. A well-known novel with a strong personal arc and a current global-issue framing (consumerism, mental health, identity) often beats a niche text you picked just to be different.' },
+
+      { type: 'tip-box', text: 'Graphic novels are a valid choice, but they add visual analysis as a whole extra layer to manage inside 4,000 words. Possible, but harder — go in with your eyes open.' },
+
+      { type: 'paragraph', text: 'Whatever you choose, write the RQ first. The text alone isn\'t the question — the RQ-and-text combination is.' },
+
+      { type: 'key-takeaway', items: [
+        'Pick the text that\'s original to you and tied to a strong global issue, not the densest one',
+        'Weigh technique density, available scholarship, RQ scope, and supervisor enthusiasm',
+        'Originality lives in your RQ and angle — not in an obscure text',
+        'Graphic novels add a visual-analysis layer that\'s harder to manage in 4,000 words',
+        'Write the RQ first; the text alone is not the question',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'Your RQ does the heavy lifting. See strong research question patterns across subjects.', href: '/guides/research-question-examples', buttonText: 'See RQ examples' },
+    ],
+    faqItems: [
+      { question: 'Should I pick an obscure text for my English Literature EE?', answer: 'Not for the sake of it. Obscure texts often lack the critical scholarship you need to cite for Criterion C. Originality comes from your research question and angle, so a well-known text with a fresh RQ usually scores better.' },
+      { question: 'Does the text matter more than the research question?', answer: 'No. The RQ-and-text combination is what counts, and the RQ is where originality lives. Write your research question first — the text alone is not the question.' },
+      { question: 'Can I do my English EE on a graphic novel?', answer: 'Yes, but it adds visual analysis as an extra layer to manage within 4,000 words. It\'s doable if the text is rich and your RQ is narrow, but expect more to juggle than with a novel.' },
+    ],
+    related: [
+      { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to build your text around.' },
+      { href: '/guides/ee-analysis-vs-description', title: 'Analysis vs Description', description: 'How to analyse a text instead of summarising it.' },
+    ],
+  },
+
+  {
+    slug: 'can-you-change-your-ee-research-question',
+    title: 'Can You Change Your EE Research Question? (And How to Tell Your Supervisor)',
+    description: 'Behind on your EE and want to change your RQ — but your supervisor is intimidating? Why pivoting in DP1 is normal, and exactly how to frame the conversation.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'You\'re in DP1, behind on your Extended Essay, you want to change your research question — and your supervisor terrifies you. First, breathe: yes, you can change it. Plenty of students do, and in DP1 it is not too late.' },
+
+      { type: 'heading', text: 'Pivoting is normal — and often smart' },
+      { type: 'paragraph', text: 'If your instinct says your current direction is harder than it needs to be, trust it. A classic example is a biology experiment on bacteria: school labs are genuinely bad for bacterial work — contamination is constant and reliable results are a nightmare. Pivoting to something with a faster, more reliable cycle isn\'t giving up; it\'s good judgement.' },
+
+      { type: 'heading', text: 'How to handle a scary supervisor' },
+      { type: 'paragraph', text: 'Frame the change as a roadblock in your research, not a personal failure. Supervisors get far more annoyed by students who tell them nothing than by students who say "here\'s what isn\'t working, here\'s what I want to do instead, and here\'s why." Walk in with the change already half-thought-through. Tell them you already have background knowledge in the new topic so there\'s no backlog. Reassure them you\'ll finish.' },
+
+      { type: 'tip-box', text: 'Treat the conversation like a status update, not a confession. The move with intimidating supervisors is to be rational and systematic, and less emotional.' },
+
+      { type: 'heading', text: 'If you\'re pivoting an experiment, pick a fast cycle' },
+      { type: 'paragraph', text: 'For science EEs that need to finish quickly, lean toward options that give reliable data fast and are well-documented (so the methodology is easy to defend): plant biology (enzyme activity, transpiration rates, germination conditions), human physiology (reaction time, heart-rate variability, breathing patterns), or observational studies. Draft the new RQ now and email your supervisor the proposed pivot — don\'t spend days agonising.' },
+
+      { type: 'key-takeaway', items: [
+        'In DP1, changing your RQ is normal and usually still on time',
+        'If your current direction is needlessly hard (e.g. bacteria in a school lab), pivoting is smart',
+        'Frame the change as a research roadblock, not a failure — and arrive with a plan',
+        'Be rational and systematic with intimidating supervisors; treat it as a status update',
+        'For science pivots, choose a fast, well-documented experimental cycle',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'Need a stronger RQ for your new direction? See worked examples across subjects.', href: '/guides/research-question-examples', buttonText: 'See RQ examples' },
+    ],
+    faqItems: [
+      { question: 'Is it too late to change my EE research question?', answer: 'If you\'re in DP1, almost certainly not — plenty of students change their RQ. Deadlines vary by school, so confirm with your coordinator, but pivoting early is common and often the right call.' },
+      { question: 'How do I tell my supervisor I want to change my EE topic?', answer: 'Frame it as a roadblock with a solution, not a confession. Walk in with the new direction half-planned, explain why the old one isn\'t working, show you already have background knowledge, and reassure them you\'ll finish.' },
+      { question: 'What\'s a good EE experiment that works in a school lab?', answer: 'Plant biology (enzyme activity, transpiration, germination), human physiology (reaction time, heart rate, breathing), or observational studies. They produce reliable data faster than bacterial work and are well-documented, so the methodology is easy to defend.' },
+    ],
+    related: [
+      { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns for your new direction.' },
+      { href: '/guides/ee-supervisor-tips', title: 'Working With Your EE Supervisor', description: 'How to use your meetings and protect your marks.' },
+    ],
+  },
+
+  {
+    slug: 'ee-supervisor-not-expert-in-subject',
+    title: 'What to Do If Your EE Supervisor Isn\'t an Expert in Your Subject',
+    description: 'Stuck with a supervisor who doesn\'t know your subject? How to still get a strong draft: where to find the subject knowledge, and what your supervisor can genuinely help with.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'It happens more than you\'d think: the Economics teacher is full, so you get a Geography teacher who doesn\'t know Economics. With a 4,000-word draft due, it feels like you\'re on your own. You\'re not — you just need to know where each piece of help comes from.' },
+
+      { type: 'heading', text: 'For your draft, focus on the wordy parts' },
+      { type: 'paragraph', text: 'Put your energy into the sections that carry the most words and marks: introduction, outline, analysis, limitations, and evaluation. A draft doesn\'t need to be perfect — but it does matter, because your supervisor uses it for the RPPF and it shapes your predicted grade.' },
+
+      { type: 'heading', text: 'Get the subject knowledge elsewhere' },
+      { type: 'paragraph', text: 'Your course textbook and its online companion are your best friend here — the Cambridge IB Economics textbook and the online guide that comes with your login, for example, answer most subject-specific questions. Pair that with the subject-specific section of the IB EE guide and you\'ve replaced most of what a specialist supervisor would tell you.' },
+
+      { type: 'heading', text: 'Use your supervisor for what they can do' },
+      { type: 'paragraph', text: 'A non-specialist supervisor will naturally focus on formatting, structure, and presentation — and that\'s genuinely useful, because those are easy marks. If your formatting and citations are clean, you should be in at least B territory for the draft. The subject content is on you; the textbook and guide do that heavy lifting.' },
+
+      { type: 'tip-box', text: 'Citations are pure easy marks and a place non-specialist supervisors will look. A citation generator handles them cleanly so you can focus on the analysis.' },
+
+      { type: 'key-takeaway', items: [
+        'Spend draft time on the wordy sections: intro, outline, analysis, limitations, evaluation',
+        'Your textbook + its online guide + the subject section of the EE guide replace most specialist help',
+        'Let your supervisor help with formatting and structure — those are easy marks',
+        'Clean formatting and citations alone should put your draft in B territory',
+        'The subject content is on you, and that\'s very doable with the right sources',
+      ]},
+
+      { type: 'cta-box', label: 'Free tool', text: 'Handle your citations cleanly so you can focus on the analysis — our EE Dump builds your bibliography for you.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+    ],
+    faqItems: [
+      { question: 'What if my EE supervisor doesn\'t know my subject?', answer: 'Get the subject knowledge from your course textbook, its online companion, and the subject-specific section of the IB EE guide. Use your supervisor for formatting and structure feedback, which are still easy marks.' },
+      { question: 'Can I still get a good EE grade with a weak supervisor?', answer: 'Yes. The final grade comes from an external examiner, not your supervisor. If your formatting and citations are clean and your analysis hits the criteria, a non-specialist supervisor won\'t hold your grade back.' },
+      { question: 'Where do I get subject-specific EE help?', answer: 'Your subject textbook and its online resources, the subject section of the IB EE guide, and high-scoring exemplars with examiner comments are the most reliable sources when your supervisor isn\'t a specialist.' },
+    ],
+    related: [
+      { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'Lock in the easy presentation marks.' },
+      { href: '/guides/ee-citations-mla', title: 'MLA Citations for the EE', description: 'Get citations right and avoid integrity flags.' },
+    ],
+  },
+
+  {
+    slug: 'is-economics-ee-hard',
+    title: 'Is Economics One of the Hardest EE Subjects? (And Maths & Sciences Too)',
+    description: 'Economics, Maths and the sciences get a reputation as the hardest EE subjects. Why that reputation exists, the two traps that cost marks, and how to avoid both.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'Ask which EE subjects students fear most and the same three come up: the sciences, Mathematics, and Economics. They share one thing — they\'re technical. But "technical" and "impossible" aren\'t the same, and the difference is where marks are won or lost.' },
+
+      { type: 'heading', text: 'Why technical subjects feel hard' },
+      { type: 'paragraph', text: 'Because the analysis is genuinely tricky, one of two things tends to happen. Students either get lost in the technical work and make mistakes, or they stop the moment they\'ve presented the facts, calculations, or theory. Both are dangerous.' },
+
+      { type: 'heading', text: 'The technical work isn\'t the end goal' },
+      { type: 'paragraph', text: 'The calculations, the diagrams, the theory — they\'re all just tools. Once you\'ve done the analysis, you still have to build an argument from it and connect it back to your research question. Because the material is heavy-duty, it\'s easy to lose track of the point you\'re making, and losing the point is exactly when you start losing marks. It\'s the same thing that happens in Paper 1, 2 and 3.' },
+
+      { type: 'heading', text: '"Hard" usually means "unclear on the criteria"' },
+      { type: 'paragraph', text: 'A subject only becomes hard when students don\'t fully understand what the examiner is looking for. Get the technical aspects right, then make sure every piece of analysis ties back to your argument and your RQ. Know the criteria, hit them consistently, and a "hard" subject becomes very manageable.' },
+
+      { type: 'tip-box', text: 'Read the subject-specific section of the IB EE guide for your subject — you don\'t need all 134 pages, just the part that tells you exactly what an A looks like in your discipline.' },
+
+      { type: 'key-takeaway', items: [
+        'Sciences, Maths and Economics feel hard because they\'re technical, not because they\'re impossible',
+        'Two traps: getting lost in the analysis, or stopping once the calculations are done',
+        'Technical work is a tool — you must build an argument from it and tie it to your RQ',
+        'Subjects feel "hard" mainly when students don\'t know what the examiner rewards',
+        'Read the subject section of the EE guide to see what an A actually looks like',
+      ]},
+
+      { type: 'cta-box', label: 'Free workbooks', text: 'Our subject workbooks turn the EE criteria into a fill-in checklist — including the technical subjects.', href: '/dashboard/templates', buttonText: 'Get the workbooks' },
+    ],
+    faqItems: [
+      { question: 'Is Economics the hardest EE subject?', answer: 'It has a reputation as one of the hardest because it\'s technical, but it\'s very doable. The key is not stopping at the calculations — you have to build an argument from your analysis and connect it back to your research question.' },
+      { question: 'Why are Maths and science EEs considered hard?', answer: 'The analysis is genuinely tricky, so students either get lost in it or stop once they\'ve presented the technical work. Both lose marks. The technical work is only a tool for building an argument.' },
+      { question: 'How do I get an A in a technical-subject EE?', answer: 'Get the technical work right, then make every part of it serve your argument and tie back to your RQ. Learn what the examiner rewards by reading the subject-specific section of the EE guide and hitting those points consistently.' },
+    ],
+    related: [
+      { href: '/guides/ee-economics', title: 'IB Economics EE Guide', description: 'Frameworks and A-grade structure for Economics.' },
+      { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'Exactly what examiners reward, criterion by criterion.' },
+    ],
+  },
+
+  {
+    slug: 'too-late-to-change-ee-topic',
+    title: 'It\'s "Too Late" to Change My EE Topic — What Now?',
+    description: 'Regretting your EE topic but your supervisor says it\'s too late to switch? Why an ordinary topic can still become a strong essay, and how to get your momentum back.',
+    date: '2026-06-18',
+    readMins: 4,
+    content: [
+      { type: 'paragraph', text: 'You rushed your topic selection and first draft, now you can see the problems in your RQ and structure, you\'ve spotted a better topic — and your mentor says it\'s too late to switch. So you\'re stuck fixing a draft you\'re not excited about, haunted by the idea that you could have done better. Here\'s the honest reframe.' },
+
+      { type: 'heading', text: 'First, check whether it really is too late' },
+      { type: 'paragraph', text: 'If you\'re still in DP1, it\'s at least worth a conversation — schools differ a lot on deadlines and flexibility. If your advisor is firm, then the productive move is to make your current topic work rather than keep relitigating the switch.' },
+
+      { type: 'heading', text: 'An ordinary topic is not a mediocre EE' },
+      { type: 'paragraph', text: 'It\'s easy to compare your real topic to an idealised version of the new one. But a topic that seems mediocre now doesn\'t lead to a mediocre essay. Some of the strongest EEs come from students who take an ordinary-looking topic and explore it really thoroughly. Often all it takes is a new angle, perspective, or line of analysis to make the topic feel alive again.' },
+
+      { type: 'heading', text: 'The EE is iterative by design' },
+      { type: 'paragraph', text: 'The IB\'s own EE guide says your initial RQ will look quite different by the end of the process — that\'s normal and expected. Most of the improvement happens during revision, not before the first draft. So don\'t beat yourself up over a rough draft one; that\'s the stage it\'s supposed to be rough at.' },
+
+      { type: 'key-takeaway', items: [
+        'If you\'re in DP1, it\'s worth one honest conversation about switching',
+        'If switching is off the table, commit to making your current topic work',
+        'Ordinary topics explored thoroughly often beat "impressive" ones done shallowly',
+        'A fresh angle or line of analysis can revive a topic you\'ve gone cold on',
+        'The EE is built through revision — a rough first draft is normal',
+      ]},
+
+      { type: 'cta-box', label: 'Free workspace', text: 'A sharper RQ can revive a tired topic. Set up your free workspace and rework it.', href: '/dashboard/home', buttonText: 'Open your free workspace' },
+    ],
+    faqItems: [
+      { question: 'Is it too late to change my EE topic?', answer: 'If you\'re in DP1, probably not — it\'s worth asking, since schools vary on deadlines. If your advisor says it\'s firmly too late, the better use of energy is improving your current topic rather than switching.' },
+      { question: 'Can a boring EE topic still get a good grade?', answer: 'Yes. Some of the strongest essays come from ordinary topics explored thoroughly. A fresh angle or line of analysis matters far more than how impressive the topic sounds.' },
+      { question: 'Should I switch EE topics or fix my draft?', answer: 'Unless switching is genuinely viable for your deadlines, fixing your draft is usually the higher-leverage move. The EE improves most through revision, and a rough first draft is completely normal.' },
+    ],
+    related: [
+      { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Find a sharper angle for your topic.' },
+      { href: '/guides/ee-mindset', title: 'The EE Mindset Shift', description: 'Why revision, not perfection, makes an A.' },
+    ],
+  },
 ]
 
 export function getBlogPost(slug) {
