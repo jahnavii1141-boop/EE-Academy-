@@ -535,6 +535,177 @@ export const BLOG_POSTS = [
       { href: '/guides/ee-mindset', title: 'The EE Mindset Shift', description: 'Why revision, not perfection, makes an A.' },
     ],
   },
+  {
+    slug: 'is-history-ee-hard',
+    title: 'Is a History EE Hard? How to Choose a Subject You\'re Passionate About',
+    description: 'Torn between the "easy" subject and the one you love for your EE? Why passion and depth beat the safe option — and how to handle having too much material.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'Here\'s a dilemma a lot of pre-IB students face: the "easy" EE subject at your school is something like English B, but you\'re genuinely obsessed with a History topic — say WW1 medicine — and you\'ve already got archives and academic papers piling up. Is History too hard to risk it?' },
+
+      { type: 'heading', text: 'EEs grade you on depth' },
+      { type: 'paragraph', text: 'English is often called the "easier" EE subject because it\'s easier for most people to go deep, whereas History, Maths and the sciences demand a level of depth and interest most students don\'t want to engage with. But if you already have the passion and the material, you\'re in exactly the category that goes deep — and depth is the main thing IB rewards, which most students miss.' },
+
+      { type: 'heading', text: 'Passion can\'t be replicated' },
+      { type: 'paragraph', text: 'A friend who did a Maths EE — one of the harder choices — mastered it purely because he was passionate enough to go deep. The general advice is to pick the easier subject if you\'re indifferent. But if you have genuine passion, follow it: you\'ll actually enjoy the process instead of grinding through it.' },
+
+      { type: 'heading', text: 'Too much material is a real problem' },
+      { type: 'paragraph', text: 'If you\'ve got hundreds of archive pages and a stack of papers, you have too much — and that\'s its own challenge. Use AI to help surface the two or three highest-leverage sources rather than drowning in volume. Ask yourself: which archive or paper actually changes the initial assumption behind your RQ? Those one or two are the ones worth analysing deeply.' },
+
+      { type: 'tip-box', text: 'Narrow the topic. "WW1 medicine" is too broad — tighten it to where your sources concentrate, e.g. European WW1 medicine. Primary sources are a huge advantage most EE writers don\'t have, so lean into them.' },
+
+      { type: 'key-takeaway', items: [
+        'History rewards depth — if you have passion and sources, you\'re already in the right category',
+        'Pick the easier subject only if you\'re indifferent; genuine passion is worth following',
+        'Too much material is a real problem — find the 2-3 sources that change your RQ\'s assumptions',
+        'Narrow a broad topic to where your sources concentrate',
+        'Primary sources are a major advantage — use them',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'See how to frame a History RQ that goes deep instead of wide.', href: '/guides/ee-history', buttonText: 'Read the History guide' },
+    ],
+    faqItems: [
+      { question: 'Is a History EE harder than an English EE?', answer: 'History demands more depth and sustained interest, which is why it\'s seen as harder. But if you have genuine passion and good sources, that depth becomes a strength rather than a barrier — and depth is what IB rewards most.' },
+      { question: 'Should I pick the easy EE subject or the one I\'m passionate about?', answer: 'If you\'re indifferent, pick the easier subject. If you have real passion and material for a "harder" one, follow it — passion drives the depth that scores well and makes the process enjoyable rather than a grind.' },
+      { question: 'I have too many sources for my EE — what do I do?', answer: 'Don\'t analyse everything. Identify the two or three sources that actually change the assumptions behind your research question, and go deep on those. Depth beats volume in the EE.' },
+    ],
+    related: [
+      { href: '/guides/ee-history', title: 'IB History EE Guide', description: 'How to frame a History RQ and engage with sources.' },
+      { href: '/blog/does-extended-essay-subject-matter', title: 'Does Your EE Subject Matter?', description: 'Choosing a subject for the right reasons.' },
+    ],
+  },
+
+  {
+    slug: 'how-to-get-better-at-ib-research',
+    title: 'How to Get Better at Research and Analysis for the IB',
+    description: 'If research, topic-finding and analysis don\'t come naturally, you can still master them. Why they\'re learnable skills — not talent — and the habits that build them.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'The IB demands research and analytical skills — across your IAs, EE, TOK and English — that no other school system really prepares you for. So if that stuff doesn\'t come naturally to you, how do people actually adjust? The encouraging answer: these are learned skills, not personality traits.' },
+
+      { type: 'heading', text: 'Research and analysis aren\'t innate talents' },
+      { type: 'paragraph', text: 'They\'re skills with a process behind them. Plenty of strong researchers weren\'t research people before the IB — some of their lowest early grades were in English, and they were predicted a C in the EE, only for those to become their strongest areas. The more you write essays, research topics, get feedback and make mistakes, the more the process becomes second nature.' },
+
+      { type: 'heading', text: 'Treat research as something separate from school' },
+      { type: 'paragraph', text: 'If you develop genuine curiosity about things and build the habit of asking "why?" and "how do we know this?", research stops being an intimidating school task. It becomes a way of satisfying your own curiosity — which is exactly the mindset the EE rewards.' },
+
+      { type: 'heading', text: 'What analysis and evaluation actually are' },
+      { type: 'paragraph', text: 'Strip away the jargon: analysis is just making sense of information and finding patterns. Evaluation is weighing the strengths and weaknesses of those findings. Once you do both consistently, research stops feeling like randomly collecting sources and starts feeling like building an argument — which is the whole point.' },
+
+      { type: 'key-takeaway', items: [
+        'Research and analysis are learnable skills, not innate talent',
+        'They improve through reps: writing, researching, feedback, and mistakes',
+        'Build genuine curiosity — ask "why?" and "how do we know this?"',
+        'Analysis = finding patterns; evaluation = weighing strengths and weaknesses',
+        'Done consistently, research becomes building an argument, not collecting sources',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'The fastest skill gain is learning to analyse instead of describe. Here\'s how.', href: '/guides/ee-analysis-vs-description', buttonText: 'Analysis vs description' },
+    ],
+    faqItems: [
+      { question: 'Can you actually learn research and analysis skills for the IB?', answer: 'Yes. They\'re skills with a process behind them, not innate talent. They improve through repetition — writing, researching, getting feedback, and making mistakes — and most students underestimate how teachable they are.' },
+      { question: 'What\'s the difference between analysis and evaluation?', answer: 'Analysis is making sense of information and finding patterns in it. Evaluation is weighing the strengths and weaknesses of those findings. Strong EEs do both consistently.' },
+      { question: 'How do I get better at writing analytically?', answer: 'Build curiosity (always ask "why?" and "how do we know this?"), then practise turning information into patterns and judgements rather than summaries. The more reps and feedback you get, the more automatic it becomes.' },
+    ],
+    related: [
+      { href: '/guides/ee-analysis-vs-description', title: 'Analysis vs Description', description: 'The single biggest skill jump for EE marks.' },
+      { href: '/guides/ee-academic-writing', title: 'Academic Writing for the EE', description: 'Sentence patterns that signal A-grade thinking.' },
+    ],
+  },
+
+  {
+    slug: 'dp1-dp2-summer-ee',
+    title: 'What to Do Over the Summer Between DP1 and DP2',
+    description: 'Two months between DP1 and DP2 — what\'s actually worth doing? Why finishing your EE and IAs is the highest-ROI move, and why speed-running DP2 isn\'t.',
+    date: '2026-06-18',
+    readMins: 4,
+    content: [
+      { type: 'paragraph', text: 'You\'ve got a two-month break between DP1 and DP2, everyone says to finish your IAs and EE, and you\'re wondering what else is actually worth doing — study DP2 content in advance, or re-study DP1? Here\'s the highest-ROI way to spend it.' },
+
+      { type: 'heading', text: 'Finishing your EE and IAs is the best use of the break' },
+      { type: 'paragraph', text: 'This is almost certainly the single highest-return thing you can do. Future you, buried in DP2 deadlines, will be enormously grateful for every section you got done over summer.' },
+
+      { type: 'heading', text: 'Don\'t try to speed-run DP2 content' },
+      { type: 'paragraph', text: 'Spending the whole break trying to learn next year\'s syllabus in advance usually isn\'t worth it. You\'re better off strengthening weak DP1 areas and building good systems for DP2 than racing ahead into content you\'ll be taught properly anyway.' },
+
+      { type: 'heading', text: 'A summer list that actually helps' },
+      { type: 'numbered-steps', items: [
+        'Finish as much of your EE and IAs as possible',
+        'Organise your notes properly',
+        'Identify your weak subjects and topics',
+        'Build a revision system you\'ll actually stick to',
+        'Read examiner reports and markschemes for your subjects',
+      ]},
+      { type: 'paragraph', text: 'Also start treating research as a skill. The EE is one of the best chances you\'ll get to learn how to research properly, and the sooner you\'re comfortable finding and evaluating sources, the easier the whole of DP2 becomes.' },
+
+      { type: 'tip-box', text: 'And genuinely enjoy your summer. Plenty of students burn themselves out before DP2 even starts — rest is part of the plan, not a betrayal of it.' },
+
+      { type: 'key-takeaway', items: [
+        'Finishing EE and IAs is the highest-ROI summer task',
+        'Don\'t speed-run DP2 content — strengthen weak DP1 areas instead',
+        'Organise notes, spot weak topics, and build a revision system you\'ll keep',
+        'Read examiner reports and markschemes to learn what\'s rewarded',
+        'Rest properly — burnout before DP2 helps no one',
+      ]},
+
+      { type: 'cta-box', label: 'Free workspace', text: 'Get a head start on the EE over summer — 5 free modules, workbooks, and a real 32/34 example.', href: '/dashboard/home', buttonText: 'Open your free workspace' },
+    ],
+    faqItems: [
+      { question: 'What should I do over the DP1 to DP2 summer?', answer: 'Prioritise finishing your EE and IAs — it\'s the highest-return work you can do. Then organise notes, identify weak topics, build a revision system, and read examiner reports. And rest, so you don\'t burn out before DP2.' },
+      { question: 'Should I study DP2 content in advance over the summer?', answer: 'Usually not worth the whole break. You\'ll be taught it properly in DP2. Strengthening weak DP1 areas and building good study systems pays off more than racing ahead.' },
+      { question: 'Is it worth finishing the EE over the summer?', answer: 'Yes — it\'s arguably the best use of the time. Getting the EE substantially done before DP2 removes a major source of stress during your most demanding year.' },
+    ],
+    related: [
+      { href: '/guides/ee-planning-timeline', title: 'EE Timeline & Planning', description: 'Map the whole EE across the weeks you have.' },
+      { href: '/guides/ee-dump-method', title: 'The EE Dump Research Method', description: 'Build your source base efficiently.' },
+    ],
+  },
+
+  {
+    slug: 'how-to-get-an-a-global-politics-ee',
+    title: 'How to Get an A in a Global Politics Extended Essay',
+    description: 'Starting a Global Politics EE and worried your outline isn\'t "A material"? The topic, research depth, and RQ habits behind a top-band EE — from the top scorer in their grade.',
+    date: '2026-06-18',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'You\'re starting a Global Politics EE on a topic you\'re passionate about, and you\'re already worried your outline isn\'t "A material." Here\'s some reassurance from someone who had no idea what their EE would become at the start and ended up the highest scorer in their grade: the outline is not the essay.' },
+
+      { type: 'heading', text: 'Choose a topic you genuinely care about' },
+      { type: 'paragraph', text: 'A lot of students pick topics based on what they think will score well. But the best topic is usually the one you\'ll still be excited to read, research and write about months from now. Execution matters far more than picking something that sounds impressive.' },
+
+      { type: 'heading', text: 'Don\'t judge your outline — or force a conclusion — too early' },
+      { type: 'paragraph', text: 'Your outline is only part of the story, so don\'t panic if it doesn\'t look like A material yet. And definitely don\'t try to force a conclusion before you\'ve done the research. One of the biggest surprises for most students is how much their argument evolves as they learn more — that\'s a feature, not a flaw.' },
+
+      { type: 'heading', text: 'Be relentlessly thorough with research' },
+      { type: 'paragraph', text: 'Go well beyond the first few articles that show up online. Academic journals, professors\' work, dissertations, niche publications, and opposing perspectives are where the depth is. The deeper you go, the more likely you are to find something genuinely interesting rather than repeating what everyone else already says.' },
+
+      { type: 'heading', text: 'A research question is a real question' },
+      { type: 'paragraph', text: 'So many students get caught up in making the RQ sound academic that they forget the entire point is to investigate something they don\'t yet know the answer to. Often you can\'t write the best version of your RQ until you\'re 20–30% into your research — because that\'s when the genuinely interesting questions reveal themselves.' },
+
+      { type: 'tip-box', text: 'Ask your coordinator for deadlines early, plan your time, and use your supervisor feedback. The EE is built through revision — your first outline doesn\'t need to be amazing.' },
+
+      { type: 'key-takeaway', items: [
+        'Pick a topic you\'ll still care about in months — execution beats impressiveness',
+        'Don\'t judge your early outline or force a conclusion before researching',
+        'Research deep: journals, dissertations, niche sources, opposing views',
+        'A real RQ investigates something you don\'t yet know — it sharpens 20–30% into research',
+        'The EE is built through revision, not a perfect day-one outline',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'See what separates an A-grade EE from a B, step by step.', href: '/guides/how-to-get-an-a-in-extended-essay', buttonText: 'How to get an A' },
+    ],
+    faqItems: [
+      { question: 'How do I get an A in a Global Politics EE?', answer: 'Choose a topic you genuinely care about, research far beyond the first few articles, and treat your RQ as a real question you\'re investigating. Let your argument evolve through the research, and refine through revision rather than aiming for a perfect first outline.' },
+      { question: 'What makes an A-grade Extended Essay?', answer: 'Genuine depth and a real investigation — not an impressive-sounding topic. Thorough research that uncovers something interesting, an RQ that\'s actually a question, and an argument refined through revision.' },
+      { question: 'When should I finalise my EE research question?', answer: 'Often not until you\'re 20–30% into your research. That\'s when the genuinely interesting questions surface. Forcing a polished RQ before researching usually leads to a weaker one.' },
+    ],
+    related: [
+      { href: '/guides/how-to-get-an-a-in-extended-essay', title: 'How to Get an A in the Extended Essay', description: 'The habits that separate A-grade essays from B.' },
+      { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to model yours on.' },
+    ],
+  },
 ]
 
 export function getBlogPost(slug) {
