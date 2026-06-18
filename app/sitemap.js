@@ -1,5 +1,7 @@
 // Dynamic sitemap — served at /sitemap.xml and takes precedence over public/sitemap.xml
 
+import { BLOG_POSTS } from '../src/data/blogPosts'
+
 const BASE = 'https://theextendedessay.com'
 const NOW = new Date().toISOString()
 
@@ -53,6 +55,7 @@ export default function sitemap() {
     { url: `${BASE}/curriculum`, lastModified: NOW, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/courses`,    lastModified: NOW, changeFrequency: 'monthly', priority: 0.9 },
     { url: `${BASE}/guides`,     lastModified: NOW, changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${BASE}/blog`,       lastModified: NOW, changeFrequency: 'weekly',  priority: 0.9 },
     { url: `${BASE}/about`,      lastModified: NOW, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/contact`,    lastModified: NOW, changeFrequency: 'yearly',  priority: 0.5 },
     { url: `${BASE}/terms`,      lastModified: NOW, changeFrequency: 'yearly',  priority: 0.2 },
@@ -77,5 +80,12 @@ export default function sitemap() {
     priority: highIntentSlugs.has(slug) ? 0.9 : 0.8,
   }))
 
-  return [...staticPages, ...guidePages]
+  const blogPages = BLOG_POSTS.map(post => ({
+    url: `${BASE}/blog/${post.slug}`,
+    lastModified: post.date || NOW,
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }))
+
+  return [...staticPages, ...guidePages, ...blogPages]
 }

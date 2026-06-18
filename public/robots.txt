@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Allow: /guides/
+Allow: /blog/
 
 # Auth-gated tools — Google should not crawl or index these
 Disallow: /dashboard/
