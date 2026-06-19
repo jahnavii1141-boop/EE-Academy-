@@ -3,7 +3,7 @@ export const COURSE_MODULES = [
     id: 'module-1',
     number: '01',
     free: true,
-    title: 'Introduction, Mindset & How to Think Like an EE Examiner',
+    title: 'What an examiner wants (and how I know)',
     tagline: 'The mindset shift that changes everything.',
     content: [
       {
@@ -106,7 +106,7 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about, using the Venn diagram and Clastify.' },
-          { title: 'How to Find Your Research Question', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
+          { title: 'How to design your RQ', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
           { title: 'The EE Dump System', text: 'Our signature research method that makes writing effortless. The most fun part of the entire process.' },
           { title: 'Research Strategy', text: 'Google vs. Scholar vs. PDF-only searches. The Scholar Shift that most students never reach.' },
           { title: 'Structure & Writing', text: 'Map every section to specific criteria. Seven sections, each with a job. No purposeless writing.' },
@@ -129,7 +129,7 @@ export const COURSE_MODULES = [
     id: 'module-2',
     number: '02',
     free: true,
-    title: 'What IB Expects: Criteria, Grading & How A\'s Are Really Given',
+    title: 'Markscheme broken down',
     tagline: 'Use the rubric as your blueprint, not an afterthought.',
     content: [
       {
@@ -251,7 +251,7 @@ export const COURSE_MODULES = [
           { title: 'Decide the appropriate pathway', text: 'Interdisciplinary or subject-focused. The guidance: focus on one subject unless you can truly do justice to two. Interdisciplinary EEs require double the analytical work.' },
           { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic happens when you connect the two, fashion and Business Management, gaming and Psychology, music and Physics.' },
           { title: 'Undertake some preparatory reading', text: 'Use Clastify before you commit. Study high and low-scoring essays in your potential subject. Understand the patterns before you pick your lane.' },
-          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4, How to Find Your Research Question, is entirely dedicated to this. Don\'t rush it.' },
+          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4, How to design your RQ, is entirely dedicated to this. Don\'t rush it.' },
           { title: 'Plan the research and writing process', text: 'Build efficient systems from the start. Module 7 walks you through the structure that earned 32/34.' },
           { title: 'Plan a structure for the essay', text: 'Your structure will evolve as your research develops, that\'s expected and normal. Build the skeleton first, then let the research fill it out.' },
           { title: 'Carry out the research', text: 'The EE Dump system in Module 5 makes this the most intellectually enjoyable part of the entire process.' },
@@ -292,7 +292,7 @@ export const COURSE_MODULES = [
     id: 'module-3',
     number: '03',
     free: false,
-    title: 'Choosing Your Subject & Finding Your Topic',
+    title: 'Why topic selection is the highest-ROI thing to do',
     tagline: 'The right topic makes the difference between stress and an A.',
     content: [
       {
@@ -429,7 +429,7 @@ export const COURSE_MODULES = [
     id: 'module-4',
     number: '04',
     free: true,
-    title: 'How to Find Your Research Question',
+    title: 'How to design your RQ',
     tagline: 'Your RQ is the foundation everything else is built on.',
     content: [
       {
@@ -590,7 +590,7 @@ export const COURSE_MODULES = [
     id: 'module-5',
     number: '05',
     free: true,
-    title: 'The EE Dump Research System',
+    title: 'The EE Dump method',
     tagline: 'The most fun part of the entire EE process.',
     content: [
       {
@@ -719,7 +719,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-6',
     number: '06',
-    title: 'How to Research Like a Top Student',
+    title: 'Evidence and research',
     tagline: 'Method is what separates good research from great research.',
     content: [
       {
@@ -884,7 +884,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-7',
     number: '07',
-    title: 'Building Your EE Structure',
+    title: 'Essay architecture',
     tagline: 'Structure is your biggest competitive advantage.',
     content: [
       {
@@ -993,7 +993,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-8',
     number: '08',
-    title: 'Writing the EE: How to Actually Write Each Section',
+    title: 'Writing your analysis so it flows',
     tagline: 'Every section has a job. Know what it is before you write it.',
     content: [
       {
@@ -1120,7 +1120,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-9',
     number: '09',
-    title: 'Format, Style, Citations & Academic Integrity',
+    title: 'Citations and formatting',
     tagline: "Free marks. Don't leave them on the table.",
     content: [
       {
@@ -1297,7 +1297,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-10',
     number: '10',
-    title: 'Writing a Killer Introduction & Conclusion',
+    title: 'Beginnings and conclusions (what makes or breaks it)',
     tagline: 'Your first and last impression, make them count.',
     content: [
       {
@@ -1402,7 +1402,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-11',
     number: '11',
-    title: 'RPPF Mastery: The Easiest 6 Marks of Your Life',
+    title: 'RPPF / RPF and Viva Voce',
     tagline: "Most students either overthink this or barely try. Don't be either.",
     content: [
       {
@@ -1522,7 +1522,7 @@ export const COURSE_MODULES = [
   {
     id: 'ai-module',
     number: 'AI',
-    title: 'How to Use AI the Right Way for Your EE',
+    title: 'AI prompt library',
     tagline: 'Use it like a top student, not like someone who wants to fail.',
     content: [
       {
@@ -1779,7 +1779,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-13',
     number: '13',
-    title: 'Analysing My 32/34 EE: AI Analysis vs. My Real Commentary',
+    title: 'Analysis of my paper by AI',
     tagline: 'No other EE guide will ever give you this.',
     content: [
       {
@@ -1916,7 +1916,7 @@ export const COURSE_MODULES = [
   {
     id: 'module-14',
     number: '14',
-    title: 'Templates, Tools & Checklists',
+    title: 'Final checklist and submission',
     tagline: 'Everything becomes tangible here.',
     content: [
       {
