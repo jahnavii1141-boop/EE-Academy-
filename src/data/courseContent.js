@@ -130,7 +130,7 @@ export const COURSE_MODULES = [
     number: '02',
     free: true,
     title: 'Markscheme broken down',
-    tagline: 'Use the rubric as your blueprint, not an afterthought.',
+    tagline: 'The rubric is basically the answer key. Let me break it down.',
     content: [
       {
         type: 'paragraph',
@@ -293,7 +293,7 @@ export const COURSE_MODULES = [
     number: '03',
     free: false,
     title: 'Why topic selection is the highest-ROI thing to do',
-    tagline: 'The right topic makes the difference between stress and an A.',
+    tagline: 'Get this right and half the stress is gone before you write a word.',
     content: [
       {
         type: 'heading',
@@ -591,7 +591,7 @@ export const COURSE_MODULES = [
     number: '05',
     free: true,
     title: 'The EE Dump method',
-    tagline: 'The most fun part of the entire EE process.',
+    tagline: 'Honestly the most fun part of the whole EE.',
     content: [
       {
         type: 'paragraph',
@@ -720,7 +720,7 @@ export const COURSE_MODULES = [
     id: 'module-6',
     number: '06',
     title: 'Evidence and research',
-    tagline: 'Method is what separates good research from great research.',
+    tagline: 'How to actually research, instead of just opening 40 tabs.',
     content: [
       {
         type: 'quote-highlight',
@@ -885,7 +885,7 @@ export const COURSE_MODULES = [
     id: 'module-7',
     number: '07',
     title: 'Essay architecture',
-    tagline: 'Structure is your biggest competitive advantage.',
+    tagline: 'Where everything goes and why. This quietly wins marks.',
     content: [
       {
         type: 'paragraph',
@@ -1298,7 +1298,7 @@ export const COURSE_MODULES = [
     id: 'module-10',
     number: '10',
     title: 'Beginnings and conclusions (what makes or breaks it)',
-    tagline: 'Your first and last impression, make them count.',
+    tagline: 'Your first and last impression. Make them count.',
     content: [
       {
         type: 'heading',
@@ -1780,7 +1780,7 @@ export const COURSE_MODULES = [
     id: 'module-13',
     number: '13',
     title: 'Analysis of my paper by AI',
-    tagline: 'No other EE guide will ever give you this.',
+    tagline: 'No other EE guide is going to give you this.',
     content: [
       {
         type: 'paragraph',
@@ -1917,7 +1917,7 @@ export const COURSE_MODULES = [
     id: 'module-14',
     number: '14',
     title: 'Final checklist and submission',
-    tagline: 'Everything becomes tangible here.',
+    tagline: 'The last run-through before you hit submit.',
     content: [
       {
         type: 'paragraph',
