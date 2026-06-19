@@ -562,9 +562,16 @@ export default function DashboardHome() {
                 )}
               </>
             ) : (
-              <p className="text-xs" style={{ color: '#aaa' }}>
-                <Link href="/sign-up" className="font-semibold" style={{ color: '#0a0a0a' }}>Create an account</Link> to get a shareable link for your supervisor.
-              </p>
+              <>
+                <p className="text-xs mb-3" style={{ color: '#aaa' }}>
+                  Send your teacher a link to view your RQ and essay — and get their feedback back here. Free account, 20 seconds.
+                </p>
+                <Link href="/sign-up"
+                  className="inline-flex text-xs font-semibold px-4 py-2 rounded-xl transition-all hover:opacity-90"
+                  style={{ background: '#0a0a0a', color: '#fff', textDecoration: 'none' }}>
+                  Create free account to share →
+                </Link>
+              </>
             )}
           </div>
         )}

@@ -83,8 +83,30 @@ export default function DashboardShare() {
           Share with Supervisor
         </h1>
         <p className="text-sm mb-8" style={{ color: '#888', lineHeight: 1.6 }}>
-          Generate a view-only link. Your supervisor sees your RQ, Planner, and EE notes — no account needed. Revoke any time.
+          Generate a view-only link. Your supervisor sees your RQ, Planner, and EE notes — they don&apos;t need an account. Revoke any time.
         </p>
+
+        {/* Free users — share needs an account so feedback can flow back to you */}
+        {!isSignedIn && (
+          <div className="rounded-2xl p-8 text-center" style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#f5f5f5' }}>
+              <Link2 size={18} style={{ color: '#aaa' }} />
+            </div>
+            <p className="text-sm font-semibold mb-1" style={{ color: '#0a0a0a' }}>Create a free account to share</p>
+            <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 280, margin: '4px auto 24px', lineHeight: 1.6 }}>
+              Sharing needs a free account — that&apos;s how your supervisor&apos;s feedback gets saved and shown back to you here. Takes 20 seconds.
+            </p>
+            <Link href="/sign-up"
+              className="inline-flex text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
+              style={{ background: '#0a0a0a', color: '#fff' }}>
+              Create free account →
+            </Link>
+            <p className="text-[11px] mt-4" style={{ color: '#bbb' }}>
+              Already have one?{' '}
+              <Link href="/sign-in" className="font-semibold" style={{ color: '#888' }}>Sign in</Link>
+            </p>
+          </div>
+        )}
 
         {/* Premium gate */}
         {atFreeLimit && (
@@ -106,7 +128,7 @@ export default function DashboardShare() {
           </div>
         )}
 
-        {!atFreeLimit && !token && (
+        {isSignedIn && !atFreeLimit && !token && (
           /* No link yet */
           <div className="rounded-2xl p-8 text-center"
             style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
