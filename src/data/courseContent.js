@@ -8,7 +8,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'callout',
-        text: 'This resource lab was built by a real IB student who scored 32/34 on their Extended Essay. Everything here, the methods, the frameworks, the templates, the advice, comes from what actually worked, not from theory.',
+        text: 'Built by a real IB student who scored 32/34 on their EE. Everything here is what actually worked for me, not theory.',
       },
       {
         type: 'gif',
@@ -18,11 +18,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The Extended Essay is a mandatory component of the IB Diploma and one of the key pieces that helps you secure those 3 core points. The dumbest thing you can do is miss out on a 45, or worse, not even get your diploma, because of your EE.',
+        text: 'The Extended Essay is a mandatory part of the IB and it\'s what helps you secure those 3 points for your final grade. The dumbest thing you can do is miss out on a 45, or not even get your diploma, just because of your EE. Let\'s LOCK DOWN your EE so you don\'t have to worry about the 3 points you deserve. Let\'s be real, you don\'t wanna do all the work the IB asks for and then mess it up because of your EE.',
       },
       {
         type: 'paragraph',
-        text: 'You\'re already balancing six subjects, three at HL, as well as IAs, CAS, college applications, and a life. The EE should not be the thing that breaks you. It\'s supposed to be the one component where you actually get to explore something you genuinely care about.',
+        text: 'Is it challenging? Yes. But cmon, you\'re already balancing 6 subjects, 3 HL and 3 SL, plus an IA for every single one, plus college applications and a personal life. You can easily get an A in your EE if you curate your approach. The EE should be the one part where you actually get to explore something you care about, not the thing that breaks you.',
       },
       {
         type: 'heading',
@@ -30,17 +30,17 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The Pareto principle, or the 80/20 rule, states that roughly 80% of outcomes come from 20% of causes. In economics, it describes wealth distribution. In business, it explains why 20% of customers generate 80% of revenue. In your EE? It\'s the single most useful framework you have.',
+        text: 'I\'m gonna break this down using the Pareto principle, the idea that 20% of your work gives you 80% of your results. We\'re gonna find that 20% for your EE so you secure the A while spending the least time possible for the maximum result.',
       },
       {
         type: 'formula-box',
         title: 'The 80/20 Rule',
         formula: '20% of your effort → 80% of your marks',
-        description: 'This resource lab identifies exactly which 20% to focus on, the research question, structure, and criteria mapping, so you get maximum marks with minimum wasted effort.',
+        description: 'This is the 20% that matters: your research question, your structure, and mapping to the criteria. Nail those and you get the marks without wasting time on everything else.',
       },
       {
         type: 'paragraph',
-        text: 'The three highest-leverage activities in your EE are: writing a strong research question, mapping your structure to the assessment criteria, and engaging genuinely with your research process for the RPPF. Everything else, word count anxiety, excessive formatting tweaks, spending three days finding the "perfect" source, is the other 80%. We\'re not doing that.',
+        text: 'The three things that actually move your grade are a strong research question, mapping your structure to the criteria, and genuinely engaging with your research for the RPPF. Everything else, the word count anxiety, the endless formatting tweaks, spending three days hunting for the "perfect" source, is the other 80%. We\'re not doing that.',
       },
       {
         type: 'icon-card',
