@@ -9,53 +9,53 @@ export const BLOG_POSTS = [
   {
     slug: 'can-you-use-ai-for-extended-essay',
     title: 'Can You Use AI to Write Your IB Extended Essay (Without Getting Flagged)?',
-    description: 'IB allows AI as a thinking partner, not a ghostwriter. Where AI is safe, why "Turnitin didn\'t flag it" is false comfort, and why AI won\'t get you an A anyway.',
+    description: 'IB lets you use AI as a thinking partner, but not to write your essay. Where AI is safe, why a clean Turnitin result means little, and why AI won\'t get you an A.',
     date: '2026-06-18',
     readMins: 6,
     content: [
-      { type: 'paragraph', text: 'This is the question almost every IB student is quietly asking. Your teacher says you can use AI "to an extent" — but where exactly is the line? IB is strict about academic integrity, and the fear of being flagged is real. So let\'s settle it: yes, you can use AI for your Extended Essay. The trick is knowing what it\'s actually for.' },
+      { type: 'paragraph', text: 'Almost every IB student is quietly asking this. Your teacher says you can use AI "to an extent" but never really says where the line is. IB is strict about academic integrity and the fear of getting flagged is real. So here is the straight answer. You can use AI for your Extended Essay. You just have to know what it is actually for.' },
 
       { type: 'heading', text: 'The short answer' },
-      { type: 'paragraph', text: 'IB has published an official position acknowledging that students will use AI, and it frames AI as a thinking partner rather than a ghostwriter. That single distinction is the whole rule. Using AI to think is allowed. Using AI to write is not.' },
+      { type: 'paragraph', text: 'IB has put out an official position that accepts students will use AI. It treats AI as a thinking partner rather than a ghostwriter, and that is basically the whole rule. You can use it to think. You cannot use it to write your essay.' },
 
-      { type: 'heading', text: 'Where AI is completely fine' },
+      { type: 'heading', text: 'Where AI is fine' },
       { type: 'numbered-steps', items: [
-        'Discussing where to take your topic and brainstorming angles',
-        'Finding and locating sources to read yourself',
-        'Summarising dense academic papers so you can decide if they\'re relevant',
+        'Talking through where to take your topic and brainstorming angles',
+        'Finding sources for you to go and read yourself',
+        'Summarising dense papers so you can decide if they are worth reading',
         'Explaining concepts you don\'t understand yet',
         'Checking your citations and catching formatting errors',
       ]},
-      { type: 'paragraph', text: 'In every one of those, you\'re still doing the thinking. AI is reacting to your work, not producing it.' },
+      { type: 'paragraph', text: 'In all of these you are still the one thinking. The AI is reacting to work you have already done.' },
 
       { type: 'heading', text: 'Where it gets you flagged' },
-      { type: 'warning-box', text: 'The line is the writing itself. The moment AI writes your essay — or even a section, or "improves" a paragraph by rewriting it — the work is no longer yours. That\'s what gets flagged, and that\'s what costs students their diploma.' },
+      { type: 'warning-box', text: 'The line is the writing. The moment AI writes your essay, or even one section, or rewrites a paragraph to "improve" it, the work stops being yours. That is what gets flagged, and it has cost students their diploma.' },
 
       { type: 'heading', text: 'Why "Turnitin didn\'t flag it" is false comfort' },
-      { type: 'paragraph', text: 'A lot of students run their essay through the public version of Turnitin, see nothing flagged, and assume they\'re safe. Two problems with that. First, IB doesn\'t use commercial Turnitin — so a clean result on the public tool tells you very little about the version IB actually uses. Second, AI detection isn\'t only about prose style. It\'s about repetition across students: if you and a classmate have similar topics and both ask a chatbot to write a section, the outputs come out near-identical. That sameness is the giveaway — and an examiner paying attention can flag it manually, no software required.' },
+      { type: 'paragraph', text: 'Plenty of students run their essay through the public version of Turnitin, see nothing, and assume they are safe. Two problems with that. First, IB does not use commercial Turnitin, so a clean result on the public tool tells you very little about the version IB actually uses. Second, detection is not only about writing style. A lot of it is repetition across students. If you and a classmate have similar topics and both ask a chatbot to write a section, the outputs come out almost identical, and an examiner who is paying attention can flag that by hand without any software.' },
 
-      { type: 'heading', text: 'The part nobody mentions: AI won\'t get you an A anyway' },
-      { type: 'paragraph', text: 'Even the newest models don\'t actually know what an EE needs. They\'ll produce something that sounds great in general but doesn\'t hit IB\'s specific standards — not because the IB is harder, just different. AI also gives everyone the same surface-level conclusions. The marks in an EE come from the opposite: you reading enough sources to notice something weird, contradictory, or unexpected, and then doing something with it. That spark doesn\'t come from a prompt. It comes from you.' },
+      { type: 'heading', text: 'AI won\'t get you an A anyway' },
+      { type: 'paragraph', text: 'Even the newest models don\'t really know what an EE needs. They produce something that sounds good in general but misses IB\'s specific standards. Not because IB is harder, it is just different. AI also hands everyone the same surface-level conclusions. The marks come from the opposite of that: you reading enough sources to spot something odd or contradictory, and then doing something with it. That part has to come from you, not a prompt.' },
 
       { type: 'quote-highlight', text: 'I initially used AI to generate my EE research question, prompted specifically to match the rubric for an A. My supervisor read it and literally told me it was rubbish. That\'s when I realised my own brain was smarter than AI for IB-specific things. I ended up with a 32/34.', attribution: 'A 32/34 Business Management graduate' },
 
       { type: 'key-takeaway', items: [
-        'Use AI as a sparring partner — brainstorming, sources, summaries, explanations',
-        'Never let AI write the essay or any section of it',
-        'A clean public-Turnitin result does not mean IB won\'t catch it',
-        'AI produces the same surface-level conclusions for everyone — the marks live in your original thinking',
-        'Keep the actual thinking yours and you\'ll be fine',
+        'Use AI as a sparring partner: brainstorming, sources, summaries, explanations',
+        'Never let AI write the essay or any part of it',
+        'A clean public Turnitin result does not mean IB will miss it',
+        'AI gives everyone the same shallow conclusions, so the marks live in your own thinking',
+        'Keep the thinking yours and you will be fine',
       ]},
 
-      { type: 'cta-box', label: 'Free tool', text: 'Want to use AI the right way? Our free EE Dump tool helps you collect sources and build your bibliography — the legitimate part of the process — without crossing the line.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+      { type: 'cta-box', label: 'Free tool', text: 'Want to use AI the right way? The free EE Dump helps you collect sources and build your bibliography, which is the legitimate side of the process.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
     ],
     faqItems: [
-      { question: 'Is it against IB rules to use AI for the Extended Essay?', answer: 'No — IB explicitly allows AI as a thinking partner: brainstorming, finding sources, summarising papers, and explaining concepts. What\'s forbidden is using AI to write the essay or any part of it. That crosses into academic misconduct.' },
-      { question: 'Will Turnitin or IB detect AI writing in my EE?', answer: 'Possibly, and you can\'t rely on the public Turnitin to tell you. IB uses a different system, and detection often comes from repetition across students or an examiner manually spotting telltale patterns — not just a similarity score.' },
-      { question: 'Can AI actually write a good Extended Essay?', answer: 'Not really. Current models don\'t know IB\'s specific standards and tend to produce generic, surface-level conclusions. The marks come from original analysis — noticing something unexpected in your sources — which AI can\'t do for you.' },
+      { question: 'Is it against IB rules to use AI for the Extended Essay?', answer: 'No. IB allows AI as a thinking partner: brainstorming, finding sources, summarising papers, explaining concepts. What is not allowed is using AI to write the essay or any part of it. That crosses into academic misconduct.' },
+      { question: 'Will Turnitin or IB detect AI writing in my EE?', answer: 'Possibly, and you can\'t rely on the public Turnitin to tell you. IB uses a different system, and a lot of detection comes from repetition across students or an examiner spotting patterns by hand, not just a similarity score.' },
+      { question: 'Can AI actually write a good Extended Essay?', answer: 'Not really. Current models don\'t know IB\'s specific standards and tend to produce generic conclusions. The marks come from your own analysis, like noticing something unexpected in your sources, which AI cannot do for you.' },
     ],
     related: [
-      { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The golden rules for using AI without crossing the integrity line.' },
+      { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The rules for using AI without crossing the integrity line.' },
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'How to score all 6 Criterion E marks with genuine reflection.' },
     ],
   },
@@ -63,37 +63,37 @@ export const BLOG_POSTS = [
   {
     slug: 'does-extended-essay-subject-matter',
     title: 'Does the Subject You Choose for Your Extended Essay Actually Matter?',
-    description: 'Should you pick an "easy" EE subject? Why genuine interest beats strategy, how to play to your strengths, and why every EE is graded against the same criteria anyway.',
+    description: 'Should you pick an "easy" EE subject? Why genuine interest beats strategy, how to play to your strengths, and why every EE is graded against the same criteria.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'Every pre-IB student asks some version of this: should I pick an "easy" subject for my Extended Essay, or does it not matter in the end? The honest answer is that your subject matters — but not in the way most students think.' },
+      { type: 'paragraph', text: 'Every pre-IB student asks some version of this. Should I pick an "easy" subject for my Extended Essay, or does it not matter in the end? Your subject does matter, just not in the way most students think.' },
 
       { type: 'heading', text: 'Interest comes first' },
-      { type: 'paragraph', text: 'You\'re going to be living with this essay for most of your IB journey. It will get boring, annoying, and tiresome at points. If it\'s something you\'re genuinely interested in, the whole thing becomes far more bearable — and, importantly, interest usually leads to better research, because you\'re naturally willing to go down rabbit holes and notice the interesting details that earn marks.' },
+      { type: 'paragraph', text: 'You are going to be living with this essay for most of your IB. It will get boring and tiresome at points. If it is something you are actually interested in, the whole thing becomes much more bearable. Interest also tends to produce better research, because you are happy to go down rabbit holes and you notice the small details that earn marks.' },
 
       { type: 'heading', text: 'The "looks good for university" trap' },
-      { type: 'warning-box', text: 'A common mistake is choosing a technical subject — Maths, Chemistry, Economics — purely because you want to major in it and think it signals interest to admissions officers. It doesn\'t. Your subject choices already signal that. Admissions officers rarely care what you wrote your EE in. Choosing for that reason just makes your life harder.' },
+      { type: 'warning-box', text: 'A common mistake is picking a technical subject like Maths, Chemistry or Economics purely because you want to major in it and think it signals interest to admissions officers. It doesn\'t. Your subject choices already signal that. Admissions officers rarely care what you wrote your EE in, so choosing for that reason just makes your life harder.' },
 
       { type: 'heading', text: 'Play to your strengths' },
-      { type: 'paragraph', text: 'Be realistic about what you\'re actually good at. Plenty of students pick the "impressive" subject and end up with a lower score than they\'d have earned in a subject they\'re naturally stronger in. If you consistently top English, doing your EE in a subject you find harder just to seem "challenging" usually backfires. Strengths matter more than prestige.' },
+      { type: 'paragraph', text: 'Be realistic about what you are actually good at. Plenty of students pick the impressive subject and end up scoring lower than they would have in a subject they are naturally stronger in. If you consistently top English, doing your EE in a subject you find harder just to seem challenging usually backfires.' },
 
       { type: 'heading', text: 'Every EE is graded against the same criteria' },
-      { type: 'paragraph', text: 'Here\'s the part that reframes the whole question: all EEs are assessed against the same criteria, regardless of subject. What students call "easy" and "hard" subjects often just comes down to how naturally a subject lets you demonstrate those criteria. The newer syllabus even removed subject-specific advice in favour of subject groups — because the underlying skills are the same everywhere: challenge an assumption, ask a genuine question, and actually find something out.' },
+      { type: 'paragraph', text: 'This is the part that reframes the whole question. All EEs are marked against the same criteria, whatever the subject. What students call "easy" and "hard" usually just comes down to how naturally a subject lets you show those criteria. The newer syllabus even dropped subject-specific advice in favour of subject groups, because the underlying skills are the same everywhere. Challenge an assumption, ask a real question, and actually find something out.' },
 
       { type: 'key-takeaway', items: [
-        'Genuine interest is the single biggest factor — it makes the process bearable and the research better',
-        'Don\'t pick a subject just to "look good" for university; your choices already signal interest',
-        'Be honest about your strengths — the impressive subject isn\'t worth a lower score',
-        'Every EE is marked against the same criteria, so consistency and curiosity beat subject prestige',
+        'Genuine interest is the biggest factor; it makes the process bearable and the research better',
+        'Don\'t pick a subject just to "look good" for university, your choices already do that',
+        'Be honest about your strengths; the impressive subject is not worth a lower score',
+        'Every EE is marked against the same criteria, so consistency and curiosity beat prestige',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Still deciding? Our subject guide breaks down what each EE subject actually demands so you can choose with your eyes open.', href: '/guides/ee-subjects-guide', buttonText: 'Read the subject guide' },
     ],
     faqItems: [
-      { question: 'Should I pick an easy subject for my Extended Essay?', answer: 'Pick the subject you\'re genuinely interested in and naturally strong at. "Easy" and "hard" mostly reflect how naturally a subject lets you show the assessment criteria — and every EE is marked against those same criteria regardless of subject.' },
-      { question: 'Does my EE subject affect university applications?', answer: 'Very little. Admissions officers rarely care which subject you chose for your EE — your overall subject choices already signal your interests. Choosing a "prestigious" EE subject you\'re not strong in usually just lowers your score.' },
-      { question: 'Is it harder to score well in a Language B Extended Essay?', answer: 'Not inherently. Every subject has its own challenges, and all EEs are graded against the same criteria. Strength and interest in the subject matter far more than the subject label.' },
+      { question: 'Should I pick an easy subject for my Extended Essay?', answer: 'Pick the subject you are genuinely interested in and naturally strong at. "Easy" and "hard" mostly reflect how naturally a subject lets you show the criteria, and every EE is marked against those same criteria regardless of subject.' },
+      { question: 'Does my EE subject affect university applications?', answer: 'Very little. Admissions officers rarely care which subject you chose for your EE, because your overall subject choices already signal your interests. Picking a prestigious EE subject you are not strong in usually just lowers your score.' },
+      { question: 'Is it harder to score well in a Language B Extended Essay?', answer: 'Not really. Every subject has its own challenges, and all EEs are graded against the same criteria. Strength and interest in the subject matter far more than the subject label.' },
     ],
     related: [
       { href: '/guides/ee-subjects-guide', title: 'Best IB Extended Essay Subjects', description: 'How to choose the right EE subject for your strengths.' },
@@ -104,41 +104,41 @@ export const BLOG_POSTS = [
   {
     slug: 'how-to-write-extended-essay-reflections',
     title: 'How to Write Extended Essay Reflections That Score Full Marks (Criterion E)',
-    description: 'EE reflections aren\'t a summary of what you did — they show your thinking. The "zoom out" method, why honesty beats perfectionism, and how to score Criterion E.',
+    description: 'EE reflections are not a summary of what you did, they show your thinking. The "zoom out" method, why honesty beats perfectionism, and how to score Criterion E.',
     date: '2026-06-18',
     readMins: 6,
     content: [
-      { type: 'paragraph', text: 'Reflections are one of the most misunderstood parts of the Extended Essay. Most students treat them as a summary of what they did — and lose marks for it. IB is looking at something else entirely: your thinking and your decision-making process.' },
+      { type: 'paragraph', text: 'Reflections are one of the most misunderstood parts of the Extended Essay. Most students treat them as a summary of what they did, and lose marks for it. IB is looking at something else: your thinking and your decisions.' },
 
       { type: 'heading', text: 'What reflections actually assess' },
-      { type: 'paragraph', text: 'By the time you\'re writing reflections, you\'ve usually already done your research and presented your work. So reflections aren\'t there to repeat that. They\'re where you demonstrate engagement — how you thought, what you decided, and how your understanding grew. Criterion E rewards intellectual growth, not a tidy recap.' },
+      { type: 'paragraph', text: 'By the time you write reflections you have usually finished your research and presented your work, so reflections are not there to repeat that. They are where you show engagement: how you thought, what you decided, and how your understanding grew. Criterion E rewards intellectual growth, not a tidy recap.' },
 
       { type: 'heading', text: 'The "zoom out" method' },
-      { type: 'paragraph', text: 'The most useful thing you can do is zoom out and imagine explaining your project to someone unfamiliar with it. They\'d have questions: Why did you become interested in this question? Why does the answer matter? Why did you choose these methods or sources instead of others? What assumptions did you make? How does what you found compare to what others have found? Did anything surprise you? What were the limitations? What would you do differently with more time? Answer those honestly and you\'re essentially writing your reflections.' },
+      { type: 'paragraph', text: 'The most useful thing you can do is zoom out and imagine explaining your project to someone who knows nothing about it. They would have questions. Why did you become interested in this? Why does the answer matter? Why did you choose these methods or sources over others? What assumptions did you make? How does what you found compare to what others have found? Did anything surprise you? What were the limitations? What would you do differently with more time? Answer those honestly and you are basically writing your reflections.' },
 
       { type: 'heading', text: 'Honesty beats perfectionism' },
-      { type: 'tip-box', text: 'IB does not want perfectionism — it wants academic honesty. If you genuinely struggled with a method, found a flaw in your approach, changed direction halfway through, or realised an assumption was weaker than you thought, say so. A student who reflects honestly on real challenges scores far higher on engagement than one who presents everything as flawless from day one.' },
+      { type: 'tip-box', text: 'IB does not want perfectionism, it wants academic honesty. If you struggled with a method, found a flaw in your approach, changed direction halfway through, or realised an assumption was weaker than you thought, say so. A student who reflects honestly on real challenges scores much higher on engagement than one who pretends everything worked from day one.' },
 
-      { type: 'paragraph', text: 'The strongest reflections show genuine intellectual development. A good test: if someone read only your three reflections, they should be able to understand how your thinking evolved across the entire EE process. And before you write them, read the Engagement criterion in the official EE guide — IB is surprisingly explicit about what it wants, and most students overcomplicate it.' },
+      { type: 'paragraph', text: 'The strongest reflections show real intellectual development. A good test: if someone read only your three reflections, they should be able to follow how your thinking changed across the whole process. Before you write them, read the Engagement criterion in the official EE guide. IB is surprisingly clear about what it wants and most students overcomplicate it.' },
 
       { type: 'key-takeaway', items: [
-        'Reflections show your thinking and decisions — not a summary of what you did',
-        'Zoom out: answer why you cared, why these methods, what surprised you, what you\'d change',
-        'Be honest about struggles and changes of direction — engagement rewards it',
+        'Reflections show your thinking and decisions, not a summary of what you did',
+        'Zoom out: why you cared, why these methods, what surprised you, what you would change',
+        'Be honest about struggles and changes of direction, engagement rewards it',
         'If someone read only your reflections, they should see how your thinking grew',
-        'Read the Engagement criterion in the EE guide — IB tells you what it wants',
+        'Read the Engagement criterion in the EE guide, IB tells you what it wants',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Want the full three-reflection structure and what each one should cover? Our RPPF guide walks through all six Criterion E marks.', href: '/guides/rppf-guide', buttonText: 'Read the RPPF guide' },
     ],
     faqItems: [
-      { question: 'What should IB Extended Essay reflections include?', answer: 'Your thinking and decisions — why you chose your question and methods, what assumptions you made, what surprised you, what the limitations were, and how your understanding changed. Not a summary of tasks completed.' },
-      { question: 'How do you score full marks on Criterion E?', answer: 'Show genuine intellectual growth and academic honesty. Reflect on real struggles and changes of direction across all three reflections, so a reader can trace how your thinking developed. Read the Engagement criterion in the EE guide for exactly what IB rewards.' },
+      { question: 'What should IB Extended Essay reflections include?', answer: 'Your thinking and decisions: why you chose your question and methods, what assumptions you made, what surprised you, what the limitations were, and how your understanding changed. Not a summary of tasks completed.' },
+      { question: 'How do you score full marks on Criterion E?', answer: 'Show real intellectual growth and academic honesty. Reflect on struggles and changes of direction across all three reflections, so a reader can trace how your thinking developed. Read the Engagement criterion in the EE guide for exactly what IB rewards.' },
       { question: 'How long should each EE reflection be?', answer: 'The three reflections share a 500-word limit on the RPPF. Use the space to show decision-making and growth rather than describing what you did step by step.' },
     ],
     related: [
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'The three-reflection structure for all 6 Criterion E marks.' },
-      { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'How every mark across criteria A–E is awarded.' },
+      { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'How every mark across criteria A to E is awarded.' },
     ],
   },
   {
@@ -148,85 +148,85 @@ export const BLOG_POSTS = [
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'You submitted your essay, maybe even graduated, and then got the email: the school flagged your work for AI and wants a meeting to "explain yourself." It\'s a stomach-drop moment. Take it seriously — but don\'t panic, and don\'t assume the worst before you\'ve even sat down.' },
+      { type: 'paragraph', text: 'You submitted your essay, maybe even graduated, and then got the email. The school flagged your work for AI and wants a meeting to "explain yourself." It is a stomach-drop moment. Take it seriously, but don\'t panic, and don\'t assume the worst before you have even sat down.' },
 
       { type: 'heading', text: 'What the meeting is actually for' },
-      { type: 'paragraph', text: 'These meetings are usually about determining whether you can demonstrate ownership of your work — not the school announcing a conclusion it\'s already reached. AI detectors on their own aren\'t treated as definitive proof, precisely because they produce false positives. That\'s why you\'re being given the chance to explain rather than just handed a verdict.' },
+      { type: 'paragraph', text: 'These meetings are usually about whether you can show ownership of your work, not the school announcing a decision it has already made. AI detectors on their own are not treated as proof, because they throw up false positives. That is why you are getting a chance to explain rather than just a verdict.' },
 
       { type: 'heading', text: 'What they tend to ask' },
-      { type: 'paragraph', text: 'Expect questions about your process: your sources, your drafts, and how you developed your argument from start to finish. The single most important thing you can do is be able to walk through how the essay actually came together — the messy, human path from first idea to final draft.' },
+      { type: 'paragraph', text: 'Expect questions about your process: your sources, your drafts, and how you built your argument from start to finish. The most important thing is being able to walk through how the essay actually came together, including the messy parts.' },
 
       { type: 'heading', text: 'What to bring' },
       { type: 'numbered-steps', items: [
         'Outlines and early drafts',
         'Annotations and research notes',
         'Supervisor feedback and meeting records',
-        'Version history (Google Docs / Word version history is gold here)',
-        'Anything that shows the essay evolving over time',
+        'Version history (Google Docs or Word version history is gold here)',
+        'Anything that shows the essay changing over time',
       ]},
-      { type: 'paragraph', text: 'Evidence of development is the most powerful thing you can show. AI-written work has no history; real work has a trail.' },
+      { type: 'paragraph', text: 'Evidence that your essay developed is the strongest thing you can show. AI-written work has no history. Real work leaves a trail.' },
 
       { type: 'heading', text: 'The distinction that matters' },
-      { type: 'paragraph', text: 'Understand the line schools and the IB look at: using AI to think differently or brainstorm is very different from having AI generate the work you submitted. If you used it as a thinking partner, say so clearly and show where your own thinking took over.' },
+      { type: 'paragraph', text: 'Schools and IB look closely at one thing: whether you used AI to think and brainstorm, or to generate the work you handed in. If you used it as a thinking partner, say that clearly and show where your own thinking took over.' },
 
-      { type: 'tip-box', text: 'Take it seriously, gather your evidence, and stay calm. A meeting is an opportunity to demonstrate your process — not a foregone conclusion.' },
+      { type: 'tip-box', text: 'Take it seriously, gather your evidence, and stay calm. The meeting is a chance to show your process, not a decision that has already been made.' },
 
       { type: 'key-takeaway', items: [
         'The meeting is about proving ownership, not a verdict already decided',
-        'AI detectors alone aren\'t definitive — false positives happen',
+        'AI detectors on their own are not proof, false positives happen',
         'Bring drafts, notes, supervisor feedback, and version history',
         'Be ready to explain how the essay developed from start to finish',
-        'Know the difference between AI for thinking vs AI generating your work',
+        'Know the difference between AI for thinking and AI generating your work',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Want to use AI without ever ending up in this room? Our guide covers exactly where the line is.', href: '/guides/ee-ai-guide', buttonText: 'Read the AI guide' },
     ],
     faqItems: [
-      { question: 'Does an AI detector flag mean I\'ll automatically fail?', answer: 'No. AI detectors aren\'t treated as definitive proof because they generate false positives. The meeting exists to let you demonstrate ownership of your work, which a flag alone cannot disprove.' },
+      { question: 'Does an AI detector flag mean I\'ll automatically fail?', answer: 'No. AI detectors are not treated as proof because they generate false positives. The meeting exists to let you show ownership of your work, which a flag alone cannot disprove.' },
       { question: 'What should I bring to an IB academic integrity meeting?', answer: 'Anything that shows your essay developing over time: outlines, early drafts, research notes, annotations, supervisor feedback, and document version history. Evidence of development is your strongest defence.' },
-      { question: 'How serious is an IB AI investigation?', answer: 'It\'s serious and worth careful preparation, but it\'s also your chance to explain. Schools generally focus on whether you can walk through your process and distinguish using AI to think from using it to write.' },
+      { question: 'How serious is an IB AI investigation?', answer: 'It is serious and worth preparing for, but it is also your chance to explain. Schools usually focus on whether you can walk through your process and show you used AI to think rather than to write.' },
     ],
     related: [
       { href: '/blog/can-you-use-ai-for-extended-essay', title: 'Can You Use AI for Your Extended Essay?', description: 'Where AI is safe and where it gets you flagged.' },
-      { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The golden rules for staying on the right side of the line.' },
+      { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The rules for staying on the right side of the line.' },
     ],
   },
 
   {
     slug: 'is-the-extended-essay-too-hard',
     title: 'Is the IB Extended Essay Really That Hard? A 32/34 Student\'s Honest Take',
-    description: 'The EE feels impossible because of the "just survive it" mindset. Why that mindset holds students back, and what actually separates the ones who breeze through.',
+    description: 'The EE feels impossible because of the "just survive it" mindset. Why that mindset holds students back, and what separates the ones who breeze through.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'A common take floating around is that the Extended Essay is overkill: 4,000 words pushed onto high schoolers who\'ve never touched academic material, far too self-directed, far too long. There\'s truth in the difficulty — but the "just survive it" framing is the exact thing that holds most students back. I went into mine predicted a C and came out with a 32/34, so respectfully, let me push back.' },
+      { type: 'paragraph', text: 'A common take going around is that the Extended Essay is overkill. 4,000 words handed to high schoolers who have never touched academic material, far too self-directed, far too long. There is some truth in the difficulty. But the "just survive it" framing is the thing that holds most students back. I went in predicted a C and came out with a 32/34, so let me push back on it.' },
 
-      { type: 'heading', text: 'The "survive-it" trap' },
-      { type: 'paragraph', text: 'The survive-it mentality is the default mindset for IB as a whole, not just the EE. When you go in thinking "just survive," you put IB on a pedestal above you — this massive, impossible thing you have to endure. It isn\'t. The students who sail through the EE aren\'t smarter or working harder. They\'ve figured out what IB actually wants and they give it to them.' },
+      { type: 'heading', text: 'The "survive it" trap' },
+      { type: 'paragraph', text: 'The survive-it mentality is the default for IB in general, not just the EE. When you go in thinking "just survive," you put IB on a pedestal above you, like it is this huge impossible thing you have to get through. It isn\'t. The students who breeze through the EE are not smarter or working harder. They worked out what IB actually wants and gave it to them.' },
 
       { type: 'heading', text: 'You probably don\'t know what IB actually wants' },
-      { type: 'paragraph', text: 'That sounds obvious, but it\'s the part most people skip. Most students think they know what IB wants and that they\'re delivering it — and you\'d be surprised how often that\'s not what\'s actually happening. They write essays they intuitively feel should score well. But IB has a very specific rubric looking for very specific things, and once you reverse-engineer that, the EE stops feeling impossible.' },
+      { type: 'paragraph', text: 'That sounds obvious, but it is the part most people skip. Most students think they know what IB wants and that they are delivering it, and you would be surprised how often that is not the case. They write essays they feel should score well. IB has a very specific rubric looking for very specific things, and once you work that out, the EE stops feeling impossible.' },
 
       { type: 'heading', text: 'IB doesn\'t reward what you think it rewards' },
-      { type: 'paragraph', text: 'It doesn\'t reward more information, more citations, or deeper research the way students assume. It rewards making mistakes and learning from them — because you\'re a high schooler, not a Nobel laureate. Most students see the EE as so hard that they try to perfect their paper to the point they can\'t be honest about the mistakes they\'ll inevitably make. That\'s the trap. It\'s less about writing a flawless research paper and more about fulfilling the actual learning objectives.' },
+      { type: 'paragraph', text: 'It does not reward more information, more citations, or deeper research the way students assume. It rewards making mistakes and learning from them, because you are a high schooler and not a Nobel laureate. Most students see the EE as so hard that they try to make their paper perfect, which leaves no room to be honest about the mistakes they will inevitably make. The point is not a flawless research paper. The point is hitting the actual learning objectives.' },
 
       { type: 'heading', text: 'Where the marks are actually hiding' },
-      { type: 'paragraph', text: 'Being honest about your shortcomings in your evaluation and limitations sections is usually your highest-leverage move. That\'s where the marks hide, and most students walk right past them because they\'re busy trying to look smarter than they need to.' },
+      { type: 'paragraph', text: 'Being honest about your shortcomings in your evaluation and limitations sections is usually the easiest win you have. That is where the marks hide, and most students walk straight past them because they are busy trying to look smarter than they need to.' },
 
       { type: 'key-takeaway', items: [
         'The EE feels impossible mostly because of the "survive it" mindset',
-        'Students who breeze through reverse-engineered the rubric — they\'re not smarter',
+        'The students who breeze through worked out the rubric, they are not smarter',
         'IB rewards learning from mistakes, not more citations or research',
         'Honesty in your evaluation and limitations is where easy marks hide',
-        'You don\'t need to be a perfect academic — you need to hit the criteria',
+        'You don\'t need to be a perfect academic, you need to hit the criteria',
       ]},
 
       { type: 'cta-box', label: 'Free module', text: 'The whole game is the mindset shift. Our free Mindset module breaks down exactly what examiners reward.', href: '/guides/ee-mindset', buttonText: 'Read the mindset guide' },
     ],
     faqItems: [
-      { question: 'Is the Extended Essay too hard for high school students?', answer: 'It\'s challenging, but the difficulty is overstated by the "just survive it" mindset. The students who do well aren\'t smarter — they understand the specific rubric and write to it. IB rewards learning from mistakes, not Nobel-level research.' },
-      { question: 'Why does the Extended Essay feel impossible?', answer: 'Because most students treat it as something to endure and try to look perfect. Once you reverse-engineer what the criteria actually reward — including honest evaluation of your limitations — it becomes far more manageable.' },
-      { question: 'Do you have to be a great writer to score well on the EE?', answer: 'No. You have to hit the assessment criteria. Many high scorers were predicted low grades; understanding what IB rewards matters more than natural writing talent.' },
+      { question: 'Is the Extended Essay too hard for high school students?', answer: 'It is challenging, but the difficulty is overstated by the "just survive it" mindset. The students who do well are not smarter, they understand the rubric and write to it. IB rewards learning from mistakes, not Nobel-level research.' },
+      { question: 'Why does the Extended Essay feel impossible?', answer: 'Because most students treat it as something to endure and try to look perfect. Once you work out what the criteria actually reward, including honest evaluation of your limitations, it becomes far more manageable.' },
+      { question: 'Do you have to be a great writer to score well on the EE?', answer: 'No. You have to hit the assessment criteria. Plenty of high scorers were predicted low grades, so understanding what IB rewards matters more than natural writing talent.' },
     ],
     related: [
       { href: '/guides/ee-mindset', title: 'The IB Extended Essay Mindset Shift', description: 'The mental model that separates a C from an A.' },
@@ -237,42 +237,42 @@ export const BLOG_POSTS = [
   {
     slug: 'ee-predicted-grade-and-bonus-points',
     title: 'Will a Bad EE Draft Ruin My Predicted Grade? How EE and TOK Points Actually Work',
-    description: 'Worried a rough EE draft tanks your predicted grade for university? How predicted vs final grades work, the EE/TOK bonus matrix, and why only an E fails the diploma.',
+    description: 'Worried a rough EE draft tanks your predicted grade for university? How predicted and final grades work, the EE/TOK bonus matrix, and why only an E fails.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'You messed up your EE draft, predicted grades go to universities in October, and final submission is weeks after that. So will your predicted grade carry a C or D for the EE — and is your offer in danger? Here\'s how it actually works, from someone who went in predicted a C.' },
+      { type: 'paragraph', text: 'You messed up your EE draft, predicted grades go to universities in October, and final submission is a few weeks after that. So will your predicted grade carry a C or D for the EE, and is your offer in danger? Here is how it works, from someone who went in predicted a C.' },
 
       { type: 'heading', text: 'Predicted and final grades come from two different people' },
-      { type: 'paragraph', text: 'Your predicted grade is set by your supervisor, based on what they\'ve seen: your draft, your RPPF reflections, and your meetings. If your draft was rough, your predicted grade will probably reflect that. But your actual final EE grade is given by an external IB examiner who has never seen your draft and doesn\'t know what your supervisor predicted. They grade fresh, on your final submission and RPPF alone. That\'s exactly how I went from a predicted C to a final A.' },
+      { type: 'paragraph', text: 'Your predicted grade is set by your supervisor based on what they have seen: your draft, your RPPF reflections, and your meetings. If your draft was rough, the prediction will probably reflect that. Your actual final EE grade is given by an external IB examiner who has never seen your draft and has no idea what your supervisor predicted. They grade fresh, off your final submission and RPPF only. That is how I went from a predicted C to a final A.' },
 
-      { type: 'heading', text: 'The EE + TOK bonus matrix' },
-      { type: 'paragraph', text: 'EE and TOK combine to award up to 3 extra points toward your total. A C in EE with an A in TOK still earns 2 bonus points. A D in EE with an A in TOK still earns 2. So strong TOK genuinely lifts your overall score even if the EE comes out weaker than you\'d hoped.' },
+      { type: 'heading', text: 'The EE and TOK bonus matrix' },
+      { type: 'paragraph', text: 'EE and TOK combine for up to 3 extra points on your total. A C in EE with an A in TOK still gives you 2 bonus points. A D in EE with an A in TOK also gives you 2. So strong TOK lifts your overall score even when the EE comes out weaker than you hoped.' },
 
       { type: 'heading', text: 'Only an E actually fails' },
-      { type: 'warning-box', text: 'Only an E in the EE or TOK fails the diploma. A C or D is still a pass. So unless you\'re genuinely at risk of an E, your diploma isn\'t in danger — the bonus points are what\'s in play.' },
+      { type: 'warning-box', text: 'Only an E in the EE or TOK fails the diploma. A C or D still passes. So unless you are genuinely at risk of an E, your diploma is not in danger. The bonus points are what is in play.' },
 
       { type: 'heading', text: 'What to do in the final weeks' },
       { type: 'numbered-steps', items: [
-        'Use your one full draft review — IB allows it, so take the feedback seriously',
+        'Use your one full draft review, IB allows it, so take the feedback seriously',
         'Re-read against the actual criteria, especially Criterion B and Criterion C, where most marks are lost',
-        'Take your RPPF seriously — it\'s 6 of 34 marks for 500 words, wildly high-leverage',
+        'Take your RPPF seriously, it is 6 of 34 marks for 500 words',
       ]},
 
       { type: 'key-takeaway', items: [
-        'Predicted grade = your supervisor; final grade = a fresh external examiner',
-        'A strong final can score far above your predicted grade',
-        'EE + TOK give up to 3 bonus points via the matrix',
-        'Only an E in EE or TOK fails the diploma — C and D pass',
-        'Your RPPF is 6 marks for 500 words: don\'t leave it to the last minute',
+        'Predicted grade comes from your supervisor, final grade from a fresh external examiner',
+        'A strong final can score well above your predicted grade',
+        'EE and TOK give up to 3 bonus points through the matrix',
+        'Only an E in EE or TOK fails the diploma, a C or D still passes',
+        'Your RPPF is 6 marks for 500 words, so don\'t leave it to the last minute',
       ]},
 
-      { type: 'cta-box', label: 'Free guide', text: 'Those last marks usually come from the RPPF. Here\'s how to score all six.', href: '/guides/rppf-guide', buttonText: 'Read the RPPF guide' },
+      { type: 'cta-box', label: 'Free guide', text: 'Those last marks usually come from the RPPF. Here is how to score all six.', href: '/guides/rppf-guide', buttonText: 'Read the RPPF guide' },
     ],
     faqItems: [
-      { question: 'Does my EE draft affect my predicted grade?', answer: 'Yes. Your supervisor sets your predicted grade based on your draft, RPPF, and meetings. A rough draft usually lowers the prediction — but the prediction is not your final grade.' },
-      { question: 'Can my final EE grade be higher than my predicted grade?', answer: 'Absolutely. An external examiner grades your final submission fresh, with no knowledge of your draft or prediction. A strong final can score well above a low predicted grade.' },
-      { question: 'Does a C or D in the Extended Essay fail the IB diploma?', answer: 'No. Only an E in the EE or TOK fails the diploma. A C or D still passes; the EE/TOK bonus matrix then adds up to 3 points to your total.' },
+      { question: 'Does my EE draft affect my predicted grade?', answer: 'Yes. Your supervisor sets your predicted grade based on your draft, RPPF, and meetings. A rough draft usually lowers the prediction, but the prediction is not your final grade.' },
+      { question: 'Can my final EE grade be higher than my predicted grade?', answer: 'Yes. An external examiner grades your final submission fresh, with no knowledge of your draft or prediction. A strong final can score well above a low predicted grade.' },
+      { question: 'Does a C or D in the Extended Essay fail the IB diploma?', answer: 'No. Only an E in the EE or TOK fails the diploma. A C or D still passes, and the EE/TOK bonus matrix then adds up to 3 points to your total.' },
     ],
     related: [
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'Score all 6 Criterion E marks in 500 words.' },
@@ -283,43 +283,43 @@ export const BLOG_POSTS = [
   {
     slug: 'how-long-should-ee-outline-be',
     title: 'How Long Should Your Extended Essay Outline Be?',
-    description: 'Your supervisor wants 1,500 words but you\'re stuck at 750? There\'s no IB-mandated outline length — here\'s what an EE outline actually needs to cover.',
+    description: 'Your supervisor wants 1,500 words but you\'re stuck at 750? There\'s no IB-mandated outline length. Here\'s what an EE outline actually needs to cover.',
     date: '2026-06-18',
     readMins: 4,
     content: [
-      { type: 'paragraph', text: 'Your supervisor said your EE outline should be 1,500 words, you\'re sitting at 750, and you can\'t see how to get there without padding. Good news: the word count is not the thing that matters.' },
+      { type: 'paragraph', text: 'Your supervisor said your EE outline should be 1,500 words, you are sitting at 750, and you cannot see how to get there without padding. Good news: the word count is not the thing that matters.' },
 
       { type: 'heading', text: 'There\'s no official outline length' },
-      { type: 'paragraph', text: 'The IB doesn\'t mandate an outline length. The 1,500 your supervisor mentioned is their preference for how they like outlines structured — not a rule. Outlines can run anywhere from a page to several, depending on the supervisor.' },
+      { type: 'paragraph', text: 'The IB does not mandate an outline length. The 1,500 your supervisor mentioned is their own preference for how they like outlines set out, not a rule. Outlines run anywhere from a page to several, depending on the supervisor.' },
 
       { type: 'heading', text: 'What an outline actually needs to cover' },
       { type: 'numbered-steps', items: [
         'Your research question',
-        'Your argument structure — what each section will do',
+        'Your argument structure, meaning what each section will do',
         'Your main sources',
         'Your methodology, if relevant',
       ]},
-      { type: 'paragraph', text: 'If you can articulate all of that clearly in 750 words, you don\'t need 1,500.' },
+      { type: 'paragraph', text: 'If you can lay all of that out clearly in 750 words, you do not need 1,500.' },
 
       { type: 'heading', text: 'If you can\'t hit the target without padding' },
-      { type: 'tip-box', text: 'That\'s usually a sign you need to develop the substance further — not just write more words. Have you mapped out what each body section actually argues? Have you identified your main sources and what each contributes? If yes and you\'re still under, you\'re fine. If no, the gap isn\'t a word-count problem — your essay just isn\'t planned out yet.' },
+      { type: 'tip-box', text: 'That usually means you need to develop the substance, not write more words. Have you mapped out what each body section actually argues? Have you worked out your main sources and what each one gives you? If yes and you are still under, you are fine. If no, the gap is not a word-count problem. Your essay just is not planned yet.' },
 
-      { type: 'paragraph', text: 'Either way, ask your supervisor what they specifically want to see in the outline. "1,500 words" is a target, not a structure. Once you know the content they need, the word count becomes irrelevant.' },
+      { type: 'paragraph', text: 'Either way, ask your supervisor what they actually want to see in the outline. "1,500 words" is a target, not a structure. Once you know the content they need, the word count stops mattering.' },
 
       { type: 'key-takeaway', items: [
         'There is no IB-mandated EE outline length',
         'A good outline covers your RQ, section-by-section argument, sources, and methodology',
-        'If 750 words covers all that, it\'s enough',
-        'Struggling to reach a target usually means the plan needs developing, not padding',
-        'Ask your supervisor what content they want — not just a number',
+        'If 750 words covers all that, it is enough',
+        'Struggling to reach a target usually means the plan needs work, not padding',
+        'Ask your supervisor what content they want, not just a number',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Not sure what each section should argue? Our structure guide maps the whole essay to the criteria.', href: '/guides/extended-essay-structure', buttonText: 'Read the structure guide' },
     ],
     faqItems: [
-      { question: 'Is there an official Extended Essay outline length?', answer: 'No. The IB doesn\'t mandate an outline length. Any number your supervisor gives is their own preference for how they like outlines structured.' },
-      { question: 'My EE outline is shorter than my supervisor asked for — is that a problem?', answer: 'Not if it covers your RQ, your section-by-section argument, your main sources, and your methodology. If it covers all that clearly, length is irrelevant. If it can\'t, the issue is planning, not word count.' },
-      { question: 'What should an Extended Essay outline include?', answer: 'Your research question, the structure of your argument (what each section does), your main sources, and your methodology if relevant — enough that someone could see how the whole essay will hang together.' },
+      { question: 'Is there an official Extended Essay outline length?', answer: 'No. The IB does not mandate an outline length. Any number your supervisor gives is their own preference for how they like outlines set out.' },
+      { question: 'My EE outline is shorter than my supervisor asked for, is that a problem?', answer: 'Not if it covers your RQ, your section-by-section argument, your main sources, and your methodology. If it covers all that clearly, length does not matter. If it cannot, the issue is planning, not word count.' },
+      { question: 'What should an Extended Essay outline include?', answer: 'Your research question, the structure of your argument (what each section does), your main sources, and your methodology if relevant. Enough that someone could see how the whole essay will hang together.' },
     ],
     related: [
       { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'A section-by-section blueprint mapped to the criteria.' },
@@ -329,44 +329,44 @@ export const BLOG_POSTS = [
   {
     slug: 'english-literature-ee-text-choice',
     title: 'How to Choose the Right Text for an English Literature Extended Essay',
-    description: 'Picking between dense or "impressive" texts for your English Lit EE? The four things that actually matter — and why originality comes from your RQ, not an obscure text.',
+    description: 'Picking between dense or "impressive" texts for your English Lit EE? The four things that actually matter, and why originality comes from your RQ, not the text.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'Choosing your text is the first big decision in an English Literature EE, and most students get the instinct backwards. They reach for the densest, most ambitious, most obscure text they can find, hoping it makes them look smart. That\'s rarely what wins.' },
+      { type: 'paragraph', text: 'Choosing your text is the first big decision in an English Literature EE, and most students get the instinct backwards. They reach for the densest, most ambitious, most obscure text they can find, hoping it makes them look smart. That is rarely what wins.' },
 
-      { type: 'heading', text: 'The right text isn\'t the most ambitious' },
-      { type: 'paragraph', text: 'It\'s the one that\'s original, personally interesting to you, and connects to a strong, emotive global issue. Examiners reward students who clearly have something to say — not students who picked a difficult text to look impressive.' },
+      { type: 'heading', text: 'The right text isn\'t the most ambitious one' },
+      { type: 'paragraph', text: 'It is the one that is original to you, that you actually find interesting, and that connects to a strong, emotive global issue. Examiners reward students who clearly have something to say, not students who picked a difficult text to look impressive.' },
 
       { type: 'heading', text: 'Four things to actually weigh' },
       { type: 'numbered-steps', items: [
-        'Density of literary techniques — how much is the text actually doing on a language and structural level?',
-        'Existing critical scholarship — you need to cite for Criterion C, so a text no one has analysed is much harder',
-        'A narrow enough RQ that you can deeply analyse it in 4,000 words',
-        'Your supervisor\'s enthusiasm — they write the report and read your essay through their own lens, so this matters more than students think',
+        'Density of literary techniques: how much is the text really doing at the level of language and structure?',
+        'Existing critical scholarship: you need to cite for Criterion C, so a text nobody has analysed is much harder',
+        'A narrow enough RQ that you can analyse it deeply in 4,000 words',
+        'Your supervisor\'s enthusiasm: they write the report and read your essay through their own lens, so this matters more than students think',
       ]},
 
-      { type: 'heading', text: '"Overdone" isn\'t the problem you think it is' },
-      { type: 'paragraph', text: 'A popular text can feel overdone — but it\'s overdone in high school essays, not in EEs. In the Extended Essay, originality comes from your research question and your angle, not from the obscurity of the text. A well-known novel with a strong personal arc and a current global-issue framing (consumerism, mental health, identity) often beats a niche text you picked just to be different.' },
+      { type: 'heading', text: 'Why "overdone" isn\'t the problem you think' },
+      { type: 'paragraph', text: 'A popular text can feel overdone, but it is overdone in high school essays, not in EEs. In the Extended Essay, originality comes from your research question and your angle, not from how obscure the text is. A well-known novel with a strong personal arc and a current global-issue framing, like consumerism, mental health or identity, often beats a niche text you picked just to be different.' },
 
-      { type: 'tip-box', text: 'Graphic novels are a valid choice, but they add visual analysis as a whole extra layer to manage inside 4,000 words. Possible, but harder — go in with your eyes open.' },
+      { type: 'tip-box', text: 'Graphic novels are a valid choice, but they add visual analysis as a whole extra layer to manage inside 4,000 words. It is possible, just harder, so go in with your eyes open.' },
 
-      { type: 'paragraph', text: 'Whatever you choose, write the RQ first. The text alone isn\'t the question — the RQ-and-text combination is.' },
+      { type: 'paragraph', text: 'Whatever you choose, write the RQ first. The text on its own is not the question. The RQ and text together are.' },
 
       { type: 'key-takeaway', items: [
-        'Pick the text that\'s original to you and tied to a strong global issue, not the densest one',
+        'Pick the text that is original to you and tied to a strong global issue, not the densest one',
         'Weigh technique density, available scholarship, RQ scope, and supervisor enthusiasm',
-        'Originality lives in your RQ and angle — not in an obscure text',
-        'Graphic novels add a visual-analysis layer that\'s harder to manage in 4,000 words',
-        'Write the RQ first; the text alone is not the question',
+        'Originality lives in your RQ and angle, not in an obscure text',
+        'Graphic novels add a visual-analysis layer that is harder to manage in 4,000 words',
+        'Write the RQ first, the text on its own is not the question',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Your RQ does the heavy lifting. See strong research question patterns across subjects.', href: '/guides/research-question-examples', buttonText: 'See RQ examples' },
     ],
     faqItems: [
       { question: 'Should I pick an obscure text for my English Literature EE?', answer: 'Not for the sake of it. Obscure texts often lack the critical scholarship you need to cite for Criterion C. Originality comes from your research question and angle, so a well-known text with a fresh RQ usually scores better.' },
-      { question: 'Does the text matter more than the research question?', answer: 'No. The RQ-and-text combination is what counts, and the RQ is where originality lives. Write your research question first — the text alone is not the question.' },
-      { question: 'Can I do my English EE on a graphic novel?', answer: 'Yes, but it adds visual analysis as an extra layer to manage within 4,000 words. It\'s doable if the text is rich and your RQ is narrow, but expect more to juggle than with a novel.' },
+      { question: 'Does the text matter more than the research question?', answer: 'No. The RQ and text together are what count, and the RQ is where originality lives. Write your research question first, because the text on its own is not the question.' },
+      { question: 'Can I do my English EE on a graphic novel?', answer: 'Yes, but it adds visual analysis as an extra layer to manage within 4,000 words. It works if the text is rich and your RQ is narrow, but expect more to juggle than with a novel.' },
     ],
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to build your text around.' },
@@ -377,37 +377,37 @@ export const BLOG_POSTS = [
   {
     slug: 'can-you-change-your-ee-research-question',
     title: 'Can You Change Your EE Research Question? (And How to Tell Your Supervisor)',
-    description: 'Behind on your EE and want to change your RQ — but your supervisor is intimidating? Why pivoting in DP1 is normal, and exactly how to frame the conversation.',
+    description: 'Behind on your EE and want to change your RQ, but your supervisor is intimidating? Why pivoting in DP1 is normal, and exactly how to frame the conversation.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'You\'re in DP1, behind on your Extended Essay, you want to change your research question — and your supervisor terrifies you. First, breathe: yes, you can change it. Plenty of students do, and in DP1 it is not too late.' },
+      { type: 'paragraph', text: 'You are in DP1, behind on your Extended Essay, you want to change your research question, and your supervisor terrifies you. First, breathe. Yes, you can change it. Plenty of students do, and in DP1 it is not too late.' },
 
-      { type: 'heading', text: 'Pivoting is normal — and often smart' },
-      { type: 'paragraph', text: 'If your instinct says your current direction is harder than it needs to be, trust it. A classic example is a biology experiment on bacteria: school labs are genuinely bad for bacterial work — contamination is constant and reliable results are a nightmare. Pivoting to something with a faster, more reliable cycle isn\'t giving up; it\'s good judgement.' },
+      { type: 'heading', text: 'Pivoting is normal, and often smart' },
+      { type: 'paragraph', text: 'If your gut says your current direction is harder than it needs to be, trust it. A classic example is a biology experiment on bacteria. School labs are genuinely bad for bacterial work. Contamination is constant and reliable results are a nightmare. Pivoting to something with a faster, more reliable cycle is not giving up, it is good judgement.' },
 
       { type: 'heading', text: 'How to handle a scary supervisor' },
-      { type: 'paragraph', text: 'Frame the change as a roadblock in your research, not a personal failure. Supervisors get far more annoyed by students who tell them nothing than by students who say "here\'s what isn\'t working, here\'s what I want to do instead, and here\'s why." Walk in with the change already half-thought-through. Tell them you already have background knowledge in the new topic so there\'s no backlog. Reassure them you\'ll finish.' },
+      { type: 'paragraph', text: 'Frame the change as a roadblock in your research, not a personal failure. Supervisors get far more annoyed by students who tell them nothing than by students who say "here is what is not working, here is what I want to do instead, and here is why." Walk in with the change already half-thought-through. Tell them you already have background knowledge in the new topic so there is no backlog, and reassure them you will finish.' },
 
-      { type: 'tip-box', text: 'Treat the conversation like a status update, not a confession. The move with intimidating supervisors is to be rational and systematic, and less emotional.' },
+      { type: 'tip-box', text: 'Treat the conversation like a status update, not a confession. With intimidating supervisors, the move is to be rational and systematic, and less emotional.' },
 
       { type: 'heading', text: 'If you\'re pivoting an experiment, pick a fast cycle' },
-      { type: 'paragraph', text: 'For science EEs that need to finish quickly, lean toward options that give reliable data fast and are well-documented (so the methodology is easy to defend): plant biology (enzyme activity, transpiration rates, germination conditions), human physiology (reaction time, heart-rate variability, breathing patterns), or observational studies. Draft the new RQ now and email your supervisor the proposed pivot — don\'t spend days agonising.' },
+      { type: 'paragraph', text: 'For science EEs that need to finish quickly, lean toward options that give reliable data fast and are well documented, so the methodology is easy to defend. Plant biology works well (enzyme activity, transpiration rates, germination conditions), as does human physiology (reaction time, heart-rate variability, breathing patterns), or observational studies. Draft the new RQ now and email your supervisor the proposed pivot. Do not spend days agonising.' },
 
       { type: 'key-takeaway', items: [
         'In DP1, changing your RQ is normal and usually still on time',
-        'If your current direction is needlessly hard (e.g. bacteria in a school lab), pivoting is smart',
-        'Frame the change as a research roadblock, not a failure — and arrive with a plan',
-        'Be rational and systematic with intimidating supervisors; treat it as a status update',
+        'If your current direction is needlessly hard, like bacteria in a school lab, pivoting is smart',
+        'Frame the change as a research roadblock, not a failure, and arrive with a plan',
+        'Be rational and systematic with intimidating supervisors, treat it as a status update',
         'For science pivots, choose a fast, well-documented experimental cycle',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'Need a stronger RQ for your new direction? See worked examples across subjects.', href: '/guides/research-question-examples', buttonText: 'See RQ examples' },
     ],
     faqItems: [
-      { question: 'Is it too late to change my EE research question?', answer: 'If you\'re in DP1, almost certainly not — plenty of students change their RQ. Deadlines vary by school, so confirm with your coordinator, but pivoting early is common and often the right call.' },
-      { question: 'How do I tell my supervisor I want to change my EE topic?', answer: 'Frame it as a roadblock with a solution, not a confession. Walk in with the new direction half-planned, explain why the old one isn\'t working, show you already have background knowledge, and reassure them you\'ll finish.' },
-      { question: 'What\'s a good EE experiment that works in a school lab?', answer: 'Plant biology (enzyme activity, transpiration, germination), human physiology (reaction time, heart rate, breathing), or observational studies. They produce reliable data faster than bacterial work and are well-documented, so the methodology is easy to defend.' },
+      { question: 'Is it too late to change my EE research question?', answer: 'If you are in DP1, almost certainly not. Plenty of students change their RQ. Deadlines vary by school, so confirm with your coordinator, but pivoting early is common and often the right call.' },
+      { question: 'How do I tell my supervisor I want to change my EE topic?', answer: 'Frame it as a roadblock with a solution, not a confession. Walk in with the new direction half-planned, explain why the old one is not working, show you already have background knowledge, and reassure them you will finish.' },
+      { question: 'What\'s a good EE experiment that works in a school lab?', answer: 'Plant biology (enzyme activity, transpiration, germination), human physiology (reaction time, heart rate, breathing), or observational studies. They produce reliable data faster than bacterial work and are well documented, so the methodology is easy to defend.' },
     ],
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns for your new direction.' },
@@ -418,37 +418,37 @@ export const BLOG_POSTS = [
   {
     slug: 'ee-supervisor-not-expert-in-subject',
     title: 'What to Do If Your EE Supervisor Isn\'t an Expert in Your Subject',
-    description: 'Stuck with a supervisor who doesn\'t know your subject? How to still get a strong draft: where to find the subject knowledge, and what your supervisor can genuinely help with.',
+    description: 'Stuck with a supervisor who doesn\'t know your subject? How to still get a strong draft: where to find the subject knowledge, and what your supervisor can help with.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'It happens more than you\'d think: the Economics teacher is full, so you get a Geography teacher who doesn\'t know Economics. With a 4,000-word draft due, it feels like you\'re on your own. You\'re not — you just need to know where each piece of help comes from.' },
+      { type: 'paragraph', text: 'It happens more than you would think. The Economics teacher is full, so you get a Geography teacher who does not know Economics. With a 4,000-word draft due, it feels like you are on your own. You are not. You just need to know where each piece of help comes from.' },
 
       { type: 'heading', text: 'For your draft, focus on the wordy parts' },
-      { type: 'paragraph', text: 'Put your energy into the sections that carry the most words and marks: introduction, outline, analysis, limitations, and evaluation. A draft doesn\'t need to be perfect — but it does matter, because your supervisor uses it for the RPPF and it shapes your predicted grade.' },
+      { type: 'paragraph', text: 'Put your energy into the sections that carry the most words and marks: introduction, outline, analysis, limitations, and evaluation. A draft does not need to be perfect, but it does still matter, because your supervisor uses it for the RPPF and it shapes your predicted grade.' },
 
       { type: 'heading', text: 'Get the subject knowledge elsewhere' },
-      { type: 'paragraph', text: 'Your course textbook and its online companion are your best friend here — the Cambridge IB Economics textbook and the online guide that comes with your login, for example, answer most subject-specific questions. Pair that with the subject-specific section of the IB EE guide and you\'ve replaced most of what a specialist supervisor would tell you.' },
+      { type: 'paragraph', text: 'Your course textbook and its online companion are your best friend here. For Economics, the Cambridge IB Economics textbook and the online guide that comes with your login answer most subject-specific questions. Pair that with the subject-specific section of the IB EE guide and you have replaced most of what a specialist supervisor would have told you.' },
 
       { type: 'heading', text: 'Use your supervisor for what they can do' },
-      { type: 'paragraph', text: 'A non-specialist supervisor will naturally focus on formatting, structure, and presentation — and that\'s genuinely useful, because those are easy marks. If your formatting and citations are clean, you should be in at least B territory for the draft. The subject content is on you; the textbook and guide do that heavy lifting.' },
+      { type: 'paragraph', text: 'A non-specialist supervisor will naturally focus on formatting, structure, and presentation, and that is genuinely useful, because those are easy marks. If your formatting and citations are clean, you should be in at least B territory for the draft. The subject content is on you, and the textbook and guide do that heavy lifting.' },
 
-      { type: 'tip-box', text: 'Citations are pure easy marks and a place non-specialist supervisors will look. A citation generator handles them cleanly so you can focus on the analysis.' },
+      { type: 'tip-box', text: 'Citations are easy marks and a place non-specialist supervisors will look. A citation generator handles them cleanly so you can spend your time on the analysis.' },
 
       { type: 'key-takeaway', items: [
         'Spend draft time on the wordy sections: intro, outline, analysis, limitations, evaluation',
-        'Your textbook + its online guide + the subject section of the EE guide replace most specialist help',
-        'Let your supervisor help with formatting and structure — those are easy marks',
+        'Your textbook, its online guide, and the subject section of the EE guide replace most specialist help',
+        'Let your supervisor help with formatting and structure, those are easy marks',
         'Clean formatting and citations alone should put your draft in B territory',
-        'The subject content is on you, and that\'s very doable with the right sources',
+        'The subject content is on you, and that is very doable with the right sources',
       ]},
 
-      { type: 'cta-box', label: 'Free tool', text: 'Handle your citations cleanly so you can focus on the analysis — our EE Dump builds your bibliography for you.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
+      { type: 'cta-box', label: 'Free tool', text: 'Handle your citations cleanly so you can focus on the analysis. Our EE Dump builds your bibliography for you.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
     ],
     faqItems: [
       { question: 'What if my EE supervisor doesn\'t know my subject?', answer: 'Get the subject knowledge from your course textbook, its online companion, and the subject-specific section of the IB EE guide. Use your supervisor for formatting and structure feedback, which are still easy marks.' },
-      { question: 'Can I still get a good EE grade with a weak supervisor?', answer: 'Yes. The final grade comes from an external examiner, not your supervisor. If your formatting and citations are clean and your analysis hits the criteria, a non-specialist supervisor won\'t hold your grade back.' },
-      { question: 'Where do I get subject-specific EE help?', answer: 'Your subject textbook and its online resources, the subject section of the IB EE guide, and high-scoring exemplars with examiner comments are the most reliable sources when your supervisor isn\'t a specialist.' },
+      { question: 'Can I still get a good EE grade with a weak supervisor?', answer: 'Yes. The final grade comes from an external examiner, not your supervisor. If your formatting and citations are clean and your analysis hits the criteria, a non-specialist supervisor will not hold your grade back.' },
+      { question: 'Where do I get subject-specific EE help?', answer: 'Your subject textbook and its online resources, the subject section of the IB EE guide, and high-scoring exemplars with examiner comments are the most reliable sources when your supervisor is not a specialist.' },
     ],
     related: [
       { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'Lock in the easy presentation marks.' },
@@ -463,32 +463,32 @@ export const BLOG_POSTS = [
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'Ask which EE subjects students fear most and the same three come up: the sciences, Mathematics, and Economics. They share one thing — they\'re technical. But "technical" and "impossible" aren\'t the same, and the difference is where marks are won or lost.' },
+      { type: 'paragraph', text: 'Ask which EE subjects students fear most and the same three come up: the sciences, Mathematics, and Economics. They have one thing in common. They are technical. But technical and impossible are not the same thing, and the gap between them is where marks are won or lost.' },
 
       { type: 'heading', text: 'Why technical subjects feel hard' },
-      { type: 'paragraph', text: 'Because the analysis is genuinely tricky, one of two things tends to happen. Students either get lost in the technical work and make mistakes, or they stop the moment they\'ve presented the facts, calculations, or theory. Both are dangerous.' },
+      { type: 'paragraph', text: 'Because the analysis is genuinely tricky, one of two things tends to happen. Students either get lost in the technical work and make mistakes, or they stop the moment they have presented the facts, calculations, or theory. Both cost you.' },
 
       { type: 'heading', text: 'The technical work isn\'t the end goal' },
-      { type: 'paragraph', text: 'The calculations, the diagrams, the theory — they\'re all just tools. Once you\'ve done the analysis, you still have to build an argument from it and connect it back to your research question. Because the material is heavy-duty, it\'s easy to lose track of the point you\'re making, and losing the point is exactly when you start losing marks. It\'s the same thing that happens in Paper 1, 2 and 3.' },
+      { type: 'paragraph', text: 'The calculations, the diagrams, the theory are all just tools. Once you have done the analysis, you still have to build an argument from it and connect it back to your research question. Because the material is heavy, it is easy to lose track of the point you are making, and losing the point is when you start losing marks. It is the same thing that happens in Paper 1, 2 and 3.' },
 
-      { type: 'heading', text: '"Hard" usually means "unclear on the criteria"' },
-      { type: 'paragraph', text: 'A subject only becomes hard when students don\'t fully understand what the examiner is looking for. Get the technical aspects right, then make sure every piece of analysis ties back to your argument and your RQ. Know the criteria, hit them consistently, and a "hard" subject becomes very manageable.' },
+      { type: 'heading', text: 'Hard usually means "unclear on the criteria"' },
+      { type: 'paragraph', text: 'A subject only becomes hard when students do not understand what the examiner is looking for. Get the technical aspects right, then make sure every piece of analysis ties back to your argument and your RQ. Know the criteria, hit them consistently, and a "hard" subject becomes very manageable.' },
 
-      { type: 'tip-box', text: 'Read the subject-specific section of the IB EE guide for your subject — you don\'t need all 134 pages, just the part that tells you exactly what an A looks like in your discipline.' },
+      { type: 'tip-box', text: 'Read the subject-specific section of the IB EE guide for your subject. You do not need all 134 pages, just the part that tells you what an A looks like in your discipline.' },
 
       { type: 'key-takeaway', items: [
-        'Sciences, Maths and Economics feel hard because they\'re technical, not because they\'re impossible',
+        'Sciences, Maths and Economics feel hard because they are technical, not because they are impossible',
         'Two traps: getting lost in the analysis, or stopping once the calculations are done',
-        'Technical work is a tool — you must build an argument from it and tie it to your RQ',
+        'Technical work is a tool, you still have to build an argument and tie it to your RQ',
         'Subjects feel "hard" mainly when students don\'t know what the examiner rewards',
         'Read the subject section of the EE guide to see what an A actually looks like',
       ]},
 
-      { type: 'cta-box', label: 'Free workbooks', text: 'Our subject workbooks turn the EE criteria into a fill-in checklist — including the technical subjects.', href: '/dashboard/templates', buttonText: 'Get the workbooks' },
+      { type: 'cta-box', label: 'Free workbooks', text: 'Our subject workbooks turn the EE criteria into a fill-in checklist, including the technical subjects.', href: '/dashboard/templates', buttonText: 'Get the workbooks' },
     ],
     faqItems: [
-      { question: 'Is Economics the hardest EE subject?', answer: 'It has a reputation as one of the hardest because it\'s technical, but it\'s very doable. The key is not stopping at the calculations — you have to build an argument from your analysis and connect it back to your research question.' },
-      { question: 'Why are Maths and science EEs considered hard?', answer: 'The analysis is genuinely tricky, so students either get lost in it or stop once they\'ve presented the technical work. Both lose marks. The technical work is only a tool for building an argument.' },
+      { question: 'Is Economics the hardest EE subject?', answer: 'It has a reputation as one of the hardest because it is technical, but it is very doable. The key is not stopping at the calculations. You have to build an argument from your analysis and connect it back to your research question.' },
+      { question: 'Why are Maths and science EEs considered hard?', answer: 'The analysis is genuinely tricky, so students either get lost in it or stop once they have presented the technical work. Both lose marks. The technical work is only a tool for building an argument.' },
       { question: 'How do I get an A in a technical-subject EE?', answer: 'Get the technical work right, then make every part of it serve your argument and tie back to your RQ. Learn what the examiner rewards by reading the subject-specific section of the EE guide and hitting those points consistently.' },
     ],
     related: [
@@ -499,36 +499,36 @@ export const BLOG_POSTS = [
 
   {
     slug: 'too-late-to-change-ee-topic',
-    title: 'It\'s "Too Late" to Change My EE Topic — What Now?',
+    title: 'It\'s "Too Late" to Change My EE Topic. What Now?',
     description: 'Regretting your EE topic but your supervisor says it\'s too late to switch? Why an ordinary topic can still become a strong essay, and how to get your momentum back.',
     date: '2026-06-18',
     readMins: 4,
     content: [
-      { type: 'paragraph', text: 'You rushed your topic selection and first draft, now you can see the problems in your RQ and structure, you\'ve spotted a better topic — and your mentor says it\'s too late to switch. So you\'re stuck fixing a draft you\'re not excited about, haunted by the idea that you could have done better. Here\'s the honest reframe.' },
+      { type: 'paragraph', text: 'You rushed your topic selection and first draft, now you can see the problems in your RQ and structure, you have spotted a better topic, and your mentor says it is too late to switch. So you are stuck fixing a draft you are not excited about, haunted by the idea that you could have done better. Here is the honest reframe.' },
 
       { type: 'heading', text: 'First, check whether it really is too late' },
-      { type: 'paragraph', text: 'If you\'re still in DP1, it\'s at least worth a conversation — schools differ a lot on deadlines and flexibility. If your advisor is firm, then the productive move is to make your current topic work rather than keep relitigating the switch.' },
+      { type: 'paragraph', text: 'If you are still in DP1, it is at least worth a conversation, because schools differ a lot on deadlines and flexibility. If your advisor is firm, then the productive move is to make your current topic work rather than keep relitigating the switch.' },
 
       { type: 'heading', text: 'An ordinary topic is not a mediocre EE' },
-      { type: 'paragraph', text: 'It\'s easy to compare your real topic to an idealised version of the new one. But a topic that seems mediocre now doesn\'t lead to a mediocre essay. Some of the strongest EEs come from students who take an ordinary-looking topic and explore it really thoroughly. Often all it takes is a new angle, perspective, or line of analysis to make the topic feel alive again.' },
+      { type: 'paragraph', text: 'It is easy to compare your real topic to an idealised version of the new one. A topic that seems mediocre now does not lead to a mediocre essay. Some of the strongest EEs come from students who take an ordinary-looking topic and explore it really thoroughly. Often all it takes is a new angle or line of analysis to make the topic feel alive again.' },
 
       { type: 'heading', text: 'The EE is iterative by design' },
-      { type: 'paragraph', text: 'The IB\'s own EE guide says your initial RQ will look quite different by the end of the process — that\'s normal and expected. Most of the improvement happens during revision, not before the first draft. So don\'t beat yourself up over a rough draft one; that\'s the stage it\'s supposed to be rough at.' },
+      { type: 'paragraph', text: 'The IB\'s own EE guide says your initial RQ will look quite different by the end of the process, and that is normal and expected. Most of the improvement happens during revision, not before the first draft. So do not beat yourself up over a rough draft one. That is the stage it is meant to be rough at.' },
 
       { type: 'key-takeaway', items: [
-        'If you\'re in DP1, it\'s worth one honest conversation about switching',
+        'If you are in DP1, it is worth one honest conversation about switching',
         'If switching is off the table, commit to making your current topic work',
         'Ordinary topics explored thoroughly often beat "impressive" ones done shallowly',
-        'A fresh angle or line of analysis can revive a topic you\'ve gone cold on',
-        'The EE is built through revision — a rough first draft is normal',
+        'A fresh angle or line of analysis can revive a topic you have gone cold on',
+        'The EE is built through revision, so a rough first draft is normal',
       ]},
 
       { type: 'cta-box', label: 'Free workspace', text: 'A sharper RQ can revive a tired topic. Set up your free workspace and rework it.', href: '/dashboard/home', buttonText: 'Open your free workspace' },
     ],
     faqItems: [
-      { question: 'Is it too late to change my EE topic?', answer: 'If you\'re in DP1, probably not — it\'s worth asking, since schools vary on deadlines. If your advisor says it\'s firmly too late, the better use of energy is improving your current topic rather than switching.' },
+      { question: 'Is it too late to change my EE topic?', answer: 'If you are in DP1, probably not, and it is worth asking, since schools vary on deadlines. If your advisor says it is firmly too late, the better use of energy is improving your current topic rather than switching.' },
       { question: 'Can a boring EE topic still get a good grade?', answer: 'Yes. Some of the strongest essays come from ordinary topics explored thoroughly. A fresh angle or line of analysis matters far more than how impressive the topic sounds.' },
-      { question: 'Should I switch EE topics or fix my draft?', answer: 'Unless switching is genuinely viable for your deadlines, fixing your draft is usually the higher-leverage move. The EE improves most through revision, and a rough first draft is completely normal.' },
+      { question: 'Should I switch EE topics or fix my draft?', answer: 'Unless switching is genuinely viable for your deadlines, fixing your draft is usually the better move. The EE improves most through revision, and a rough first draft is completely normal.' },
     ],
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Find a sharper angle for your topic.' },
@@ -538,37 +538,37 @@ export const BLOG_POSTS = [
   {
     slug: 'is-history-ee-hard',
     title: 'Is a History EE Hard? How to Choose a Subject You\'re Passionate About',
-    description: 'Torn between the "easy" subject and the one you love for your EE? Why passion and depth beat the safe option — and how to handle having too much material.',
+    description: 'Torn between the "easy" subject and the one you love for your EE? Why passion and depth beat the safe option, and how to handle having too much material.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'Here\'s a dilemma a lot of pre-IB students face: the "easy" EE subject at your school is something like English B, but you\'re genuinely obsessed with a History topic — say WW1 medicine — and you\'ve already got archives and academic papers piling up. Is History too hard to risk it?' },
+      { type: 'paragraph', text: 'Here is a dilemma a lot of pre-IB students face. The "easy" EE subject at your school is something like English B, but you are genuinely obsessed with a History topic, say WW1 medicine, and you have already got archives and academic papers piling up. Is History too hard to risk it?' },
 
       { type: 'heading', text: 'EEs grade you on depth' },
-      { type: 'paragraph', text: 'English is often called the "easier" EE subject because it\'s easier for most people to go deep, whereas History, Maths and the sciences demand a level of depth and interest most students don\'t want to engage with. But if you already have the passion and the material, you\'re in exactly the category that goes deep — and depth is the main thing IB rewards, which most students miss.' },
+      { type: 'paragraph', text: 'English gets called the easier EE subject because it is easier for most people to go deep, whereas History, Maths and the sciences ask for a level of depth and interest most students do not want to put in. But if you already have the passion and the material, you are exactly the kind of student who will go deep, and depth is the main thing IB rewards. Most students miss that.' },
 
       { type: 'heading', text: 'Passion can\'t be replicated' },
-      { type: 'paragraph', text: 'A friend who did a Maths EE — one of the harder choices — mastered it purely because he was passionate enough to go deep. The general advice is to pick the easier subject if you\'re indifferent. But if you have genuine passion, follow it: you\'ll actually enjoy the process instead of grinding through it.' },
+      { type: 'paragraph', text: 'A friend who did a Maths EE, one of the harder choices, mastered it purely because he was passionate enough to go deep. The general advice is to pick the easier subject if you are indifferent. If you have real passion, follow it. You will actually enjoy the process instead of grinding through it.' },
 
       { type: 'heading', text: 'Too much material is a real problem' },
-      { type: 'paragraph', text: 'If you\'ve got hundreds of archive pages and a stack of papers, you have too much — and that\'s its own challenge. Use AI to help surface the two or three highest-leverage sources rather than drowning in volume. Ask yourself: which archive or paper actually changes the initial assumption behind your RQ? Those one or two are the ones worth analysing deeply.' },
+      { type: 'paragraph', text: 'If you have got hundreds of archive pages and a stack of papers, you have too much, and that is its own challenge. Use AI to help surface the two or three highest-leverage sources rather than drowning in volume. Ask yourself which archive or paper actually changes the initial assumption behind your RQ. Those one or two are the ones worth analysing deeply.' },
 
-      { type: 'tip-box', text: 'Narrow the topic. "WW1 medicine" is too broad — tighten it to where your sources concentrate, e.g. European WW1 medicine. Primary sources are a huge advantage most EE writers don\'t have, so lean into them.' },
+      { type: 'tip-box', text: 'Narrow the topic. "WW1 medicine" is too broad, so tighten it to where your sources concentrate, like European WW1 medicine. Primary sources are a big advantage most EE writers do not have, so lean into them.' },
 
       { type: 'key-takeaway', items: [
-        'History rewards depth — if you have passion and sources, you\'re already in the right category',
-        'Pick the easier subject only if you\'re indifferent; genuine passion is worth following',
-        'Too much material is a real problem — find the 2-3 sources that change your RQ\'s assumptions',
+        'History rewards depth, so if you have passion and sources, you are in the right category',
+        'Pick the easier subject only if you are indifferent, real passion is worth following',
+        'Too much material is a real problem, find the 2 to 3 sources that change your RQ\'s assumptions',
         'Narrow a broad topic to where your sources concentrate',
-        'Primary sources are a major advantage — use them',
+        'Primary sources are a major advantage, use them',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'See how to frame a History RQ that goes deep instead of wide.', href: '/guides/ee-history', buttonText: 'Read the History guide' },
     ],
     faqItems: [
-      { question: 'Is a History EE harder than an English EE?', answer: 'History demands more depth and sustained interest, which is why it\'s seen as harder. But if you have genuine passion and good sources, that depth becomes a strength rather than a barrier — and depth is what IB rewards most.' },
-      { question: 'Should I pick the easy EE subject or the one I\'m passionate about?', answer: 'If you\'re indifferent, pick the easier subject. If you have real passion and material for a "harder" one, follow it — passion drives the depth that scores well and makes the process enjoyable rather than a grind.' },
-      { question: 'I have too many sources for my EE — what do I do?', answer: 'Don\'t analyse everything. Identify the two or three sources that actually change the assumptions behind your research question, and go deep on those. Depth beats volume in the EE.' },
+      { question: 'Is a History EE harder than an English EE?', answer: 'History asks for more depth and sustained interest, which is why it is seen as harder. But if you have real passion and good sources, that depth becomes a strength rather than a barrier, and depth is what IB rewards most.' },
+      { question: 'Should I pick the easy EE subject or the one I\'m passionate about?', answer: 'If you are indifferent, pick the easier subject. If you have real passion and material for a harder one, follow it. Passion drives the depth that scores well and makes the process enjoyable rather than a grind.' },
+      { question: 'I have too many sources for my EE, what do I do?', answer: 'Don\'t analyse everything. Find the two or three sources that actually change the assumptions behind your research question, and go deep on those. Depth beats volume in the EE.' },
     ],
     related: [
       { href: '/guides/ee-history', title: 'IB History EE Guide', description: 'How to frame a History RQ and engage with sources.' },
@@ -579,35 +579,35 @@ export const BLOG_POSTS = [
   {
     slug: 'how-to-get-better-at-ib-research',
     title: 'How to Get Better at Research and Analysis for the IB',
-    description: 'If research, topic-finding and analysis don\'t come naturally, you can still master them. Why they\'re learnable skills — not talent — and the habits that build them.',
+    description: 'If research, topic-finding and analysis don\'t come naturally, you can still learn them. Why they\'re skills rather than talent, and the habits that build them.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'The IB demands research and analytical skills — across your IAs, EE, TOK and English — that no other school system really prepares you for. So if that stuff doesn\'t come naturally to you, how do people actually adjust? The encouraging answer: these are learned skills, not personality traits.' },
+      { type: 'paragraph', text: 'The IB asks for research and analytical skills across your IAs, EE, TOK and English that no other school system really prepares you for. So if that stuff does not come naturally to you, how do people adjust? The encouraging answer is that these are learned skills, not personality traits.' },
 
       { type: 'heading', text: 'Research and analysis aren\'t innate talents' },
-      { type: 'paragraph', text: 'They\'re skills with a process behind them. Plenty of strong researchers weren\'t research people before the IB — some of their lowest early grades were in English, and they were predicted a C in the EE, only for those to become their strongest areas. The more you write essays, research topics, get feedback and make mistakes, the more the process becomes second nature.' },
+      { type: 'paragraph', text: 'They are skills with a process behind them. Plenty of strong researchers were not research people before the IB. Some of their lowest early grades were in English, and they were predicted a C in the EE, before those became their strongest areas. The more you write essays, research topics, get feedback and make mistakes, the more the process becomes second nature.' },
 
       { type: 'heading', text: 'Treat research as something separate from school' },
-      { type: 'paragraph', text: 'If you develop genuine curiosity about things and build the habit of asking "why?" and "how do we know this?", research stops being an intimidating school task. It becomes a way of satisfying your own curiosity — which is exactly the mindset the EE rewards.' },
+      { type: 'paragraph', text: 'If you build genuine curiosity about things and get into the habit of asking "why?" and "how do we know this?", research stops being an intimidating school task. It becomes a way of satisfying your own curiosity, which is exactly the mindset the EE rewards.' },
 
       { type: 'heading', text: 'What analysis and evaluation actually are' },
-      { type: 'paragraph', text: 'Strip away the jargon: analysis is just making sense of information and finding patterns. Evaluation is weighing the strengths and weaknesses of those findings. Once you do both consistently, research stops feeling like randomly collecting sources and starts feeling like building an argument — which is the whole point.' },
+      { type: 'paragraph', text: 'Strip away the jargon. Analysis is making sense of information and finding patterns. Evaluation is weighing the strengths and weaknesses of those findings. Once you do both consistently, research stops feeling like randomly collecting sources and starts feeling like building an argument, which is the whole point.' },
 
       { type: 'key-takeaway', items: [
         'Research and analysis are learnable skills, not innate talent',
         'They improve through reps: writing, researching, feedback, and mistakes',
-        'Build genuine curiosity — ask "why?" and "how do we know this?"',
-        'Analysis = finding patterns; evaluation = weighing strengths and weaknesses',
+        'Build genuine curiosity, ask "why?" and "how do we know this?"',
+        'Analysis is finding patterns, evaluation is weighing strengths and weaknesses',
         'Done consistently, research becomes building an argument, not collecting sources',
       ]},
 
-      { type: 'cta-box', label: 'Free guide', text: 'The fastest skill gain is learning to analyse instead of describe. Here\'s how.', href: '/guides/ee-analysis-vs-description', buttonText: 'Analysis vs description' },
+      { type: 'cta-box', label: 'Free guide', text: 'The fastest skill gain is learning to analyse instead of describe. Here is how.', href: '/guides/ee-analysis-vs-description', buttonText: 'Analysis vs description' },
     ],
     faqItems: [
-      { question: 'Can you actually learn research and analysis skills for the IB?', answer: 'Yes. They\'re skills with a process behind them, not innate talent. They improve through repetition — writing, researching, getting feedback, and making mistakes — and most students underestimate how teachable they are.' },
+      { question: 'Can you actually learn research and analysis skills for the IB?', answer: 'Yes. They are skills with a process behind them, not innate talent. They improve through repetition, like writing, researching, getting feedback, and making mistakes, and most students underestimate how teachable they are.' },
       { question: 'What\'s the difference between analysis and evaluation?', answer: 'Analysis is making sense of information and finding patterns in it. Evaluation is weighing the strengths and weaknesses of those findings. Strong EEs do both consistently.' },
-      { question: 'How do I get better at writing analytically?', answer: 'Build curiosity (always ask "why?" and "how do we know this?"), then practise turning information into patterns and judgements rather than summaries. The more reps and feedback you get, the more automatic it becomes.' },
+      { question: 'How do I get better at writing analytically?', answer: 'Build curiosity by always asking "why?" and "how do we know this?", then practise turning information into patterns and judgements rather than summaries. The more reps and feedback you get, the more automatic it becomes.' },
     ],
     related: [
       { href: '/guides/ee-analysis-vs-description', title: 'Analysis vs Description', description: 'The single biggest skill jump for EE marks.' },
@@ -618,44 +618,44 @@ export const BLOG_POSTS = [
   {
     slug: 'dp1-dp2-summer-ee',
     title: 'What to Do Over the Summer Between DP1 and DP2',
-    description: 'Two months between DP1 and DP2 — what\'s actually worth doing? Why finishing your EE and IAs is the highest-ROI move, and why speed-running DP2 isn\'t.',
+    description: 'Two months between DP1 and DP2, so what\'s actually worth doing? Why finishing your EE and IAs is the highest-ROI move, and why speed-running DP2 isn\'t.',
     date: '2026-06-18',
     readMins: 4,
     content: [
-      { type: 'paragraph', text: 'You\'ve got a two-month break between DP1 and DP2, everyone says to finish your IAs and EE, and you\'re wondering what else is actually worth doing — study DP2 content in advance, or re-study DP1? Here\'s the highest-ROI way to spend it.' },
+      { type: 'paragraph', text: 'You have got a two-month break between DP1 and DP2, everyone says to finish your IAs and EE, and you are wondering what else is worth doing. Study DP2 content in advance, or re-study DP1? Here is the highest-return way to spend it.' },
 
       { type: 'heading', text: 'Finishing your EE and IAs is the best use of the break' },
-      { type: 'paragraph', text: 'This is almost certainly the single highest-return thing you can do. Future you, buried in DP2 deadlines, will be enormously grateful for every section you got done over summer.' },
+      { type: 'paragraph', text: 'This is almost certainly the single highest-return thing you can do. Future you, buried in DP2 deadlines, will be very grateful for every section you got done over summer.' },
 
       { type: 'heading', text: 'Don\'t try to speed-run DP2 content' },
-      { type: 'paragraph', text: 'Spending the whole break trying to learn next year\'s syllabus in advance usually isn\'t worth it. You\'re better off strengthening weak DP1 areas and building good systems for DP2 than racing ahead into content you\'ll be taught properly anyway.' },
+      { type: 'paragraph', text: 'Spending the whole break trying to learn next year\'s syllabus usually is not worth it. You are better off strengthening weak DP1 areas and building good systems for DP2 than racing ahead into content you will be taught properly anyway.' },
 
       { type: 'heading', text: 'A summer list that actually helps' },
       { type: 'numbered-steps', items: [
         'Finish as much of your EE and IAs as possible',
         'Organise your notes properly',
-        'Identify your weak subjects and topics',
-        'Build a revision system you\'ll actually stick to',
+        'Work out your weak subjects and topics',
+        'Build a revision system you will actually stick to',
         'Read examiner reports and markschemes for your subjects',
       ]},
-      { type: 'paragraph', text: 'Also start treating research as a skill. The EE is one of the best chances you\'ll get to learn how to research properly, and the sooner you\'re comfortable finding and evaluating sources, the easier the whole of DP2 becomes.' },
+      { type: 'paragraph', text: 'Also start treating research as a skill. The EE is one of the best chances you will get to learn how to research properly, and the sooner you are comfortable finding and evaluating sources, the easier the whole of DP2 becomes.' },
 
-      { type: 'tip-box', text: 'And genuinely enjoy your summer. Plenty of students burn themselves out before DP2 even starts — rest is part of the plan, not a betrayal of it.' },
+      { type: 'tip-box', text: 'And actually enjoy your summer. Plenty of students burn themselves out before DP2 even starts, so rest is part of the plan, not a betrayal of it.' },
 
       { type: 'key-takeaway', items: [
-        'Finishing EE and IAs is the highest-ROI summer task',
-        'Don\'t speed-run DP2 content — strengthen weak DP1 areas instead',
-        'Organise notes, spot weak topics, and build a revision system you\'ll keep',
-        'Read examiner reports and markschemes to learn what\'s rewarded',
-        'Rest properly — burnout before DP2 helps no one',
+        'Finishing EE and IAs is the highest-return summer task',
+        'Don\'t speed-run DP2 content, strengthen weak DP1 areas instead',
+        'Organise notes, spot weak topics, and build a revision system you will keep',
+        'Read examiner reports and markschemes to learn what is rewarded',
+        'Rest properly, burnout before DP2 helps no one',
       ]},
 
-      { type: 'cta-box', label: 'Free workspace', text: 'Get a head start on the EE over summer — 5 free modules, workbooks, and a real 32/34 example.', href: '/dashboard/home', buttonText: 'Open your free workspace' },
+      { type: 'cta-box', label: 'Free workspace', text: 'Get a head start on the EE over summer with 5 free modules, workbooks, and a real 32/34 example.', href: '/dashboard/home', buttonText: 'Open your free workspace' },
     ],
     faqItems: [
-      { question: 'What should I do over the DP1 to DP2 summer?', answer: 'Prioritise finishing your EE and IAs — it\'s the highest-return work you can do. Then organise notes, identify weak topics, build a revision system, and read examiner reports. And rest, so you don\'t burn out before DP2.' },
-      { question: 'Should I study DP2 content in advance over the summer?', answer: 'Usually not worth the whole break. You\'ll be taught it properly in DP2. Strengthening weak DP1 areas and building good study systems pays off more than racing ahead.' },
-      { question: 'Is it worth finishing the EE over the summer?', answer: 'Yes — it\'s arguably the best use of the time. Getting the EE substantially done before DP2 removes a major source of stress during your most demanding year.' },
+      { question: 'What should I do over the DP1 to DP2 summer?', answer: 'Prioritise finishing your EE and IAs, since it is the highest-return work you can do. Then organise notes, work out weak topics, build a revision system, and read examiner reports. And rest, so you do not burn out before DP2.' },
+      { question: 'Should I study DP2 content in advance over the summer?', answer: 'Usually not worth the whole break. You will be taught it properly in DP2. Strengthening weak DP1 areas and building good study systems pays off more than racing ahead.' },
+      { question: 'Is it worth finishing the EE over the summer?', answer: 'Yes, it is one of the best uses of the time. Getting the EE substantially done before DP2 removes a major source of stress during your most demanding year.' },
     ],
     related: [
       { href: '/guides/ee-planning-timeline', title: 'EE Timeline & Planning', description: 'Map the whole EE across the weeks you have.' },
@@ -666,40 +666,40 @@ export const BLOG_POSTS = [
   {
     slug: 'how-to-get-an-a-global-politics-ee',
     title: 'How to Get an A in a Global Politics Extended Essay',
-    description: 'Starting a Global Politics EE and worried your outline isn\'t "A material"? The topic, research depth, and RQ habits behind a top-band EE — from the top scorer in their grade.',
+    description: 'Starting a Global Politics EE and worried your outline isn\'t "A material"? The topic, research depth, and RQ habits behind a top-band EE, from the top scorer in their grade.',
     date: '2026-06-18',
     readMins: 5,
     content: [
-      { type: 'paragraph', text: 'You\'re starting a Global Politics EE on a topic you\'re passionate about, and you\'re already worried your outline isn\'t "A material." Here\'s some reassurance from someone who had no idea what their EE would become at the start and ended up the highest scorer in their grade: the outline is not the essay.' },
+      { type: 'paragraph', text: 'You are starting a Global Politics EE on a topic you are passionate about, and you are already worried your outline is not "A material." Here is some reassurance from someone who had no idea what their EE would become at the start and ended up the highest scorer in their grade. The outline is not the essay.' },
 
       { type: 'heading', text: 'Choose a topic you genuinely care about' },
-      { type: 'paragraph', text: 'A lot of students pick topics based on what they think will score well. But the best topic is usually the one you\'ll still be excited to read, research and write about months from now. Execution matters far more than picking something that sounds impressive.' },
+      { type: 'paragraph', text: 'A lot of students pick topics based on what they think will score well. The best topic is usually the one you will still be excited to read, research and write about months from now. Execution matters far more than picking something that sounds impressive.' },
 
-      { type: 'heading', text: 'Don\'t judge your outline — or force a conclusion — too early' },
-      { type: 'paragraph', text: 'Your outline is only part of the story, so don\'t panic if it doesn\'t look like A material yet. And definitely don\'t try to force a conclusion before you\'ve done the research. One of the biggest surprises for most students is how much their argument evolves as they learn more — that\'s a feature, not a flaw.' },
+      { type: 'heading', text: 'Don\'t judge your outline, or force a conclusion, too early' },
+      { type: 'paragraph', text: 'Your outline is only part of the story, so do not panic if it does not look like A material yet. And do not try to force a conclusion before you have done the research. One of the biggest surprises for most students is how much their argument changes as they learn more, and that is a good sign.' },
 
-      { type: 'heading', text: 'Be relentlessly thorough with research' },
-      { type: 'paragraph', text: 'Go well beyond the first few articles that show up online. Academic journals, professors\' work, dissertations, niche publications, and opposing perspectives are where the depth is. The deeper you go, the more likely you are to find something genuinely interesting rather than repeating what everyone else already says.' },
+      { type: 'heading', text: 'Be thorough with your research' },
+      { type: 'paragraph', text: 'Go well past the first few articles that show up online. Academic journals, professors\' work, dissertations, niche publications, and opposing perspectives are where the depth is. The deeper you go, the more likely you are to find something genuinely interesting instead of repeating what everyone else already says.' },
 
       { type: 'heading', text: 'A research question is a real question' },
-      { type: 'paragraph', text: 'So many students get caught up in making the RQ sound academic that they forget the entire point is to investigate something they don\'t yet know the answer to. Often you can\'t write the best version of your RQ until you\'re 20–30% into your research — because that\'s when the genuinely interesting questions reveal themselves.' },
+      { type: 'paragraph', text: 'So many students get caught up in making the RQ sound academic that they forget the whole point is to investigate something they do not yet know the answer to. Often you cannot write the best version of your RQ until you are 20 to 30% into your research, because that is when the genuinely interesting questions show up.' },
 
-      { type: 'tip-box', text: 'Ask your coordinator for deadlines early, plan your time, and use your supervisor feedback. The EE is built through revision — your first outline doesn\'t need to be amazing.' },
+      { type: 'tip-box', text: 'Ask your coordinator for deadlines early, plan your time, and use your supervisor feedback. The EE is built through revision, so your first outline does not need to be amazing.' },
 
       { type: 'key-takeaway', items: [
-        'Pick a topic you\'ll still care about in months — execution beats impressiveness',
+        'Pick a topic you will still care about in months, execution beats impressiveness',
         'Don\'t judge your early outline or force a conclusion before researching',
         'Research deep: journals, dissertations, niche sources, opposing views',
-        'A real RQ investigates something you don\'t yet know — it sharpens 20–30% into research',
+        'A real RQ investigates something you do not yet know, and it sharpens 20 to 30% into research',
         'The EE is built through revision, not a perfect day-one outline',
       ]},
 
       { type: 'cta-box', label: 'Free guide', text: 'See what separates an A-grade EE from a B, step by step.', href: '/guides/how-to-get-an-a-in-extended-essay', buttonText: 'How to get an A' },
     ],
     faqItems: [
-      { question: 'How do I get an A in a Global Politics EE?', answer: 'Choose a topic you genuinely care about, research far beyond the first few articles, and treat your RQ as a real question you\'re investigating. Let your argument evolve through the research, and refine through revision rather than aiming for a perfect first outline.' },
-      { question: 'What makes an A-grade Extended Essay?', answer: 'Genuine depth and a real investigation — not an impressive-sounding topic. Thorough research that uncovers something interesting, an RQ that\'s actually a question, and an argument refined through revision.' },
-      { question: 'When should I finalise my EE research question?', answer: 'Often not until you\'re 20–30% into your research. That\'s when the genuinely interesting questions surface. Forcing a polished RQ before researching usually leads to a weaker one.' },
+      { question: 'How do I get an A in a Global Politics EE?', answer: 'Choose a topic you genuinely care about, research far past the first few articles, and treat your RQ as a real question you are investigating. Let your argument change through the research, and refine through revision rather than aiming for a perfect first outline.' },
+      { question: 'What makes an A-grade Extended Essay?', answer: 'Real depth and a genuine investigation, not an impressive-sounding topic. Thorough research that uncovers something interesting, an RQ that is actually a question, and an argument refined through revision.' },
+      { question: 'When should I finalise my EE research question?', answer: 'Often not until you are 20 to 30% into your research. That is when the genuinely interesting questions surface. Forcing a polished RQ before researching usually leads to a weaker one.' },
     ],
     related: [
       { href: '/guides/how-to-get-an-a-in-extended-essay', title: 'How to Get an A in the Extended Essay', description: 'The habits that separate A-grade essays from B.' },
