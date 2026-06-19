@@ -8,21 +8,21 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'callout',
-        text: 'This resource lab was built by a real IB student who scored 32/34 on their Extended Essay. Everything here — the methods, the frameworks, the templates, the advice — comes from what actually worked, not from theory.',
+        text: 'This resource lab was built by a real IB student who scored 32/34 on their Extended Essay. Everything here, the methods, the frameworks, the templates, the advice, comes from what actually worked, not from theory.',
       },
       {
         type: 'gif',
         src: 'https://giphy.com/embed/uZmwmfbxh3xkiI1pFM',
-        alt: 'Tom Brady celebration — Let\'s go energy',
+        alt: 'Tom Brady celebration, Let\'s go energy',
         caption: "That's the energy. Let's get your A.",
       },
       {
         type: 'paragraph',
-        text: 'The Extended Essay is a mandatory component of the IB Diploma and one of the key pieces that helps you secure those 3 core points. The dumbest thing you can do is miss out on a 45 — or worse, not even get your diploma — because of your EE.',
+        text: 'The Extended Essay is a mandatory component of the IB Diploma and one of the key pieces that helps you secure those 3 core points. The dumbest thing you can do is miss out on a 45, or worse, not even get your diploma, because of your EE.',
       },
       {
         type: 'paragraph',
-        text: 'You\'re already balancing six subjects — three at HL — as well as IAs, CAS, college applications, and a life. The EE should not be the thing that breaks you. It\'s supposed to be the one component where you actually get to explore something you genuinely care about.',
+        text: 'You\'re already balancing six subjects, three at HL, as well as IAs, CAS, college applications, and a life. The EE should not be the thing that breaks you. It\'s supposed to be the one component where you actually get to explore something you genuinely care about.',
       },
       {
         type: 'heading',
@@ -30,17 +30,17 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The Pareto principle — or the 80/20 rule — states that roughly 80% of outcomes come from 20% of causes. In economics, it describes wealth distribution. In business, it explains why 20% of customers generate 80% of revenue. In your EE? It\'s the single most useful framework you have.',
+        text: 'The Pareto principle, or the 80/20 rule, states that roughly 80% of outcomes come from 20% of causes. In economics, it describes wealth distribution. In business, it explains why 20% of customers generate 80% of revenue. In your EE? It\'s the single most useful framework you have.',
       },
       {
         type: 'formula-box',
         title: 'The 80/20 Rule',
         formula: '20% of your effort → 80% of your marks',
-        description: 'This resource lab identifies exactly which 20% to focus on — the research question, structure, and criteria mapping — so you get maximum marks with minimum wasted effort.',
+        description: 'This resource lab identifies exactly which 20% to focus on, the research question, structure, and criteria mapping, so you get maximum marks with minimum wasted effort.',
       },
       {
         type: 'paragraph',
-        text: 'The three highest-leverage activities in your EE are: writing a strong research question, mapping your structure to the assessment criteria, and engaging genuinely with your research process for the RPPF. Everything else — word count anxiety, excessive formatting tweaks, spending three days finding the "perfect" source — is the other 80%. We\'re not doing that.',
+        text: 'The three highest-leverage activities in your EE are: writing a strong research question, mapping your structure to the assessment criteria, and engaging genuinely with your research process for the RPPF. Everything else, word count anxiety, excessive formatting tweaks, spending three days finding the "perfect" source, is the other 80%. We\'re not doing that.',
       },
       {
         type: 'icon-card',
@@ -58,7 +58,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Layout',
         title: 'Structure = Strategy',
-        text: 'Every section of your EE maps to specific criteria. No purposeless writing — every paragraph earns marks.',
+        text: 'Every section of your EE maps to specific criteria. No purposeless writing, every paragraph earns marks.',
       },
       {
         type: 'icon-card',
@@ -77,11 +77,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The best way you can write your Extended Essay is not as a student writing an extended essay for the IB — but as an award-winning academic writing their 20th research paper, the one that might finally get them that Nobel. You don\'t need to actually be a critically acclaimed academic. But your EE needs to read like it was written by one.',
+        text: 'The best way you can write your Extended Essay is not as a student writing an extended essay for the IB, but as an award-winning academic writing their 20th research paper, the one that might finally get them that Nobel. You don\'t need to actually be a critically acclaimed academic. But your EE needs to read like it was written by one.',
       },
       {
         type: 'paragraph',
-        text: 'When you write with that mindset — genuinely curious about your topic, rigorous in your methodology, honest in your limitations — the quality of your thinking, analysis, and writing naturally rises to the level the IB expects. The examiner can tell the difference between a student who was going through the motions and a student who was genuinely engaged.',
+        text: 'When you write with that mindset, genuinely curious about your topic, rigorous in your methodology, honest in your limitations, the quality of your thinking, analysis, and writing naturally rises to the level the IB expects. The examiner can tell the difference between a student who was going through the motions and a student who was genuinely engaged.',
       },
       {
         type: 'before-after',
@@ -105,22 +105,22 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about — using the Venn diagram and Clastify.' },
-          { title: 'How to Find Your Research Question', text: 'Craft an RQ that sets you up for success — specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
+          { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about, using the Venn diagram and Clastify.' },
+          { title: 'How to Find Your Research Question', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
           { title: 'The EE Dump System', text: 'Our signature research method that makes writing effortless. The most fun part of the entire process.' },
           { title: 'Research Strategy', text: 'Google vs. Scholar vs. PDF-only searches. The Scholar Shift that most students never reach.' },
           { title: 'Structure & Writing', text: 'Map every section to specific criteria. Seven sections, each with a job. No purposeless writing.' },
-          { title: 'Format, Citations & RPPF', text: 'The easiest marks of your life — if you know what you\'re doing. Times New Roman, MLA, and the 15-minute checklist.' },
+          { title: 'Format, Citations & RPPF', text: 'The easiest marks of your life, if you know what you\'re doing. Times New Roman, MLA, and the 15-minute checklist.' },
           { title: 'AI as a Thinking Partner', text: '12 prompts across 5 stages that make your EE better while keeping every word yours.' },
         ],
       },
       {
         type: 'key-takeaway',
         items: [
-          'Your EE is a research paper, not a school assignment — write it like one',
+          'Your EE is a research paper, not a school assignment, write it like one',
           'The Pareto principle applies: focus on the 20% that drives 80% of your marks',
           'This resource lab gives you the exact system used to score 32/34',
-          'Every module builds on the last — follow them in order',
+          'Every module builds on the last, follow them in order',
         ],
       },
     ],
@@ -130,21 +130,21 @@ export const COURSE_MODULES = [
     number: '02',
     free: true,
     title: 'What IB Expects: Criteria, Grading & How A\'s Are Really Given',
-    tagline: 'Use the rubric as your blueprint — not an afterthought.',
+    tagline: 'Use the rubric as your blueprint, not an afterthought.',
     content: [
       {
         type: 'paragraph',
-        text: 'Is it hard to get an A in your Extended Essay? It\'s challenging. But c\'mon — you\'re balancing six subjects, IAs for every single one, CAS, college applications, and a life. If you approach this strategically, an A is absolutely achievable.',
+        text: 'Is it hard to get an A in your Extended Essay? It\'s challenging. But c\'mon, you\'re balancing six subjects, IAs for every single one, CAS, college applications, and a life. If you approach this strategically, an A is absolutely achievable.',
       },
       {
         type: 'paragraph',
-        text: 'The IB gives us everything we need. They constantly drop clues that, when accumulated, become your 20%: "a formal piece of academic writing," "promotes academic research and writing skills." These phrases aren\'t filler — they\'re a direct statement of what an A looks like.',
+        text: 'The IB gives us everything we need. They constantly drop clues that, when accumulated, become your 20%: "a formal piece of academic writing," "promotes academic research and writing skills." These phrases aren\'t filler, they\'re a direct statement of what an A looks like.',
       },
       {
         type: 'image',
         src: '/images/ib-ee-description.png',
         alt: 'IB official Extended Essay description and aims',
-        caption: 'The IB tells us exactly what they expect — a formal piece of academic writing.',
+        caption: 'The IB tells us exactly what they expect, a formal piece of academic writing.',
       },
       {
         type: 'heading',
@@ -152,11 +152,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The single best way you can approach your EE is not as a student writing an extended essay for the IB, but as an award-winning academic writing their 20th paper — the one that will finally get them the Nobel for the discoveries made and the quality of the research.',
+        text: 'The single best way you can approach your EE is not as a student writing an extended essay for the IB, but as an award-winning academic writing their 20th paper, the one that will finally get them the Nobel for the discoveries made and the quality of the research.',
       },
       {
         type: 'paragraph',
-        text: 'This mindset shift — from "assignment to submit" to "research paper to contribute" — combined with the criteria the IB has given us, constitutes the 20% that contributes to 80% of a stellar Extended Essay.',
+        text: 'This mindset shift, from "assignment to submit" to "research paper to contribute", combined with the criteria the IB has given us, constitutes the 20% that contributes to 80% of a stellar Extended Essay.',
       },
       {
         type: 'heading',
@@ -170,29 +170,29 @@ export const COURSE_MODULES = [
         type: 'criteria',
         items: [
           {
-            label: 'Criterion A — Knowledge & Understanding',
+            label: 'Criterion A, Knowledge & Understanding',
             marks: '6 marks',
-            text: 'Demonstrate that you understand your topic, research question, relevant terminology, and chosen research methods. Examiners check whether you actually know what you\'re talking about — with genuine depth. This is primarily hit in your Introduction and Literature Review.',
+            text: 'Demonstrate that you understand your topic, research question, relevant terminology, and chosen research methods. Examiners check whether you actually know what you\'re talking about, with genuine depth. This is primarily hit in your Introduction and Literature Review.',
           },
           {
-            label: 'Criterion B — Application & Analysis',
+            label: 'Criterion B, Application & Analysis',
             marks: '6 marks',
-            text: 'Apply relevant research methods and present relevant findings. The key word is "apply" — demonstrate your tools working on your specific topic, producing specific findings. This is the heart of your Analysis section.',
+            text: 'Apply relevant research methods and present relevant findings. The key word is "apply", demonstrate your tools working on your specific topic, producing specific findings. This is the heart of your Analysis section.',
           },
           {
-            label: 'Criterion C — Synthesis & Evaluation',
+            label: 'Criterion C, Synthesis & Evaluation',
             marks: '6 marks',
-            text: 'Demonstrate the significance of your research, maintain a clear argument from RQ through findings to conclusion, and evaluate the effectiveness of your approach. This is where the strongest essays separate themselves — in the Discussion and Conclusion.',
+            text: 'Demonstrate the significance of your research, maintain a clear argument from RQ through findings to conclusion, and evaluate the effectiveness of your approach. This is where the strongest essays separate themselves, in the Discussion and Conclusion.',
           },
           {
-            label: 'Criterion D — Communication',
+            label: 'Criterion D, Communication',
             marks: '4 marks',
-            text: 'Communicate research according to structural conventions and demonstrate academic integrity. Formatting, structure, citations, tone, word count. The easiest criterion — entirely within your control if you follow the rules in Module 9.',
+            text: 'Communicate research according to structural conventions and demonstrate academic integrity. Formatting, structure, citations, tone, word count. The easiest criterion, entirely within your control if you follow the rules in Module 9.',
           },
           {
-            label: 'Criterion E — Engagement (RPPF)',
+            label: 'Criterion E, Engagement (RPPF)',
             marks: '6 marks',
-            text: 'Assessed through your Reflections on Planning and Progress Form. Evaluates genuine intellectual engagement with the research process — curiosity, problem-solving, growth as a researcher. Covered fully in Module 11.',
+            text: 'Assessed through your Reflections on Planning and Progress Form. Evaluates genuine intellectual engagement with the research process, curiosity, problem-solving, growth as a researcher. Covered fully in Module 11.',
           },
         ],
       },
@@ -208,11 +208,11 @@ export const COURSE_MODULES = [
         type: 'comparison-table',
         headers: ['Grade', 'Mark Range', 'What It Means'],
         rows: [
-          ['A', '27–34', 'Excellent — top-tier research, analysis, and presentation'],
-          ['B', '22–26', 'Good — solid work with some areas for improvement'],
-          ['C', '14–21', 'Satisfactory — meets basic requirements but lacks depth'],
-          ['D', '7–13', 'Mediocre — significant gaps in quality or content'],
-          ['E', '0–6', 'Elementary — fails to meet minimum standards'],
+          ['A', '27, 34', 'Excellent, top-tier research, analysis, and presentation'],
+          ['B', '22, 26', 'Good, solid work with some areas for improvement'],
+          ['C', '14, 21', 'Satisfactory, meets basic requirements but lacks depth'],
+          ['D', '7, 13', 'Mediocre, significant gaps in quality or content'],
+          ['E', '0, 6', 'Elementary, fails to meet minimum standards'],
         ],
       },
       {
@@ -223,7 +223,7 @@ export const COURSE_MODULES = [
       {
         type: 'stat-highlight',
         stat: '79%',
-        label: 'The A threshold — very achievable with strategy',
+        label: 'The A threshold, very achievable with strategy',
       },
       {
         type: 'stat-highlight',
@@ -236,24 +236,24 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The IB maps out the full research process in their subject guides. Every step they list maps directly to the criteria you\'re graded on. This isn\'t bureaucratic filler — this is a checklist for an A.',
+        text: 'The IB maps out the full research process in their subject guides. Every step they list maps directly to the criteria you\'re graded on. This isn\'t bureaucratic filler, this is a checklist for an A.',
       },
       {
         type: 'image',
         src: '/images/ib-research-process.png',
         alt: 'IB research process overview showing the steps from choosing a topic to carrying out research',
-        caption: 'The IB research process — every step circled here maps to specific criteria.',
+        caption: 'The IB research process, every step circled here maps to specific criteria.',
       },
       {
         type: 'step-process',
         steps: [
-          { title: 'Choose a broad topic then refine and focus it', text: 'Start with a genuine interest. Don\'t use AI for this step — your EE is a reflection of you, and examiners can tell the difference between authentic and generated curiosity.' },
+          { title: 'Choose a broad topic then refine and focus it', text: 'Start with a genuine interest. Don\'t use AI for this step, your EE is a reflection of you, and examiners can tell the difference between authentic and generated curiosity.' },
           { title: 'Decide the appropriate pathway', text: 'Interdisciplinary or subject-focused. The guidance: focus on one subject unless you can truly do justice to two. Interdisciplinary EEs require double the analytical work.' },
-          { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic happens when you connect the two — fashion and Business Management, gaming and Psychology, music and Physics.' },
+          { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic happens when you connect the two, fashion and Business Management, gaming and Psychology, music and Physics.' },
           { title: 'Undertake some preparatory reading', text: 'Use Clastify before you commit. Study high and low-scoring essays in your potential subject. Understand the patterns before you pick your lane.' },
-          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4 — How to Find Your Research Question — is entirely dedicated to this. Don\'t rush it.' },
+          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4, How to Find Your Research Question, is entirely dedicated to this. Don\'t rush it.' },
           { title: 'Plan the research and writing process', text: 'Build efficient systems from the start. Module 7 walks you through the structure that earned 32/34.' },
-          { title: 'Plan a structure for the essay', text: 'Your structure will evolve as your research develops — that\'s expected and normal. Build the skeleton first, then let the research fill it out.' },
+          { title: 'Plan a structure for the essay', text: 'Your structure will evolve as your research develops, that\'s expected and normal. Build the skeleton first, then let the research fill it out.' },
           { title: 'Carry out the research', text: 'The EE Dump system in Module 5 makes this the most intellectually enjoyable part of the entire process.' },
         ],
       },
@@ -280,10 +280,10 @@ export const COURSE_MODULES = [
       {
         type: 'key-takeaway',
         items: [
-          'You need 27/34 for an A — that\'s 79%, very achievable with strategy',
-          'Each criterion has a specific job — map your sections to criteria before you write',
+          'You need 27/34 for an A, that\'s 79%, very achievable with strategy',
+          'Each criterion has a specific job, map your sections to criteria before you write',
           'Criterion D (communication) is 4 marks that are entirely within your control',
-          'The RPPF alone is worth 6 marks — do not treat it as an afterthought',
+          'The RPPF alone is worth 6 marks, do not treat it as an afterthought',
         ],
       },
     ],
@@ -301,7 +301,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Choose your EE subject based on two criteria: genuine interest and how easy it is to score well in. Sometimes these align perfectly. Sometimes they don\'t — and that\'s where strategy matters.',
+        text: 'Choose your EE subject based on two criteria: genuine interest and how easy it is to score well in. Sometimes these align perfectly. Sometimes they don\'t, and that\'s where strategy matters.',
       },
       {
         type: 'warning-box',
@@ -327,7 +327,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Zap',
         title: 'Genuine Interest',
-        text: 'Not an IB subject — a real interest. Things on your FYP, stuff you\'d read voluntarily, conversations you have with friends about the state of the world.',
+        text: 'Not an IB subject, a real interest. Things on your FYP, stuff you\'d read voluntarily, conversations you have with friends about the state of the world.',
       },
       {
         type: 'icon-card',
@@ -339,11 +339,11 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Target',
         title: 'EE-Friendly',
-        text: 'Some subjects have higher success rates and more accessible rubrics. Check Clastify for your subject — analyse both high and low-scoring essays before committing.',
+        text: 'Some subjects have higher success rates and more accessible rubrics. Check Clastify for your subject, analyse both high and low-scoring essays before committing.',
       },
       {
         type: 'callout',
-        text: 'Your "subject" is IB-related (Business Management, Psychology, English). What you\'re "genuinely interested in" is any topic — fashion, gaming, politics, sport, cooking, music. The magic happens when you connect the two.',
+        text: 'Your "subject" is IB-related (Business Management, Psychology, English). What you\'re "genuinely interested in" is any topic, fashion, gaming, politics, sport, cooking, music. The magic happens when you connect the two.',
       },
       {
         type: 'heading',
@@ -351,7 +351,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'There\'s a critical difference between having a surface-level interest in something and framing it as a genuine academic inquiry. Examiners can tell the difference immediately. The framing of your topic — how you position it as a research question — is where the A lives.',
+        text: 'There\'s a critical difference between having a surface-level interest in something and framing it as a genuine academic inquiry. Examiners can tell the difference immediately. The framing of your topic, how you position it as a research question, is where the A lives.',
       },
       {
         type: 'before-after',
@@ -361,7 +361,7 @@ export const COURSE_MODULES = [
         },
         after: {
           label: 'Academic framing',
-          text: '"I\'m interested in how fast fashion supply chain models create competitive advantages — I\'ll analyse ZARA\'s inventory management using financial ratio analysis and Porter\'s Five Forces."',
+          text: '"I\'m interested in how fast fashion supply chain models create competitive advantages, I\'ll analyse ZARA\'s inventory management using financial ratio analysis and Porter\'s Five Forces."',
         },
       },
       {
@@ -372,7 +372,7 @@ export const COURSE_MODULES = [
         },
         after: {
           label: 'Specific inquiry',
-          text: '"To what extent does passive social media consumption correlate with increased depressive symptomology in adolescent girls aged 13–17?"',
+          text: '"To what extent does passive social media consumption correlate with increased depressive symptomology in adolescent girls aged 13, 17?"',
         },
       },
       {
@@ -387,8 +387,8 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Filter by subject', text: 'Go to Clastify and select your potential subject area. Look at the distribution of scores.' },
-          { title: 'Study 20–30 high-scoring essays', text: 'Read their research questions. Note recurring topics, observe how they\'re framed, look at what evidence they use.' },
-          { title: 'Study 10–15 low-scoring essays', text: 'Understand what went wrong — usually vague RQs, descriptive writing instead of analysis, or poor structure. Don\'t make the same mistakes.' },
+          { title: 'Study 20, 30 high-scoring essays', text: 'Read their research questions. Note recurring topics, observe how they\'re framed, look at what evidence they use.' },
+          { title: 'Study 10, 15 low-scoring essays', text: 'Understand what went wrong, usually vague RQs, descriptive writing instead of analysis, or poor structure. Don\'t make the same mistakes.' },
           { title: 'Talk to alumni if you can', text: 'Students who\'ve done their EE in your potential subject have firsthand insight no guide can give you. Ask them specifically: what would you have done differently?' },
         ],
       },
@@ -402,7 +402,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The 32/34 EE this resource lab is built on came from a genuine interest in fashion — specifically ZARA and the fast fashion industry. Here\'s how that interest became an academically framed research question:',
+        text: 'The 32/34 EE this resource lab is built on came from a genuine interest in fashion, specifically ZARA and the fast fashion industry. Here\'s how that interest became an academically framed research question:',
       },
       {
         type: 'numbered-steps',
@@ -448,11 +448,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'John takes Maths AI HL and Psychology HL. One Sunday, he was debating with his friends about whether they would have voted for Trump or Harris in the 2024 US elections. He noticed patterns in how different people reasoned through their vote — and got curious. Could voter psychology be predicted? Could you quantify the influence of social media on the way his friends thought about politics?',
+        text: 'John takes Maths AI HL and Psychology HL. One Sunday, he was debating with his friends about whether they would have voted for Trump or Harris in the 2024 US elections. He noticed patterns in how different people reasoned through their vote, and got curious. Could voter psychology be predicted? Could you quantify the influence of social media on the way his friends thought about politics?',
       },
       {
         type: 'paragraph',
-        text: 'He wondered if he could draw statistical conclusions between social media sentiment and voter behaviour. He noticed that the 2024 elections were heavily influenced by online commentators — and he started asking: to what extent were his friends\'s political opinions actually theirs?',
+        text: 'He wondered if he could draw statistical conclusions between social media sentiment and voter behaviour. He noticed that the 2024 elections were heavily influenced by online commentators, and he started asking: to what extent were his friends\'s political opinions actually theirs?',
       },
       {
         type: 'formula-box',
@@ -462,7 +462,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'John went from "I don\'t want to do this" to having a research question he was genuinely curious about — because it started with a real conversation he was already having. That\'s the process. Your EE should come from something you actually think about.',
+        text: 'John went from "I don\'t want to do this" to having a research question he was genuinely curious about, because it started with a real conversation he was already having. That\'s the process. Your EE should come from something you actually think about.',
       },
       {
         type: 'heading',
@@ -476,7 +476,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Target',
         title: 'Specific',
-        text: 'Answerable within 4,000 words. If your RQ could be a PhD thesis, it\'s too broad. Narrowness is not a weakness — it\'s precision.',
+        text: 'Answerable within 4,000 words. If your RQ could be a PhD thesis, it\'s too broad. Narrowness is not a weakness, it\'s precision.',
       },
       {
         type: 'icon-card',
@@ -494,7 +494,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'PenLine',
         title: 'Original',
-        text: 'Leaves room to present original analysis — not just a summary of existing work. You should be saying something, not just reporting what others have said.',
+        text: 'Leaves room to present original analysis, not just a summary of existing work. You should be saying something, not just reporting what others have said.',
       },
       {
         type: 'heading',
@@ -530,7 +530,7 @@ export const COURSE_MODULES = [
         },
         after: {
           label: 'Precise and testable',
-          text: '"To what extent does exposure to classical music during study sessions improve performance on spatial reasoning tasks in adolescents aged 15–18?"',
+          text: '"To what extent does exposure to classical music during study sessions improve performance on spatial reasoning tasks in adolescents aged 15, 18?"',
         },
       },
       {
@@ -539,11 +539,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'John\'s RQ works because it bridges two subjects: quantitative methods from Maths AI and behavioural theory from Psychology. This is called an interdisciplinary approach — and when it\'s well-executed, it can produce genuinely original analysis that subject-specific essays can\'t.',
+        text: 'John\'s RQ works because it bridges two subjects: quantitative methods from Maths AI and behavioural theory from Psychology. This is called an interdisciplinary approach, and when it\'s well-executed, it can produce genuinely original analysis that subject-specific essays can\'t.',
       },
       {
         type: 'warning-box',
-        text: 'Interdisciplinary EEs are higher risk. You\'re essentially writing two analyses and integrating them — which requires significantly more methodological rigour. Only go interdisciplinary if you\'re strong in both subjects and have a clear reason why one discipline alone can\'t answer your RQ.',
+        text: 'Interdisciplinary EEs are higher risk. You\'re essentially writing two analyses and integrating them, which requires significantly more methodological rigour. Only go interdisciplinary if you\'re strong in both subjects and have a clear reason why one discipline alone can\'t answer your RQ.',
       },
       {
         type: 'heading',
@@ -551,11 +551,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'Creativity is what turns a good EE into a great one. A unique angle on a common topic is worth more than a common angle on a unique topic. Examiners reward genuine intellectual curiosity — they can tell when someone actually cares about what they\'re researching.',
+        text: 'Creativity is what turns a good EE into a great one. A unique angle on a common topic is worth more than a common angle on a unique topic. Examiners reward genuine intellectual curiosity, they can tell when someone actually cares about what they\'re researching.',
       },
       {
         type: 'warning-box',
-        text: 'Don\'t use AI to generate your research question from scratch. AI is not creative — it recycles and regurgitates. Your EE is a reflection of your intellectual curiosity. Let it be yours from the start. Once you have YOUR draft RQ, AI can help you stress-test it (see Module 13 for prompts).',
+        text: 'Don\'t use AI to generate your research question from scratch. AI is not creative, it recycles and regurgitates. Your EE is a reflection of your intellectual curiosity. Let it be yours from the start. Once you have YOUR draft RQ, AI can help you stress-test it (see Module 13 for prompts).',
       },
       {
         type: 'heading',
@@ -564,10 +564,10 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Draft your RQ', text: 'Start with your interests and academic strengths from Module 3. Write 3–5 possible RQs without censoring yourself. You\'ll narrow later.' },
-          { title: 'Take it to your supervisor', text: 'Your supervisor can help you focus and refine. We consistently underestimate how focused an RQ needs to be — supervisors know the rubric.' },
+          { title: 'Draft your RQ', text: 'Start with your interests and academic strengths from Module 3. Write 3, 5 possible RQs without censoring yourself. You\'ll narrow later.' },
+          { title: 'Take it to your supervisor', text: 'Your supervisor can help you focus and refine. We consistently underestimate how focused an RQ needs to be, supervisors know the rubric.' },
           { title: 'Stress-test it', text: 'Can it be answered in 4,000 words? Is there sufficient data publicly available? Does it require analysis or just description? Would a counterargument be possible?' },
-          { title: 'Lock it in after your EE Dump', text: 'After completing your EE Dump (Module 5), make final adjustments. Then freeze it. After that point — no more changes to your RQ.' },
+          { title: 'Lock it in after your EE Dump', text: 'After completing your EE Dump (Module 5), make final adjustments. Then freeze it. After that point, no more changes to your RQ.' },
         ],
       },
       {
@@ -578,10 +578,10 @@ export const COURSE_MODULES = [
         type: 'key-takeaway',
         items: [
           'Your RQ must be specific, analytical, researchable, and original',
-          'Use "to what extent" or "how" — avoid "what" questions which invite description',
-          'Take your draft to your supervisor immediately — they know what gets marks',
+          'Use "to what extent" or "how", avoid "what" questions which invite description',
+          'Take your draft to your supervisor immediately, they know what gets marks',
           'Creativity in your angle separates good from great',
-          'Lock in your final RQ after the EE Dump — no more changes after that',
+          'Lock in your final RQ after the EE Dump, no more changes after that',
         ],
       },
     ],
@@ -595,17 +595,17 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'The EE Dump is a research method built around one principle: knowledge confidence. Most students sit down to write their EE and immediately panic — they know their topic on the surface but have no depth. They don\'t know what to say, so they either pad with words or pull from AI. The EE Dump eliminates that problem entirely.',
+        text: 'The EE Dump is a research method built around one principle: knowledge confidence. Most students sit down to write their EE and immediately panic, they know their topic on the surface but have no depth. They don\'t know what to say, so they either pad with words or pull from AI. The EE Dump eliminates that problem entirely.',
       },
       {
         type: 'gif',
         src: 'https://giphy.com/embed/LmNwrBhejkK9EFP504',
-        alt: 'Research begins — focus mode activated',
+        alt: 'Research begins, focus mode activated',
         caption: "The Dump is where the real learning happens.",
       },
       {
         type: 'paragraph',
-        text: 'The idea is simple: before you write anything, you create a living document where you dump everything you know and everything you find about your topic — organised by subtopic. No word limit. No formatting requirements. No pressure. Just knowledge accumulation.',
+        text: 'The idea is simple: before you write anything, you create a living document where you dump everything you know and everything you find about your topic, organised by subtopic. No word limit. No formatting requirements. No pressure. Just knowledge accumulation.',
       },
       {
         type: 'quote-highlight',
@@ -618,9 +618,9 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Break your RQ into 5 subtopics', text: 'These don\'t need to be perfect — they\'re for research organisation. Think of it like dividing a pizza into slices. Each slice gets its own section in your Dump document.' },
+          { title: 'Break your RQ into 5 subtopics', text: 'These don\'t need to be perfect, they\'re for research organisation. Think of it like dividing a pizza into slices. Each slice gets its own section in your Dump document.' },
           { title: 'Level 1: Google every subtopic', text: 'Go through all relevant links. Read the information. Understand the landscape. This builds your contextual foundation.' },
-          { title: 'Dump everything relevant', text: 'Copy the relevant information into your EE Dump document under the appropriate subtopic heading — along with the source link. Every paste gets a link. Always.' },
+          { title: 'Dump everything relevant', text: 'Copy the relevant information into your EE Dump document under the appropriate subtopic heading, along with the source link. Every paste gets a link. Always.' },
           { title: 'Level 2: Hit Google Scholar', text: 'Find peer-reviewed research that connects your topic to areas you hadn\'t considered. This is where your analysis gets its depth.' },
           { title: 'Review and connect', text: 'After completing your dump, you\'ll be genuinely knowledgeable about your topic. The connections between subtopics are where your original analysis lives.' },
         ],
@@ -631,13 +631,13 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Using the sample RQ from Module 4 — "To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behaviour during the 2024 US elections?" — here\'s how John divided his research:',
+        text: 'Using the sample RQ from Module 4, "To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behaviour during the 2024 US elections?", here\'s how John divided his research:',
       },
       {
         type: 'icon-card',
         icon: 'Brain',
         title: '1. Quantitative Analysis Methods',
-        text: 'Methodology first — what statistical tools and frameworks exist for social media data analysis? Sentiment scoring, NLP models, correlation analysis.',
+        text: 'Methodology first, what statistical tools and frameworks exist for social media data analysis? Sentiment scoring, NLP models, correlation analysis.',
       },
       {
         type: 'icon-card',
@@ -670,15 +670,15 @@ export const COURSE_MODULES = [
       {
         type: 'numbered-steps',
         items: [
-          'Retrieve — Search each subtopic on Google. Go through 5–10 relevant links per subtopic. Read, don\'t skim.',
-          'Dump — Copy the relevant information into your document under the appropriate heading, with the source link immediately after every entry.',
-          'Repeat on Google Scholar — Search narrowly for peer-reviewed papers on each subtopic. Read abstracts, introductions, and conclusions. If the paper doesn\'t directly relate to your RQ, discard it.',
-          'Connect — After completing all five subtopics, review the whole document looking for unexpected links between sections. These connections are your analysis.',
+          'Retrieve, Search each subtopic on Google. Go through 5, 10 relevant links per subtopic. Read, don\'t skim.',
+          'Dump, Copy the relevant information into your document under the appropriate heading, with the source link immediately after every entry.',
+          'Repeat on Google Scholar, Search narrowly for peer-reviewed papers on each subtopic. Read abstracts, introductions, and conclusions. If the paper doesn\'t directly relate to your RQ, discard it.',
+          'Connect, After completing all five subtopics, review the whole document looking for unexpected links between sections. These connections are your analysis.',
         ],
       },
       {
         type: 'tip-box',
-        text: 'The EE Dump is also your reference system. Every piece of information in it has a source link attached. When you\'re writing and need to cite something, it\'s already there — you\'re not scrambling to find that article you read three weeks ago.',
+        text: 'The EE Dump is also your reference system. Every piece of information in it has a source link attached. When you\'re writing and need to cite something, it\'s already there, you\'re not scrambling to find that article you read three weeks ago.',
       },
       {
         type: 'heading',
@@ -690,11 +690,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'This is also the point where — if you want to make any changes to your research question based on what you\'ve found — you do it. After this, it\'s locked in. No more changes.',
+        text: 'This is also the point where, if you want to make any changes to your research question based on what you\'ve found, you do it. After this, it\'s locked in. No more changes.',
       },
       {
         type: 'callout',
-        text: 'The interactive EE Dump Workspace on this site is built specifically for this process — add sources, organise by subtopic, and track your research all in one place.',
+        text: 'The interactive EE Dump Workspace on this site is built specifically for this process, add sources, organise by subtopic, and track your research all in one place.',
       },
       {
         type: 'heading',
@@ -702,16 +702,16 @@ export const COURSE_MODULES = [
       },
       {
         type: 'warning-box',
-        text: 'Never paste information into your dump without the source link immediately after. Not "I\'ll add it later" — right now, same line. Your future self will be grateful every time. This is how you avoid citation panic when your bibliography is due.',
+        text: 'Never paste information into your dump without the source link immediately after. Not "I\'ll add it later", right now, same line. Your future self will be grateful every time. This is how you avoid citation panic when your bibliography is due.',
       },
       {
         type: 'key-takeaway',
         items: [
           'Break your RQ into 5 subtopics before you start researching',
-          'Use both Google and Google Scholar — Level 1 and Level 2 research',
-          'There is no word limit — dump everything relevant, with source links',
+          'Use both Google and Google Scholar, Level 1 and Level 2 research',
+          'There is no word limit, dump everything relevant, with source links',
           'The connections between subtopics become your analysis',
-          'After the dump, lock in your final RQ — no more changes',
+          'After the dump, lock in your final RQ, no more changes',
         ],
       },
     ],
@@ -728,7 +728,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'After completing your EE Dump, you move from broad knowledge accumulation to targeted research. At this point you divide your main RQ into 5 sub-questions that your essay will answer — and your research becomes surgical. You\'re looking for specific answers, not browsing randomly.',
+        text: 'After completing your EE Dump, you move from broad knowledge accumulation to targeted research. At this point you divide your main RQ into 5 sub-questions that your essay will answer, and your research becomes surgical. You\'re looking for specific answers, not browsing randomly.',
       },
       {
         type: 'heading',
@@ -737,9 +737,9 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Level 1: Google', text: 'Definitions, context, policy documents, government data, think tanks, industry reports. This is your foundation — don\'t skip it, but don\'t stop here either.' },
+          { title: 'Level 1: Google', text: 'Definitions, context, policy documents, government data, think tanks, industry reports. This is your foundation, don\'t skip it, but don\'t stop here either.' },
           { title: 'Level 2: Google Scholar', text: 'Peer-reviewed arguments, theoretical models, empirical frameworks, academic debates. This is where analytical depth lives. Most students stop at Level 1.' },
-          { title: 'Level 3: PDF-Only Searches', text: 'Full research papers, original datasets, foundational studies. This is where the strongest essays get their source quality. Most students never reach this level — that\'s exactly why reaching it makes your bibliography stand out.' },
+          { title: 'Level 3: PDF-Only Searches', text: 'Full research papers, original datasets, foundational studies. This is where the strongest essays get their source quality. Most students never reach this level, that\'s exactly why reaching it makes your bibliography stand out.' },
         ],
       },
       {
@@ -748,7 +748,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Google is not where academic arguments live — but it\'s essential for context and framing. Use it for:',
+        text: 'Google is not where academic arguments live, but it\'s essential for context and framing. Use it for:',
       },
       {
         type: 'list',
@@ -763,7 +763,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'warning-box',
-        text: 'Some students skip Level 1 entirely and jump straight to academic sources. That\'s a mistake — context framing and problem definition matter. But Level 1 alone isn\'t enough. If your bibliography consists entirely of news articles and Wikipedia, you don\'t have an academic essay.',
+        text: 'Some students skip Level 1 entirely and jump straight to academic sources. That\'s a mistake, context framing and problem definition matter. But Level 1 alone isn\'t enough. If your bibliography consists entirely of news articles and Wikipedia, you don\'t have an academic essay.',
       },
       {
         type: 'heading',
@@ -771,7 +771,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The Scholar Shift is the most satisfying moment in the research process — when you transition from Google to Google Scholar and suddenly you\'re reading real research. PhD professors and doctoral students who have spent years studying your exact topic. This is a gold mine, and most students never get here.',
+        text: 'The Scholar Shift is the most satisfying moment in the research process, when you transition from Google to Google Scholar and suddenly you\'re reading real research. PhD professors and doctoral students who have spent years studying your exact topic. This is a gold mine, and most students never get here.',
       },
       {
         type: 'paragraph',
@@ -786,8 +786,8 @@ export const COURSE_MODULES = [
         items: [
           'Search narrowly. Not "Inflation India" but "monetary policy transmission mechanisms India CPI." The more specific your search, the more useful the results.',
           'Sort by relevance, not date. New doesn\'t mean good. A 2008 paper that is foundational to your topic is more valuable than a 2024 paper with 3 citations.',
-          'Open 3 papers maximum per search. Scan the abstract, introduction, and conclusion first. If a paper doesn\'t directly serve your RQ, discard it — don\'t fall into the reading rabbit hole.',
-          'Follow the citations. If you find one strong paper, go to its reference list. The foundational research in any field is cited everywhere — that\'s how you find it.',
+          'Open 3 papers maximum per search. Scan the abstract, introduction, and conclusion first. If a paper doesn\'t directly serve your RQ, discard it, don\'t fall into the reading rabbit hole.',
+          'Follow the citations. If you find one strong paper, go to its reference list. The foundational research in any field is cited everywhere, that\'s how you find it.',
         ],
       },
       {
@@ -798,7 +798,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Search',
         title: 'Exact Phrases',
-        text: 'Put phrases in quotes: "voter behaviour social media" returns only results with that exact phrase — eliminates thousands of irrelevant results.',
+        text: 'Put phrases in quotes: "voter behaviour social media" returns only results with that exact phrase, eliminates thousands of irrelevant results.',
       },
       {
         type: 'icon-card',
@@ -832,7 +832,7 @@ export const COURSE_MODULES = [
           'It has a clear, evaluable argument or finding',
           'It uses data, methodology, or established theory',
           'It acknowledges its own limitations',
-          'It can be critically engaged with — not just summarised',
+          'It can be critically engaged with, not just summarised',
         ],
       },
       {
@@ -845,7 +845,7 @@ export const COURSE_MODULES = [
           'Blog posts with no citations or credentials',
           'News articles used as analytical arguments (news is context, not analysis)',
           'Papers older than 15 years unless they\'re foundational to the field',
-          'Sources that only support your argument — you need counterpoints for genuine analysis',
+          'Sources that only support your argument, you need counterpoints for genuine analysis',
           'Wikipedia (use it to find primary sources, never cite it directly)',
         ],
       },
@@ -855,7 +855,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'You\'re done researching a sub-question when you have 2–3 strong sources that directly address it. For every source, note these three things in your EE Dump:',
+        text: 'You\'re done researching a sub-question when you have 2, 3 strong sources that directly address it. For every source, note these three things in your EE Dump:',
       },
       {
         type: 'numbered-steps',
@@ -867,15 +867,15 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'The point of academic papers is not to copy their findings into your essay. It\'s to cite specific findings, engage critically with them, and then use them to set the stage for your own analysis. Your essay should be building on existing scholarship — not just reporting it.',
+        text: 'The point of academic papers is not to copy their findings into your essay. It\'s to cite specific findings, engage critically with them, and then use them to set the stage for your own analysis. Your essay should be building on existing scholarship, not just reporting it.',
       },
       {
         type: 'key-takeaway',
         items: [
           'Research through three levels: Google → Scholar → PDF-only',
-          'Search narrowly — specific terms return useful results, broad terms return noise',
+          'Search narrowly, specific terms return useful results, broad terms return noise',
           'Follow citations from strong papers to find the foundational research in your field',
-          'Each sub-question needs 2–3 strong sources with noted claims, evidence, and limitations',
+          'Each sub-question needs 2, 3 strong sources with noted claims, evidence, and limitations',
           'A source is EE-worthy if it can be critically engaged with, not just summarised',
         ],
       },
@@ -889,7 +889,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Your EE has to have a purpose — a clear, deliberate argument that runs from your research question through to your conclusion. After your Dump and research, you create your structure: the skeleton that every paragraph hangs on. The skeleton comes before the flesh.',
+        text: 'Your EE has to have a purpose, a clear, deliberate argument that runs from your research question through to your conclusion. After your Dump and research, you create your structure: the skeleton that every paragraph hangs on. The skeleton comes before the flesh.',
       },
       {
         type: 'warning-box',
@@ -907,8 +907,8 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Section I: Introduction (~400 words)', text: 'Hook, context, significance, research question, and brief signposting of your approach. Targets Criterion A.' },
-          { title: 'Section II: Literature Review (~700 words)', text: 'Critical evaluation of existing research — not a summary. Shows you know the academic conversation and where your essay fits in it. Targets Criterion A.' },
-          { title: 'Section III: Methodology (~300 words)', text: 'What tools and frameworks you\'re using and — crucially — why they were the right choice for your specific RQ. Targets Criterion B.' },
+          { title: 'Section II: Literature Review (~700 words)', text: 'Critical evaluation of existing research, not a summary. Shows you know the academic conversation and where your essay fits in it. Targets Criterion A.' },
+          { title: 'Section III: Methodology (~300 words)', text: 'What tools and frameworks you\'re using and, crucially, why they were the right choice for your specific RQ. Targets Criterion B.' },
           { title: 'Section IV: Analysis (~1,200 words)', text: 'Apply your chosen tools to your specific topic. Present findings with evidence. The heart of your essay. Targets Criteria B and C.' },
           { title: 'Section V: Discussion (~600 words)', text: 'Evaluate your findings. Connect to your literature review. Address counterarguments. Honestly assess limitations. Targets Criterion C.' },
           { title: 'Section VI: Conclusion (~300 words)', text: 'Directly answer your RQ. Summarise key evidence. Acknowledge limitations. Suggest future research. Targets Criteria C and D.' },
@@ -921,7 +921,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: 'This is the structural strategy that changes everything. Each section targets specific criteria intentionally — no purposeless writing.',
+        text: 'This is the structural strategy that changes everything. Each section targets specific criteria intentionally, no purposeless writing.',
       },
       {
         type: 'comparison-table',
@@ -949,7 +949,7 @@ export const COURSE_MODULES = [
         items: [
           'Take your 5 sub-questions from Module 6 and assign them to sections',
           'For each section, write one sentence: "This section will argue that..."',
-          'Check that the argument flows — each section should set up the next',
+          'Check that the argument flows, each section should set up the next',
           'In the margin next to each section, write the criterion it targets',
           'If any section doesn\'t clearly target a criterion, cut it or refocus it',
         ],
@@ -964,18 +964,18 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The 4,000-word limit sounds like a lot — it isn\'t. A rough word count distribution that works for most subjects:',
+        text: 'The 4,000-word limit sounds like a lot, it isn\'t. A rough word count distribution that works for most subjects:',
       },
       {
         type: 'comparison-table',
         headers: ['Section', 'Approximate Words', 'Why'],
         rows: [
-          ['Introduction', '300–450', 'Context-setting, not the heart of your marks'],
-          ['Literature Review', '600–800', 'Enough depth to show knowledge without over-narrating'],
-          ['Methodology', '250–350', 'Concise justification — not an instruction manual'],
-          ['Analysis', '1,100–1,400', 'The core of Criteria B and C — most marks live here'],
-          ['Discussion', '500–700', 'Where synthesis happens — often underwritten'],
-          ['Conclusion', '250–350', 'Direct, clear, no new information'],
+          ['Introduction', '300, 450', 'Context-setting, not the heart of your marks'],
+          ['Literature Review', '600, 800', 'Enough depth to show knowledge without over-narrating'],
+          ['Methodology', '250, 350', 'Concise justification, not an instruction manual'],
+          ['Analysis', '1,100, 1,400', 'The core of Criteria B and C, most marks live here'],
+          ['Discussion', '500, 700', 'Where synthesis happens, often underwritten'],
+          ['Conclusion', '250, 350', 'Direct, clear, no new information'],
         ],
       },
       {
@@ -985,7 +985,7 @@ export const COURSE_MODULES = [
           'The 7-section structure covers all four criteria explicitly',
           'Map every section to its criterion before writing',
           'Share your structure with your supervisor before you start writing',
-          'No purposeless writing — every paragraph earns marks',
+          'No purposeless writing, every paragraph earns marks',
         ],
       },
     ],
@@ -998,7 +998,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Divide your sections and structure them based on the section-wise criteria from Module 7. Every section targets one or two criteria. This means no purposeless writing — every paragraph is doing a job.',
+        text: 'Divide your sections and structure them based on the section-wise criteria from Module 7. Every section targets one or two criteria. This means no purposeless writing, every paragraph is doing a job.',
       },
       {
         type: 'heading',
@@ -1006,11 +1006,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'Your introduction is Criterion A territory. The best way to introduce your EE is through storytelling — guiding the reader on a journey that naturally leads to your research question, rather than stating it bluntly in the first sentence.',
+        text: 'Your introduction is Criterion A territory. The best way to introduce your EE is through storytelling, guiding the reader on a journey that naturally leads to your research question, rather than stating it bluntly in the first sentence.',
       },
       {
         type: 'paragraph',
-        text: 'Showcase your topic, its relevance, and the significance of answering your RQ. You want the examiner to finish your introduction thinking "this is interesting — I want to see what they found." That\'s the only job of the introduction.',
+        text: 'Showcase your topic, its relevance, and the significance of answering your RQ. You want the examiner to finish your introduction thinking "this is interesting, I want to see what they found." That\'s the only job of the introduction.',
       },
       {
         type: 'paragraph',
@@ -1026,7 +1026,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'A strong literature review does three things: shows you know the major existing research on your topic, identifies where that research has gaps or limitations, and explains how your EE addresses those gaps. The word "critical" is load-bearing here — you\'re evaluating sources, not just reporting them.',
+        text: 'A strong literature review does three things: shows you know the major existing research on your topic, identifies where that research has gaps or limitations, and explains how your EE addresses those gaps. The word "critical" is load-bearing here, you\'re evaluating sources, not just reporting them.',
       },
       {
         type: 'before-after',
@@ -1045,7 +1045,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Explain what tools, frameworks, and methods you\'re using — and why you chose them for your specific RQ. The "why" matters far more than the "what." An examiner doesn\'t just want to know you\'re using Porter\'s Five Forces — they want to know why it was the right tool for analysing your specific competitive landscape.',
+        text: 'Explain what tools, frameworks, and methods you\'re using, and why you chose them for your specific RQ. The "why" matters far more than the "what." An examiner doesn\'t just want to know you\'re using Porter\'s Five Forces, they want to know why it was the right tool for analysing your specific competitive landscape.',
       },
       {
         type: 'warning-box',
@@ -1057,7 +1057,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'This is the heart of your essay and where most marks are won or lost. Apply your chosen tools to your specific topic. Present findings with evidence. The key word here is "apply" — you\'re not explaining what Porter\'s Five Forces is, you\'re using it as a lens to examine your specific case.',
+        text: 'This is the heart of your essay and where most marks are won or lost. Apply your chosen tools to your specific topic. Present findings with evidence. The key word here is "apply", you\'re not explaining what Porter\'s Five Forces is, you\'re using it as a lens to examine your specific case.',
       },
       {
         type: 'before-after',
@@ -1067,7 +1067,7 @@ export const COURSE_MODULES = [
         },
         after: {
           label: 'Analysis (strong)',
-          text: '"ZARA\'s inventory turnover ratio of 4.8 — notably below the fast fashion industry average of 6.2 — suggests that despite its speed-to-market advantage, rapid design cycles may produce excess seasonal stock. This contradicts the commonly-held assumption that ZARA\'s supply chain efficiency is its primary competitive advantage, pointing instead toward pricing strategy as a more significant differentiator."',
+          text: '"ZARA\'s inventory turnover ratio of 4.8, notably below the fast fashion industry average of 6.2, suggests that despite its speed-to-market advantage, rapid design cycles may produce excess seasonal stock. This contradicts the commonly-held assumption that ZARA\'s supply chain efficiency is its primary competitive advantage, pointing instead toward pricing strategy as a more significant differentiator."',
         },
       },
       {
@@ -1084,7 +1084,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'Your discussion should explicitly connect back to your literature review. If you found something that contradicts a source you cited earlier — say so. That\'s genuine engagement with scholarship.',
+        text: 'Your discussion should explicitly connect back to your literature review. If you found something that contradicts a source you cited earlier, say so. That\'s genuine engagement with scholarship.',
       },
       {
         type: 'heading',
@@ -1092,13 +1092,13 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Your conclusion directly answers your RQ. Don\'t introduce new information here. Don\'t hedge. Don\'t write a watered-down, non-committal answer because you\'re afraid to commit to a position. The examiner wants to know what you concluded from your research — state it clearly.',
+        text: 'Your conclusion directly answers your RQ. Don\'t introduce new information here. Don\'t hedge. Don\'t write a watered-down, non-committal answer because you\'re afraid to commit to a position. The examiner wants to know what you concluded from your research, state it clearly.',
       },
       {
         type: 'formula-box',
         title: 'Conclusion Framework',
         formula: 'Direct Answer + Key Evidence Summary + Honest Limitations + Future Research Direction',
-        description: 'Follow this sequence. The direct answer comes first — don\'t bury it in qualifications.',
+        description: 'Follow this sequence. The direct answer comes first, don\'t bury it in qualifications.',
       },
       {
         type: 'quote-highlight',
@@ -1107,11 +1107,11 @@ export const COURSE_MODULES = [
       {
         type: 'key-takeaway',
         items: [
-          'Introduction: storytelling hook that leads naturally to your RQ — no "In this essay I will..."',
-          'Literature Review: critically evaluate sources, identify gaps — don\'t just summarise',
+          'Introduction: storytelling hook that leads naturally to your RQ, no "In this essay I will..."',
+          'Literature Review: critically evaluate sources, identify gaps, don\'t just summarise',
           'Methodology: explain WHY you chose each tool, not just what it is',
-          'Analysis: apply tools to your specific data with evidence — not description',
-          'Only include tools you actually deploy — promise and not deliver = marks lost',
+          'Analysis: apply tools to your specific data with evidence, not description',
+          'Only include tools you actually deploy, promise and not deliver = marks lost',
           'Conclusion: direct answer to your RQ, no new information, no hedging',
         ],
       },
@@ -1125,7 +1125,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Formatting is the most boring part of your EE — and the easiest way to signal professionalism. Examiners read hundreds of essays. Properly formatted ones immediately communicate "this student is serious." More importantly, Criterion D allocates 4 marks specifically to communication and presentation. These are entirely within your control.',
+        text: 'Formatting is the most boring part of your EE, and the easiest way to signal professionalism. Examiners read hundreds of essays. Properly formatted ones immediately communicate "this student is serious." More importantly, Criterion D allocates 4 marks specifically to communication and presentation. These are entirely within your control.',
       },
       {
         type: 'heading',
@@ -1135,7 +1135,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'FileText',
         title: 'Font',
-        text: 'Times New Roman, 12pt. No exceptions. The universal academic standard — anything else signals informality.',
+        text: 'Times New Roman, 12pt. No exceptions. The universal academic standard, anything else signals informality.',
       },
       {
         type: 'icon-card',
@@ -1147,7 +1147,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Clipboard',
         title: 'Margins',
-        text: '2.54 cm (1 inch) on all sides. This is the default in most word processors — but check, because some defaults vary.',
+        text: '2.54 cm (1 inch) on all sides. This is the default in most word processors, but check, because some defaults vary.',
       },
       {
         type: 'icon-card',
@@ -1161,7 +1161,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Your title page is anonymous — no name, no school. The IB requires this for blind marking:',
+        text: 'Your title page is anonymous, no name, no school. The IB requires this for blind marking:',
       },
       {
         type: 'comparison-table',
@@ -1176,7 +1176,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'heading',
-        text: 'Citations — MLA Style',
+        text: 'Citations, MLA Style',
       },
       {
         type: 'paragraph',
@@ -1185,7 +1185,7 @@ export const COURSE_MODULES = [
       {
         type: 'numbered-steps',
         items: [
-          'In-text citation: Author\'s last name and page number — (Porter 45). No page for websites: just (Shastri).',
+          'In-text citation: Author\'s last name and page number, (Porter 45). No page for websites: just (Shastri).',
           'Placement: After the closing quotation mark but BEFORE the period. This is the single most commonly misplaced element in student essays.',
           'Block quotes (for quotes longer than 4 lines): Indent the entire quote, no quotation marks, citation after the final period.',
           'Bibliography: Alphabetical by author\'s last name, hanging indent (second line indented), double-spaced between entries.',
@@ -1211,7 +1211,7 @@ export const COURSE_MODULES = [
         headers: ['Source Type', 'MLA Format'],
         rows: [
           ['Book', 'Surname, First Name. Title of Book. Publisher, Year.'],
-          ['Journal Article', 'Surname, First Name. "Title of Article." Journal Name, vol. X, no. Y, Year, pp. X–Y.'],
+          ['Journal Article', 'Surname, First Name. "Title of Article." Journal Name, vol. X, no. Y, Year, pp. X, Y.'],
           ['Website', 'Surname, First Name. "Title of Page." Website Name, Day Month Year, URL.'],
           ['Annual Report / Company Source', 'Company Name. Title of Report. Year. URL.'],
           ['No Author', '"Title of Article." Website Name, Day Month Year, URL.'],
@@ -1219,7 +1219,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'Use a citation generator (EasyBib or Scribbr\'s MLA generator) to format citations. Then double-check them manually — generators aren\'t perfect, especially for academic journal articles. This process saves hours. And because your EE Dump has every source link saved, you can generate citations whenever you\'re ready without losing track of what you read.',
+        text: 'Use a citation generator (EasyBib or Scribbr\'s MLA generator) to format citations. Then double-check them manually, generators aren\'t perfect, especially for academic journal articles. This process saves hours. And because your EE Dump has every source link saved, you can generate citations whenever you\'re ready without losing track of what you read.',
       },
       {
         type: 'heading',
@@ -1227,7 +1227,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'For quotes longer than 4 lines, use a block quote: indent the entire passage, single-space it, remove quotation marks, and place the citation after the final period. Minimise block quotes in your EE — they eat word count and examiners want YOUR analysis, not extended passages from someone else.',
+        text: 'For quotes longer than 4 lines, use a block quote: indent the entire passage, single-space it, remove quotation marks, and place the citation after the final period. Minimise block quotes in your EE, they eat word count and examiners want YOUR analysis, not extended passages from someone else.',
       },
       {
         type: 'paragraph',
@@ -1240,9 +1240,9 @@ export const COURSE_MODULES = [
       {
         type: 'list',
         items: [
-          'Label everything: figures get "Fig 1, Fig 2" — tables get "Table 1, Table 2"',
+          'Label everything: figures get "Fig 1, Fig 2", tables get "Table 1, Table 2"',
           'Captions go below figures and above tables (standard academic convention)',
-          'Reference them in your text — never drop a chart in without discussing it',
+          'Reference them in your text, never drop a chart in without discussing it',
           'Source your visuals. Your own: "Author\'s calculations based on [source]." Others: cite it.',
           'Every visual should serve a purpose. Examiners can tell when you\'re padding with graphics.',
         ],
@@ -1257,7 +1257,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Your school will run your EE through Turnitin or a similar plagiarism checker. Before submission, ask your supervisor if you can check your own report. Anything under 15–20% similarity is generally acceptable — some matching is inevitable with common phrases and properly cited quotes. If it\'s higher, identify what\'s flagged and paraphrase more thoroughly.',
+        text: 'Your school will run your EE through Turnitin or a similar plagiarism checker. Before submission, ask your supervisor if you can check your own report. Anything under 15, 20% similarity is generally acceptable, some matching is inevitable with common phrases and properly cited quotes. If it\'s higher, identify what\'s flagged and paraphrase more thoroughly.',
       },
       {
         type: 'heading',
@@ -1286,7 +1286,7 @@ export const COURSE_MODULES = [
         type: 'key-takeaway',
         items: [
           'Formatting = Criterion D = 4 marks entirely within your control',
-          'Times New Roman 12pt, double-spaced, left-aligned, 1-inch margins — non-negotiable',
+          'Times New Roman 12pt, double-spaced, left-aligned, 1-inch margins, non-negotiable',
           'Citations go after the closing quotation mark, before the period',
           'Run the 15-minute checklist before every submission',
           'Never cite sources you didn\'t actually find and verify yourself',
@@ -1298,7 +1298,7 @@ export const COURSE_MODULES = [
     id: 'module-10',
     number: '10',
     title: 'Writing a Killer Introduction & Conclusion',
-    tagline: 'Your first and last impression — make them count.',
+    tagline: 'Your first and last impression, make them count.',
     content: [
       {
         type: 'heading',
@@ -1312,12 +1312,12 @@ export const COURSE_MODULES = [
         },
         after: {
           label: 'Storytelling hook (A grade territory)',
-          text: '"In 1940, rationing boards across wartime Europe dictated what civilians could wear. Fabric was scarce, colours were drab, and fashion effectively ceased to exist. Eighty years later, a single company ships over 450 million garments per year, turning a runway trend into a store product in as few as two weeks — without maintaining a single fabric warehouse."',
+          text: '"In 1940, rationing boards across wartime Europe dictated what civilians could wear. Fabric was scarce, colours were drab, and fashion effectively ceased to exist. Eighty years later, a single company ships over 450 million garments per year, turning a runway trend into a store product in as few as two weeks, without maintaining a single fabric warehouse."',
         },
       },
       {
         type: 'callout',
-        text: 'Same topic. Same research question. One reads like a school assignment. The other reads like research. This module teaches you how to write the second one — every time.',
+        text: 'Same topic. Same research question. One reads like a school assignment. The other reads like research. This module teaches you how to write the second one, every time.',
       },
       {
         type: 'heading',
@@ -1325,7 +1325,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The type of hook that works best depends on your subject and topic. Choose the one that fits your RQ naturally — don\'t force a hook type that doesn\'t fit your topic.',
+        text: 'The type of hook that works best depends on your subject and topic. Choose the one that fits your RQ naturally, don\'t force a hook type that doesn\'t fit your topic.',
       },
       {
         type: 'icon-card',
@@ -1343,7 +1343,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'AlertTriangle',
         title: 'The Stakes Hook',
-        text: 'Opens by explaining why your topic matters right now — what\'s at stake, what\'s changing, what could be lost. Works best for: Environmental Science, Global Politics, Biology.',
+        text: 'Opens by explaining why your topic matters right now, what\'s at stake, what\'s changing, what could be lost. Works best for: Environmental Science, Global Politics, Biology.',
       },
       {
         type: 'icon-card',
@@ -1358,11 +1358,11 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Hook (2–3 sentences)', text: 'Open with one of the four hook types. Immediately capture attention and establish the stakes of your topic.' },
-          { title: 'Context (3–5 sentences)', text: 'Provide the background a reader would need to understand the significance of your topic. This is not your literature review — keep it brief and focused.' },
-          { title: 'The Problem (1–2 sentences)', text: 'Articulate the gap, tension, or question that your research addresses. Why does this question need answering?' },
+          { title: 'Hook (2, 3 sentences)', text: 'Open with one of the four hook types. Immediately capture attention and establish the stakes of your topic.' },
+          { title: 'Context (3, 5 sentences)', text: 'Provide the background a reader would need to understand the significance of your topic. This is not your literature review, keep it brief and focused.' },
+          { title: 'The Problem (1, 2 sentences)', text: 'Articulate the gap, tension, or question that your research addresses. Why does this question need answering?' },
           { title: 'Research Question (1 sentence)', text: 'State your RQ clearly and directly. Don\'t bury it.' },
-          { title: 'Signposting (2–3 sentences)', text: 'Brief indication of how you\'ll approach the question — what tools, methods, or structure you\'ll use.' },
+          { title: 'Signposting (2, 3 sentences)', text: 'Brief indication of how you\'ll approach the question, what tools, methods, or structure you\'ll use.' },
         ],
       },
       {
@@ -1371,17 +1371,17 @@ export const COURSE_MODULES = [
       },
       {
         type: 'warning-box',
-        text: 'The most common conclusion mistake is restating your introduction. Your conclusion should synthesise — pulling together everything your analysis found and arriving at a clear position. It should feel like the destination your entire essay has been building toward.',
+        text: 'The most common conclusion mistake is restating your introduction. Your conclusion should synthesise, pulling together everything your analysis found and arriving at a clear position. It should feel like the destination your entire essay has been building toward.',
       },
       {
         type: 'formula-box',
         title: 'Conclusion Framework',
         formula: 'Direct Answer + Key Evidence + Limitations + Future Research',
-        description: 'The direct answer comes first. Don\'t hedge or be vague — commit to a position. You\'ve done the research. State what you found.',
+        description: 'The direct answer comes first. Don\'t hedge or be vague, commit to a position. You\'ve done the research. State what you found.',
       },
       {
         type: 'paragraph',
-        text: 'A common student error is writing a conclusion that says "it is unclear whether..." or "more research is needed to determine..." as the primary finding. These phrases belong in your limitations paragraph — not as your headline conclusion. Your headline conclusion should be decisive.',
+        text: 'A common student error is writing a conclusion that says "it is unclear whether..." or "more research is needed to determine..." as the primary finding. These phrases belong in your limitations paragraph, not as your headline conclusion. Your headline conclusion should be decisive.',
       },
       {
         type: 'tip-box',
@@ -1390,10 +1390,10 @@ export const COURSE_MODULES = [
       {
         type: 'key-takeaway',
         items: [
-          'Choose a hook type that fits your subject — storytelling, contradiction, stakes, or gap',
+          'Choose a hook type that fits your subject, storytelling, contradiction, stakes, or gap',
           'Your introduction should make the examiner think "I want to see what they found"',
           'Follow the five-part structure: hook → context → problem → RQ → signposting',
-          'Your conclusion directly answers your RQ — no new information, no hedging',
+          'Your conclusion directly answers your RQ, no new information, no hedging',
           'Conclusion = direct answer + evidence summary + limitations + future research',
         ],
       },
@@ -1408,21 +1408,21 @@ export const COURSE_MODULES = [
       {
         type: 'stat-highlight',
         stat: '6',
-        label: 'Marks available — Criterion E, assessed separately',
+        label: 'Marks available, Criterion E, assessed separately',
       },
       {
         type: 'stat-highlight',
         stat: '3',
-        label: 'Reflections required — early, mid, and final stage',
+        label: 'Reflections required, early, mid, and final stage',
       },
       {
         type: 'stat-highlight',
         stat: '500',
-        label: 'Words maximum per reflection — keep it focused',
+        label: 'Words maximum per reflection, keep it focused',
       },
       {
         type: 'paragraph',
-        text: 'The RPPF — Reflections on Planning and Progress Form — is assessed as Criterion E and represents 6 of your 34 marks. It\'s also the most misunderstood component of the EE. Most students either write it in 20 minutes the night before submission, or panic and overcomplicate it. Both approaches miss the mark.',
+        text: 'The RPPF, Reflections on Planning and Progress Form, is assessed as Criterion E and represents 6 of your 34 marks. It\'s also the most misunderstood component of the EE. Most students either write it in 20 minutes the night before submission, or panic and overcomplicate it. Both approaches miss the mark.',
       },
       {
         type: 'image',
@@ -1432,7 +1432,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The IB describes the RPPF as a document where "students reflect on their engagement with the research process, consider the effectiveness of their choices, and re-examine their ideas and decide whether changes are needed." That\'s the brief. The key word is "engagement" — the IB wants to know that your EE came from genuine intellectual investment, not from going through the motions.',
+        text: 'The IB describes the RPPF as a document where "students reflect on their engagement with the research process, consider the effectiveness of their choices, and re-examine their ideas and decide whether changes are needed." That\'s the brief. The key word is "engagement", the IB wants to know that your EE came from genuine intellectual investment, not from going through the motions.',
       },
       {
         type: 'heading',
@@ -1442,7 +1442,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Target',
         title: 'Challenges',
-        text: 'What obstacles did you encounter during research and writing? Be specific — "I couldn\'t find enough sources" is vague. "My initial methodology of X proved inadequate for Y reason" is specific.',
+        text: 'What obstacles did you encounter during research and writing? Be specific, "I couldn\'t find enough sources" is vague. "My initial methodology of X proved inadequate for Y reason" is specific.',
       },
       {
         type: 'icon-card',
@@ -1454,7 +1454,7 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Zap',
         title: 'Adaptation',
-        text: 'What changed during your EE process — your RQ, your methodology, your argument? How did you respond? Showing adaptation is evidence of genuine engagement.',
+        text: 'What changed during your EE process, your RQ, your methodology, your argument? How did you respond? Showing adaptation is evidence of genuine engagement.',
       },
       {
         type: 'icon-card',
@@ -1469,18 +1469,18 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Reflection 1 — Early Stage', text: 'Why you chose this topic. How you arrived at your RQ. What challenges you faced in focusing it. What your supervisor suggested and how you responded. What your initial expectations for the research were.' },
-          { title: 'Reflection 2 — Mid Stage', text: 'How your understanding has evolved from your initial expectations. Whether you adjusted your RQ (and why). What surprised you during research. What methodology challenges you encountered.' },
-          { title: 'Reflection 3 — Final Stage', text: 'What you\'re most proud of in the finished essay. What you would do differently if starting again. How this process changed the way you think about research in your subject area.' },
+          { title: 'Reflection 1, Early Stage', text: 'Why you chose this topic. How you arrived at your RQ. What challenges you faced in focusing it. What your supervisor suggested and how you responded. What your initial expectations for the research were.' },
+          { title: 'Reflection 2, Mid Stage', text: 'How your understanding has evolved from your initial expectations. Whether you adjusted your RQ (and why). What surprised you during research. What methodology challenges you encountered.' },
+          { title: 'Reflection 3, Final Stage', text: 'What you\'re most proud of in the finished essay. What you would do differently if starting again. How this process changed the way you think about research in your subject area.' },
         ],
       },
       {
         type: 'heading',
-        text: "John's Natural Thought Process — and How to Write It",
+        text: "John's Natural Thought Process, and How to Write It",
       },
       {
         type: 'paragraph',
-        text: 'Let\'s use our earlier example to see what the RPPF thinking process actually looks like — and then how to formalise it.',
+        text: 'Let\'s use our earlier example to see what the RPPF thinking process actually looks like, and then how to formalise it.',
       },
       {
         type: 'paragraph',
@@ -1488,32 +1488,32 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: '"Okay, so here we talk about social media and election outcomes. Can we be more specific? When I say social media, I\'m talking about the people who produce content and how that affects user decision-making.\n\nSo basically how users felt after reacting to creator content. But how do we measure that? Is it even possible? Something like sentiment?\n\nWell, we could use interactions — like view counts? But that doesn\'t work, because anything can pop up on your feed without reflecting your preferences.\n\nWhat about likes? Likes can definitely account for some sentiment.\n\nSo could we find a connection between likes, engagement metrics, and what someone actually voted for? How would we get that voting data? Someone mentioned election results are released publicly after every election.\n\nSo I need some tool to analyse both sets of data together. Let me open my Maths textbook!"',
+        text: '"Okay, so here we talk about social media and election outcomes. Can we be more specific? When I say social media, I\'m talking about the people who produce content and how that affects user decision-making.\n\nSo basically how users felt after reacting to creator content. But how do we measure that? Is it even possible? Something like sentiment?\n\nWell, we could use interactions, like view counts? But that doesn\'t work, because anything can pop up on your feed without reflecting your preferences.\n\nWhat about likes? Likes can definitely account for some sentiment.\n\nSo could we find a connection between likes, engagement metrics, and what someone actually voted for? How would we get that voting data? Someone mentioned election results are released publicly after every election.\n\nSo I need some tool to analyse both sets of data together. Let me open my Maths textbook!"',
       },
       {
         type: 'paragraph',
-        text: 'That\'s the genuine thought process. Your RPPF is this, but formalised — the intellectual journey behind your work. Here\'s how you would write it:',
+        text: 'That\'s the genuine thought process. Your RPPF is this, but formalised, the intellectual journey behind your work. Here\'s how you would write it:',
       },
       {
         type: 'quote-highlight',
-        text: '"I wanted the strongest possible RQ to analyse the correlation I was interested in between social media and voter decision-making. I initially formulated the RQ \'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections.\' I believed it was a solid starting point and proposed it to my supervisor. My supervisor argued that its lack of specificity around what social media element I was measuring could derail my analysis later. Though initially I didn\'t see this as problematic, I spent time formulating alternative RQs — exploring whether sentiment, engagement metrics, or content reach would be the most methodologically tractable measure — and eventually arrived at my final RQ through this refinement process..."',
-        attribution: 'Sample Reflection 1 — turning your natural thought process into formal academic language',
+        text: '"I wanted the strongest possible RQ to analyse the correlation I was interested in between social media and voter decision-making. I initially formulated the RQ \'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections.\' I believed it was a solid starting point and proposed it to my supervisor. My supervisor argued that its lack of specificity around what social media element I was measuring could derail my analysis later. Though initially I didn\'t see this as problematic, I spent time formulating alternative RQs, exploring whether sentiment, engagement metrics, or content reach would be the most methodologically tractable measure, and eventually arrived at my final RQ through this refinement process..."',
+        attribution: 'Sample Reflection 1, turning your natural thought process into formal academic language',
       },
       {
         type: 'paragraph',
-        text: 'You\'re documenting the same thinking process — the challenges, why they arose, and how you approached them. The RPPF demonstrates your problem-solving process and intellectual engagement to the examiner. It\'s the one component where your essay\'s authenticity is directly assessed.',
+        text: 'You\'re documenting the same thinking process, the challenges, why they arose, and how you approached them. The RPPF demonstrates your problem-solving process and intellectual engagement to the examiner. It\'s the one component where your essay\'s authenticity is directly assessed.',
       },
       {
         type: 'tip-box',
-        text: 'Write your reflections as you go — not all at the end. Reflection 1 at the start of your research. Reflection 2 after your first draft. Reflection 3 after your final edit. The detail you can include is much richer when events are recent.',
+        text: 'Write your reflections as you go, not all at the end. Reflection 1 at the start of your research. Reflection 2 after your first draft. Reflection 3 after your final edit. The detail you can include is much richer when events are recent.',
       },
       {
         type: 'key-takeaway',
         items: [
-          'The RPPF is worth 6 marks — the equivalent of Criterion A or Criterion C',
+          'The RPPF is worth 6 marks, the equivalent of Criterion A or Criterion C',
           'Write three reflections at the right time: early, mid, and final stage',
           'Show the process: challenge → what you tried → what you learned → how you adapted',
-          'Be specific about what changed and why — generic reflections score poorly',
+          'Be specific about what changed and why, generic reflections score poorly',
           'Write each reflection at the time, not all at the end before submission',
         ],
       },
@@ -1527,7 +1527,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Let\'s be direct. You\'re going to use AI. I know it, your teachers know it, the IB knows it. The question isn\'t whether you\'ll use it — it\'s whether you\'ll use it in a way that helps you produce better work, or in a way that produces work that isn\'t yours and isn\'t good.',
+        text: 'Let\'s be direct. You\'re going to use AI. I know it, your teachers know it, the IB knows it. The question isn\'t whether you\'ll use it, it\'s whether you\'ll use it in a way that helps you produce better work, or in a way that produces work that isn\'t yours and isn\'t good.',
       },
       {
         type: 'before-after',
@@ -1542,7 +1542,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'quote-highlight',
-        text: "AI is not your writer. It's your thinking partner. The second you let AI write your EE, you lose everything that makes an A-grade essay — your voice, your originality, your authentic engagement.",
+        text: "AI is not your writer. It's your thinking partner. The second you let AI write your EE, you lose everything that makes an A-grade essay, your voice, your originality, your authentic engagement.",
       },
       {
         type: 'heading',
@@ -1578,7 +1578,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'This is where AI is genuinely most useful — not to generate a research question, but to stress-test the one you already have. After you\'ve drafted your RQ (following the process in Module 4), bring it to AI for interrogation.',
+        text: 'This is where AI is genuinely most useful, not to generate a research question, but to stress-test the one you already have. After you\'ve drafted your RQ (following the process in Module 4), bring it to AI for interrogation.',
       },
       {
         type: 'heading',
@@ -1590,7 +1590,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "I'm an IB student starting my Extended Essay. I'm interested in [YOUR INTEREST — e.g., video games, fashion, basketball, cooking]. My strongest HL subjects are [YOUR HL SUBJECTS].\n\nDon't give me a research question. Instead, give me 5 creative angles where my interest could intersect with my strongest subject(s) in a way that's specific enough for a 4,000-word research paper. For each angle, explain what makes it intellectually interesting and what kind of data or analysis might be possible.",
+        text: "I'm an IB student starting my Extended Essay. I'm interested in [YOUR INTEREST, e.g., video games, fashion, basketball, cooking]. My strongest HL subjects are [YOUR HL SUBJECTS].\n\nDon't give me a research question. Instead, give me 5 creative angles where my interest could intersect with my strongest subject(s) in a way that's specific enough for a 4,000-word research paper. For each angle, explain what makes it intellectually interesting and what kind of data or analysis might be possible.",
       },
       {
         type: 'heading',
@@ -1614,7 +1614,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "My Extended Essay research question is: \"[YOUR RQ]\"\n\nAsk me \"so what?\" five times — each time digging deeper into why this research matters, why anyone should care, and what new understanding it could contribute to the academic conversation. After the five \"so whats\", tell me whether my RQ has enough depth for a 4,000-word research paper or if I need to rethink the framing.",
+        text: "My Extended Essay research question is: \"[YOUR RQ]\"\n\nAsk me \"so what?\" five times, each time digging deeper into why this research matters, why anyone should care, and what new understanding it could contribute to the academic conversation. After the five \"so whats\", tell me whether my RQ has enough depth for a 4,000-word research paper or if I need to rethink the framing.",
       },
       {
         type: 'heading',
@@ -1642,7 +1642,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "I'm writing my IB Extended Essay. My RQ is: \"[YOUR RQ]\"\n\nHere are the main topics and sources I've gathered so far:\n[PASTE YOUR EE DUMP SUMMARY — just the subtopics and key points]\n\nWhat significant angles or perspectives am I missing? What would an examiner expect to see that isn't covered here? Are there any obvious counterarguments or limitations I should be engaging with?",
+        text: "I'm writing my IB Extended Essay. My RQ is: \"[YOUR RQ]\"\n\nHere are the main topics and sources I've gathered so far:\n[PASTE YOUR EE DUMP SUMMARY, just the subtopics and key points]\n\nWhat significant angles or perspectives am I missing? What would an examiner expect to see that isn't covered here? Are there any obvious counterarguments or limitations I should be engaging with?",
       },
       {
         type: 'heading',
@@ -1658,7 +1658,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'warning-box',
-        text: 'NEVER ask AI to give you sources, citations, or references. It will hallucinate them — making up authors, journals, and publication years that look real but don\'t exist. Every source in your EE must be something you found and verified yourself on Google or Google Scholar.',
+        text: 'NEVER ask AI to give you sources, citations, or references. It will hallucinate them, making up authors, journals, and publication years that look real but don\'t exist. Every source in your EE must be something you found and verified yourself on Google or Google Scholar.',
       },
       {
         type: 'heading',
@@ -1686,7 +1686,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "Here's the section-by-section breakdown of my Extended Essay:\n\n[LIST EACH SECTION AND WHAT IT COVERS IN 1–2 SENTENCES]\n\nDoes this order make logical sense? Would a reader moving from Section 1 to the Conclusion follow a clear, building argument? If not, suggest a better order and explain why.",
+        text: "Here's the section-by-section breakdown of my Extended Essay:\n\n[LIST EACH SECTION AND WHAT IT COVERS IN 1, 2 SENTENCES]\n\nDoes this order make logical sense? Would a reader moving from Section 1 to the Conclusion follow a clear, building argument? If not, suggest a better order and explain why.",
       },
       {
         type: 'heading',
@@ -1694,7 +1694,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'This is where AI becomes genuinely powerful as a tool — using it as a tough critic before your supervisor or examiner reads your work.',
+        text: 'This is where AI becomes genuinely powerful as a tool, using it as a tough critic before your supervisor or examiner reads your work.',
       },
       {
         type: 'heading',
@@ -1710,7 +1710,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: '"Do not be nice. Be accurate." — this instruction is the most important part of Prompt 9. Without it, AI defaults to validation. With it, you get genuine critique. This single prompt is the most valuable in this entire module.',
+        text: '"Do not be nice. Be accurate.", this instruction is the most important part of Prompt 9. Without it, AI defaults to validation. With it, you get genuine critique. This single prompt is the most valuable in this entire module.',
       },
       {
         type: 'heading',
@@ -1726,7 +1726,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "Review this section of my Extended Essay for academic tone:\n\n\"[PASTE YOUR SECTION]\"\n\nIdentify any instances of: casual language, inappropriate first person, vague claims without evidence, repetitive phrasing, or sentences that read like a blog post rather than an academic paper.\n\nFor each instance, quote the problematic phrase and give me a more academic alternative. But don't make it robotic — it should still be clear and readable.",
+        text: "Review this section of my Extended Essay for academic tone:\n\n\"[PASTE YOUR SECTION]\"\n\nIdentify any instances of: casual language, inappropriate first person, vague claims without evidence, repetitive phrasing, or sentences that read like a blog post rather than an academic paper.\n\nFor each instance, quote the problematic phrase and give me a more academic alternative. But don't make it robotic, it should still be clear and readable.",
       },
       {
         type: 'heading',
@@ -1742,11 +1742,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'callout',
-        text: "I'm writing my RPPF (Reflections on Planning and Progress Form) for my IB Extended Essay. Here's what happened during my EE process so far:\n\n[DESCRIBE YOUR JOURNEY — challenges you faced, changes you made, things that surprised you, what worked and what didn't]\n\nDon't write my reflection for me. Instead, ask me 10 specific questions about my experience that would help me write a more thoughtful, detailed reflection. Focus on: intellectual growth, challenges overcome, methodology decisions, and how my thinking about the topic evolved.",
+        text: "I'm writing my RPPF (Reflections on Planning and Progress Form) for my IB Extended Essay. Here's what happened during my EE process so far:\n\n[DESCRIBE YOUR JOURNEY, challenges you faced, changes you made, things that surprised you, what worked and what didn't]\n\nDon't write my reflection for me. Instead, ask me 10 specific questions about my experience that would help me write a more thoughtful, detailed reflection. Focus on: intellectual growth, challenges overcome, methodology decisions, and how my thinking about the topic evolved.",
       },
       {
         type: 'warning-box',
-        text: 'Do NOT let AI write your RPPF. Your reflections should be 100% your own words describing your real research journey. Use AI to help you identify what\'s worth reflecting on — not to generate the reflection itself.',
+        text: 'Do NOT let AI write your RPPF. Your reflections should be 100% your own words describing your real research journey. Use AI to help you identify what\'s worth reflecting on, not to generate the reflection itself.',
       },
       {
         type: 'heading',
@@ -1754,24 +1754,24 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Think of AI like a training partner in a gym. Your training partner doesn\'t do the reps for you — if they did, you wouldn\'t get stronger. They spot you, push you when you want to give up, and correct your form when it\'s off. That\'s exactly what AI should be doing in your EE process.',
+        text: 'Think of AI like a training partner in a gym. Your training partner doesn\'t do the reps for you, if they did, you wouldn\'t get stronger. They spot you, push you when you want to give up, and correct your form when it\'s off. That\'s exactly what AI should be doing in your EE process.',
       },
       {
         type: 'list',
         items: [
           'Don\'t ask AI to paraphrase your sources. That\'s your job. If you can\'t put a source in your own words, you don\'t understand it well enough to use it in your argument.',
           'Don\'t use AI to "improve" or "rewrite" your paragraphs. The moment AI touches your actual writing, it\'s no longer your essay. Use it for critique; make the improvements yourself.',
-          'Don\'t screenshot AI outputs and submit them. The point is to learn from the feedback and produce better work — not to screenshot responses as if they\'re the work itself.',
+          'Don\'t screenshot AI outputs and submit them. The point is to learn from the feedback and produce better work, not to screenshot responses as if they\'re the work itself.',
         ],
       },
       {
         type: 'key-takeaway',
         items: [
-          'AI is your thinking partner, not your writer — like a training partner who spots you',
-          'Always start with YOUR ideas — bring your drafts and attempts first',
+          'AI is your thinking partner, not your writer, like a training partner who spots you',
+          'Always start with YOUR ideas, bring your drafts and attempts first',
           'Use the 12 prompts across 5 stages: brainstorm, research, structure, review, RPPF',
-          'Never paste AI output into your EE — use it to think better, then write yourself',
-          '"Do not be nice. Be accurate." — the instruction that unlocks genuine AI critique',
+          'Never paste AI output into your EE, use it to think better, then write yourself',
+          '"Do not be nice. Be accurate.", the instruction that unlocks genuine AI critique',
         ],
       },
     ],
@@ -1784,22 +1784,22 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'I ran my actual 32/34 Extended Essay through Claude Opus — the most capable AI model available — and asked for a full examiner-style analysis of what worked, what didn\'t, and what would have pushed the score higher. Then I wrote my real commentary alongside it: agreeing where AI was right, pushing back where it was wrong, and giving you the behind-the-scenes context that no AI could ever know.',
+        text: 'I ran my actual 32/34 Extended Essay through Claude Opus, the most capable AI model available, and asked for a full examiner-style analysis of what worked, what didn\'t, and what would have pushed the score higher. Then I wrote my real commentary alongside it: agreeing where AI was right, pushing back where it was wrong, and giving you the behind-the-scenes context that no AI could ever know.',
       },
       {
         type: 'stat-highlight',
         stat: '32/34',
-        label: 'Final score — ZARA competitive advantage analysis',
+        label: 'Final score, ZARA competitive advantage analysis',
       },
       {
         type: 'stat-highlight',
         stat: '6/6',
-        label: 'Criterion A — Knowledge & Understanding',
+        label: 'Criterion A, Knowledge & Understanding',
       },
       {
         type: 'stat-highlight',
         stat: '5/6',
-        label: 'Criterion B — Application & Analysis',
+        label: 'Criterion B, Application & Analysis',
       },
       {
         type: 'callout',
@@ -1814,14 +1814,14 @@ export const COURSE_MODULES = [
         headers: ['What AI Said', 'My Real Take'],
         rows: [
           [
-            '"The RQ is evaluative and specific but could be sharper — adding \'fast fashion retail market\' would make the scope clearer."',
-            '"Fast fashion retail market" WAS my original RQ. My supervisor told me to remove it to broaden the scope. Lesson: supervisor feedback and AI feedback will sometimes conflict. Know which battles are worth fighting — and understand that your supervisor knows the marking team better than any AI does.',
+            '"The RQ is evaluative and specific but could be sharper, adding \'fast fashion retail market\' would make the scope clearer."',
+            '"Fast fashion retail market" WAS my original RQ. My supervisor told me to remove it to broaden the scope. Lesson: supervisor feedback and AI feedback will sometimes conflict. Know which battles are worth fighting, and understand that your supervisor knows the marking team better than any AI does.',
           ],
         ],
       },
       {
         type: 'heading',
-        text: '2. Structure — The Overlap Problem',
+        text: '2. Structure, The Overlap Problem',
       },
       {
         type: 'comparison-table',
@@ -1829,7 +1829,7 @@ export const COURSE_MODULES = [
         rows: [
           [
             '"Sections IV and V cover overlapping ground. The ZARA vs H&M comparison appears in both analysis and discussion, creating redundancy."',
-            'The AI is right. I knew far more about ZARA than H&M — so ZARA dominated both sections. I should have done standalone ZARA analysis in Section IV, then comparative analysis in Section V. If you\'re doing a comparative EE, commit to the comparison earlier in your structure.',
+            'The AI is right. I knew far more about ZARA than H&M, so ZARA dominated both sections. I should have done standalone ZARA analysis in Section IV, then comparative analysis in Section V. If you\'re doing a comparative EE, commit to the comparison earlier in your structure.',
           ],
         ],
       },
@@ -1843,27 +1843,27 @@ export const COURSE_MODULES = [
         rows: [
           [
             '"The essay promises BCG Matrix and 4 P\'s analysis in the methodology but never fully delivers on either. This creates an expectation gap."',
-            'After supervisor feedback, I swapped two qualitative tools for financial ratio analysis — and the quantitative work became the strongest part of my essay. I should have updated my methodology section to reflect that change. The lesson: if you change your tools mid-essay, update your methodology. Don\'t promise tools you don\'t deliver.',
+            'After supervisor feedback, I swapped two qualitative tools for financial ratio analysis, and the quantitative work became the strongest part of my essay. I should have updated my methodology section to reflect that change. The lesson: if you change your tools mid-essay, update your methodology. Don\'t promise tools you don\'t deliver.',
           ],
         ],
       },
       {
         type: 'heading',
-        text: '4. SHEIN — The Elephant in the Room',
+        text: '4. SHEIN, The Elephant in the Room',
       },
       {
         type: 'comparison-table',
         headers: ['What AI Said', 'My Real Take'],
         rows: [
           [
-            '"The essay includes SHEIN in a market share chart but barely discusses them — a missed opportunity given SHEIN\'s disruption of ZARA\'s market position."',
-            'I deliberately excluded SHEIN from detailed analysis. Their market strategy is fundamentally different from legacy fast fashion — analysing it properly would have required a different methodology and would have taken the essay off-topic. I included the chart for context, not for analysis. Lesson: be disciplined about your RQ\'s scope. Not every relevant data point needs to be analysed.',
+            '"The essay includes SHEIN in a market share chart but barely discusses them, a missed opportunity given SHEIN\'s disruption of ZARA\'s market position."',
+            'I deliberately excluded SHEIN from detailed analysis. Their market strategy is fundamentally different from legacy fast fashion, analysing it properly would have required a different methodology and would have taken the essay off-topic. I included the chart for context, not for analysis. Lesson: be disciplined about your RQ\'s scope. Not every relevant data point needs to be analysed.',
           ],
         ],
       },
       {
         type: 'heading',
-        text: '5. Proofreading — The Easiest Marks Left Behind',
+        text: '5. Proofreading, The Easiest Marks Left Behind',
       },
       {
         type: 'comparison-table',
@@ -1884,7 +1884,7 @@ export const COURSE_MODULES = [
         headers: ['What AI Said', 'My Real Take'],
         rows: [
           [
-            '"Strong overall (46+ sources) but mixed quality — a Prezi presentation appears alongside peer-reviewed journals. The range is impressive; the quality control is inconsistent."',
+            '"Strong overall (46+ sources) but mixed quality, a Prezi presentation appears alongside peer-reviewed journals. The range is impressive; the quality control is inconsistent."',
             'Before final submission, do a 20-minute bibliography review. For every weak source, find a more credible equivalent. 46 sources with inconsistent quality is worse than 30 sources with uniform academic quality. Your bibliography is the first thing a discerning examiner scans.',
           ],
         ],
@@ -1895,7 +1895,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'tip-box',
-        text: 'AI analysis is genuinely useful — it identified real weaknesses in my essay. But AI doesn\'t know the full story: the supervisor conversations, the methodological trade-offs, the deliberate scope decisions. Use it to critique hard, then apply your own judgment. Not every suggestion is worth following.',
+        text: 'AI analysis is genuinely useful, it identified real weaknesses in my essay. But AI doesn\'t know the full story: the supervisor conversations, the methodological trade-offs, the deliberate scope decisions. Use it to critique hard, then apply your own judgment. Not every suggestion is worth following.',
       },
       {
         type: 'quote-highlight',
@@ -1904,11 +1904,11 @@ export const COURSE_MODULES = [
       {
         type: 'key-takeaway',
         items: [
-          'AI analysis is useful but doesn\'t know your full context — apply your judgment',
+          'AI analysis is useful but doesn\'t know your full context, apply your judgment',
           'If you change your methodology mid-essay, update your methodology section immediately',
-          'Stay disciplined about your RQ\'s scope — not every relevant data point needs analysis',
+          'Stay disciplined about your RQ\'s scope, not every relevant data point needs analysis',
           'Proofread. One 15-minute pass is the easiest mark improvement available to you',
-          'Review your bibliography before submission — 30 strong sources beats 50 inconsistent ones',
+          'Review your bibliography before submission, 30 strong sources beats 50 inconsistent ones',
         ],
       },
     ],
@@ -1921,7 +1921,7 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'paragraph',
-        text: 'Every template here is built from the system that produced a 32/34 and designed around the research process covered in this resource lab. They\'re not generic — they\'re specific to the EE Academy method, and they work in sequence.',
+        text: 'Every template here is built from the system that produced a 32/34 and designed around the research process covered in this resource lab. They\'re not generic, they\'re specific to the EE Academy method, and they work in sequence.',
       },
       {
         type: 'heading',
@@ -1932,7 +1932,7 @@ export const COURSE_MODULES = [
         steps: [
           { title: '1. Research Question Worksheet', text: 'Brainstorm, test, and refine your RQ using the Venn diagram framework, the John method, and the AI stress-test prompts. Start here.' },
           { title: '2. EE Dump Template', text: 'Your research home base, organised by 5 subtopics. No word limit. No such thing as too much information. Source link after every entry.' },
-          { title: '3. Source Tracking Sheet', text: 'Log every source as you research — core claim, evidence or methodology used, limitation or bias identified.' },
+          { title: '3. Source Tracking Sheet', text: 'Log every source as you research, core claim, evidence or methodology used, limitation or bias identified.' },
           { title: '4. EE Structure Template', text: 'Turn your Dump into a real essay structure mapped directly to the assessment criteria. Section by section, criterion by criterion.' },
           { title: '5. Literature Review Template', text: 'Organise your sources with claims, evidence, and limitations alongside each one. Forces critical evaluation instead of summarising.' },
           { title: '6. Weekly Planning Timeline', text: 'Reverse-engineer your submission deadline into weekly tasks. Know exactly what needs to happen each week.' },
@@ -1952,19 +1952,19 @@ export const COURSE_MODULES = [
         type: 'icon-card',
         icon: 'Layout',
         title: 'EE Planner',
-        text: 'Interactive timeline tool that breaks your EE into weekly milestones with deadlines and progress tracking — linked to your actual submission date.',
+        text: 'Interactive timeline tool that breaks your EE into weekly milestones with deadlines and progress tracking, linked to your actual submission date.',
       },
       {
         type: 'icon-card',
         icon: 'Clipboard',
         title: 'EE Dump Workspace',
-        text: 'Interactive research organisation tool — add sources by subtopic with source tracking built in. The digital version of your Dump document.',
+        text: 'Interactive research organisation tool, add sources by subtopic with source tracking built in. The digital version of your Dump document.',
       },
       {
         type: 'icon-card',
         icon: 'BookOpen',
         title: 'Study Calendar',
-        text: 'Schedule your EE work weeks alongside your other IB commitments — IA deadlines, exams, CAS hours. See the full picture at once.',
+        text: 'Schedule your EE work weeks alongside your other IB commitments, IA deadlines, exams, CAS hours. See the full picture at once.',
       },
       {
         type: 'callout',
@@ -1976,7 +1976,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'You now have everything you need. The system, the mindset, the frameworks, the tools, the templates, and a real example of what a 32/34 essay looks like from the inside — including where it fell short.',
+        text: 'You now have everything you need. The system, the mindset, the frameworks, the tools, the templates, and a real example of what a 32/34 essay looks like from the inside, including where it fell short.',
       },
       {
         type: 'quote-highlight',
