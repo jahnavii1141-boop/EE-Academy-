@@ -120,13 +120,37 @@ function day7Html(email) {
     </div>`
 }
 
+// Common disposable / temp-mail domains. Blocks the bulk of junk signups
+// without an external API. Add to this list as new ones show up in your data.
+const DISPOSABLE_DOMAINS = new Set([
+  'mailinator.com', 'guerrillamail.com', 'guerrillamailblock.com', 'sharklasers.com',
+  '10minutemail.com', '10minutemail.net', 'tempmail.com', 'temp-mail.org', 'tempmail.net',
+  'throwawaymail.com', 'yopmail.com', 'getnada.com', 'nada.email', 'trashmail.com',
+  'dispostable.com', 'maildrop.cc', 'fakeinbox.com', 'mintemail.com', 'mohmal.com',
+  'emailondeck.com', 'spamgourmet.com', 'mailnesia.com', 'tempinbox.com', 'mailcatch.com',
+  'discard.email', 'einrot.com', 'fakemailgenerator.com', 'tempr.email', 'mailto.plus',
+  '1secmail.com', '1secmail.org', '1secmail.net', 'inboxkitten.com', 'mailsac.com',
+  'moakt.com', 'tmail.ws', 'tmpmail.org', 'burnermail.io', 'cuvox.de', 'dayrep.com',
+  'wegwerfemail.de', 'trbvm.com', 'byom.de', 'spam4.me', 'grr.la', 'pokemail.net',
+])
+
+function validateEmail(raw) {
+  const email = String(raw || '').trim().toLowerCase()
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return { ok: false }
+  const domain = email.split('@')[1]
+  if (domain.length < 4 || DISPOSABLE_DOMAINS.has(domain)) return { ok: false }
+  return { ok: true, email }
+}
+
 export async function POST(request) {
   try {
-    const { email, source = 'unknown' } = await request.json()
+    const { email: rawEmail, source = 'unknown' } = await request.json()
 
-    if (!email || !email.includes('@')) {
-      return Response.json({ error: 'Invalid email' }, { status: 400 })
+    const check = validateEmail(rawEmail)
+    if (!check.ok) {
+      return Response.json({ error: 'Please use a valid, non-temporary email.' }, { status: 400 })
     }
+    const email = check.email
 
     const apiKey = process.env.RESEND_API_KEY
     if (!apiKey) {
