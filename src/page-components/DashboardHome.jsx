@@ -33,7 +33,6 @@ const LIB_RESOURCES = [
   { icon: BookMarked, label: 'Official IB guide', sub: 'The complete 124-page IB guide, in full.',               href: '/dashboard/ib-guide' },
   { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',           href: '/guides' },
   { icon: PenLine,    label: 'Essay editor',      sub: 'Write your draft with a live IB word count.',            href: '/dashboard/essay' },
-  { icon: Calendar,   label: 'Planner',           sub: 'Map deadlines and milestones to submission day.',        href: '/dashboard/planner' },
 ]
 
 const CARD_BORDER = '0.5px solid #ececec'
