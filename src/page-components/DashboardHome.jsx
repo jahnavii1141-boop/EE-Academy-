@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight, Lock, PenLine } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight, Lock, PenLine, GitBranch } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import { COURSE_CATALOG } from '@/data/courseCatalog'
 
@@ -26,9 +26,10 @@ const LIB_STATS = [
 ]
 
 const LIB_RESOURCES = [
+  { icon: GitBranch,  label: 'EE Pathway Finder', sub: 'Find your pathway and shape your RQ, step by step.',     href: '/dashboard/tools' },
   { icon: Database,   label: 'EE Dump',          sub: 'Collect sources, auto-build your bibliography.',         href: '/dashboard/dump' },
   { icon: FileText,   label: 'Subject workbooks', sub: 'Planning portfolios for 16 subjects, ready to print.',   href: '/dashboard/templates' },
-  { icon: Award,      label: 'Example essay',     sub: 'A real 32/34 Extended Essay — first 17 pages.',          href: '/dashboard/sample-ee' },
+  { icon: Award,      label: 'Example essay',     sub: 'A real 32/34 Extended Essay, first 17 pages.',           href: '/dashboard/sample-ee' },
   { icon: BookMarked, label: 'Official IB guide', sub: 'The complete 124-page IB guide, in full.',               href: '/dashboard/ib-guide' },
   { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',           href: '/guides' },
   { icon: PenLine,    label: 'Essay editor',      sub: 'Write your draft with a live IB word count.',            href: '/dashboard/essay' },
