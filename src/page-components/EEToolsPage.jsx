@@ -1,4 +1,5 @@
 'use client'
+import EEPathwayFinder from '../components/tools/EEPathwayFinder'
 import DataCurveFitting from '../components/tools/DataCurveFitting'
 import RPPFCoach from '../components/tools/RPPFCoach'
 
@@ -7,7 +8,20 @@ export default function EEToolsPage() {
     <div className="max-w-4xl mx-auto px-4 py-8">
       <div className="mb-8">
         <h1 className="font-serif text-2xl font-bold text-navy mb-1">IB EE tools</h1>
-        <p className="text-sm text-ink-soft">Interactive utilities for data analysis and RPPF reflection writing.</p>
+        <p className="text-sm text-ink-soft">Interactive utilities to plan, analyse, and reflect on your Extended Essay.</p>
+      </div>
+
+      <div className="bg-white border border-parchment rounded-2xl p-6 mb-6">
+        <div className="mb-5 pb-4 border-b border-parchment">
+          <span className="text-[11px] font-medium text-steel uppercase tracking-widest">Module 3</span>
+          <h2 className="font-serif text-lg font-bold text-navy mt-0.5">
+            EE Pathway Finder
+          </h2>
+          <p className="text-[13px] text-ink-soft mt-1">
+            Answer a few questions to work out whether your topic suits a subject-focused or interdisciplinary EE, then turn it into a focused research question.
+          </p>
+        </div>
+        <EEPathwayFinder />
       </div>
 
       <div className="bg-white border border-parchment rounded-2xl p-6 mb-6">
