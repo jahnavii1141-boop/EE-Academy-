@@ -208,11 +208,11 @@ export const COURSE_MODULES = [
         type: 'comparison-table',
         headers: ['Grade', 'Mark Range', 'What It Means'],
         rows: [
-          ['A', '27, 34', 'Excellent, top-tier research, analysis, and presentation'],
-          ['B', '22, 26', 'Good, solid work with some areas for improvement'],
-          ['C', '14, 21', 'Satisfactory, meets basic requirements but lacks depth'],
-          ['D', '7, 13', 'Mediocre, significant gaps in quality or content'],
-          ['E', '0, 6', 'Elementary, fails to meet minimum standards'],
+          ['A', '27-34', 'Excellent, top-tier research, analysis, and presentation'],
+          ['B', '22-26', 'Good, solid work with some areas for improvement'],
+          ['C', '14-21', 'Satisfactory, meets basic requirements but lacks depth'],
+          ['D', '7-13', 'Mediocre, significant gaps in quality or content'],
+          ['E', '0-6', 'Elementary, fails to meet minimum standards'],
         ],
       },
       {
@@ -387,8 +387,8 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Filter by subject', text: 'Go to Clastify and select your potential subject area. Look at the distribution of scores.' },
-          { title: 'Study 20, 30 high-scoring essays', text: 'Read their research questions. Note recurring topics, observe how they\'re framed, look at what evidence they use.' },
-          { title: 'Study 10, 15 low-scoring essays', text: 'Understand what went wrong, usually vague RQs, descriptive writing instead of analysis, or poor structure. Don\'t make the same mistakes.' },
+          { title: 'Study 20-30 high-scoring essays', text: 'Read their research questions. Note recurring topics, observe how they\'re framed, look at what evidence they use.' },
+          { title: 'Study 10-15 low-scoring essays', text: 'Understand what went wrong, usually vague RQs, descriptive writing instead of analysis, or poor structure. Don\'t make the same mistakes.' },
           { title: 'Talk to alumni if you can', text: 'Students who\'ve done their EE in your potential subject have firsthand insight no guide can give you. Ask them specifically: what would you have done differently?' },
         ],
       },
@@ -564,7 +564,7 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Draft your RQ', text: 'Start with your interests and academic strengths from Module 3. Write 3, 5 possible RQs without censoring yourself. You\'ll narrow later.' },
+          { title: 'Draft your RQ', text: 'Start with your interests and academic strengths from Module 3. Write 3-5 possible RQs without censoring yourself. You\'ll narrow later.' },
           { title: 'Take it to your supervisor', text: 'Your supervisor can help you focus and refine. We consistently underestimate how focused an RQ needs to be, supervisors know the rubric.' },
           { title: 'Stress-test it', text: 'Can it be answered in 4,000 words? Is there sufficient data publicly available? Does it require analysis or just description? Would a counterargument be possible?' },
           { title: 'Lock it in after your EE Dump', text: 'After completing your EE Dump (Module 5), make final adjustments. Then freeze it. After that point, no more changes to your RQ.' },
@@ -670,7 +670,7 @@ export const COURSE_MODULES = [
       {
         type: 'numbered-steps',
         items: [
-          'Retrieve, Search each subtopic on Google. Go through 5, 10 relevant links per subtopic. Read, don\'t skim.',
+          'Retrieve, Search each subtopic on Google. Go through 5-10 relevant links per subtopic. Read, don\'t skim.',
           'Dump, Copy the relevant information into your document under the appropriate heading, with the source link immediately after every entry.',
           'Repeat on Google Scholar, Search narrowly for peer-reviewed papers on each subtopic. Read abstracts, introductions, and conclusions. If the paper doesn\'t directly relate to your RQ, discard it.',
           'Connect, After completing all five subtopics, review the whole document looking for unexpected links between sections. These connections are your analysis.',
@@ -855,7 +855,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'You\'re done researching a sub-question when you have 2, 3 strong sources that directly address it. For every source, note these three things in your EE Dump:',
+        text: 'You\'re done researching a sub-question when you have 2-3 strong sources that directly address it. For every source, note these three things in your EE Dump:',
       },
       {
         type: 'numbered-steps',
@@ -875,7 +875,7 @@ export const COURSE_MODULES = [
           'Research through three levels: Google → Scholar → PDF-only',
           'Search narrowly, specific terms return useful results, broad terms return noise',
           'Follow citations from strong papers to find the foundational research in your field',
-          'Each sub-question needs 2, 3 strong sources with noted claims, evidence, and limitations',
+          'Each sub-question needs 2-3 strong sources with noted claims, evidence, and limitations',
           'A source is EE-worthy if it can be critically engaged with, not just summarised',
         ],
       },
@@ -970,12 +970,12 @@ export const COURSE_MODULES = [
         type: 'comparison-table',
         headers: ['Section', 'Approximate Words', 'Why'],
         rows: [
-          ['Introduction', '300, 450', 'Context-setting, not the heart of your marks'],
-          ['Literature Review', '600, 800', 'Enough depth to show knowledge without over-narrating'],
-          ['Methodology', '250, 350', 'Concise justification, not an instruction manual'],
-          ['Analysis', '1,100, 1,400', 'The core of Criteria B and C, most marks live here'],
-          ['Discussion', '500, 700', 'Where synthesis happens, often underwritten'],
-          ['Conclusion', '250, 350', 'Direct, clear, no new information'],
+          ['Introduction', '300-450', 'Context-setting, not the heart of your marks'],
+          ['Literature Review', '600-800', 'Enough depth to show knowledge without over-narrating'],
+          ['Methodology', '250-350', 'Concise justification, not an instruction manual'],
+          ['Analysis', '1,100-1,400', 'The core of Criteria B and C, most marks live here'],
+          ['Discussion', '500-700', 'Where synthesis happens, often underwritten'],
+          ['Conclusion', '250-350', 'Direct, clear, no new information'],
         ],
       },
       {
@@ -1358,11 +1358,11 @@ export const COURSE_MODULES = [
       {
         type: 'step-process',
         steps: [
-          { title: 'Hook (2, 3 sentences)', text: 'Open with one of the four hook types. Immediately capture attention and establish the stakes of your topic.' },
-          { title: 'Context (3, 5 sentences)', text: 'Provide the background a reader would need to understand the significance of your topic. This is not your literature review, keep it brief and focused.' },
-          { title: 'The Problem (1, 2 sentences)', text: 'Articulate the gap, tension, or question that your research addresses. Why does this question need answering?' },
+          { title: 'Hook (2-3 sentences)', text: 'Open with one of the four hook types. Immediately capture attention and establish the stakes of your topic.' },
+          { title: 'Context (3-5 sentences)', text: 'Provide the background a reader would need to understand the significance of your topic. This is not your literature review, keep it brief and focused.' },
+          { title: 'The Problem (1-2 sentences)', text: 'Articulate the gap, tension, or question that your research addresses. Why does this question need answering?' },
           { title: 'Research Question (1 sentence)', text: 'State your RQ clearly and directly. Don\'t bury it.' },
-          { title: 'Signposting (2, 3 sentences)', text: 'Brief indication of how you\'ll approach the question, what tools, methods, or structure you\'ll use.' },
+          { title: 'Signposting (2-3 sentences)', text: 'Brief indication of how you\'ll approach the question, what tools, methods, or structure you\'ll use.' },
         ],
       },
       {
