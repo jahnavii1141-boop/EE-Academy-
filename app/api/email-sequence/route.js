@@ -1,5 +1,6 @@
 import { createServiceClient } from '../../../src/lib/supabase'
 import { day3Html, day7Html } from '../subscribe/route'
+import { safeEqual, maskEmail } from '@/lib/security'
 
 const FROM = 'Gia from EE Academy <hello@theextendedessay.com>'
 
@@ -24,7 +25,7 @@ async function sendEmail({ apiKey, to, subject, html }) {
 export async function GET(request) {
   // Protect the cron endpoint — Vercel sets this header automatically
   const authHeader = request.headers.get('authorization')
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+  if (!process.env.CRON_SECRET || !safeEqual(authHeader, `Bearer ${process.env.CRON_SECRET}`)) {
     return Response.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
@@ -68,7 +69,7 @@ export async function GET(request) {
           .eq('id', sub.id)
         sent2++
       } catch (err) {
-        errors.push(`day3 ${sub.email}: ${err.message}`)
+        errors.push(`day3 ${maskEmail(sub.email)}: ${err.message}`)
       }
     }
   }
@@ -99,7 +100,7 @@ export async function GET(request) {
           .eq('id', sub.id)
         sent3++
       } catch (err) {
-        errors.push(`day7 ${sub.email}: ${err.message}`)
+        errors.push(`day7 ${maskEmail(sub.email)}: ${err.message}`)
       }
     }
   }
@@ -109,6 +110,6 @@ export async function GET(request) {
   return Response.json({
     day3_sent: sent2,
     day7_sent: sent3,
-    errors: errors.length > 0 ? errors : undefined,
+    errors: errors.length || undefined,
   })
 }

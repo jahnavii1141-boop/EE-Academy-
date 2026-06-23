@@ -87,6 +87,14 @@ export async function POST(req) {
     if (!messages || !Array.isArray(messages)) {
       return Response.json({ error: 'Invalid messages' }, { status: 400 })
     }
+    // Bound client input so a caller can't run up input-token cost with a huge history.
+    if (messages.length > 40) {
+      return Response.json({ error: 'Conversation too long. Start a new chat.' }, { status: 413 })
+    }
+    const totalChars = messages.reduce((n, m) => n + (typeof m?.content === 'string' ? m.content.length : 0), 0)
+    if (totalChars > 60000) {
+      return Response.json({ error: 'Message too long.' }, { status: 413 })
+    }
 
     const systemPrompt = buildSystemPrompt(
       workspace.subject,

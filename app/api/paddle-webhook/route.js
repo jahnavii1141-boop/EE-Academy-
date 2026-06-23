@@ -1,5 +1,6 @@
 import { createServiceClient } from '../../../src/lib/supabase'
 import { serverError } from '@/lib/apiError'
+import { maskEmail } from '@/lib/security'
 
 // Paddle sends webhook events for payment completions.
 // We verify the signature, then flip has_paid=true and store the tier.
@@ -98,7 +99,7 @@ export async function POST(request) {
 
   if (!clerkUserId) {
     // Log the full transaction so we can manually grant access if needed
-    console.error('[paddle-webhook] no clerk_user_id in custom_data. Transaction ID:', transaction?.id, '| Customer email:', transaction?.customer?.email)
+    console.error('[paddle-webhook] no clerk_user_id in custom_data. Transaction ID:', transaction?.id, '| Customer email:', maskEmail(transaction?.customer?.email))
     // Still return 200 so Paddle doesn't keep retrying — we'll handle manually
     return Response.json({ received: true, warning: 'No user ID — manual grant needed' })
   }

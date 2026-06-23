@@ -25,6 +25,11 @@ export async function POST(request) {
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
   const { essay_text } = await request.json()
+  // Bound size — an EE is ~4,000 words; 500k chars is a very generous ceiling
+  // that still blocks someone from stuffing megabytes into the row.
+  if (typeof essay_text === 'string' && essay_text.length > 500000) {
+    return Response.json({ error: 'Essay is too large to save.' }, { status: 413 })
+  }
   const supabase = createServiceClient()
 
   const { error } = await supabase
