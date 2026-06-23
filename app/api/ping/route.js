@@ -1,4 +1,5 @@
 import { createServiceClient } from '../../../src/lib/supabase'
+import { serverError } from '@/lib/apiError'
 
 // Cron endpoint — runs daily to prevent Supabase free tier from pausing.
 // Supabase pauses projects after 7 days of inactivity on the free plan.
@@ -9,6 +10,6 @@ export async function GET() {
     await supabase.from('user_workspace').select('clerk_user_id').limit(1)
     return Response.json({ ok: true, ts: new Date().toISOString() })
   } catch (e) {
-    return Response.json({ ok: false, error: e.message }, { status: 500 })
+    return serverError('ping', e)
   }
 }

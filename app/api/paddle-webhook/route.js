@@ -1,4 +1,5 @@
 import { createServiceClient } from '../../../src/lib/supabase'
+import { serverError } from '@/lib/apiError'
 
 // Paddle sends webhook events for payment completions.
 // We verify the signature, then flip has_paid=true and store the tier.
@@ -135,7 +136,7 @@ export async function POST(request) {
 
   if (error) {
     console.error('[paddle-webhook] Supabase error', error)
-    return Response.json({ error: error.message }, { status: 500 })
+    return serverError('paddle-webhook', error)
   }
 
   // Step 2: set tier (best-effort — access is already granted above)

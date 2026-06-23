@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 
 export async function GET() {
@@ -12,7 +13,7 @@ export async function GET() {
     .eq('clerk_user_id', userId)
     .order('sort_order', { ascending: true })
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('dump', error)
   return Response.json({ entries: data || [] })
 }
 
@@ -43,7 +44,7 @@ export async function POST(request) {
     }))
 
     const { error } = await supabase.from('dump_entries').insert(rows)
-    if (error) return Response.json({ error: error.message }, { status: 500 })
+    if (error) return serverError('dump', error)
   }
 
   return Response.json({ success: true })

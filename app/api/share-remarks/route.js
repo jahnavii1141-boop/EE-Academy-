@@ -1,4 +1,5 @@
 import { createServiceClient } from '../../../src/lib/supabase'
+import { serverError } from '@/lib/apiError'
 
 // Public endpoint — no auth required (supervisor doesn't have an account).
 // Validates the share token, then saves remarks to user_workspace.
@@ -37,7 +38,7 @@ export async function POST(request) {
 
     if (updateError) {
       console.error('share-remarks update error:', updateError)
-      return Response.json({ error: updateError.message }, { status: 500 })
+      return serverError('share-remarks', updateError)
     }
 
     return Response.json({ success: true })

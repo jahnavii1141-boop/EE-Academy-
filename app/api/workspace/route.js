@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 
 export async function GET() {
@@ -13,7 +14,7 @@ export async function GET() {
     .single()
 
   if (error && error.code !== 'PGRST116') {
-    return Response.json({ error: error.message }, { status: 500 })
+    return serverError('workspace', error)
   }
 
   // Admin override — founder always gets premium regardless of DB state
@@ -80,6 +81,6 @@ export async function POST(request) {
     .select()
     .single()
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('workspace', error)
   return Response.json({ workspace: data })
 }

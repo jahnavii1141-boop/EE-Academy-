@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 
 // Map price IDs to tiers — same logic as paddle-webhook
@@ -92,7 +93,7 @@ export async function GET(request) {
 
   if (error) {
     console.error('[verify-payment] Supabase error', error)
-    return Response.json({ error: error.message }, { status: 500 })
+    return serverError('verify-payment', error)
   }
 
   // Step 2: set tier (best-effort — access is already granted above)

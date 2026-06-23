@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 
 export async function GET() {
@@ -11,7 +12,7 @@ export async function GET() {
     .select('module_id')
     .eq('clerk_user_id', userId)
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('progress', error)
 
   const progress = {}
   ;(data || []).forEach(row => { progress[row.module_id] = true })
@@ -30,6 +31,6 @@ export async function POST(request) {
     .from('module_progress')
     .upsert({ clerk_user_id: userId, module_id }, { onConflict: 'clerk_user_id,module_id' })
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('progress', error)
   return Response.json({ success: true })
 }

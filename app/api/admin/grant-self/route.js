@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../../src/lib/supabase'
 
 export async function POST(req) { return handler(req) }
@@ -32,10 +33,10 @@ async function handler(req) {
         updated_at: new Date().toISOString(),
       }, { onConflict: 'clerk_user_id' })
 
-    if (error) return Response.json({ error: error.message }, { status: 500 })
+    if (error) return serverError('admin-grant-self', error)
 
     return Response.json({ success: true, userId, tier, message: `✓ ${tier} access granted — hard-refresh the course page.` })
   } catch (e) {
-    return Response.json({ error: e?.message || String(e) }, { status: 500 })
+    return serverError('admin-grant-self', e)
   }
 }

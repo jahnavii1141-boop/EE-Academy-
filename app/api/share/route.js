@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 import { randomBytes } from 'crypto'
 
@@ -17,7 +18,7 @@ export async function GET() {
     .single()
 
   if (error && error.code !== 'PGRST116') {
-    return Response.json({ error: error.message }, { status: 500 })
+    return serverError('share', error)
   }
 
   return Response.json({ token: data?.share_token ?? null })
@@ -49,7 +50,7 @@ export async function POST() {
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('share', error)
   return Response.json({ token })
 }
 

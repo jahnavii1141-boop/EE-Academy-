@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../src/lib/supabase'
 
 export async function GET() {
@@ -13,7 +14,7 @@ export async function GET() {
     .single()
 
   if (error && error.code !== 'PGRST116') {
-    return Response.json({ error: error.message }, { status: 500 })
+    return serverError('trial', error)
   }
 
   return Response.json({
@@ -46,6 +47,6 @@ export async function POST() {
       trial_started_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('trial', error)
   return Response.json({ success: true })
 }

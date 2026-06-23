@@ -1,4 +1,5 @@
 import { auth } from '@clerk/nextjs/server'
+import { serverError } from '@/lib/apiError'
 import { createServiceClient } from '../../../../src/lib/supabase'
 
 // Admin-only endpoint to manually grant premium access.
@@ -32,7 +33,7 @@ export async function POST(request) {
       updated_at: new Date().toISOString(),
     }, { onConflict: 'clerk_user_id' })
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) return serverError('admin-grant', error)
 
   console.log(`Admin grant: ${tier} → ${clerk_user_id} by ${userId}`)
   return Response.json({ success: true, granted: { clerk_user_id, tier } })
