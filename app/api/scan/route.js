@@ -1,5 +1,6 @@
 import { auth } from '@clerk/nextjs/server'
 import Anthropic from '@anthropic-ai/sdk'
+import { serverError } from '@/lib/apiError'
 
 // Set ANTHROPIC_API_KEY in .env.local and Vercel dashboard.
 
@@ -193,7 +194,6 @@ export async function POST(req) {
 
     return Response.json(result)
   } catch (err) {
-    console.error('Scan error:', err?.message || err)
-    return Response.json({ error: err?.message || 'Something went wrong' }, { status: 500 })
+    return serverError('scan', err)
   }
 }

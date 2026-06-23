@@ -1,6 +1,7 @@
 import Anthropic from '@anthropic-ai/sdk'
 import { auth } from '@clerk/nextjs/server'
 import { createClient } from '@supabase/supabase-js'
+import { serverError } from '@/lib/apiError'
 
 const FREE_LIMIT = 3
 
@@ -131,7 +132,6 @@ export async function POST(req) {
       },
     })
   } catch (err) {
-    console.error('AI Agent error:', err?.message || err)
-    return Response.json({ error: err?.message || 'Something went wrong' }, { status: 500 })
+    return serverError('ai-agent', err)
   }
 }
