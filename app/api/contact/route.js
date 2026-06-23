@@ -6,7 +6,19 @@
 const SUPPORT_EMAIL = 'hello@theextendedessay.com'
 const FROM_SUPPORT = 'Gia from EE Academy <hello@theextendedessay.com>'
 
+// Escape user input before it is interpolated into email HTML. Without this,
+// a submitted name/subject/message can inject arbitrary HTML into the emails.
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+}
+
 function notificationHtml({ name, email, subject, message }) {
+  name = esc(name); email = esc(email); subject = esc(subject); message = esc(message)
   return `
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:32px 24px;color:#0a0a0a">
       <p style="font-size:13px;color:#888;margin:0 0 20px;text-transform:uppercase;letter-spacing:0.08em">
@@ -34,6 +46,7 @@ function notificationHtml({ name, email, subject, message }) {
 }
 
 function autoReplyHtml({ name }) {
+  name = esc(name)
   return `
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:40px 24px;color:#0a0a0a">
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Hey ${name},</p>

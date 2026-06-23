@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'next/navigation'
 import Link from 'next/link'
+import DOMPurify from 'isomorphic-dompurify'
 
 function SupervisorRemarksForm({ token }) {
   const [name, setName] = useState('')
@@ -232,7 +233,7 @@ export default function ShareViewPage() {
           <Section title="Essay Draft">
             <div
               className="share-essay rounded-xl border border-navy/10 bg-white/60 px-7 py-6"
-              dangerouslySetInnerHTML={{ __html: workspace.essay_text }}
+              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(workspace.essay_text) }}
             />
             {workspace.essay_updated_at && (
               <p className="text-xs text-navy/30 mt-2">

@@ -9,14 +9,16 @@ async function handler(req) {
     const { userId } = await auth()
     if (!userId) return Response.json({ error: 'Not signed in — log in first' }, { status: 401 })
 
-    // Require admin key so random users can't grant themselves access
-    const { searchParams } = new URL(req.url)
-    const key = searchParams.get('key')
-    const adminKey = process.env.ADMIN_GRANT_KEY
-    if (!adminKey || key !== adminKey) {
+    // Only admin (founder) accounts may self-grant. This previously trusted an
+    // admin key in the URL query string, which leaks via server access logs,
+    // browser history, and Referer headers — anyone who saw it could grant
+    // themselves paid access. Now gated on the Clerk admin allowlist.
+    const adminIds = (process.env.ADMIN_CLERK_USER_IDS || '').split(',').map(s => s.trim()).filter(Boolean)
+    if (!adminIds.includes(userId)) {
       return Response.json({ error: 'Forbidden' }, { status: 403 })
     }
 
+    const { searchParams } = new URL(req.url)
     const tier = searchParams.get('tier') || 'method'
 
     const supabase = createServiceClient()

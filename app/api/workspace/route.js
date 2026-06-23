@@ -27,19 +27,36 @@ export async function GET() {
   return Response.json({ workspace })
 }
 
+// Columns the client is allowed to write. NEVER include billing/privilege
+// columns (has_paid, tier, paid_at, share_token, agent_free_uses, clerk_user_id).
+const PATCHABLE_FIELDS = [
+  'research_question', 'subject', 'supervisor_name', 'submission_deadline',
+  'supervisor_remarks', 'supervisor_remarks_at', 'essay_text', 'essay_updated_at',
+]
+
 export async function PATCH(request) {
   const { userId } = await auth()
   if (!userId) return Response.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = await request.json()
-  const supabase = createServiceClient()
 
+  // Whitelist incoming fields. Spreading the raw body let a signed-in user
+  // set has_paid/tier and grant themselves paid access (mass assignment).
+  const patch = { updated_at: new Date().toISOString() }
+  for (const key of PATCHABLE_FIELDS) {
+    if (Object.prototype.hasOwnProperty.call(body, key)) patch[key] = body[key]
+  }
+
+  const supabase = createServiceClient()
   const { error } = await supabase
     .from('user_workspace')
-    .update({ ...body, updated_at: new Date().toISOString() })
+    .update(patch)
     .eq('clerk_user_id', userId)
 
-  if (error) return Response.json({ error: error.message }, { status: 500 })
+  if (error) {
+    console.error('[workspace] PATCH error', error)
+    return Response.json({ error: 'Could not save changes' }, { status: 500 })
+  }
   return Response.json({ success: true })
 }
 
