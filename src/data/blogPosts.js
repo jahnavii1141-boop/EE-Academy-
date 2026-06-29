@@ -706,6 +706,199 @@ export const BLOG_POSTS = [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to model yours on.' },
     ],
   },
+  {
+    slug: 'world-studies-ee-structure',
+    title: 'How to Structure a World Studies (Interdisciplinary) Extended Essay',
+    description: 'Doing a World Studies EE across two subjects? Why weaving them into one argument beats separate sections, and a story-driven way to structure the flow.',
+    date: '2026-06-23',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'World Studies EEs sound great until you sit down to structure one. Say you are combining Business Management and Global Politics. Do you write a Global Politics section and then a separate Business section, or do you weave them together? Almost everyone overthinks this.' },
+
+      { type: 'heading', text: 'Use one subject as home, the other to analyse' },
+      { type: 'paragraph', text: 'IB suggests treating one subject as the home base and using the other as the analytical lens. So you are not building a "Global Politics half" and a "Business half" bolted together. One subject sets up the situation, the other does the analysis.' },
+
+      { type: 'heading', text: 'Write it like a story, not two sections' },
+      { type: 'paragraph', text: 'The cleanest way to structure it is to write it as a story that walks through your process, and let one subject flow into the other. For example: tension in the Middle East escalates (global politics), a country closes a key shipping strait (a politically powerful move with huge market effects), and then you ask how that hits local businesses. The main pressure for businesses doing international trade is the exchange rate, so you analyse a firm\'s revenue before and after using a quantitative business tool, then look at its inventory turnover. Two subjects, but they flow into one another and it reads as one argument.' },
+
+      { type: 'heading', text: 'Why this scores better' },
+      { type: 'paragraph', text: 'Examiners want a clear line of argument, and the whole point of an interdisciplinary EE is genuine integration. Two stapled-together sections read like two mini-essays. A woven argument shows you actually used both lenses to answer one question.' },
+
+      { type: 'key-takeaway', items: [
+        'Pick one subject as the home base and use the other to analyse',
+        'Do not split the essay into a separate section per subject',
+        'Structure it as a story that flows from situation to analysis',
+        'A single woven argument scores better than two stitched-together halves',
+      ]},
+
+      { type: 'cta-box', label: 'Free', text: 'Want to see how this looks in a real essay? Read a full 32/34 EE, first 17 pages free.', href: '/dashboard/sample-ee', buttonText: 'Read the example essay' },
+    ],
+    faqItems: [
+      { question: 'Should I separate the two subjects in a World Studies EE?', answer: 'No. Treat one subject as the home base and use the other to analyse. Weave them into a single line of argument rather than writing a separate section for each, which reads like two essays stapled together.' },
+      { question: 'How does an interdisciplinary (World Studies) EE work?', answer: 'You investigate one issue through two DP subjects that genuinely need each other. One acts as the home base, the other provides the analytical lens, and the marks come from integrating them into one argument.' },
+      { question: 'Which subject should be the home subject in a World Studies EE?', answer: 'Usually the one that frames the issue and carries most of your sources. The second subject then supplies the specific analytical tools (for example, business or economic methods applied to a political situation).' },
+    ],
+    related: [
+      { href: '/blog/how-to-get-an-a-global-politics-ee', title: 'How to Get an A in a Global Politics EE', description: 'Topic, research and RQ habits for a top-band EE.' },
+      { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'Map your sections to the criteria.' },
+    ],
+  },
+  {
+    slug: 'ee-topic-your-teacher-wont-allow',
+    title: 'Your Teacher Says You Can\'t Do That EE Topic. Here\'s How to Make It Work',
+    description: 'Want to write your EE on a topic your teacher is blocking, like a novel under Psychology? How to reframe it so it fits the subject rules and keeps your topic.',
+    date: '2026-06-23',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'You have a topic you actually care about, say analysing how the Twilight saga frames an unhealthy relationship as romance, and your teacher says you cannot do it under Psychology because you would be analysing fiction instead of research. Before you give up the topic, reframe it.' },
+
+      { type: 'heading', text: 'Know the subject\'s hard rules first' },
+      { type: 'paragraph', text: 'For a Psychology EE specifically, three rules matter:' },
+      { type: 'numbered-steps', items: [
+        'It must be based only on secondary sources',
+        'The focus must be psychological theories, concepts, and peer-reviewed research',
+        'It must be about real-world people and phenomena, not fictional characters, even if the fiction is based on real things',
+      ]},
+
+      { type: 'heading', text: 'Make the topic a case study, not the star' },
+      { type: 'paragraph', text: 'The way to keep Twilight is to stop treating it as the source. Ground your essay in published research, for example media\'s effect on adolescent beliefs about love, and use the text as a case study inside that framework. Audience reactions, psychological theories, and empirical evidence carry the analysis. Think of the text as a strong supporting character, not the star of the show.' },
+
+      { type: 'heading', text: 'Or switch the pathway' },
+      { type: 'paragraph', text: 'A topic your teacher blocks in one subject often fits better as an interdisciplinary EE. Twilight has far more scope through Psychology plus Digital Society, where you can dig into its media and cultural impact. The topic survives, the framing changes.' },
+
+      { type: 'key-takeaway', items: [
+        'Learn the subject\'s rules before fighting for the topic',
+        'For Psychology: secondary sources, real-world focus, peer-reviewed theory',
+        'Use the text as a case study inside a research framework, not the main source',
+        'A blocked topic often fits an interdisciplinary pathway instead',
+      ]},
+
+      { type: 'cta-box', label: 'Free', text: 'Not sure what each subject actually requires? Our subject workbooks break it down.', href: '/dashboard/templates', buttonText: 'Get the workbooks' },
+    ],
+    faqItems: [
+      { question: 'Can I write a Psychology EE about a novel or film?', answer: 'Only if you treat it as a case study inside research-based analysis. A Psychology EE must use secondary sources and focus on psychological theory and peer-reviewed research about real-world phenomena, not literary analysis of fictional characters.' },
+      { question: 'What are the rules for a Psychology EE?', answer: 'It must be based on secondary sources, focus on psychological theories and peer-reviewed research, and study real-world people and phenomena rather than fictional ones.' },
+      { question: 'My teacher rejected my EE topic. What can I do?', answer: 'Reframe it to fit the subject rules (use it as a case study inside published research), or move it to an interdisciplinary pathway where it fits better. The topic can usually survive a change of framing.' },
+    ],
+    related: [
+      { href: '/blog/does-extended-essay-subject-matter', title: 'Does Your EE Subject Matter?', description: 'Choosing the right subject for your topic.' },
+      { href: '/guides/ee-subjects-guide', title: 'Best IB EE Subjects', description: 'What each subject rewards.' },
+    ],
+  },
+  {
+    slug: 'biology-ee-ethics',
+    title: 'IB Biology EE Ethics: What You Can and Can\'t Experiment On',
+    description: 'Planning a Biology EE with live organisms? The IB ethics rules, why a risk assessment matters, when to use lab-grown alternatives, and the replicability trap.',
+    date: '2026-06-23',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'A Biology EE with living organisms is one of the most rewarding routes, but it comes with ethics rules that trip students up. If your experiment stresses or harms an organism, you need to be careful, even with the best intentions.' },
+
+      { type: 'heading', text: 'A permit helps, but you still need a risk assessment' },
+      { type: 'paragraph', text: 'If you have a collection permit from local authorities, that satisfies a key IB requirement. But the bigger thing examiners look for is a risk assessment that shows why the work had to be done this way, and why you could not use a less harmful alternative. Document your permits and show clearly that the research is legal and ethical.' },
+
+      { type: 'heading', text: 'The safest route is usually lab-grown' },
+      { type: 'paragraph', text: 'If there is a lab-grown or cultured alternative, use it. Researchers run these tests on lab-grown specimens all the time, and IB does not restrict that. Stressing a wild organism or ecosystem, permit or not, is far harder to justify than working with material that was grown for the purpose.' },
+
+      { type: 'heading', text: 'Do not forget replicability' },
+      { type: 'paragraph', text: 'IB cares a lot that a science experiment is controllable and easily replicable. A one-off manipulation of a wild organism often is not, which can quietly cost you marks even if the ethics check out.' },
+
+      { type: 'key-takeaway', items: [
+        'Document everything: permits, sourcing, and approvals',
+        'Write a risk assessment that justifies your method and rules out gentler alternatives',
+        'Prefer lab-grown or cultured material where it exists',
+        'Keep the experiment scientific, controllable, and easily replicable',
+        'Get proper supervision, ideally a university lab contact for advanced work',
+      ]},
+
+      { type: 'cta-box', label: 'Free', text: 'See how to choose and justify a research method that holds up. Read the research methods guide.', href: '/guides/ee-research-methods', buttonText: 'Read the research guide' },
+    ],
+    faqItems: [
+      { question: 'Can I experiment on animals for my IB Biology EE?', answer: 'Only within strict limits. IB restricts experiments that cause unnecessary stress or harm to animals. You need a documented risk assessment, and you should use lab-grown or alternative material wherever possible.' },
+      { question: 'Does a collection permit make my Biology EE ethical?', answer: 'A permit satisfies one requirement, but not the whole picture. You still need a risk assessment showing the work was necessary, that gentler alternatives were considered, and that the experiment is replicable.' },
+      { question: 'What does IB require for a science EE experiment?', answer: 'It must be scientific, controllable, and easily replicable, properly supervised, and ethically justified. Documentation of permits and a clear risk assessment are essential when living organisms are involved.' },
+    ],
+    related: [
+      { href: '/guides/ee-research-methods', title: 'EE Research Methods Guide', description: 'Choosing and justifying your method.' },
+      { href: '/guides/ee-biology', title: 'IB Biology EE Guide', description: 'Experiment design and analysis for Biology.' },
+    ],
+  },
+  {
+    slug: 'does-inline-math-count-ee-word-count',
+    title: 'Does Inline Math Count Toward Your EE Word Count?',
+    description: 'Equations are excluded from the EE word count, but what about the words around them? How inline math is counted, with a worked example.',
+    date: '2026-06-23',
+    readMins: 3,
+    content: [
+      { type: 'paragraph', text: 'If your EE is math-heavy, you have probably wondered whether all that inline math eats into your 4,000 words. Equation lines are clearly excluded, but what about the equations sitting inside your sentences?' },
+
+      { type: 'heading', text: 'Equations don\'t count. The words do.' },
+      { type: 'paragraph', text: 'A formula or equation itself is not counted, even when it sits inline in a sentence. The words you write around it are.' },
+
+      { type: 'heading', text: 'A worked example' },
+      { type: 'paragraph', text: 'Take the sentence: "The area of a circle is given by the formula A = πr²." The words "The area of a circle is given by the formula" count toward your limit. The "A = πr²" does not. So that sentence costs you about 7 words, not 10.' },
+      { type: 'paragraph', text: 'In other words, inline math is not parsed into separate words. Only your prose counts, and standalone equation lines are excluded entirely.' },
+
+      { type: 'key-takeaway', items: [
+        'Equations and formulas are not counted, inline or on their own line',
+        'The words you write to explain the math do count',
+        'Inline symbols like A = πr² are excluded from the total',
+        'Write the explanation you need; the math itself is free',
+      ]},
+
+      { type: 'cta-box', label: 'Free', text: 'Want the full rules on what counts and what does not? Read the word count guide.', href: '/guides/ee-word-count', buttonText: 'Read the word count guide' },
+    ],
+    faqItems: [
+      { question: 'Do equations count toward the EE word count?', answer: 'No. Formulas and equations are excluded from the word count, whether they sit on their own line or inline within a sentence.' },
+      { question: 'Does inline math count as words in the EE?', answer: 'The math symbols do not count, but the words around them do. "The area of a circle is given by the formula A = πr²" counts the words, not the equation.' },
+      { question: 'What is excluded from the EE word count?', answer: 'Equations, formulas, calculations, diagrams, tables, the title page, contents page, citations and references, and the bibliography. Your body prose is what counts.' },
+    ],
+    related: [
+      { href: '/guides/ee-word-count', title: 'EE Word Count & Section Balance', description: 'What counts toward 4,000 and what does not.' },
+      { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'The free presentation marks.' },
+    ],
+  },
+  {
+    slug: 'economics-ee-forward-looking-policy',
+    title: 'Can Your Economics EE Be About a Policy That Hasn\'t Happened Yet?',
+    description: 'Want an Economics EE on a proposed or deferred policy with little public data? Why forward-looking topics can work, and how to frame the RQ like IB\'s own sample.',
+    date: '2026-06-23',
+    readMins: 5,
+    content: [
+      { type: 'paragraph', text: 'Most Economics EEs evaluate a policy that already happened. But what if your topic is a scheme that was only piloted, or proposed and then deferred, so there is barely any public data? A forward-looking policy topic can absolutely work, and it can mirror IB\'s own sample research question.' },
+
+      { type: 'heading', text: 'It can follow the shape of IB\'s sample RQ' },
+      { type: 'paragraph', text: 'IB\'s sample Economics RQ analyses how valid an economic argument is in light of current research. A forward-looking policy analysis fits the same shape: you take a core theory, anchor it to a specific place, and test it against the evidence you can gather.' },
+
+      { type: 'heading', text: 'The three components to check' },
+      { type: 'numbered-steps', items: [
+        'A core economic theory (for a congestion charge, that is negative externalities)',
+        'A specific geographic place (for example, Hong Kong)',
+        'Empirical research on the specific scheme (pilot data, government reports, and your own primary surveys where public data is thin)',
+      ]},
+
+      { type: 'heading', text: 'Add a comparison to push it further' },
+      { type: 'paragraph', text: 'IB\'s sample does not just present one argument. It compares an argument against current research and then runs its own analysis to reach a conclusion. You can do the same: instead of only presenting your argument, weigh it against your own primary data. Think "argument A versus my own study, therefore this conclusion." That comparative move is what lifts it.' },
+
+      { type: 'key-takeaway', items: [
+        'Forward-looking and proposed-policy topics are valid for an Economics EE',
+        'Anchor it in a core theory, a specific place, and real empirical research',
+        'Primary surveys are fine where public data is thin',
+        'Compare your argument against your own study rather than just presenting it',
+      ]},
+
+      { type: 'cta-box', label: 'Free guide', text: 'See strong Economics structure and frameworks for a top-band essay.', href: '/guides/ee-economics', buttonText: 'Read the Economics guide' },
+    ],
+    faqItems: [
+      { question: 'Can an Economics EE be about a proposed or future policy?', answer: 'Yes. Forward-looking topics work as long as you ground them in a core economic theory, a specific place, and real evidence, including your own primary data where public figures are limited.' },
+      { question: 'Is primary survey data okay for an Economics EE?', answer: 'Yes, especially when public data on the policy is thin. Surveys let you simulate or estimate effects, and combining them with secondary sources strengthens your analysis.' },
+      { question: 'How should I structure an Economics EE research question?', answer: 'Mirror IB\'s sample: pair a core theory with a specific place and test it against evidence, then compare your argument with your own study to reach a conclusion.' },
+    ],
+    related: [
+      { href: '/guides/ee-economics', title: 'IB Economics EE Guide', description: 'Frameworks and A-grade structure.' },
+      { href: '/blog/is-economics-ee-hard', title: 'Is Economics One of the Hardest EE Subjects?', description: 'The traps that cost marks, and how to avoid them.' },
+    ],
+  },
 ]
 
 export function getBlogPost(slug) {
