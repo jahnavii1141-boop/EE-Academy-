@@ -6,23 +6,23 @@ import AnimateIn from './ui/AnimateIn'
 const FAQ_ITEMS = [
   {
     question: 'Can I start for free?',
-    answer: 'Yes. You can start with free modules before deciding whether to unlock full access.',
+    answer: "Yes, your first modules are free and you don't need a card. Unlock the full system whenever you're ready.",
   },
   {
-    question: 'Is this built for the current IB syllabus?',
-    answer: 'Yes. The lessons are designed for current IB EE expectations and assessment criteria.',
+    question: 'Do you write the essay for me?',
+    answer: "No. This is a self-study system, we teach you how to research, structure, and write it yourself. Every word stays yours. That's the whole point: examiners can tell when it isn't, and so can you.",
   },
   {
-    question: 'How quickly can I improve?',
-    answer: 'It depends on your baseline and effort, but students often improve quickly when they follow a criteria-first process.',
+    question: 'Is it built for the current IB syllabus?',
+    answer: 'Yes, everything maps to the current EE assessment criteria.',
   },
   {
-    question: 'What do I get with full access?',
-    answer: 'You unlock the full EE system, including the step-by-step blueprint, templates, tools, and guidance to improve your grade with much more clarity.',
+    question: 'How fast can I improve?',
+    answer: "Most students find their essay gets clearer within the first few modules, because you stop guessing and start matching the markscheme. How far you go depends on your effort, but you'll never again wonder what “good” actually looks like.",
   },
   {
-    question: 'Do you write essays for students?',
-    answer: 'No. The Extended Essay Academy is a self-study course — we teach you how to research, structure, and write your own essay. Every word stays yours. We give you the system; you do the work.',
+    question: "What if I'm completely out of time?",
+    answer: "Start with the 1-Day Protocol. It's built for exactly that, the highest-impact fixes when the deadline is tomorrow.",
   },
 ]
 

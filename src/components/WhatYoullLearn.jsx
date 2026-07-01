@@ -6,26 +6,25 @@ import { StaggerContainer, staggerItem } from './ui/AnimateIn'
 const MotionDiv = motion.div
 
 const OUTCOMES = [
-  { text: "You don't know if your research question is actually good enough", bg: 'bg-cream' },
-  { text: "You're writing, but you're not sure if your essay is analytical or just descriptive", bg: 'bg-card-2' },
-  { text: "You don't fully understand what examiners are looking for", bg: 'bg-cream' },
-  { text: 'You keep doing work, but still feel behind and unsure', bg: 'bg-card-2' },
-  { text: 'You are scared of wasting time on the wrong structure or evidence', bg: 'bg-cream' },
-  { text: 'You want a high grade, but the whole process feels messy', bg: 'bg-card-2' },
-  { text: 'You need a clear system, not more random advice', bg: 'bg-cream' },
-  { text: 'This is exactly what the EE System fixes', bg: 'bg-card-2' },
+  { text: "You don't actually know if your research question can score, and you're scared to find out three weeks in.", bg: 'bg-cream' },
+  { text: "You're writing, but you can't tell if it's real analysis or just describing things.", bg: 'bg-card-2' },
+  { text: "You've read the criteria. You still don't really know what an examiner wants.", bg: 'bg-cream' },
+  { text: 'You keep doing work and still feel behind.', bg: 'bg-card-2' },
+  { text: 'Every "EE tip" online contradicts the last one.', bg: 'bg-cream' },
+  { text: 'You\'re terrified of building the whole thing on the wrong structure.', bg: 'bg-card-2' },
 ]
 
 export default function WhatYoullLearn() {
   return (
     <section id="learn" className="bg-parchment py-20 px-6 relative overflow-hidden">
       <div className="max-w-6xl mx-auto relative z-10">
-        <h2 className="section-heading">If your Extended Essay feels like this...</h2>
+        <h2 className="section-heading">If this sounds like you, you&apos;re not behind, you&apos;re missing a system.</h2>
         <p className="section-subheading">
-          Most IB students are not failing because they are lazy. They are stuck because nobody has shown them a clear process to follow.
+          You&apos;re not stuck because you&apos;re lazy. You&apos;re stuck because nobody has shown you exactly
+          what examiners reward and exactly how to get there. So you spin:
         </p>
 
-        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <StaggerContainer className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {OUTCOMES.map(({ text, bg }, i) => (
             <MotionDiv
               key={i}
@@ -41,6 +40,11 @@ export default function WhatYoullLearn() {
             </MotionDiv>
           ))}
         </StaggerContainer>
+
+        <p className="max-w-3xl mx-auto text-center text-navy/80 text-lg leading-relaxed mt-12">
+          You don&apos;t need more random advice. You need one clear system where every move maps to the
+          markscheme. That&apos;s the entire point of this.
+        </p>
       </div>
     </section>
   )

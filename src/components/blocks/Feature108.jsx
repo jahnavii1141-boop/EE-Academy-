@@ -9,9 +9,9 @@ const PILLARS = [
   {
     id: 'plan',
     label: 'The Plan',
-    tag: 'Know what to do next',
-    headline: 'From blank page to structured draft — week by week.',
-    body: 'The Plan turns a vague deadline into a clear path. 14 modules build the system. The RQ Checker stops you investing weeks in a question that won\'t score. The EE Planner breaks it into weekly targets so you\'re never drifting.',
+    tag: 'From blank page to structured draft',
+    headline: 'From blank page to structured draft, week by week.',
+    body: 'A 14-module path that turns a far-off deadline into this week\'s three tasks. The Research Question Checker stops you sinking weeks into a question that can\'t break a C. The EE Planner breaks the whole essay into weekly targets, so you always know your next move instead of drifting.',
     features: ['14-module curriculum', 'Research Question Checker', 'EE Planner (week-by-week)', 'Essay editor with autosave'],
     cta: { label: 'Start Module 1 free', href: '/course/module-1' },
     image: 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&q=80',
@@ -20,22 +20,22 @@ const PILLARS = [
   {
     id: 'scan',
     label: 'The Grade Scan',
-    tag: 'Catch what your supervisor will',
-    headline: 'AI reads your draft the way an examiner does.',
-    body: 'The Grade Scan runs your essay against the actual IB criteria — not general feedback, but criterion-by-criterion analysis telling you exactly where marks are being dropped and what to fix. The Polish Pass handles language. The Supervisor Reply Drafter handles the awkward email.',
+    tag: 'See it the way an examiner will',
+    headline: 'See your essay the way an examiner will.',
+    body: 'Run your draft against the real assessment criteria and surface the weak analysis, vague phrasing, and structural gaps that quietly cost you marks, before your supervisor flags them and long before an examiner does.',
     features: ['AI Grade Scan (criteria-by-criteria)', 'Polish Pass — argument + language', 'Supervisor Reply Drafter', '32/34 essay full breakdown'],
-    cta: { label: 'See Method+System', href: '/pricing' },
+    cta: { label: 'See the full system', href: '/pricing' },
     image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80',
     imageAlt: 'Graded paper with annotations',
   },
   {
     id: 'save',
     label: 'The Save',
-    tag: 'Before you submit',
-    headline: 'Everything you need to not lose marks on the small stuff.',
-    body: 'Citations wrong. Abstract unclear. Structure technically fine but analytically weak. The Save is the final-pass layer: share your draft with your supervisor directly from the editor, run the citation generator, and use the 32/34 essay breakdown to gut-check your own argument before it leaves your hands.',
-    features: ['Share with supervisor (live link)', 'Citation generator + bibliography', '32/34 essay as benchmark', 'All SOPs & submission checklist'],
-    cta: { label: 'See full system', href: '/pricing' },
+    tag: 'When you are out of time',
+    headline: 'When you\'re out of time, fix what matters first.',
+    body: 'The 1-Day Protocol is a triage system for students staring down a deadline. It tells you the highest-impact edits to make right now, so your final draft is tighter, clearer, and more examiner-friendly, even at 11pm the night before submission.',
+    features: ['1-Day Protocol (deadline triage)', 'Citation generator + bibliography', 'Share with supervisor (live link)', 'All SOPs & submission checklist'],
+    cta: { label: 'See the full system', href: '/pricing' },
     image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&q=80',
     imageAlt: 'Library research and writing',
   },
@@ -62,8 +62,12 @@ export default function Feature108() {
           <div className="text-center mb-10">
             <p className="text-xs font-bold uppercase tracking-widest text-navy/40 mb-3">How it works</p>
             <h2 className="font-serif text-3xl md:text-4xl font-bold text-navy max-w-2xl mx-auto">
-              Three things. Everything else lives underneath.
+              Three things. Everything else sits underneath them.
             </h2>
+            <p className="text-ink-soft leading-relaxed max-w-2xl mx-auto mt-4">
+              Most EE help is either a vague PDF or a $100-an-hour tutor. This is a system, three moving parts
+              that take you from blank page to a draft that actually scores.
+            </p>
           </div>
         </AnimateIn>
 
@@ -125,6 +129,14 @@ export default function Feature108() {
               />
             </div>
           </div>
+        </AnimateIn>
+
+        <AnimateIn delay={0.2}>
+          <p className="max-w-2xl mx-auto text-center text-ink-soft leading-relaxed mt-14">
+            Everything maps to the markscheme. You&apos;re never guessing what &ldquo;good&rdquo; means,
+            you&apos;re matching your essay to the exact thing examiners score. That&apos;s the difference
+            between hoping for an A and engineering one.
+          </p>
         </AnimateIn>
 
       </div>

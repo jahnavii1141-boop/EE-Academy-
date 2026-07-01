@@ -1,10 +1,12 @@
 import Hero from '../src/components/Hero'
-import Feature108 from '../src/components/blocks/Feature108'
+import StakesStrip from '../src/components/StakesStrip'
 import WhatYoullLearn from '../src/components/WhatYoullLearn'
-import FeaturedGuides from '../src/components/FeaturedGuides'
+import Feature108 from '../src/components/blocks/Feature108'
+import HomeProof from '../src/components/HomeProof'
+import HomeOffer from '../src/components/HomeOffer'
+import HomeGuarantee from '../src/components/HomeGuarantee'
 import HomeFAQ from '../src/components/HomeFAQ'
 import EvervaultCTA from '../src/components/EvervaultCTA'
-import ResultsStrip from '../src/components/ResultsStrip'
 import EmailSignupModal from '../src/components/EmailSignupModal'
 
 export const metadata = {
@@ -28,7 +30,7 @@ const COURSE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: 'The Extended Essay Academy',
-  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and IB assessment criteria. Built by a 32/34 student.',
+  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and IB assessment criteria. Built from a real 32/34 Extended Essay.',
   url: `${BASE}/`,
   image: `${BASE}/feather-hero.png`,
   provider: {
@@ -66,7 +68,7 @@ const COURSE_JSON_LD = {
   offers: [
     {
       '@type': 'Offer',
-      name: 'Method — Full Course Access',
+      name: 'Standard — Full Course Access',
       price: '89',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
@@ -75,8 +77,8 @@ const COURSE_JSON_LD = {
     },
     {
       '@type': 'Offer',
-      name: 'Method+AI — Full Course + AI Tools',
-      price: '179',
+      name: 'Premium — Full Course + Tools',
+      price: '149',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: `${BASE}/pricing`,
@@ -95,31 +97,39 @@ const FAQ_JSON_LD = {
       name: 'Can I start for free?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Modules 1, 2, 3, and 5 are completely free. You can start immediately at theextendedessay.com/course/module-1.',
+        text: "Yes, your first modules are free and you don't need a card. Unlock the full system whenever you're ready.",
       },
     },
     {
       '@type': 'Question',
-      name: 'Is this built for the current IB syllabus?',
+      name: 'Do you write the essay for me?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. All 14 modules are designed around the current IB Extended Essay assessment criteria and expectations.',
+        text: "No. This is a self-study system, we teach you how to research, structure, and write it yourself. Every word stays yours. That's the whole point: examiners can tell when it isn't, and so can you.",
       },
     },
     {
       '@type': 'Question',
-      name: 'How quickly can I improve?',
+      name: 'Is it built for the current IB syllabus?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Students typically see measurable improvement quickly when following a criteria-first approach. The 14-module system is designed to be worked through systematically, and most students complete it within a few weeks alongside writing their essay.',
+        text: 'Yes, everything maps to the current EE assessment criteria.',
       },
     },
     {
       '@type': 'Question',
-      name: 'What do I get with full access?',
+      name: 'How fast can I improve?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Full access unlocks all 14 modules, the EE Planner, essay editor with autosave, the EE Dump research workspace, the AI Grade Scan tool, templates, RPPF guidance, and the complete 32/34 essay breakdown. Yearly subscription.',
+        text: "Most students find their essay gets clearer within the first few modules, because you stop guessing and start matching the markscheme. How far you go depends on your effort, but you'll never again wonder what \"good\" actually looks like.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: "What if I'm completely out of time?",
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Start with the 1-Day Protocol. It's built for exactly that, the highest-impact fixes when the deadline is tomorrow.",
       },
     },
     {
@@ -136,14 +146,6 @@ const FAQ_JSON_LD = {
       acceptedAnswer: {
         '@type': 'Answer',
         text: 'IB recommends approximately 40 hours for the Extended Essay. Most students spread this across 4–6 months. The EE Academy\'s 14-module system helps you use those hours efficiently from topic selection to final submission.',
-      },
-    },
-    {
-      '@type': 'Question',
-      name: 'Do you write essays for students?',
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: 'No. The Extended Essay Academy is a self-study course — we teach you how to research, structure, and write your own essay. Every word stays yours. We give you the system; you do the work.',
       },
     },
   ],
@@ -168,10 +170,14 @@ export default function HomePage() {
       <EmailSignupModal />
       <main>
         <Hero />
-        <ResultsStrip />
-        <Feature108 />
+        <StakesStrip />
         <WhatYoullLearn />
-        <FeaturedGuides />
+        <div id="how-it-works">
+          <Feature108 />
+        </div>
+        <HomeProof />
+        <HomeOffer />
+        <HomeGuarantee />
         <HomeFAQ />
         <EvervaultCTA />
       </main>

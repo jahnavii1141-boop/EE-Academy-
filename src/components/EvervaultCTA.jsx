@@ -12,20 +12,21 @@ export default function EvervaultCTA() {
           <div>
             <AnimateIn>
               <span className="inline-flex items-center bg-parchment/10 text-parchment text-xs font-semibold px-3 py-1.5 rounded-full mb-6 border border-parchment/20 tracking-wide">
-                LAST-MINUTE RESCUE
+                START FREE TODAY
               </span>
             </AnimateIn>
 
             <AnimateIn delay={0.1}>
               <h2 className="text-3xl lg:text-4xl font-serif font-bold text-cream leading-tight mb-5">
-                One day left on your EE?<br />
-                <span className="text-steel">Use The 1-Day Protocol.</span>
+                Your deadline isn&apos;t moving.<br />
+                <span className="text-steel">Your grade still can.</span>
               </h2>
             </AnimateIn>
 
             <AnimateIn delay={0.15}>
               <p className="text-steel text-base leading-relaxed mb-8 max-w-md">
-                A fast rescue system for students who are out of time and need to fix the mistakes that are dragging their grade down before submission.
+                Start free today, no card. See the difference in your very next draft, then unlock the full
+                system whenever you&apos;re ready.
               </p>
             </AnimateIn>
 
@@ -79,14 +80,19 @@ export default function EvervaultCTA() {
 
             <AnimateIn delay={0.22}>
               <p className="text-sm font-semibold text-parchment/90 mb-6">
-                Built from the system behind a predicted C to final A and 32/34.
+                Built from the exact system behind a real 32/34 Extended Essay, a final A.
               </p>
             </AnimateIn>
 
             <AnimateIn delay={0.25}>
-              <a href="/pricing" className="btn-primary-light">
-                Get The 1-Day Protocol
-              </a>
+              <div className="flex flex-wrap items-center gap-4">
+                <a href="/dashboard/home" className="btn-primary-light">
+                  Start free — no card
+                </a>
+                <a href="/pricing" className="btn-outline-light text-sm">
+                  See pricing →
+                </a>
+              </div>
             </AnimateIn>
           </div>
 

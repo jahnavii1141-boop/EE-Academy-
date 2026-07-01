@@ -121,26 +121,34 @@ export default function Hero() {
 
           {/* Left: Text content */}
           <div>
+            <AnimateIn delay={0.05}>
+              <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-steel/70 mb-4">
+                For IB students who can&apos;t afford to wing the EE
+              </p>
+            </AnimateIn>
+
             <AnimateIn delay={0.1}>
               <h1 className="font-serif text-4xl lg:text-5xl xl:text-6xl font-bold text-cream leading-[1.1] mb-6">
-                The EE without<br />
-                <span className="gradient-text">the panic.</span>
+                Turn the most important essay of your IB into{' '}
+                <span className="gradient-text">a final A.</span>
               </h1>
             </AnimateIn>
 
             <AnimateIn delay={0.2}>
               <p className="text-lg text-steel leading-relaxed max-w-lg mb-8">
-                Pick the help you want. We build the plan. We catch what your supervisor will.
+                The Extended Essay is worth up to 3 of your diploma points, and a low grade can put your
+                university offer at risk. We give you the step-by-step system, the tools, and a line-by-line
+                grade scan, built from a real 32/34 essay. You write every word. We make sure it scores.
               </p>
             </AnimateIn>
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
-                <button onClick={handleStartFree} className="btn-primary-light">Get Started</button>
-                <Link href="/pricing" className="btn-outline-light text-sm">See the system</Link>
+                <button onClick={handleStartFree} className="btn-primary-light">Start free — no card</button>
+                <Link href="#how-it-works" className="btn-outline-light text-sm">See how the system works →</Link>
               </div>
               <p className="text-sm text-steel/70 max-w-md">
-                Modules 1, 2, 3, and 5 — start immediately.
+                Your first modules are free, forever. Start in the next 60 seconds.
               </p>
             </AnimateIn>
           </div>
