@@ -32,18 +32,18 @@ function EmailCaptureGate({ onCapture }) {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#fafafa' }}>
+    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F4F3E8' }}>
       <div style={{
         background: '#fff', borderRadius: 20, padding: '48px 40px', maxWidth: 380, width: '100%',
         margin: '0 16px', border: '1px solid #efefef', boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
       }}>
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
           <p style={{ fontSize: 11, color: '#bbb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>EE Academy</p>
-          <p style={{ fontSize: 22, fontWeight: 700, color: '#0a0a0a', letterSpacing: '-0.02em', marginBottom: 8 }}>
+          <p style={{ fontSize: 22, fontWeight: 700, color: '#2E3250', letterSpacing: '-0.02em', marginBottom: 8 }}>
             Get started
           </p>
           <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
-            Access modules and research tools.<br />No card, no commitment.
+            Access your missions and research tools.<br />No card, no commitment.
           </p>
         </div>
 
@@ -57,7 +57,7 @@ function EmailCaptureGate({ onCapture }) {
             style={{
               width: '100%', padding: '12px 14px', borderRadius: 12,
               border: `1px solid ${error ? '#fca5a5' : '#e0e0e0'}`,
-              fontSize: 14, outline: 'none', background: '#fafafa', color: '#0a0a0a',
+              fontSize: 14, outline: 'none', background: '#F4F3E8', color: '#2E3250',
               marginBottom: error ? 6 : 10, boxSizing: 'border-box', display: 'block',
             }}
           />
@@ -65,7 +65,7 @@ function EmailCaptureGate({ onCapture }) {
           <button
             type="submit"
             style={{
-              width: '100%', padding: '12px', background: '#0a0a0a', color: '#fff',
+              width: '100%', padding: '12px', background: '#2E3250', color: '#fff',
               border: 'none', borderRadius: 12, fontSize: 14, fontWeight: 600,
               cursor: 'pointer', letterSpacing: '-0.01em',
             }}
@@ -76,7 +76,7 @@ function EmailCaptureGate({ onCapture }) {
 
         <p style={{ textAlign: 'center', marginTop: 20, fontSize: 12, color: '#aaa' }}>
           Already have an account?{' '}
-          <Link href="/sign-in" style={{ color: '#0a0a0a', fontWeight: 500, textDecoration: 'none' }}>
+          <Link href="/sign-in" style={{ color: '#2E3250', fontWeight: 500, textDecoration: 'none' }}>
             Sign in →
           </Link>
         </p>
@@ -87,7 +87,7 @@ function EmailCaptureGate({ onCapture }) {
 
 const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
-  { id: 'modules', label: 'Modules',    icon: BookOpen,  href: '/dashboard/modules' },
+  { id: 'modules', label: 'Missions',   icon: BookOpen,  href: '/dashboard/modules' },
   { id: 'sample-ee', label: 'Example EE', icon: Award,   href: '/dashboard/sample-ee' },
   { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
   { id: 'dump',    label: 'EE Dump',     icon: Database,  href: '/dashboard/dump' },
@@ -190,7 +190,7 @@ export default function DashboardLayout({ children }) {
 
   // Hold until Clerk + localStorage are both resolved to avoid flash
   if (!emailChecked || !isLoaded) {
-    return <div style={{ minHeight: '100vh', background: '#fafafa' }} />
+    return <div style={{ minHeight: '100vh', background: '#F4F3E8' }} />
   }
 
   // Show full-screen email gate for visitors with no Clerk session and no saved email
@@ -199,7 +199,7 @@ export default function DashboardLayout({ children }) {
   }
 
   return (
-    <div className="flex h-screen overflow-hidden" style={{ background: '#fafafa', color: '#0a0a0a' }}>
+    <div className="flex h-screen overflow-hidden" style={{ background: '#F4F3E8', color: '#2E3250' }}>
 
       {/* Sidebar — desktop only */}
       <aside style={{ width: 220, borderRight: '1px solid #e5e5e5', background: '#fff' }}
@@ -209,7 +209,7 @@ export default function DashboardLayout({ children }) {
         <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
           <Link href="/dashboard" className="block">
             <p className="font-medium text-xs tracking-tight mb-0.5" style={{ color: '#999' }}>EE Academy</p>
-            <p className="font-semibold text-sm leading-tight truncate" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+            <p className="font-semibold text-sm leading-tight truncate" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>
               {firstName ? `${firstName}'s workspace` : 'My workspace'}
             </p>
           </Link>
@@ -256,18 +256,18 @@ export default function DashboardLayout({ children }) {
                 href={item.href}
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
                 style={{
-                  background: active ? '#0a0a0a' : 'transparent',
+                  background: active ? '#2E3250' : 'transparent',
                   color: active ? '#fff' : '#555',
                   fontWeight: active ? 500 : 400,
                 }}
-                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#0a0a0a' } }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#2E3250' } }}
                 onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
               >
                 <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
                 <span>{item.label}</span>
                 {item.isNew && (
                   <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
-                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#0a0a0a', color: active ? '#fff' : '#fff' }}>
+                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#2E3250', color: active ? '#fff' : '#fff' }}>
                     New
                   </span>
                 )}
@@ -285,11 +285,11 @@ export default function DashboardLayout({ children }) {
                 href={item.href}
                 className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
                 style={{
-                  background: active ? '#0a0a0a' : 'transparent',
+                  background: active ? '#2E3250' : 'transparent',
                   color: active ? '#fff' : '#555',
                   fontWeight: active ? 500 : 400,
                 }}
-                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#0a0a0a' } }}
+                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#2E3250' } }}
                 onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
               >
                 <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
@@ -355,7 +355,7 @@ export default function DashboardLayout({ children }) {
             <Link
               href="/pricing"
               className="flex items-center justify-center w-full text-xs font-semibold py-2 rounded-lg mb-2 transition-all"
-              style={{ background: '#0a0a0a', color: '#fff', letterSpacing: '-0.01em' }}
+              style={{ background: '#2E3250', color: '#fff', letterSpacing: '-0.01em' }}
             >
               {isSignedIn ? 'Upgrade plan' : 'Get full access'}
             </Link>
@@ -380,7 +380,7 @@ export default function DashboardLayout({ children }) {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0" style={{ background: '#fafafa' }}>
+      <main className="flex-1 overflow-y-auto pb-16 lg:pb-0" style={{ background: '#F4F3E8' }}>
         {children}
       </main>
 
@@ -393,7 +393,7 @@ export default function DashboardLayout({ children }) {
           return (
             <Link key={item.id} href={item.href}
               className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl transition-all"
-              style={{ color: active ? '#0a0a0a' : '#bbb', minWidth: 0 }}>
+              style={{ color: active ? '#2E3250' : '#bbb', minWidth: 0 }}>
               <Icon size={18} strokeWidth={active ? 2 : 1.5} />
               <span className="text-[9px] font-medium truncate w-full text-center">{item.label}</span>
             </Link>
@@ -402,7 +402,7 @@ export default function DashboardLayout({ children }) {
         {!isPremium && (
           <Link href="/pricing"
             className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl"
-            style={{ color: '#0a0a0a', minWidth: 0 }}>
+            style={{ color: '#2E3250', minWidth: 0 }}>
             <span className="text-base leading-none">⭐</span>
             <span className="text-[9px] font-semibold">Upgrade</span>
           </Link>
