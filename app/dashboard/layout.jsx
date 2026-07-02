@@ -6,9 +6,50 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  MessageSquare, ChevronDown, ChevronUp, X, BookMarked, Award,
+  MessageSquare, ChevronDown, ChevronUp, X, BookMarked, Award, Lock,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
+import { useModuleProgress } from '@/hooks/useModuleProgress'
+import { navUnlocked, GATED_NAV } from '@/lib/missionChain'
+
+// One sidebar row. Locked rows (gated behind an earlier mission/step) render
+// non-clickable with a lock; unlocked rows advance the chain on open.
+function NavItem({ item, active, locked, onOpen }) {
+  const Icon = item.icon
+  if (locked) {
+    return (
+      <div
+        title="Finish the earlier steps to unlock this"
+        className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm mb-0.5 cursor-not-allowed select-none"
+        style={{ color: '#B8B4A0' }}
+      >
+        <Icon className="flex-shrink-0" size={14} strokeWidth={1.75} style={{ opacity: 0.7 }} />
+        <span>{item.label}</span>
+        <Lock className="ml-auto flex-shrink-0" size={12} />
+      </div>
+    )
+  }
+  return (
+    <Link
+      id={`tour-nav-${item.id}`}
+      href={item.href}
+      onClick={onOpen}
+      className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
+      style={{ background: active ? '#2E3250' : 'transparent', color: active ? '#fff' : '#555', fontWeight: active ? 500 : 400 }}
+      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#EAE8DC'; e.currentTarget.style.color = '#2E3250' } }}
+      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
+    >
+      <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
+      <span>{item.label}</span>
+      {item.isFree && (
+        <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
+          style={{ background: active ? 'rgba(255,255,255,0.2)' : '#f0fdf4', color: active ? '#fff' : '#15803d' }}>
+          Free
+        </span>
+      )}
+    </Link>
+  )
+}
 
 // ── Email capture gate (shown to users with no Clerk session + no saved email) ──
 function EmailCaptureGate({ onCapture }) {
@@ -108,6 +149,7 @@ export default function DashboardLayout({ children }) {
   const { isSignedIn, isLoaded } = useAuth()
   const pathname = usePathname()
   const router = useRouter()
+  const { isVisited, markVisited } = useModuleProgress()
   const firstName = user?.firstName || ''
   const [subject, setSubject] = useState('')
   const [isPremium, setIsPremium] = useState(false)
@@ -246,63 +288,26 @@ export default function DashboardLayout({ children }) {
         {/* Nav */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
           <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mb-2" style={{ color: '#bbb' }}>My Work</p>
-          {NAV_MAIN.map(item => {
-            const Icon = item.icon
-            const active = activeId === item.id
-            return (
-              <Link
-                key={item.id}
-                id={`tour-nav-${item.id}`}
-                href={item.href}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
-                style={{
-                  background: active ? '#2E3250' : 'transparent',
-                  color: active ? '#fff' : '#555',
-                  fontWeight: active ? 500 : 400,
-                }}
-                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#2E3250' } }}
-                onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
-              >
-                <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
-                <span>{item.label}</span>
-                {item.isNew && (
-                  <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
-                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#2E3250', color: active ? '#fff' : '#fff' }}>
-                    New
-                  </span>
-                )}
-              </Link>
-            )
-          })}
+          {NAV_MAIN.map(item => (
+            <NavItem
+              key={item.id}
+              item={item}
+              active={activeId === item.id}
+              locked={!navUnlocked(item.id, isVisited, isPremium)}
+              onOpen={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
+            />
+          ))}
 
           <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>More</p>
-          {NAV_MORE.map(item => {
-            const Icon = item.icon
-            const active = activeId === item.id
-            return (
-              <Link
-                key={item.id}
-                href={item.href}
-                className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
-                style={{
-                  background: active ? '#2E3250' : 'transparent',
-                  color: active ? '#fff' : '#555',
-                  fontWeight: active ? 500 : 400,
-                }}
-                onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#f5f5f5'; e.currentTarget.style.color = '#2E3250' } }}
-                onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
-              >
-                <Icon className="flex-shrink-0" size={14} strokeWidth={active ? 2 : 1.75} />
-                <span>{item.label}</span>
-                {item.isFree && (
-                  <span className="ml-auto text-[9px] font-bold px-1.5 py-0.5 rounded-full"
-                    style={{ background: active ? 'rgba(255,255,255,0.2)' : '#f0fdf4', color: active ? '#fff' : '#15803d' }}>
-                    Free
-                  </span>
-                )}
-              </Link>
-            )
-          })}
+          {NAV_MORE.map(item => (
+            <NavItem
+              key={item.id}
+              item={item}
+              active={activeId === item.id}
+              locked={!navUnlocked(item.id, isVisited, isPremium)}
+              onOpen={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
+            />
+          ))}
         </nav>
 
         {/* Supervisor remarks panel */}
@@ -390,8 +395,20 @@ export default function DashboardLayout({ children }) {
         {NAV_MAIN.map(item => {
           const Icon = item.icon
           const active = activeId === item.id
+          const locked = !navUnlocked(item.id, isVisited, isPremium)
+          if (locked) {
+            return (
+              <div key={item.id}
+                className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl select-none"
+                style={{ color: '#cfcabb', minWidth: 0 }}>
+                <Lock size={16} strokeWidth={1.75} />
+                <span className="text-[9px] font-medium truncate w-full text-center">{item.label}</span>
+              </div>
+            )
+          }
           return (
             <Link key={item.id} href={item.href}
+              onClick={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
               className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl transition-all"
               style={{ color: active ? '#2E3250' : '#bbb', minWidth: 0 }}>
               <Icon size={18} strokeWidth={active ? 2 : 1.5} />

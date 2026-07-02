@@ -7,8 +7,8 @@ import { useAccess } from '../hooks/useAccess'
 const MODULES = [
   { id: 'module-1',  num: 1,   title: 'The Examiner Lens',           description: 'How IB examiners actually read and mark your essay.',                    free: true },
   { id: 'module-2',  num: 2,   title: 'Inside the Markscheme',       description: 'Break down every criterion. Know exactly what earns marks.',              free: true },
-  { id: 'module-3',  num: 3,   title: 'Topic Selection',             description: 'Pick a topic that\'s researchable, scoreable, and interesting.',          free: false },
-  { id: 'module-4',  num: 4,   title: 'Research Question Design',    description: 'Write a focused, analytical RQ that sets your essay up to win.',          free: false },
+  { id: 'module-3',  num: 3,   title: 'Topic Selection',             description: 'Pick a topic that\'s researchable, scoreable, and interesting.',          free: true },
+  { id: 'module-4',  num: 4,   title: 'Research Question Design',    description: 'Write a focused, analytical RQ that sets your essay up to win.',          free: true },
   { id: 'module-5',  num: 5,   title: 'The EE Dump Method',          description: 'A system for gathering sources without drowning in them.',                free: true },
   { id: 'module-6',  num: 6,   title: 'Evidence and Research',       description: 'Find, evaluate, and use academic sources properly.',                      free: false },
   { id: 'module-7',  num: 7,   title: 'Essay Architecture',          description: 'Structure your essay section by section. Map to the criteria.',           free: false },
@@ -36,29 +36,29 @@ export default function DashboardModules() {
   const pct = Math.round((visitedCount / MODULES.length) * 100)
 
   return (
-    <div className="min-h-full" style={{ background: '#fafafa' }}>
+    <div className="min-h-full" style={{ background: '#F4F3E8' }}>
       <div style={{ maxWidth: 760, margin: '0 auto', padding: '40px 40px 80px' }}>
 
         {/* Header */}
         <div className="mb-8">
           <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#bbb' }}>Curriculum</p>
           <div className="flex items-end justify-between">
-            <h1 className="font-semibold" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
-              14 Modules
+            <h1 className="font-semibold" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
+              14 Missions
             </h1>
             <div className="flex items-center gap-3">
               <div className="h-1 rounded-full overflow-hidden" style={{ width: 80, background: '#e8e8e8' }}>
-                <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: '#0a0a0a' }} />
+                <div className="h-full rounded-full transition-all duration-500" style={{ width: `${pct}%`, background: '#2E3250' }} />
               </div>
               <span className="text-xs tabular-nums" style={{ color: '#aaa' }}>{visitedCount}/14</span>
             </div>
           </div>
           <p className="text-sm mt-1" style={{ color: '#aaa' }}>
-            The complete EE system, built by a 32/34 student. Start with Module 1.
+            The complete EE system, built from a real 32/34 essay. Start with Mission 01.
           </p>
         </div>
 
-        {/* Module sections */}
+        {/* Mission sections */}
         <div className="space-y-8">
           {SECTIONS.map(section => {
             const mods = MODULES.slice(section.range[0], section.range[1] + 1)
@@ -74,7 +74,7 @@ export default function DashboardModules() {
                   <p className="text-[10px]" style={{ color: '#ddd' }}>{sectionVisited}/{mods.length}</p>
                 </div>
 
-                {/* Module rows */}
+                {/* Mission rows */}
                 <div className="space-y-1">
                   {mods.map((mod) => {
                     const visited = isVisited(mod.id)
@@ -90,7 +90,7 @@ export default function DashboardModules() {
                         {/* Number / status */}
                         <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-semibold transition-all"
                           style={{
-                            background: visited ? '#0a0a0a' : '#f5f5f5',
+                            background: visited ? '#2E3250' : '#EAE8DC',
                             color: visited ? '#fff' : '#aaa',
                           }}>
                           {visited ? (
@@ -102,7 +102,7 @@ export default function DashboardModules() {
 
                         {/* Text */}
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium leading-snug" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+                          <p className="text-sm font-medium leading-snug" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>
                             {mod.title}
                           </p>
                           <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#aaa' }}>
@@ -130,7 +130,7 @@ export default function DashboardModules() {
                             </svg>
                           )}
                           {!isLocked && (
-                            <svg width="13" height="13" viewBox="0 0 20 20" fill="#ccc" className="group-hover:fill-[#0a0a0a] transition-colors">
+                            <svg width="13" height="13" viewBox="0 0 20 20" fill="#ccc" className="group-hover:fill-[#2E3250] transition-colors">
                               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" />
                             </svg>
                           )}
@@ -149,12 +149,12 @@ export default function DashboardModules() {
           <div className="mt-10 flex items-center justify-between gap-6 px-6 py-5 rounded-xl"
             style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
             <div>
-              <p className="text-sm font-medium mb-0.5" style={{ color: '#0a0a0a' }}>Unlock all 14 modules</p>
-              <p className="text-xs" style={{ color: '#aaa' }}>Yearly subscription. 30-day guarantee.</p>
+              <p className="text-sm font-medium mb-0.5" style={{ color: '#2E3250' }}>Unlock all 14 missions</p>
+              <p className="text-xs" style={{ color: '#aaa' }}>One-time, lifetime access. 30-day guarantee.</p>
             </div>
             <Link href="/pricing"
               className="text-xs font-semibold px-4 py-2 rounded-lg flex-shrink-0 transition-all"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               View plans →
             </Link>
           </div>

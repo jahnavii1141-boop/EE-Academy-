@@ -22,9 +22,9 @@ const TOUR_KEY = 'eeAcademy_tourDone'
 
 const TOUR_STEPS = [
   { target: null, emoji: '👋', title: 'Welcome to your EE workspace', body: "Quick tour — 20 seconds. We'll show you what's here." },
-  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Start with the included modules — then unlock the full writing system.', arrow: 'top' },
+  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Start with the included missions — then unlock the full writing system.', arrow: 'top' },
   { target: 'tour-share', emoji: '🔗', title: 'Share with your supervisor', body: 'Get a link and send it to your teacher — they can read your essay draft and leave you feedback directly.', arrow: 'top' },
-  { target: 'tour-nav-modules', emoji: '📚', title: 'Modules', body: '14 lessons from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
+  { target: 'tour-nav-modules', emoji: '📚', title: 'Missions', body: '14 missions from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
   { target: 'tour-nav-dump', emoji: '🗂️', title: 'EE Dump', body: 'Paste a paragraph from any source — auto-extracts the citation for your bibliography.', arrow: 'left' },
   { target: 'tour-nav-essay', emoji: '✍️', title: 'My Essay', body: 'Write your draft and track your word count. Everything saves automatically.', arrow: 'left' },
 ]
@@ -135,7 +135,7 @@ function DashboardTour({ onDone }) {
       }}>
         {arrowEl}
         <p style={{ fontSize: 22, marginBottom: 10 }}>{current.emoji}</p>
-        <p style={{ fontWeight: 700, fontSize: 14, color: '#0a0a0a', marginBottom: 6, letterSpacing: '-0.02em' }}>
+        <p style={{ fontWeight: 700, fontSize: 14, color: '#2E3250', marginBottom: 6, letterSpacing: '-0.02em' }}>
           {current.title}
         </p>
         <p style={{ fontSize: 12.5, color: '#888', lineHeight: 1.65, marginBottom: 18 }}>
@@ -149,7 +149,7 @@ function DashboardTour({ onDone }) {
           <button onClick={next} style={{
             display: 'flex', alignItems: 'center', gap: 4,
             fontSize: 12.5, fontWeight: 600, color: '#fff',
-            background: '#0a0a0a', border: 'none', borderRadius: 10,
+            background: '#2E3250', border: 'none', borderRadius: 10,
             padding: '8px 16px', cursor: 'pointer',
           }}>
             {isLast ? 'Done' : 'Next'} {!isLast && <ChevronRight size={13} />}
@@ -161,7 +161,7 @@ function DashboardTour({ onDone }) {
             <span key={i} style={{
               display: 'block', width: i === step ? 14 : 5, height: 5,
               borderRadius: 999, transition: 'width 0.2s',
-              background: i === step ? '#0a0a0a' : '#e0e0e0',
+              background: i === step ? '#2E3250' : '#e0e0e0',
             }} />
           ))}
         </div>
@@ -322,7 +322,7 @@ export default function DashboardHome() {
         <div className="w-full max-w-lg">
           <div className="text-center mb-8">
             <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: '#ccc' }}>Step 1 of 1</p>
-            <h1 className="text-2xl font-bold mb-2" style={{ color: '#0a0a0a', letterSpacing: '-0.03em' }}>Set up your workspace</h1>
+            <h1 className="text-2xl font-bold mb-2" style={{ color: '#2E3250', letterSpacing: '-0.03em' }}>Set up your workspace</h1>
             <p className="text-sm" style={{ color: '#aaa' }}>Takes 30 seconds — helps us personalise everything for your EE.</p>
           </div>
           <div className="rounded-2xl overflow-hidden" style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
@@ -361,8 +361,8 @@ export default function DashboardHome() {
                   placeholder="To what extent does…"
                   rows={3}
                   className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none resize-none transition-colors"
-                  style={{ border: '1px solid #e8e8e8', color: '#0a0a0a', background: '#fafafa' }}
-                  onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                  style={{ border: '1px solid #e8e8e8', color: '#2E3250', background: '#F4F3E8' }}
+                  onFocus={e => e.target.style.borderColor = '#2E3250'}
                   onBlur={e => e.target.style.borderColor = '#e8e8e8'}
                 />
               </div>
@@ -370,7 +370,7 @@ export default function DashboardHome() {
             <div className="px-6 pb-6">
               <button onClick={save}
                 className="w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-                style={{ background: '#0a0a0a', color: '#fff' }}>
+                style={{ background: '#2E3250', color: '#fff' }}>
                 {form.subject ? 'Set up my workspace →' : 'Skip for now →'}
               </button>
             </div>
@@ -417,17 +417,17 @@ export default function DashboardHome() {
                   <div className="flex items-center gap-2">
                     <input readOnly value={shareUrl}
                       className="flex-1 min-w-0 text-xs rounded-lg px-3 py-2 focus:outline-none"
-                      style={{ background: '#f5f5f5', color: '#555', border: '1px solid #f0f0f0' }} />
+                      style={{ background: '#EAE8DC', color: '#555', border: '1px solid #f0f0f0' }} />
                     <button onClick={copyShare}
                       className="flex-shrink-0 text-xs font-semibold px-3 py-2 rounded-lg transition-all"
-                      style={{ background: shareCopied ? '#f0fdf4' : '#0a0a0a', color: shareCopied ? '#15803d' : '#fff' }}>
+                      style={{ background: shareCopied ? '#f0fdf4' : '#2E3250', color: shareCopied ? '#15803d' : '#fff' }}>
                       {shareCopied ? '✓ Copied' : 'Copy'}
                     </button>
                   </div>
                 ) : (
                   <button onClick={generateShare} disabled={shareLoading}
                     className="text-xs font-semibold px-4 py-2 rounded-xl transition-all disabled:opacity-50"
-                    style={{ background: '#f5f5f5', color: '#555' }}>
+                    style={{ background: '#EAE8DC', color: '#555' }}>
                     {shareLoading ? 'Generating…' : 'Get share link →'}
                   </button>
                 )}
@@ -439,7 +439,7 @@ export default function DashboardHome() {
                 </p>
                 <Link href="/sign-up"
                   className="inline-flex text-xs font-semibold px-4 py-2 rounded-xl transition-all hover:opacity-90"
-                  style={{ background: '#0a0a0a', color: '#fff', textDecoration: 'none' }}>
+                  style={{ background: '#2E3250', color: '#fff', textDecoration: 'none' }}>
                   Create free account to share →
                 </Link>
               </>
@@ -478,7 +478,7 @@ export default function DashboardHome() {
               <button onClick={() => setEditing(true)}
                 className="flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg transition-all"
                 style={{ color: '#888', border: '1px solid #e8e8e8' }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a'; e.currentTarget.style.color = '#0a0a0a' }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250'; e.currentTarget.style.color = '#2E3250' }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8'; e.currentTarget.style.color = '#888' }}>
                 <Edit3 size={11} />
                 Edit
@@ -488,8 +488,8 @@ export default function DashboardHome() {
             {/* RQ card */}
             <div className="rounded-2xl px-6 py-5 mb-4"
               style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
-              <div className="w-8 h-0.5 rounded mb-4" style={{ background: theme.accent || '#0a0a0a' }} />
-              <p className="text-base leading-relaxed font-medium" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+              <div className="w-8 h-0.5 rounded mb-4" style={{ background: theme.accent || '#2E3250' }} />
+              <p className="text-base leading-relaxed font-medium" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>
                 {form.research_question}
               </p>
             </div>
@@ -498,7 +498,7 @@ export default function DashboardHome() {
             <div className="flex flex-wrap gap-2">
               {form.supervisor_name && (
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs"
-                  style={{ background: '#f5f5f5', color: '#555' }}>
+                  style={{ background: '#EAE8DC', color: '#555' }}>
                   <User size={11} />
                   {form.supervisor_name}
                 </div>
@@ -506,7 +506,7 @@ export default function DashboardHome() {
               {daysUntilDeadline !== null && (
                 <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium"
                   style={{
-                    background: daysUntilDeadline <= 30 ? '#fef2f2' : '#f5f5f5',
+                    background: daysUntilDeadline <= 30 ? '#fef2f2' : '#EAE8DC',
                     color: daysUntilDeadline <= 30 ? '#dc2626' : '#555',
                   }}>
                   <Calendar size={11} />
@@ -529,7 +529,7 @@ export default function DashboardHome() {
             </div>
             <button onClick={() => setEditing(true)}
               className="text-xs font-semibold px-4 py-2 rounded-xl transition-all"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Add →
             </button>
           </div>
@@ -540,7 +540,7 @@ export default function DashboardHome() {
           <div className="rounded-2xl overflow-hidden mb-8"
             style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
             <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
-              <p className="text-sm font-semibold" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+              <p className="text-sm font-semibold" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>
                 {form.research_question ? 'Edit workspace' : 'Set up your workspace'}
               </p>
               {form.research_question && (
@@ -589,7 +589,7 @@ export default function DashboardHome() {
                   rows={3}
                   className="w-full rounded-xl border border-navy/15 bg-white px-4 py-3 text-sm text-navy placeholder:text-navy/30 focus:outline-none resize-none transition-colors"
                   style={{ borderColor: '#e8e8e8' }}
-                  onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                  onFocus={e => e.target.style.borderColor = '#2E3250'}
                   onBlur={e => e.target.style.borderColor = '#e8e8e8'}
                 />
               </div>
@@ -605,8 +605,8 @@ export default function DashboardHome() {
                   onChange={e => setForm(f => ({ ...f, supervisor_name: e.target.value }))}
                   placeholder="Mr. Smith"
                   className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
-                  style={{ border: '1px solid #e8e8e8', color: '#0a0a0a', background: '#fff' }}
-                  onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                  style={{ border: '1px solid #e8e8e8', color: '#2E3250', background: '#fff' }}
+                  onFocus={e => e.target.style.borderColor = '#2E3250'}
                   onBlur={e => e.target.style.borderColor = '#e8e8e8'}
                 />
               </div>
@@ -621,8 +621,8 @@ export default function DashboardHome() {
                   value={form.submission_deadline}
                   onChange={e => setForm(f => ({ ...f, submission_deadline: e.target.value }))}
                   className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
-                  style={{ border: '1px solid #e8e8e8', color: '#0a0a0a', background: '#fff' }}
-                  onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                  style={{ border: '1px solid #e8e8e8', color: '#2E3250', background: '#fff' }}
+                  onFocus={e => e.target.style.borderColor = '#2E3250'}
                   onBlur={e => e.target.style.borderColor = '#e8e8e8'}
                 />
               </div>
@@ -630,7 +630,7 @@ export default function DashboardHome() {
               <button
                 onClick={save}
                 className="flex items-center gap-2 text-sm font-semibold px-5 py-2.5 rounded-xl transition-all"
-                style={{ background: '#0a0a0a', color: '#fff' }}>
+                style={{ background: '#2E3250', color: '#fff' }}>
                 {saved ? <CheckCircle className="w-4 h-4" /> : <Save className="w-4 h-4" />}
                 {saved ? 'Saved!' : 'Save workspace'}
               </button>
@@ -643,19 +643,19 @@ export default function DashboardHome() {
           <>
             <Link href="/dashboard/essay" className="block mb-4 rounded-xl px-5 py-4 transition-all group"
               style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
               <div className="flex items-center justify-between mb-2">
                 <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: '#bbb' }}>My Essay</p>
                 {essayText && (
-                  <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: '#f5f5f5', color: '#888' }}>
+                  <span className="text-[10px] px-2 py-0.5 rounded-full" style={{ background: '#EAE8DC', color: '#888' }}>
                     {essayText.trim().split(/\s+/).filter(Boolean).length.toLocaleString()} words
                   </span>
                 )}
               </div>
               {essayText ? (
                 <>
-                  <p className="text-sm leading-relaxed mb-2" style={{ color: '#0a0a0a' }}>
+                  <p className="text-sm leading-relaxed mb-2" style={{ color: '#2E3250' }}>
                     {essayText.trim().slice(0, 120)}{essayText.trim().length > 120 ? '…' : ''}
                   </p>
                   <p className="text-xs font-semibold" style={{ color: '#555' }}>Continue writing →</p>
@@ -670,19 +670,19 @@ export default function DashboardHome() {
               {[
                 { href: '/dump', icon: Database, label: 'Citations', desc: 'Generate citations from URLs' },
                 { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
-                { href: '/dashboard/modules', icon: BookOpen, label: 'Modules', desc: 'Guided EE lessons' },
+                { href: '/dashboard/modules', icon: BookOpen, label: 'Missions', desc: 'Guided EE missions' },
                 { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
               ].map(({ href, icon: Icon, label, desc, isNew }) => (
                 <Link key={href} href={href}
                   className="block rounded-xl px-4 py-3 transition-all"
                   style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a' }}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250' }}
                   onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
                   <div className="flex items-center gap-1.5 mb-1">
                     <Icon size={13} style={{ color: '#555' }} strokeWidth={1.75} />
-                    <span className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>{label}</span>
+                    <span className="text-xs font-semibold" style={{ color: '#2E3250' }}>{label}</span>
                     {isNew && (
-                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: '#0a0a0a', color: '#fff' }}>New</span>
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: '#2E3250', color: '#fff' }}>New</span>
                     )}
                   </div>
                   <p className="text-[11px] leading-snug" style={{ color: '#aaa' }}>{desc}</p>

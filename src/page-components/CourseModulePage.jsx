@@ -25,11 +25,11 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
   return (
     <nav className="flex flex-col h-full bg-white" style={{ borderRight: '1px solid #f0f0f0' }}>
       {/* Logo / back */}
-      <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid #f5f5f5' }}>
+      <div className="px-5 pt-5 pb-4" style={{ borderBottom: '1px solid #EAE8DC' }}>
         <Link href="/dashboard/modules"
           className="inline-flex items-center gap-1.5 text-xs font-medium mb-4 transition-colors"
           style={{ color: '#bbb' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+          onMouseEnter={e => e.currentTarget.style.color = '#2E3250'}
           onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
           <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
@@ -45,7 +45,7 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
         <div className="h-1.5 rounded-full overflow-hidden" style={{ background: '#f0f0f0' }}>
           <div
             className="h-full rounded-full transition-all duration-700"
-            style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #0a0a0a, #555)' }}
+            style={{ width: `${pct}%`, background: 'linear-gradient(90deg, #2E3250, #555)' }}
           />
         </div>
         <p className="text-[10px] mt-1.5" style={{ color: '#ccc' }}>{visitedCount} of {COURSE_CATALOG.length} completed</p>
@@ -73,10 +73,10 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
                     href={`/course/${m.id}`}
                     className="group flex items-center gap-2.5 px-2.5 py-2 rounded-lg transition-all mb-0.5"
                     style={{
-                      background: isCurrent ? '#f5f5f5' : 'transparent',
-                      color: isCurrent ? '#0a0a0a' : '#999',
+                      background: isCurrent ? '#EAE8DC' : 'transparent',
+                      color: isCurrent ? '#2E3250' : '#999',
                     }}
-                    onMouseEnter={e => { if (!isCurrent) { e.currentTarget.style.background = '#fafafa'; e.currentTarget.style.color = '#0a0a0a' } }}
+                    onMouseEnter={e => { if (!isCurrent) { e.currentTarget.style.background = '#F4F3E8'; e.currentTarget.style.color = '#2E3250' } }}
                     onMouseLeave={e => { if (!isCurrent) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#999' } }}>
 
                     {/* Status icon */}
@@ -86,7 +86,7 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                         </svg>
                       ) : isCurrent ? (
-                        <span className="w-2 h-2 rounded-full" style={{ background: '#0a0a0a' }} />
+                        <span className="w-2 h-2 rounded-full" style={{ background: '#2E3250' }} />
                       ) : isLocked ? (
                         <svg width="11" height="11" viewBox="0 0 20 20" fill="#ddd">
                           <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
@@ -127,8 +127,8 @@ function MobileModuleDrawer({ isOpen, onClose, currentIndex, isLoaded, hasStanda
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }} onClick={onClose} />
       <div className="absolute left-0 top-0 bottom-0 w-72 shadow-2xl overflow-hidden bg-white">
         <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
-          <span className="text-sm font-semibold text-[#0a0a0a]">Modules</span>
-          <button onClick={onClose} className="p-1 rounded-lg hover:bg-[#f5f5f5] transition-colors">
+          <span className="text-sm font-semibold text-[#2E3250]">Missions</span>
+          <button onClick={onClose} className="p-1 rounded-lg hover:bg-[#EAE8DC] transition-colors">
             <svg className="w-5 h-5" viewBox="0 0 20 20" fill="#aaa">
               <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
             </svg>
@@ -149,16 +149,16 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
     <div className="relative mt-4 mb-8">
       {/* Fade overlay */}
       <div className="absolute -top-28 left-0 right-0 h-28 pointer-events-none z-10"
-        style={{ background: 'linear-gradient(to bottom, transparent, #fafafa)' }} />
+        style={{ background: 'linear-gradient(to bottom, transparent, #F4F3E8)' }} />
       {/* Card */}
       <div className="relative z-20 rounded-2xl p-10 text-center bg-white" style={{ border: '1px solid #e8e8e8', boxShadow: '0 4px 24px rgba(0,0,0,0.05)' }}>
-        <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: '#f5f5f5' }}>
+        <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-6" style={{ background: '#EAE8DC' }}>
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#999" strokeWidth="1.75">
             <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
             <path d="M7 11V7a5 5 0 0110 0v4" />
           </svg>
         </div>
-        <h3 className="font-semibold text-[#0a0a0a] text-xl mb-2" style={{ letterSpacing: '-0.02em' }}>
+        <h3 className="font-semibold text-[#2E3250] text-xl mb-2" style={{ letterSpacing: '-0.02em' }}>
           {isPremiumOnly ? 'Method + System module' : 'Unlock the full curriculum'}
         </h3>
         <p className="text-sm max-w-xs mx-auto mb-8 leading-relaxed" style={{ color: '#999' }}>
@@ -169,7 +169,7 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
           {!isSignedIn && (
             <SignInButton mode="modal">
-              <button className="text-sm font-medium px-5 py-2.5 rounded-xl transition-all border hover:border-[#0a0a0a] hover:text-[#0a0a0a]"
+              <button className="text-sm font-medium px-5 py-2.5 rounded-xl transition-all border hover:border-[#2E3250] hover:text-[#2E3250]"
                 style={{ background: '#fff', color: '#555', borderColor: '#e0e0e0' }}>
                 Sign in
               </button>
@@ -177,7 +177,7 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
           )}
           <Link href="/pricing"
             className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
-            style={{ background: '#0a0a0a', color: '#fff' }}>
+            style={{ background: '#2E3250', color: '#fff' }}>
             {isPremiumOnly ? 'Get Method + System →' : 'View plans →'}
           </Link>
         </div>
@@ -205,7 +205,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
   const isPaidModule = !module.free
 
   return (
-    <div className="min-h-screen" style={{ background: '#fafafa' }}>
+    <div className="min-h-screen" style={{ background: '#F4F3E8' }}>
 
       {/* ── Top bar ── */}
       <div className="sticky top-0 z-30 bg-white" style={{ borderBottom: '1px solid #f0f0f0' }}>
@@ -214,7 +214,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
           <div className="flex items-center gap-3 min-w-0">
             <button
               onClick={() => setDrawerOpen(true)}
-              className="lg:hidden p-1.5 rounded-lg hover:bg-[#f5f5f5] transition-colors flex-shrink-0"
+              className="lg:hidden p-1.5 rounded-lg hover:bg-[#EAE8DC] transition-colors flex-shrink-0"
               style={{ color: '#aaa' }}>
               <svg className="w-4.5 h-4.5" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 5a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
@@ -223,18 +223,18 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
 
             <nav className="flex items-center gap-1.5 text-xs min-w-0">
               <Link href="/dashboard" className="flex-shrink-0 transition-colors" style={{ color: '#bbb' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+                onMouseEnter={e => e.currentTarget.style.color = '#2E3250'}
                 onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
                 Dashboard
               </Link>
               <span style={{ color: '#ddd' }}>/</span>
               <Link href="/dashboard/modules" className="flex-shrink-0 transition-colors" style={{ color: '#bbb' }}
-                onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+                onMouseEnter={e => e.currentTarget.style.color = '#2E3250'}
                 onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
-                Modules
+                Missions
               </Link>
               <span style={{ color: '#ddd' }}>/</span>
-              <span className="font-medium truncate" style={{ color: '#0a0a0a' }}>{module.title}</span>
+              <span className="font-medium truncate" style={{ color: '#2E3250' }}>{module.title}</span>
             </nav>
           </div>
 
@@ -247,7 +247,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
                     style={{
                       width: i === moduleIndex ? 18 : 6,
                       height: 6,
-                      background: i === moduleIndex ? '#0a0a0a' : i < moduleIndex ? '#22c55e' : '#e8e8e8',
+                      background: i === moduleIndex ? '#2E3250' : i < moduleIndex ? '#22c55e' : '#e8e8e8',
                     }} />
                 </Link>
               ))}
@@ -302,7 +302,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
                   )}
                   {isPaidModule && !isAiModule && (
                     <span className="text-[10px] font-semibold px-2.5 py-1 rounded-full"
-                      style={{ background: '#f5f5f5', color: '#888', border: '1px solid #e8e8e8' }}>
+                      style={{ background: '#EAE8DC', color: '#888', border: '1px solid #e8e8e8' }}>
                       Standard
                     </span>
                   )}
@@ -310,14 +310,14 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
               </div>
 
               {/* Title */}
-              <h1 className="font-bold text-[#0a0a0a] mb-4" style={{ fontSize: 32, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
+              <h1 className="font-bold text-[#2E3250] mb-4" style={{ fontSize: 32, letterSpacing: '-0.04em', lineHeight: 1.15 }}>
                 {module.title}
               </h1>
 
               {/* Tagline pill */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-8"
-                style={{ background: '#f5f5f5', border: '1px solid #ebebeb' }}>
-                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#0a0a0a' }} />
+                style={{ background: '#EAE8DC', border: '1px solid #ebebeb' }}>
+                <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#2E3250' }} />
                 <p className="text-[0.8125rem] font-medium" style={{ color: '#555' }}>{module.tagline}</p>
               </div>
 
@@ -342,16 +342,16 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
                       href={`/course/${prevModule.id}`}
                       className="group flex items-center gap-3 px-5 py-4 rounded-xl flex-1 bg-white transition-all"
                       style={{ border: '1px solid #e8e8e8', maxWidth: '48%' }}
-                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#0a0a0a'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)' }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.06)' }}
                       onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8'; e.currentTarget.style.boxShadow = 'none' }}>
-                      <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#f5f5f5' }}>
+                      <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0" style={{ background: '#EAE8DC' }}>
                         <svg width="12" height="12" viewBox="0 0 20 20" fill="#888">
                           <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                         </svg>
                       </div>
                       <span>
                         <span className="block text-[9px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: '#ccc' }}>Previous</span>
-                        <span className="text-sm font-medium line-clamp-1" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{prevModule.title}</span>
+                        <span className="text-sm font-medium line-clamp-1" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>{prevModule.title}</span>
                       </span>
                     </Link>
                   ) : <div className="flex-1" style={{ maxWidth: '48%' }} />}
@@ -360,9 +360,9 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
                     <Link
                       href={`/course/${nextModule.id}`}
                       className="group flex items-center justify-end gap-3 px-5 py-4 rounded-xl flex-1 text-right transition-all ml-auto"
-                      style={{ background: '#0a0a0a', border: '1px solid #0a0a0a', maxWidth: '48%', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }}
+                      style={{ background: '#2E3250', border: '1px solid #2E3250', maxWidth: '48%', boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }}
                       onMouseEnter={e => { e.currentTarget.style.background = '#1a1a1a'; e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.25)' }}
-                      onMouseLeave={e => { e.currentTarget.style.background = '#0a0a0a'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)' }}>
+                      onMouseLeave={e => { e.currentTarget.style.background = '#2E3250'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.15)' }}>
                       <span>
                         <span className="block text-[9px] font-semibold uppercase tracking-widest mb-0.5" style={{ color: 'rgba(255,255,255,0.35)' }}>Next up</span>
                         <span className="text-sm font-semibold line-clamp-1" style={{ color: '#fff', letterSpacing: '-0.01em' }}>{nextModule.title}</span>
@@ -377,7 +377,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
                     <div className="flex items-center justify-end flex-1" style={{ maxWidth: '48%' }}>
                       <Link href="/dashboard"
                         className="text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
-                        style={{ background: '#0a0a0a', color: '#fff' }}>
+                        style={{ background: '#2E3250', color: '#fff' }}>
                         Back to Dashboard
                       </Link>
                     </div>
