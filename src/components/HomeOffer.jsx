@@ -22,7 +22,7 @@ const TIERS = [
   },
   {
     name: 'Standard',
-    price: '$89',
+    price: '$79',
     note: 'One-time',
     features: 'The full 14-module system, every guide, framework and checklist. Lifetime access.',
     cta: 'Get the full system',
@@ -101,7 +101,7 @@ export default function HomeOffer() {
         </div>
 
         <p className="text-center text-sm text-navy/60 mt-8">
-          Standard $89 once. Premium $149 once. No subscription, no hidden fees, lifetime access. Backed by a
+          Standard $79 once. Premium $149 once. No subscription, no hidden fees, lifetime access. Backed by a
           30-day, no-questions-asked guarantee.
         </p>
       </div>

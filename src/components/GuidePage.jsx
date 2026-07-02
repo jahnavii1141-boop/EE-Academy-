@@ -178,7 +178,7 @@ export default function GuidePage({
             className="flex-1 rounded-xl border border-navy/20 bg-navy/5 hover:bg-navy/10 transition-colors px-5 py-4 text-center"
           >
             <p className="text-sm font-semibold text-navy">Get full access →</p>
-            <p className="text-xs text-navy/50 mt-1">From $89 · 30-day money-back guarantee</p>
+            <p className="text-xs text-navy/50 mt-1">From $79 · 30-day money-back guarantee</p>
           </Link>
         </div>
 
