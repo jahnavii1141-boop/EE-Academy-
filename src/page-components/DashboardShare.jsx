@@ -66,20 +66,20 @@ export default function DashboardShare() {
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center" style={{ background: '#fafafa' }}>
+      <div className="h-full flex items-center justify-center" style={{ background: '#F4F3E8' }}>
         <div className="w-5 h-5 rounded-full border-2"
-          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
+          style={{ borderColor: '#e8e8e8', borderTopColor: '#2E3250', animation: 'spin 0.8s linear infinite' }} />
       </div>
     )
   }
 
   return (
-    <div className="h-full overflow-y-auto" style={{ background: '#fafafa' }}>
+    <div className="h-full overflow-y-auto" style={{ background: '#F4F3E8' }}>
       <div style={{ maxWidth: 560, margin: '0 auto', padding: '48px 32px 80px' }}>
 
         {/* Header */}
         <p className="text-[10px] font-semibold uppercase tracking-widest mb-2" style={{ color: '#bbb' }}>Share</p>
-        <h1 className="text-xl font-semibold mb-1" style={{ color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+        <h1 className="text-xl font-semibold mb-1" style={{ color: '#2E3250', letterSpacing: '-0.02em' }}>
           Share with Supervisor
         </h1>
         <p className="text-sm mb-8" style={{ color: '#888', lineHeight: 1.6 }}>
@@ -89,16 +89,16 @@ export default function DashboardShare() {
         {/* Free users — share needs an account so feedback can flow back to you */}
         {!isSignedIn && (
           <div className="rounded-2xl p-8 text-center" style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
-            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#f5f5f5' }}>
+            <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4" style={{ background: '#EAE8DC' }}>
               <Link2 size={18} style={{ color: '#aaa' }} />
             </div>
-            <p className="text-sm font-semibold mb-1" style={{ color: '#0a0a0a' }}>Create a free account to share</p>
+            <p className="text-sm font-semibold mb-1" style={{ color: '#2E3250' }}>Create a free account to share</p>
             <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 280, margin: '4px auto 24px', lineHeight: 1.6 }}>
               Sharing needs a free account — that&apos;s how your supervisor&apos;s feedback gets saved and shown back to you here. Takes 20 seconds.
             </p>
             <Link href="/sign-up"
               className="inline-flex text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Create free account →
             </Link>
             <p className="text-[11px] mt-4" style={{ color: '#bbb' }}>
@@ -113,16 +113,16 @@ export default function DashboardShare() {
           <div className="rounded-2xl p-8 text-center mb-4"
             style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ background: '#f5f5f5' }}>
+              style={{ background: '#EAE8DC' }}>
               <Lock size={18} style={{ color: '#aaa' }} />
             </div>
-            <p className="text-sm font-semibold mb-1" style={{ color: '#0a0a0a' }}>Free limit reached</p>
+            <p className="text-sm font-semibold mb-1" style={{ color: '#2E3250' }}>Free limit reached</p>
             <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 260, margin: '4px auto 24px' }}>
               You've used your {FREE_SHARE_LIMIT} free share link generations. Upgrade to create and revoke links without limit.
             </p>
             <Link href="/pricing"
               className="inline-flex text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Upgrade to unlock →
             </Link>
           </div>
@@ -133,10 +133,10 @@ export default function DashboardShare() {
           <div className="rounded-2xl p-8 text-center"
             style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-4"
-              style={{ background: '#f5f5f5' }}>
+              style={{ background: '#EAE8DC' }}>
               <Link2 size={18} style={{ color: '#aaa' }} />
             </div>
-            <p className="text-sm font-medium mb-1" style={{ color: '#0a0a0a' }}>No link generated yet</p>
+            <p className="text-sm font-medium mb-1" style={{ color: '#2E3250' }}>No link generated yet</p>
             <p className="text-xs mb-6" style={{ color: '#aaa', maxWidth: 220, margin: '4px auto 24px' }}>
               Create a private, view-only link for your supervisor.
             </p>
@@ -150,7 +150,7 @@ export default function DashboardShare() {
               disabled={generating}
               className="text-sm font-medium px-6 py-2.5 rounded-xl transition-all"
               style={{
-                background: generating ? '#f0f0f0' : '#0a0a0a',
+                background: generating ? '#f0f0f0' : '#2E3250',
                 color: generating ? '#bbb' : '#fff',
                 cursor: generating ? 'not-allowed' : 'pointer',
               }}
@@ -168,18 +168,18 @@ export default function DashboardShare() {
             <div className="rounded-2xl p-5" style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#22c55e' }} />
-                <p className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>Share link is active</p>
+                <p className="text-xs font-semibold" style={{ color: '#2E3250' }}>Share link is active</p>
               </div>
               <div className="flex items-center gap-2">
                 <code className="flex-1 text-xs px-3 py-2 rounded-lg overflow-hidden text-ellipsis whitespace-nowrap"
-                  style={{ background: '#f5f5f5', color: '#555', border: '1px solid #eee' }}>
+                  style={{ background: '#EAE8DC', color: '#555', border: '1px solid #eee' }}>
                   {shareUrl}
                 </code>
                 <button
                   onClick={copy}
                   className="flex-shrink-0 flex items-center gap-1.5 text-xs font-medium px-3 py-2 rounded-lg transition-all"
                   style={{
-                    background: copied ? '#0a0a0a' : '#f5f5f5',
+                    background: copied ? '#2E3250' : '#EAE8DC',
                     color: copied ? '#fff' : '#555',
                   }}
                 >
@@ -228,7 +228,7 @@ export default function DashboardShare() {
                 target="_blank"
                 className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 rounded-lg transition-all"
                 style={{ background: '#fff', color: '#555', border: '1px solid #f0f0f0' }}
-                onMouseEnter={e => e.currentTarget.style.background = '#f5f5f5'}
+                onMouseEnter={e => e.currentTarget.style.background = '#EAE8DC'}
                 onMouseLeave={e => e.currentTarget.style.background = '#fff'}
               >
                 <ExternalLink size={12} /> Preview

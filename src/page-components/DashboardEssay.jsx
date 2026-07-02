@@ -31,13 +31,13 @@ function ToolBtn({ active, title, onClick, children, disabled }) {
       className="flex items-center justify-center rounded transition-all select-none"
       style={{
         width: 28, height: 28, flexShrink: 0,
-        background: active ? '#0a0a0a' : 'transparent',
+        background: active ? '#2E3250' : 'transparent',
         color: active ? '#fff' : '#555',
         border: 'none', cursor: disabled ? 'default' : 'pointer',
         fontSize: 12, fontWeight: 600,
         opacity: disabled ? 0.3 : 1,
       }}
-      onMouseEnter={e => { if (!active && !disabled) { e.currentTarget.style.background = '#f0f0f0'; e.currentTarget.style.color = '#0a0a0a' } }}
+      onMouseEnter={e => { if (!active && !disabled) { e.currentTarget.style.background = '#f0f0f0'; e.currentTarget.style.color = '#2E3250' } }}
       onMouseLeave={e => { if (!active && !disabled) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
     >
       {children}
@@ -128,7 +128,7 @@ export default function DashboardEssay() {
     return (
       <div className="h-full flex items-center justify-center" style={{ background: '#fff' }}>
         <div className="w-5 h-5 rounded-full border-2"
-          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
+          style={{ borderColor: '#e8e8e8', borderTopColor: '#2E3250', animation: 'spin 0.8s linear infinite' }} />
       </div>
     )
   }
@@ -140,7 +140,7 @@ export default function DashboardEssay() {
 
   let barColor = '#22c55e'
   if (words >= 3000) barColor = '#f59e0b'
-  if (words >= 3800) barColor = '#0a0a0a'
+  if (words >= 3800) barColor = '#2E3250'
   if (overLimit) barColor = '#ef4444'
 
   const isActive = (type, opts) => editor.isActive(type, opts)
@@ -155,7 +155,7 @@ export default function DashboardEssay() {
           font-family: Georgia, "Times New Roman", serif;
           font-size: 16px;
           line-height: 1.9;
-          color: #0a0a0a;
+          color: #2E3250;
           letter-spacing: -0.005em;
         }
         .tiptap-essay p { margin: 0 0 1em; }
@@ -166,7 +166,7 @@ export default function DashboardEssay() {
         .tiptap-essay ol { padding-left: 1.4em; margin: 0 0 1em; }
         .tiptap-essay li { margin-bottom: 0.25em; }
         .tiptap-essay blockquote {
-          border-left: 3px solid #0a0a0a;
+          border-left: 3px solid #2E3250;
           margin: 1.2em 0;
           padding: 0.4em 0 0.4em 1.2em;
           color: #555;
@@ -208,7 +208,7 @@ export default function DashboardEssay() {
           <Link href="/dashboard/share"
             className="text-[11px] font-medium transition-colors"
             style={{ color: '#bbb' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#0a0a0a'}
+            onMouseEnter={e => e.currentTarget.style.color = '#2E3250'}
             onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
             Share with supervisor →
           </Link>
@@ -216,7 +216,7 @@ export default function DashboardEssay() {
 
         {/* ── Formatting toolbar ───────────────────────────────────── */}
         <div className="flex-shrink-0 flex flex-wrap items-center gap-0.5 px-4 py-1.5"
-          style={{ borderBottom: '1px solid #f0f0f0', background: '#fafafa' }}>
+          style={{ borderBottom: '1px solid #f0f0f0', background: '#F4F3E8' }}>
 
           {/* Text style */}
           <ToolBtn active={isActive('bold')} title="Bold (Ctrl+B)" onClick={() => editor.chain().focus().toggleBold().run()}><b>B</b></ToolBtn>

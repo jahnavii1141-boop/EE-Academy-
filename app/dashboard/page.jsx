@@ -1,3 +1,7 @@
-export const dynamic = 'force-dynamic'
-import Dashboard from '../../src/page-components/Dashboard'
-export default function DashboardPage() { return <Dashboard /> }
+import { redirect } from 'next/navigation'
+
+// Canonical dashboard home is /dashboard/home (the Mission Map). Every entry
+// point (navbar, brand link, onboarding) now lands on the same redesigned page.
+export default function DashboardPage() {
+  redirect('/dashboard/home')
+}

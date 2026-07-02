@@ -62,7 +62,7 @@ function AddEntryPanel({ onAdd, onClose, existingSubtopics }) {
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
           <div>
-            <p className="text-sm font-semibold" style={{ color: '#0a0a0a' }}>Dump a paragraph</p>
+            <p className="text-sm font-semibold" style={{ color: '#2E3250' }}>Dump a paragraph</p>
             <p className="text-[11px] mt-0.5" style={{ color: '#aaa' }}>Paste a quote or passage, then note where it's from</p>
           </div>
           <button onClick={onClose} className="p-1 rounded-lg hover:bg-gray-100">
@@ -80,7 +80,7 @@ function AddEntryPanel({ onAdd, onClose, existingSubtopics }) {
             rows={6}
             autoFocus
             className="w-full text-sm px-3 py-2.5 rounded-xl focus:outline-none resize-none"
-            style={{ background: '#fafafa', border: '1px solid #e0e0e0', color: '#0a0a0a', lineHeight: 1.7 }}
+            style={{ background: '#F4F3E8', border: '1px solid #e0e0e0', color: '#2E3250', lineHeight: 1.7 }}
           />
 
           {/* Divider */}
@@ -89,23 +89,23 @@ function AddEntryPanel({ onAdd, onClose, existingSubtopics }) {
           <input value={form.source_name} onChange={e => set('source_name', e.target.value)}
             placeholder="Article / book title"
             className="w-full text-sm px-3 py-2.5 rounded-xl focus:outline-none"
-            style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }} />
+            style={{ background: '#F4F3E8', border: '1px solid #eee', color: '#2E3250' }} />
 
           <div className="grid grid-cols-2 gap-2">
             <input value={form.author} onChange={e => set('author', e.target.value)}
               placeholder="Author"
               className="text-sm px-3 py-2.5 rounded-xl focus:outline-none"
-              style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }} />
+              style={{ background: '#F4F3E8', border: '1px solid #eee', color: '#2E3250' }} />
             <input value={form.year} onChange={e => set('year', e.target.value)}
               placeholder="Year"
               className="text-sm px-3 py-2.5 rounded-xl focus:outline-none"
-              style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }} />
+              style={{ background: '#F4F3E8', border: '1px solid #eee', color: '#2E3250' }} />
           </div>
 
           <input value={form.link} onChange={e => set('link', e.target.value)}
             placeholder="URL or DOI (optional)"
             className="w-full text-sm px-3 py-2.5 rounded-xl focus:outline-none"
-            style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }} />
+            style={{ background: '#F4F3E8', border: '1px solid #eee', color: '#2E3250' }} />
 
           {/* Subtopic */}
           <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#ccc' }}>Tag</p>
@@ -114,7 +114,7 @@ function AddEntryPanel({ onAdd, onClose, existingSubtopics }) {
               list="subtopics-list"
               placeholder="Subtopic (e.g. Background, Analysis…)"
               className="flex-1 text-sm px-3 py-2.5 rounded-xl focus:outline-none"
-              style={{ background: '#fafafa', border: '1px solid #eee', color: '#0a0a0a' }} />
+              style={{ background: '#F4F3E8', border: '1px solid #eee', color: '#2E3250' }} />
             <datalist id="subtopics-list">
               {existingSubtopics.map(s => <option key={s.name} value={s.name} />)}
             </datalist>
@@ -135,7 +135,7 @@ function AddEntryPanel({ onAdd, onClose, existingSubtopics }) {
           <button onClick={handleAdd} disabled={!form.key_info.trim()}
             className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all mt-1"
             style={{
-              background: form.key_info.trim() ? '#0a0a0a' : '#f0f0f0',
+              background: form.key_info.trim() ? '#2E3250' : '#f0f0f0',
               color: form.key_info.trim() ? '#fff' : '#bbb',
               cursor: form.key_info.trim() ? 'pointer' : 'not-allowed',
             }}>
@@ -195,7 +195,7 @@ function EntryCard({ entry, onRemove, onToggleUsed }) {
               <button onClick={() => onToggleUsed(entry)}
                 title={entry.used ? 'Mark unused' : 'Mark as used in essay'}
                 className="p-1.5 rounded-lg transition-all"
-                style={{ background: entry.used ? '#f0fdf4' : '#f5f5f5', color: entry.used ? '#16a34a' : '#aaa' }}>
+                style={{ background: entry.used ? '#f0fdf4' : '#EAE8DC', color: entry.used ? '#16a34a' : '#aaa' }}>
                 <Check size={11} />
               </button>
               <button onClick={() => onRemove(entry)}
@@ -231,12 +231,12 @@ function DumpPaywall() {
         border: '1px solid #f0f0f0', boxShadow: '0 8px 40px rgba(0,0,0,0.08)',
       }}>
         <div style={{
-          width: 48, height: 48, borderRadius: 14, background: '#f5f5f5',
+          width: 48, height: 48, borderRadius: 14, background: '#EAE8DC',
           display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px',
         }}>
-          <Lock size={20} style={{ color: '#0a0a0a' }} />
+          <Lock size={20} style={{ color: '#2E3250' }} />
         </div>
-        <p style={{ fontSize: 16, fontWeight: 700, color: '#0a0a0a', letterSpacing: '-0.01em', marginBottom: 8 }}>
+        <p style={{ fontSize: 16, fontWeight: 700, color: '#2E3250', letterSpacing: '-0.01em', marginBottom: 8 }}>
           Free limit reached
         </p>
         <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6, marginBottom: 24 }}>
@@ -246,7 +246,7 @@ function DumpPaywall() {
           href="/pricing"
           style={{
             display: 'block', width: '100%', padding: '11px 0',
-            background: '#0a0a0a', color: '#fff', borderRadius: 12,
+            background: '#2E3250', color: '#fff', borderRadius: 12,
             fontSize: 13, fontWeight: 600, textDecoration: 'none',
             letterSpacing: '-0.01em',
           }}
@@ -373,15 +373,15 @@ export default function DumpWorkspacePage() {
 
   if (loading) {
     return (
-      <div className="h-full flex items-center justify-center" style={{ background: '#fafafa' }}>
+      <div className="h-full flex items-center justify-center" style={{ background: '#F4F3E8' }}>
         <div className="w-5 h-5 rounded-full border-2"
-          style={{ borderColor: '#e8e8e8', borderTopColor: '#0a0a0a', animation: 'spin 0.8s linear infinite' }} />
+          style={{ borderColor: '#e8e8e8', borderTopColor: '#2E3250', animation: 'spin 0.8s linear infinite' }} />
       </div>
     )
   }
 
   return (
-    <div className="h-full flex flex-col" style={{ background: '#fafafa', position: 'relative' }}>
+    <div className="h-full flex flex-col" style={{ background: '#F4F3E8', position: 'relative' }}>
       {/* Paywall overlay — shown when free limit is hit */}
       {(isAtLimit || showPaywall) && <DumpPaywall />}
 
@@ -389,7 +389,7 @@ export default function DumpWorkspacePage() {
       <div className="flex-shrink-0 flex items-center justify-between px-6 py-3"
         style={{ borderBottom: '1px solid #f0f0f0', background: '#fff' }}>
         <div className="flex items-center gap-4">
-          <p className="text-xs font-semibold" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>EE Dump</p>
+          <p className="text-xs font-semibold" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>EE Dump</p>
           <div className="flex gap-1">
             {[
               { id: 'dump', label: 'Research Dump' },
@@ -398,7 +398,7 @@ export default function DumpWorkspacePage() {
               <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                 className="text-[11px] font-medium px-3 py-1 rounded-lg transition-all"
                 style={{
-                  background: activeTab === tab.id ? '#0a0a0a' : 'transparent',
+                  background: activeTab === tab.id ? '#2E3250' : 'transparent',
                   color: activeTab === tab.id ? '#fff' : '#888',
                 }}>
                 {tab.label}
@@ -419,7 +419,7 @@ export default function DumpWorkspacePage() {
           <button
             onClick={() => isAtLimit ? setShowPaywall(true) : setShowAdd(true)}
             className="flex items-center gap-1.5 text-[11px] font-semibold px-3 py-1.5 rounded-lg"
-            style={{ background: '#0a0a0a', color: '#fff' }}>
+            style={{ background: '#2E3250', color: '#fff' }}>
             {isAtLimit ? <Lock size={12} /> : <Plus size={12} />}
             {isAtLimit ? 'Unlock more' : 'Dump a paragraph'}
           </button>
@@ -440,7 +440,7 @@ export default function DumpWorkspacePage() {
               </div>
               <button onClick={() => isAtLimit ? setShowPaywall(true) : setShowAdd(true)}
                 className="flex items-center gap-2 text-sm font-medium px-5 py-2.5 rounded-xl"
-                style={{ background: '#0a0a0a', color: '#fff' }}>
+                style={{ background: '#2E3250', color: '#fff' }}>
                 <Plus size={14} /> Dump your first paragraph
               </button>
             </div>
@@ -454,7 +454,7 @@ export default function DumpWorkspacePage() {
                       className="text-[11px] font-medium px-3 py-1 rounded-full transition-all"
                       style={{
                         background: filterSubtopic === s.name
-                          ? (s.name === 'All' ? '#0a0a0a' : s.color)
+                          ? (s.name === 'All' ? '#2E3250' : s.color)
                           : '#f0f0f0',
                         color: filterSubtopic === s.name ? '#fff' : '#555',
                       }}>
@@ -498,7 +498,7 @@ export default function DumpWorkspacePage() {
         <div className="flex-1 overflow-y-auto p-6">
           <div className="flex items-center justify-between mb-5" style={{ maxWidth: 680 }}>
             <div>
-              <p className="text-sm font-semibold mb-0.5" style={{ color: '#0a0a0a' }}>MLA Bibliography</p>
+              <p className="text-sm font-semibold mb-0.5" style={{ color: '#2E3250' }}>MLA Bibliography</p>
               <p className="text-xs" style={{ color: '#aaa' }}>
                 Auto-generated from {uniqueSources.length} unique {uniqueSources.length === 1 ? 'source' : 'sources'}
               </p>
@@ -506,7 +506,7 @@ export default function DumpWorkspacePage() {
             {uniqueSources.length > 0 && (
               <button onClick={copyBib}
                 className="flex items-center gap-1.5 text-[11px] font-medium px-3 py-1.5 rounded-lg transition-all"
-                style={{ background: copied ? '#0a0a0a' : '#f5f5f5', color: copied ? '#fff' : '#555' }}>
+                style={{ background: copied ? '#2E3250' : '#EAE8DC', color: copied ? '#fff' : '#555' }}>
                 {copied ? <Check size={11} /> : <Copy size={11} />}
                 {copied ? 'Copied!' : 'Copy all'}
               </button>
@@ -530,7 +530,7 @@ export default function DumpWorkspacePage() {
                 }) || entry.source_name
                 return (
                   <div key={i} className="px-4 py-3 rounded-xl" style={{ background: '#fff', border: '1px solid #f0f0f0' }}>
-                    <p className="text-[13px] leading-relaxed" style={{ color: '#0a0a0a', fontFamily: 'Georgia, serif' }}>
+                    <p className="text-[13px] leading-relaxed" style={{ color: '#2E3250', fontFamily: 'Georgia, serif' }}>
                       {citation}
                     </p>
                     {entry.link && (

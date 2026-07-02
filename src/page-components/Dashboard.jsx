@@ -40,7 +40,7 @@ function EmailCaptureBanner({ onDismiss }) {
     <div className="flex items-start gap-4 px-5 py-4 rounded-xl mb-6"
       style={{ background: '#fff', border: '1px solid #e5e5e5' }}>
       <div className="flex-1 min-w-0">
-        <p className="text-xs font-semibold mb-0.5" style={{ color: '#0a0a0a' }}>
+        <p className="text-xs font-semibold mb-0.5" style={{ color: '#2E3250' }}>
           Get EE tips straight to your inbox
         </p>
         <p className="text-[11px] mb-3" style={{ color: '#aaa' }}>
@@ -54,15 +54,15 @@ function EmailCaptureBanner({ onDismiss }) {
             placeholder="your@email.com"
             style={{
               flex: 1, maxWidth: 220, padding: '7px 12px', borderRadius: 8,
-              border: '1px solid #e0e0e0', background: '#fafafa',
-              fontSize: 12, color: '#0a0a0a', outline: 'none',
+              border: '1px solid #e0e0e0', background: '#F4F3E8',
+              fontSize: 12, color: '#2E3250', outline: 'none',
             }}
           />
           <button
             type="submit"
             disabled={status === 'loading'}
             style={{
-              padding: '7px 14px', background: '#0a0a0a', color: '#fff',
+              padding: '7px 14px', background: '#2E3250', color: '#fff',
               borderRadius: 8, fontSize: 12, fontWeight: 600, border: 'none',
               cursor: status === 'loading' ? 'wait' : 'pointer', whiteSpace: 'nowrap',
             }}
@@ -97,7 +97,7 @@ function Stat({ label, value, sub, urgent }) {
     <div className="flex flex-col">
       <p className="text-[10px] font-semibold uppercase tracking-widest mb-1.5" style={{ color: '#bbb' }}>{label}</p>
       <p className="text-2xl font-semibold tabular-nums leading-none mb-1"
-        style={{ color: urgent ? '#dc2626' : '#0a0a0a', letterSpacing: '-0.03em' }}>{value}</p>
+        style={{ color: urgent ? '#dc2626' : '#2E3250', letterSpacing: '-0.03em' }}>{value}</p>
       <p className="text-xs" style={{ color: '#aaa' }}>{sub}</p>
     </div>
   )
@@ -192,7 +192,7 @@ export default function Dashboard() {
             <div className="w-1 rounded-full flex-shrink-0 mt-2" style={{ height: 40, background: theme.accent }} />
           )}
           <div>
-            <h1 className="font-semibold leading-none mb-2" style={{ fontSize: 32, color: '#0a0a0a', letterSpacing: '-0.03em' }}>
+            <h1 className="font-semibold leading-none mb-2" style={{ fontSize: 32, color: '#2E3250', letterSpacing: '-0.03em' }}>
               {firstName ? `Good to see you, ${firstName}.` : 'Your workspace.'}
             </h1>
             {subject && (
@@ -232,14 +232,14 @@ export default function Dashboard() {
       {/* Trial banner */}
       {showTrialBanner && (
         <div className="flex items-center justify-between gap-4 px-5 py-3 rounded-xl mb-8 text-sm"
-          style={{ background: daysLeft <= 3 ? '#fff5f5' : '#fafafa', border: `1px solid ${daysLeft <= 3 ? '#fecaca' : '#e5e5e5'}` }}>
+          style={{ background: daysLeft <= 3 ? '#fff5f5' : '#F4F3E8', border: `1px solid ${daysLeft <= 3 ? '#fecaca' : '#e5e5e5'}` }}>
           <div className="flex items-center gap-2">
             <Clock size={13} style={{ color: daysLeft <= 3 ? '#ef4444' : '#aaa' }} />
             <span className="text-xs" style={{ color: daysLeft <= 3 ? '#ef4444' : '#777' }}>
               {daysLeft > 0 ? `${daysLeft} day${daysLeft === 1 ? '' : 's'} left in your trial` : 'Your trial has ended'}
             </span>
           </div>
-          <Link href="/pricing" className="text-xs font-semibold" style={{ color: '#0a0a0a' }}>Upgrade →</Link>
+          <Link href="/pricing" className="text-xs font-semibold" style={{ color: '#2E3250' }}>Upgrade →</Link>
         </div>
       )}
 
@@ -270,7 +270,7 @@ export default function Dashboard() {
           return (
             <Link key={tool.id} href={locked ? '#' : tool.href}
               className="col-span-2 group flex items-center justify-between px-6 py-5 rounded-xl transition-all"
-              style={{ background: '#0a0a0a', border: '1px solid #0a0a0a', cursor: locked ? 'not-allowed' : 'pointer' }}>
+              style={{ background: '#2E3250', border: '1px solid #2E3250', cursor: locked ? 'not-allowed' : 'pointer' }}>
               <div className="flex items-center gap-4">
                 <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
                   style={{ background: 'rgba(255,255,255,0.08)' }}>
@@ -293,15 +293,15 @@ export default function Dashboard() {
             <Link key={tool.id} href={locked ? '#' : tool.href}
               className="group flex items-center justify-between px-5 py-4 rounded-xl transition-all"
               style={{ background: '#fff', border: '1px solid #e8e8e8', cursor: locked ? 'not-allowed' : 'pointer' }}
-              onMouseEnter={e => { if (!locked) e.currentTarget.style.borderColor = '#0a0a0a' }}
+              onMouseEnter={e => { if (!locked) e.currentTarget.style.borderColor = '#2E3250' }}
               onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
               <div className="flex items-center gap-3">
                 <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: '#f5f5f5' }}>
+                  style={{ background: '#EAE8DC' }}>
                   <Icon size={13} color="#555" strokeWidth={1.75} />
                 </div>
                 <div>
-                  <p className="text-sm font-medium leading-none mb-0.5" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{tool.label}</p>
+                  <p className="text-sm font-medium leading-none mb-0.5" style={{ color: '#2E3250', letterSpacing: '-0.01em' }}>{tool.label}</p>
                   <p className="text-[11px]" style={{ color: '#aaa' }}>{tool.sub}</p>
                 </div>
               </div>
@@ -315,13 +315,13 @@ export default function Dashboard() {
       {/* Empty state */}
       {!rq && (
         <div className="mt-10 flex items-center gap-4 px-5 py-4 rounded-xl" style={{ background: '#fff', border: '1px solid #f0f0f0', maxWidth: 480 }}>
-          <div className="w-1 self-stretch rounded-full flex-shrink-0" style={{ background: '#0a0a0a' }} />
+          <div className="w-1 self-stretch rounded-full flex-shrink-0" style={{ background: '#2E3250' }} />
           <div>
-            <p className="text-sm font-medium mb-0.5" style={{ color: '#0a0a0a' }}>Start with Home</p>
+            <p className="text-sm font-medium mb-0.5" style={{ color: '#2E3250' }}>Start with Home</p>
             <p className="text-xs" style={{ color: '#aaa' }}>Add your subject, RQ, supervisor and deadline to unlock your full workspace.</p>
           </div>
           <Link href="/dashboard/home" className="flex-shrink-0">
-            <ArrowRight size={15} color="#0a0a0a" />
+            <ArrowRight size={15} color="#2E3250" />
           </Link>
         </div>
       )}
