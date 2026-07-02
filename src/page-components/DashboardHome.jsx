@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import MissionMap from '@/components/dashboard/MissionMap'
+import SystemPledge from '@/components/dashboard/SystemPledge'
 
 const SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science',
@@ -691,6 +692,8 @@ export default function DashboardHome() {
             </div>
           </>
         )}
+
+        {!editing && <SystemPledge />}
 
         {/* Replay tour */}
         <div className="mt-10 text-center">

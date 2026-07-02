@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Lock, Check, ArrowRight, Award, PenLine, Database, FileText } from 'lucide-react'
+import { Lock, Check, ArrowRight, Award, PenLine, Database, FileText, GitBranch, BookMarked, BookOpen } from 'lucide-react'
 import { COURSE_CATALOG } from '@/data/courseCatalog'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
 
@@ -48,6 +48,16 @@ function buildSteps() {
 }
 
 const STEPS = buildSteps()
+
+// Missions 06–14 — the paid system, shown after the free journey.
+const PREMIUM_MISSIONS = COURSE_CATALOG.filter((m) => !m.free)
+
+// Extra free tools/references (not part of the gated chain).
+const RESOURCES = [
+  { icon: GitBranch,  label: 'EE Pathway Finder', sub: 'Find your pathway and shape your RQ, step by step.', href: '/dashboard/tools' },
+  { icon: BookMarked, label: 'Official IB guide', sub: 'The complete IB Extended Essay guide, in full.',      href: '/dashboard/ib-guide' },
+  { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',         href: '/guides' },
+]
 
 function StatusPill({ state }) {
   if (state === 'done') {
@@ -207,6 +217,63 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
       <SectionHead label="Then your workspace opens up" title="Finish the missions to unlock these" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {renderGroup([5, 6, 7, 8])}
+      </div>
+
+      {/* ── The full system: missions 06–14 ── */}
+      <div className="mt-14">
+        <SectionHead
+          label={hasPaid ? 'Your full system' : 'Go further — the full system'}
+          title={hasPaid ? 'The complete method, unlocked' : 'Missions 06 to 14'}
+        />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {PREMIUM_MISSIONS.map((m) => {
+            const canOpen = m.premium ? isPremium : hasPaid
+            return (
+              <Link key={m.id} href={canOpen ? `/course/${m.id}` : '/pricing'}
+                className="group flex flex-col rounded-2xl p-5 min-h-[150px] transition-all hover:-translate-y-0.5"
+                style={{ border: `1px solid ${C.line}`, background: '#fff', textDecoration: 'none' }}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 8px 24px rgba(46,50,80,0.08)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = 'none' }}>
+                <div className="flex items-start justify-between mb-3">
+                  <span className="font-serif leading-none select-none" style={{ fontSize: 30, color: 'rgba(46,50,80,0.14)' }}>{m.number}</span>
+                  {canOpen ? (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: C.navy }}>
+                      <Check className="w-3 h-3" strokeWidth={3} /> Included
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider" style={{ color: C.steel }}>
+                      <Lock className="w-2.5 h-2.5" strokeWidth={2.5} /> {m.premium ? 'Premium' : 'Locked'}
+                    </span>
+                  )}
+                </div>
+                <p className="font-serif text-[16px] leading-snug mb-1" style={{ color: C.navy }}>{m.title}</p>
+                <p className="text-[13px] leading-relaxed flex-1" style={{ color: 'rgba(46,50,80,0.6)' }}>{m.tagline}</p>
+                <div className="mt-4 flex items-center gap-1.5 text-[13px] font-semibold" style={{ color: canOpen ? C.navy : C.steel }}>
+                  {canOpen ? <>Open <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.25} /></> : <>Unlock <ArrowRight className="w-3.5 h-3.5" strokeWidth={2.25} /></>}
+                </div>
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+
+      {/* ── Also free, anytime ── */}
+      <div className="mt-14">
+        <SectionHead label="Also free, anytime" title="Tools and references" />
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {RESOURCES.map((r) => {
+            const Icon = r.icon
+            return (
+              <Link key={r.href} href={r.href}
+                className="group flex flex-col rounded-2xl p-5 transition-all hover:-translate-y-0.5"
+                style={{ border: `1px solid ${C.line}`, background: C.cream, textDecoration: 'none' }}>
+                <Icon className="w-5 h-5 mb-3" style={{ color: C.navy }} strokeWidth={1.75} />
+                <p className="font-serif text-[15px] leading-snug mb-1" style={{ color: C.navy }}>{r.label}</p>
+                <p className="text-[12.5px] leading-relaxed" style={{ color: 'rgba(46,50,80,0.6)' }}>{r.sub}</p>
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
