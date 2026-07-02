@@ -54,7 +54,7 @@ const COURSE_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Course',
   name: 'The Extended Essay Academy',
-  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and exam criteria — built by a 32/34 Cambridge graduate.',
+  description: 'A self-study IB Extended Essay programme with 14 structured modules covering topic selection, research methodology, essay structure, academic writing, and exam criteria — built from a real 32/34 Extended Essay.',
   provider: {
     '@type': 'Organization',
     name: 'The Extended Essay Academy',
@@ -75,7 +75,7 @@ function LandingPage() {
     <main>
       <SEOHead
         title="IB Extended Essay Course — The 32/34 System | The Extended Essay Academy"
-        description="Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 Cambridge graduate. 14 structured modules covering research, writing, criteria, and RPPF."
+        description="Learn the IB Extended Essay step-by-step with a self-study programme built from a real 32/34 Extended Essay. 14 structured modules covering research, writing, criteria, and RPPF."
         canonical="/"
         jsonLd={COURSE_JSON_LD}
         appendSiteName={false}

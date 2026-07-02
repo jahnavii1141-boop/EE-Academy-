@@ -4,7 +4,7 @@
 // 2. Sends auto-reply to the student confirming 24-hour response SLA
 
 const SUPPORT_EMAIL = 'hello@theextendedessay.com'
-const FROM_SUPPORT = 'Gia from EE Academy <hello@theextendedessay.com>'
+const FROM_SUPPORT = 'The Extended Essay Academy <hello@theextendedessay.com>'
 
 // Escape user input before it is interpolated into email HTML. Without this,
 // a submitted name/subject/message can inject arbitrary HTML into the emails.
@@ -51,7 +51,7 @@ function autoReplyHtml({ name }) {
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:40px 24px;color:#0a0a0a">
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Hey ${name},</p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
-        Got your message — I'll get back to you within <strong>24 hours</strong>.
+        Got your message — we'll get back to you within <strong>24 hours</strong>.
       </p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         While you wait, the free modules are a good starting point if you haven't already:
@@ -61,8 +61,8 @@ function autoReplyHtml({ name }) {
                padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:28px">
         Start Module 1 →
       </a>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">Gia</p>
-      <p style="font-size:13px;color:#888;margin:0">32/34 · EE Academy</p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">The Extended Essay Academy</p>
+      <p style="font-size:13px;color:#888;margin:0">Built from a real 32/34 EE</p>
       <hr style="border:none;border-top:1px solid #f0f0f0;margin:32px 0 16px"/>
       <p style="font-size:11px;color:#bbb;margin:0">
         You're receiving this because you submitted a support request at theextendedessay.com.

@@ -8,34 +8,34 @@ import SEOHead from '../components/SEOHead'
 
 // ── Three pillars comparison ─────────────────────────────────────────────────
 const COMPARISON = [
-  // [label, method, methodSystem, methodMe]
-  ['14-module EE curriculum',            true,  true,  true],
-  ['EE Planner + RQ Checker',            true,  true,  true],
-  ['Essay editor (autosave + share)',     true,  true,  true],
-  ['Citation generator',                  true,  true,  true],
-  ['AI Grade Scan (criteria by criteria)',false, true,  true],
-  ['Polish Pass + Supervisor Reply tool', false, true,  true],
-  ['32/34 essay + full analysis',         false, true,  true],
-  ['All templates & SOPs',               false, true,  true],
+  // [label, standard, premium]
+  ['14-module EE curriculum',            true,  true],
+  ['EE Planner + RQ Checker',            true,  true],
+  ['Essay editor (autosave + share)',     true,  true],
+  ['Citation generator',                  true,  true],
+  ['AI Grade Scan (criteria by criteria)',false, true],
+  ['Polish Pass + Supervisor Reply tool', false, true],
+  ['32/34 essay + full analysis',         false, true],
+  ['All templates & SOPs',               false, true],
 ]
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ_ITEMS = [
   {
     q: 'Can I try before buying?',
-    a: 'Yes — Modules 1, 2, 3, and 5 are included with no card needed. Start at the dashboard and access them immediately.',
+    a: 'Yes — your first modules are included with no card needed. Start at the dashboard and access them immediately.',
   },
   {
-    q: "What's the difference between Method and Method+System?",
-    a: 'Method is the full 14-module curriculum plus planning and writing tools. Method+System adds the AI Grade Scan (which reads your draft against the actual IB criteria and tells you exactly where you\'re losing marks), the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
+    q: "What's the difference between Standard and Premium?",
+    a: 'Standard is the full 14-module curriculum plus planning and writing tools. Premium adds the AI Grade Scan (which reads your draft against the actual IB criteria and tells you exactly where you\'re losing marks), the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
   },
   {
     q: "What if it doesn't help me?",
     a: 'You have 30 days to request a full refund. Go through the modules — if the system genuinely doesn\'t help you, email us and we\'ll sort it same day, no forms.',
   },
   {
-    q: 'Can I pay in instalments?',
-    a: 'Yes. Method+System is available as 3 × $63. Method+Me is available as 3 × $179. Select the instalment option at checkout.',
+    q: 'Is this a subscription?',
+    a: 'No. Standard and Premium are one-time payments with lifetime access. No recurring fees.',
   },
   {
     q: 'Is this up to date with the current IB syllabus?',
@@ -72,8 +72,8 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-cream">
       <SEOHead
-        title="IB Extended Essay Course Pricing — Method / Method+System / Method+Me | EE Academy"
-        description="Three tiers, one system. Method $89 · Method+System $179 · Method+Me $497. Built by a 32/34 Cambridge graduate. 30-day money-back guarantee."
+        title="IB Extended Essay Course Pricing — Standard & Premium | EE Academy"
+        description="Two tiers, one system. Standard $79 · Premium $149 — one-time, lifetime access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
         canonical="/pricing"
       />
 
@@ -116,38 +116,19 @@ export default function PricingPage() {
           <h2 className="font-serif text-xl font-bold text-navy mb-4">What's included</h2>
           <div className="rounded-2xl border border-navy/10 bg-white overflow-hidden">
             {/* Header */}
-            <div className="grid grid-cols-4 text-[11px] font-semibold uppercase tracking-widest
+            <div className="grid grid-cols-3 text-[11px] font-semibold uppercase tracking-widest
               px-5 py-3 border-b border-navy/8" style={{ color: '#aaa', background: '#fafafa' }}>
               <span className="col-span-1" />
-              <span className="text-center">Method</span>
-              <span className="text-center" style={{ color: '#0a0a0a' }}>Method+System</span>
-              <span className="text-center">Method+Me</span>
-
+              <span className="text-center">Standard</span>
+              <span className="text-center" style={{ color: '#0a0a0a' }}>Premium</span>
             </div>
-            {COMPARISON.map(([label, method, ai, me], i) => (
-              <div key={i} className="grid grid-cols-4 px-5 py-3 border-b border-navy/6 last:border-0 text-sm items-center">
+            {COMPARISON.map(([label, standard, premium], i) => (
+              <div key={i} className="grid grid-cols-3 px-5 py-3 border-b border-navy/6 last:border-0 text-sm items-center">
                 <span className="text-navy/80 col-span-1 pr-4">{label}</span>
-                <span className="text-center"><Tick yes={method} /></span>
-                <span className="text-center"><Tick yes={ai} hero /></span>
-                <span className="text-center"><Tick yes={me} /></span>
+                <span className="text-center"><Tick yes={standard} /></span>
+                <span className="text-center"><Tick yes={premium} hero /></span>
               </div>
             ))}
-          </div>
-        </AnimateIn>
-      </div>
-
-      {/* ── Squad anchor ── */}
-      <div id="squad" className="max-w-3xl mx-auto px-6 pb-10">
-        <AnimateIn>
-          <div className="rounded-2xl border border-navy/10 bg-white px-6 py-5">
-            <p className="text-sm font-bold text-navy mb-1">The Squad</p>
-            <p className="text-sm text-ink-soft leading-relaxed">
-              Buying with two friends? Three Method+AI seats for $399 total — that's $133 each.{' '}
-              <Link href="mailto:hello@theextendedessay.com?subject=Squad pricing"
-                className="text-navy underline underline-offset-2">
-                Email us to set it up →
-              </Link>
-            </p>
           </div>
         </AnimateIn>
       </div>

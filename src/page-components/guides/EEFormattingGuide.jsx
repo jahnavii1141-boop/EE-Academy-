@@ -16,9 +16,10 @@ const CONTENT = [
   { type: 'comparison-table', headers: ['Must Include', 'Must NOT Include'], rows: [
     ['Title of your EE', 'Your name (anonymous marking)'],
     ['Your research question', 'Your school name'],
-    ['The subject you\'re writing in', 'Borders, colours, or images'],
-    ['Word count', 'Decorative elements'],
-    ['Session (e.g., May 2026)', 'Your candidate number (goes elsewhere)'],
+    ['The subject you\'re writing in', 'Your supervisor\'s name'],
+    ['Word count', 'Borders, colours, or images'],
+    ['Session (e.g., May 2026)', 'Decorative elements'],
+    ['Your candidate number / student ID', 'A cover image or logo'],
   ]},
   { type: 'heading', text: 'Bold, Italics, Underline — The Rules' },
   { type: 'step-process', steps: [
@@ -48,7 +49,7 @@ const CONTENT = [
     'Double-spaced throughout',
     '1-inch margins all sides',
     'Page numbers top right (starting from first content page)',
-    'Title page: title, RQ, subject, word count, session — NO personal info',
+    'Title page: title, RQ, subject, word count, session, candidate number — but no name or school',
     'Table of contents with correct page numbers',
     'Headings consistent in style and hierarchy',
     'All figures and tables labelled and referenced in text',

@@ -43,11 +43,10 @@ export default function GuidePage({
     description,
     url: canonicalUrl,
     author: {
-      '@type': 'Person',
-      name: 'Gia',
-      description: 'Scored 32/34 on the IB Extended Essay. Founder of The Extended Essay Academy.',
-      url: 'https://theextendedessay.com/about',
-      sameAs: ['https://theextendedessay.com/about'],
+      '@type': 'Organization',
+      name: 'The Extended Essay Academy',
+      description: 'A self-study IB Extended Essay platform built from a real 32/34 Extended Essay.',
+      url: 'https://theextendedessay.com',
     },
     publisher: { '@type': 'Organization', name: 'The Extended Essay Academy', url: 'https://theextendedessay.com' },
     datePublished: '2026-03-29',
@@ -119,12 +118,12 @@ export default function GuidePage({
 
         {/* Author byline */}
         <div className="flex items-center gap-3 mt-10 mb-2 pb-8 border-b border-navy/8">
-          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-cream text-sm font-bold flex-shrink-0">
-            G
+          <div className="w-10 h-10 rounded-full bg-navy flex items-center justify-center text-cream text-xs font-bold flex-shrink-0">
+            EE
           </div>
           <div>
-            <p className="text-sm font-semibold text-navy">Written by Gia</p>
-            <p className="text-xs text-navy/50">32/34 IB Extended Essay · The Extended Essay Academy</p>
+            <p className="text-sm font-semibold text-navy">The Extended Essay Academy</p>
+            <p className="text-xs text-navy/50">Built from a real 32/34 IB Extended Essay</p>
           </div>
         </div>
 

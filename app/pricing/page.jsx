@@ -23,9 +23,9 @@ const PRODUCT_JSON_LD = {
   offers: [
     {
       '@type': 'Offer',
-      name: 'Method',
-      description: '14-module EE curriculum, EE Planner, essay editor, research workspace, citation generator. Yearly subscription.',
-      price: '89',
+      name: 'Standard',
+      description: '14-module EE curriculum, EE Planner, essay editor, research workspace, citation generator. One-time payment, lifetime access.',
+      price: '79',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: `${BASE}/pricing`,
@@ -33,9 +33,9 @@ const PRODUCT_JSON_LD = {
     },
     {
       '@type': 'Offer',
-      name: 'Method+System',
-      description: 'Everything in Method plus AI Grade Scan (criteria-by-criteria), Polish Pass, Supervisor Reply Drafter, and all templates. Yearly subscription.',
-      price: '179',
+      name: 'Premium',
+      description: 'Everything in Standard plus AI Grade Scan (criteria-by-criteria), Polish Pass, Supervisor Reply Drafter, and all templates. One-time payment, lifetime access.',
+      price: '149',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
       url: `${BASE}/pricing`,

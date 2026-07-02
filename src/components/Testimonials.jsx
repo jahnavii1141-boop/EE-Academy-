@@ -90,9 +90,9 @@ export default function Testimonials() {
         {/* Honest trust signals */}
         <AnimateIn delay={0.1}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <TrustCard stat="32/34" label="Founder's actual EE score" />
+            <TrustCard stat="32/34" label="The essay this is built from" />
             <TrustCard stat="14" label="Modules — complete curriculum" />
-            <TrustCard stat="Cambridge" label="University — founder credential" />
+            <TrustCard stat="Lifetime" label="Access — one-time payment" />
             <TrustCard stat="30-Day" label="Money-Back Guarantee" />
           </div>
         </AnimateIn>

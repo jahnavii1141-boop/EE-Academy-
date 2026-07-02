@@ -1,7 +1,7 @@
 import { Webhook } from 'svix'
 import { createServiceClient } from '../../../../src/lib/supabase'
 
-const FROM = 'Gia from EE Academy <hello@theextendedessay.com>'
+const FROM = 'The Extended Essay Academy <hello@theextendedessay.com>'
 
 function welcomeHtml(email) {
   const unsub = `https://theextendedessay.com/unsubscribe?email=${encodeURIComponent(email)}`
@@ -9,12 +9,12 @@ function welcomeHtml(email) {
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:40px 24px;color:#0a0a0a">
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Hey,</p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
-        Welcome to the EE Academy. I'm Gia — I scored 32/34 on my Extended Essay and built this
-        so you don't have to figure it out the hard way like I did.
+        Welcome to the EE Academy. This whole platform is built from the exact system behind a real
+        32/34 Extended Essay, so you don't have to figure it out the hard way.
       </p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         You've got access to Modules 1, 2, 3, and 5 — covering the mindset, IB criteria,
-        subject selection, topic choice, and the research system I used. Start here:
+        subject selection, topic choice, and the research system itself. Start here:
       </p>
       <a href="https://theextendedessay.com/course/module-1"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;
@@ -23,10 +23,10 @@ function welcomeHtml(email) {
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If you have a question about your EE at any point — research question, subject choice,
-        structure — just reply to this email. I read everything.
+        structure — just reply to this email. We read everything.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">Gia</p>
-      <p style="font-size:13px;color:#888;margin:0">32/34 · EE Academy</p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">The Extended Essay Academy</p>
+      <p style="font-size:13px;color:#888;margin:0">Built from a real 32/34 EE</p>
       <hr style="border:none;border-top:1px solid #f0f0f0;margin:32px 0 16px"/>
       <p style="font-size:11px;color:#bbb;margin:0">
         You're receiving this because you signed up at theextendedessay.com. ·

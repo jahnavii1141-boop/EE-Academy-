@@ -31,7 +31,7 @@ function EmailCaptureBanner({ onDismiss }) {
       <div className="flex items-center gap-2.5 px-5 py-3 rounded-xl mb-6"
         style={{ background: '#f0fdf4', border: '1px solid #bbf7d0' }}>
         <Check size={14} style={{ color: '#16a34a', flexShrink: 0 }} />
-        <p className="text-sm" style={{ color: '#15803d' }}>You're in — check your inbox for a welcome email from Gia.</p>
+        <p className="text-sm" style={{ color: '#15803d' }}>You're in — check your inbox for a welcome email from The Extended Essay Academy.</p>
       </div>
     )
   }

@@ -17,11 +17,11 @@ const METHOD_FEATURES = [
   'Research Question Checker',
   'Essay editor with autosave',
   'Citation generator',
-  'Yearly subscription',
+  'One-time payment · lifetime access',
 ]
 
 const METHOD_AI_FEATURES = [
-  'Everything in Method',
+  'Everything in Standard',
   'AI Grade Scan — criteria-by-criteria',
   'Polish Pass — language & argument tightening',
   'Supervisor Reply Drafter',
@@ -110,7 +110,7 @@ export default function Pricing() {
             flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
             <p className="text-sm text-emerald-800">
-              <strong>Try it first.</strong> Modules 1, 2, 3, and 5 are completely free — start immediately.
+              <strong>Try it first.</strong> Your first modules are completely free — start immediately.
             </p>
             <Link href="/course/module-1"
               className="sm:ml-auto text-xs font-semibold text-emerald-700 underline underline-offset-2 flex-shrink-0 whitespace-nowrap">
@@ -126,7 +126,7 @@ export default function Pricing() {
           <MotionDiv variants={staggerItem}
             className="rounded-2xl border border-navy/10 bg-white flex flex-col p-6">
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>Method</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>Standard</p>
               <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2"
                 style={{ background: '#fef3c7', color: '#92400e', border: '1px solid #fde68a' }}>
                 Early bird offer
@@ -134,7 +134,7 @@ export default function Pricing() {
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-navy">${PRICING.method.price}</span>
               </div>
-              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>yearly subscription</p>
+              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>one-time · lifetime access</p>
               <ul className="space-y-2.5 mb-8">
                 {METHOD_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
@@ -144,11 +144,11 @@ export default function Pricing() {
               priceId={PADDLE_CONFIG.basicPriceId}
               className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all border border-navy/20 text-navy hover:bg-navy hover:text-white"
             >
-              Enroll in Method
+              Get the full system
             </CheckoutButton>
           </MotionDiv>
 
-          {/* ── Method+AI (hero) ── */}
+          {/* ── Premium (hero) ── */}
           <MotionDiv variants={staggerItem}
             className="rounded-2xl flex flex-col p-6 relative"
             style={{ background: '#0a0a0a' }}>
@@ -158,7 +158,7 @@ export default function Pricing() {
               Most Popular
             </span>
             <div className="flex-1">
-              <p className="text-[11px] font-bold uppercase tracking-widest mb-2 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Method+System</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest mb-2 mt-2" style={{ color: 'rgba(255,255,255,0.4)' }}>Premium</p>
               <span className="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full mb-2"
                 style={{ background: 'rgba(254,243,199,0.15)', color: 'rgba(253,230,138,0.9)', border: '1px solid rgba(253,230,138,0.25)' }}>
                 Early bird offer
@@ -166,10 +166,7 @@ export default function Pricing() {
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-white">${PRICING.methodAI.price}</span>
               </div>
-              <p className="text-[12px] mb-1" style={{ color: 'rgba(255,255,255,0.4)' }}>yearly subscription</p>
-              <p className="text-[11px] mb-5" style={{ color: 'rgba(255,255,255,0.35)' }}>
-                or {PRICING.methodAI.installments.count} × ${PRICING.methodAI.installments.each}
-              </p>
+              <p className="text-[12px] mb-5" style={{ color: 'rgba(255,255,255,0.4)' }}>one-time · lifetime access</p>
               <ul className="space-y-2.5 mb-8">
                 {METHOD_AI_FEATURES.map((f, i) => <CheckItem key={i} text={f} light />)}
               </ul>
@@ -180,22 +177,12 @@ export default function Pricing() {
               className="w-full py-2.5 rounded-xl text-sm font-semibold transition-all"
               style={{ background: '#fff', color: '#0a0a0a' }}
             >
-              Enroll in Method+System
+              Get Premium
             </CheckoutButton>
           </MotionDiv>
 
 
         </StaggerContainer>
-
-        {/* Squad nudge — one line, below the grid */}
-        <AnimateIn delay={0.2}>
-          <p className="text-center text-sm mt-5" style={{ color: '#aaa' }}>
-            Buying with two friends?{' '}
-            <Link href="/pricing#squad" className="underline underline-offset-2 hover:text-navy transition-colors">
-              See The Squad →
-            </Link>
-          </p>
-        </AnimateIn>
 
       </div>
     </section>

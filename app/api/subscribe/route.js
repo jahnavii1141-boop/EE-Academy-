@@ -1,6 +1,6 @@
 import { createServiceClient } from '../../../src/lib/supabase'
 
-const FROM = 'Gia from EE Academy <hello@theextendedessay.com>'
+const FROM = 'The Extended Essay Academy <hello@theextendedessay.com>'
 
 async function sendEmail({ apiKey, to, subject, html }) {
   const res = await fetch('https://api.resend.com/emails', {
@@ -24,12 +24,12 @@ function welcomeHtml(email) {
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:40px 24px;color:#0a0a0a">
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Hey,</p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
-        Welcome to the EE Academy. I'm Gia — I scored 32/34 on my Extended Essay and built this
-        so you don't have to figure it out the hard way like I did.
+        Welcome to the EE Academy. This whole platform is built from the exact system behind a real
+        32/34 Extended Essay, so you don't have to figure it out the hard way.
       </p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         You've got free access to Modules 1, 2, 3, and 5 — covering the mindset, IB criteria,
-        subject selection, topic choice, and the research system I used. Start here:
+        subject selection, topic choice, and the research system itself. Start here:
       </p>
       <a href="https://theextendedessay.com/course/module-1"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;
@@ -38,10 +38,10 @@ function welcomeHtml(email) {
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If you have a question about your EE at any point — research question, subject choice,
-        structure — just reply to this email. I read everything.
+        structure — just reply to this email. We read everything.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">Gia</p>
-      <p style="font-size:13px;color:#888;margin:0">32/34 · EE Academy</p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">The Extended Essay Academy</p>
+      <p style="font-size:13px;color:#888;margin:0">Built from a real 32/34 EE</p>
       <hr style="border:none;border-top:1px solid #f0f0f0;margin:32px 0 16px"/>
       <p style="font-size:11px;color:#bbb;margin:0">
         You're receiving this because you signed up at theextendedessay.com. ·
@@ -60,7 +60,7 @@ function day3Html(email) {
       </p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         The RQ is the single most important decision in your EE. A weak RQ means even brilliant
-        research won't score well. I wrote a guide on exactly what makes a strong one — with real
+        research won't score well. Here's a guide on exactly what makes a strong one — with real
         examples across subjects:
       </p>
       <a href="https://theextendedessay.com/guides/research-question-examples"
@@ -70,15 +70,15 @@ function day3Html(email) {
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If you want to go deeper — Modules 4–9 cover the full research and writing process,
-        including how I structured my own 32/34 essay. That's in Method ($89, one-time).
+        including how a real 32/34 essay was structured. That's in Standard ($79, one-time).
       </p>
       <a href="https://theextendedessay.com/pricing"
         style="font-size:14px;color:#0a0a0a;border-bottom:1px solid #0a0a0a;text-decoration:none">
         See what's included →
       </a>
       <br/><br/>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">Gia</p>
-      <p style="font-size:13px;color:#888;margin:0">32/34 · EE Academy</p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">The Extended Essay Academy</p>
+      <p style="font-size:13px;color:#888;margin:0">Built from a real 32/34 EE</p>
       <hr style="border:none;border-top:1px solid #f0f0f0;margin:32px 0 16px"/>
       <p style="font-size:11px;color:#bbb;margin:0">
         <a href="${unsub}" style="color:#bbb">Unsubscribe</a>
@@ -92,27 +92,27 @@ function day7Html(email) {
     <div style="font-family:Georgia,serif;max-width:560px;margin:0 auto;padding:40px 24px;color:#0a0a0a">
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">Hey,</p>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
-        One week in. I want to be straight with you — the free modules give you the foundation,
+        One week in. Straight talk — the free modules give you the foundation,
         but most students who score well have a clear system for the research and writing phases.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What Method unlocks ($89, one-time):</strong></p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What Standard unlocks ($79, one-time):</strong></p>
       <ul style="font-size:15px;line-height:1.8;margin:0 0 24px;padding-left:20px;color:#333">
         <li>Modules 4–9 (research, argument, structure, writing)</li>
         <li>EE Planner + Research Question Checker</li>
         <li>Essay editor with autosave</li>
-        <li>The exact framework I used to score 32/34</li>
+        <li>The exact framework behind a real 32/34</li>
       </ul>
       <a href="https://theextendedessay.com/pricing"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;
                padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:28px">
-        Unlock Method — $89 →
+        Unlock Standard — $79 →
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If now's not the right time, no pressure — your free access stays forever.
         And if you have questions, just reply here.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">Gia</p>
-      <p style="font-size:13px;color:#888;margin:0">32/34 · EE Academy</p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 4px">The Extended Essay Academy</p>
+      <p style="font-size:13px;color:#888;margin:0">Built from a real 32/34 EE</p>
       <hr style="border:none;border-top:1px solid #f0f0f0;margin:32px 0 16px"/>
       <p style="font-size:11px;color:#bbb;margin:0">
         <a href="${unsub}" style="color:#bbb">Unsubscribe</a>

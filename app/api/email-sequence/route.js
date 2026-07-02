@@ -2,7 +2,7 @@ import { createServiceClient } from '../../../src/lib/supabase'
 import { day3Html, day7Html } from '../subscribe/route'
 import { safeEqual, maskEmail } from '@/lib/security'
 
-const FROM = 'Gia from EE Academy <hello@theextendedessay.com>'
+const FROM = 'The Extended Essay Academy <hello@theextendedessay.com>'
 
 async function sendEmail({ apiKey, to, subject, html }) {
   const res = await fetch('https://api.resend.com/emails', {

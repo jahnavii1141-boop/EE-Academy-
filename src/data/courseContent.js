@@ -1161,7 +1161,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'Your title page is anonymous, no name, no school. The IB requires this for blind marking:',
+        text: 'Your title page carries the essay details and your candidate number, but no name and no school. The IB marks it blind, so nothing that reveals who you are by name:',
       },
       {
         type: 'comparison-table',
@@ -1169,9 +1169,10 @@ export const COURSE_MODULES = [
         rows: [
           ['Full title of your EE', 'Your name'],
           ['Research question', 'Your school name or country'],
-          ['Subject (e.g., Business Management)', 'Any identifying information'],
+          ['Subject (e.g., Business Management)', 'Your supervisor\'s name'],
           ['Word count', 'Decorative borders or colours'],
           ['Session (e.g., May 2026)', 'Photos or images'],
+          ['Your candidate number / student ID', 'A cover image or logo'],
         ],
       },
       {
