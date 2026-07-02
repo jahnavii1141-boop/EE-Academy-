@@ -5,9 +5,9 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, Award, BookMarked, Check, ArrowRight, Lock, PenLine, GitBranch } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
-import { COURSE_CATALOG } from '@/data/courseCatalog'
+import MissionMap from '@/components/dashboard/MissionMap'
 
 const SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science',
@@ -16,135 +16,6 @@ const SUBJECTS = [
   'Mathematics', 'Music', 'Philosophy', 'Physics',
   'Psychology', 'Social & Cultural Anthropology', 'Visual Arts', 'Other',
 ]
-
-// ── Free workspace library (full browsable catalogue) ────────────────────────
-const LIB_STATS = [
-  { n: '5',     l: 'free modules' },
-  { n: '16',    l: 'subject workbooks' },
-  { n: '124',   l: 'page IB guide' },
-  { n: '32/34', l: 'example essay' },
-]
-
-const LIB_RESOURCES = [
-  { icon: GitBranch,  label: 'EE Pathway Finder', sub: 'Find your pathway and shape your RQ, step by step.',     href: '/dashboard/tools' },
-  { icon: Database,   label: 'EE Dump',          sub: 'Collect sources, auto-build your bibliography.',         href: '/dashboard/dump' },
-  { icon: FileText,   label: 'Subject workbooks', sub: 'Planning portfolios for 16 subjects, ready to print.',   href: '/dashboard/templates' },
-  { icon: Award,      label: 'Example essay',     sub: 'A real 32/34 Extended Essay, first 17 pages.',           href: '/dashboard/sample-ee' },
-  { icon: BookMarked, label: 'Official IB guide', sub: 'The complete 124-page IB guide, in full.',               href: '/dashboard/ib-guide' },
-  { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',           href: '/guides' },
-  { icon: PenLine,    label: 'Essay editor',      sub: 'Write your draft with a live IB word count.',            href: '/dashboard/essay' },
-]
-
-const CARD_BORDER = '0.5px solid #ececec'
-
-function LibBadge({ kind }) {
-  if (kind === 'free') {
-    return <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: '#0a0a0a', color: '#fff' }}>Free</span>
-  }
-  if (kind === 'included') {
-    return <span className="inline-flex items-center gap-1 text-[10px] font-semibold" style={{ color: '#0a0a0a' }}><Check className="w-3 h-3" strokeWidth={2.5} />Included</span>
-  }
-  return <span className="inline-flex items-center gap-1 text-[10px] font-semibold px-2 py-0.5 rounded-full" style={{ background: '#f5f5f7', color: '#8e8e93' }}><Lock className="w-2.5 h-2.5" strokeWidth={2.5} />Premium</span>
-}
-
-function LibCard({ href, badge, top, title, sub, cta }) {
-  return (
-    <Link href={href} style={{ textDecoration: 'none', border: CARD_BORDER }}
-      className="group flex flex-col rounded-2xl bg-white p-5 min-h-[210px] transition-shadow hover:shadow-[0_4px_16px_rgba(0,0,0,0.07)]">
-      <div className="flex items-center justify-between mb-3">
-        {top}
-        <LibBadge kind={badge} />
-      </div>
-      <p className="text-[15px] font-semibold leading-snug" style={{ color: '#0a0a0a', letterSpacing: '-0.01em' }}>{title}</p>
-      <p className="text-[13px] leading-relaxed mt-1.5" style={{ color: '#86868b' }}>{sub}</p>
-      <span className="mt-auto inline-flex items-center justify-center w-full rounded-full py-2.5 text-[13px] font-semibold transition-colors group-hover:bg-[#fafafa]"
-        style={{ border: '0.5px solid #e2e2e2', color: cta === 'Unlock' ? '#8e8e93' : '#0a0a0a' }}>
-        {cta}
-      </span>
-    </Link>
-  )
-}
-
-function LibSectionHead({ label, title }) {
-  return (
-    <div className="mb-5">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.12em]" style={{ color: '#aeaeb2' }}>{label}</p>
-      <h2 className="text-[22px] font-semibold mt-1.5" style={{ color: '#0a0a0a', letterSpacing: '-0.025em' }}>{title}</h2>
-    </div>
-  )
-}
-
-function FreeWorkspaceLibrary({ hasPaid, isPremium }) {
-  return (
-    <div id="tour-guide" className="mb-8">
-      {/* Scale strip */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
-        {LIB_STATS.map(s => (
-          <div key={s.l} className="rounded-2xl bg-white p-5" style={{ border: CARD_BORDER }}>
-            <p className="text-[28px] font-semibold leading-none" style={{ color: '#0a0a0a', letterSpacing: '-0.03em' }}>{s.n}</p>
-            <p className="text-[12.5px] mt-2" style={{ color: '#a1a1a6' }}>{s.l}</p>
-          </div>
-        ))}
-      </div>
-
-      {/* Free modules — the opening impression is all "Open" */}
-      <LibSectionHead label="Included free — start here" title="5 full modules, open now" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        {COURSE_CATALOG.filter(m => m.free).map(m => (
-          <LibCard key={m.id}
-            href={`/course/${m.id}`}
-            badge="free"
-            top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
-            title={m.title}
-            sub={m.tagline}
-            cta="Open"
-          />
-        ))}
-      </div>
-
-      {/* Tools & resources — all free */}
-      <LibSectionHead label="Tools & resources — free" title="Everything else you get, free" />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mb-12">
-        {LIB_RESOURCES.map(r => {
-          const Icon = r.icon
-          return (
-            <LibCard key={r.href}
-              href={r.href}
-              badge="free"
-              top={<Icon className="w-5 h-5" style={{ color: '#6e6e73' }} strokeWidth={1.75} />}
-              title={r.label}
-              sub={r.sub}
-              cta="Open"
-            />
-          )
-        })}
-      </div>
-
-      {/* Your next step — premium modules, fully visible but framed as the upgrade */}
-      <LibSectionHead
-        label={hasPaid ? 'Your full course' : 'Your next step'}
-        title={hasPaid ? 'The complete method, unlocked' : 'Go further with the full method'}
-      />
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {COURSE_CATALOG.filter(m => !m.free).map(m => {
-          const canOpen = m.premium ? isPremium : hasPaid
-          const badge = canOpen ? 'included' : 'premium'
-          return (
-            <LibCard key={m.id}
-              href={canOpen ? `/course/${m.id}` : '/pricing'}
-              badge={badge}
-              top={<span className="font-mono text-[11px]" style={{ color: '#c7c7cc' }}>{m.number}</span>}
-              title={m.title}
-              sub={m.tagline}
-              cta={canOpen ? 'Open' : 'Unlock'}
-            />
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 
 // ── Onboarding Tour ───────────────────────────────────────────────────────────
 const TOUR_KEY = 'eeAcademy_tourDone'
@@ -528,8 +399,8 @@ export default function DashboardHome() {
           </div>
         )}
 
-        {/* Start Here progression guide — only when not in edit mode */}
-        {!editing && <FreeWorkspaceLibrary hasPaid={hasPaid} isPremium={isPremium} />}
+        {/* Mission Map — the gated, gamified progression is the star of the dashboard */}
+        {!editing && <MissionMap hasPaid={hasPaid} isPremium={isPremium} />}
 
         <div className="max-w-2xl mx-auto">
         {/* Share with supervisor */}
