@@ -57,6 +57,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The rules for using AI without crossing the integrity line.' },
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'How to score all 6 Criterion E marks with genuine reflection.' },
+          { href: "/blog/ib-ai-academic-integrity-meeting", title: "Called Into an AI Integrity Meeting?", description: "What to expect and how to handle it." },
+      { href: "/blog/how-to-write-extended-essay-reflections", title: "EE Reflections That Score Full Marks", description: "The RPPF is the easiest 6 marks you can bank." },
     ],
   },
 
@@ -98,6 +100,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-subjects-guide', title: 'Best IB Extended Essay Subjects', description: 'How to choose the right EE subject for your strengths.' },
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns across 8 subjects.' },
+          { href: "/blog/is-economics-ee-hard", title: "Is Economics One of the Hardest EEs?", description: "Difficulty, marking, and how to play it." },
+      { href: "/blog/is-history-ee-hard", title: "Is a History EE Hard?", description: "Passion vs difficulty in subject choice." },
     ],
   },
 
@@ -139,6 +143,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'The three-reflection structure for all 6 Criterion E marks.' },
       { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'How every mark across criteria A to E is awarded.' },
+          { href: "/blog/can-you-change-your-ee-research-question", title: "Can You Change Your EE Research Question?", description: "When to pivot and how to tell your supervisor." },
+      { href: "/blog/is-the-extended-essay-too-hard", title: "Is the EE Really That Hard?", description: "An honest take built on a real 32/34 essay." },
     ],
   },
   {
@@ -189,6 +195,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/blog/can-you-use-ai-for-extended-essay', title: 'Can You Use AI for Your Extended Essay?', description: 'Where AI is safe and where it gets you flagged.' },
       { href: '/guides/ee-ai-guide', title: 'How to Use AI for Your IB Extended Essay', description: 'The rules for staying on the right side of the line.' },
+          { href: "/blog/can-you-use-ai-for-extended-essay", title: "Can You Use AI for Your EE?", description: "Where the line sits and how to stay on the right side of it." },
+      { href: "/blog/ee-predicted-grade-and-bonus-points", title: "How EE and TOK Points Actually Work", description: "What a rough draft does (and does not) do to your predicted grade." },
     ],
   },
 
@@ -231,6 +239,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-mindset', title: 'The IB Extended Essay Mindset Shift', description: 'The mental model that separates a C from an A.' },
       { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'Exactly how each mark is awarded.' },
+          { href: "/blog/does-extended-essay-subject-matter", title: "Does Your EE Subject Matter?", description: "How subject choice actually affects your grade." },
+      { href: "/blog/dp1-dp2-summer-ee", title: "Your DP1 to DP2 Summer EE Plan", description: "What to actually do over the break." },
     ],
   },
 
@@ -277,6 +287,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/rppf-guide', title: 'IB Extended Essay RPPF Guide', description: 'Score all 6 Criterion E marks in 500 words.' },
       { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'Where students lose the most marks.' },
+          { href: "/blog/is-the-extended-essay-too-hard", title: "Is the EE Really That Hard?", description: "An honest take built on a real 32/34 essay." },
+      { href: "/blog/how-to-write-extended-essay-reflections", title: "EE Reflections That Score Full Marks", description: "The RPPF is the easiest 6 marks you can bank." },
     ],
   },
 
@@ -324,6 +336,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'A section-by-section blueprint mapped to the criteria.' },
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns across subjects.' },
+          { href: "/blog/world-studies-ee-structure", title: "Structuring a World Studies EE", description: "How to hold two disciplines together." },
+      { href: "/blog/how-to-get-better-at-ib-research", title: "Get Better at IB Research and Analysis", description: "The skills that quietly raise every grade." },
     ],
   },
   {
@@ -371,6 +385,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to build your text around.' },
       { href: '/guides/ee-analysis-vs-description', title: 'Analysis vs Description', description: 'How to analyse a text instead of summarising it.' },
+          { href: "/blog/does-extended-essay-subject-matter", title: "Does Your EE Subject Matter?", description: "How subject choice actually affects your grade." },
+      { href: "/blog/ee-topic-your-teacher-wont-allow", title: "Teacher Rejected Your EE Topic?", description: "How to rework it so it flies." },
     ],
   },
 
@@ -412,6 +428,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns for your new direction.' },
       { href: '/guides/ee-supervisor-tips', title: 'Working With Your EE Supervisor', description: 'How to use your meetings and protect your marks.' },
+          { href: "/blog/too-late-to-change-ee-topic", title: "Too Late to Change Your EE Topic?", description: "What you can still fix, and what to keep." },
+      { href: "/blog/how-long-should-ee-outline-be", title: "How Long Should Your EE Outline Be?", description: "The outline length that actually helps you write." },
     ],
   },
 
@@ -453,6 +471,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'Lock in the easy presentation marks.' },
       { href: '/guides/ee-citations-mla', title: 'MLA Citations for the EE', description: 'Get citations right and avoid integrity flags.' },
+          { href: "/blog/how-to-get-better-at-ib-research", title: "Get Better at IB Research and Analysis", description: "The skills that quietly raise every grade." },
+      { href: "/blog/ee-topic-your-teacher-wont-allow", title: "Teacher Rejected Your EE Topic?", description: "How to rework it so it flies." },
     ],
   },
 
@@ -494,6 +514,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-economics', title: 'IB Economics EE Guide', description: 'Frameworks and A-grade structure for Economics.' },
       { href: '/guides/ee-criteria-breakdown', title: 'EE Criteria Breakdown', description: 'Exactly what examiners reward, criterion by criterion.' },
+          { href: "/blog/economics-ee-forward-looking-policy", title: "An Economics EE on a Future Policy?", description: "How to analyse a policy that has not happened yet." },
+      { href: "/blog/does-inline-math-count-ee-word-count", title: "Does Inline Math Count in the Word Count?", description: "The word-count rules, settled." },
     ],
   },
 
@@ -533,6 +555,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Find a sharper angle for your topic.' },
       { href: '/guides/ee-mindset', title: 'The EE Mindset Shift', description: 'Why revision, not perfection, makes an A.' },
+          { href: "/blog/can-you-change-your-ee-research-question", title: "Can You Change Your EE Research Question?", description: "When to pivot and how to tell your supervisor." },
+      { href: "/blog/dp1-dp2-summer-ee", title: "Your DP1 to DP2 Summer EE Plan", description: "What to actually do over the break." },
     ],
   },
   {
@@ -573,6 +597,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-history', title: 'IB History EE Guide', description: 'How to frame a History RQ and engage with sources.' },
       { href: '/blog/does-extended-essay-subject-matter', title: 'Does Your EE Subject Matter?', description: 'Choosing a subject for the right reasons.' },
+          { href: "/blog/is-economics-ee-hard", title: "Is Economics One of the Hardest EEs?", description: "Difficulty, marking, and how to play it." },
+      { href: "/blog/english-literature-ee-text-choice", title: "Choosing a Text for an English Lit EE", description: "Pick a text with enough depth for 4,000 words." },
     ],
   },
 
@@ -612,6 +638,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-analysis-vs-description', title: 'Analysis vs Description', description: 'The single biggest skill jump for EE marks.' },
       { href: '/guides/ee-academic-writing', title: 'Academic Writing for the EE', description: 'Sentence patterns that signal A-grade thinking.' },
+          { href: "/blog/how-long-should-ee-outline-be", title: "How Long Should Your EE Outline Be?", description: "The outline length that actually helps you write." },
+      { href: "/blog/ee-supervisor-not-expert-in-subject", title: "Supervisor Not an Expert in Your Subject?", description: "How to get what you need anyway." },
     ],
   },
 
@@ -660,6 +688,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-planning-timeline', title: 'EE Timeline & Planning', description: 'Map the whole EE across the weeks you have.' },
       { href: '/guides/ee-dump-method', title: 'The EE Dump Research Method', description: 'Build your source base efficiently.' },
+          { href: "/blog/is-the-extended-essay-too-hard", title: "Is the EE Really That Hard?", description: "An honest take built on a real 32/34 essay." },
+      { href: "/blog/how-long-should-ee-outline-be", title: "How Long Should Your EE Outline Be?", description: "The outline length that actually helps you write." },
     ],
   },
 
@@ -704,6 +734,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/how-to-get-an-a-in-extended-essay', title: 'How to Get an A in the Extended Essay', description: 'The habits that separate A-grade essays from B.' },
       { href: '/guides/research-question-examples', title: 'Research Question Examples', description: 'Strong RQ patterns to model yours on.' },
+          { href: "/blog/world-studies-ee-structure", title: "Structuring a World Studies EE", description: "How to hold two disciplines together." },
+      { href: "/blog/how-to-write-extended-essay-reflections", title: "EE Reflections That Score Full Marks", description: "The RPPF is the easiest 6 marks you can bank." },
     ],
   },
   {
@@ -741,6 +773,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/blog/how-to-get-an-a-global-politics-ee', title: 'How to Get an A in a Global Politics EE', description: 'Topic, research and RQ habits for a top-band EE.' },
       { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'Map your sections to the criteria.' },
+          { href: "/blog/how-to-get-an-a-global-politics-ee", title: "Get an A in a Global Politics EE", description: "Structure and sources that score." },
+      { href: "/blog/does-inline-math-count-ee-word-count", title: "Does Inline Math Count in the Word Count?", description: "The word-count rules, settled." },
     ],
   },
   {
@@ -783,6 +817,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/blog/does-extended-essay-subject-matter', title: 'Does Your EE Subject Matter?', description: 'Choosing the right subject for your topic.' },
       { href: '/guides/ee-subjects-guide', title: 'Best IB EE Subjects', description: 'What each subject rewards.' },
+          { href: "/blog/biology-ee-ethics", title: "Biology EE Ethics Rules", description: "What you can and cannot experiment on." },
+      { href: "/blog/can-you-change-your-ee-research-question", title: "Can You Change Your EE Research Question?", description: "When to pivot and how to tell your supervisor." },
     ],
   },
   {
@@ -821,6 +857,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-research-methods', title: 'EE Research Methods Guide', description: 'Choosing and justifying your method.' },
       { href: '/guides/ee-biology', title: 'IB Biology EE Guide', description: 'Experiment design and analysis for Biology.' },
+          { href: "/blog/ee-topic-your-teacher-wont-allow", title: "Teacher Rejected Your EE Topic?", description: "How to rework it so it flies." },
+      { href: "/blog/ee-supervisor-not-expert-in-subject", title: "Supervisor Not an Expert in Your Subject?", description: "How to get what you need anyway." },
     ],
   },
   {
@@ -856,6 +894,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-word-count', title: 'EE Word Count & Section Balance', description: 'What counts toward 4,000 and what does not.' },
       { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'The free presentation marks.' },
+          { href: "/blog/is-economics-ee-hard", title: "Is Economics One of the Hardest EEs?", description: "Difficulty, marking, and how to play it." },
+      { href: "/blog/how-long-should-ee-outline-be", title: "How Long Should Your EE Outline Be?", description: "The outline length that actually helps you write." },
     ],
   },
   {
@@ -897,6 +937,8 @@ export const BLOG_POSTS = [
     related: [
       { href: '/guides/ee-economics', title: 'IB Economics EE Guide', description: 'Frameworks and A-grade structure.' },
       { href: '/blog/is-economics-ee-hard', title: 'Is Economics One of the Hardest EE Subjects?', description: 'The traps that cost marks, and how to avoid them.' },
+          { href: "/blog/is-economics-ee-hard", title: "Is Economics One of the Hardest EEs?", description: "Difficulty, marking, and how to play it." },
+      { href: "/blog/how-to-get-an-a-global-politics-ee", title: "Get an A in a Global Politics EE", description: "Structure and sources that score." },
     ],
   },
 ]
