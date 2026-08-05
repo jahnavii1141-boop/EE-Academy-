@@ -34,17 +34,35 @@ export default function HomeProof() {
     <section className="bg-cream px-6 py-20">
       <div className="max-w-5xl mx-auto">
         {real.length === 1 && (
-          // A single quote runs as a deliberate editorial pull-quote — never a
-          // lonely card in an empty grid. The grid layout below takes over at 2+.
-          <figure className="max-w-2xl mx-auto text-center mb-14">
-            <div className="font-serif text-5xl leading-none text-parchment select-none mb-4">&ldquo;</div>
-            <blockquote className="font-serif text-2xl md:text-[28px] leading-snug text-navy mb-6">
-              {real[0].quote}
-            </blockquote>
-            <figcaption className="text-navy/55 text-sm">
-              — {real[0].name}{real[0].detail ? ` · ${real[0].detail}` : ''}
-            </figcaption>
-          </figure>
+          // A single student quote is paired with a founder note so the section
+          // reads intentionally full. The grid layout below takes over at 2+.
+          // Faceless brand: the founder stays unnamed ("The Founder").
+          <div className="grid gap-6 md:grid-cols-2 max-w-4xl mx-auto mb-14 items-stretch">
+            <figure className="rounded-2xl border border-navy/10 bg-white p-8 flex flex-col">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-navy/40 mb-4">
+                From a student
+              </p>
+              <blockquote className="font-serif text-xl leading-snug text-navy flex-1">
+                &ldquo;{real[0].quote}&rdquo;
+              </blockquote>
+              <figcaption className="text-navy/55 text-sm mt-6">
+                — {real[0].name}{real[0].detail ? ` · ${real[0].detail}` : ''}
+              </figcaption>
+            </figure>
+
+            <figure className="rounded-2xl border border-navy/10 bg-parchment/40 p-8 flex flex-col">
+              <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-navy/40 mb-4">
+                From the founder
+              </p>
+              <blockquote className="font-serif text-xl leading-snug text-navy flex-1">
+                &ldquo;I got a 32/34 because I finally understood what examiners actually reward.
+                This site is that system written down, so you never have to guess.&rdquo;
+              </blockquote>
+              <figcaption className="text-navy/55 text-sm mt-6">
+                — The Founder · 32/34 Extended Essay, final A
+              </figcaption>
+            </figure>
+          </div>
         )}
 
         {real.length >= 2 && (
