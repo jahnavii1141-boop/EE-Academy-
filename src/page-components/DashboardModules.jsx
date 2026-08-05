@@ -3,23 +3,18 @@
 import Link from 'next/link'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 import { useAccess } from '../hooks/useAccess'
+import { COURSE_CATALOG } from '../data/courseCatalog'
 
-const MODULES = [
-  { id: 'module-1',  num: 1,   title: 'The Examiner Lens',           description: 'How IB examiners actually read and mark your essay.',                    free: true },
-  { id: 'module-2',  num: 2,   title: 'Inside the Markscheme',       description: 'Break down every criterion. Know exactly what earns marks.',              free: true },
-  { id: 'module-3',  num: 3,   title: 'Topic Selection',             description: 'Pick a topic that\'s researchable, scoreable, and interesting.',          free: true },
-  { id: 'module-4',  num: 4,   title: 'Research Question Design',    description: 'Write a focused, analytical RQ that sets your essay up to win.',          free: true },
-  { id: 'module-5',  num: 5,   title: 'The EE Dump Method',          description: 'A system for gathering sources without drowning in them.',                free: true },
-  { id: 'module-6',  num: 6,   title: 'Evidence and Research',       description: 'Find, evaluate, and use academic sources properly.',                      free: false },
-  { id: 'module-7',  num: 7,   title: 'Essay Architecture',          description: 'Structure your essay section by section. Map to the criteria.',           free: false },
-  { id: 'module-8',  num: 8,   title: 'Analytical Writing',          description: 'Stop describing. Start analysing. This is where most marks are lost.',   free: false },
-  { id: 'module-9',  num: 9,   title: 'Citations & Formatting',      description: 'MLA citations, block quotes, word count, presentation rules.',            free: false },
-  { id: 'module-10', num: 10,  title: 'Openings and Endings',        description: 'Write an introduction that hooks. A conclusion that lands.',              free: false },
-  { id: 'module-11', num: 11,  title: 'RPPF & Viva Voce',           description: 'Write all three RPPF reflections. Prepare for the viva.',                 free: false },
-  { id: 'ai-module', num: '✦', title: 'AI Prompt Library',          description: '12 copy-paste prompts for research, structure, and revision.',            free: false, premium: true },
-  { id: 'module-13', num: 13,  title: 'The 32/34 Essay Analysis',   description: 'Full examiner breakdown of a real 32/34 essay.',                          free: false },
-  { id: 'module-14', num: 14,  title: 'Final Checklist & Submission', description: 'Pre-submission checklist. Submit with confidence.',                     free: false },
-]
+// Derived from COURSE_CATALOG — the single source of truth for mission names
+// and briefs. Never hardcode a duplicate list here (it drifts on redeploys).
+const MODULES = COURSE_CATALOG.map(m => ({
+  id: m.id,
+  num: m.number,
+  title: m.title,
+  description: m.tagline,
+  free: m.free,
+  premium: m.premium,
+}))
 
 const SECTIONS = [
   { label: 'Foundation', range: [0, 2] },
@@ -55,6 +50,11 @@ export default function DashboardModules() {
           </div>
           <p className="text-sm mt-1" style={{ color: '#aaa' }}>
             The complete EE system, built from a real 32/34 essay. Start with Mission 01.
+          </p>
+          <p className="text-[11px] mt-2 leading-relaxed rounded-lg px-3 py-2 inline-block"
+            style={{ color: '#6b7280', background: '#EAE8DC' }}>
+            Heads up: November 2026 candidates are marked on the current syllabus (out of 34). The new
+            syllabus (first assessment 2027) is out of 30. Same criteria logic — the system works for both.
           </p>
         </div>
 

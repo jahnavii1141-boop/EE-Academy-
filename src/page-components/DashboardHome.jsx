@@ -43,9 +43,15 @@ function DashboardTour({ onDone }) {
       const el = document.getElementById(current.target)
       if (el) setRect(el.getBoundingClientRect()) // eslint-disable-line react-hooks/set-state-in-effect
     }
+    // Bring the highlighted element into view first so the spotlight + tooltip
+    // always fit on screen (protected feature — see memory/protected-features)
+    const el = document.getElementById(current.target)
+    if (el) el.scrollIntoView({ block: 'center', behavior: 'instant' })
+    // measure after the scroll has settled
+    const t = setTimeout(measure, 50)
     measure()
     window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
+    return () => { clearTimeout(t); window.removeEventListener('resize', measure) }
   }, [step, current.target])
 
   const next = () => { if (isLast) onDone(); else setStep(s => s + 1) }
@@ -86,10 +92,14 @@ function DashboardTour({ onDone }) {
       )
     }
   } else if (current.arrow === 'left') {
-    // tooltip to the right of element
+    // tooltip to the right of element — clamp vertically so it never leaves the screen
+    const clampedTop = Math.min(
+      Math.max(rect.top + rect.height / 2, CARD_H / 2 + 8),
+      window.innerHeight - CARD_H / 2 - 8,
+    )
     cardStyle = {
       position: 'fixed',
-      top: rect.top + rect.height / 2,
+      top: clampedTop,
       left: rect.right + PAD + 12,
       transform: 'translateY(-50%)',
     }

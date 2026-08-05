@@ -8,6 +8,26 @@ import { useModuleProgress } from '../hooks/useModuleProgress'
 import ContentRenderer from '../components/blocks/ContentRenderer'
 import PostModuleGate from '../components/PostModuleGate'
 
+// ─── Mission art ───────────────────────────────────────────────────────────────
+// Decorative banner per mission (same Unsplash pattern as Feature108). Keeps the
+// lesson pages visual without inventing subject-specific claims.
+const MISSION_ART = {
+  'module-1':  'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&q=80', // marked paper
+  'module-2':  'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200&q=80', // pen on document
+  'module-3':  'https://images.unsplash.com/photo-1507842217343-583bb7270b66?w=1200&q=80', // library hall
+  'module-4':  'https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1200&q=80', // writing by hand
+  'module-5':  'https://images.unsplash.com/photo-1517842645767-c639042777db?w=1200&q=80', // messy notebook planning
+  'module-6':  'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=1200&q=80', // bookshelves
+  'module-7':  'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80', // study structure
+  'module-8':  'https://images.unsplash.com/photo-1455894127589-22f75500213a?w=1200&q=80', // typewriter
+  'module-9':  'https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=1200&q=80', // open book detail
+  'module-10': 'https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=1200&q=80', // writing desk
+  'module-11': 'https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1200&q=80', // reflection / planning
+  'ai-module': 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80', // circuit board
+  'module-13': 'https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&q=80', // essay at desk
+  'module-14': 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80', // checklist & tools
+}
+
 // ─── Sidebar ───────────────────────────────────────────────────────────────────
 
 function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
@@ -277,13 +297,30 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
         <main className="flex-1 min-w-0">
           <div style={{ maxWidth: 700, margin: '0 auto', padding: '56px 40px 100px' }}>
 
+            {/* ── Mission art banner ── */}
+            {MISSION_ART[module.id] && (
+              <div className="relative rounded-2xl overflow-hidden mb-10" style={{ height: 190 }}>
+                <img src={MISSION_ART[module.id]} alt="" className="w-full h-full object-cover" />
+                <div className="absolute inset-0"
+                  style={{ background: 'linear-gradient(180deg, rgba(46,50,80,0.20) 0%, rgba(46,50,80,0.70) 100%)' }} />
+                <span className="absolute bottom-4 left-5 font-bold uppercase"
+                  style={{ color: 'rgba(244,243,232,0.95)', fontSize: 12, letterSpacing: '0.16em' }}>
+                  Mission {module.number}
+                </span>
+                <span className="absolute bottom-2 right-4 font-serif font-bold leading-none select-none"
+                  style={{ fontSize: 64, color: 'rgba(244,243,232,0.28)' }}>
+                  {module.number}
+                </span>
+              </div>
+            )}
+
             {/* ── Module header ── */}
             <header className="mb-12">
               {/* Big module number — editorial anchor */}
               <div className="flex items-start justify-between mb-6">
                 <span
                   className="font-bold leading-none select-none"
-                  style={{ fontSize: 72, color: '#f0f0f0', letterSpacing: '-0.05em', lineHeight: 1, marginLeft: -4 }}>
+                  style={{ fontSize: 72, color: 'rgba(46,50,80,0.10)', letterSpacing: '-0.05em', lineHeight: 1, marginLeft: -4 }}>
                   {module.number}
                 </span>
                 {/* Access badge top-right */}

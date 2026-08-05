@@ -3,8 +3,8 @@ export const COURSE_MODULES = [
     id: 'module-1',
     number: '01',
     free: true,
-    title: 'What an examiner wants (and how I know)',
-    tagline: 'The mindset shift that changes everything.',
+    title: "Steal the Examiner's Brain",
+    tagline: 'The 20% of the EE that decides 80% of your grade. Almost nobody is told this first.',
     content: [
       {
         type: 'callout',
@@ -106,7 +106,7 @@ export const COURSE_MODULES = [
         type: 'step-process',
         steps: [
           { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about, using the Venn diagram and Clastify.' },
-          { title: 'How to design your RQ', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
+          { title: 'Pressure-Test the Question', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
           { title: 'The EE Dump System', text: 'Our signature research method that makes writing effortless. The most fun part of the entire process.' },
           { title: 'Research Strategy', text: 'Google vs. Scholar vs. PDF-only searches. The Scholar Shift that most students never reach.' },
           { title: 'Structure & Writing', text: 'Map every section to specific criteria. Seven sections, each with a job. No purposeless writing.' },
@@ -129,8 +129,8 @@ export const COURSE_MODULES = [
     id: 'module-2',
     number: '02',
     free: true,
-    title: 'Markscheme broken down',
-    tagline: 'The rubric is basically the answer key. Let me break it down.',
+    title: 'Crack the Markscheme',
+    tagline: '34 marks, five criteria — and a set of easy ones hiding in plain sight.',
     content: [
       {
         type: 'paragraph',
@@ -292,8 +292,8 @@ export const COURSE_MODULES = [
     id: 'module-3',
     number: '03',
     free: false,
-    title: 'Why topic selection is the highest-ROI thing to do',
-    tagline: 'Get this right and half the stress is gone before you write a word.',
+    title: 'Choose Your Ground',
+    tagline: 'Most EEs are already lost here, before a single source is read.',
     content: [
       {
         type: 'heading',
@@ -430,7 +430,7 @@ export const COURSE_MODULES = [
     number: '04',
     free: true,
     title: 'How to design your RQ',
-    tagline: 'Your RQ is the foundation everything else is built on.',
+    tagline: 'One sentence sets your ceiling. Test yours before you spend 4,000 words on it.',
     content: [
       {
         type: 'heading',
@@ -590,8 +590,8 @@ export const COURSE_MODULES = [
     id: 'module-5',
     number: '05',
     free: true,
-    title: 'The EE Dump method',
-    tagline: 'Honestly the most fun part of the whole EE.',
+    title: 'The EE Dump',
+    tagline: 'Empty your head onto the page, then turn the mess into a structure.',
     content: [
       {
         type: 'paragraph',
@@ -719,8 +719,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-6',
     number: '06',
-    title: 'Evidence and research',
-    tagline: 'How to actually research, instead of just opening 40 tabs.',
+    title: 'Find What Nobody Else Found',
+    tagline: 'Where the sources that make examiners sit up actually live.',
     content: [
       {
         type: 'quote-highlight',
@@ -884,8 +884,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-7',
     number: '07',
-    title: 'Essay architecture',
-    tagline: 'Where everything goes and why. This quietly wins marks.',
+    title: 'Build the Skeleton',
+    tagline: 'The frame that turns 4,000 words into filling in blanks.',
     content: [
       {
         type: 'paragraph',
@@ -993,8 +993,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-8',
     number: '08',
-    title: 'Writing your analysis so it flows',
-    tagline: 'Every section has a job. Know what it is before you write it.',
+    title: 'Flip Descriptive Into Analytical',
+    tagline: 'The single shift that separates a C essay from an A one.',
     content: [
       {
         type: 'paragraph',
@@ -1120,8 +1120,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-9',
     number: '09',
-    title: 'Citations and formatting',
-    tagline: "Free marks. Don't leave them on the table.",
+    title: 'Stop Losing Marks You Already Earned',
+    tagline: 'The quiet errors that drag strong essays down a band.',
     content: [
       {
         type: 'paragraph',
@@ -1298,8 +1298,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-10',
     number: '10',
-    title: 'Beginnings and conclusions (what makes or breaks it)',
-    tagline: 'Your first and last impression. Make them count.',
+    title: 'First 300 Words, Last 300 Words',
+    tagline: 'The two sections an examiner reads twice.',
     content: [
       {
         type: 'heading',
@@ -1403,8 +1403,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-11',
     number: '11',
-    title: 'RPPF / RPF and Viva Voce',
-    tagline: "Most students either overthink this or barely try. Don't be either.",
+    title: 'The Easiest 6 Marks of Your Life',
+    tagline: '500 words. Six marks. Most students hand them back.',
     content: [
       {
         type: 'stat-highlight',
@@ -1523,8 +1523,8 @@ export const COURSE_MODULES = [
   {
     id: 'ai-module',
     number: 'AI',
-    title: 'AI prompt library',
-    tagline: 'Use it like a top student, not like someone who wants to fail.',
+    title: 'Use AI Without Breaking the Rules',
+    tagline: 'Where the line actually sits, and how to work right up to it.',
     content: [
       {
         type: 'paragraph',
@@ -1780,8 +1780,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-13',
     number: '13',
-    title: 'Analysis of my paper by AI',
-    tagline: 'No other EE guide is going to give you this.',
+    title: 'Open the 32/34 Essay',
+    tagline: 'Read the real thing, marked line by line — including what the AI got wrong about it.',
     content: [
       {
         type: 'paragraph',
@@ -1917,8 +1917,8 @@ export const COURSE_MODULES = [
   {
     id: 'module-14',
     number: '14',
-    title: 'Final checklist and submission',
-    tagline: 'The last run-through before you hit submit.',
+    title: 'The Armoury',
+    tagline: 'Everything from Missions 01–13, as files you can copy.',
     content: [
       {
         type: 'paragraph',

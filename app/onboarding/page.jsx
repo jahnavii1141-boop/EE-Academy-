@@ -29,6 +29,7 @@ function OnboardingPageInner() {
 
   const [step, setStep] = useState('welcome')
   const [form, setForm] = useState({
+    name: '',
     subject: '',
     research_question: '',
     supervisor_name: '',
@@ -36,6 +37,7 @@ function OnboardingPageInner() {
   })
   const [generatingDots, setGeneratingDots] = useState(0)
   const [paymentError, setPaymentError] = useState(false)
+  const [hasPaid, setHasPaid] = useState(false)
 
   // Restore in-progress onboarding from sessionStorage (survives page reloads / auth redirects)
   useEffect(() => {
@@ -65,12 +67,26 @@ function OnboardingPageInner() {
     fetch('/api/workspace')
       .then(r => r.json())
       .then(({ workspace }) => {
+        setHasPaid(!!workspace?.has_paid)
         if (workspace?.research_question && workspace?.subject) {
           router.replace(dest)
         }
       })
       .catch(() => {})
   }, [isSignedIn, router, searchParams])
+
+  // Skip is for free users only — paid users go through the full setup so
+  // their (purchased) workspace is actually personalised.
+  const canSkip = !hasPaid
+  const skipAll = () => {
+    if (form.name.trim()) localStorage.setItem('eeAcademy_name', form.name.trim())
+    if (!isSignedIn && !localStorage.getItem('eeAcademy_workspace')) {
+      // Mark setup as "seen" so the dashboard doesn't bounce back here
+      localStorage.setItem('eeAcademy_workspace', JSON.stringify({}))
+    }
+    sessionStorage.removeItem('eeOnboarding')
+    router.push(dest)
+  }
 
   // Animate dots during generating step
   useEffect(() => {
@@ -84,6 +100,8 @@ function OnboardingPageInner() {
     if (step !== 'generating') return
     let cancelled = false
     const save = async () => {
+      // Personalises "{Name}'s workspace" in the dashboard sidebar (Clerk name wins when present)
+      if (form.name.trim()) localStorage.setItem('eeAcademy_name', form.name.trim())
       // Free user (not signed in) — save to localStorage only
       if (!isSignedIn) {
         localStorage.setItem('eeAcademy_workspace', JSON.stringify({
@@ -158,14 +176,14 @@ function OnboardingPageInner() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-6"
-      style={{ background: '#fafafa' }}>
+      style={{ background: '#F4F3E8' }}>
 
       {/* Progress bar */}
       {!['generating', 'done'].includes(step) && (
         <div className="fixed top-0 left-0 right-0 h-0.5" style={{ background: '#f0f0f0' }}>
           <div className="h-full transition-all duration-500"
             style={{
-              background: '#0a0a0a',
+              background: '#2E3250',
               width: `${(STEPS.indexOf(step) / (STEPS.length - 2)) * 100}%`,
             }} />
         </div>
@@ -177,23 +195,43 @@ function OnboardingPageInner() {
         {step === 'welcome' && (
           <div className="text-center">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-8"
-              style={{ background: '#0a0a0a' }}>
+              style={{ background: '#2E3250' }}>
               <span style={{ color: '#fff', fontSize: 20 }}>✦</span>
             </div>
-            <h1 className="font-semibold mb-3" style={{ fontSize: 28, color: '#0a0a0a', letterSpacing: '-0.03em' }}>
+            <h1 className="font-semibold mb-3" style={{ fontSize: 28, color: '#2E3250', letterSpacing: '-0.03em' }}>
               {firstName ? `Hey, ${firstName}.` : 'Welcome.'}
             </h1>
             <p className="text-base mb-2 leading-relaxed" style={{ color: '#888' }}>
               Let&apos;s set up your workspace.
             </p>
-            <p className="text-sm mb-10 leading-relaxed" style={{ color: '#aaa' }}>
-              Takes 30 seconds. Personalises everything — your modules, planner, and essay tools — to your EE.
+            <p className="text-sm mb-8 leading-relaxed" style={{ color: '#aaa' }}>
+              Takes 30 seconds. Personalises everything — your missions, planner, and essay tools — to your EE.
             </p>
+            {!firstName && (
+              <input
+                type="text"
+                value={form.name}
+                onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
+                placeholder="What should we call you?"
+                autoFocus
+                className="w-full rounded-xl px-4 py-3.5 text-sm focus:outline-none mb-4 text-center"
+                style={{ background: '#fff', border: '1px solid #e8e8e8', color: '#2E3250' }}
+                onFocus={e => e.target.style.borderColor = '#2E3250'}
+                onBlur={e => e.target.style.borderColor = '#e8e8e8'}
+              />
+            )}
             <button onClick={next}
               className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all"
-              style={{ background: '#0a0a0a', color: '#fff', letterSpacing: '-0.01em' }}>
+              style={{ background: '#2E3250', color: '#fff', letterSpacing: '-0.01em' }}>
               Let&apos;s go →
             </button>
+            {canSkip && (
+              <button onClick={skipAll}
+                className="w-full py-2 mt-2 text-xs transition-all"
+                style={{ color: '#bbb' }}>
+                Skip setup for now →
+              </button>
+            )}
           </div>
         )}
 
@@ -201,7 +239,7 @@ function OnboardingPageInner() {
         {step === 'subject' && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: '#ccc' }}>Step 1 of 3</p>
-            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
               What subject is your EE in?
             </h2>
             <p className="text-sm mb-8" style={{ color: '#aaa' }}>
@@ -212,9 +250,9 @@ function OnboardingPageInner() {
                 <button key={s} onClick={() => setForm(f => ({ ...f, subject: s }))}
                   className="px-4 py-3 rounded-xl text-sm text-left transition-all"
                   style={{
-                    background: form.subject === s ? '#0a0a0a' : '#fff',
+                    background: form.subject === s ? '#2E3250' : '#fff',
                     color: form.subject === s ? '#fff' : '#555',
-                    border: `1px solid ${form.subject === s ? '#0a0a0a' : '#e8e8e8'}`,
+                    border: `1px solid ${form.subject === s ? '#2E3250' : '#e8e8e8'}`,
                     fontWeight: form.subject === s ? 500 : 400,
                   }}>
                   {s}
@@ -223,7 +261,7 @@ function OnboardingPageInner() {
             </div>
             <button onClick={next} disabled={!canNext()}
               className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-30"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Continue →
             </button>
           </div>
@@ -233,7 +271,7 @@ function OnboardingPageInner() {
         {step === 'rq' && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: '#ccc' }}>Step 2 of 3</p>
-            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
               What&apos;s your research question?
             </h2>
             <p className="text-sm mb-6" style={{ color: '#aaa' }}>
@@ -249,10 +287,10 @@ function OnboardingPageInner() {
               style={{
                 background: '#fff',
                 border: '1px solid #e8e8e8',
-                color: '#0a0a0a',
+                color: '#2E3250',
                 lineHeight: 1.6,
               }}
-              onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+              onFocus={e => e.target.style.borderColor = '#2E3250'}
               onBlur={e => e.target.style.borderColor = '#e8e8e8'}
             />
             <div className="mb-6">
@@ -265,14 +303,14 @@ function OnboardingPageInner() {
                 onChange={e => setForm(f => ({ ...f, supervisor_name: e.target.value }))}
                 placeholder="Mr. Smith"
                 className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none"
-                style={{ background: '#fff', border: '1px solid #e8e8e8', color: '#0a0a0a' }}
-                onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+                style={{ background: '#fff', border: '1px solid #e8e8e8', color: '#2E3250' }}
+                onFocus={e => e.target.style.borderColor = '#2E3250'}
                 onBlur={e => e.target.style.borderColor = '#e8e8e8'}
               />
             </div>
             <button onClick={next} disabled={!canNext()}
               className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-30"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Continue →
             </button>
             <button onClick={next}
@@ -287,7 +325,7 @@ function OnboardingPageInner() {
         {step === 'deadline' && (
           <div>
             <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: '#ccc' }}>Step 3 of 3</p>
-            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
               When&apos;s your submission deadline?
             </h2>
             <p className="text-sm mb-8" style={{ color: '#aaa' }}>
@@ -299,13 +337,13 @@ function OnboardingPageInner() {
               onChange={e => setForm(f => ({ ...f, submission_deadline: e.target.value }))}
               autoFocus
               className="w-full rounded-xl px-4 py-3.5 text-sm focus:outline-none mb-4"
-              style={{ background: '#fff', border: '1px solid #e8e8e8', color: '#0a0a0a' }}
-              onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+              style={{ background: '#fff', border: '1px solid #e8e8e8', color: '#2E3250' }}
+              onFocus={e => e.target.style.borderColor = '#2E3250'}
               onBlur={e => e.target.style.borderColor = '#e8e8e8'}
             />
             <button onClick={next}
               className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all mb-2"
-              style={{ background: '#0a0a0a', color: '#fff' }}>
+              style={{ background: '#2E3250', color: '#fff' }}>
               Generate my workspace →
             </button>
             <button onClick={next}
@@ -323,7 +361,7 @@ function OnboardingPageInner() {
               style={{ background: '#fef2f2', border: '1px solid #fecaca' }}>
               <span className="text-2xl">⚠️</span>
             </div>
-            <h2 className="font-semibold mb-3" style={{ fontSize: 22, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-3" style={{ fontSize: 22, color: '#2E3250', letterSpacing: '-0.02em' }}>
               Payment received — access setup failed
             </h2>
             <p className="text-sm mb-6 leading-relaxed" style={{ color: '#888' }}>
@@ -332,7 +370,7 @@ function OnboardingPageInner() {
             </p>
             <a href="mailto:hello@theextendedessay.com?subject=Payment received but no access"
               className="inline-block px-6 py-3 rounded-xl text-sm font-semibold"
-              style={{ background: '#0a0a0a', color: '#fff', textDecoration: 'none' }}>
+              style={{ background: '#2E3250', color: '#fff', textDecoration: 'none' }}>
               Contact us →
             </a>
           </div>
@@ -341,11 +379,11 @@ function OnboardingPageInner() {
         {step === 'generating' && !paymentError && (
           <div className="text-center">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-8"
-              style={{ background: '#0a0a0a' }}>
+              style={{ background: '#2E3250' }}>
               <div className="w-4 h-4 rounded-full border-2 border-white border-t-transparent"
                 style={{ animation: 'spin 0.7s linear infinite' }} />
             </div>
-            <h2 className="font-semibold mb-3" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-3" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
               Generating your workspace{'.'.repeat(generatingDots)}
             </h2>
             <p className="text-sm" style={{ color: '#aaa' }}>
@@ -358,12 +396,12 @@ function OnboardingPageInner() {
         {step === 'done' && (
           <div className="text-center">
             <div className="w-12 h-12 rounded-2xl flex items-center justify-center mx-auto mb-8"
-              style={{ background: '#0a0a0a' }}>
+              style={{ background: '#2E3250' }}>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="white">
                 <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
               </svg>
             </div>
-            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+            <h2 className="font-semibold mb-2" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
               You&apos;re all set.
             </h2>
             <p className="text-sm" style={{ color: '#aaa' }}>Taking you to your workspace…</p>

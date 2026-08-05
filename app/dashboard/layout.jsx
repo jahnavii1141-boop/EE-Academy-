@@ -150,7 +150,10 @@ export default function DashboardLayout({ children }) {
   const pathname = usePathname()
   const router = useRouter()
   const { isVisited, markVisited } = useModuleProgress()
-  const firstName = user?.firstName || ''
+  const [savedName, setSavedName] = useState('')
+  // Clerk name wins; else the name captured during onboarding (protected feature:
+  // "{Name}'s workspace" — see memory/protected-features)
+  const firstName = user?.firstName || savedName || ''
   const [subject, setSubject] = useState('')
   const [isPremium, setIsPremium] = useState(false)
   const [wordCount, setWordCount] = useState(null)
@@ -160,10 +163,11 @@ export default function DashboardLayout({ children }) {
   const [freeEmail, setFreeEmail] = useState(null)
   const [emailChecked, setEmailChecked] = useState(false)
 
-  // Check localStorage for free email — runs once on mount (client-side only)
+  // Check localStorage for free email + onboarding name — runs once on mount (client-side only)
   useEffect(() => {
     const saved = localStorage.getItem('eeAcademy_freeEmail')
     setFreeEmail(saved || null) // eslint-disable-line react-hooks/set-state-in-effect
+    setSavedName(localStorage.getItem('eeAcademy_name') || '') // eslint-disable-line react-hooks/set-state-in-effect
     setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
 
