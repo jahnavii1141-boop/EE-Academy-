@@ -32,7 +32,10 @@ export default function PostHogProvider({ children }) {
   useEffect(() => {
     if (!POSTHOG_KEY) return // no key — analytics off, site unaffected
     posthog.init(POSTHOG_KEY, {
-      api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
+      // Reverse proxy through our own domain (see next.config.js rewrites) so
+      // adblockers can't intercept events. ui_host keeps toolbar/links working.
+      api_host: '/ingest',
+      ui_host: 'https://us.posthog.com',
       // 2025 defaults: automatic pageviews on App Router history changes,
       // pageleave capture, sane autocapture
       defaults: '2025-05-24',

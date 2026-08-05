@@ -6,10 +6,20 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/api/sample-ee': ['./private/**'],
   },
+  // PostHog API calls can carry trailing slashes — don't 308 them
+  skipTrailingSlashRedirect: true,
   async redirects() {
     return [
       { source: '/dump', destination: '/dashboard/dump', permanent: true },
       { source: '/planner', destination: '/dashboard/planner', permanent: true },
+    ]
+  },
+  async rewrites() {
+    // PostHog reverse proxy — events go through our own domain so adblockers
+    // can't intercept them (they block ~20-30% of direct *.posthog.com calls).
+    return [
+      { source: '/ingest/static/:path*', destination: 'https://us-assets.i.posthog.com/static/:path*' },
+      { source: '/ingest/:path*', destination: 'https://us.i.posthog.com/:path*' },
     ]
   },
   async headers() {
