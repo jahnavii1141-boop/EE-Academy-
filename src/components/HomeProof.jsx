@@ -12,7 +12,7 @@ const TESTIMONIALS = [
   {
     quote: "I think the one thing that the site helped me with is understanding what I'm actually being scored for.",
     name: 'EE Academy student',
-    detail: '',
+    detail: 'Global Politics EE',
   },
   {
     quote: '[REPLACE — real student quote]',
