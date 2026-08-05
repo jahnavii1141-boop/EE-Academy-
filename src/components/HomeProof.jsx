@@ -54,9 +54,13 @@ export default function HomeProof() {
               <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-navy/40 mb-4">
                 From the founder
               </p>
-              <blockquote className="font-serif text-xl leading-snug text-navy flex-1">
-                &ldquo;I got a 32/34 because I finally understood what examiners actually reward.
-                This site is that system written down, so you never have to guess.&rdquo;
+              <blockquote className="font-serif text-[17px] leading-relaxed text-navy flex-1">
+                &ldquo;We rarely understand what we&apos;re actually being scored on, and the EE is the
+                most misunderstood part of the IB. If someone handed you the ingredients and the tools
+                and said &lsquo;make a cake&rsquo;, you still couldn&apos;t. You need the recipe: how much
+                of what, in what order, at what temperature. That&apos;s what separates most students
+                from an A. You already have the idea. You have the ingredients. Our aim is to hand you
+                the recipe.&rdquo;
               </blockquote>
               <figcaption className="text-navy/55 text-sm mt-6">
                 — The Founder · 32/34 Extended Essay, final A
