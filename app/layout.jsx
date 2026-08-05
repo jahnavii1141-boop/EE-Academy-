@@ -1,5 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import ConditionalShell from '../src/components/ConditionalShell'
+import PostHogProvider from '../src/components/PostHogProvider'
 import '../src/index.css'
 
 export const metadata = {
@@ -7,7 +8,7 @@ export const metadata = {
     default: 'The Extended Essay Academy',
     template: '%s | The Extended Essay Academy',
   },
-  description: 'Learn the IB Extended Essay step-by-step with a self-study programme built by a 32/34 student.',
+  description: 'Learn the IB Extended Essay step-by-step with a self-study programme built from a real 32/34 Extended Essay.',
   metadataBase: new URL('https://theextendedessay.com'),
   icons: {
     icon: '/icon.svg',
@@ -42,7 +43,9 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <ClerkProvider>
-          <ConditionalShell>{children}</ConditionalShell>
+          <PostHogProvider>
+            <ConditionalShell>{children}</ConditionalShell>
+          </PostHogProvider>
         </ClerkProvider>
       </body>
     </html>
