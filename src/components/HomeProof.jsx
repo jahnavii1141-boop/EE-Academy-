@@ -6,11 +6,13 @@
 // result, delete the other two cards and run the single honest one.
 // -----------------------------------------------------------------------------
 
+// Real quotes only — never fabricate. Add name/subject/year details when the
+// student allows attribution; omit whatever we don't have.
 const TESTIMONIALS = [
   {
-    quote: '[REPLACE — real student quote, ideally a before/after: where they started and where they ended up]',
-    name: '[First name]',
-    detail: '[Subject · School or country · Class year]',
+    quote: "I think the one thing that the site helped me with is understanding what I'm actually being scored for.",
+    name: 'EE Academy student',
+    detail: '',
   },
   {
     quote: '[REPLACE — real student quote]',
@@ -31,7 +33,21 @@ export default function HomeProof() {
   return (
     <section className="bg-cream px-6 py-20">
       <div className="max-w-5xl mx-auto">
-        {real.length > 0 && (
+        {real.length === 1 && (
+          // A single quote runs as a deliberate editorial pull-quote — never a
+          // lonely card in an empty grid. The grid layout below takes over at 2+.
+          <figure className="max-w-2xl mx-auto text-center mb-14">
+            <div className="font-serif text-5xl leading-none text-parchment select-none mb-4">&ldquo;</div>
+            <blockquote className="font-serif text-2xl md:text-[28px] leading-snug text-navy mb-6">
+              {real[0].quote}
+            </blockquote>
+            <figcaption className="text-navy/55 text-sm">
+              — {real[0].name}{real[0].detail ? ` · ${real[0].detail}` : ''}
+            </figcaption>
+          </figure>
+        )}
+
+        {real.length >= 2 && (
           <>
             <h2 className="section-heading text-center mb-12">Real results from real IB students.</h2>
 
