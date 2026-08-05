@@ -12,10 +12,14 @@ import { PostHogProvider as PHProvider } from 'posthog-js/react'
 import { useEffect } from 'react'
 import { useAuth } from '@clerk/nextjs'
 
+// Project API key — public by design (ships in the browser bundle; this is how
+// the official wizard writes it too). Env var overrides if ever rotated.
+const POSTHOG_KEY = process.env.NEXT_PUBLIC_POSTHOG_KEY || 'phc_A7qq5ZuVe8ibwJ2Z25SxE5VHGzjLs2L3Tu5ZQVziWrCA'
+
 function PostHogIdentify() {
   const { isSignedIn, userId } = useAuth()
   useEffect(() => {
-    if (!process.env.NEXT_PUBLIC_POSTHOG_KEY) return
+    if (!POSTHOG_KEY) return
     if (isSignedIn && userId) {
       // Tie events to the Clerk user id (no email/PII in properties)
       posthog.identify(userId)
@@ -26,9 +30,8 @@ function PostHogIdentify() {
 
 export default function PostHogProvider({ children }) {
   useEffect(() => {
-    const key = process.env.NEXT_PUBLIC_POSTHOG_KEY
-    if (!key) return // no key (e.g. local dev) — analytics off, site unaffected
-    posthog.init(key, {
+    if (!POSTHOG_KEY) return // no key — analytics off, site unaffected
+    posthog.init(POSTHOG_KEY, {
       api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || 'https://us.i.posthog.com',
       // 2025 defaults: automatic pageviews on App Router history changes,
       // pageleave capture, sane autocapture
