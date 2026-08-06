@@ -10,31 +10,16 @@ import {
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
-import { navUnlocked, GATED_NAV } from '@/lib/missionChain'
 import { COURSE_CATALOG } from '@/data/courseCatalog'
 
-// One sidebar row. Locked rows (gated behind an earlier mission/step) render
-// non-clickable with a lock; unlocked rows advance the chain on open.
-function NavItem({ item, active, locked, onOpen }) {
+// One sidebar row. Sequential nav locks were removed (2026-07) — every tab is
+// open; paid content is gated at the page, not hidden from the nav.
+function NavItem({ item, active }) {
   const Icon = item.icon
-  if (locked) {
-    return (
-      <div
-        title="Finish the earlier steps to unlock this"
-        className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm mb-0.5 cursor-not-allowed select-none"
-        style={{ color: '#B8B4A0' }}
-      >
-        <Icon className="flex-shrink-0" size={14} strokeWidth={1.75} style={{ opacity: 0.7 }} />
-        <span>{item.label}</span>
-        <Lock className="ml-auto flex-shrink-0" size={12} />
-      </div>
-    )
-  }
   return (
     <Link
       id={`tour-nav-${item.id}`}
       href={item.href}
-      onClick={onOpen}
       className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-all mb-0.5"
       style={{ background: active ? '#2E3250' : 'transparent', color: active ? '#fff' : '#555', fontWeight: active ? 500 : 400 }}
       onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#EAE8DC'; e.currentTarget.style.color = '#2E3250' } }}
@@ -199,7 +184,7 @@ export default function DashboardLayout({ children }) {
   const { isSignedIn, isLoaded } = useAuth()
   const pathname = usePathname()
   const router = useRouter()
-  const { isVisited, markVisited } = useModuleProgress()
+  const { isVisited } = useModuleProgress()
   const [savedName, setSavedName] = useState('')
   // Clerk name wins; else the name captured during onboarding (protected feature:
   // "{Name}'s workspace" — see memory/protected-features)
@@ -328,12 +313,7 @@ export default function DashboardLayout({ children }) {
 
         {/* Nav — missions expanded and primary; tools secondary */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
-          <NavItem
-            item={NAV_MAIN[0]}
-            active={activeId === 'home'}
-            locked={false}
-            onOpen={() => {}}
-          />
+          <NavItem item={NAV_MAIN[0]} active={activeId === 'home'} />
 
           <div className="flex items-center justify-between px-3 mt-4 mb-1.5">
             <p id="tour-nav-modules" className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#bbb' }}>Missions</p>
@@ -353,24 +333,12 @@ export default function DashboardLayout({ children }) {
 
           <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>Tools</p>
           {NAV_TOOLS.map(item => (
-            <NavItem
-              key={item.id}
-              item={item}
-              active={activeId === item.id}
-              locked={false}
-              onOpen={() => {}}
-            />
+            <NavItem key={item.id} item={item} active={activeId === item.id} />
           ))}
 
           <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>More</p>
           {NAV_MORE.map(item => (
-            <NavItem
-              key={item.id}
-              item={item}
-              active={activeId === item.id}
-              locked={false}
-              onOpen={() => {}}
-            />
+            <NavItem key={item.id} item={item} active={activeId === item.id} />
           ))}
         </nav>
 
@@ -459,20 +427,8 @@ export default function DashboardLayout({ children }) {
         {NAV_MAIN.map(item => {
           const Icon = item.icon
           const active = activeId === item.id
-          const locked = !navUnlocked(item.id, isVisited, isPremium)
-          if (locked) {
-            return (
-              <div key={item.id}
-                className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl select-none"
-                style={{ color: '#cfcabb', minWidth: 0 }}>
-                <Lock size={16} strokeWidth={1.75} />
-                <span className="text-[9px] font-medium truncate w-full text-center">{item.label}</span>
-              </div>
-            )
-          }
           return (
             <Link key={item.id} href={item.href}
-              onClick={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
               className="flex flex-col items-center gap-0.5 flex-1 py-1.5 rounded-xl transition-all"
               style={{ color: active ? '#2E3250' : '#bbb', minWidth: 0 }}>
               <Icon size={18} strokeWidth={active ? 2 : 1.5} />
