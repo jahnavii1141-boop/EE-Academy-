@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  MessageSquare, ChevronDown, ChevronUp, X, BookMarked, Award, Lock,
+  MessageSquare, ChevronDown, ChevronUp, X, Award, Lock,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
 import { navUnlocked, GATED_NAV } from '@/lib/missionChain'
+import { COURSE_CATALOG } from '@/data/courseCatalog'
 
 // One sidebar row. Locked rows (gated behind an earlier mission/step) render
 // non-clickable with a lock; unlocked rows advance the chain on open.
@@ -52,7 +53,11 @@ function NavItem({ item, active, locked, onOpen }) {
 }
 
 // ── Email capture gate (shown to users with no Clerk session + no saved email) ──
-function EmailCaptureGate({ onCapture }) {
+// One-signup funnel (2026-07): submit captures the lead, then goes straight to
+// Clerk signup with the email prefilled and a redirect back to the page they
+// wanted — never a second registration, never a dead end.
+function EmailCaptureGate({ nextPath }) {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
 
@@ -63,13 +68,13 @@ function EmailCaptureGate({ onCapture }) {
       setError('Enter a valid email to continue.')
       return
     }
-    localStorage.setItem('eeAcademy_freeEmail', trimmed)
     fetch('/api/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: trimmed, source: 'dashboard-gate' }),
     }).catch(() => {})
-    onCapture(trimmed)
+    const dest = nextPath && nextPath.startsWith('/dashboard') ? nextPath : '/dashboard/home'
+    router.push(`/sign-up?email=${encodeURIComponent(trimmed)}&redirect_url=${encodeURIComponent(dest)}`)
   }
 
   return (
@@ -126,6 +131,8 @@ function EmailCaptureGate({ onCapture }) {
   )
 }
 
+// Missions are the star of the sidebar — expanded, contents always visible.
+// Tools are secondary, below them.
 const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
   { id: 'modules', label: 'Missions',   icon: BookOpen,  href: '/dashboard/modules' },
@@ -135,14 +142,57 @@ const NAV_MAIN = [
   { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner' },
 ]
 
+// Tools shown in the sidebar's secondary block (missions render above them)
+const NAV_TOOLS = [
+  { id: 'sample-ee', label: 'Example EE', icon: Award,     href: '/dashboard/sample-ee' },
+  { id: 'essay',     label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
+  { id: 'dump',      label: 'EE Dump',    icon: Database,  href: '/dashboard/dump' },
+  { id: 'planner',   label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner', isFree: true },
+  { id: 'templates', label: 'Templates',  icon: FileText,  href: '/dashboard/templates' },
+]
+
 const NAV_MORE = [
-  { id: 'templates', label: 'Templates',  icon: FileText,    href: '/dashboard/templates' },
-  { id: 'guides',    label: 'Guides',     icon: BookMarked,  href: '/guides', isFree: true },
   { id: 'ib-guide',  label: 'IB Official EE Guide', icon: BookOpen, href: '/dashboard/ib-guide', isFree: true },
   { id: 'share',     label: 'Share',      icon: Share2,      href: '/dashboard/share' },
 ]
 
-const ALL_NAV = [...NAV_MAIN, ...NAV_MORE]
+const ALL_NAV = [...NAV_MAIN, ...NAV_TOOLS, ...NAV_MORE]
+
+// One compact mission row in the expanded sidebar list
+function MissionRow({ m, active, visited, hasPaid }) {
+  const isPaidLocked = !m.free && !hasPaid
+  return (
+    <Link
+      href={`/course/${m.id}`}
+      className="flex items-center gap-2 px-3 py-[7px] rounded-lg text-[12.5px] transition-all mb-px"
+      style={{
+        background: active ? '#2E3250' : 'transparent',
+        color: active ? '#fff' : isPaidLocked ? '#9BAAB8' : '#555',
+        textDecoration: 'none',
+      }}
+      onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#EAE8DC'; e.currentTarget.style.color = '#2E3250' } }}
+      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isPaidLocked ? '#9BAAB8' : '#555' } }}
+    >
+      {visited ? (
+        <span className="w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0"
+          style={{ background: active ? 'rgba(255,255,255,0.25)' : '#2E3250' }}>
+          <svg width="8" height="8" viewBox="0 0 20 20" fill="#fff"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+        </span>
+      ) : (
+        <span className="w-3.5 h-3.5 rounded-full flex-shrink-0" style={{ border: `1.5px solid ${active ? 'rgba(255,255,255,0.4)' : '#d8d4c2'}` }} />
+      )}
+      <span className="truncate flex-1">{m.title}</span>
+      {m.free ? (
+        <span className="text-[8.5px] font-bold px-1.5 py-px rounded-full flex-shrink-0"
+          style={{ background: active ? 'rgba(255,255,255,0.2)' : '#f0fdf4', color: active ? '#fff' : '#15803d' }}>
+          FREE
+        </span>
+      ) : isPaidLocked ? (
+        <Lock className="flex-shrink-0" size={10} style={{ opacity: 0.7 }} />
+      ) : null}
+    </Link>
+  )
+}
 
 export default function DashboardLayout({ children }) {
   const { user } = useUser()
@@ -170,19 +220,6 @@ export default function DashboardLayout({ children }) {
     setSavedName(localStorage.getItem('eeAcademy_name') || '') // eslint-disable-line react-hooks/set-state-in-effect
     setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
-
-  const handleEmailCapture = (email) => {
-    // Generic entry (dashboard home) → full homepage flow: onboarding then back.
-    // Specific resource link → deliver the promised value immediately; the email
-    // is already captured, and onboarding can be nudged later. The gate has saved
-    // the email to localStorage + /api/subscribe before calling this.
-    const needsOnboarding = pathname === '/dashboard' || pathname === '/dashboard/home'
-    if (needsOnboarding) {
-      router.push(`/onboarding?next=${encodeURIComponent(pathname)}`)
-    } else {
-      setFreeEmail(email) // unlocks the current route in place
-    }
-  }
 
   const dismissRemarks = () => {
     setSupervisorRemarks(null)
@@ -241,7 +278,7 @@ export default function DashboardLayout({ children }) {
 
   // Show full-screen email gate for visitors with no Clerk session and no saved email
   if (!isSignedIn && !freeEmail) {
-    return <EmailCaptureGate onCapture={handleEmailCapture} />
+    return <EmailCaptureGate nextPath={pathname} />
   }
 
   return (
@@ -289,16 +326,39 @@ export default function DashboardLayout({ children }) {
           )}
         </div>
 
-        {/* Nav */}
+        {/* Nav — missions expanded and primary; tools secondary */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
-          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mb-2" style={{ color: '#bbb' }}>My Work</p>
-          {NAV_MAIN.map(item => (
+          <NavItem
+            item={NAV_MAIN[0]}
+            active={activeId === 'home'}
+            locked={false}
+            onOpen={() => {}}
+          />
+
+          <div className="flex items-center justify-between px-3 mt-4 mb-1.5">
+            <p id="tour-nav-modules" className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#bbb' }}>Missions</p>
+            <Link href="/dashboard/modules" className="text-[10px] font-semibold" style={{ color: '#9BAAB8', textDecoration: 'none' }}>
+              View all →
+            </Link>
+          </div>
+          {COURSE_CATALOG.map(m => (
+            <MissionRow
+              key={m.id}
+              m={m}
+              active={pathname === `/course/${m.id}`}
+              visited={isVisited(m.id)}
+              hasPaid={isPremium}
+            />
+          ))}
+
+          <p className="text-[10px] font-semibold uppercase tracking-widest px-3 mt-4 mb-2" style={{ color: '#bbb' }}>Tools</p>
+          {NAV_TOOLS.map(item => (
             <NavItem
               key={item.id}
               item={item}
               active={activeId === item.id}
-              locked={!navUnlocked(item.id, isVisited, isPremium)}
-              onOpen={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
+              locked={false}
+              onOpen={() => {}}
             />
           ))}
 
@@ -308,8 +368,8 @@ export default function DashboardLayout({ children }) {
               key={item.id}
               item={item}
               active={activeId === item.id}
-              locked={!navUnlocked(item.id, isVisited, isPremium)}
-              onOpen={() => { if (GATED_NAV[item.id]) markVisited(GATED_NAV[item.id]) }}
+              locked={false}
+              onOpen={() => {}}
             />
           ))}
         </nav>

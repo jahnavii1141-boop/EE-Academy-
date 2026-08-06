@@ -11,7 +11,7 @@ const MODULES = [
   {
     id: 'module-1',
     free: true,
-    title: 'Module 1 — Introduction, Mindset & How to Think Like an EE Examiner',
+    title: 'Introduction, Mindset & How to Think Like an EE Examiner',
     lessons: [
       'What the EE Actually Is — and Why It Matters for Your Diploma',
       'The Pareto Principle: The 20% That Produces 80% of Your Marks',
@@ -24,7 +24,7 @@ const MODULES = [
   {
     id: 'module-2',
     free: true,
-    title: 'Module 2 — What IB Expects: Criteria, Grading & How A\'s Are Really Given',
+    title: 'What IB Expects: Criteria, Grading & How A\'s Are Really Given',
     lessons: [
       'Criterion A: Knowledge and Understanding (6 marks)',
       'Criterion B: Application and Analysis (6 marks)',
@@ -39,7 +39,7 @@ const MODULES = [
   {
     id: 'module-3',
     free: true,
-    title: 'Module 3 — Choosing Your Subject & Finding Your Topic',
+    title: 'Choosing Your Subject & Finding Your Topic',
     lessons: [
       'The Venn Diagram: Interest, Strength & EE-Friendliness',
       'How to Use Clastify Efficiently (Without Wasting Hours)',
@@ -51,7 +51,8 @@ const MODULES = [
   },
   {
     id: 'module-4',
-    title: 'Module 4 — Research Question Mastery',
+    free: true,
+    title: 'Research Question Mastery',
     lessons: [
       'The John Story: How to Find Your RQ From Real Life',
       'What Makes a Strong RQ: Specificity, Scope & Framing',
@@ -64,7 +65,8 @@ const MODULES = [
   },
   {
     id: 'module-5',
-    title: 'Module 5 — The EE Dump Research System',
+    free: true,
+    title: 'The EE Dump Research System',
     lessons: [
       'What the EE Dump Is and Why It Works',
       'Breaking Your RQ Into 5 Subtopics',
@@ -77,7 +79,7 @@ const MODULES = [
   },
   {
     id: 'module-6',
-    title: 'Module 6 — How to Research Like a Top Student',
+    title: 'How to Research Like a Top Student',
     lessons: [
       'Let Your Structure Define Your Research (Not the Other Way Around)',
       'The Funnel: Level 1 (Google), Level 2 (Scholar), Level 3 (PDF-only)',
@@ -90,7 +92,7 @@ const MODULES = [
   },
   {
     id: 'module-7',
-    title: 'Module 7 — Building Your EE Structure',
+    title: 'Building Your EE Structure',
     lessons: [
       'The Grade-A 7-Section Structure (Used for a 32/34)',
       'Mapping Each Section to Specific Assessment Criteria',
@@ -102,7 +104,7 @@ const MODULES = [
   },
   {
     id: 'module-8',
-    title: 'Module 8 — Writing the EE: How to Actually Write Each Section',
+    title: 'Writing the EE: How to Actually Write Each Section',
     lessons: [
       'The Introduction: Storytelling That Leads to Your RQ (Criterion A)',
       'The Literature Review: Critical Evaluation, Not Summaries',
@@ -116,7 +118,7 @@ const MODULES = [
   },
   {
     id: 'module-9',
-    title: 'Module 9 — Format, Style, Citations & Academic Integrity',
+    title: 'Format, Style, Citations & Academic Integrity',
     lessons: [
       'The Non-Negotiable Formatting Rules (Font, Spacing, Margins)',
       'Title Page Requirements & What NOT to Include',
@@ -130,7 +132,7 @@ const MODULES = [
   },
   {
     id: 'module-10',
-    title: 'Module 10 — Writing a Killer Introduction & Conclusion',
+    title: 'Writing a Killer Introduction & Conclusion',
     lessons: [
       'Hook Type 1: The Storytelling Hook (Best for BM, Psychology, History)',
       'Hook Type 2: The Contradiction Hook (Best for Sciences, Economics)',
@@ -143,7 +145,7 @@ const MODULES = [
   },
   {
     id: 'module-11',
-    title: 'Module 11 — RPPF Mastery: The Easiest 6 Marks of Your Life',
+    title: 'RPPF Mastery: The Easiest 6 Marks of Your Life',
     lessons: [
       'What the RPPF Is and Why Most Students Get It Wrong',
       'Reflection 1 (Early Stage): Topic Choice & Initial Challenges',
@@ -155,7 +157,7 @@ const MODULES = [
   },
   {
     id: 'ai-module',
-    title: 'AI Module — How to Use AI the Right Way for Your EE',
+    title: 'How to Use AI the Right Way for Your EE',
     lessons: [
       'The Golden Rules: What You Can and Cannot Use AI For',
       'AI as a Thinking Partner, Not a Writer',
@@ -169,7 +171,7 @@ const MODULES = [
   },
   {
     id: 'module-13',
-    title: 'Module 13 — Analysing My 32/34 EE: AI Analysis vs. My Real Commentary',
+    title: 'Analysing My 32/34 EE: AI Analysis vs. My Real Commentary',
     lessons: [
       'The Research Question: What AI Got Right and What It Missed',
       'Structure: The Overlap Problem Between Sections IV and V',
@@ -183,7 +185,7 @@ const MODULES = [
   },
   {
     id: 'module-14',
-    title: 'Module 14 — Templates, Tools & Checklists',
+    title: 'Templates, Tools & Checklists',
     lessons: [
       'Research Question Worksheet',
       'EE Dump Template (Organised by Subtopic)',

@@ -16,22 +16,12 @@ export const MISSION_CHAIN = [
   { key: 'step-templates',   navId: 'templates', kind: 'tool' },
 ]
 
-// Sidebar tabs that are gated behind an earlier step. (Missions/Home/Planner/
-// Guides/IB guide/Share are always open.)
-export const GATED_NAV = {
-  'sample-ee': 'reward-sample-ee',
-  'essay':     'step-essay',
-  'dump':      'step-dump',
-  'templates': 'step-templates',
-}
+// Sequential nav gating REMOVED (2026-07): a session recording showed the
+// locks made everything feel inaccessible and drove a visitor away without
+// ever opening the course. The chain above is kept only to order the
+// "next up" progress suggestions. Paid content stays gated inside pages.
+export const GATED_NAV = {}
 
-// Is a sidebar tab unlocked? Its gating step's predecessor must be done.
-// Paid users are never gated.
-export function navUnlocked(navId, isVisited, hasPaid) {
-  if (hasPaid) return true
-  const stepKey = GATED_NAV[navId]
-  if (!stepKey) return true // ungated tab
-  const idx = MISSION_CHAIN.findIndex((s) => s.key === stepKey)
-  if (idx <= 0) return true
-  return isVisited(MISSION_CHAIN[idx - 1].key)
+export function navUnlocked() {
+  return true
 }

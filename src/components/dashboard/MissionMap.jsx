@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Lock, Check, ArrowRight, Award, PenLine, Database, FileText, GitBranch, BookMarked, BookOpen } from 'lucide-react'
+import { Lock, Check, ArrowRight, Award, PenLine, Database, FileText, GitBranch, BookMarked } from 'lucide-react'
 import { COURSE_CATALOG } from '@/data/courseCatalog'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
 
@@ -56,7 +56,6 @@ const PREMIUM_MISSIONS = COURSE_CATALOG.filter((m) => !m.free)
 const RESOURCES = [
   { icon: GitBranch,  label: 'EE Pathway Finder', sub: 'Find your pathway and shape your RQ, step by step.', href: '/dashboard/tools' },
   { icon: BookMarked, label: 'Official IB guide', sub: 'The complete IB Extended Essay guide, in full.',      href: '/dashboard/ib-guide' },
-  { icon: BookOpen,   label: 'EE guides',         sub: 'Every stage of the essay, clearly explained.',         href: '/guides' },
 ]
 
 function StatusPill({ state }) {
@@ -156,16 +155,12 @@ function SectionHead({ label, title }) {
 export default function MissionMap({ hasPaid = false, isPremium = false }) {
   const { isVisited, markVisited } = useModuleProgress()
 
-  // A step is "done" when visited; "unlocked" when the previous step is done.
-  // Paid users skip the gate entirely.
-  const stateFor = (i) => {
-    if (isVisited(STEPS[i].key)) return 'done'
-    const unlocked = hasPaid || i === 0 || isVisited(STEPS[i - 1].key)
-    return unlocked ? 'available' : 'locked'
-  }
+  // Sequential locks removed (2026-07): everything free is open in any order.
+  // "done" checkmarks remain as progress; the chain only orders suggestions.
+  const stateFor = (i) => (isVisited(STEPS[i].key) ? 'done' : 'available')
 
   const doneCount = STEPS.filter((s) => isVisited(s.key)).length
-  const nextIdx = STEPS.findIndex((s) => !isVisited(s.key) && (hasPaid || s === STEPS[0] || isVisited(STEPS[STEPS.indexOf(s) - 1]?.key)))
+  const nextIdx = STEPS.findIndex((s) => !isVisited(s.key))
   const nextStep = nextIdx >= 0 ? STEPS[nextIdx] : null
 
   const open = (step) => { if (step.markOnClick) markVisited(step.key) }
@@ -207,14 +202,14 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
         )}
       </div>
 
-      {/* ── The 5 missions ── */}
-      <SectionHead label="Start here — one unlocks the next" title="Your five free missions" />
+      {/* ── The 5 free missions — open in any order ── */}
+      <SectionHead label="Free — open in any order" title="Your five free missions" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         {renderGroup([0, 1, 2, 3, 4])}
       </div>
 
-      {/* ── The workspace unlocks after the missions ── */}
-      <SectionHead label="Then your workspace opens up" title="Finish the missions to unlock these" />
+      {/* ── Workspace tools — always open ── */}
+      <SectionHead label="Free — always open" title="Your workspace tools" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         {renderGroup([5, 6, 7, 8])}
       </div>

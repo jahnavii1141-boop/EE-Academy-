@@ -12,7 +12,7 @@ const MotionDiv = motion.div
 
 // ── Features per tier ────────────────────────────────────────────────────────
 const METHOD_FEATURES = [
-  '14-module EE curriculum',
+  '14-mission EE curriculum',
   'EE Planner — week-by-week timeline',
   'Research Question Checker',
   'Essay editor with autosave',
@@ -110,7 +110,7 @@ export default function Pricing() {
             flex flex-col sm:flex-row items-start sm:items-center gap-3">
             <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
             <p className="text-sm text-emerald-800">
-              <strong>Try it first.</strong> Your first modules are completely free — start immediately.
+              <strong>Try it first.</strong> Your first missions are completely free — start immediately.
             </p>
             <Link href="/course/module-1"
               className="sm:ml-auto text-xs font-semibold text-emerald-700 underline underline-offset-2 flex-shrink-0 whitespace-nowrap">

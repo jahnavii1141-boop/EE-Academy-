@@ -1,8 +1,8 @@
 'use client'
 
+import Link from 'next/link'
 import EEPlanner from '../components/EEPlanner'
 import { useAccess } from '../hooks/useAccess'
-import UpgradeGate from '../components/UpgradeGate'
 
 const PHASES = [
   { label: 'Research', color: '#2563eb' },
@@ -19,7 +19,10 @@ const STATS = [
 ]
 
 export default function PlannerPage() {
-  const { hasPremium, loading } = useAccess()
+  // The EE Planner is FREE (2026-07): the homepage Free tier promises it, and
+  // a session recording showed the old premium gate driving new users away.
+  // No completion requirements, no tier checks — every signed-in user gets it.
+  const { hasPaid, loading } = useAccess()
 
   if (loading) {
     return (
@@ -29,13 +32,24 @@ export default function PlannerPage() {
     )
   }
 
-  if (!hasPremium) {
-    return <UpgradeGate requiredTier="premium" toolName="EE Planner" />
-  }
-
   return (
     <div className="min-h-screen bg-[#f8f7f4] text-[#1a1a2e]">
       <div className="max-w-5xl mx-auto px-6 py-10 md:py-14">
+
+        {/* Non-blocking nudge to the full course (free users only) */}
+        {!hasPaid && (
+          <div className="mb-8 flex flex-col sm:flex-row sm:items-center gap-3 rounded-2xl px-5 py-4"
+            style={{ background: '#fff', border: '1px solid rgba(46,50,80,0.12)' }}>
+            <p className="flex-1 text-sm" style={{ color: '#4a4a68' }}>
+              The planner maps your timeline — the full course shows you exactly what to write at each step.
+            </p>
+            <Link href="/pricing" className="text-xs font-semibold px-4 py-2 rounded-xl flex-shrink-0"
+              style={{ background: '#2E3250', color: '#fff', textDecoration: 'none' }}>
+              See the full system →
+            </Link>
+          </div>
+        )}
+
         <div className="max-w-3xl mb-10">
           <h1
             className="text-4xl md:text-5xl leading-[1.1] tracking-tight mb-4 text-[#1a1a2e]"

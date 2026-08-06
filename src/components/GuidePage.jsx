@@ -170,8 +170,8 @@ export default function GuidePage({
             href="/curriculum"
             className="flex-1 rounded-xl border border-navy/12 bg-parchment/40 hover:bg-parchment/70 transition-colors px-5 py-4 text-center"
           >
-            <p className="text-sm font-semibold text-navy">See the full 14-module curriculum →</p>
-            <p className="text-xs text-navy/50 mt-1">Every topic, every module, mapped to IB criteria</p>
+            <p className="text-sm font-semibold text-navy">See the full 14-mission curriculum →</p>
+            <p className="text-xs text-navy/50 mt-1">Every topic, every mission, mapped to IB criteria</p>
           </Link>
           <Link
             href="/pricing"

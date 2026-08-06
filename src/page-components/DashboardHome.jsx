@@ -5,10 +5,14 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, ArrowRight } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import MissionMap from '@/components/dashboard/MissionMap'
 import SystemPledge from '@/components/dashboard/SystemPledge'
+import { COURSE_CATALOG } from '@/data/courseCatalog'
+import { useModuleProgress } from '@/hooks/useModuleProgress'
+
+const SETUP_DISMISS_KEY = 'eeAcademy_setupDismissed'
 
 const SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science',
@@ -201,6 +205,12 @@ export default function DashboardHome() {
   const [hasPaid, setHasPaid] = useState(false)
   const [isPremium, setIsPremium] = useState(false)
   const [showTour, setShowTour] = useState(false)
+  const [setupDismissed, setSetupDismissed] = useState(true) // resolved from localStorage on mount
+  const { isVisited } = useModuleProgress()
+
+  useEffect(() => {
+    setSetupDismissed(!!localStorage.getItem(SETUP_DISMISS_KEY)) // eslint-disable-line react-hooks/set-state-in-effect
+  }, [])
   const [shareUrl, setShareUrl] = useState(null)
   const [shareLoading, setShareLoading] = useState(false)
   const [shareCopied, setShareCopied] = useState(false)
@@ -229,15 +239,14 @@ export default function DashboardHome() {
 
   useEffect(() => {
     if (!isSignedIn) {
+      // Onboarding is optional (2026-07): never redirect away from the
+      // dashboard. A dismissible setup card below invites personalisation.
       const saved = localStorage.getItem('eeAcademy_workspace')
-      if (!saved) {
-        // No setup done — send to onboarding
-        router.push('/onboarding')
-        return
+      if (saved) {
+        try {
+          setForm(f => ({ ...f, ...JSON.parse(saved) })) // eslint-disable-line react-hooks/set-state-in-effect
+        } catch (e) { console.error('workspace parse error', e) }
       }
-      try {
-        setForm(f => ({ ...f, ...JSON.parse(saved) })) // eslint-disable-line react-hooks/set-state-in-effect
-      } catch (e) { console.error('workspace parse error', e) }
       setLoading(false) // eslint-disable-line react-hooks/set-state-in-effect
       if (!localStorage.getItem(TOUR_KEY)) setShowTour(true) // eslint-disable-line react-hooks/set-state-in-effect
       return
@@ -254,10 +263,9 @@ export default function DashboardHome() {
           })
           setHasPaid(!!workspace.has_paid)
           setIsPremium(workspace.tier === 'premium')
-          if (!workspace.research_question) setEditing(true)
-        } else {
-          setEditing(true)
         }
+        // No auto-editing gate: an empty profile shows a dismissible setup
+        // card instead of replacing the dashboard (onboarding is optional).
       })
       .catch(() => {})
       .finally(() => {
@@ -326,70 +334,21 @@ export default function DashboardHome() {
     setShowTour(false)
   }
 
-  // New user who hasn't set up yet — show focused setup screen
-  if (editing && !form.research_question && !form.subject) {
-    return (
-      <div className="min-h-full flex flex-col items-center justify-center px-4 py-12">
-        <div className="w-full max-w-lg">
-          <div className="text-center mb-8">
-            <p className="text-[11px] font-bold uppercase tracking-widest mb-3" style={{ color: '#ccc' }}>Step 1 of 1</p>
-            <h1 className="text-2xl font-bold mb-2" style={{ color: '#2E3250', letterSpacing: '-0.03em' }}>Set up your workspace</h1>
-            <p className="text-sm" style={{ color: '#aaa' }}>Takes 30 seconds — helps us personalise everything for your EE.</p>
-          </div>
-          <div className="rounded-2xl overflow-hidden" style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
-            <div className="px-6 py-5 space-y-5">
-              {/* Subject */}
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>Your Subject</label>
-                <div className="grid grid-cols-2 gap-1.5 max-h-52 overflow-y-auto pr-1">
-                  {SUBJECTS.map(s => {
-                    const t = getTheme(s)
-                    const selected = form.subject === s
-                    return (
-                      <button key={s} onClick={() => setForm(f => ({ ...f, subject: s }))}
-                        className="flex items-center gap-2 px-3 py-2 rounded-xl text-sm text-left transition-all"
-                        style={{
-                          background: selected ? t.light : '#f9f9f9',
-                          color: selected ? t.color : '#555',
-                          border: `1px solid ${selected ? t.accent : '#f0f0f0'}`,
-                          fontWeight: selected ? 600 : 400,
-                        }}>
-                        <span>{t.emoji}</span>
-                        <span className="text-xs leading-tight">{s}</span>
-                      </button>
-                    )
-                  })}
-                </div>
-              </div>
-              {/* Research Question */}
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: '#aaa' }}>
-                  Research Question <span className="font-normal normal-case tracking-normal" style={{ color: '#ccc' }}>optional</span>
-                </label>
-                <textarea
-                  value={form.research_question}
-                  onChange={e => setForm(f => ({ ...f, research_question: e.target.value }))}
-                  placeholder="To what extent does…"
-                  rows={3}
-                  className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none resize-none transition-colors"
-                  style={{ border: '1px solid #e8e8e8', color: '#2E3250', background: '#F4F3E8' }}
-                  onFocus={e => e.target.style.borderColor = '#2E3250'}
-                  onBlur={e => e.target.style.borderColor = '#e8e8e8'}
-                />
-              </div>
-            </div>
-            <div className="px-6 pb-6">
-              <button onClick={save}
-                className="w-full py-3 rounded-xl text-sm font-semibold transition-all hover:opacity-90"
-                style={{ background: '#2E3250', color: '#fff' }}>
-                {form.subject ? 'Set up my workspace →' : 'Skip for now →'}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    )
+  const dismissSetup = () => {
+    localStorage.setItem(SETUP_DISMISS_KEY, '1')
+    setSetupDismissed(true)
   }
+
+  // Course-first hierarchy: the primary card always points at the next
+  // unvisited module (or the very first one for brand-new users).
+  const visitedCount = COURSE_CATALOG.filter(m => isVisited(m.id)).length
+  const nextModule = COURSE_CATALOG.find(m => !isVisited(m.id)) || COURSE_CATALOG[0]
+  const hasStarted = visitedCount > 0
+  const profileEmpty = !form.subject && !form.research_question
+  const showSetupCard = profileEmpty && !setupDismissed && !editing
+
+  // (Full-screen setup gate removed 2026-07 — onboarding is optional; an
+  // empty profile shows the dismissible setup card inside the dashboard.)
 
   return (
     <div className="h-full overflow-y-auto">
@@ -410,7 +369,62 @@ export default function DashboardHome() {
           </div>
         )}
 
-        {/* Mission Map — the gated, gamified progression is the star of the dashboard */}
+        {/* ── Optional setup nudge — dismissible, never blocks ── */}
+        {showSetupCard && (
+          <div className="mb-6 rounded-2xl px-5 py-4 flex flex-col sm:flex-row sm:items-center gap-3"
+            style={{ background: '#fff', border: '1px dashed rgba(46,50,80,0.25)' }}>
+            <div className="flex-1">
+              <p className="text-sm font-semibold" style={{ color: '#2E3250' }}>Personalise your workspace (2 min, optional)</p>
+              <p className="text-xs mt-0.5" style={{ color: '#9BAAB8' }}>
+                Tell us your subject and research question — your planner and tools adapt to your EE.
+              </p>
+            </div>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <Link href="/onboarding" className="text-xs font-semibold px-4 py-2 rounded-xl"
+                style={{ background: '#2E3250', color: '#fff', textDecoration: 'none' }}>
+                Set up →
+              </Link>
+              <button onClick={dismissSetup} className="text-xs px-3 py-2 rounded-xl" style={{ color: '#9BAAB8' }}>
+                Dismiss
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* ── THE COURSE — primary card, unmissable ── */}
+        {!editing && (
+          <Link href={`/course/${nextModule.id}`}
+            className="block rounded-2xl px-6 sm:px-8 py-7 mb-10 transition-all hover:-translate-y-0.5"
+            style={{ background: '#2E3250', color: '#F4F3E8', textDecoration: 'none', boxShadow: '0 8px 28px rgba(46,50,80,0.18)' }}>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+              <div className="flex-1">
+                <p className="text-[11px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: 'rgba(244,243,232,0.65)' }}>
+                  The course · 5 missions free
+                </p>
+                <p className="font-serif text-[26px] leading-tight mb-1">
+                  {hasStarted ? 'Continue where you left off' : 'Start the course'}
+                </p>
+                <p className="text-[14px]" style={{ color: 'rgba(244,243,232,0.75)' }}>
+                  {hasStarted
+                    ? `Next up: Mission ${nextModule.number} — ${nextModule.title}`
+                    : `Mission ${nextModule.number} — ${nextModule.title}`}
+                </p>
+              </div>
+              <div className="flex flex-col items-start sm:items-end gap-2 flex-shrink-0">
+                <span className="inline-flex items-center gap-1.5 rounded-xl px-5 py-3 text-sm font-semibold"
+                  style={{ background: '#F4F3E8', color: '#2E3250' }}>
+                  {hasStarted ? 'Continue' : 'Start now'} <ArrowRight className="w-4 h-4" strokeWidth={2.25} />
+                </span>
+                <span className="text-[11px] underline underline-offset-2" style={{ color: 'rgba(244,243,232,0.6)' }}
+                  onClick={(e) => { e.preventDefault(); e.stopPropagation(); router.push('/dashboard/modules') }}>
+                  See the full curriculum
+                </span>
+              </div>
+            </div>
+          </Link>
+        )}
+
+        {/* Mission Map — secondary overview below the course card */}
         {!editing && <MissionMap hasPaid={hasPaid} isPremium={isPremium} />}
 
         <div className="max-w-2xl mx-auto">

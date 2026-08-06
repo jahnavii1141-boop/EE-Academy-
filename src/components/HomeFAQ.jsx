@@ -6,7 +6,7 @@ import AnimateIn from './ui/AnimateIn'
 const FAQ_ITEMS = [
   {
     question: 'Can I start for free?',
-    answer: "Yes, your first modules are free and you don't need a card. Unlock the full system whenever you're ready.",
+    answer: "Yes, your first missions are free and you don't need a card. Unlock the full system whenever you're ready.",
   },
   {
     question: 'Do you write the essay for me?',

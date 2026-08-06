@@ -5,27 +5,44 @@ import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
 function SimpleEmailCapture({ onClose }) {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [status, setStatus] = useState('idle') // idle | loading | success | error
   const router = useRouter()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const trimmed = email.trim()
-    if (!trimmed || !trimmed.includes('@')) {
-      setError('Enter a valid email to continue.')
+    if (!EMAIL_RE.test(trimmed)) {
+      setError('Enter a valid email address.')
+      setStatus('error')
       return
     }
-    localStorage.setItem('eeAcademy_freeEmail', trimmed)
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
-    }).catch(() => {})
-    router.push('/onboarding')
+    setStatus('loading')
+    setError('')
+    // Capture the lead, then hand to the ONE signup step (Clerk) prefilled.
+    // A subscribe hiccup must not block signup; a 400 surfaces as an error.
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
+      })
+      if (res.status === 400) {
+        const data = await res.json().catch(() => ({}))
+        setError(data.error || 'Please use a valid, non-temporary email.')
+        setStatus('error')
+        return
+      }
+    } catch { /* network issue — proceed to signup anyway */ }
+    setStatus('success')
+    router.push(`/sign-up?email=${encodeURIComponent(trimmed)}`)
   }
+
+  const busy = status === 'loading' || status === 'success'
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
@@ -38,29 +55,32 @@ function SimpleEmailCapture({ onClose }) {
         <p className="text-[11px] font-semibold uppercase tracking-widest mb-4" style={{ color: '#bbb' }}>
           EE Academy
         </p>
-        <h2 className="font-semibold mb-2" style={{ fontSize: 22, color: '#0a0a0a', letterSpacing: '-0.02em' }}>
+        <h2 className="font-semibold mb-2" style={{ fontSize: 22, color: '#2E3250', letterSpacing: '-0.02em' }}>
           Get started.
         </h2>
         <p className="text-sm mb-6 leading-relaxed" style={{ color: '#888' }}>
-          Access modules 1, 2, 3 and 5 — no card, no commitment.
+          Five free missions plus the planner and research tools — no card, no commitment.
         </p>
         <form onSubmit={handleSubmit} className="space-y-3">
           <input
             type="email"
             value={email}
-            onChange={e => { setEmail(e.target.value); setError('') }}
+            onChange={e => { setEmail(e.target.value); if (status === 'error') { setStatus('idle'); setError('') } }}
             placeholder="your@email.com"
             autoFocus
-            className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors"
-            style={{ border: `1px solid ${error ? '#fca5a5' : '#e8e8e8'}`, color: '#0a0a0a', background: '#fafafa' }}
-            onFocus={e => e.target.style.borderColor = '#0a0a0a'}
+            disabled={busy}
+            className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors disabled:opacity-60"
+            style={{ border: `1px solid ${error ? '#fca5a5' : '#e8e8e8'}`, color: '#2E3250', background: '#F4F3E8' }}
+            onFocus={e => e.target.style.borderColor = '#2E3250'}
             onBlur={e => e.target.style.borderColor = error ? '#fca5a5' : '#e8e8e8'}
           />
           {error && <p className="text-xs" style={{ color: '#ef4444' }}>{error}</p>}
-          <button type="submit" disabled={loading}
-            className="w-full py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50"
-            style={{ background: '#0a0a0a', color: '#fff' }}>
-            {loading ? 'Setting up…' : 'Get access →'}
+          <button type="submit" disabled={busy}
+            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50"
+            style={{ background: '#2E3250', color: '#fff' }}>
+            {status === 'loading' ? (
+              <><span className="w-3.5 h-3.5 rounded-full border-2 border-white/40 border-t-white animate-spin" /> Setting up…</>
+            ) : status === 'success' ? 'Redirecting…' : 'Get access →'}
           </button>
         </form>
       </div>

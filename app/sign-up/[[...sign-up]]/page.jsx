@@ -8,7 +8,10 @@ export const metadata = {
   alternates: { canonical: 'https://theextendedessay.com/sign-up' },
 }
 
-export default function SignUpPage() {
+export default async function SignUpPage({ searchParams }) {
+  // ?email= comes from the email-capture forms — prefill so signup is one step.
+  const params = await searchParams
+  const email = typeof params?.email === 'string' ? params.email : undefined
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
@@ -29,7 +32,8 @@ export default function SignUpPage() {
         routing="path"
         path="/sign-up"
         signInUrl="/sign-in"
-        fallbackRedirectUrl="/onboarding"
+        fallbackRedirectUrl="/dashboard/home"
+        initialValues={email ? { emailAddress: email } : undefined}
         appearance={{
           variables: {
             colorPrimary: '#0a0a0a',

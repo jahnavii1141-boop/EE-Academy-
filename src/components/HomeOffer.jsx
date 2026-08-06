@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 const BENEFITS = [
-  'The full 14-module EE system, blank page to finished draft, nothing skipped',
+  'The full 14-mission EE system, blank page to finished draft, nothing skipped',
   'The Research Question Checker, kill a dead-end RQ before it costs you three weeks',
   'The EE Planner, your whole essay broken into week-by-week targets',
   'The Grade Scan plus the real 32/34 essay fully broken down, so you see exactly what an A looks like and why',
@@ -15,7 +15,7 @@ const TIERS = [
     name: 'Free',
     price: '$0',
     note: 'No card required',
-    features: 'Your first modules plus the EE Planner.',
+    features: 'Your first missions plus the EE Planner.',
     cta: 'Start free',
     href: '/dashboard/home',
     highlight: false,
@@ -24,7 +24,7 @@ const TIERS = [
     name: 'Standard',
     price: '$79',
     note: 'One-time',
-    features: 'The full 14-module system, every guide, framework and checklist. Lifetime access.',
+    features: 'The full 14-mission system, every guide, framework and checklist. Lifetime access.',
     cta: 'Get the full system',
     href: '/pricing',
     highlight: false,

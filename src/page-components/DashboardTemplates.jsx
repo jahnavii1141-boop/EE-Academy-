@@ -129,18 +129,8 @@ export default function DashboardTemplates() {
           Free resources below. Premium unlocks fillable SOPs auto-saved to your browser.
         </p>
 
-        {/* ── Free: Guides ── */}
-        <Link href="/guides" className="flex items-center gap-4 rounded-2xl border border-green-200 bg-green-50 px-5 py-4 mb-3 no-underline group hover:bg-green-100 transition-colors">
-          <BookMarked className="w-5 h-5 text-green-700 flex-shrink-0" />
-          <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2">
-              <p className="text-sm font-bold text-green-900">EE Guides</p>
-              <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-green-200 text-green-800">FREE</span>
-            </div>
-            <p className="text-xs text-green-800/60 mt-0.5">Step-by-step guides for every stage of the EE process</p>
-          </div>
-          <ChevronDown className="w-4 h-4 text-green-700/40 -rotate-90 group-hover:text-green-700 transition-colors flex-shrink-0" />
-        </Link>
+        {/* Guides library removed from the dashboard (2026-07). The guide pages
+            stay published at their public /guides/ URLs for search traffic. */}
 
         {/* ── Free: Subject Planning Workbooks ── */}
         <div className="mt-8">

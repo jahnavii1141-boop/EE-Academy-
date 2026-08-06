@@ -16,11 +16,11 @@ const MODULES = COURSE_CATALOG.map(m => ({
   premium: m.premium,
 }))
 
+// Curriculum grouped by ACCESS, not numbered sequence (2026-07): the free
+// missions must be abundantly clear, and there's no forced order anymore.
 const SECTIONS = [
-  { label: 'Foundation', range: [0, 2] },
-  { label: 'Research',   range: [3, 5] },
-  { label: 'Writing',    range: [6, 10] },
-  { label: 'Advanced',   range: [11, 13] },
+  { label: 'Free — start with any of these', filter: (m) => m.free,  free: true },
+  { label: 'The full system',                filter: (m) => !m.free, free: false },
 ]
 
 export default function DashboardModules() {
@@ -49,7 +49,7 @@ export default function DashboardModules() {
             </div>
           </div>
           <p className="text-sm mt-1" style={{ color: '#aaa' }}>
-            The complete EE system, built from a real 32/34 essay. Start with Mission 01.
+            The complete EE system, built from a real 32/34 essay. Five missions are free — open any of them.
           </p>
           <p className="text-[11px] mt-2 leading-relaxed rounded-lg px-3 py-2 inline-block"
             style={{ color: '#6b7280', background: '#EAE8DC' }}>
@@ -58,21 +58,37 @@ export default function DashboardModules() {
           </p>
         </div>
 
-        {/* Mission sections */}
+        {/* Mission sections — grouped by access, no numbered sequence */}
         <div className="space-y-8">
           {SECTIONS.map(section => {
-            const mods = MODULES.slice(section.range[0], section.range[1] + 1)
+            const mods = MODULES.filter(section.filter)
             const sectionVisited = mods.filter(m => isVisited(m.id)).length
             return (
               <div key={section.label}>
                 {/* Section label */}
                 <div className="flex items-center gap-3 mb-3">
-                  <p className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#bbb' }}>
+                  <p className="text-[10px] font-bold uppercase tracking-widest"
+                    style={{ color: section.free ? '#15803d' : '#bbb' }}>
                     {section.label}
                   </p>
                   <div className="flex-1 h-px" style={{ background: '#f0f0f0' }} />
                   <p className="text-[10px]" style={{ color: '#ddd' }}>{sectionVisited}/{mods.length}</p>
                 </div>
+
+                {/* Unlock CTA sits at the TOP of the paid group — impossible to miss */}
+                {!section.free && !hasStandard && (
+                  <div className="mb-3 flex items-center justify-between gap-4 px-4 py-3 rounded-xl"
+                    style={{ background: '#2E3250' }}>
+                    <p className="text-xs font-semibold" style={{ color: '#F4F3E8' }}>
+                      Unlock everything below — one payment, lifetime access.
+                    </p>
+                    <Link href="/pricing"
+                      className="text-xs font-semibold px-4 py-2 rounded-lg flex-shrink-0"
+                      style={{ background: '#F4F3E8', color: '#2E3250', textDecoration: 'none' }}>
+                      Unlock everything →
+                    </Link>
+                  </div>
+                )}
 
                 {/* Mission rows */}
                 <div className="space-y-1">
@@ -83,21 +99,20 @@ export default function DashboardModules() {
                     return (
                       <Link key={mod.id} href={`/course/${mod.id}`}
                         className="group flex items-center gap-4 px-4 py-3 rounded-xl transition-all"
-                        style={{ background: '#fff', border: '1px solid transparent' }}
+                        style={{ background: '#fff', border: '1px solid transparent', opacity: isLocked ? 0.75 : 1 }}
                         onMouseEnter={e => { e.currentTarget.style.borderColor = '#e5e5e5'; e.currentTarget.style.background = '#fff' }}
                         onMouseLeave={e => { e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.background = '#fff' }}>
 
-                        {/* Number / status */}
-                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 text-xs font-semibold transition-all"
-                          style={{
-                            background: visited ? '#2E3250' : '#EAE8DC',
-                            color: visited ? '#fff' : '#aaa',
-                          }}>
+                        {/* Status dot — no numbering */}
+                        <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0 transition-all"
+                          style={{ background: visited ? '#2E3250' : '#EAE8DC' }}>
                           {visited ? (
                             <svg width="13" height="13" viewBox="0 0 20 20" fill="white">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                             </svg>
-                          ) : mod.num}
+                          ) : (
+                            <span className="w-2 h-2 rounded-full" style={{ background: mod.free ? '#15803d' : '#c9c5b4' }} />
+                          )}
                         </div>
 
                         {/* Text */}
@@ -113,9 +128,9 @@ export default function DashboardModules() {
                         {/* Badges */}
                         <div className="flex items-center gap-2 flex-shrink-0">
                           {mod.free && (
-                            <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full"
-                              style={{ background: '#f0fdf4', color: '#16a34a', border: '1px solid #bbf7d0' }}>
-                              Included
+                            <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full"
+                              style={{ background: '#15803d', color: '#fff' }}>
+                              FREE
                             </span>
                           )}
                           {mod.premium && !mod.free && (
