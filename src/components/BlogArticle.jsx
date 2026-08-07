@@ -128,7 +128,7 @@ export default function BlogArticle({ post }) {
         <div className="mt-12 rounded-2xl bg-navy text-center p-8">
           <h3 className="font-serif text-xl font-bold text-cream mb-2">Start your EE for free</h3>
           <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
-            5 free modules, a real 32/34 example essay, subject workbooks, and the official IB guide — no card needed.
+            5 free modules, a real 32/34 example essay, subject workbooks, and the official IB guide.
           </p>
           <Link href="/dashboard/home" className="btn-primary-light text-sm">Open your free workspace</Link>
         </div>

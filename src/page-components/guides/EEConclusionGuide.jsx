@@ -16,7 +16,7 @@ const CONTENT = [
   ]},
   { type: 'heading', text: 'The Arc Test' },
   { type: 'tip-box', text: 'If someone read only your introduction and conclusion, they should understand the full arc of your essay. Test this: give a friend just those two sections and see if they follow your argument.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full conclusion framework with worked before-and-after examples for your subject? It\'s inside the writing modules.', href: '/pricing', buttonText: 'Unlock the writing modules' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full conclusion framework with worked before-and-after examples for your subject? It\'s inside the writing modules.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Give a direct answer, draw together evidence, state limitations, point forward',
     'Synthesise, don\'t repeat your introduction',

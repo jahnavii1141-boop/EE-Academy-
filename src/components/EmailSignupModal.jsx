@@ -63,7 +63,7 @@ export default function EmailSignupModal() {
             </button>
           </SignUpButton>
           <p className="text-center text-xs mt-3" style={{ color: '#ccc' }}>
-            No payment needed. No spam. Unsubscribe anytime.
+            No spam. Unsubscribe anytime.
           </p>
         </div>
 

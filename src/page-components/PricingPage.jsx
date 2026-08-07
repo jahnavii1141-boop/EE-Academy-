@@ -23,7 +23,7 @@ const COMPARISON = [
 const FAQ_ITEMS = [
   {
     q: 'Can I try before buying?',
-    a: 'Yes — your first modules are included with no card needed. Start at the dashboard and access them immediately.',
+    a: 'Yes — your first modules are included. Start at the dashboard and access them immediately.',
   },
   {
     q: "What's the difference between Standard and Premium?",

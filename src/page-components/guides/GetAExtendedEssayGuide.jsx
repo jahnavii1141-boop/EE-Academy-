@@ -184,7 +184,7 @@ const CONTENT = [
     type: 'heading',
     text: 'A-Grade Checklist: Run This Before Submission',
   },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full step-by-step method, worked examples, and templates behind a 32/34 essay? It\'s all inside the course.', href: '/pricing', buttonText: 'See the course' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full step-by-step method, worked examples, and templates behind a 32/34 essay? It\'s all inside the course.', href: '/dashboard/home', buttonText: 'Start free' },
   {
     type: 'key-takeaway',
     items: [

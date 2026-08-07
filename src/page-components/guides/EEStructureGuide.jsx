@@ -19,7 +19,7 @@ const CONTENT = [
   { type: 'tip-box', text: 'After building your structure, go through each section and write which criterion it targets. If a section doesn\'t clearly target any criterion, cut it or refocus it.' },
   { type: 'heading', text: 'Where the Marks Are' },
   { type: 'warning-box', text: 'The most common structural mistake: spending too many words on description and not enough on analysis. Your analysis is where most marks are won — if your literature review is longer than your analysis section, rebalance.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full section-by-section template with target word counts and a worked example? It\'s inside the structure module.', href: '/pricing', buttonText: 'Unlock the structure module' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full section-by-section template with target word counts and a worked example? It\'s inside the structure module.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Move through clear sections: Intro → Lit Review → Methodology → Analysis → Discussion → Conclusion → References',
     'Map every section to specific criteria',

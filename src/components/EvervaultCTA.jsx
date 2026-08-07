@@ -25,7 +25,7 @@ export default function EvervaultCTA() {
 
             <AnimateIn delay={0.15}>
               <p className="text-steel text-base leading-relaxed mb-8 max-w-md">
-                Start free today, no card. See the difference in your very next draft, then unlock the full
+                Start free today. See the difference in your very next draft, then unlock the full
                 system whenever you&apos;re ready.
               </p>
             </AnimateIn>
@@ -87,10 +87,7 @@ export default function EvervaultCTA() {
             <AnimateIn delay={0.25}>
               <div className="flex flex-wrap items-center gap-4">
                 <a href="/dashboard/home" className="btn-primary-light">
-                  Start free — no card
-                </a>
-                <a href="/pricing" className="btn-outline-light text-sm">
-                  See pricing →
+                  Start free
                 </a>
               </div>
             </AnimateIn>

@@ -65,7 +65,7 @@ export default function Hero() {
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
                 <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
-                  <button className="btn-primary-light">Start free — no card</button>
+                  <button className="btn-primary-light">Start free</button>
                 </SignUpButton>
                 <Link href="#how-it-works" className="btn-outline-light text-sm">See how the system works →</Link>
               </div>

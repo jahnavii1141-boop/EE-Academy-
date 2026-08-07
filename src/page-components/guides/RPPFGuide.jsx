@@ -21,7 +21,7 @@ const CONTENT = [
   ]},
   { type: 'heading', text: 'Reflect, Don\'t Describe' },
   { type: 'warning-box', text: 'Don\'t just describe what happened. Show the thinking behind your decisions. Examiners want to see intellectual engagement, not a timeline of events.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full reflection formula, worked sample reflections, and a fill-in template? It\'s all inside the RPPF Mastery module.', href: '/pricing', buttonText: 'Unlock RPPF Mastery' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full reflection formula, worked sample reflections, and a fill-in template? It\'s all inside the RPPF Mastery module.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'The RPPF is worth 6 marks — don\'t leave them on the table',
     'Write three reflections: early, mid, and final stage',

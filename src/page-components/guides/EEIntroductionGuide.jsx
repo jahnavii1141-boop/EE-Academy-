@@ -12,7 +12,7 @@ const CONTENT = [
   { type: 'tip-box', text: 'Your introduction should make the examiner think "this is interesting — I want to see what they found." If it reads like a summary of what your essay will cover, rewrite it.' },
   { type: 'heading', text: 'Common Mistakes to Avoid' },
   { type: 'warning-box', text: 'Don\'t start with a dictionary definition. Don\'t list every tool you\'ll use. Don\'t make it longer than 500-600 words. Don\'t save your RQ for the very last sentence without building toward it.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the different hook styles that work for your subject, with worked before-and-after examples? It\'s inside the writing modules.', href: '/pricing', buttonText: 'Unlock the writing modules' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the different hook styles that work for your subject, with worked before-and-after examples? It\'s inside the writing modules.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Open with context, then build toward your RQ naturally — don\'t just state it',
     'Show understanding of key concepts (Criterion A)',

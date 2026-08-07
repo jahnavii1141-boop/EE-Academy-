@@ -32,7 +32,7 @@ const CONTENT = [
   ]},
   { type: 'heading', text: 'Words and Phrases to Avoid' },
   { type: 'warning-box', text: 'Avoid these in your EE: "In today\'s modern world...", "Since the dawn of time...", "It is widely known that...", "As we can clearly see...", "Obviously...", "Interestingly...". These are filler phrases that weaken academic writing. Remove them wherever they appear.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want worked before-and-after rewrites for your subject and the full writing system? It\'s inside the writing modules.', href: '/pricing', buttonText: 'Unlock the writing modules' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want worked before-and-after rewrites for your subject and the full writing system? It\'s inside the writing modules.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Description states facts. Analysis evaluates what facts mean for your argument.',
     'Use claim-evidence-explanation as your paragraph template',

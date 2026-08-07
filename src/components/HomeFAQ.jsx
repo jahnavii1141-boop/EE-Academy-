@@ -49,7 +49,6 @@ export default function HomeFAQ() {
         <AnimateIn delay={0.2}>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/course/module-1" className="btn-primary text-sm">Start Free</Link>
-            <Link href="/pricing" className="btn-outline text-sm">Get Full Access</Link>
           </div>
         </AnimateIn>
       </div>

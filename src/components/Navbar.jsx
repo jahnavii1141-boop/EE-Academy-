@@ -69,6 +69,14 @@ export default function Navbar() {
             Blog
           </Link>
           <Link
+            href="/pricing"
+            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
+              pathname === '/pricing' ? 'text-navy' : 'text-ink-soft hover:text-navy'
+            }`}
+          >
+            Pricing
+          </Link>
+          <Link
             href="/dashboard"
             className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
               isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'
@@ -135,6 +143,9 @@ export default function Navbar() {
           </Link>
           <Link href="/blog" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Blog
+          </Link>
+          <Link href="/pricing" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
+            Pricing
           </Link>
           <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Dashboard

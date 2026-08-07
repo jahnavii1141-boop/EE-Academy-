@@ -124,7 +124,7 @@ export default function GuidesHub() {
           </p>
           <div className="flex items-center justify-center gap-3 flex-wrap">
             <Link href="/dashboard" className="btn-primary-light text-sm">Start free</Link>
-            <Link href="/pricing" className="btn-outline-light text-sm">See the system</Link>
+            <Link href="/dashboard/home" className="btn-outline-light text-sm">Start free</Link>
           </div>
         </div>
       </section>

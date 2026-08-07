@@ -19,7 +19,7 @@ const CONTENT = [
   { type: 'heading', text: 'What AI Cannot Do For Your EE' },
   { type: 'warning-box', text: 'Never: ask AI to write any part of your essay, find or generate sources (it hallucinates), give you statistics or data, paraphrase your sources, or "improve" your paragraphs by rewriting them. The moment AI touches your actual writing, it\'s no longer your EE.' },
   { type: 'paragraph', text: 'Think of AI like a gym buddy. A gym buddy doesn\'t lift the weights for you — if they did, you wouldn\'t get stronger. They spot your form, tell you what\'s weak, and push your thinking. But you do the heavy lifting. That\'s what AI should be for your EE.' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the exact, examiner-tested prompts for each stage — RQ stress-tests, structure audits, draft critiques and RPPF interviews? They\'re inside the AI module.', href: '/pricing', buttonText: 'Unlock the AI module' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the exact, examiner-tested prompts for each stage — RQ stress-tests, structure audits, draft critiques and RPPF interviews? They\'re inside the AI module.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Use AI to stress-test your RQ, not to generate it',
     'Use AI to critique your own draft, never to write it',

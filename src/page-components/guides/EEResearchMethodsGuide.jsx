@@ -27,7 +27,7 @@ const CONTENT = [
   ]},
   { type: 'warning-box', text: 'Red flags: blog posts with no citations, news articles used as analysis (they\'re fine for context), papers that only describe without arguing, anything without a clear methodology.' },
   { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full research system — the step-by-step method for building your source base before you write? It\'s inside the research module.', href: '/pricing', buttonText: 'Unlock the research module' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full research system — the step-by-step method for building your source base before you write? It\'s inside the research module.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     'Start broad, then go deeper: general search → Scholar → full papers',
     'Search narrowly and sort by relevance, not date',

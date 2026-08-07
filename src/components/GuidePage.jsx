@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import ContentRenderer from './blocks/ContentRenderer'
-import PostModuleGate from './PostModuleGate'
 
 function GuideEmailBanner() {
   const [visible, setVisible] = useState(true)
@@ -15,11 +14,11 @@ function GuideEmailBanner() {
           Liking this?
         </p>
         <Link
-          href="/pricing"
+          href="/dashboard/home"
           className="text-xs font-semibold px-4 py-1.5 rounded-lg whitespace-nowrap transition-all flex-shrink-0"
           style={{ background: '#fff', color: '#0a0a0a' }}
         >
-          Access premium →
+          Start free →
         </Link>
         <button onClick={() => setVisible(false)} className="text-white/40 hover:text-white/70 text-xs flex-shrink-0" aria-label="Dismiss">✕</button>
       </div>
@@ -127,8 +126,14 @@ export default function GuidePage({
           </div>
         </div>
 
-        {/* Waitlist CTA */}
-        <PostModuleGate />
+        {/* Start-free CTA (guides route to signup → the course, not pricing) */}
+        <div className="my-10 rounded-2xl bg-navy text-center p-8">
+          <h3 className="font-serif text-xl font-bold text-cream mb-2">Start your EE for free</h3>
+          <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
+            Five free missions, the EE Planner, the research tools, and the real 32/34 example essay.
+          </p>
+          <Link href="/dashboard/home" className="btn-primary-light text-sm">Start free</Link>
+        </div>
 
         {/* Related Guides */}
         {relatedGuides.length > 0 && (
@@ -174,11 +179,11 @@ export default function GuidePage({
             <p className="text-xs text-navy/50 mt-1">Every topic, every mission, mapped to IB criteria</p>
           </Link>
           <Link
-            href="/pricing"
+            href="/dashboard/home"
             className="flex-1 rounded-xl border border-navy/20 bg-navy/5 hover:bg-navy/10 transition-colors px-5 py-4 text-center"
           >
-            <p className="text-sm font-semibold text-navy">Get full access →</p>
-            <p className="text-xs text-navy/50 mt-1">From $79 · 30-day money-back guarantee</p>
+            <p className="text-sm font-semibold text-navy">Start free →</p>
+            <p className="text-xs text-navy/50 mt-1">Five free missions, no payment to begin</p>
           </Link>
         </div>
 

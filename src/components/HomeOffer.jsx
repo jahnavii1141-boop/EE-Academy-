@@ -14,7 +14,7 @@ const TIERS = [
   {
     name: 'Free',
     price: '$0',
-    note: 'No card required',
+    note: 'Free forever',
     features: 'Your first missions plus the EE Planner.',
     cta: 'Start free',
     href: '/dashboard/home',

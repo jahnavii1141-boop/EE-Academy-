@@ -20,7 +20,7 @@ const CONTENT = [
     '"The weight of evidence suggests that..."',
     '"This outcome can be attributed to..."',
   ]},
-  { type: 'cta-box', label: 'Go deeper', text: 'Want the full set of analytical moves with worked before-and-after examples for your subject? It\'s inside the writing and analysis modules.', href: '/pricing', buttonText: 'Unlock the writing modules' },
+  { type: 'cta-box', label: 'Go deeper', text: 'Want the full set of analytical moves with worked before-and-after examples for your subject? It\'s inside the writing and analysis modules.', href: '/dashboard/home', buttonText: 'Start free' },
   { type: 'key-takeaway', items: [
     '"Merely descriptive" is the most common reason IB EEs lose marks',
     'Every fact you state should be followed by what that fact means for your argument',

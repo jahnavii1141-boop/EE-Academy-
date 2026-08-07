@@ -74,7 +74,7 @@ function EmailCaptureGate({ nextPath }) {
             Get started
           </p>
           <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
-            Access your missions and research tools.<br />No card, no commitment.
+            Access your missions and research tools.
           </p>
         </div>
 
