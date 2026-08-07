@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { UserButton, useUser } from '@clerk/nextjs'
+import { UserButton, useUser, SignUpButton } from '@clerk/nextjs'
 
 // Home page only shows these anchor links (sections still present on home)
 const HOME_ANCHOR_LINKS = [
@@ -99,9 +99,9 @@ export default function Navbar() {
               <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
                 Sign in
               </Link>
-              <Link href="/sign-up" className="btn-primary text-sm">
-                Get Started
-              </Link>
+              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+                <button className="btn-primary text-sm">Get Started</button>
+              </SignUpButton>
             </>
           )}
         </div>
@@ -156,9 +156,9 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
-              <Link href="/sign-up" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">
-                Get Started
-              </Link>
+              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+                <button onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</button>
+              </SignUpButton>
             </>
           )}
         </div>

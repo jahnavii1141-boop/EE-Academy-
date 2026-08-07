@@ -1,110 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { SignUpButton } from '@clerk/nextjs'
 import AnimateIn from './ui/AnimateIn'
 
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-
-function SimpleEmailCapture({ onClose }) {
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState('')
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
-  const router = useRouter()
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const trimmed = email.trim()
-    if (!EMAIL_RE.test(trimmed)) {
-      setError('Enter a valid email address.')
-      setStatus('error')
-      return
-    }
-    setStatus('loading')
-    setError('')
-    // Capture the lead, then hand to the ONE signup step (Clerk) prefilled.
-    // A subscribe hiccup must not block signup; a 400 surfaces as an error.
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: trimmed, source: 'hero-start-free' }),
-      })
-      if (res.status === 400) {
-        const data = await res.json().catch(() => ({}))
-        setError(data.error || 'Please use a valid, non-temporary email.')
-        setStatus('error')
-        return
-      }
-    } catch { /* network issue — proceed to signup anyway */ }
-    setStatus('success')
-    router.push(`/sign-up?email=${encodeURIComponent(trimmed)}`)
-  }
-
-  const busy = status === 'loading' || status === 'success'
-
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative w-full max-w-sm rounded-2xl bg-white p-8 shadow-2xl">
-        <button onClick={onClose}
-          className="absolute top-4 right-4 text-gray-300 hover:text-gray-600 transition-colors text-lg leading-none">
-          ✕
-        </button>
-        <p className="text-[11px] font-semibold uppercase tracking-widest mb-4" style={{ color: '#bbb' }}>
-          EE Academy
-        </p>
-        <h2 className="font-semibold mb-2" style={{ fontSize: 22, color: '#2E3250', letterSpacing: '-0.02em' }}>
-          Get started.
-        </h2>
-        <p className="text-sm mb-6 leading-relaxed" style={{ color: '#888' }}>
-          Five free missions plus the planner and research tools — no card, no commitment.
-        </p>
-        <form onSubmit={handleSubmit} className="space-y-3">
-          <input
-            type="email"
-            value={email}
-            onChange={e => { setEmail(e.target.value); if (status === 'error') { setStatus('idle'); setError('') } }}
-            placeholder="your@email.com"
-            autoFocus
-            disabled={busy}
-            className="w-full rounded-xl px-4 py-3 text-sm focus:outline-none transition-colors disabled:opacity-60"
-            style={{ border: `1px solid ${error ? '#fca5a5' : '#e8e8e8'}`, color: '#2E3250', background: '#F4F3E8' }}
-            onFocus={e => e.target.style.borderColor = '#2E3250'}
-            onBlur={e => e.target.style.borderColor = error ? '#fca5a5' : '#e8e8e8'}
-          />
-          {error && <p className="text-xs" style={{ color: '#ef4444' }}>{error}</p>}
-          <button type="submit" disabled={busy}
-            className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all disabled:opacity-50"
-            style={{ background: '#2E3250', color: '#fff' }}>
-            {status === 'loading' ? (
-              <><span className="w-3.5 h-3.5 rounded-full border-2 border-white/40 border-t-white animate-spin" /> Setting up…</>
-            ) : status === 'success' ? 'Redirecting…' : 'Get access →'}
-          </button>
-        </form>
-      </div>
-    </div>
-  )
-}
-
 export default function Hero() {
-  const [showCapture, setShowCapture] = useState(false)
-  const router = useRouter()
-
-  const handleStartFree = () => {
-    if (typeof window === 'undefined') return
-    const hasEmail = localStorage.getItem('eeAcademy_freeEmail')
-    const hasWorkspace = localStorage.getItem('eeAcademy_workspace')
-    if (hasEmail && hasWorkspace) {
-      router.push('/dashboard/home')
-    } else if (hasEmail) {
-      router.push('/onboarding')
-    } else {
-      setShowCapture(true)
-    }
-  }
-
   return (
     <>
     <section className="relative overflow-hidden min-h-[70vh] flex items-center">
@@ -164,7 +64,9 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
-                <button onClick={handleStartFree} className="btn-primary-light">Start free — no card</button>
+                <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+                  <button className="btn-primary-light">Start free — no card</button>
+                </SignUpButton>
                 <Link href="#how-it-works" className="btn-outline-light text-sm">See how the system works →</Link>
               </div>
               <p className="text-sm text-steel/70 max-w-md">
@@ -198,7 +100,6 @@ export default function Hero() {
         </div>
       </div>
     </section>
-    {showCapture && <SimpleEmailCapture onClose={() => setShowCapture(false)} />}
     </>
   )
 }
