@@ -5,10 +5,8 @@ import { createPortal } from 'react-dom'
 import { useAuth } from '@clerk/nextjs'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, ArrowRight } from 'lucide-react'
+import { Save, CheckCircle, Edit3, X, Calendar, User, BookOpen, Database, FileText, ChevronRight, ArrowRight, Lock } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
-import MissionMap from '@/components/dashboard/MissionMap'
-import SystemPledge from '@/components/dashboard/SystemPledge'
 import { COURSE_CATALOG } from '@/data/courseCatalog'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
 
@@ -424,8 +422,41 @@ export default function DashboardHome() {
           </Link>
         )}
 
-        {/* Guide Map — secondary overview below the course card */}
-        {!editing && <MissionMap hasPaid={hasPaid} isPremium={isPremium} />}
+        {/* ── The guides — a simple, calm list (replaces the big grid) ── */}
+        {!editing && (
+          <div id="tour-guide" className="mb-12">
+            <p className="text-[11px] font-bold uppercase tracking-[0.16em] mb-3" style={{ color: '#9BAAB8' }}>The guides</p>
+            <div className="rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(46,50,80,0.12)', background: '#fff' }}>
+              {COURSE_CATALOG.map((g, i) => {
+                const done = isVisited(g.id)
+                const isAi = g.id === 'ai-module'
+                const locked = !g.free && (isAi ? !isPremium : !hasPaid)
+                return (
+                  <Link key={g.id} href={locked ? '/pricing' : `/course/${g.id}`}
+                    className="flex items-center gap-3 px-5 py-3 transition-colors"
+                    style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(46,50,80,0.07)', textDecoration: 'none', color: locked ? '#9BAAB8' : '#2E3250' }}
+                    onMouseEnter={e => { e.currentTarget.style.background = '#F4F3E8' }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
+                    {done ? (
+                      <span className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: '#2E3250' }}>
+                        <svg width="9" height="9" viewBox="0 0 20 20" fill="#fff"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                      </span>
+                    ) : (
+                      <span className="w-4 h-4 rounded-full flex-shrink-0" style={{ border: '1.5px solid #d8d4c2' }} />
+                    )}
+                    <span className="text-xs tabular-nums flex-shrink-0" style={{ color: '#c9c5b4' }}>{g.number}</span>
+                    <span className="text-sm flex-1 truncate">{g.title}</span>
+                    {g.free ? (
+                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full flex-shrink-0" style={{ background: '#f0fdf4', color: '#15803d' }}>FREE</span>
+                    ) : locked ? (
+                      <Lock className="flex-shrink-0" size={12} style={{ opacity: 0.6 }} />
+                    ) : null}
+                  </Link>
+                )
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="max-w-2xl mx-auto">
         {/* Share with supervisor */}
@@ -690,34 +721,20 @@ export default function DashboardHome() {
               )}
             </Link>
 
-            {/* Quick links grid */}
-            <div className="grid grid-cols-2 gap-2">
-              {[
-                { href: '/dump', icon: Database, label: 'Citations', desc: 'Generate citations from URLs' },
-                { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
-                { href: '/dashboard/modules', icon: BookOpen, label: 'Guides', desc: 'Guided EE guides' },
-                { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
-              ].map(({ href, icon: Icon, label, desc, isNew }) => (
-                <Link key={href} href={href}
-                  className="block rounded-xl px-4 py-3 transition-all"
-                  style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
-                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250' }}
-                  onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
-                  <div className="flex items-center gap-1.5 mb-1">
-                    <Icon size={13} style={{ color: '#555' }} strokeWidth={1.75} />
-                    <span className="text-xs font-semibold" style={{ color: '#2E3250' }}>{label}</span>
-                    {isNew && (
-                      <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full" style={{ background: '#2E3250', color: '#fff' }}>New</span>
-                    )}
-                  </div>
-                  <p className="text-[11px] leading-snug" style={{ color: '#aaa' }}>{desc}</p>
-                </Link>
-              ))}
-            </div>
+            {/* EE Planner — the one other essential tool */}
+            <Link href="/dashboard/planner"
+              className="block rounded-xl px-5 py-4 transition-all"
+              style={{ background: '#fff', border: '1px solid #e8e8e8', textDecoration: 'none' }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#2E3250' }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = '#e8e8e8' }}>
+              <div className="flex items-center gap-1.5 mb-1">
+                <Calendar size={13} style={{ color: '#555' }} strokeWidth={1.75} />
+                <span className="text-xs font-semibold" style={{ color: '#2E3250' }}>EE Planner</span>
+              </div>
+              <p className="text-[11px] leading-snug" style={{ color: '#aaa' }}>Plan your EE week by week, mapped to your deadline.</p>
+            </Link>
           </>
         )}
-
-        {!editing && <SystemPledge />}
 
         {/* Replay tour */}
         <div className="mt-10 text-center">

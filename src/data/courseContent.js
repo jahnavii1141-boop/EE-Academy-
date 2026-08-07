@@ -45,158 +45,100 @@ export const COURSE_MODULES = [
     tagline: '34 marks, five criteria — and a set of easy ones hiding in plain sight.',
     content: [
       {
-        type: 'paragraph',
-        text: 'Is it hard to get an A in your Extended Essay? It\'s challenging. But c\'mon, you\'re balancing six subjects, IAs for every single one, CAS, college applications, and a life. If you approach this strategically, an A is absolutely achievable.',
+        type: 'objectives',
+        time: '[[COPY: estimated time]]',
+        placeholder: '[[COPY: Module 2 learning objectives]]',
       },
       {
         type: 'paragraph',
-        text: 'The IB gives us everything we need. They constantly drop clues that, when accumulated, become your 20%: "a formal piece of academic writing," "promotes academic research and writing skills." These phrases aren\'t filler, they\'re a direct statement of what an A looks like.',
+        text: "Is it hard to get an A in the extended essay?",
+      },
+      {
+        type: 'paragraph',
+        text: "It's hard to get an A in your extended essay. Very hard.",
+      },
+      {
+        type: 'paragraph',
+        text: "…is something you'll never hear me say.",
+      },
+      {
+        type: 'paragraph',
+        text: "Is it challenging? Yes. But c'mon, you're balancing 6 subjects — 3 HL and 3 SL — as well as IAs for every single one, while balancing college applications and a personal life. You can easily get an A in your EE if you curate your approach.",
+      },
+      {
+        type: 'paragraph',
+        text: "Let's look at how we can do that using everything the IB has given us. I'm gonna give you something so useful that's gonna completely switch up your approach.",
       },
       {
         type: 'image',
-        src: '/images/ib-ee-description.png',
-        alt: 'IB official Extended Essay description and aims',
-        caption: 'The IB tells us exactly what they expect, a formal piece of academic writing.',
-      },
-      {
-        type: 'heading',
-        text: 'The Mindset Shift That Changes Everything',
+        alt: "the IB's EE objectives (the clues from the IB)",
       },
       {
         type: 'paragraph',
-        text: 'The single best way you can approach your EE is not as a student writing an extended essay for the IB, but as an award-winning academic writing their 20th paper, the one that will finally get them the Nobel for the discoveries made and the quality of the research.',
+        text: "They constantly give us clues that we can accumulate as our 20 percent: a formal piece of academic writing and how the EE is intended to promote academic research and writing skills.",
       },
       {
         type: 'paragraph',
-        text: 'This mindset shift, from "assignment to submit" to "research paper to contribute", combined with the criteria the IB has given us, constitutes the 20% that contributes to 80% of a stellar Extended Essay.',
-      },
-      {
-        type: 'heading',
-        text: 'The Five Assessment Criteria',
+        text: "Now this may seem obvious and most students may just glaze over it, however it gives us our base — the approach that contributes to making a stellar extended essay. This approach and mindset alone can help you excel in your essay and secure that A.",
       },
       {
         type: 'paragraph',
-        text: 'Your EE is marked across four main criteria plus one assessed through your RPPF. Total possible marks: 28 + 6 = 34. You need 27 to hit an A.',
+        text: "The single best way you can write your extended essay is not as a student writing an extended essay for the IB, but rather as an award-winning academic who is writing their 20th academic paper that is expected to finally get them the Nobel for the discoveries made and the quality of research.",
       },
       {
-        type: 'criteria',
+        type: 'paragraph',
+        text: "This mindset shift — from writing it just as another student to actually believing this is not for school but rather an actual research paper you are publishing out in the world — completely changes the way you as a student write the essay and simultaneously achieves the quality of work that IB actually expects and almost makes it effortless. This is where most students may find it hard. They underestimate the quality expected in an extended essay because it's not another 4000-word essay — it's a research paper. If you write your extended essay as if it were your first research paper in the world, you would automatically go well over the 28 you need to get an A effortlessly.",
+      },
+      {
+        type: 'paragraph',
+        text: "Okay, now analysing the circled portion:",
+      },
+      {
+        type: 'subheading',
+        text: "Experience the excitement of intellectual exploration",
+      },
+      {
+        type: 'paragraph',
+        text: "The EE does give you an amazing opportunity to explore anything you love. However, even in the rare case you don't love anything and just wanna be done with the EE, then you NEED to be able to SHOW intellectual exploration in your EE. This goes for whether you write about something you like or don't like. It doesn't matter until I — and more importantly the examiner — can see it in your EE. We'll go into how to show intellectual exploration later on in the following modules, but for now let's continue analysing this piece of gold given to us by the IB.",
+      },
+      {
+        type: 'subheading',
+        text: "Engage in student-led academic research on a topic of personal interest",
+      },
+      {
+        type: 'paragraph',
+        text: "Once again, here whether or not you're choosing an actual topic of personal interest doesn't matter, but it needs to look like",
+      },
+      {
+        type: 'numbered-steps',
         items: [
-          {
-            label: 'Criterion A, Knowledge & Understanding',
-            marks: '6 marks',
-            text: 'Demonstrate that you understand your topic, research question, relevant terminology, and chosen research methods. Examiners check whether you actually know what you\'re talking about, with genuine depth. This is primarily hit in your Introduction and Literature Review.',
-          },
-          {
-            label: 'Criterion B, Application & Analysis',
-            marks: '6 marks',
-            text: 'Apply relevant research methods and present relevant findings. The key word is "apply", demonstrate your tools working on your specific topic, producing specific findings. This is the heart of your Analysis section.',
-          },
-          {
-            label: 'Criterion C, Synthesis & Evaluation',
-            marks: '6 marks',
-            text: 'Demonstrate the significance of your research, maintain a clear argument from RQ through findings to conclusion, and evaluate the effectiveness of your approach. This is where the strongest essays separate themselves, in the Discussion and Conclusion.',
-          },
-          {
-            label: 'Criterion D, Communication',
-            marks: '4 marks',
-            text: 'Communicate research according to structural conventions and demonstrate academic integrity. Formatting, structure, citations, tone, word count. The easiest criterion, entirely within your control if you follow the rules in Module 9.',
-          },
-          {
-            label: 'Criterion E, Engagement (RPPF)',
-            marks: '6 marks',
-            text: 'Assessed through your Reflections on Planning and Progress Form. Evaluates genuine intellectual engagement with the research process, curiosity, problem-solving, growth as a researcher. Covered fully in Module 11.',
-          },
+          "you're really passionate about it",
+          "it's so niche it could only possibly belong to you.",
         ],
       },
       {
-        type: 'heading',
-        text: 'Grade Boundaries',
-      },
-      {
         type: 'paragraph',
-        text: 'Here\'s how the 34 total marks translate to letter grades:',
-      },
-      {
-        type: 'comparison-table',
-        headers: ['Grade', 'Mark Range', 'What It Means'],
-        rows: [
-          ['A', '27-34', 'Excellent, top-tier research, analysis, and presentation'],
-          ['B', '22-26', 'Good, solid work with some areas for improvement'],
-          ['C', '14-21', 'Satisfactory, meets basic requirements but lacks depth'],
-          ['D', '7-13', 'Mediocre, significant gaps in quality or content'],
-          ['E', '0-6', 'Elementary, fails to meet minimum standards'],
-        ],
-      },
-      {
-        type: 'stat-highlight',
-        stat: '27/34',
-        label: 'Minimum for an A grade',
-      },
-      {
-        type: 'stat-highlight',
-        stat: '79%',
-        label: 'The A threshold, very achievable with strategy',
-      },
-      {
-        type: 'stat-highlight',
-        stat: '4/4',
-        label: 'Criterion D is fully within your control',
-      },
-      {
-        type: 'heading',
-        text: 'The IB Research Process',
-      },
-      {
-        type: 'paragraph',
-        text: 'The IB maps out the full research process in their subject guides. Every step they list maps directly to the criteria you\'re graded on. This isn\'t bureaucratic filler, this is a checklist for an A.',
+        text: "This means incorporating hobbies and activities you pursue on a daily basis into your area of exploration. This doesn't mean you need to be a piano or sports prodigy, but rather if you're into video games or ballet or some kind of sport, the beautiful thing about your EE is that you can literally centre your EE around that one single thing you're passionate about. This could even be eating snacks if you're into that, or flowers. I'll go into how you can use small things you're passionate about in your EE and frame the most creative research question.",
       },
       {
         type: 'image',
-        src: '/images/ib-research-process.png',
-        alt: 'IB research process overview showing the steps from choosing a topic to carrying out research',
-        caption: 'The IB research process, every step circled here maps to specific criteria.',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Choose a broad topic then refine and focus it', text: 'Start with a genuine interest. Don\'t use AI for this step, your EE is a reflection of you, and examiners can tell the difference between authentic and generated curiosity.' },
-          { title: 'Decide the appropriate pathway', text: 'Interdisciplinary or subject-focused. The guidance: focus on one subject unless you can truly do justice to two. Interdisciplinary EEs require double the analytical work.' },
-          { title: 'Choose the approved DP subject(s)', text: 'Your subject is IB-related. Your interest is personal. The magic happens when you connect the two, fashion and Business Management, gaming and Psychology, music and Physics.' },
-          { title: 'Undertake some preparatory reading', text: 'Use Clastify before you commit. Study high and low-scoring essays in your potential subject. Understand the patterns before you pick your lane.' },
-          { title: 'Form a well-focused research question', text: 'The RQ is the foundation everything else is built on. Module 4, How to design your RQ, is entirely dedicated to this. Don\'t rush it.' },
-          { title: 'Plan the research and writing process', text: 'Build efficient systems from the start. Module 7 walks you through the structure that earned 32/34.' },
-          { title: 'Plan a structure for the essay', text: 'Your structure will evolve as your research develops, that\'s expected and normal. Build the skeleton first, then let the research fill it out.' },
-          { title: 'Carry out the research', text: 'The EE Dump system in Module 5 makes this the most intellectually enjoyable part of the entire process.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'Using the Criteria as Your Blueprint',
-      },
-      {
-        type: 'warning-box',
-        text: 'Most students write their essay and then hope it hits the marks. That\'s gambling, not strategy. Don\'t be most students.',
+        alt: "the IB's EE research instructions",
       },
       {
         type: 'paragraph',
-        text: 'Every section of your EE should intentionally target one or two criteria. When you write your introduction, you\'re primarily working on Criterion A. Your analysis section is Criteria B and C. Format and citations are Criterion D. Write each section knowing its job before you write a single word of it.',
+        text: "IB gives us exactly what we need to do and what they expect from us to get an A. I'm going to break down every single aspect they've touched upon in detail in the further modules and how we can use this to optimally come out with the best EE possible. While these instructions give us a direction to follow, I'm going to start by detailing each and every point of the research process.",
       },
       {
-        type: 'quote-highlight',
-        text: 'If the IB gives you a crystal clear rubric, craft your EE so it\'s easy for the examiner to give you high marks. Don\'t make them search for evidence. Put it right in front of them.',
+        type: 'subheading',
+        text: "Choose a broad topic then refine and focus it",
       },
       {
-        type: 'tip-box',
-        text: 'After writing each section, ask yourself: "Which criterion am I targeting here, and would an examiner see it clearly?" If the answer isn\'t obvious, rewrite until it is.',
+        type: 'paragraph',
+        text: "This points back to a broad interest of yours that I mentioned earlier. DON'T USE CHATGPT or any AI for that matter. The only reason I say this is because it's easier to delve into research for a topic that you've curated from scratch and something that you actually like, instead of using something that ChatGPT gives you. AI is not creative, it's repetitive — it recycles and regurgitates information, and the chances of you having a well-thought-out research question decrease, which pulls us further away from what actually gives you that A in your extended essay.",
       },
       {
-        type: 'key-takeaway',
-        items: [
-          'You need 27/34 for an A, that\'s 79%, very achievable with strategy',
-          'Each criterion has a specific job, map your sections to criteria before you write',
-          'Criterion D (communication) is 4 marks that are entirely within your control',
-          'The RPPF alone is worth 6 marks, do not treat it as an afterthought',
-        ],
+        type: 'paragraph',
+        text: "When IB asks you to choose a broad topic and refine it, it means choose anything — literally anything. Your extended essay is a reflection of you and how you tie in topics to provide a fuller exploration.",
       },
     ],
   },
