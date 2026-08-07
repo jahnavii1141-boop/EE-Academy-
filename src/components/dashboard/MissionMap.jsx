@@ -18,7 +18,7 @@ const C = {
 
 const FREE_MISSIONS = COURSE_CATALOG.filter((m) => m.free) // module-1 … module-5
 
-// The workspace unlocks *after* the five missions, one step at a time.
+// The workspace unlocks *after* the five guides, one step at a time.
 const AFTER_MISSIONS = [
   { key: 'reward-sample-ee', reward: true, icon: Award,    title: 'The 32/34 example essay', sub: 'Your reward: a real full-mark Extended Essay, broken down page by page.', href: '/dashboard/sample-ee', cta: 'Unlock the reward' },
   { key: 'step-essay',       reward: false, icon: PenLine,  title: 'My Essay',               sub: 'Your own writing workspace with a live IB word count and autosave.',    href: '/dashboard/essay',     cta: 'Open My Essay' },
@@ -26,16 +26,16 @@ const AFTER_MISSIONS = [
   { key: 'step-templates',   reward: false, icon: FileText,  title: 'Templates',              sub: '16 subject workbooks and every framework, ready to use.',                 href: '/dashboard/templates', cta: 'Open Templates' },
 ]
 
-// Build the full ordered chain: 5 missions → reward → essay → dump → templates
+// Build the full ordered chain: 5 guides → reward → essay → dump → templates
 function buildSteps() {
   const missionSteps = FREE_MISSIONS.map((m) => ({
     key: m.id,
-    kind: 'mission',
+    kind: 'guide',
     number: m.number,
     title: m.title,
     sub: m.tagline,
     href: `/course/${m.id}`,
-    cta: 'Start mission',
+    cta: 'Start guide',
     markOnClick: false, // the module page marks it visited on open
   }))
   const afterSteps = AFTER_MISSIONS.map((s, i) => ({
@@ -49,7 +49,7 @@ function buildSteps() {
 
 const STEPS = buildSteps()
 
-// Missions 06–14 — the paid system, shown after the free journey.
+// Guides 06–14 — the paid system, shown after the free journey.
 const PREMIUM_MISSIONS = COURSE_CATALOG.filter((m) => !m.free)
 
 // Extra free tools/references (not part of the gated chain).
@@ -171,7 +171,7 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
         key={STEPS[i].key}
         step={STEPS[i]}
         state={stateFor(i)}
-        prevTitle={i > 0 ? (STEPS[i - 1].kind === 'mission' ? `Mission ${STEPS[i - 1].number}` : STEPS[i - 1].title) : ''}
+        prevTitle={i > 0 ? (STEPS[i - 1].kind === 'guide' ? `Guide ${STEPS[i - 1].number}` : STEPS[i - 1].title) : ''}
         onOpen={() => open(STEPS[i])}
       />
     ))
@@ -183,10 +183,10 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
         style={{ background: C.navy, color: C.cream }}>
         <div className="flex-1">
           <p className="text-[11px] font-bold uppercase tracking-[0.16em] mb-1.5" style={{ color: 'rgba(244,243,232,0.6)' }}>
-            Your mission map
+            Your guide map
           </p>
           <p className="font-serif text-[22px] leading-tight">
-            {nextStep ? (nextStep.kind === 'mission' ? `Next up: Mission ${nextStep.number}` : `Next up: ${nextStep.title}`) : 'Every mission complete. Nice work.'}
+            {nextStep ? (nextStep.kind === 'guide' ? `Next up: Guide ${nextStep.number}` : `Next up: ${nextStep.title}`) : 'Every guide complete. Nice work.'}
           </p>
           <div className="mt-3 h-1.5 rounded-full overflow-hidden max-w-md" style={{ background: 'rgba(244,243,232,0.18)' }}>
             <div className="h-full rounded-full transition-all" style={{ width: `${(doneCount / STEPS.length) * 100}%`, background: C.parchment }} />
@@ -197,13 +197,13 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
           <Link href={nextStep.href} onClick={() => open(nextStep)}
             className="inline-flex items-center gap-1.5 rounded-xl px-5 py-3 text-sm font-semibold flex-shrink-0 transition-opacity hover:opacity-90"
             style={{ background: C.cream, color: C.navy, textDecoration: 'none' }}>
-            {nextStep === STEPS[0] ? 'Start Mission 01' : 'Continue'} <ArrowRight className="w-4 h-4" strokeWidth={2.25} />
+            {nextStep === STEPS[0] ? 'Start Guide 01' : 'Continue'} <ArrowRight className="w-4 h-4" strokeWidth={2.25} />
           </Link>
         )}
       </div>
 
-      {/* ── The 5 free missions — open in any order ── */}
-      <SectionHead label="Free — open in any order" title="Your five free missions" />
+      {/* ── The 5 free guides — open in any order ── */}
+      <SectionHead label="Free — open in any order" title="Your five free guides" />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
         {renderGroup([0, 1, 2, 3, 4])}
       </div>
@@ -214,11 +214,11 @@ export default function MissionMap({ hasPaid = false, isPremium = false }) {
         {renderGroup([5, 6, 7, 8])}
       </div>
 
-      {/* ── The full system: missions 06–14 ── */}
+      {/* ── The full system: guides 06–14 ── */}
       <div className="mt-14">
         <SectionHead
           label={hasPaid ? 'Your full system' : 'Go further — the full system'}
-          title={hasPaid ? 'The complete method, unlocked' : 'Missions 06 to 14'}
+          title={hasPaid ? 'The complete method, unlocked' : 'Guides 06 to 14'}
         />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {PREMIUM_MISSIONS.map((m) => {

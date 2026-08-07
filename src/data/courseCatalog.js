@@ -1,4 +1,4 @@
-// Mission names + curiosity briefs are owner-authored — do not rewrite casually.
+// Guide names + curiosity briefs are owner-authored — do not rewrite casually.
 // (See memory: protected-features. Taglines are the "curiosity line" briefs.)
 export const COURSE_CATALOG = [
   {
@@ -98,6 +98,6 @@ export const COURSE_CATALOG = [
     number: '14',
     free: false,
     title: 'The Armoury',
-    tagline: 'Everything from Missions 01–13, as files you can copy.',
+    tagline: 'Everything from Guides 01–13, as files you can copy.',
   },
 ]

@@ -14,7 +14,7 @@ export default function PostModuleGate() {
         Unlock the full writing system
       </h3>
       <p className="text-sm leading-relaxed mb-6 max-w-sm mx-auto" style={{ color: '#888' }}>
-        Modules 4–14 cover the full research and writing process — including the exact framework behind a real 32/34 essay.
+        Guides 4–14 cover the full research and writing process — including the exact framework behind a real 32/34 essay.
       </p>
       <Link href="/pricing"
         className="inline-flex items-center text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"

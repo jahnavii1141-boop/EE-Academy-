@@ -27,9 +27,9 @@ const TOUR_KEY = 'eeAcademy_tourDone'
 
 const TOUR_STEPS = [
   { target: null, emoji: '👋', title: 'Welcome to your EE workspace', body: "Quick tour — 20 seconds. We'll show you what's here." },
-  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Start with the included missions — then unlock the full writing system.', arrow: 'top' },
+  { target: 'tour-guide', emoji: '🗺️', title: 'Your progress map', body: 'Follow this path in order. Start with the included guides — then unlock the full writing system.', arrow: 'top' },
   { target: 'tour-share', emoji: '🔗', title: 'Share with your supervisor', body: 'Get a link and send it to your teacher — they can read your essay draft and leave you feedback directly.', arrow: 'top' },
-  { target: 'tour-nav-modules', emoji: '📚', title: 'Missions', body: '14 missions from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
+  { target: 'tour-nav-modules', emoji: '📚', title: 'Guides', body: '14 guides from mindset to final draft. Start at 01 and work through in order.', arrow: 'left' },
   { target: 'tour-nav-dump', emoji: '🗂️', title: 'EE Dump', body: 'Paste a paragraph from any source — auto-extracts the citation for your bibliography.', arrow: 'left' },
   { target: 'tour-nav-essay', emoji: '✍️', title: 'My Essay', body: 'Write your draft and track your word count. Everything saves automatically.', arrow: 'left' },
 ]
@@ -399,15 +399,15 @@ export default function DashboardHome() {
             <div className="flex flex-col sm:flex-row sm:items-center gap-5">
               <div className="flex-1">
                 <p className="text-[11px] font-bold uppercase tracking-[0.16em] mb-2" style={{ color: 'rgba(244,243,232,0.65)' }}>
-                  The course · 5 missions free
+                  The course · 5 guides free
                 </p>
                 <p className="font-serif text-[26px] leading-tight mb-1">
                   {hasStarted ? 'Continue where you left off' : 'Start the course'}
                 </p>
                 <p className="text-[14px]" style={{ color: 'rgba(244,243,232,0.75)' }}>
                   {hasStarted
-                    ? `Next up: Mission ${nextModule.number} — ${nextModule.title}`
-                    : `Mission ${nextModule.number} — ${nextModule.title}`}
+                    ? `Next up: Guide ${nextModule.number} — ${nextModule.title}`
+                    : `Guide ${nextModule.number} — ${nextModule.title}`}
                 </p>
               </div>
               <div className="flex flex-col items-start sm:items-end gap-2 flex-shrink-0">
@@ -424,7 +424,7 @@ export default function DashboardHome() {
           </Link>
         )}
 
-        {/* Mission Map — secondary overview below the course card */}
+        {/* Guide Map — secondary overview below the course card */}
         {!editing && <MissionMap hasPaid={hasPaid} isPremium={isPremium} />}
 
         <div className="max-w-2xl mx-auto">
@@ -695,7 +695,7 @@ export default function DashboardHome() {
               {[
                 { href: '/dump', icon: Database, label: 'Citations', desc: 'Generate citations from URLs' },
                 { href: '/planner', icon: Calendar, label: 'EE Planner', desc: 'Plan your timeline' },
-                { href: '/dashboard/modules', icon: BookOpen, label: 'Missions', desc: 'Guided EE missions' },
+                { href: '/dashboard/modules', icon: BookOpen, label: 'Guides', desc: 'Guided EE guides' },
                 { href: '/dashboard/templates', icon: FileText, label: 'Templates', desc: 'Essay frameworks' },
               ].map(({ href, icon: Icon, label, desc, isNew }) => (
                 <Link key={href} href={href}

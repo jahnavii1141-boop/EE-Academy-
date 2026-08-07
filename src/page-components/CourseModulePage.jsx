@@ -34,7 +34,7 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
           <svg width="12" height="12" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
           </svg>
-          All modules
+          All guides
         </Link>
 
         {/* Progress bar */}
@@ -51,7 +51,7 @@ function ModuleSidebar({ currentIndex, isLoaded, hasStandard, hasPremium }) {
         <p className="text-[10px] mt-1.5" style={{ color: '#ccc' }}>{visitedCount} of {COURSE_CATALOG.length} completed</p>
       </div>
 
-      {/* Module list */}
+      {/* Guide list */}
       <div className="flex-1 overflow-y-auto py-4 px-3">
         {SECTIONS.map(section => {
           const mods = COURSE_CATALOG.filter(m => section.ids.includes(m.id))
@@ -127,7 +127,7 @@ function MobileModuleDrawer({ isOpen, onClose, currentIndex, isLoaded, hasStanda
       <div className="absolute inset-0" style={{ background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)' }} onClick={onClose} />
       <div className="absolute left-0 top-0 bottom-0 w-72 shadow-2xl overflow-hidden bg-white">
         <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid #f0f0f0' }}>
-          <span className="text-sm font-semibold text-[#2E3250]">Missions</span>
+          <span className="text-sm font-semibold text-[#2E3250]">Guides</span>
           <button onClick={onClose} className="p-1 rounded-lg hover:bg-[#EAE8DC] transition-colors">
             <svg className="w-5 h-5" viewBox="0 0 20 20" fill="#aaa">
               <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
@@ -231,7 +231,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
               <Link href="/dashboard/modules" className="flex-shrink-0 transition-colors" style={{ color: '#bbb' }}
                 onMouseEnter={e => e.currentTarget.style.color = '#2E3250'}
                 onMouseLeave={e => e.currentTarget.style.color = '#bbb'}>
-                Missions
+                Guides
               </Link>
               <span style={{ color: '#ddd' }}>/</span>
               <span className="font-medium truncate" style={{ color: '#2E3250' }}>{module.title}</span>
@@ -280,7 +280,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
             {/* ── Module header — clean, typographic (Anthropic Academy style) ── */}
             <header className="mb-10">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] mb-4" style={{ color: 'rgba(26,26,30,0.45)' }}>
-                Mission {module.number}
+                Guide {module.number}
                 {module.free ? ' · Free' : isAiModule ? ' · Premium' : ' · Standard'}
               </p>
               <h1 className="font-serif font-bold mb-6" style={{ color: '#1a1a1e', fontSize: 40, letterSpacing: '-0.02em', lineHeight: 1.12 }}>

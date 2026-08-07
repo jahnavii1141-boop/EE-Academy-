@@ -5,7 +5,7 @@ import { useModuleProgress } from '../hooks/useModuleProgress'
 import { useAccess } from '../hooks/useAccess'
 import { COURSE_CATALOG } from '../data/courseCatalog'
 
-// Derived from COURSE_CATALOG — the single source of truth for mission names
+// Derived from COURSE_CATALOG — the single source of truth for guide names
 // and briefs. Never hardcode a duplicate list here (it drifts on redeploys).
 const MODULES = COURSE_CATALOG.map(m => ({
   id: m.id,
@@ -17,7 +17,7 @@ const MODULES = COURSE_CATALOG.map(m => ({
 }))
 
 // Curriculum grouped by ACCESS, not numbered sequence (2026-07): the free
-// missions must be abundantly clear, and there's no forced order anymore.
+// guides must be abundantly clear, and there's no forced order anymore.
 const SECTIONS = [
   { label: 'Free — start with any of these', filter: (m) => m.free,  free: true },
   { label: 'The full system',                filter: (m) => !m.free, free: false },
@@ -39,7 +39,7 @@ export default function DashboardModules() {
           <p className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: '#bbb' }}>Curriculum</p>
           <div className="flex items-end justify-between">
             <h1 className="font-semibold" style={{ fontSize: 24, color: '#2E3250', letterSpacing: '-0.02em' }}>
-              14 Missions
+              14 Guides
             </h1>
             <div className="flex items-center gap-3">
               <div className="h-1 rounded-full overflow-hidden" style={{ width: 80, background: '#e8e8e8' }}>
@@ -49,7 +49,7 @@ export default function DashboardModules() {
             </div>
           </div>
           <p className="text-sm mt-1" style={{ color: '#aaa' }}>
-            The complete EE system, built from a real 32/34 essay. Five missions are free — open any of them.
+            The complete EE system, built from a real 32/34 essay. Five guides are free — open any of them.
           </p>
           <p className="text-[11px] mt-2 leading-relaxed rounded-lg px-3 py-2 inline-block"
             style={{ color: '#6b7280', background: '#EAE8DC' }}>
@@ -58,7 +58,7 @@ export default function DashboardModules() {
           </p>
         </div>
 
-        {/* Mission sections — grouped by access, no numbered sequence */}
+        {/* Guide sections — grouped by access, no numbered sequence */}
         <div className="space-y-8">
           {SECTIONS.map(section => {
             const mods = MODULES.filter(section.filter)
@@ -90,7 +90,7 @@ export default function DashboardModules() {
                   </div>
                 )}
 
-                {/* Mission rows */}
+                {/* Guide rows */}
                 <div className="space-y-1">
                   {mods.map((mod) => {
                     const visited = isVisited(mod.id)
@@ -164,7 +164,7 @@ export default function DashboardModules() {
           <div className="mt-10 flex items-center justify-between gap-6 px-6 py-5 rounded-xl"
             style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
             <div>
-              <p className="text-sm font-medium mb-0.5" style={{ color: '#2E3250' }}>Unlock all 14 missions</p>
+              <p className="text-sm font-medium mb-0.5" style={{ color: '#2E3250' }}>Unlock all 14 guides</p>
               <p className="text-xs" style={{ color: '#aaa' }}>One-time, lifetime access. 30-day guarantee.</p>
             </div>
             <Link href="/pricing"

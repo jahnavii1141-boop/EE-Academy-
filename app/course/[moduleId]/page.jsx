@@ -14,13 +14,13 @@ export async function generateMetadata({ params }) {
 
   if (!module) {
     return {
-      title: 'Mission Not Found',
+      title: 'Guide Not Found',
       robots: { index: false, follow: false },
     }
   }
 
   return {
-    title: `Mission ${module.number}: ${module.title}`,
+    title: `Guide ${module.number}: ${module.title}`,
     description: module.tagline,
     robots: { index: false, follow: false },
   }

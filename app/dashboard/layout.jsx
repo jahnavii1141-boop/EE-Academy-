@@ -74,7 +74,7 @@ function EmailCaptureGate({ nextPath }) {
             Get started
           </p>
           <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
-            Access your missions and research tools.
+            Access your guides and research tools.
           </p>
         </div>
 
@@ -116,18 +116,18 @@ function EmailCaptureGate({ nextPath }) {
   )
 }
 
-// Missions are the star of the sidebar — expanded, contents always visible.
+// Guides are the star of the sidebar — expanded, contents always visible.
 // Tools are secondary, below them.
 const NAV_MAIN = [
   { id: 'home',    label: 'Home',       icon: Home,     href: '/dashboard/home' },
-  { id: 'modules', label: 'Missions',   icon: BookOpen,  href: '/dashboard/modules' },
+  { id: 'modules', label: 'Guides',   icon: BookOpen,  href: '/dashboard/modules' },
   { id: 'sample-ee', label: 'Example EE', icon: Award,   href: '/dashboard/sample-ee' },
   { id: 'essay',   label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
   { id: 'dump',    label: 'EE Dump',     icon: Database,  href: '/dashboard/dump' },
   { id: 'planner', label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner' },
 ]
 
-// Tools shown in the sidebar's secondary block (missions render above them)
+// Tools shown in the sidebar's secondary block (guides render above them)
 const NAV_TOOLS = [
   { id: 'sample-ee', label: 'Example EE', icon: Award,     href: '/dashboard/sample-ee' },
   { id: 'essay',     label: 'My Essay',   icon: PenLine,   href: '/dashboard/essay' },
@@ -143,7 +143,7 @@ const NAV_MORE = [
 
 const ALL_NAV = [...NAV_MAIN, ...NAV_TOOLS, ...NAV_MORE]
 
-// One compact mission row in the expanded sidebar list
+// One compact guide row in the expanded sidebar list
 function MissionRow({ m, active, visited, hasPaid }) {
   const isPaidLocked = !m.free && !hasPaid
   return (
@@ -311,12 +311,12 @@ export default function DashboardLayout({ children }) {
           )}
         </div>
 
-        {/* Nav — missions expanded and primary; tools secondary */}
+        {/* Nav — guides expanded and primary; tools secondary */}
         <nav className="flex-1 overflow-y-auto px-2 py-3">
           <NavItem item={NAV_MAIN[0]} active={activeId === 'home'} />
 
           <div className="flex items-center justify-between px-3 mt-4 mb-1.5">
-            <p id="tour-nav-modules" className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#bbb' }}>Missions</p>
+            <p id="tour-nav-modules" className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: '#bbb' }}>Guides</p>
             <Link href="/dashboard/modules" className="text-[10px] font-semibold" style={{ color: '#9BAAB8', textDecoration: 'none' }}>
               View all →
             </Link>
