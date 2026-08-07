@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { SignUpButton } from '@clerk/nextjs'
+import { SignUpButton, SignedIn, SignedOut } from '@clerk/nextjs'
 import AnimateIn from './ui/AnimateIn'
 
 export default function Hero() {
@@ -64,9 +64,14 @@ export default function Hero() {
 
             <AnimateIn delay={0.3}>
               <div className="flex flex-wrap items-center gap-4 mb-4">
-                <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
-                  <button className="btn-primary-light">Start free</button>
-                </SignUpButton>
+                <SignedOut>
+                  <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
+                    <button className="btn-primary-light">Start free</button>
+                  </SignUpButton>
+                </SignedOut>
+                <SignedIn>
+                  <Link href="/dashboard/home" className="btn-primary-light">Go to your dashboard</Link>
+                </SignedIn>
                 <Link href="#how-it-works" className="btn-outline-light text-sm">See how the system works →</Link>
               </div>
               <p className="text-sm text-steel/70 max-w-md">

@@ -107,7 +107,7 @@ export default function Navbar() {
               <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
                 Sign in
               </Link>
-              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
                 <button className="btn-primary text-sm">Get Started</button>
               </SignUpButton>
             </>
@@ -167,7 +167,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
-              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
                 <button onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</button>
               </SignUpButton>
             </>

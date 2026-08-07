@@ -56,7 +56,7 @@ export default function EmailSignupModal() {
             Five free missions, the planner, citation tools, and the EE Mentor. Create your free account in one click.
           </p>
 
-          <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home">
+          <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
             <button className="w-full flex items-center justify-center gap-2 py-3 rounded-xl text-sm font-semibold transition-all"
               style={{ background: '#2E3250', color: '#fff' }}>
               Get started free <ArrowRight size={14} />
