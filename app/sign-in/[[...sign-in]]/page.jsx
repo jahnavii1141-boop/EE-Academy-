@@ -1,5 +1,6 @@
 import { SignIn } from '@clerk/nextjs'
 import Link from 'next/link'
+import RedirectIfSignedIn from '@/components/RedirectIfSignedIn'
 
 export const metadata = {
   title: 'Sign In | The Extended Essay Academy',
@@ -11,6 +12,9 @@ export const metadata = {
 export default function SignInPage() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
+
+      {/* Already signed in? Never show the form again — go straight to the dashboard. */}
+      <RedirectIfSignedIn to="/dashboard/home" />
 
       {/* Site branding — makes clear which site this login belongs to */}
       <div className="mb-8 flex flex-col items-center gap-3">
@@ -29,7 +33,7 @@ export default function SignInPage() {
         routing="path"
         path="/sign-in"
         signUpUrl="/sign-up"
-        fallbackRedirectUrl="/course/module-1"
+        fallbackRedirectUrl="/dashboard/home"
         appearance={{
           variables: {
             colorPrimary: '#0a0a0a',

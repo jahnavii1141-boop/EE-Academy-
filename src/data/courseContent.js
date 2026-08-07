@@ -72,6 +72,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'image',
+        src: '/course/p2_0.png',
         alt: "the IB's EE objectives (the clues from the IB)",
       },
       {
@@ -123,6 +124,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'image',
+        src: '/course/p4_0.png',
         alt: "the IB's EE research instructions",
       },
       {
