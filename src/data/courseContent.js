@@ -7,121 +7,33 @@ export const COURSE_MODULES = [
     tagline: 'The 20% of the EE that decides 80% of your grade. Almost nobody is told this first.',
     content: [
       {
-        type: 'callout',
-        text: 'Built by a real IB student who scored 32/34 on their EE. Everything here is what actually worked for me, not theory.',
+        type: 'objectives',
+        time: '[[COPY: estimated time]]',
+        placeholder: '[[COPY: Module 1 learning objectives]]',
+      },
+      {
+        type: 'paragraph',
+        text: "The extended essay is a mandatory component of the International Baccalaureate and something that is going to help you secure those 3 points for your final grade. The dumbest thing you can do is miss out on that 45 or not even get your diploma just because of your EE. Let's help you LOCK DOWN your EE so you don't have to worry about not getting the 3 points you deserve. Let's be real, you don't wanna do all the work that is required by the IB and mess up because of your EE. Your EE is supposed to be simple, it's supposed to be easy, and I'm confident you can get that grade as long as you work towards what the IB is looking for. Take it from a former IB student — we didn't come this far to come this far.",
       },
       {
         type: 'gif',
-        src: 'https://giphy.com/embed/uZmwmfbxh3xkiI1pFM',
-        alt: 'Tom Brady celebration, Let\'s go energy',
-        caption: "That's the energy. Let's get your A.",
+        alt: 'Tom Brady',
       },
       {
         type: 'paragraph',
-        text: 'The Extended Essay is a mandatory part of the IB and it\'s what helps you secure those 3 points for your final grade. The dumbest thing you can do is miss out on a 45, or not even get your diploma, just because of your EE. Let\'s LOCK DOWN your EE so you don\'t have to worry about the 3 points you deserve. Let\'s be real, you don\'t wanna do all the work the IB asks for and then mess it up because of your EE.',
+        text: "If you're a current student or parent who's worried about the extended essay, I get it: it's daunting when you see 4000 words, specific citations, specific format, a good research question with a conclusion that'll leave examiners baffled, as well as your teachers telling you it's one of the most complicated parts of the IB.",
       },
       {
         type: 'paragraph',
-        text: 'Is it challenging? Yes. But cmon, you\'re already balancing 6 subjects, 3 HL and 3 SL, plus an IA for every single one, plus college applications and a personal life. You can easily get an A in your EE if you curate your approach. The EE should be the one part where you actually get to explore something you care about, not the thing that breaks you.',
-      },
-      {
-        type: 'heading',
-        text: 'The Pareto Principle Applied to Your EE',
+        text: "I'm gonna be very honest. If you do what you really NEED to and what the examiners want to SEE with your work, you're going to have no problem securing that A. In this course, I'm gonna break down, using the Pareto principle (i.e. 20% of your work contributes to 80% of your results), your EE and how you're gonna secure that A and spend the least amount of time possible while getting the maximum results.",
       },
       {
         type: 'paragraph',
-        text: 'I\'m gonna break this down using the Pareto principle, the idea that 20% of your work gives you 80% of your results. We\'re gonna find that 20% for your EE so you secure the A while spending the least time possible for the maximum result.',
-      },
-      {
-        type: 'formula-box',
-        title: 'The 80/20 Rule',
-        formula: '20% of your effort → 80% of your marks',
-        description: 'This is the 20% that matters: your research question, your structure, and mapping to the criteria. Nail those and you get the marks without wasting time on everything else.',
+        text: "In this course, we're gonna go over EVERYTHING necessary for you to get that A: all my tricks that I used to secure that A (32/34) with low effort, how you can too, what subjects are the optimal subjects for you to write your EE on, a complete breakdown of what the EE is and why the IB has even used this in their curriculum and what they're looking for from students and what they're trying to prepare you for, as well as my personal 32/34 EE and an analysis of it, the most important aspects of choosing your research question, and a special ALL YOU NEED blueprint to absolutely annihilate your EE.",
       },
       {
         type: 'paragraph',
-        text: 'The three things that actually move your grade are a strong research question, mapping your structure to the criteria, and genuinely engaging with your research for the RPPF. Everything else, the word count anxiety, the endless formatting tweaks, spending three days hunting for the "perfect" source, is the other 80%. We\'re not doing that.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: 'Choose Strategically',
-        text: 'Your subject and topic choice determines 50% of your stress level before you write a single word. We cover exactly how in Module 3.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Search',
-        title: 'Research With Purpose',
-        text: 'The EE Dump system ensures you never sit in front of a blank screen wondering what to write. You build from knowledge, not panic.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Layout',
-        title: 'Structure = Strategy',
-        text: 'Every section of your EE maps to specific criteria. No purposeless writing, every paragraph earns marks.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Award',
-        title: 'Free Marks Exist',
-        text: 'Formatting, citations, and RPPF reflections are easy marks most students leave on the table. We don\'t.',
-      },
-      {
-        type: 'heading',
-        text: 'The Most Important Mindset Shift',
-      },
-      {
-        type: 'quote-highlight',
-        text: 'Stop thinking of your EE as a school assignment. Start thinking of it as an academic research paper.',
-        attribution: 'The single change that separates A-grade students from everyone else',
-      },
-      {
-        type: 'paragraph',
-        text: 'The best way you can write your Extended Essay is not as a student writing an extended essay for the IB, but as an award-winning academic writing their 20th research paper, the one that might finally get them that Nobel. You don\'t need to actually be a critically acclaimed academic. But your EE needs to read like it was written by one.',
-      },
-      {
-        type: 'paragraph',
-        text: 'When you write with that mindset, genuinely curious about your topic, rigorous in your methodology, honest in your limitations, the quality of your thinking, analysis, and writing naturally rises to the level the IB expects. The examiner can tell the difference between a student who was going through the motions and a student who was genuinely engaged.',
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Student mindset',
-          text: '"I need to hit 4,000 words for this school assignment."',
-        },
-        after: {
-          label: 'Researcher mindset',
-          text: '"I\'m presenting original research that contributes to academic understanding of my topic."',
-        },
-      },
-      {
-        type: 'tip-box',
-        text: 'The IB literally tells you what they want: "a formal piece of academic writing" that promotes "academic research and writing skills." That sentence is your entire strategy. Read it again.',
-      },
-      {
-        type: 'heading',
-        text: 'What This Resource Lab Covers',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Subject & Topic Choice', text: 'How to pick a subject that plays to your strengths and a topic you genuinely care about, using the Venn diagram and Clastify.' },
-          { title: 'Pressure-Test the Question', text: 'Craft an RQ that sets you up for success, specific, analytical, and researchable. We follow John\'s story as an example throughout.' },
-          { title: 'The EE Dump System', text: 'Our signature research method that makes writing effortless. The most fun part of the entire process.' },
-          { title: 'Research Strategy', text: 'Google vs. Scholar vs. PDF-only searches. The Scholar Shift that most students never reach.' },
-          { title: 'Structure & Writing', text: 'Map every section to specific criteria. Seven sections, each with a job. No purposeless writing.' },
-          { title: 'Format, Citations & RPPF', text: 'The easiest marks of your life, if you know what you\'re doing. Times New Roman, MLA, and the 15-minute checklist.' },
-          { title: 'AI as a Thinking Partner', text: '12 prompts across 5 stages that make your EE better while keeping every word yours.' },
-        ],
-      },
-      {
-        type: 'key-takeaway',
-        items: [
-          'Your EE is a research paper, not a school assignment, write it like one',
-          'The Pareto principle applies: focus on the 20% that drives 80% of your marks',
-          'This resource lab gives you the exact system used to score 32/34',
-          'Every module builds on the last, follow them in order',
-        ],
+        text: "Once we go through all the necessary modules, you're gonna have all the materials and knowledge to ACE your EE without the external noise and blab (which we already have as IB students).",
       },
     ],
   },
