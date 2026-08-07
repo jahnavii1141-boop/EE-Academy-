@@ -13,10 +13,11 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: "The extended essay is a mandatory component of the International Baccalaureate and something that is going to help you secure those 3 points for your final grade. The dumbest thing you can do is miss out on that 45 or not even get your diploma just because of your EE. Let's help you LOCK DOWN your EE so you don't have to worry about not getting the 3 points you deserve. Let's be real, you don't wanna do all the work that is required by the IB and mess up because of your EE. Your EE is supposed to be simple, it's supposed to be easy, and I'm confident you can get that grade as long as you work towards what the IB is looking for. Take it from a former IB student — we didn't come this far to come this far.",
+        text: "The extended essay is a mandatory component of the International Baccalaureate and something that is going to help you secure those 3 points for your final grade. The dumbest thing you can do is miss out on that 45 or not even get your diploma just because of your EE. Let's help you lock down your EE so you don't have to worry about not getting the 3 points you deserve. Let's be real, you don't wanna do all the work that is required by the IB and mess up because of your EE. Your EE is supposed to be simple, it's supposed to be easy, and I'm confident you can get that grade as long as you work towards what the IB is looking for. Take it from a former IB student — we didn't come this far to come this far.",
       },
       {
         type: 'gif',
+        src: 'https://giphy.com/embed/uZmwmfbxh3xkiI1pFM',
         alt: 'Tom Brady',
       },
       {
@@ -25,15 +26,15 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: "I'm gonna be very honest. If you do what you really NEED to and what the examiners want to SEE with your work, you're going to have no problem securing that A. In this course, I'm gonna break down, using the Pareto principle (i.e. 20% of your work contributes to 80% of your results), your EE and how you're gonna secure that A and spend the least amount of time possible while getting the maximum results.",
+        text: "I'm gonna be very honest. If you do what you really need to and what the examiners want to see with your work, you're going to have no problem securing that A. In this course, I'm gonna break down, using the Pareto principle (i.e. 20% of your work contributes to 80% of your results), your EE and how you're gonna secure that A and spend the least amount of time possible while getting the maximum results.",
       },
       {
         type: 'paragraph',
-        text: "In this course, we're gonna go over EVERYTHING necessary for you to get that A: all my tricks that I used to secure that A (32/34) with low effort, how you can too, what subjects are the optimal subjects for you to write your EE on, a complete breakdown of what the EE is and why the IB has even used this in their curriculum and what they're looking for from students and what they're trying to prepare you for, as well as my personal 32/34 EE and an analysis of it, the most important aspects of choosing your research question, and a special ALL YOU NEED blueprint to absolutely annihilate your EE.",
+        text: "In this course, we're gonna go over everything necessary for you to get that A: all my tricks that I used to secure that A (32/34) with low effort, how you can too, what subjects are the optimal subjects for you to write your EE on, a complete breakdown of what the EE is and why the IB has even used this in their curriculum and what they're looking for from students and what they're trying to prepare you for, as well as my personal 32/34 EE and an analysis of it, the most important aspects of choosing your research question, and a special all you need blueprint to absolutely annihilate your EE.",
       },
       {
         type: 'paragraph',
-        text: "Once we go through all the necessary modules, you're gonna have all the materials and knowledge to ACE your EE without the external noise and blab (which we already have as IB students).",
+        text: "Once we go through all the necessary modules, you're gonna have all the materials and knowledge to ace your EE without the external noise and blab (which we already have as IB students).",
       },
     ],
   },
@@ -99,7 +100,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: "The EE does give you an amazing opportunity to explore anything you love. However, even in the rare case you don't love anything and just wanna be done with the EE, then you NEED to be able to SHOW intellectual exploration in your EE. This goes for whether you write about something you like or don't like. It doesn't matter until I — and more importantly the examiner — can see it in your EE. We'll go into how to show intellectual exploration later on in the following modules, but for now let's continue analysing this piece of gold given to us by the IB.",
+        text: "The EE does give you an amazing opportunity to explore anything you love. However, even in the rare case you don't love anything and just wanna be done with the EE, then you need to be able to show intellectual exploration in your EE. This goes for whether you write about something you like or don't like. It doesn't matter until I — and more importantly the examiner — can see it in your EE. We'll go into how to show intellectual exploration later on in the following modules, but for now let's continue analysing this piece of gold given to us by the IB.",
       },
       {
         type: 'subheading',
@@ -134,7 +135,7 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: "This points back to a broad interest of yours that I mentioned earlier. DON'T USE CHATGPT or any AI for that matter. The only reason I say this is because it's easier to delve into research for a topic that you've curated from scratch and something that you actually like, instead of using something that ChatGPT gives you. AI is not creative, it's repetitive — it recycles and regurgitates information, and the chances of you having a well-thought-out research question decrease, which pulls us further away from what actually gives you that A in your extended essay.",
+        text: "This points back to a broad interest of yours that I mentioned earlier. don't use ChatGPT or any AI for that matter. The only reason I say this is because it's easier to delve into research for a topic that you've curated from scratch and something that you actually like, instead of using something that ChatGPT gives you. AI is not creative, it's repetitive — it recycles and regurgitates information, and the chances of you having a well-thought-out research question decrease, which pulls us further away from what actually gives you that A in your extended essay.",
       },
       {
         type: 'paragraph',
