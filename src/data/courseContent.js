@@ -8,8 +8,12 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'objectives',
-        time: '[[COPY: estimated time]]',
-        placeholder: '[[COPY: Module 1 learning objectives]]',
+        time: '4 min',
+        items: [
+          "Step into the examiner's mindset and see what actually earns an A",
+          "Reframe your EE as a real research paper, not just another school assignment",
+          "Understand why that one shift lifts the quality of your work with less effort",
+        ],
       },
       {
         type: 'paragraph',
@@ -47,8 +51,12 @@ export const COURSE_MODULES = [
     content: [
       {
         type: 'objectives',
-        time: '[[COPY: estimated time]]',
-        placeholder: '[[COPY: Module 2 learning objectives]]',
+        time: '6 min',
+        items: [
+          "Read the IB's own objectives as a checklist of what examiners reward",
+          "Show intellectual exploration and genuine personal interest in your topic",
+          "Turn the IB's research-process instructions into a clear direction for your EE",
+        ],
       },
       {
         type: 'paragraph',
@@ -153,131 +161,68 @@ export const COURSE_MODULES = [
     tagline: 'Most EEs are already lost here, before a single source is read.',
     content: [
       {
-        type: 'heading',
-        text: 'The Honest Take',
-      },
-      {
-        type: 'paragraph',
-        text: 'Choose your EE subject based on two criteria: genuine interest and how easy it is to score well in. Sometimes these align perfectly. Sometimes they don\'t, and that\'s where strategy matters.',
-      },
-      {
-        type: 'warning-box',
-        text: 'A lot of the time you might be interested in a topic, but the grading for that subject is more competitive. For example, Business Management tends to have more accessible grading than Mathematics, which requires deeper methodological justification and more technical rigour. Know what you\'re getting into before you commit.',
-      },
-      {
-        type: 'heading',
-        text: 'The Venn Diagram Framework',
-      },
-      {
-        type: 'formula-box',
-        title: 'Your Ideal EE Topic',
-        formula: 'Genuine Interest + Academic Strength + EE-Friendly Subject',
-        description: 'Your topic should sit at the intersection of these three circles. The closer to the centre, the less stress for the same marks.',
-      },
-      {
-        type: 'image',
-        src: '/images/venn-diagram-ee-topic.svg',
-        alt: 'Venn diagram showing intersection of genuine interest, academic strength, and EE-friendly subjects',
-        caption: 'Your EE subject should sit as close to the centre as possible. If your topic lives on the edges, expect higher stress for the same marks.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Zap',
-        title: 'Genuine Interest',
-        text: 'Not an IB subject, a real interest. Things on your FYP, stuff you\'d read voluntarily, conversations you have with friends about the state of the world.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'GraduationCap',
-        title: 'Academic Strength',
-        text: 'Which HL or SL subjects do you score most naturally in? Where does analytical thinking come easily? Go there first.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: 'EE-Friendly',
-        text: 'Some subjects have higher success rates and more accessible rubrics. Check Clastify for your subject, analyse both high and low-scoring essays before committing.',
-      },
-      {
-        type: 'callout',
-        text: 'Your "subject" is IB-related (Business Management, Psychology, English). What you\'re "genuinely interested in" is any topic, fashion, gaming, politics, sport, cooking, music. The magic happens when you connect the two.',
-      },
-      {
-        type: 'heading',
-        text: 'Think Like an Academic, Not a Student',
-      },
-      {
-        type: 'paragraph',
-        text: 'There\'s a critical difference between having a surface-level interest in something and framing it as a genuine academic inquiry. Examiners can tell the difference immediately. The framing of your topic, how you position it as a research question, is where the A lives.',
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Surface-level thinking',
-          text: '"I like fashion so I\'ll write about a fashion brand."',
-        },
-        after: {
-          label: 'Academic framing',
-          text: '"I\'m interested in how fast fashion supply chain models create competitive advantages, I\'ll analyse ZARA\'s inventory management using financial ratio analysis and Porter\'s Five Forces."',
-        },
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Too broad',
-          text: '"I want to write about mental health and social media."',
-        },
-        after: {
-          label: 'Specific inquiry',
-          text: '"To what extent does passive social media consumption correlate with increased depressive symptomology in adolescent girls aged 13, 17?"',
-        },
-      },
-      {
-        type: 'heading',
-        text: 'Using Clastify Efficiently',
-      },
-      {
-        type: 'paragraph',
-        text: 'Clastify is a database of real IB student essays with their actual scores. Before you commit to a subject, spend time on Clastify doing this:',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Filter by subject', text: 'Go to Clastify and select your potential subject area. Look at the distribution of scores.' },
-          { title: 'Study 20-30 high-scoring essays', text: 'Read their research questions. Note recurring topics, observe how they\'re framed, look at what evidence they use.' },
-          { title: 'Study 10-15 low-scoring essays', text: 'Understand what went wrong, usually vague RQs, descriptive writing instead of analysis, or poor structure. Don\'t make the same mistakes.' },
-          { title: 'Talk to alumni if you can', text: 'Students who\'ve done their EE in your potential subject have firsthand insight no guide can give you. Ask them specifically: what would you have done differently?' },
+        type: 'objectives',
+        time: '5 min',
+        items: [
+          "Choose an EE subject that balances genuine interest, academic strength, and how EE-friendly it is",
+          "Use Clastify to study high- and low-scoring essays in your subject before you commit",
+          "Separate your IB subject from what you're genuinely interested in — then connect the two",
         ],
       },
       {
-        type: 'tip-box',
-        text: 'The point isn\'t to copy what worked for someone else. It\'s to understand the patterns of what scores well so you can make informed decisions about your own topic before you\'ve invested weeks of work.',
-      },
-      {
-        type: 'heading',
-        text: 'A Real Example: From Interest to Academic Topic',
+        type: 'paragraph',
+        text: "A lot of the time you may be interested in a topic or a subject, but the criteria for that specific subject may be slightly more competitive or require more detail than another topic. For example, it's known that doing your EE in Business would render more lenient grading in most cases, as the exploration required for most RQs in Business is more straightforward than a mathematical exploration, in which the justification would require more depth and detail.",
       },
       {
         type: 'paragraph',
-        text: 'The 32/34 EE this resource lab is built on came from a genuine interest in fashion, specifically ZARA and the fast fashion industry. Here\'s how that interest became an academically framed research question:',
+        text: "It's hence important to definitely use your discernment, but since I don't want to leave you with nothing, here's an image that would help.",
+      },
+      {
+        type: 'image',
+        src: '/course/venn-ee-subject.png',
+        alt: "Choosing an EE-friendly subject: the overlap of what you're genuinely interested in, what you're good at academically, and what scores well",
+      },
+      {
+        type: 'paragraph',
+        text: "Your EE subject should sit as close to the centre as possible. If your topic lives on the edges, expect higher stress for the same marks.",
+      },
+      {
+        type: 'subheading',
+        text: 'Now what do I mean by EE-friendly?',
+      },
+      {
+        type: 'paragraph',
+        text: "When you're doing the IB, you're lucky enough that years of students and IB alumni have their experience to support you. So look at Clastify for your specific subject and analyse the good and the bad essays. Talk to those who've done it before and ask for advice on approaching that topic. Here, Clastify is going to be your best friend, so down below I've created a How to: Clastify (efficiently and not waste hours).",
+      },
+      {
+        type: 'subheading',
+        text: 'Clarification',
+      },
+      {
+        type: 'paragraph',
+        text: "Your subject is going to be different from your “what you're genuinely interested in.” Your subject is IB-related. You may be technically skilled at Lang & Lit and may score effortlessly. That doesn't mean you choose that as your EE topic. Similarly, what you're genuinely interested in isn't an IB subject — it's any topic that you're interested in. Like I mentioned: things that pop up on your FYP (fashion, culture, pop, arts, politics, slime videos, literally anything).",
+      },
+      {
+        type: 'subheading',
+        text: 'How do you think of your EE as an academic?',
+      },
+      {
+        type: 'paragraph',
+        text: "Your mindset towards your EE has to be less of “I'm an IB student and just wanna get done with this 4000-word essay so I can go to a house party” and more of “I'm a critically acclaimed, award-winning author who's been asked to present groundbreaking research on insert your wonderful RQ by a particular deadline.”",
+      },
+      {
+        type: 'paragraph',
+        text: "Now it doesn't matter if you are the first one. What matters is if your EE gives the second one to your examiners. The way you do that is by choosing your subjects right. You don't have to pretend to care about your EE — it's much easier and more fun if you actually do care about it.",
+      },
+      {
+        type: 'paragraph',
+        text: 'So to think of your EE as an academic means two things:',
       },
       {
         type: 'numbered-steps',
         items: [
-          'Interest: fast fashion, ZARA, how some brands dominate while others fail',
-          'Subject: Business Management HL (strongest analytical subject)',
-          'Academic framing: What actually explains ZARA\'s dominance? Is it the supply chain? The pricing? The product strategy?',
-          'Research question draft: "To what extent does ZARA\'s supply chain model constitute the primary source of its competitive dominance in the fast fashion retail market?"',
-          'RQ refinement after supervisor feedback and research: Supervisor suggested removing "fast fashion retail market" to broaden scope. Final RQ evolved from there.',
-        ],
-      },
-      {
-        type: 'key-takeaway',
-        items: [
-          'Use the Venn diagram: genuine interest + academic strength + EE-friendly subject',
-          'Frame your topic like an academic inquiry, not a school assignment',
-          'Use Clastify to study what works and what doesn\'t in your subject before committing',
-          'The closer your topic is to the centre of the Venn diagram, the less stress for the same marks',
+          "Your formatting and organisation are so perfect they think you're an academic.",
+          "Your passion and findings in your paper don't give generic EE.",
         ],
       },
     ],
