@@ -6,6 +6,7 @@ import { COURSE_CATALOG } from '../data/courseCatalog'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 import ContentRenderer from '../components/blocks/ContentRenderer'
 import PostModuleGate from '../components/PostModuleGate'
+import posthog from 'posthog-js'
 
 // ─── Sidebar ───────────────────────────────────────────────────────────────────
 
@@ -143,7 +144,12 @@ function MobileModuleDrawer({ isOpen, onClose, currentIndex, isLoaded, hasStanda
 
 // ─── Paywall Banner ────────────────────────────────────────────────────────────
 
-function PaywallBanner({ isPremiumOnly, isSignedIn }) {
+function PaywallBanner({ isPremiumOnly, isSignedIn, moduleId }) {
+  useEffect(() => {
+    try { posthog.capture('paywall_view', { lesson: moduleId, premium_only: !!isPremiumOnly, signed_in: !!isSignedIn }) } catch (e) { /* optional */ }
+  }, [moduleId, isPremiumOnly, isSignedIn])
+  // After sign-in, come back to this exact lesson — not the dashboard.
+  const signInHref = `/sign-in?redirect_url=${encodeURIComponent(`/course/${moduleId}`)}`
   return (
     <div className="relative mt-4 mb-8">
       {/* Fade overlay */}
@@ -158,16 +164,16 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
           </svg>
         </div>
         <h3 className="font-semibold text-[#2E3250] text-xl mb-2" style={{ letterSpacing: '-0.02em' }}>
-          {isPremiumOnly ? 'Method + System module' : 'Unlock the full curriculum'}
+          {isPremiumOnly ? 'A Premium lesson' : 'Unlock the full course'}
         </h3>
         <p className="text-sm max-w-xs mx-auto mb-8 leading-relaxed" style={{ color: '#999' }}>
           {isPremiumOnly
-            ? 'This module is included in Method + System — the complete plan with the full writing system and 32/34 essay breakdown.'
-            : 'Enroll to unlock all 14 modules including the complete writing system and a real 32/34 essay breakdown.'}
+            ? 'This lesson is part of Premium — the full course plus the writing tools and AI guidance.'
+            : 'Unlock the rest of the course — all 14 lessons, the complete writing system, and the real 32/34 essay marked line by line.'}
         </p>
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
           {!isSignedIn && (
-            <Link href="/sign-in"
+            <Link href={signInHref}
               className="text-sm font-medium px-5 py-2.5 rounded-xl transition-all border hover:border-[#2E3250] hover:text-[#2E3250]"
               style={{ background: '#fff', color: '#555', borderColor: '#e0e0e0' }}>
               Sign in
@@ -176,10 +182,10 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
           <Link href="/pricing"
             className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
             style={{ background: '#2E3250', color: '#fff' }}>
-            {isPremiumOnly ? 'Get Method + System →' : 'View plans →'}
+            {isPremiumOnly ? 'See Premium →' : 'See plans →'}
           </Link>
         </div>
-        <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Yearly subscription</p>
+        <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Paid once, lifetime access</p>
       </div>
     </div>
   )
@@ -198,6 +204,9 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
 
   useEffect(() => { if (module) markVisited(module.id) }, [module?.id]) // eslint-disable-line
   useEffect(() => { setDrawerOpen(false) }, [moduleId]) // eslint-disable-line
+  useEffect(() => {
+    try { posthog.capture('lesson_open', { lesson: moduleId, signed_in: !!isSignedIn, gated: !!isGated }) } catch (e) { /* optional */ }
+  }, [moduleId, isSignedIn, isGated])
 
   const isAiModule = module.id === 'ai-module'
   const isPaidModule = !module.free
@@ -292,8 +301,10 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
               <ContentRenderer content={module.content} />
             </article>
 
-            {module.id === 'module-2' && !isGated && <PostModuleGate />}
-            {isGated && <PaywallBanner isPremiumOnly={isAiModule} isSignedIn={isSignedIn} />}
+            {/* Upsell only at the free→paid boundary (end of the last free guide,
+                when the next guide is locked) — never mid-way through free guides. */}
+            {nextModule && !nextModule.free && !hasPaid && !isGated && <PostModuleGate />}
+            {isGated && <PaywallBanner isPremiumOnly={isAiModule} isSignedIn={isSignedIn} moduleId={module.id} />}
 
             {/* ── Prev / Next navigation ── */}
             {(!isGated || module.free) && (

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton, useUser } from '@clerk/nextjs'
-import StartFreeButton from './StartFreeButton'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -84,7 +83,7 @@ export default function Navbar() {
               <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
                 Sign in
               </Link>
-              <StartFreeButton className="btn-primary text-sm" label="Start free" />
+              <Link href="/course/module-1" className="btn-primary text-sm">Start reading</Link>
             </>
           )}
         </div>
@@ -133,7 +132,7 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
-              <StartFreeButton className="btn-primary text-sm text-center" label="Start free" onNavigate={() => setMenuOpen(false)} />
+              <Link href="/course/module-1" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start reading</Link>
             </>
           )}
         </div>

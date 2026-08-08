@@ -1,6 +1,7 @@
 import { SignUp } from '@clerk/nextjs'
 import Link from 'next/link'
 import RedirectIfSignedIn from '@/components/RedirectIfSignedIn'
+import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
   title: 'Create Account | The Extended Essay Academy',
@@ -13,11 +14,14 @@ export default async function SignUpPage({ searchParams }) {
   // ?email= comes from the email-capture forms — prefill so signup is one step.
   const params = await searchParams
   const email = typeof params?.email === 'string' ? params.email : undefined
+  const rd = typeof params?.redirect_url === 'string' ? params.redirect_url : ''
+  const redirectUrl = rd.startsWith('/course/') ? rd : '/dashboard/home'
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
-      {/* Already signed in? Never show the form again — go straight to the dashboard. */}
-      <RedirectIfSignedIn to="/dashboard/home" />
+      {/* Already signed in? Never show the form again — go where they were headed. */}
+      <RedirectIfSignedIn to={redirectUrl} />
+      <CaptureOnMount event="signin_start" />
 
       {/* Site branding — makes clear which site this login belongs to */}
       <div className="mb-8 flex flex-col items-center gap-3">
@@ -36,7 +40,7 @@ export default async function SignUpPage({ searchParams }) {
         routing="path"
         path="/sign-up"
         signInUrl="/sign-in"
-        fallbackRedirectUrl="/dashboard/home"
+        fallbackRedirectUrl={redirectUrl}
         initialValues={email ? { emailAddress: email } : undefined}
         appearance={{
           variables: {

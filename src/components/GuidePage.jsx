@@ -1,30 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
 import ContentRenderer from './blocks/ContentRenderer'
-
-function GuideEmailBanner() {
-  const [visible, setVisible] = useState(true)
-  if (!visible) return null
-  return (
-    <div className="w-full" style={{ background: '#0a0a0a', borderBottom: '1px solid #1a1a1a' }}>
-      <div className="max-w-3xl mx-auto px-6 py-3 flex items-center gap-4">
-        <p className="text-sm font-medium text-white flex-1">
-          Liking this?
-        </p>
-        <Link
-          href="/dashboard/home"
-          className="text-xs font-semibold px-4 py-1.5 rounded-lg whitespace-nowrap transition-all flex-shrink-0"
-          style={{ background: '#fff', color: '#0a0a0a' }}
-        >
-          Start free →
-        </Link>
-        <button onClick={() => setVisible(false)} className="text-white/40 hover:text-white/70 text-xs flex-shrink-0" aria-label="Dismiss">✕</button>
-      </div>
-    </div>
-  )
-}
 
 export default function GuidePage({
   title,
@@ -89,9 +66,6 @@ export default function GuidePage({
         />
       ))}
 
-      {/* Email capture banner */}
-      <GuideEmailBanner />
-
       {/* Hero */}
       <div className="bg-navy-deep py-16 px-6">
         <div className="max-w-3xl mx-auto">
@@ -126,13 +100,13 @@ export default function GuidePage({
           </div>
         </div>
 
-        {/* Start-free CTA (guides route to signup → the course, not pricing) */}
+        {/* Single in-content CTA — into the course itself, not pricing or signup. */}
         <div className="my-10 rounded-2xl bg-navy text-center p-8">
-          <h3 className="font-serif text-xl font-bold text-cream mb-2">Start your EE for free</h3>
+          <h3 className="font-serif text-xl font-bold text-cream mb-2">Read the course, free</h3>
           <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
-            Five free missions, the EE Planner, the research tools, and the real 32/34 example essay.
+            The first five lessons are open — no account needed. Start with lesson 1 and follow one real essay from research question to final draft.
           </p>
-          <Link href="/dashboard/home" className="btn-primary-light text-sm">Start free</Link>
+          <Link href="/course/module-1" className="btn-primary-light text-sm">Start lesson 1 →</Link>
         </div>
 
         {/* Related Guides */}
@@ -169,32 +143,14 @@ export default function GuidePage({
           </div>
         )}
 
-        {/* Internal hub links */}
-        <div className="mt-12 flex flex-col sm:flex-row gap-3">
+        {/* Internal link — the full curriculum (navigation, not a sales CTA) */}
+        <div className="mt-12">
           <Link
             href="/curriculum"
-            className="flex-1 rounded-xl border border-navy/12 bg-parchment/40 hover:bg-parchment/70 transition-colors px-5 py-4 text-center"
+            className="block rounded-xl border border-navy/12 bg-parchment/40 hover:bg-parchment/70 transition-colors px-5 py-4 text-center"
           >
-            <p className="text-sm font-semibold text-navy">See the full 14-mission curriculum →</p>
-            <p className="text-xs text-navy/50 mt-1">Every topic, every mission, mapped to IB criteria</p>
-          </Link>
-          <Link
-            href="/dashboard/home"
-            className="flex-1 rounded-xl border border-navy/20 bg-navy/5 hover:bg-navy/10 transition-colors px-5 py-4 text-center"
-          >
-            <p className="text-sm font-semibold text-navy">Start free →</p>
-            <p className="text-xs text-navy/50 mt-1">Five free missions, no payment to begin</p>
-          </Link>
-        </div>
-
-        {/* Resource Lab CTA */}
-        <div className="mt-8 rounded-2xl bg-navy text-center p-8">
-          <h3 className="font-serif text-xl font-bold text-cream mb-2">Ready to go deeper?</h3>
-          <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
-            This guide covers the basics. The full Resource Lab gives you the complete system, tools, and templates to get an A.
-          </p>
-          <Link href="/courses" className="btn-primary-light text-sm">
-            Explore the Resource Lab
+            <p className="text-sm font-semibold text-navy">See the full 14-lesson curriculum →</p>
+            <p className="text-xs text-navy/50 mt-1">Every topic, every lesson, mapped to IB criteria</p>
           </Link>
         </div>
       </div>

@@ -1,4 +1,9 @@
-import HomeExperiment from '../src/components/HomeExperiment'
+import LandingHero from '../src/components/landing/LandingHero'
+import CourseInOrder from '../src/components/landing/CourseInOrder'
+import WhyThisExists from '../src/components/landing/WhyThisExists'
+import WhatThisIs from '../src/components/landing/WhatThisIs'
+import LandingPrice from '../src/components/landing/LandingPrice'
+import LandingFAQ from '../src/components/landing/LandingFAQ'
 
 export const metadata = {
   // Keyword-first, single brand. `absolute` avoids the template appending a
@@ -78,7 +83,17 @@ const COURSE_JSON_LD = {
   ],
 }
 
-// (FAQ schema moved to /about along with the visible FAQ — 2026-08.)
+// ── FAQ schema — matches the visible landing FAQ ──────────────────────────────
+const FAQ_JSON_LD = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    { '@type': 'Question', name: "I'm in DP1 or DP2 — is it too early or too late?", acceptedAnswer: { '@type': 'Answer', text: "Neither. DP1 is the ideal time — you pick a question you can actually finish. In DP2 the later lessons (structure, turning description into analysis, the first and last 300 words, the reflections) are built for exactly the crunch you're in. Start wherever you are; the lessons run in order but open in any order." } },
+    { '@type': 'Question', name: 'Does it cover my subject?', acceptedAnswer: { '@type': 'Answer', text: 'The worked example is a Business Management essay — the real 32/34 essay you can open in the free lessons. The system itself is subject-agnostic: the criteria, the structure, and the move from description to analysis are the same in a science, a humanity, or a language. Lesson 03 is about choosing and framing for your specific subject.' } },
+    { '@type': 'Question', name: 'What if my supervisor tells me something different?', acceptedAnswer: { '@type': 'Answer', text: 'Follow your supervisor on anything specific to your essay — they know your school and your examiners. This course is the reasoning most supervisors do not have time to spell out across twenty students, so you can have that conversation from a stronger position. Where they differ, they win.' } },
+    { '@type': 'Question', name: 'Do you offer refunds?', acceptedAnswer: { '@type': 'Answer', text: '30-day money-back guarantee. If the course is not what you needed, email us within 30 days for a full refund.' } },
+  ],
+}
 
 // ── Organisation schema ───────────────────────────────────────────────────────
 const ORG_JSON_LD = {
@@ -94,13 +109,18 @@ export default function HomePage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COURSE_JSON_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }} />
       <main>
-        {/* homepage-simplified-cta experiment (2026-08): control = the
-            dead-simple funnel (hero → lessons → pricing); test = one clean
-            Google-only screen. Defaults to control for SSR/crawlers/no-JS.
-            Marketing sections moved to /about. */}
-        <HomeExperiment />
+        {/* One lessons-first landing (2026-08): hero → course list → why it
+            exists → what it is/isn't → price → FAQ. The primary action opens a
+            lesson, never an auth screen. */}
+        <LandingHero />
+        <CourseInOrder />
+        <WhyThisExists />
+        <WhatThisIs />
+        <LandingPrice />
+        <LandingFAQ />
       </main>
     </>
   )

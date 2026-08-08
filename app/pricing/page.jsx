@@ -1,8 +1,9 @@
 import PricingPage from '../../src/page-components/PricingPage'
+import CaptureOnMount from '../../src/components/analytics/CaptureOnMount'
 
 export const metadata = {
   title: 'IB Extended Essay Course — Plans & Pricing',
-  description: 'Unlock the full IB Extended Essay system — 14 modules, AI Grade Scan, planner, essay editor, and templates. Yearly subscription.',
+  description: 'Unlock the full IB Extended Essay system — 14 lessons, AI Grade Scan, planner, essay editor, and templates. One-time payment, lifetime access.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }
 
@@ -48,6 +49,7 @@ export default function Pricing() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(PRODUCT_JSON_LD) }} />
+      <CaptureOnMount event="pricing_view" />
       <PricingPage />
     </>
   )

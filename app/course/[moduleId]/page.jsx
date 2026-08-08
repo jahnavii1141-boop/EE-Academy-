@@ -22,7 +22,9 @@ export async function generateMetadata({ params }) {
   return {
     title: `Guide ${module.number}: ${module.title}`,
     description: module.tagline,
-    robots: { index: false, follow: false },
+    // Free lessons are public — let them be indexed. Paid lessons stay noindex.
+    robots: module.free ? { index: true, follow: true } : { index: false, follow: false },
+    alternates: { canonical: `https://theextendedessay.com/course/${moduleId}` },
   }
 }
 
