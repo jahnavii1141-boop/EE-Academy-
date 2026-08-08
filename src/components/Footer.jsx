@@ -65,18 +65,11 @@ export default function Footer() {
         </div>
 
         <div>
-          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Stay Updated</h3>
-          <p className="text-sm text-steel mb-3">EE tips and resource updates in your inbox.</p>
-          <div className="flex gap-2">
-            <input
-              type="email"
-              placeholder="your@email.com"
-              className="flex-1 bg-navy/50 text-cream text-sm rounded-full px-4 py-2 border border-steel/20 focus:outline-none focus:ring-2 focus:ring-parchment/30 focus:border-parchment/40 placeholder-steel/50 transition-all"
-            />
-            <button className="bg-cream hover:bg-parchment text-navy text-sm font-medium px-4 py-2 rounded-full transition-colors flex-shrink-0">
-              →
-            </button>
-          </div>
+          <h3 className="font-serif text-cream font-semibold text-sm mb-4">Start reading</h3>
+          <p className="text-sm text-steel mb-3">The first five lessons are open — no account needed.</p>
+          <Link href="/course/module-1" className="inline-flex text-sm font-semibold text-cream underline underline-offset-4 hover:text-parchment transition-colors">
+            Start lesson 1 →
+          </Link>
         </div>
       </div>
 
