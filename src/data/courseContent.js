@@ -231,160 +231,94 @@ export const COURSE_MODULES = [
     id: 'module-4',
     number: '04',
     free: true,
-    title: 'How to design your RQ',
+    title: 'Pressure-Test the Question',
     tagline: 'One sentence sets your ceiling. Test yours before you spend 4,000 words on it.',
     content: [
       {
-        type: 'heading',
-        text: "Let's Meet John",
+        type: 'objectives',
+        time: '6 min',
+        items: [
+          "Turn something you actually care about into a focused, examiner-ready research question",
+          "Decide when an interdisciplinary approach is worth it — and when to stay in one subject",
+          "Get your research question and subjects approved by your EE mentor early",
+        ],
       },
       {
-        type: 'paragraph',
-        text: 'John isn\'t particularly passionate about academic research. He plays video games, hangs out with friends, and has absolutely no desire to write his Extended Essay. He\'s already planning to get an AI to do it the night before his first draft is due.',
+        type: 'subheading',
+        text: "Let's meet John",
       },
       {
         type: 'gif',
-        src: 'https://giphy.com/embed/ISOckXUybVfQ4',
-        alt: 'Depressed John before finding his research question',
-        caption: 'John before finding his research question.',
+        src: 'https://giphy.com/embed/rq6c5xD7leHW8',
+        alt: 'A bored, unmotivated student slumped on the couch',
       },
       {
         type: 'paragraph',
-        text: 'John takes Maths AI HL and Psychology HL. One Sunday, he was debating with his friends about whether they would have voted for Trump or Harris in the 2024 US elections. He noticed patterns in how different people reasoned through their vote, and got curious. Could voter psychology be predicted? Could you quantify the influence of social media on the way his friends thought about politics?',
+        text: "John isn't passionate about much. He's bored 90% of the time, only plays video games, hangs out with his friends, and doesn't want to write his extended essay at all. He even plans to make Gemini or Claude complete it the day of his first draft submission.",
       },
       {
         type: 'paragraph',
-        text: 'He wondered if he could draw statistical conclusions between social media sentiment and voter behaviour. He noticed that the 2024 elections were heavily influenced by online commentators, and he started asking: to what extent were his friends\'s political opinions actually theirs?',
-      },
-      {
-        type: 'formula-box',
-        title: "John's Final Research Question",
-        formula: '"To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behaviour during the 2024 US elections?"',
-        description: 'Notice how it\'s specific, analytical ("to what extent"), researchable with publicly available data, and connects directly to his subjects (Maths AI + Psychology).',
+        text: "John couldn't care less about choosing a well-thought-out EE research question, but I think the EE could be John's favourite part of the IB. Why? Because it allows him to explore whatever — in this case, say John has chosen Mathematics AI HL (dreadful subject, ugh) and Psychology HL. We know one very important thing about John, and that is he loves his friends (April, Jeremiah, Lacey, and Jeff).",
       },
       {
         type: 'paragraph',
-        text: 'John went from "I don\'t want to do this" to having a research question he was genuinely curious about, because it started with a real conversation he was already having. That\'s the process. Your EE should come from something you actually think about.',
+        text: 'Which brings us to our second point.',
       },
       {
-        type: 'heading',
-        text: 'The Anatomy of a Strong Research Question',
-      },
-      {
-        type: 'paragraph',
-        text: 'Every strong EE research question shares four properties. Use these as your checklist before you commit to yours.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: 'Specific',
-        text: 'Answerable within 4,000 words. If your RQ could be a PhD thesis, it\'s too broad. Narrowness is not a weakness, it\'s precision.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Brain',
-        title: 'Analytical',
-        text: 'Favours "to what extent" or "how" over "what." Allows for evaluation and argument, not just description of facts.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Search',
-        title: 'Researchable',
-        text: 'You can actually find data, evidence, and sources to answer it. No dead-end topics where the data simply doesn\'t exist.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'PenLine',
-        title: 'Original',
-        text: 'Leaves room to present original analysis, not just a summary of existing work. You should be saying something, not just reporting what others have said.',
-      },
-      {
-        type: 'heading',
-        text: 'Weak vs. Strong Research Questions',
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Too broad',
-          text: '"How does social media affect politics?"',
-        },
-        after: {
-          label: 'Focused and analytical',
-          text: '"To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behaviour during the 2024 US elections?"',
-        },
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Descriptive',
-          text: '"What is ZARA\'s business strategy?"',
-        },
-        after: {
-          label: 'Evaluative',
-          text: '"To what extent does ZARA\'s supply chain model constitute the primary source of its competitive dominance in the fast fashion retail market?"',
-        },
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Too vague',
-          text: '"How does music affect the brain?"',
-        },
-        after: {
-          label: 'Precise and testable',
-          text: '"To what extent does exposure to classical music during study sessions improve performance on spatial reasoning tasks in adolescents aged 15, 18?"',
-        },
-      },
-      {
-        type: 'heading',
-        text: 'The Interdisciplinary Question',
+        type: 'subheading',
+        text: 'Decide the appropriate pathway',
       },
       {
         type: 'paragraph',
-        text: 'John\'s RQ works because it bridges two subjects: quantitative methods from Maths AI and behavioural theory from Psychology. This is called an interdisciplinary approach, and when it\'s well-executed, it can produce genuinely original analysis that subject-specific essays can\'t.',
+        text: "John was hanging out with his friends on a fine Sunday morning, and as he conversed with his mates they spoke about whether they would have voted for Trump or Harris in the 2024 US elections. April and Jeremiah argued Trump would be better for the economy, while Lacey and Jeff argued Kamala was the obvious choice because of her pro-choice abortion policies.",
       },
       {
-        type: 'warning-box',
-        text: 'Interdisciplinary EEs are higher risk. You\'re essentially writing two analyses and integrating them, which requires significantly more methodological rigour. Only go interdisciplinary if you\'re strong in both subjects and have a clear reason why one discipline alone can\'t answer your RQ.',
+        type: 'paragraph',
+        text: "John observed certain connections between April and Jeremiah, as well as connections between Lacey and Jeff. Since he already spent so much time hanging with his friends, he read my Blueprint to Get an A in Your EE guide and decided to delve into voter psychology in the 2024 American elections.",
       },
       {
-        type: 'heading',
-        text: 'Finding Your Niche',
+        type: 'paragraph',
+        text: "John wondered if he could draw conclusions about the voter psychology of the opposing sides while analysing the elections using probability and statistics that he learnt in his Math HL class. He thought that in order to analyse the 2024 elections in particular, he would fare well if he chose an interdisciplinary approach.",
       },
       {
-        type: 'tip-box',
-        text: 'Creativity is what turns a good EE into a great one. A unique angle on a common topic is worth more than a common angle on a unique topic. Examiners reward genuine intellectual curiosity, they can tell when someone actually cares about what they\'re researching.',
+        type: 'paragraph',
+        text: "He later watched the news and saw that the 2024 elections in particular were heavily influenced by social media. He wondered to what extent his friends were influenced by social media and right-wing and left-wing commentators.",
       },
       {
-        type: 'warning-box',
-        text: 'Don\'t use AI to generate your research question from scratch. AI is not creative, it recycles and regurgitates. Your EE is a reflection of your intellectual curiosity. Let it be yours from the start. Once you have YOUR draft RQ, AI can help you stress-test it (see Module 13 for prompts).',
-      },
-      {
-        type: 'heading',
-        text: 'The RQ Development Process',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Draft your RQ', text: 'Start with your interests and academic strengths from Module 3. Write 3-5 possible RQs without censoring yourself. You\'ll narrow later.' },
-          { title: 'Take it to your supervisor', text: 'Your supervisor can help you focus and refine. We consistently underestimate how focused an RQ needs to be, supervisors know the rubric.' },
-          { title: 'Stress-test it', text: 'Can it be answered in 4,000 words? Is there sufficient data publicly available? Does it require analysis or just description? Would a counterargument be possible?' },
-          { title: 'Lock it in after your EE Dump', text: 'After completing your EE Dump (Module 5), make final adjustments. Then freeze it. After that point, no more changes to your RQ.' },
-        ],
+        type: 'paragraph',
+        text: 'Boom. There it was.',
       },
       {
         type: 'quote-highlight',
-        text: 'Your research question is your contract with the examiner. Every word of your essay is a fulfilment of that contract.',
+        text: 'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections?',
       },
       {
-        type: 'key-takeaway',
-        items: [
-          'Your RQ must be specific, analytical, researchable, and original',
-          'Use "to what extent" or "how", avoid "what" questions which invite description',
-          'Take your draft to your supervisor immediately, they know what gets marks',
-          'Creativity in your angle separates good from great',
-          'Lock in your final RQ after the EE Dump, no more changes after that',
-        ],
+        type: 'paragraph',
+        text: 'Well, maybe he used a little ChatGPT to “zhuzh” it up a bit and focus it.',
+      },
+      {
+        type: 'quote-highlight',
+        text: 'To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behavior during the 2024 US elections?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Once you get to this point — and this is very important — please go to your EE mentor. They can help you make it more focused and specific if you need to, or just transform it for the better. Trust your teacher and get your EE topic approved as soon as possible.',
+      },
+      {
+        type: 'paragraph',
+        text: 'We as students often underestimate how focused our research question needs to be, and our EE mentors can often help us focus and refine our question to ensure a more detailed and thorough analysis.',
+      },
+      {
+        type: 'subheading',
+        text: 'Choose the approved DP subjects',
+      },
+      {
+        type: 'paragraph',
+        text: 'In this scenario, the approved EE subjects would be Psychology and Math.',
+      },
+      {
+        type: 'paragraph',
+        text: 'PS: This is just an example, but ideally try to focus your EE on one subject. While an interdisciplinary approach shows your ability to apply your learning to real-world scenarios, it requires double the analysis, as you need to analyse the topic using the approaches and models of both subjects, which can become tricky.',
       },
     ],
   },

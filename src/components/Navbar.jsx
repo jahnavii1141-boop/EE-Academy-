@@ -3,19 +3,14 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { UserButton, useUser, SignUpButton } from '@clerk/nextjs'
-
-// Home page only shows these anchor links (sections still present on home)
-const HOME_ANCHOR_LINKS = [
-  { label: "What You'll Learn", href: '#learn' },
-]
+import { UserButton, useUser } from '@clerk/nextjs'
+import StartFreeButton from './StartFreeButton'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const pathname = usePathname()
   const { isSignedIn } = useUser()
-  const isHome = pathname === '/'
   const isCourses = pathname === '/courses'
   const isDashboard = pathname.startsWith('/dashboard')
 
@@ -76,40 +71,20 @@ export default function Navbar() {
           >
             Pricing
           </Link>
-          <Link
-            href="/dashboard"
-            className={`text-sm font-medium tracking-wide transition-colors duration-200 ${
-              isDashboard ? 'text-navy' : 'text-ink-soft hover:text-navy'
-            }`}
-          >
-            Dashboard
-          </Link>
-          {isHome &&
-            HOME_ANCHOR_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium tracking-wide text-ink-soft hover:text-navy transition-colors duration-200"
-              >
-                {link.label}
-              </a>
-            ))}
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
           {isSignedIn ? (
             <>
               <UserButton appearance={{ elements: { avatarBox: { width: 32, height: 32 } } }} />
-              <Link href="/dashboard" className="btn-primary text-sm">Dashboard</Link>
+              <Link href="/dashboard/home" className="btn-primary text-sm">Go to dashboard</Link>
             </>
           ) : (
             <>
               <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
                 Sign in
               </Link>
-              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
-                <button className="btn-primary text-sm">Get Started</button>
-              </SignUpButton>
+              <StartFreeButton className="btn-primary text-sm" label="Start free" />
             </>
           )}
         </div>
@@ -147,29 +122,18 @@ export default function Navbar() {
           <Link href="/pricing" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
             Pricing
           </Link>
-          <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-            Dashboard
-          </Link>
-          {isHome &&
-            HOME_ANCHOR_LINKS.map((link) => (
-              <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">
-                {link.label}
-              </a>
-            ))}
           {isSignedIn ? (
             <>
               <div className="flex items-center gap-2">
                 <UserButton appearance={{ elements: { avatarBox: { width: 28, height: 28 } } }} />
                 <span className="text-sm text-ink-soft">Account</span>
               </div>
-              <Link href="/dashboard" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Dashboard</Link>
+              <Link href="/dashboard/home" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Go to dashboard</Link>
             </>
           ) : (
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
-              <SignUpButton mode="modal" forceRedirectUrl="/dashboard/home" signInForceRedirectUrl="/dashboard/home">
-                <button onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Get Started</button>
-              </SignUpButton>
+              <StartFreeButton className="btn-primary text-sm text-center" label="Start free" onNavigate={() => setMenuOpen(false)} />
             </>
           )}
         </div>
