@@ -37,85 +37,6 @@ function NavItem({ item, active }) {
   )
 }
 
-// ── Email capture gate (shown to users with no Clerk session + no saved email) ──
-// One-signup funnel (2026-07): submit captures the lead, then goes straight to
-// Clerk signup with the email prefilled and a redirect back to the page they
-// wanted — never a second registration, never a dead end.
-function EmailCaptureGate({ nextPath }) {
-  const router = useRouter()
-  const [email, setEmail] = useState('')
-  const [error, setError] = useState('')
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    const trimmed = email.trim()
-    if (!trimmed || !trimmed.includes('@')) {
-      setError('Enter a valid email to continue.')
-      return
-    }
-    fetch('/api/subscribe', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: trimmed, source: 'dashboard-gate' }),
-    }).catch(() => {})
-    const dest = nextPath && nextPath.startsWith('/dashboard') ? nextPath : '/dashboard/home'
-    router.push(`/sign-up?email=${encodeURIComponent(trimmed)}&redirect_url=${encodeURIComponent(dest)}`)
-  }
-
-  return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#F4F3E8' }}>
-      <div style={{
-        background: '#fff', borderRadius: 20, padding: '48px 40px', maxWidth: 380, width: '100%',
-        margin: '0 16px', border: '1px solid #efefef', boxShadow: '0 4px 24px rgba(0,0,0,0.06)',
-      }}>
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <p style={{ fontSize: 11, color: '#bbb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: 10 }}>EE Academy</p>
-          <p style={{ fontSize: 22, fontWeight: 700, color: '#2E3250', letterSpacing: '-0.02em', marginBottom: 8 }}>
-            Get started
-          </p>
-          <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6 }}>
-            Access your guides and research tools.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit}>
-          <input
-            type="email"
-            value={email}
-            onChange={e => { setEmail(e.target.value); setError('') }}
-            placeholder="your@email.com"
-            autoFocus
-            style={{
-              width: '100%', padding: '12px 14px', borderRadius: 12,
-              border: `1px solid ${error ? '#fca5a5' : '#e0e0e0'}`,
-              fontSize: 14, outline: 'none', background: '#F4F3E8', color: '#2E3250',
-              marginBottom: error ? 6 : 10, boxSizing: 'border-box', display: 'block',
-            }}
-          />
-          {error && <p style={{ fontSize: 12, color: '#ef4444', marginBottom: 10 }}>{error}</p>}
-          <button
-            type="submit"
-            style={{
-              width: '100%', padding: '12px', background: '#2E3250', color: '#fff',
-              border: 'none', borderRadius: 12, fontSize: 14, fontWeight: 600,
-              cursor: 'pointer', letterSpacing: '-0.01em',
-            }}
-          >
-            Get access →
-          </button>
-        </form>
-
-        <p style={{ textAlign: 'center', marginTop: 20, fontSize: 12, color: '#aaa' }}>
-          Already have an account?{' '}
-          <Link href="/sign-in" style={{ color: '#2E3250', fontWeight: 500, textDecoration: 'none' }}>
-            Sign in →
-          </Link>
-        </p>
-      </div>
-    </div>
-  )
-}
-
 // Guides are the star of the sidebar — expanded, contents always visible.
 // Tools are secondary, below them.
 const NAV_MAIN = [
@@ -195,16 +116,18 @@ export default function DashboardLayout({ children }) {
   const [daysLeft, setDaysLeft] = useState(null)
   const [supervisorRemarks, setSupervisorRemarks] = useState(null)
   const [remarksOpen, setRemarksOpen] = useState(false)
-  const [freeEmail, setFreeEmail] = useState(null)
-  const [emailChecked, setEmailChecked] = useState(false)
 
-  // Check localStorage for free email + onboarding name — runs once on mount (client-side only)
+  // Read the onboarding name once on mount (client-side only)
   useEffect(() => {
-    const saved = localStorage.getItem('eeAcademy_freeEmail')
-    setFreeEmail(saved || null) // eslint-disable-line react-hooks/set-state-in-effect
     setSavedName(localStorage.getItem('eeAcademy_name') || '') // eslint-disable-line react-hooks/set-state-in-effect
-    setEmailChecked(true) // eslint-disable-line react-hooks/set-state-in-effect
   }, [])
+
+  // Clerk is the ONLY gate (2026-08). No separate email capture, no Resend, no
+  // second sign-up: anyone without a session is sent to the one Clerk sign-up.
+  // RedirectIfSignedIn on /sign-up bounces them back the instant they're in.
+  useEffect(() => {
+    if (isLoaded && !isSignedIn) router.replace('/sign-up')
+  }, [isLoaded, isSignedIn, router])
 
   const dismissRemarks = () => {
     setSupervisorRemarks(null)
@@ -256,14 +179,15 @@ export default function DashboardLayout({ children }) {
   const activeId = ALL_NAV.find(n => pathname === n.href || pathname.startsWith(n.href + '/'))?.id
     ?? (pathname === '/dashboard' ? 'home' : null)
 
-  // Hold until Clerk + localStorage are both resolved to avoid flash
-  if (!emailChecked || !isLoaded) {
-    return <div style={{ minHeight: '100vh', background: '#F4F3E8' }} />
-  }
-
-  // Show full-screen email gate for visitors with no Clerk session and no saved email
-  if (!isSignedIn && !freeEmail) {
-    return <EmailCaptureGate nextPath={pathname} />
+  // Hold until Clerk resolves; signed-out users get a spinner while the effect
+  // above redirects them to the single Clerk sign-up.
+  if (!isLoaded || !isSignedIn) {
+    return (
+      <div style={{ minHeight: '100vh', background: '#F4F3E8', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ width: 22, height: 22, borderRadius: '50%', border: '2px solid rgba(46,50,80,0.15)', borderTopColor: 'rgba(46,50,80,0.6)', animation: 'spin 0.8s linear infinite' }} />
+        <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      </div>
+    )
   }
 
   return (

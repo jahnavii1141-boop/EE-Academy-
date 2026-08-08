@@ -1,6 +1,4 @@
-import Hero from '../src/components/Hero'
-import HomeOffer from '../src/components/HomeOffer'
-import Curriculum from '../src/components/Curriculum'
+import HomeExperiment from '../src/components/HomeExperiment'
 
 export const metadata = {
   // Keyword-first, single brand. `absolute` avoids the template appending a
@@ -98,13 +96,11 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(COURSE_JSON_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }} />
       <main>
-        {/* Dead-simple funnel (2026-08): hero → the lessons → pricing. The
-            marketing sections (what you'll learn, how it works, proof, FAQ)
-            moved to /about so the homepage is one clear path to start learning.
-            Pricing stays the destination at the very bottom. */}
-        <Hero />
-        <Curriculum />
-        <HomeOffer />
+        {/* homepage-simplified-cta experiment (2026-08): control = the
+            dead-simple funnel (hero → lessons → pricing); test = one clean
+            Google-only screen. Defaults to control for SSR/crawlers/no-JS.
+            Marketing sections moved to /about. */}
+        <HomeExperiment />
       </main>
     </>
   )

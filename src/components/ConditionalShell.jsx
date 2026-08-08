@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
 import Footer from './Footer'
 
-const NO_SHELL_PATHS = ['/dashboard', '/dump', '/planner', '/sign-in', '/sign-up', '/onboarding']
+const NO_SHELL_PATHS = ['/dashboard', '/dump', '/planner', '/sign-in', '/sign-up', '/onboarding', '/sso-callback']
 
 export default function ConditionalShell({ children }) {
   const pathname = usePathname()

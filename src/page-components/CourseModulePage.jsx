@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { SignInButton } from '@clerk/nextjs'
 import { COURSE_CATALOG } from '../data/courseCatalog'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 import ContentRenderer from '../components/blocks/ContentRenderer'
@@ -168,12 +167,11 @@ function PaywallBanner({ isPremiumOnly, isSignedIn }) {
         </p>
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
           {!isSignedIn && (
-            <SignInButton mode="modal">
-              <button className="text-sm font-medium px-5 py-2.5 rounded-xl transition-all border hover:border-[#2E3250] hover:text-[#2E3250]"
-                style={{ background: '#fff', color: '#555', borderColor: '#e0e0e0' }}>
-                Sign in
-              </button>
-            </SignInButton>
+            <Link href="/sign-in"
+              className="text-sm font-medium px-5 py-2.5 rounded-xl transition-all border hover:border-[#2E3250] hover:text-[#2E3250]"
+              style={{ background: '#fff', color: '#555', borderColor: '#e0e0e0' }}>
+              Sign in
+            </Link>
           )}
           <Link href="/pricing"
             className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
