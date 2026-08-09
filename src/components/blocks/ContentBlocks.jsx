@@ -48,7 +48,7 @@ export function Objectives({ time, items, placeholder }) {
 
 // ─── Paragraph ─────────────────────────────────────────────────────────────────
 export function Paragraph({ text }) {
-  return <p className="leading-[1.7] mb-6 text-[1.0625rem]" style={{ color: INK }}>{text}</p>
+  return <p className="leading-[1.7] mb-6 text-[1.0625rem] break-words" style={{ color: INK }}>{text}</p>
 }
 
 // ─── Section heading — with a thin rule above (documentation feel) ─────────────
@@ -98,7 +98,7 @@ export const WarningBox = ({ text }) => <Note text={text} />
 export const Callout = ({ text }) => (
   <div className="my-6 pl-5" style={{ borderLeft: `2px solid rgba(46,50,80,0.35)` }}>
     {text.split('\n\n').map((line, i) => (
-      <p key={i} className={`leading-[1.7] text-[1.0625rem] ${i > 0 ? 'mt-3' : ''}`} style={{ color: INK }}>{line}</p>
+      <p key={i} className={`leading-[1.7] text-[1.0625rem] break-words ${i > 0 ? 'mt-3' : ''}`} style={{ color: INK }}>{line}</p>
     ))}
   </div>
 )
