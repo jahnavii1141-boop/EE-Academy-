@@ -56,7 +56,7 @@ export default function CourseInOrder() {
         </div>
 
         <p className="text-sm text-ink-soft mt-10">
-          14 lessons · a real 32/34 example essay you can open.
+          14 lessons, built around one real 32/34 essay.
         </p>
       </div>
     </section>
