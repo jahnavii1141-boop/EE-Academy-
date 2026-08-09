@@ -473,47 +473,78 @@ export const COURSE_MODULES = [
     tagline: 'Where the sources that make examiners sit up actually live.',
     content: [
       {
+        type: 'objectives',
+        time: '6 min',
+        items: [
+          "Divide your research question into five sub-questions every source must answer",
+          "Know what Google is for and what only Google Scholar is for",
+          "Run the Scholar Method — search narrowly, open three papers, mine their citations",
+        ],
+      },
+      {
+        type: 'paragraph',
+        text: "What does a top student do to research their EE? They have the same resources, but for some reason everything is so much more cohesive and well structured. Well, it's just a matter of researching like a top student.",
+      },
+      {
         type: 'quote-highlight',
         text: "Don't let your research define your structure. Let your structure define your research.",
       },
       {
         type: 'paragraph',
-        text: 'After completing your EE Dump, you move from broad knowledge accumulation to targeted research. At this point you divide your main RQ into 5 sub-questions that your essay will answer, and your research becomes surgical. You\'re looking for specific answers, not browsing randomly.',
-      },
-      {
-        type: 'heading',
-        text: 'The Three-Level Research Funnel',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Level 1: Google', text: 'Definitions, context, policy documents, government data, think tanks, industry reports. This is your foundation, don\'t skip it, but don\'t stop here either.' },
-          { title: 'Level 2: Google Scholar', text: 'Peer-reviewed arguments, theoretical models, empirical frameworks, academic debates. This is where analytical depth lives. Most students stop at Level 1.' },
-          { title: 'Level 3: PDF-Only Searches', text: 'Full research papers, original datasets, foundational studies. This is where the strongest essays get their source quality. Most students never reach this level, that\'s exactly why reaching it makes your bibliography stand out.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'What Google Is Actually For',
+        text: "Off the bat, directly after you've done your EE dump, you'll have a rough idea of what subtopics are relevant to your EE. So based on that, divide your main RQ into 5 sub-RQs.",
       },
       {
         type: 'paragraph',
-        text: 'Google is not where academic arguments live, but it\'s essential for context and framing. Use it for:',
+        text: 'Example (Economics EE):',
+      },
+      {
+        type: 'quote-highlight',
+        text: 'RQ: To what extent did interest rate hikes reduce inflation in India (2020–2023)?',
+      },
+      {
+        type: 'paragraph',
+        text: 'Sub-questions:',
       },
       {
         type: 'list',
         items: [
-          'Definitions and plain-English explanations of complex concepts',
-          'Contextual background and historical framing',
-          'Policy documents, government reports, and official statistics',
-          'Industry data and annual reports',
-          'Think tanks and policy institutions (Brookings, McKinsey, IMF)',
-          'Introductory-level understanding before you hit academic sources',
+          'What does theory predict?',
+          'What happened empirically in India?',
+          'What external factors interfered?',
+          'What are the limitations of the data?',
         ],
       },
       {
-        type: 'warning-box',
-        text: 'Some students skip Level 1 entirely and jump straight to academic sources. That\'s a mistake, context framing and problem definition matter. But Level 1 alone isn\'t enough. If your bibliography consists entirely of news articles and Wikipedia, you don\'t have an academic essay.',
+        type: 'paragraph',
+        text: 'Every source must answer one of these.',
+      },
+      {
+        type: 'subheading',
+        text: 'Where to use Google and where not to (where every student gets confused)',
+      },
+      {
+        type: 'paragraph',
+        text: 'What Google is actually for:',
+      },
+      {
+        type: 'list',
+        items: ['Definitions', 'Context', 'Policy documents', 'Government data', 'Think tanks', 'Intro-level understanding'],
+      },
+      {
+        type: 'paragraph',
+        text: 'What it is not for:',
+      },
+      {
+        type: 'list',
+        items: ['Academic arguments', 'Causal claims without citations', 'EE-level evaluation'],
+      },
+      {
+        type: 'paragraph',
+        text: 'Think of research as a funnel.',
+      },
+      {
+        type: 'paragraph',
+        text: "Most students don't tend to reach the PDF-only searches, and that's where their research tends to suffer. Some students skip the first two and that's a mistake as well, since context framing and problem outline are important — but they shouldn't be the premise of your paper.",
       },
       {
         type: 'heading',
@@ -521,113 +552,87 @@ export const COURSE_MODULES = [
       },
       {
         type: 'paragraph',
-        text: 'The Scholar Shift is the most satisfying moment in the research process, when you transition from Google to Google Scholar and suddenly you\'re reading real research. PhD professors and doctoral students who have spent years studying your exact topic. This is a gold mine, and most students never get here.',
+        text: "The scholar shift, for me, is the most satisfying part of research — when you move from Google to Google Scholar, where you're exposed to previous research and policy papers from PhD professors and students. This is a gold mine if you use it the right way.",
       },
       {
         type: 'paragraph',
-        text: 'Since most IB students don\'t reach this level of depth, the people marking your paper are already impressed before they finish reading your literature review. The quality of your sources signals the quality of your engagement.',
-      },
-      {
-        type: 'heading',
-        text: 'How to Use Google Scholar Without Getting Lost',
-      },
-      {
-        type: 'numbered-steps',
-        items: [
-          'Search narrowly. Not "Inflation India" but "monetary policy transmission mechanisms India CPI." The more specific your search, the more useful the results.',
-          'Sort by relevance, not date. New doesn\'t mean good. A 2008 paper that is foundational to your topic is more valuable than a 2024 paper with 3 citations.',
-          'Open 3 papers maximum per search. Scan the abstract, introduction, and conclusion first. If a paper doesn\'t directly serve your RQ, discard it, don\'t fall into the reading rabbit hole.',
-          'Follow the citations. If you find one strong paper, go to its reference list. The foundational research in any field is cited everywhere, that\'s how you find it.',
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'Search Operator Tips',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Search',
-        title: 'Exact Phrases',
-        text: 'Put phrases in quotes: "voter behaviour social media" returns only results with that exact phrase, eliminates thousands of irrelevant results.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'FileText',
-        title: 'PDF Only',
-        text: 'Add filetype:pdf to your Google search to surface full research papers and datasets, not summaries or previews.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: 'Site-Specific',
-        text: 'Use site:gov or site:edu to filter for government data or university research only.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'BookOpen',
-        title: 'Author Search',
-        text: 'Found a useful paper? Search the author\'s name on Scholar. Their other work is often directly relevant.',
-      },
-      {
-        type: 'heading',
-        text: 'Evaluating Source Quality',
+        text: "First and foremost, since most students don't get to this level of depth and understanding in their research papers, the people grading your paper are already going to be impressed.",
       },
       {
         type: 'paragraph',
-        text: 'Not every source you find is worth citing. A source is EE-worthy if it meets these criteria:',
+        text: 'What Google Scholar is for:',
       },
       {
         type: 'list',
-        items: [
-          'It has a clear, evaluable argument or finding',
-          'It uses data, methodology, or established theory',
-          'It acknowledges its own limitations',
-          'It can be critically engaged with, not just summarised',
-        ],
+        items: ['Peer-reviewed arguments', 'Models, frameworks, and debates', 'Evidence you can evaluate, not just report'],
       },
       {
-        type: 'heading',
-        text: 'Red Flags in Your Source List',
-      },
-      {
-        type: 'list',
-        items: [
-          'Blog posts with no citations or credentials',
-          'News articles used as analytical arguments (news is context, not analysis)',
-          'Papers older than 15 years unless they\'re foundational to the field',
-          'Sources that only support your argument, you need counterpoints for genuine analysis',
-          'Wikipedia (use it to find primary sources, never cite it directly)',
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'When to Stop Researching',
+        type: 'subheading',
+        text: 'Step-by-step Scholar Method',
       },
       {
         type: 'paragraph',
-        text: 'You\'re done researching a sub-question when you have 2-3 strong sources that directly address it. For every source, note these three things in your EE Dump:',
+        text: 'Step 1: Search narrowly. Not “Inflation India” but “monetary policy transmission India inflation”.',
       },
       {
-        type: 'numbered-steps',
-        items: [
-          'The core claim or finding (one sentence)',
-          'The evidence or methodology used to support it',
-          'A limitation or potential bias you could critically engage with',
-        ],
+        type: 'paragraph',
+        text: 'Step 2: Sort by relevance, not date (first). New ≠ good. Influential ≠ outdated.',
       },
       {
-        type: 'tip-box',
-        text: 'The point of academic papers is not to copy their findings into your essay. It\'s to cite specific findings, engage critically with them, and then use them to set the stage for your own analysis. Your essay should be building on existing scholarship, not just reporting it.',
+        type: 'paragraph',
+        text: 'Step 3: Open 3 papers max. Top students do not open 20 tabs. They scan:',
       },
       {
-        type: 'key-takeaway',
-        items: [
-          'Research through three levels: Google → Scholar → PDF-only',
-          'Search narrowly, specific terms return useful results, broad terms return noise',
-          'Follow citations from strong papers to find the foundational research in your field',
-          'Each sub-question needs 2-3 strong sources with noted claims, evidence, and limitations',
-          'A source is EE-worthy if it can be critically engaged with, not just summarised',
-        ],
+        type: 'list',
+        items: ['Abstract', 'Introduction', 'Conclusion'],
+      },
+      {
+        type: 'paragraph',
+        text: "If it doesn't directly help, then discard it.",
+      },
+      {
+        type: 'paragraph',
+        text: "Don't rely on one paper — keep going to the foundations over and over. If you find a good paper, go to the citations, and you'll find the foundational knowledge that you can cite directly.",
+      },
+      {
+        type: 'paragraph',
+        text: 'The point of these papers is not to copy the knowledge or findings that are there, but to cite certain findings and explain why your paper is still relevant right now, and set the stage to present your findings and posit your theory.',
+      },
+      {
+        type: 'paragraph',
+        text: 'A source is EE-worthy if:',
+      },
+      {
+        type: 'list',
+        items: ['It has a clear argument', 'It uses data or theory', 'It acknowledges limitations', 'It can be evaluated, not just summarised'],
+      },
+      {
+        type: 'paragraph',
+        text: 'Red flags:',
+      },
+      {
+        type: 'list',
+        items: ['Blog posts with no citations', 'News articles used as analysis', 'Papers that only describe'],
+      },
+      {
+        type: 'subheading',
+        text: 'Knowing when to stop',
+      },
+      {
+        type: 'paragraph',
+        text: 'You know when to stop when each of your sub-RQs has 2–3 sources.',
+      },
+      {
+        type: 'paragraph',
+        text: 'The way you note down your research paper sources is not the way you do your EE dump. For every source, write only:',
+      },
+      {
+        type: 'list',
+        items: ['Core claim (1 sentence)', 'Evidence/method', 'Limitation or bias'],
+      },
+      {
+        type: 'paragraph',
+        text: 'And there you have it. This makes hitting the evaluation criterion of your EE effortless and also helps organise your EE research very efficiently.',
       },
     ],
   },
@@ -638,105 +643,110 @@ export const COURSE_MODULES = [
     tagline: 'The frame that turns 4,000 words into filling in blanks.',
     content: [
       {
-        type: 'paragraph',
-        text: 'Your EE has to have a purpose, a clear, deliberate argument that runs from your research question through to your conclusion. After your Dump and research, you create your structure: the skeleton that every paragraph hangs on. The skeleton comes before the flesh.',
-      },
-      {
-        type: 'warning-box',
-        text: 'Most students start writing before they have a structure. This is why most students run out of things to say at 2,000 words and start padding, repeating themselves, or going off-topic. Build the structure first.',
-      },
-      {
-        type: 'heading',
-        text: 'The Grade-A Basic Structure',
-      },
-      {
-        type: 'paragraph',
-        text: 'This is the seven-section structure used to score 32/34. It\'s adaptable across most subjects and maps directly to the assessment criteria:',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Section I: Introduction (~400 words)', text: 'Hook, context, significance, research question, and brief signposting of your approach. Targets Criterion A.' },
-          { title: 'Section II: Literature Review (~700 words)', text: 'Critical evaluation of existing research, not a summary. Shows you know the academic conversation and where your essay fits in it. Targets Criterion A.' },
-          { title: 'Section III: Methodology (~300 words)', text: 'What tools and frameworks you\'re using and, crucially, why they were the right choice for your specific RQ. Targets Criterion B.' },
-          { title: 'Section IV: Analysis (~1,200 words)', text: 'Apply your chosen tools to your specific topic. Present findings with evidence. The heart of your essay. Targets Criteria B and C.' },
-          { title: 'Section V: Discussion (~600 words)', text: 'Evaluate your findings. Connect to your literature review. Address counterarguments. Honestly assess limitations. Targets Criterion C.' },
-          { title: 'Section VI: Conclusion (~300 words)', text: 'Directly answer your RQ. Summarise key evidence. Acknowledge limitations. Suggest future research. Targets Criteria C and D.' },
-          { title: 'Section VII: References', text: 'Complete bibliography in consistent citation format. Alphabetical by author. Every source cited in text must appear here.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'Mapping Sections to Criteria',
-      },
-      {
-        type: 'callout',
-        text: 'This is the structural strategy that changes everything. Each section targets specific criteria intentionally, no purposeless writing.',
-      },
-      {
-        type: 'comparison-table',
-        headers: ['Section', 'Primary Criteria', 'What the Examiner Looks For'],
-        rows: [
-          ['Introduction', 'Criterion A', 'Topic understanding, RQ clarity, demonstrated significance'],
-          ['Literature Review', 'Criterion A', 'Knowledge of existing research, critical engagement'],
-          ['Methodology', 'Criterion B', 'Justified selection and application of research methods'],
-          ['Analysis', 'Criteria B + C', 'Application of tools, original findings, evaluation'],
-          ['Discussion', 'Criterion C', 'Synthesis, limitations, connection to literature'],
-          ['Conclusion', 'Criteria C + D', 'Clear answer to RQ, academic conventions maintained'],
-          ['Throughout', 'Criterion D', 'Academic tone, formatting, citations, consistent structure'],
-        ],
-      },
-      {
-        type: 'quote-highlight',
-        text: 'No purposeless writing. Every paragraph serves a criterion.',
-      },
-      {
-        type: 'heading',
-        text: 'How to Build Your Structure',
-      },
-      {
-        type: 'numbered-steps',
+        type: 'objectives',
+        time: '5 min',
         items: [
-          'Take your 5 sub-questions from Module 6 and assign them to sections',
-          'For each section, write one sentence: "This section will argue that..."',
-          'Check that the argument flows, each section should set up the next',
-          'In the margin next to each section, write the criterion it targets',
-          'If any section doesn\'t clearly target a criterion, cut it or refocus it',
+          "Turn your EE dump into a seven-section skeleton (introduction through bibliography)",
+          "Map each section to the criterion (A–D) it needs to hit",
+          "Build the structure so the examiner can mark you high with less effort",
         ],
-      },
-      {
-        type: 'tip-box',
-        text: 'After building your structure, take it to your supervisor. One 30-minute meeting at this stage saves more time than any amount of frantic editing at the end.',
-      },
-      {
-        type: 'heading',
-        text: 'Word Count Distribution',
       },
       {
         type: 'paragraph',
-        text: 'The 4,000-word limit sounds like a lot, it isn\'t. A rough word count distribution that works for most subjects:',
+        text: "Your EE has to have a purpose if you want a good score. And for a good score you need a system, so after this we're going to create our structure.",
       },
       {
-        type: 'comparison-table',
-        headers: ['Section', 'Approximate Words', 'Why'],
-        rows: [
-          ['Introduction', '300-450', 'Context-setting, not the heart of your marks'],
-          ['Literature Review', '600-800', 'Enough depth to show knowledge without over-narrating'],
-          ['Methodology', '250-350', 'Concise justification, not an instruction manual'],
-          ['Analysis', '1,100-1,400', 'The core of Criteria B and C, most marks live here'],
-          ['Discussion', '500-700', 'Where synthesis happens, often underwritten'],
-          ['Conclusion', '250-350', 'Direct, clear, no new information'],
-        ],
+        type: 'heading',
+        text: "Here's how to make a stellar 10/10 structure for your EE and schedule",
       },
       {
-        type: 'key-takeaway',
+        type: 'paragraph',
+        text: 'Plan the research and writing process and plan a structure for the essay. (Creating efficient systems and SOPs for your EE.)',
+      },
+      {
+        type: 'paragraph',
+        text: 'Step 1: Use the information gathered from your EE dump to form connections and find areas of exploration.',
+      },
+      {
+        type: 'paragraph',
+        text: "Follow this Grade A basic structure that I used for my EE. (This would also depend on what you're trying to achieve, so I'm going to detail the basic structure and how you would make it your own.)",
+      },
+      {
+        type: 'subheading',
+        text: 'Structure',
+      },
+      {
+        type: 'list',
         items: [
-          'Build the structure before you write a single body paragraph',
-          'The 7-section structure covers all four criteria explicitly',
-          'Map every section to its criterion before writing',
-          'Share your structure with your supervisor before you start writing',
-          'No purposeless writing, every paragraph earns marks',
+          'Section I: Introduction',
+          'Section II: Literature Review',
+          'Section III: Methodology',
+          'Section IV: Case Study',
+          'Section V: Discussion',
+          'Section VI: Conclusion',
+          'Section VII: References and Bibliography',
         ],
+      },
+      {
+        type: 'paragraph',
+        text: 'The required parts of the EE include:',
+      },
+      {
+        type: 'list',
+        items: ['Title page', 'Contents page', 'Introduction', 'Body of the essay', 'Conclusion'],
+      },
+      {
+        type: 'paragraph',
+        text: "Let's go over the assessment objectives to further refine our process:",
+      },
+      {
+        type: 'subheading',
+        text: 'Criterion A (Knowledge and Understanding)',
+      },
+      {
+        type: 'paragraph',
+        text: 'To demonstrate knowledge and understanding of:',
+      },
+      {
+        type: 'list',
+        items: ['The topic chosen', 'Research question', 'Terminology and concepts', 'Research methods'],
+      },
+      {
+        type: 'subheading',
+        text: 'Criterion B (Apply and Analyse)',
+      },
+      {
+        type: 'list',
+        items: ['Apply relevant research methods', 'Use relevant findings'],
+      },
+      {
+        type: 'subheading',
+        text: 'Criterion C (Synthesize and Evaluate)',
+      },
+      {
+        type: 'list',
+        items: [
+          'Significance of research',
+          'Clear line of argument through RQ, research findings, and conclusions',
+          'Effectiveness of the essay',
+          'Evaluate the extended essay learning experience and reflect on the growth of the learner',
+        ],
+      },
+      {
+        type: 'subheading',
+        text: 'Criterion D (Communicate Research)',
+      },
+      {
+        type: 'list',
+        items: ['Communicate research according to appropriate structural conventions', 'Understand and demonstrate academic integrity'],
+      },
+      {
+        type: 'paragraph',
+        text: "The goal here is not to make you dependent on this entire module, but to make sure you're doing the absolute most with what you have as a student with the internet and AI.",
+      },
+      {
+        type: 'paragraph',
+        text: "If the IB gives you a crystal-clear perspective on how you're getting graded, then craft your EE in a way that makes it easy for the examiner to just mark you high.",
       },
     ],
   },
