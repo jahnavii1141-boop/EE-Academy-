@@ -905,102 +905,23 @@ export const COURSE_MODULES = [
     tagline: 'The two sections an examiner reads twice.',
     content: [
       {
-        type: 'heading',
-        text: 'Before & After: What a Real Introduction Looks Like',
-      },
-      {
-        type: 'before-after',
-        before: {
-          label: 'Student draft (B/C grade territory)',
-          text: '"ZARA is a global fashion brand owned by Inditex. In this essay, I will examine ZARA\'s business strategy and to what extent it contributes to its market dominance. I will use Porter\'s Five Forces, Value Chain Analysis, and financial ratio analysis to investigate this question."',
-        },
-        after: {
-          label: 'Storytelling hook (A grade territory)',
-          text: '"In 1940, rationing boards across wartime Europe dictated what civilians could wear. Fabric was scarce, colours were drab, and fashion effectively ceased to exist. Eighty years later, a single company ships over 450 million garments per year, turning a runway trend into a store product in as few as two weeks, without maintaining a single fabric warehouse."',
-        },
-      },
-      {
-        type: 'callout',
-        text: 'Same topic. Same research question. One reads like a school assignment. The other reads like research. This module teaches you how to write the second one, every time.',
-      },
-      {
-        type: 'heading',
-        text: 'The Four Hook Types',
-      },
-      {
-        type: 'paragraph',
-        text: 'The type of hook that works best depends on your subject and topic. Choose the one that fits your RQ naturally, don\'t force a hook type that doesn\'t fit your topic.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'BookOpen',
-        title: 'The Storytelling Hook',
-        text: 'Paint a scene or narrative that naturally leads to the RQ. Works best for: Business Management, Psychology, History, Economics.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Zap',
-        title: 'The Contradiction Hook',
-        text: '"It\'s widely assumed that X, but recent data shows the opposite..." Opens with a common belief and immediately counters it with evidence. Works best for: Sciences, Economics, Mathematics.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'AlertTriangle',
-        title: 'The Stakes Hook',
-        text: 'Opens by explaining why your topic matters right now, what\'s at stake, what\'s changing, what could be lost. Works best for: Environmental Science, Global Politics, Biology.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Search',
-        title: 'The Gap Hook',
-        text: 'Shows what existing research covers and what\'s missing from it. Positions your EE as filling a genuine gap in the literature. Works best for: Psychology, History, English Literature.',
-      },
-      {
-        type: 'heading',
-        text: 'Structure of a Strong Introduction',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Hook (2-3 sentences)', text: 'Open with one of the four hook types. Immediately capture attention and establish the stakes of your topic.' },
-          { title: 'Context (3-5 sentences)', text: 'Provide the background a reader would need to understand the significance of your topic. This is not your literature review, keep it brief and focused.' },
-          { title: 'The Problem (1-2 sentences)', text: 'Articulate the gap, tension, or question that your research addresses. Why does this question need answering?' },
-          { title: 'Research Question (1 sentence)', text: 'State your RQ clearly and directly. Don\'t bury it.' },
-          { title: 'Signposting (2-3 sentences)', text: 'Brief indication of how you\'ll approach the question, what tools, methods, or structure you\'ll use.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: 'Writing Your Conclusion',
-      },
-      {
-        type: 'warning-box',
-        text: 'The most common conclusion mistake is restating your introduction. Your conclusion should synthesise, pulling together everything your analysis found and arriving at a clear position. It should feel like the destination your entire essay has been building toward.',
-      },
-      {
-        type: 'formula-box',
-        title: 'Conclusion Framework',
-        formula: 'Direct Answer + Key Evidence + Limitations + Future Research',
-        description: 'The direct answer comes first. Don\'t hedge or be vague, commit to a position. You\'ve done the research. State what you found.',
-      },
-      {
-        type: 'paragraph',
-        text: 'A common student error is writing a conclusion that says "it is unclear whether..." or "more research is needed to determine..." as the primary finding. These phrases belong in your limitations paragraph, not as your headline conclusion. Your headline conclusion should be decisive.',
-      },
-      {
-        type: 'tip-box',
-        text: 'Test your introduction and conclusion together: give only those two sections to a friend and ask them to explain your argument back to you. If they can\'t follow the arc of your essay from just those two sections, one or both needs rewriting.',
-      },
-      {
-        type: 'key-takeaway',
+        type: 'objectives',
+        time: '5 min',
         items: [
-          'Choose a hook type that fits your subject, storytelling, contradiction, stakes, or gap',
-          'Your introduction should make the examiner think "I want to see what they found"',
-          'Follow the five-part structure: hook → context → problem → RQ → signposting',
-          'Your conclusion directly answers your RQ, no new information, no hedging',
-          'Conclusion = direct answer + evidence summary + limitations + future research',
+          "Choose an introduction hook that fits your subject — storytelling, contradiction, stakes, or gap",
+          "See an example opening line for each",
+          "Grab the examiner in the first 300 words",
         ],
       },
+      { type: 'paragraph', text: "There's multiple different ways to go about writing introductions based on your RQ and your subject — you can choose what best suits your topic." },
+      { type: 'subheading', text: 'The Storytelling Hook' },
+      { type: 'paragraph', text: "This is honestly my personal favourite and if executed well enough it can really grab your examiner's attention. You paint a scene or a narrative that leads to the research question. It could be a historical narrative where you talk about the evolution of an important aspect of your RQ, or it could just be a story that leads to the introduction of the research question. I did this for you in fact when we spoke about the elections RQ up above. This works best for subjects like Business, Psychology, History and Economics. It shows examiners how you perceive your topic and its relevance." },
+      { type: 'subheading', text: 'The Contradiction Hook' },
+      { type: 'paragraph', text: "This is your classic “It's widely assumed that X but recent studies show…” You're basically opening up with a commonly accepted datapoint but begin to counter it with evidence and set up your entire essay on what you posit. It's almost like an introduction to an investigative piece. Like I've said before, if your research papers show a finding of some sort that counters popular beliefs using concepts taught in IB classrooms but real-world data, that is bound to impress examiners — as your paper is a genuine research paper which is miles ahead of what most students may write, which is closer to an information paper that just carries information. This hook is best for Sciences, Economics, Math." },
+      { type: 'subheading', text: 'The Stakes Hook' },
+      { type: 'paragraph', text: "The stakes hook flat out explains why your topic matters, what's at risk and what's changing and why exactly you need to tackle this and how your research paper is going to reveal relevant findings. Works best for Environmental Science, Global Politics, Biology. Example: “As global temperatures rise by X degrees annually, the question of…”" },
+      { type: 'subheading', text: 'The Gap Hook' },
+      { type: 'paragraph', text: "This hook opens by sharing where we are now and where we need to be, or where we were compared to where we are now, and makes the gap explicitly clear. That gap is what your research is going to study and share its findings on. Works best for any subject but especially strong for Psychology, History, English. Example: “While extensive research has explored X, little attention has been paid to Y…”" },
     ],
   },
   {
@@ -1010,117 +931,29 @@ export const COURSE_MODULES = [
     tagline: '500 words. Six marks. Most students hand them back.',
     content: [
       {
-        type: 'stat-highlight',
-        stat: '6',
-        label: 'Marks available, Criterion E, assessed separately',
-      },
-      {
-        type: 'stat-highlight',
-        stat: '3',
-        label: 'Reflections required, early, mid, and final stage',
-      },
-      {
-        type: 'stat-highlight',
-        stat: '500',
-        label: 'Words maximum per reflection, keep it focused',
-      },
-      {
-        type: 'paragraph',
-        text: 'The RPPF, Reflections on Planning and Progress Form, is assessed as Criterion E and represents 6 of your 34 marks. It\'s also the most misunderstood component of the EE. Most students either write it in 20 minutes the night before submission, or panic and overcomplicate it. Both approaches miss the mark.',
-      },
-      {
-        type: 'image',
-        src: '/images/ib-rppf-process.png',
-        alt: 'IB RPPF reflection process description showing what reflections should cover',
-        caption: "The IB's own description of what your reflections should demonstrate.",
-      },
-      {
-        type: 'paragraph',
-        text: 'The IB describes the RPPF as a document where "students reflect on their engagement with the research process, consider the effectiveness of their choices, and re-examine their ideas and decide whether changes are needed." That\'s the brief. The key word is "engagement", the IB wants to know that your EE came from genuine intellectual investment, not from going through the motions.',
-      },
-      {
-        type: 'heading',
-        text: 'What Your RPPF Should Demonstrate',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: 'Challenges',
-        text: 'What obstacles did you encounter during research and writing? Be specific, "I couldn\'t find enough sources" is vague. "My initial methodology of X proved inadequate for Y reason" is specific.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Brain',
-        title: 'Problem-Solving',
-        text: 'What ideas did you have for addressing each challenge? What did you try? The IB values seeing that you actively reasoned through difficulties.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Zap',
-        title: 'Adaptation',
-        text: 'What changed during your EE process, your RQ, your methodology, your argument? How did you respond? Showing adaptation is evidence of genuine engagement.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Award',
-        title: 'Growth',
-        text: 'How did you grow as a researcher? What would you do differently? What did this process teach you about research, your subject, or yourself?',
-      },
-      {
-        type: 'heading',
-        text: 'The Three Reflections',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Reflection 1, Early Stage', text: 'Why you chose this topic. How you arrived at your RQ. What challenges you faced in focusing it. What your supervisor suggested and how you responded. What your initial expectations for the research were.' },
-          { title: 'Reflection 2, Mid Stage', text: 'How your understanding has evolved from your initial expectations. Whether you adjusted your RQ (and why). What surprised you during research. What methodology challenges you encountered.' },
-          { title: 'Reflection 3, Final Stage', text: 'What you\'re most proud of in the finished essay. What you would do differently if starting again. How this process changed the way you think about research in your subject area.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: "John's Natural Thought Process, and How to Write It",
-      },
-      {
-        type: 'paragraph',
-        text: 'Let\'s use our earlier example to see what the RPPF thinking process actually looks like, and then how to formalise it.',
-      },
-      {
-        type: 'paragraph',
-        text: 'John started with: "To what extent did social media influence voter psychology and election outcomes in the 2024 US elections?" Here\'s his actual thought process as he tried to refine it:',
-      },
-      {
-        type: 'callout',
-        text: '"Okay, so here we talk about social media and election outcomes. Can we be more specific? When I say social media, I\'m talking about the people who produce content and how that affects user decision-making.\n\nSo basically how users felt after reacting to creator content. But how do we measure that? Is it even possible? Something like sentiment?\n\nWell, we could use interactions, like view counts? But that doesn\'t work, because anything can pop up on your feed without reflecting your preferences.\n\nWhat about likes? Likes can definitely account for some sentiment.\n\nSo could we find a connection between likes, engagement metrics, and what someone actually voted for? How would we get that voting data? Someone mentioned election results are released publicly after every election.\n\nSo I need some tool to analyse both sets of data together. Let me open my Maths textbook!"',
-      },
-      {
-        type: 'paragraph',
-        text: 'That\'s the genuine thought process. Your RPPF is this, but formalised, the intellectual journey behind your work. Here\'s how you would write it:',
-      },
-      {
-        type: 'quote-highlight',
-        text: '"I wanted the strongest possible RQ to analyse the correlation I was interested in between social media and voter decision-making. I initially formulated the RQ \'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections.\' I believed it was a solid starting point and proposed it to my supervisor. My supervisor argued that its lack of specificity around what social media element I was measuring could derail my analysis later. Though initially I didn\'t see this as problematic, I spent time formulating alternative RQs, exploring whether sentiment, engagement metrics, or content reach would be the most methodologically tractable measure, and eventually arrived at my final RQ through this refinement process..."',
-        attribution: 'Sample Reflection 1, turning your natural thought process into formal academic language',
-      },
-      {
-        type: 'paragraph',
-        text: 'You\'re documenting the same thinking process, the challenges, why they arose, and how you approached them. The RPPF demonstrates your problem-solving process and intellectual engagement to the examiner. It\'s the one component where your essay\'s authenticity is directly assessed.',
-      },
-      {
-        type: 'tip-box',
-        text: 'Write your reflections as you go, not all at the end. Reflection 1 at the start of your research. Reflection 2 after your first draft. Reflection 3 after your final edit. The detail you can include is much richer when events are recent.',
-      },
-      {
-        type: 'key-takeaway',
+        type: 'objectives',
+        time: '6 min',
         items: [
-          'The RPPF is worth 6 marks, the equivalent of Criterion A or Criterion C',
-          'Write three reflections at the right time: early, mid, and final stage',
-          'Show the process: challenge → what you tried → what you learned → how you adapted',
-          'Be specific about what changed and why, generic reflections score poorly',
-          'Write each reflection at the time, not all at the end before submission',
+          "Understand what the RPPF (Reflections on Progress and Planning Form) is actually testing",
+          "Turn your real research struggles into Criterion E reflections",
+          "See a messy thought process rewritten into a formal reflection",
         ],
       },
+      { type: 'paragraph', text: "This part is the most important part of Criterion E and the easiest 6 points you will ever get. The main point of the RPPF, or the Reflections on Progress and Planning Form, is to ensure you've actually gone through the process of creating a research paper such as the EE." },
+      { type: 'paragraph', text: 'You would have naturally encountered:' },
+      { type: 'list', items: ['The challenges', 'What you thought to solve that challenge', "How that solution didn't work", 'How you learnt from that solution you proposed', 'How you edited the solution from the mistake you made'] },
+      { type: 'paragraph', text: "Usually these aspects are: what mistake you made, what you learnt, how you fixed it, why what you did to fix it didn't work, your second solution, why your second solution worked, etc. It's the natural process of just writing your EE." },
+      { type: 'paragraph', text: "Let's take the example earlier of our research question. We went from:" },
+      { type: 'quote-highlight', text: 'To what extent did social media influence voter psychology and election outcomes in the 2024 US elections?' },
+      { type: 'paragraph', text: 'to' },
+      { type: 'quote-highlight', text: 'To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behavior during the 2024 US elections?' },
+      { type: 'paragraph', text: "using ChatGPT. But what if we didn't? What if we just used trial and error to focus our RQ?" },
+      { type: 'callout', text: "“To what extent did social media influence voter psychology and election outcomes in the 2024 US elections?”\n\nOkay… so here we talk about social media and election outcomes. Can we be more specific in terms of both? Um, I don't know, maybe not.\n\nWhen I say social media, I'm talking about the people who produce content on social media and how that affects the user's decision-making.\n\nSo basically how users felt after reacting to the content made by creators. Right — but how do we measure that? Is it even possible to measure that? Something like sentiment?\n\nWell, we could use interactions — like the more views it had? But no, that doesn't work, because anything can pop up on your feed; it doesn't mean you have a particular sentiment over it.\n\nOh wait, what about likes? Likes can definitely account for some sentiment.\n\nSo could we find some sort of connection between the likes and engagement of a video and what a person voted for?\n\nHow can we get the data of who voted for whom? Well, someone told me they release it after an election every time.\n\nSo I need some tool to analyse both sets of data. Uh, let me open my textbook!" },
+      { type: 'paragraph', text: "Okay, so you get the idea. This would be the average person's thought process. Your RPPF is this, but more formal — the thinking and creative process that goes behind your work. Your RPPF can show whether your work is genuine or not." },
+      { type: 'paragraph', text: 'The way I would write the reflection above would be something like:' },
+      { type: 'callout', text: "I wanted the best possible RQ to help me analyse the information at hand and the correlation that I wanted to showcase between social media and the subsequent influence on voters. I initially formulated the RQ “To what extent did social media influence voter psychology and election outcomes in the 2024 US elections.” I was excited since I believed it was a strong start and proposed it to my teacher. My teacher, however, believed the lack of detailing could completely derail me later on during the analysis. The generality of the RQ didn't seem detrimental to me because I believed the RQ was quite straightforward and easy to research. However, I did formulate other RQs to see which would better suit the purpose of the research paper and the consequent findings, etc." },
+      { type: 'paragraph', text: 'I basically talk about the process: the adversities, why certain challenges came up.' },
+      { type: 'paragraph', text: 'The reflections show the IB your problem-solving skills as well as your mindset towards creating the EE. You have an opportunity to showcase the adversities you have faced in the process and your approach to overcoming them, and the back and forth involved in creating a paper such as yours.' },
     ],
   },
   {
