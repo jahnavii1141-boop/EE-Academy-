@@ -124,7 +124,8 @@ export default function DashboardLayout({ children }) {
 
   // Clerk is the ONLY gate (2026-08). No separate email capture, no Resend, no
   // second sign-up: anyone without a session is sent to the one Clerk sign-up.
-  // RedirectIfSignedIn on /sign-up bounces them back the instant they're in.
+  // The /sign-up + /sign-in pages redirect signed-in users back to the dashboard
+  // server-side (auth() + forceRedirectUrl), so the flow is: sign up → dashboard.
   useEffect(() => {
     if (isLoaded && !isSignedIn) router.replace('/sign-up')
   }, [isLoaded, isSignedIn, router])

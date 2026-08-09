@@ -1,6 +1,8 @@
 import { SignIn } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import RedirectIfSignedIn from '@/components/RedirectIfSignedIn'
+import BFCacheGuard from '@/components/BFCacheGuard'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
@@ -10,16 +12,18 @@ export const metadata = {
   alternates: { canonical: 'https://theextendedessay.com/sign-in' },
 }
 
-export default async function SignInPage({ searchParams }) {
-  // Return to the lesson the user came from (validated internal path), else dashboard.
-  const params = await searchParams
-  const rd = typeof params?.redirect_url === 'string' ? params.redirect_url : ''
-  const redirectUrl = rd.startsWith('/course/') ? rd : '/dashboard/home'
+export const dynamic = 'force-dynamic'
+
+export default async function SignInPage() {
+  // Already signed in? Go straight to the dashboard — never show the form again.
+  const { userId } = await auth()
+  if (userId) redirect('/dashboard/home')
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
-      {/* Already signed in? Never show the form again — go where they were headed. */}
-      <RedirectIfSignedIn to={redirectUrl} />
+      {/* Re-run the server auth check if the browser restores this page from bfcache (Back button). */}
+      <BFCacheGuard />
       <CaptureOnMount event="signin_start" />
 
       {/* Site branding — makes clear which site this login belongs to */}
@@ -31,7 +35,7 @@ export default async function SignInPage({ searchParams }) {
           </span>
         </Link>
         <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 280 }}>
-          Sign in to access your dashboard, modules, and EE tools.
+          Sign in to access your dashboard, guides, and EE tools.
         </p>
       </div>
 
@@ -39,7 +43,7 @@ export default async function SignInPage({ searchParams }) {
         routing="path"
         path="/sign-in"
         signUpUrl="/sign-up"
-        fallbackRedirectUrl={redirectUrl}
+        forceRedirectUrl="/dashboard/home"
         appearance={{
           variables: {
             colorPrimary: '#0a0a0a',

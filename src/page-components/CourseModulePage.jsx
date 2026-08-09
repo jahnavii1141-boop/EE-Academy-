@@ -148,8 +148,7 @@ function PaywallBanner({ isPremiumOnly, isSignedIn, moduleId }) {
   useEffect(() => {
     try { posthog.capture('paywall_view', { lesson: moduleId, premium_only: !!isPremiumOnly, signed_in: !!isSignedIn }) } catch (e) { /* optional */ }
   }, [moduleId, isPremiumOnly, isSignedIn])
-  // After sign-in, come back to this exact lesson — not the dashboard.
-  const signInHref = `/sign-in?redirect_url=${encodeURIComponent(`/course/${moduleId}`)}`
+  const signInHref = '/sign-in'
   return (
     <div className="relative mt-4 mb-8">
       {/* Fade overlay */}

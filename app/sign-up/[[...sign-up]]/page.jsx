@@ -1,6 +1,8 @@
 import { SignUp } from '@clerk/nextjs'
+import { auth } from '@clerk/nextjs/server'
+import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import RedirectIfSignedIn from '@/components/RedirectIfSignedIn'
+import BFCacheGuard from '@/components/BFCacheGuard'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
@@ -10,17 +12,22 @@ export const metadata = {
   alternates: { canonical: 'https://theextendedessay.com/sign-up' },
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function SignUpPage({ searchParams }) {
-  // ?email= comes from the email-capture forms — prefill so signup is one step.
+  // Already signed in? Go straight to the dashboard — never show the form again.
+  const { userId } = await auth()
+  if (userId) redirect('/dashboard/home')
+
+  // ?email= can prefill the address so signup is one step.
   const params = await searchParams
   const email = typeof params?.email === 'string' ? params.email : undefined
-  const rd = typeof params?.redirect_url === 'string' ? params.redirect_url : ''
-  const redirectUrl = rd.startsWith('/course/') ? rd : '/dashboard/home'
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
-      {/* Already signed in? Never show the form again — go where they were headed. */}
-      <RedirectIfSignedIn to={redirectUrl} />
+      {/* Re-run the server auth check if the browser restores this page from bfcache (Back button). */}
+      <BFCacheGuard />
       <CaptureOnMount event="signin_start" />
 
       {/* Site branding — makes clear which site this login belongs to */}
@@ -40,7 +47,7 @@ export default async function SignUpPage({ searchParams }) {
         routing="path"
         path="/sign-up"
         signInUrl="/sign-in"
-        fallbackRedirectUrl={redirectUrl}
+        forceRedirectUrl="/dashboard/home"
         initialValues={email ? { emailAddress: email } : undefined}
         appearance={{
           variables: {

@@ -42,7 +42,10 @@ export default function RootLayout({ children }) {
           `}} />
       </head>
       <body>
-        <ClerkProvider>
+        <ClerkProvider
+          signInFallbackRedirectUrl="/dashboard/home"
+          signUpFallbackRedirectUrl="/dashboard/home"
+        >
           <PostHogProvider>
             <ConditionalShell>{children}</ConditionalShell>
           </PostHogProvider>
