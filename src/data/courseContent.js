@@ -330,125 +330,139 @@ export const COURSE_MODULES = [
     tagline: 'Empty your head onto the page, then turn the mess into a structure.',
     content: [
       {
-        type: 'paragraph',
-        text: 'The EE Dump is a research method built around one principle: knowledge confidence. Most students sit down to write their EE and immediately panic, they know their topic on the surface but have no depth. They don\'t know what to say, so they either pad with words or pull from AI. The EE Dump eliminates that problem entirely.',
+        type: 'objectives',
+        time: '7 min',
+        items: [
+          "Set up your Project A folder and your EE Dump document",
+          "Split your research question into five research points",
+          "Use the Retrieve then Dump method across Google and Google Scholar to gather everything before you start writing",
+        ],
       },
       {
-        type: 'gif',
-        src: 'https://giphy.com/embed/LmNwrBhejkK9EFP504',
-        alt: 'Research begins, focus mode activated',
-        caption: "The Dump is where the real learning happens.",
+        type: 'paragraph',
+        text: "Okay, here's where it gets really fun.",
       },
       {
         type: 'paragraph',
-        text: 'The idea is simple: before you write anything, you create a living document where you dump everything you know and everything you find about your topic, organised by subtopic. No word limit. No formatting requirements. No pressure. Just knowledge accumulation.',
+        text: "Over the course of all the modules, I'm going to detail making different documents and give you PDFs which you will add to a folder called Project A.",
+      },
+      {
+        type: 'paragraph',
+        text: "First step is to create a folder called Project A on your laptop. Second step is to go to your choice of word processor — I prefer either Google Docs or Microsoft Word — and create a file called EE Dump.",
+      },
+      {
+        type: 'paragraph',
+        text: "EE Dump is my favourite part of doing the EE. It's the most fun because you get to spend all day on your laptop researching and dumping all the information into your document.",
+      },
+      {
+        type: 'paragraph',
+        text: "So let's take our sample EE research question:",
       },
       {
         type: 'quote-highlight',
-        text: 'There is no word limit for your EE Dump and there is no such thing as too much information.',
-      },
-      {
-        type: 'heading',
-        text: 'How the EE Dump Works',
-      },
-      {
-        type: 'step-process',
-        steps: [
-          { title: 'Break your RQ into 5 subtopics', text: 'These don\'t need to be perfect, they\'re for research organisation. Think of it like dividing a pizza into slices. Each slice gets its own section in your Dump document.' },
-          { title: 'Level 1: Google every subtopic', text: 'Go through all relevant links. Read the information. Understand the landscape. This builds your contextual foundation.' },
-          { title: 'Dump everything relevant', text: 'Copy the relevant information into your EE Dump document under the appropriate subtopic heading, along with the source link. Every paste gets a link. Always.' },
-          { title: 'Level 2: Hit Google Scholar', text: 'Find peer-reviewed research that connects your topic to areas you hadn\'t considered. This is where your analysis gets its depth.' },
-          { title: 'Review and connect', text: 'After completing your dump, you\'ll be genuinely knowledgeable about your topic. The connections between subtopics are where your original analysis lives.' },
-        ],
-      },
-      {
-        type: 'heading',
-        text: "Example: John's Five Subtopics",
+        text: 'To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behavior during the 2024 US elections?',
       },
       {
         type: 'paragraph',
-        text: 'Using the sample RQ from Module 4, "To what extent can quantitative analysis of social media sentiment and engagement metrics explain variations in voter behaviour during the 2024 US elections?", here\'s how John divided his research:',
+        text: 'What are 5 different aspects we can delve into?',
       },
       {
-        type: 'icon-card',
-        icon: 'Brain',
-        title: '1. Quantitative Analysis Methods',
-        text: 'Methodology first, what statistical tools and frameworks exist for social media data analysis? Sentiment scoring, NLP models, correlation analysis.',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Search',
-        title: '2. Social Media Sentiment',
-        text: 'How is sentiment measured? What tools exist (VADER, TextBlob)? What does the research say about their accuracy and limitations?',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Zap',
-        title: '3. Engagement Metrics',
-        text: 'What counts as engagement? How do platforms measure it? What correlations have been found between engagement and real-world behavioural outcomes?',
-      },
-      {
-        type: 'icon-card',
-        icon: 'Target',
-        title: '4. Voter Behaviour Theory',
-        text: 'What psychological models explain voting decisions? How has the research on media influence on political behaviour evolved over time?',
-      },
-      {
-        type: 'icon-card',
-        icon: 'FileText',
-        title: '5. The 2024 US Elections',
-        text: 'Context, key issues, major platforms involved, demographic breakdowns, documented social media controversies, election data released post-election.',
-      },
-      {
-        type: 'heading',
-        text: 'The Dump Method in Detail',
-      },
-      {
-        type: 'numbered-steps',
+        type: 'list',
         items: [
-          'Retrieve, Search each subtopic on Google. Go through 5-10 relevant links per subtopic. Read, don\'t skim.',
-          'Dump, Copy the relevant information into your document under the appropriate heading, with the source link immediately after every entry.',
-          'Repeat on Google Scholar, Search narrowly for peer-reviewed papers on each subtopic. Read abstracts, introductions, and conclusions. If the paper doesn\'t directly relate to your RQ, discard it.',
-          'Connect, After completing all five subtopics, review the whole document looking for unexpected links between sections. These connections are your analysis.',
+          'Quantitative analysis (methodology)',
+          'Social media sentiment',
+          'Engagement metrics',
+          'Voter behaviour',
+          'The 2024 US elections',
         ],
+      },
+      {
+        type: 'paragraph',
+        text: 'So divide your EE into 5 different research points.',
       },
       {
         type: 'tip-box',
-        text: 'The EE Dump is also your reference system. Every piece of information in it has a source link attached. When you\'re writing and need to cite something, it\'s already there, you\'re not scrambling to find that article you read three weeks ago.',
+        text: "Note: this doesn't need to be perfect. It's just for research purposes and won't have any actual difference in your grade. Just roughly divide it into sections like you would a pizza.",
+      },
+      {
+        type: 'subheading',
+        text: 'How to EE research (The Dump Method)',
+      },
+      {
+        type: 'paragraph',
+        text: 'Step 1: Retrieve. Step 2: Dump.',
+      },
+      {
+        type: 'paragraph',
+        text: "Google every subtopic you've created and go through all the relevant info links on every topic. Read the information and then dump the relevant info into the file under the subheading along with the associated links.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Do this on Google and Google Scholar.',
+      },
+      {
+        type: 'paragraph',
+        text: "On Google you can find relevant articles, studies, papers, news, etc., and on Scholar you can find relevant studies done by experts that may link it to a new particular topic that you didn't realise had a connection to the topic at hand. This creates new links and new findings you can explore in your EE.",
       },
       {
         type: 'heading',
-        text: 'What Happens After the Dump',
+        text: 'Example of a dump from our question',
       },
       {
-        type: 'paragraph',
-        text: 'After completing your dump, you\'ll have something most students never have before they start writing: genuine knowledge of your topic. You won\'t need to keep scouring the internet mid-essay. You won\'t be unsure what to say. You\'ll have a structured body of knowledge to draw from.',
-      },
-      {
-        type: 'paragraph',
-        text: 'This is also the point where, if you want to make any changes to your research question based on what you\'ve found, you do it. After this, it\'s locked in. No more changes.',
+        type: 'subheading',
+        text: 'Voter behaviour',
       },
       {
         type: 'callout',
-        text: 'The interactive EE Dump Workspace on this site is built specifically for this process, add sources, organise by subtopic, and track your research all in one place.',
+        text: "Since the pioneer work by Campbell et al. on party identification, that is, on voting as the stable result of an identification process that dates back to developmental age and to family influences, several other explanations have been proposed. As we have seen in Section 1, the extension of rational choice theory from mathematics and economics to politics has led to the view of voting behavior as the outcome of a rational process.\n\nHowever, ideas of human rationality and utilitarian goals implied by this approach have been seriously challenged by subsequent psychological and empirical research on voting behavior. The main acquisitions of this research are summarized here.\n\nhttps://www.sciencedirect.com/topics/social-sciences/voting-behavior",
       },
       {
-        type: 'heading',
-        text: 'A Note on Source Discipline',
+        type: 'subheading',
+        text: 'Sociological model of voting behavior',
       },
       {
-        type: 'warning-box',
-        text: 'Never paste information into your dump without the source link immediately after. Not "I\'ll add it later", right now, same line. Your future self will be grateful every time. This is how you avoid citation panic when your bibliography is due.',
+        type: 'callout',
+        text: "The theoretical assumptions of the sociological model of voting behavior are defined in three essential works: The People's Choice (Lazarsfeld, Berelson, & Gaudet, 1944), Voting (Berelson, Lazarsfeld, & McPhee, 1954), and Personal Influence (Katz & Lazarsfeld, 1955).\n\nThe research conducted by Lazarsfeld et al. (1944) at Ohio State (Erie County), using a questionnaire as a technique of investigation for the first time in the study of a U.S. presidential election — one which opposed Franklin Roosevelt to Wendell Willkie in 1940 — cuts away from the type of methodological approach that had previously characterized the study of voting behavior.\n\nPaul Lazarsfeld, whose previous interests had focused on the study of the psychological mechanisms involved in the processes of choice and in the effects of publicity, advertising, and mass media on consumer behavior, had two main objectives in this research: to study the effects of exposure to the media, that is, to know how voters arrive at their decisions and the role of media in this process; and to test a new methodology of successive interviews with a panel of subjects and a control group.\n\nThe study, whose report was published under the title The People's Choice, begins by characterizing the supporters of the two main political parties in the U.S. using a panel of 600 subjects who were interviewed seven times over the seven months of the campaign. It then identifies the voters who changed their position during the campaign period, comparing three groups: those who decided their vote before the campaign began, those whose decision was taken during the party convention, and those who decided their vote only at an advanced stage of the campaign.\n\nhttps://www.researchgate.net/publication/242653736_Theoretical_models_of_voting_behaviour",
       },
       {
-        type: 'key-takeaway',
-        items: [
-          'Break your RQ into 5 subtopics before you start researching',
-          'Use both Google and Google Scholar, Level 1 and Level 2 research',
-          'There is no word limit, dump everything relevant, with source links',
-          'The connections between subtopics become your analysis',
-          'After the dump, lock in your final RQ, no more changes',
-        ],
+        type: 'paragraph',
+        text: "Again, very relevant information. So understand what your source is saying, copy and dump the important parts along with the link. Do this for as long as you can. There's no word limit for your EE dump and there's no such thing as too much information.",
+      },
+      {
+        type: 'tip-box',
+        text: "Side note: not only is this good information, but it also affirms the real-life validity of our research question. It talks about how “ideas of human rationality and utilitarian goals implied by this approach have been seriously challenged by subsequent psychological and empirical research on voting behavior,” which makes it very relevant to research this topic. Furthermore, “the extension of rational choice theory from mathematics and economics to politics has led to the view of voting behavior as the outcome of a rational process,” which again showcases the relevancy of our voting behaviour topic.",
+      },
+      {
+        type: 'paragraph',
+        text: "In simpler words, as you dump you should see similar works done by professors and grad students exploring similar connections in your topic of choice. It needn't always be the case, but it would make researching a lot easier.",
+      },
+      {
+        type: 'paragraph',
+        text: "Also, this doesn't mean you plagiarise an entire research paper from another professor because not only will you be penalized for doing so, you will also not get the best grade. The point of your EE is researching for a particular outcome. If that outcome has already been found, your research doesn't have value — it's just a bunch of Google articles reframed with some AI.",
+      },
+      {
+        type: 'paragraph',
+        text: 'You can access the EE Dump template to make the organisation easier down below.',
+      },
+      {
+        type: 'paragraph',
+        text: "After this, your main motive is to finish the dump. It's very informal but so helpful and fun. Not only can you stop scouring the internet for sources and more information while you start writing your essay — because you have all the information you need — but you can also be 10x more knowledgeable, have your EE make actual tangible sense, and be able to connect topics much easier.",
+      },
+      {
+        type: 'paragraph',
+        text: "I say this really meaningfully: after a certain point, researching the internet in the middle of writing your essay is not going to be productive. You can't write this like you would write your Lang & Lit Paper 1 essay, but with unlimited articles and an AI word jumbler.",
+      },
+      {
+        type: 'paragraph',
+        text: "After creating the EE Dump, this is where — if I wanted to make any changes to my research question — I would. After this it's one and done. No more changes.",
+      },
+      {
+        type: 'paragraph',
+        text: 'Your EE has to have a purpose if you want a good score.',
+      },
+      {
+        type: 'paragraph',
+        text: "And for a good score you need a system, so after this we're going to create our structure.",
       },
     ],
   },
