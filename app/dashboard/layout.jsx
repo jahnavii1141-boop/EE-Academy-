@@ -73,11 +73,11 @@ function MissionRow({ m, active, visited, hasPaid }) {
       className="flex items-center gap-2 px-3 py-[7px] rounded-lg text-[12.5px] transition-all mb-px"
       style={{
         background: active ? '#2E3250' : 'transparent',
-        color: active ? '#fff' : isPaidLocked ? '#9BAAB8' : '#555',
+        color: active ? '#fff' : '#555',
         textDecoration: 'none',
       }}
       onMouseEnter={e => { if (!active) { e.currentTarget.style.background = '#EAE8DC'; e.currentTarget.style.color = '#2E3250' } }}
-      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = isPaidLocked ? '#9BAAB8' : '#555' } }}
+      onMouseLeave={e => { if (!active) { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = '#555' } }}
     >
       {visited ? (
         <span className="w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0"
@@ -94,7 +94,7 @@ function MissionRow({ m, active, visited, hasPaid }) {
           FREE
         </span>
       ) : isPaidLocked ? (
-        <Lock className="flex-shrink-0" size={10} style={{ opacity: 0.7 }} />
+        <Lock className="flex-shrink-0" size={10} style={{ color: '#9BAAB8' }} />
       ) : null}
     </Link>
   )

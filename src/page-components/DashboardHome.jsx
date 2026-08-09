@@ -434,7 +434,7 @@ export default function DashboardHome() {
                 return (
                   <Link key={g.id} href={locked ? '/pricing' : `/course/${g.id}`}
                     className="flex items-center gap-3 px-5 py-3 transition-colors"
-                    style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(46,50,80,0.07)', textDecoration: 'none', color: locked ? '#9BAAB8' : '#2E3250' }}
+                    style={{ borderTop: i === 0 ? 'none' : '1px solid rgba(46,50,80,0.07)', textDecoration: 'none', color: '#2E3250' }}
                     onMouseEnter={e => { e.currentTarget.style.background = '#F4F3E8' }}
                     onMouseLeave={e => { e.currentTarget.style.background = 'transparent' }}>
                     {done ? (
@@ -449,7 +449,7 @@ export default function DashboardHome() {
                     {g.free ? (
                       <span className="text-[9px] font-bold px-1.5 py-0.5 rounded-full flex-shrink-0" style={{ background: '#f0fdf4', color: '#15803d' }}>FREE</span>
                     ) : locked ? (
-                      <Lock className="flex-shrink-0" size={12} style={{ opacity: 0.6 }} />
+                      <Lock className="flex-shrink-0" size={12} style={{ color: '#9BAAB8' }} />
                     ) : null}
                   </Link>
                 )

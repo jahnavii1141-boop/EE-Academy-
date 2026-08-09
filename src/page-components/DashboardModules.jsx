@@ -99,7 +99,7 @@ export default function DashboardModules() {
                     return (
                       <Link key={mod.id} href={`/course/${mod.id}`}
                         className="group flex items-center gap-4 px-4 py-3 rounded-xl transition-all"
-                        style={{ background: '#fff', border: '1px solid transparent', opacity: isLocked ? 0.75 : 1 }}
+                        style={{ background: '#fff', border: '1px solid transparent', opacity: 1 }}
                         onMouseEnter={e => { e.currentTarget.style.borderColor = '#e5e5e5'; e.currentTarget.style.background = '#fff' }}
                         onMouseLeave={e => { e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.background = '#fff' }}>
 

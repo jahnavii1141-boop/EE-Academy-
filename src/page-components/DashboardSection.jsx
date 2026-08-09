@@ -75,7 +75,7 @@ function SidebarTOC({ toc }) {
 
 function StepCard({ module, stepNumber, isLocked, isVisited, displayTitle }) {
   return (
-    <div id={slugify(module.title)} className={`rounded-2xl border p-6 transition-all ${isLocked ? 'border-navy/8 bg-white/40 opacity-75' : isVisited ? 'border-navy/12 bg-white/70' : 'border-navy/10 bg-white/60'}`}>
+    <div id={slugify(module.title)} className={`rounded-2xl border p-6 transition-all ${isVisited ? 'border-navy/12 bg-white/70' : 'border-navy/10 bg-white/60'}`}>
       <div className="flex items-center gap-3 mb-4">
         <span className="w-8 h-8 rounded-full bg-navy text-cream font-bold text-sm flex items-center justify-center flex-shrink-0">{stepNumber}</span>
         <span className="w-8 h-8 rounded-full bg-parchment text-navy font-serif font-bold text-xs flex items-center justify-center flex-shrink-0 border border-navy/10">{module.number}</span>
