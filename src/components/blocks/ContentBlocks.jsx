@@ -274,6 +274,16 @@ export function ProgressCheck({ moduleId, items }) {
   )
 }
 
+// ─── Code / copyable prompt — mono, boxed, preserves line breaks ──────────────
+export function CodeBlock({ text }) {
+  return (
+    <pre
+      className="my-6 rounded-lg p-4 overflow-x-auto text-[0.9rem] leading-[1.6] whitespace-pre-wrap break-words font-mono"
+      style={{ background: '#f5f5f2', border: '1px solid rgba(26,26,30,0.1)', color: INK }}
+    >{text}</pre>
+  )
+}
+
 // ─── Master switch ─────────────────────────────────────────────────────────────
 export default function ContentBlock({ block }) {
   switch (block.type) {
@@ -300,6 +310,7 @@ export default function ContentBlock({ block }) {
     case 'quote-highlight':  return <QuoteHighlight text={block.text} attribution={block.attribution} />
     case 'key-takeaway':     return <KeyTakeaway items={block.items} />
     case 'progress-check':   return <ProgressCheck moduleId={block.moduleId} items={block.items} />
+    case 'code':             return <CodeBlock text={block.text} />
     default:                 return null
   }
 }
