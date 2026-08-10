@@ -2,7 +2,6 @@ import { SignIn } from '@clerk/nextjs'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import BFCacheGuard from '@/components/BFCacheGuard'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
@@ -14,16 +13,19 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic'
 
-export default async function SignInPage() {
-  // Already signed in? Go straight to the dashboard — never show the form again.
-  const { userId } = await auth()
-  if (userId) redirect('/dashboard/home')
+export default async function SignInPage({ params }) {
+  // Only bounce already-signed-in users from the BASE /sign-in page. Do NOT run
+  // this on Clerk's OAuth callback sub-paths (/sign-in/sso-callback, /continue,
+  // …) or we'd interrupt the Google sign-in mid-flow and force a re-click.
+  const seg = (await params)?.['sign-in']
+  if (!seg || seg.length === 0) {
+    const { userId } = await auth()
+    if (userId) redirect('/dashboard/home')
+  }
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
-      {/* Re-run the server auth check if the browser restores this page from bfcache (Back button). */}
-      <BFCacheGuard />
       <CaptureOnMount event="signin_start" />
 
       {/* Site branding — makes clear which site this login belongs to */}

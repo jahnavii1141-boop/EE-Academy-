@@ -2,7 +2,6 @@ import { SignUp } from '@clerk/nextjs'
 import { auth } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import BFCacheGuard from '@/components/BFCacheGuard'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
@@ -14,20 +13,23 @@ export const metadata = {
 
 export const dynamic = 'force-dynamic'
 
-export default async function SignUpPage({ searchParams }) {
-  // Already signed in? Go straight to the dashboard — never show the form again.
-  const { userId } = await auth()
-  if (userId) redirect('/dashboard/home')
+export default async function SignUpPage({ params, searchParams }) {
+  // Only bounce already-signed-in users from the BASE /sign-up page. Do NOT run
+  // this on Clerk's OAuth callback sub-paths (/sign-up/sso-callback, /continue,
+  // …) or we'd interrupt the Google sign-up mid-flow and force a re-click.
+  const seg = (await params)?.['sign-up']
+  if (!seg || seg.length === 0) {
+    const { userId } = await auth()
+    if (userId) redirect('/dashboard/home')
+  }
 
   // ?email= can prefill the address so signup is one step.
-  const params = await searchParams
-  const email = typeof params?.email === 'string' ? params.email : undefined
+  const sp = await searchParams
+  const email = typeof sp?.email === 'string' ? sp.email : undefined
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 py-12" style={{ background: '#fafafa' }}>
 
-      {/* Re-run the server auth check if the browser restores this page from bfcache (Back button). */}
-      <BFCacheGuard />
       <CaptureOnMount event="signin_start" />
 
       {/* Site branding — makes clear which site this login belongs to */}
