@@ -3,7 +3,7 @@ import CaptureOnMount from '../../src/components/analytics/CaptureOnMount'
 
 export const metadata = {
   title: 'IB Extended Essay Course — Plans & Pricing',
-  description: 'Unlock the full IB Extended Essay system — 14 lessons, AI Grade Scan, planner, essay editor, and templates. One-time payment, lifetime access.',
+  description: 'Unlock the full IB Extended Essay system — 14 lessons, planner, essay editor, and templates. Yearly access.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }
 
@@ -13,7 +13,7 @@ const PRODUCT_JSON_LD = {
   '@context': 'https://schema.org',
   '@type': 'Product',
   name: 'The Extended Essay Academy',
-  description: 'The complete IB Extended Essay self-study system — 14 modules, planner, essay editor, research workspace, AI Grade Scan, and templates. Built by a 32/34 student.',
+  description: 'The complete IB Extended Essay self-study system — 14 lessons, planner, essay editor, research workspace, and templates. Built by a 32/34 student.',
   url: `${BASE}/pricing`,
   image: `${BASE}/feather-hero.png`,
   brand: {
@@ -25,7 +25,7 @@ const PRODUCT_JSON_LD = {
     {
       '@type': 'Offer',
       name: 'Standard',
-      description: '14-module EE curriculum, EE Planner, essay editor, research workspace, citation generator. One-time payment, lifetime access.',
+      description: '14-lesson EE curriculum, EE Planner, essay editor, research workspace, citation generator. Yearly access.',
       price: '79',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',
@@ -35,7 +35,7 @@ const PRODUCT_JSON_LD = {
     {
       '@type': 'Offer',
       name: 'Premium',
-      description: 'Everything in Standard plus AI Grade Scan (criteria-by-criteria), Polish Pass, Supervisor Reply Drafter, and all templates. One-time payment, lifetime access.',
+      description: 'Everything in Standard plus Polish Pass, Supervisor Reply Drafter, and all templates. Yearly access.',
       price: '149',
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock',

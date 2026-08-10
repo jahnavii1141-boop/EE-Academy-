@@ -12,17 +12,16 @@ const MotionDiv = motion.div
 
 // ── Features per tier ────────────────────────────────────────────────────────
 const METHOD_FEATURES = [
-  '14-mission EE curriculum',
+  '14-lesson EE curriculum',
   'EE Planner — week-by-week timeline',
   'Research Question Checker',
   'Essay editor with autosave',
   'Citation generator',
-  'One-time payment · lifetime access',
+  'Yearly access',
 ]
 
 const METHOD_AI_FEATURES = [
   'Everything in Standard',
-  'AI Grade Scan — criteria-by-criteria',
   'Polish Pass — language & argument tightening',
   'Supervisor Reply Drafter',
   'All templates & SOPs (downloadable)',
@@ -134,7 +133,7 @@ export default function Pricing() {
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-navy">${PRICING.method.price}</span>
               </div>
-              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>one-time · lifetime access</p>
+              <p className="text-[12px] mb-5" style={{ color: '#aaa' }}>yearly access</p>
               <ul className="space-y-2.5 mb-8">
                 {METHOD_FEATURES.map((f, i) => <CheckItem key={i} text={f} />)}
               </ul>
@@ -166,7 +165,7 @@ export default function Pricing() {
               <div className="flex items-end gap-1.5 mb-0.5">
                 <span className="text-4xl font-serif font-bold text-white">${PRICING.methodAI.price}</span>
               </div>
-              <p className="text-[12px] mb-5" style={{ color: 'rgba(255,255,255,0.4)' }}>one-time · lifetime access</p>
+              <p className="text-[12px] mb-5" style={{ color: 'rgba(255,255,255,0.4)' }}>yearly access</p>
               <ul className="space-y-2.5 mb-8">
                 {METHOD_AI_FEATURES.map((f, i) => <CheckItem key={i} text={f} light />)}
               </ul>

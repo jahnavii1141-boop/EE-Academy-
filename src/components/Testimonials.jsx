@@ -92,7 +92,7 @@ export default function Testimonials() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <TrustCard stat="32/34" label="The essay this is built from" />
             <TrustCard stat="14" label="Modules — complete curriculum" />
-            <TrustCard stat="Lifetime" label="Access — one-time payment" />
+            <TrustCard stat="Yearly" label="Full access" />
             <TrustCard stat="30-Day" label="Money-Back Guarantee" />
           </div>
         </AnimateIn>

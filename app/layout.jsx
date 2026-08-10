@@ -25,22 +25,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <head>
-        <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
-        <script dangerouslySetInnerHTML={{ __html: `
-            window.__paddleToken = '${process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN}';
-            function __initPaddle() {
-              if (window.__paddleInitialized) return;
-              Paddle.Initialize({ token: window.__paddleToken });
-              window.__paddleInitialized = true;
-            }
-            if (typeof Paddle !== 'undefined') {
-              __initPaddle();
-            } else {
-              document.querySelector('script[src*="paddle.js"]').addEventListener('load', __initPaddle);
-            }
-          `}} />
-      </head>
+      {/* Paddle is loaded lazily via src/lib/paddle.js only when checkout opens
+          (on /pricing), so it no longer blocks first paint on every page. */}
       <body>
         <ClerkProvider
           signInFallbackRedirectUrl="/dashboard/home"

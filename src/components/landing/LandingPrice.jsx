@@ -27,7 +27,7 @@ export default function LandingPrice() {
         </div>
 
         <p className="text-sm text-ink-soft mt-4">
-          Paid once. Lifetime access, including the 2027 guide updates.{' '}
+          Yearly access, including the 2027 guide updates.{' '}
           <Link href="/pricing" className="underline underline-offset-2 hover:text-navy">Compare plans →</Link>
         </p>
 

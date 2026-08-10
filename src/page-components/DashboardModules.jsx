@@ -80,7 +80,7 @@ export default function DashboardModules() {
                   <div className="mb-3 flex items-center justify-between gap-4 px-4 py-3 rounded-xl"
                     style={{ background: '#2E3250' }}>
                     <p className="text-xs font-semibold" style={{ color: '#F4F3E8' }}>
-                      Unlock everything below — one payment, lifetime access.
+                      Unlock everything below — yearly access.
                     </p>
                     <Link href="/pricing"
                       className="text-xs font-semibold px-4 py-2 rounded-lg flex-shrink-0"
@@ -165,7 +165,7 @@ export default function DashboardModules() {
             style={{ background: '#fff', border: '1px solid #e8e8e8' }}>
             <div>
               <p className="text-sm font-medium mb-0.5" style={{ color: '#2E3250' }}>Unlock all 14 guides</p>
-              <p className="text-xs" style={{ color: '#aaa' }}>One-time, lifetime access. 30-day guarantee.</p>
+              <p className="text-xs" style={{ color: '#aaa' }}>Yearly access. 30-day guarantee.</p>
             </div>
             <Link href="/pricing"
               className="text-xs font-semibold px-4 py-2 rounded-lg flex-shrink-0 transition-all"

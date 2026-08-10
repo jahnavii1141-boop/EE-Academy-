@@ -9,11 +9,10 @@ import SEOHead from '../components/SEOHead'
 // ── Three pillars comparison ─────────────────────────────────────────────────
 const COMPARISON = [
   // [label, standard, premium]
-  ['14-module EE curriculum',            true,  true],
+  ['14-lesson EE curriculum',            true,  true],
   ['EE Planner + RQ Checker',            true,  true],
   ['Essay editor (autosave + share)',     true,  true],
   ['Citation generator',                  true,  true],
-  ['AI Grade Scan (criteria by criteria)',false, true],
   ['Polish Pass + Supervisor Reply tool', false, true],
   ['32/34 essay + full analysis',         false, true],
   ['All templates & SOPs',               false, true],
@@ -23,23 +22,23 @@ const COMPARISON = [
 const FAQ_ITEMS = [
   {
     q: 'Can I try before buying?',
-    a: 'Yes — your first modules are included. Start at the dashboard and access them immediately.',
+    a: 'Yes — your first lessons are included. Start at the dashboard and access them immediately.',
   },
   {
     q: "What's the difference between Standard and Premium?",
-    a: 'Standard is the full 14-module curriculum plus planning and writing tools. Premium adds the AI Grade Scan (which reads your draft against the actual IB criteria and tells you exactly where you\'re losing marks), the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
+    a: 'Standard is the full 14-lesson curriculum plus planning and writing tools. Premium adds the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
   },
   {
     q: "What if it doesn't help me?",
-    a: 'You have 30 days to request a full refund. Go through the modules — if the system genuinely doesn\'t help you, email us and we\'ll sort it same day, no forms.',
+    a: 'You have 30 days to request a full refund. Go through the lessons — if the system genuinely doesn\'t help you, email us and we\'ll sort it same day, no forms.',
   },
   {
     q: 'Is this a subscription?',
-    a: 'No. Standard and Premium are one-time payments with lifetime access. No recurring fees.',
+    a: 'Access is yearly — a full year of the complete system.',
   },
   {
     q: 'Is this up to date with the current IB syllabus?',
-    a: 'Yes. The curriculum reflects the current IB Extended Essay guide and assessment criteria. The 32/34 essay analysed in Module 13 was submitted in May 2025.',
+    a: 'Yes. The curriculum reflects the current IB Extended Essay guide and assessment criteria. The 32/34 essay analysed in Guide 13 was submitted in May 2025.',
   },
 ]
 
@@ -73,7 +72,7 @@ export default function PricingPage() {
     <div className="min-h-screen bg-cream">
       <SEOHead
         title="IB Extended Essay Course Pricing — Standard & Premium | EE Academy"
-        description="Two tiers, one system. Standard $79 · Premium $149 — one-time, lifetime access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
+        description="Two tiers, one system. Standard $79 · Premium $149 — yearly access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
         canonical="/pricing"
       />
 
