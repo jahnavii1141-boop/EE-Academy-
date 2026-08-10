@@ -18,7 +18,8 @@ export default async function SignInPage({ params }) {
   // this on Clerk's OAuth callback sub-paths (/sign-in/sso-callback, /continue,
   // …) or we'd interrupt the Google sign-in mid-flow and force a re-click.
   const seg = (await params)?.['sign-in']
-  if (!seg || seg.length === 0) {
+  const isCallback = !!(seg && seg.length > 0) // Clerk OAuth callback / continue sub-path
+  if (!isCallback) {
     const { userId } = await auth()
     if (userId) redirect('/dashboard/home')
   }
@@ -28,18 +29,24 @@ export default async function SignInPage({ params }) {
 
       <CaptureOnMount event="signin_start" />
 
-      {/* Site branding — makes clear which site this login belongs to */}
-      <div className="mb-8 flex flex-col items-center gap-3">
-        <Link href="/" className="flex items-center gap-2.5">
-          <img src="/feather-nav.png" alt="The Extended Essay Academy" style={{ height: 40, width: 'auto' }} />
-          <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em' }}>
-            The Extended Essay Academy
-          </span>
-        </Link>
-        <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 280 }}>
-          Sign in to access your dashboard, guides, and EE tools.
-        </p>
-      </div>
+      {/* Returning from Google (callback): show a quiet "signing you in" while
+          Clerk finishes — NOT the "sign in to access" copy, which reads like a
+          fresh login prompt even though the user just authenticated. */}
+      {isCallback ? (
+        <p className="mb-8 text-sm" style={{ color: '#888' }}>Signing you in…</p>
+      ) : (
+        <div className="mb-8 flex flex-col items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src="/feather-nav.png" alt="The Extended Essay Academy" style={{ height: 40, width: 'auto' }} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+              The Extended Essay Academy
+            </span>
+          </Link>
+          <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 280 }}>
+            Sign in to access your dashboard, guides, and EE tools.
+          </p>
+        </div>
+      )}
 
       <SignIn
         routing="path"

@@ -18,7 +18,8 @@ export default async function SignUpPage({ params, searchParams }) {
   // this on Clerk's OAuth callback sub-paths (/sign-up/sso-callback, /continue,
   // …) or we'd interrupt the Google sign-up mid-flow and force a re-click.
   const seg = (await params)?.['sign-up']
-  if (!seg || seg.length === 0) {
+  const isCallback = !!(seg && seg.length > 0) // Clerk OAuth callback / continue sub-path
+  if (!isCallback) {
     const { userId } = await auth()
     if (userId) redirect('/dashboard/home')
   }
@@ -32,18 +33,23 @@ export default async function SignUpPage({ params, searchParams }) {
 
       <CaptureOnMount event="signin_start" />
 
-      {/* Site branding — makes clear which site this login belongs to */}
-      <div className="mb-8 flex flex-col items-center gap-3">
-        <Link href="/" className="flex items-center gap-2.5">
-          <img src="/feather-nav.png" alt="The Extended Essay Academy" style={{ height: 40, width: 'auto' }} />
-          <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em' }}>
-            The Extended Essay Academy
-          </span>
-        </Link>
-        <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 300 }}>
-          Create your free account and start the EE system.
-        </p>
-      </div>
+      {/* Returning from Google (callback): quiet "signing you in" instead of the
+          "create your account" copy, which reads like a fresh prompt post-auth. */}
+      {isCallback ? (
+        <p className="mb-8 text-sm" style={{ color: '#888' }}>Signing you in…</p>
+      ) : (
+        <div className="mb-8 flex flex-col items-center gap-3">
+          <Link href="/" className="flex items-center gap-2.5">
+            <img src="/feather-nav.png" alt="The Extended Essay Academy" style={{ height: 40, width: 'auto' }} />
+            <span style={{ fontFamily: 'Georgia, serif', fontSize: 18, fontWeight: 600, color: '#0a0a0a', letterSpacing: '-0.01em' }}>
+              The Extended Essay Academy
+            </span>
+          </Link>
+          <p style={{ fontSize: 13, color: '#888', textAlign: 'center', maxWidth: 300 }}>
+            Create your free account and start the EE system.
+          </p>
+        </div>
+      )}
 
       <SignUp
         routing="path"
