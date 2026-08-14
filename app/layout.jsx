@@ -25,9 +25,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      {/* Paddle is loaded lazily via src/lib/paddle.js only when checkout opens
-          (on /pricing), so it no longer blocks first paint on every page. */}
+      {/* Paddle stays lazy-loaded via src/lib/paddle.js, only on checkout. */}
       <body>
+        {/* Google AdSense loader — React 19 hoists this async <script> into <head>
+            on every page. `async` keeps it non-blocking (won't slow first paint). */}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8652560449719165"
+          crossOrigin="anonymous"
+        />
         <ClerkProvider
           signInFallbackRedirectUrl="/dashboard/home"
           signUpFallbackRedirectUrl="/dashboard/home"
