@@ -1,6 +1,7 @@
 import { ClerkProvider } from '@clerk/nextjs'
 import ConditionalShell from '../src/components/ConditionalShell'
 import PostHogProvider from '../src/components/PostHogProvider'
+import AdSense from '../src/components/AdSense'
 import '../src/index.css'
 
 export const metadata = {
@@ -27,13 +28,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       {/* Paddle stays lazy-loaded via src/lib/paddle.js, only on checkout. */}
       <body>
-        {/* Google AdSense loader — React 19 hoists this async <script> into <head>
-            on every page. `async` keeps it non-blocking (won't slow first paint). */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8652560449719165"
-          crossOrigin="anonymous"
-        />
+        {/* AdSense loader — public/SEO pages only; course + dashboard stay ad-free. */}
+        <AdSense />
         <ClerkProvider
           signInFallbackRedirectUrl="/dashboard/home"
           signUpFallbackRedirectUrl="/dashboard/home"
