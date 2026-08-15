@@ -3,7 +3,10 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 const isProtectedRoute = createRouteMatcher([
   // /course/* and /dashboard/* are accessible without Clerk — free email gate is in dashboard layout
   // Paid content is stripped server-side in app/course/[moduleId]/page.jsx via resolveCourseAccess
-  '/dump(.*)',
+  // NOTE: /dump is intentionally PUBLIC — DumpWorkspacePage runs a no-account
+  // localStorage mode (first 7 sources free, then a paywall), so a reader who
+  // arrives mid-research from a guide can use the tool without signing up. The
+  // /api/dump route still guards itself server-side (401 without a userId).
   '/planner(.*)',
   '/study-calendar(.*)',
   '/onboarding(.*)',

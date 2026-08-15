@@ -12,6 +12,16 @@ export default function GuidePage({
   faqItems = [],
 }) {
   const canonicalUrl = canonical || 'https://theextendedessay.com/guides'
+
+  // One CTA per guide, at the very end — nothing mid-read. Session replays showed
+  // people reading deeply, and inline boxes pulled them out mid-paragraph. Strip
+  // any inline cta-box blocks and reuse their intent to pick the single end CTA:
+  // research-oriented guides send the reader into the EE Dump (which works with
+  // no account — first sources free), the rest into free lesson 1.
+  const articleContent = content.filter((b) => b?.type !== 'cta-box')
+  const ctaToDump = content.some(
+    (b) => b?.type === 'cta-box' && (b.href || '').includes('dump'),
+  )
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Article',
@@ -86,7 +96,7 @@ export default function GuidePage({
       {/* Content */}
       <div className="max-w-3xl mx-auto px-6 pt-12 pb-20">
         <article>
-          <ContentRenderer content={content} />
+          <ContentRenderer content={articleContent} />
         </article>
 
         {/* Author byline */}
@@ -100,14 +110,24 @@ export default function GuidePage({
           </div>
         </div>
 
-        {/* Single in-content CTA — into the course itself, not pricing or signup. */}
-        <div className="my-10 rounded-2xl bg-navy text-center p-8">
-          <h3 className="font-serif text-xl font-bold text-cream mb-2">Read the course, free</h3>
-          <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
-            The first five lessons are open — no account needed. Start with lesson 1 and follow one real essay from research question to final draft.
-          </p>
-          <Link href="/course/module-1" className="btn-primary-light text-sm">Start lesson 1 →</Link>
-        </div>
+        {/* The single end-of-article CTA — no account required either way. */}
+        {ctaToDump ? (
+          <div className="my-10 rounded-2xl bg-navy text-center p-8">
+            <h3 className="font-serif text-xl font-bold text-cream mb-2">Build your research dump — free</h3>
+            <p className="text-steel text-sm mb-6 max-w-md mx-auto">
+              The tool behind a 32/34 essay: paste a quote, tag the subtopic, note the source — it builds your MLA bibliography as you go. Your first sources are free, no account needed.
+            </p>
+            <Link href="/dump" className="btn-primary-light text-sm">Open the EE Dump →</Link>
+          </div>
+        ) : (
+          <div className="my-10 rounded-2xl bg-navy text-center p-8">
+            <h3 className="font-serif text-xl font-bold text-cream mb-2">Read the course, free</h3>
+            <p className="text-steel text-sm mb-6 max-w-sm mx-auto">
+              The first five lessons are open — no account needed. Start with lesson 1 and follow one real essay from research question to final draft.
+            </p>
+            <Link href="/course/module-1" className="btn-primary-light text-sm">Start lesson 1 →</Link>
+          </div>
+        )}
 
         {/* Related Guides */}
         {relatedGuides.length > 0 && (

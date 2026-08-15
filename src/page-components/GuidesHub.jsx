@@ -120,12 +120,9 @@ export default function GuidesHub() {
         <div className="mt-16 rounded-2xl bg-navy text-center px-8 py-10">
           <h2 className="font-serif text-2xl font-bold text-cream mb-2">Want the full system?</h2>
           <p className="text-steel text-sm mb-6 max-w-md mx-auto">
-            These guides cover the concepts. The full 14-module course gives you the structured path, tools, and AI grade scan to actually do it.
+            These guides cover the concepts. The full 14-lesson course walks you through one real 32/34 essay, step by step — the first five lessons are open, no account needed.
           </p>
-          <div className="flex items-center justify-center gap-3 flex-wrap">
-            <Link href="/dashboard" className="btn-primary-light text-sm">Start free</Link>
-            <Link href="/dashboard/home" className="btn-outline-light text-sm">Start free</Link>
-          </div>
+          <Link href="/course/module-1" className="btn-primary-light text-sm">Start lesson 1 →</Link>
         </div>
       </section>
     </main>
