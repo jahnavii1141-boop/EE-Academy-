@@ -10,7 +10,9 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
-      { source: '/dump', destination: '/dashboard/dump', permanent: true },
+      // /dump is intentionally NOT redirected — it serves the public, no-account
+      // EE Dump (app/dump/page.jsx). /dashboard/dump renders the same tool inside
+      // the app shell for signed-in navigation.
       { source: '/planner', destination: '/dashboard/planner', permanent: true },
     ]
   },
