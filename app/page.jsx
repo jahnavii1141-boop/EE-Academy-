@@ -61,26 +61,15 @@ const COURSE_JSON_LD = {
     { '@type': 'CourseUnit', position: 12, name: 'Guide 13 — Open the 32/34 Essay',          url: `${BASE}/course/module-13` },
     { '@type': 'CourseUnit', position: 13, name: 'Guide 14 — The Armoury',                                       url: `${BASE}/course/module-14` },
   ],
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'Standard — Full Course Access',
-      price: '79',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: `${BASE}/pricing`,
-      category: 'online course',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Premium — Full Course + Tools',
-      price: '149',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: `${BASE}/pricing`,
-      category: 'online course',
-    },
-  ],
+  offers: {
+    '@type': 'Offer',
+    name: 'The full course',
+    price: '79',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: `${BASE}/pricing`,
+    category: 'online course',
+  },
 }
 
 // ── FAQ schema — matches the visible landing FAQ ──────────────────────────────

@@ -184,7 +184,7 @@ function PaywallBanner({ isPremiumOnly, isSignedIn, moduleId }) {
             {isPremiumOnly ? 'See Premium →' : 'See plans →'}
           </Link>
         </div>
-        <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Yearly access</p>
+        <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Lifetime access</p>
       </div>
     </div>
   )

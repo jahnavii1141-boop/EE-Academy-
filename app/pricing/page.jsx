@@ -2,8 +2,8 @@ import PricingPage from '../../src/page-components/PricingPage'
 import CaptureOnMount from '../../src/components/analytics/CaptureOnMount'
 
 export const metadata = {
-  title: 'IB Extended Essay Course — Plans & Pricing',
-  description: 'Unlock the full IB Extended Essay system — 14 lessons, planner, essay editor, and templates. Yearly access.',
+  title: 'IB Extended Essay Course — Pricing',
+  description: 'The full IB Extended Essay system — 14 lessons, planner, essay editor, and templates. $79 one-time, lifetime access.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }
 
@@ -21,28 +21,16 @@ const PRODUCT_JSON_LD = {
     name: 'The Extended Essay Academy',
     url: BASE,
   },
-  offers: [
-    {
-      '@type': 'Offer',
-      name: 'Standard',
-      description: '14-lesson EE curriculum, EE Planner, essay editor, research workspace, citation generator. Yearly access.',
-      price: '79',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: `${BASE}/pricing`,
-      priceValidUntil: '2026-12-31',
-    },
-    {
-      '@type': 'Offer',
-      name: 'Premium',
-      description: 'Everything in Standard plus Polish Pass, Supervisor Reply Drafter, and all templates. Yearly access.',
-      price: '149',
-      priceCurrency: 'USD',
-      availability: 'https://schema.org/InStock',
-      url: `${BASE}/pricing`,
-      priceValidUntil: '2026-12-31',
-    },
-  ],
+  offers: {
+    '@type': 'Offer',
+    name: 'The full course',
+    description: 'The complete 14-lesson EE system — curriculum, planner, essay editor, research workspace, citation generator, templates & SOPs, and the full 32/34 essay breakdown. One-time payment, lifetime access.',
+    price: '79',
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: `${BASE}/pricing`,
+    priceValidUntil: '2026-12-31',
+  },
 }
 
 export default function Pricing() {

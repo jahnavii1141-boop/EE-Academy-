@@ -91,7 +91,7 @@ export async function GET(request) {
         await sendEmail({
           apiKey,
           to: sub.email,
-          subject: "One week in \u2014 here's what Standard unlocks",
+          subject: "One week in \u2014 here's what the full course unlocks",
           html: day7Html(sub.email),
         })
         await supabase

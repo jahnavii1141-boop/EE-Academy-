@@ -6,27 +6,11 @@ import AnimateIn from '../components/ui/AnimateIn'
 import Pricing from '../components/Pricing'
 import SEOHead from '../components/SEOHead'
 
-// ── Three pillars comparison ─────────────────────────────────────────────────
-const COMPARISON = [
-  // [label, standard, premium]
-  ['14-lesson EE curriculum',            true,  true],
-  ['EE Planner + RQ Checker',            true,  true],
-  ['Essay editor (autosave + share)',     true,  true],
-  ['Citation generator',                  true,  true],
-  ['Polish Pass + Supervisor Reply tool', false, true],
-  ['32/34 essay + full analysis',         false, true],
-  ['All templates & SOPs',               false, true],
-]
-
 // ── FAQ ──────────────────────────────────────────────────────────────────────
 const FAQ_ITEMS = [
   {
     q: 'Can I try before buying?',
-    a: 'Yes — your first lessons are included. Start at the dashboard and access them immediately.',
-  },
-  {
-    q: "What's the difference between Standard and Premium?",
-    a: 'Standard is the full 14-lesson curriculum plus planning and writing tools. Premium adds the Polish Pass, the Supervisor Reply Drafter, and all downloadable templates.',
+    a: 'Yes — your first lessons are free to read, no account needed. Start at lesson 1 and access them immediately.',
   },
   {
     q: "What if it doesn't help me?",
@@ -34,7 +18,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'Is this a subscription?',
-    a: 'Access is yearly — a full year of the complete system.',
+    a: 'No — it\'s a one-time payment with lifetime access. Pay once, keep it.',
   },
   {
     q: 'Is this up to date with the current IB syllabus?',
@@ -56,23 +40,12 @@ function FAQItem({ q, a }) {
   )
 }
 
-function Tick({ yes, hero }) {
-  if (!yes) return <span style={{ color: '#ddd' }}>—</span>
-  return (
-    <svg className="w-4 h-4 inline" viewBox="0 0 16 16" fill="none">
-      <circle cx="8" cy="8" r="8" fill={hero ? '#0a0a0a' : '#0a0a0a'} fillOpacity={hero ? 1 : 0.08} />
-      <path d="M5 8l2 2 4-4" stroke={hero ? '#fff' : '#0a0a0a'}
-        strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
-  )
-}
-
 export default function PricingPage() {
   return (
     <div className="min-h-screen bg-cream">
       <SEOHead
-        title="IB Extended Essay Course Pricing — Standard & Premium | EE Academy"
-        description="Two tiers, one system. Standard $79 · Premium $149 — yearly access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
+        title="IB Extended Essay Course Pricing — The Full Course | EE Academy"
+        description="One price, the whole system. $79 one-time — lifetime access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
         canonical="/pricing"
       />
 
@@ -80,11 +53,11 @@ export default function PricingPage() {
       <div className="max-w-3xl mx-auto px-6 pt-16 pb-4 text-center">
         <AnimateIn>
           <h1 className="font-serif text-4xl lg:text-5xl font-bold text-navy mb-4">
-            Pick the help you want.
+            One price. The whole system.
           </h1>
           <p className="text-lg text-ink-soft max-w-xl mx-auto">
-            The same 14-module system at every tier — choose how much support you want on top of it.
-            Start today, unlock when you're ready.
+            Everything from research question to final draft, built from a real 32/34 essay.
+            The first lessons are free — no account needed to read them.
           </p>
         </AnimateIn>
       </div>
@@ -108,29 +81,6 @@ export default function PricingPage() {
 
       {/* ── 3-column pricing grid ── */}
       <Pricing />
-
-      {/* ── What's included comparison ── */}
-      <div className="max-w-3xl mx-auto px-6 pb-10">
-        <AnimateIn>
-          <h2 className="font-serif text-xl font-bold text-navy mb-4">What's included</h2>
-          <div className="rounded-2xl border border-navy/10 bg-white overflow-hidden">
-            {/* Header */}
-            <div className="grid grid-cols-3 text-[11px] font-semibold uppercase tracking-widest
-              px-5 py-3 border-b border-navy/8" style={{ color: '#aaa', background: '#fafafa' }}>
-              <span className="col-span-1" />
-              <span className="text-center">Standard</span>
-              <span className="text-center" style={{ color: '#0a0a0a' }}>Premium</span>
-            </div>
-            {COMPARISON.map(([label, standard, premium], i) => (
-              <div key={i} className="grid grid-cols-3 px-5 py-3 border-b border-navy/6 last:border-0 text-sm items-center">
-                <span className="text-navy/80 col-span-1 pr-4">{label}</span>
-                <span className="text-center"><Tick yes={standard} /></span>
-                <span className="text-center"><Tick yes={premium} hero /></span>
-              </div>
-            ))}
-          </div>
-        </AnimateIn>
-      </div>
 
       {/* ── FAQ ── */}
       <div className="max-w-2xl mx-auto px-6 pb-20">

@@ -70,7 +70,7 @@ function day3Html(email) {
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If you want to go deeper — Modules 4–9 cover the full research and writing process,
-        including how a real 32/34 essay was structured. That's in Standard ($79, one-time).
+        including how a real 32/34 essay was structured. That's in the full course ($79, one-time).
       </p>
       <a href="https://theextendedessay.com/pricing"
         style="font-size:14px;color:#0a0a0a;border-bottom:1px solid #0a0a0a;text-decoration:none">
@@ -95,7 +95,7 @@ function day7Html(email) {
         One week in. Straight talk — the free modules give you the foundation,
         but most students who score well have a clear system for the research and writing phases.
       </p>
-      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What Standard unlocks ($79, one-time):</strong></p>
+      <p style="font-size:15px;line-height:1.7;margin:0 0 8px"><strong>What the full course unlocks ($79, one-time):</strong></p>
       <ul style="font-size:15px;line-height:1.8;margin:0 0 24px;padding-left:20px;color:#333">
         <li>Modules 4–9 (research, argument, structure, writing)</li>
         <li>EE Planner + Research Question Checker</li>
@@ -105,7 +105,7 @@ function day7Html(email) {
       <a href="https://theextendedessay.com/pricing"
         style="display:inline-block;background:#0a0a0a;color:#fff;text-decoration:none;
                padding:12px 24px;border-radius:8px;font-size:14px;font-weight:600;margin-bottom:28px">
-        Unlock Standard — $79 →
+        Get the full course — $79 →
       </a>
       <p style="font-size:15px;line-height:1.7;margin:0 0 20px">
         If now's not the right time, no pressure — your free access stays forever.
