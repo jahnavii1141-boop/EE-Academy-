@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import AnimateIn from '../components/ui/AnimateIn'
 import Pricing from '../components/Pricing'
+import PricingTools from '../components/PricingTools'
 import SEOHead from '../components/SEOHead'
 
 // ── FAQ ──────────────────────────────────────────────────────────────────────
@@ -79,7 +80,10 @@ export default function PricingPage() {
         </AnimateIn>
       </div>
 
-      {/* ── 3-column pricing grid ── */}
+      {/* ── What you get access to (product tour, above the price card) ── */}
+      <PricingTools />
+
+      {/* ── Price card ── */}
       <Pricing />
 
       {/* ── FAQ ── */}
