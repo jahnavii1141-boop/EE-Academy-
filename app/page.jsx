@@ -64,7 +64,7 @@ const COURSE_JSON_LD = {
   offers: {
     '@type': 'Offer',
     name: 'The full course',
-    price: '79',
+    price: '89',
     priceCurrency: 'USD',
     availability: 'https://schema.org/InStock',
     url: `${BASE}/pricing`,

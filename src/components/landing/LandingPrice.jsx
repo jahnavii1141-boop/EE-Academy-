@@ -14,7 +14,7 @@ export default function LandingPrice() {
             <p className="font-semibold text-navy">The full course</p>
             <p className="text-sm text-ink-soft mt-0.5">The complete 14-lesson system, plus the tools and templates.</p>
           </div>
-          <p className="font-serif text-2xl font-bold text-navy">$79</p>
+          <p className="font-serif text-2xl font-bold text-navy">$89</p>
         </div>
 
         <p className="text-sm text-ink-soft mt-4">

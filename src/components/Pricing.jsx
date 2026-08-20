@@ -7,7 +7,7 @@ import AnimateIn from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 import { getPaddle } from '../lib/paddle'
 
-// ── The full course ($79) — single tier ──────────────────────────────────────
+// ── The full course ($89) — single tier ──────────────────────────────────────
 const COURSE_FEATURES = [
   '14-lesson EE curriculum',
   'Essay editor with autosave',
