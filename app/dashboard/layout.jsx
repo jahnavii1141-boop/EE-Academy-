@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import {
   Home, Database, Calendar, FileText, BookOpen, Share2, PenLine,
-  MessageSquare, ChevronDown, ChevronUp, X, Award, Lock, GitBranch,
+  MessageSquare, ChevronDown, ChevronUp, X, Award, Lock, GitBranch, CalendarDays,
 } from 'lucide-react'
 import { getTheme } from '@/lib/subjectThemes'
 import { useModuleProgress } from '@/hooks/useModuleProgress'
@@ -55,6 +55,7 @@ const NAV_TOOLS = [
   { id: 'dump',      label: 'EE Dump',    icon: Database,  href: '/dashboard/dump' },
   { id: 'planner',   label: 'EE Planner', icon: Calendar,  href: '/dashboard/planner', isFree: true },
   { id: 'tools',     label: 'EE Pathway Finder', icon: GitBranch, href: '/dashboard/tools', isFree: true },
+  { id: 'study-calendar', label: 'Study Calendar', icon: CalendarDays, href: '/study-calendar', isFree: true },
   { id: 'templates', label: 'Templates',  icon: FileText,  href: '/dashboard/templates' },
 ]
 
