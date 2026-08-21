@@ -73,7 +73,7 @@ export default function GuidesHub() {
   return (
     <main className="min-h-screen bg-cream">
       <SEOHead
-        title="IB Extended Essay Guides — Free Resources | The Extended Essay Academy"
+        title="IB Extended Essay Guides — Free Resources"
         description={`${totalGuides} free IB Extended Essay guides on research questions, structure, criteria, subject choices, formatting, and writing strategy.`}
         canonical="/guides"
       />

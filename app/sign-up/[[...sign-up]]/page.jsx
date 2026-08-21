@@ -5,7 +5,7 @@ import Link from 'next/link'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
-  title: 'Create Account | The Extended Essay Academy',
+  title: 'Create Account',
   description: 'Create a free account on The Extended Essay Academy and start your IB Extended Essay with a proven 32/34 system.',
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://theextendedessay.com/sign-up' },

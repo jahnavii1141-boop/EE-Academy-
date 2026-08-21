@@ -5,7 +5,7 @@ import Link from 'next/link'
 import CaptureOnMount from '@/components/analytics/CaptureOnMount'
 
 export const metadata = {
-  title: 'Sign In | The Extended Essay Academy',
+  title: 'Sign In',
   description: 'Sign in to your Extended Essay Academy account to access your course, dashboard, and EE tools.',
   robots: { index: false, follow: false },
   alternates: { canonical: 'https://theextendedessay.com/sign-in' },

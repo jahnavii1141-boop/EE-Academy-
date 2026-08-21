@@ -7,7 +7,7 @@ import '../src/index.css'
 export const metadata = {
   title: {
     default: 'The Extended Essay Academy',
-    template: '%s | The Extended Essay Academy',
+    template: '%s',
   },
   description: 'Learn the IB Extended Essay step-by-step with a self-study programme built from a real 32/34 Extended Essay.',
   metadataBase: new URL('https://theextendedessay.com'),

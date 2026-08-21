@@ -1,6 +1,6 @@
 import RefundPolicy from '../../src/page-components/RefundPolicy'
 export const metadata = {
-  title: 'Refund Policy | The Extended Essay Academy',
+  title: 'Refund Policy',
   description: 'Read the Refund Policy for The Extended Essay Academy.',
   alternates: { canonical: 'https://theextendedessay.com/refund' },
 }

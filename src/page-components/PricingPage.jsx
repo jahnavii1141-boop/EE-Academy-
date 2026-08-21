@@ -45,7 +45,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-cream">
       <SEOHead
-        title="IB Extended Essay Course Pricing — The Full Course | EE Academy"
+        title="IB Extended Essay Course Pricing — The Full Course"
         description="One price, the whole system. $89 one-time — lifetime access. Built from a real 32/34 Extended Essay. 30-day money-back guarantee."
         canonical="/pricing"
       />

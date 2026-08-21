@@ -1,6 +1,6 @@
 import PrivacyPolicy from '../../src/page-components/PrivacyPolicy'
 export const metadata = {
-  title: 'Privacy Policy | The Extended Essay Academy',
+  title: 'Privacy Policy',
   description: 'Read the Privacy Policy for The Extended Essay Academy.',
   alternates: { canonical: 'https://theextendedessay.com/privacy' },
 }
