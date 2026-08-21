@@ -2,6 +2,7 @@ import { ClerkProvider } from '@clerk/nextjs'
 import ConditionalShell from '../src/components/ConditionalShell'
 import PostHogProvider from '../src/components/PostHogProvider'
 import AdSense from '../src/components/AdSense'
+import GoogleAnalytics from '../src/components/GoogleAnalytics'
 import '../src/index.css'
 
 export const metadata = {
@@ -28,6 +29,8 @@ export default function RootLayout({ children }) {
     <html lang="en">
       {/* Paddle stays lazy-loaded via src/lib/paddle.js, only on checkout. */}
       <body>
+        {/* Google Analytics 4 (gtag.js) — every page, once. */}
+        <GoogleAnalytics />
         {/* AdSense loader — public/SEO pages only; course + dashboard stay ad-free. */}
         <AdSense />
         <ClerkProvider
