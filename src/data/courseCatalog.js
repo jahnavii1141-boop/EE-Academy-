@@ -82,7 +82,9 @@ export const COURSE_CATALOG = [
     id: 'ai-module',
     number: '12',
     free: false,
-    premium: true,
+    // Single tier (2026-08): included in the $89 course like every other paid
+    // guide — gates on hasPaid, not a separate premium tier.
+    premium: false,
     title: 'Use AI Without Breaking the Rules',
     tagline: 'Where the line actually sits, and how to work right up to it.',
   },

@@ -201,7 +201,6 @@ export default function DashboardHome() {
   const [paymentSuccess, setPaymentSuccess] = useState(false)
   const [essayText, setEssayText] = useState('')
   const [hasPaid, setHasPaid] = useState(false)
-  const [isPremium, setIsPremium] = useState(false)
   const [showTour, setShowTour] = useState(false)
   const [setupDismissed, setSetupDismissed] = useState(true) // resolved from localStorage on mount
   const { isVisited } = useModuleProgress()
@@ -260,7 +259,6 @@ export default function DashboardHome() {
             submission_deadline: workspace.submission_deadline ?? '',
           })
           setHasPaid(!!workspace.has_paid)
-          setIsPremium(workspace.tier === 'premium')
         }
         // No auto-editing gate: an empty profile shows a dismissible setup
         // card instead of replacing the dashboard (onboarding is optional).
@@ -429,8 +427,7 @@ export default function DashboardHome() {
             <div className="rounded-2xl border overflow-hidden" style={{ borderColor: 'rgba(46,50,80,0.12)', background: '#fff' }}>
               {COURSE_CATALOG.map((g, i) => {
                 const done = isVisited(g.id)
-                const isAi = g.id === 'ai-module'
-                const locked = !g.free && (isAi ? !isPremium : !hasPaid)
+                const locked = !g.free && !hasPaid
                 return (
                   <Link key={g.id} href={locked ? '/pricing' : `/course/${g.id}`}
                     className="flex items-center gap-3 px-5 py-3 transition-colors"

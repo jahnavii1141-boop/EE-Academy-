@@ -207,7 +207,6 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
     try { posthog.capture('lesson_open', { lesson: moduleId, signed_in: !!isSignedIn, gated: !!isGated }) } catch (e) { /* optional */ }
   }, [moduleId, isSignedIn, isGated])
 
-  const isAiModule = module.id === 'ai-module'
   const isPaidModule = !module.free
 
   return (
@@ -287,7 +286,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
             <header className="mb-10">
               <p className="text-xs font-semibold uppercase tracking-[0.14em] mb-4" style={{ color: 'rgba(26,26,30,0.45)' }}>
                 Guide {module.number}
-                {module.free ? ' · Free' : isAiModule ? ' · Premium' : ' · Standard'}
+                {module.free ? ' · Free' : ''}
               </p>
               <h1 className="font-serif font-bold mb-6" style={{ color: '#1a1a1e', fontSize: 40, letterSpacing: '-0.02em', lineHeight: 1.12 }}>
                 {module.title}
@@ -303,7 +302,7 @@ export default function CourseModulePage({ module, hasPaid, isSignedIn, isGated 
             {/* Upsell only at the free→paid boundary (end of the last free guide,
                 when the next guide is locked) — never mid-way through free guides. */}
             {nextModule && !nextModule.free && !hasPaid && !isGated && <PostModuleGate />}
-            {isGated && <PaywallBanner isPremiumOnly={isAiModule} isSignedIn={isSignedIn} moduleId={module.id} />}
+            {isGated && <PaywallBanner isPremiumOnly={false} isSignedIn={isSignedIn} moduleId={module.id} />}
 
             {/* ── Prev / Next navigation ── */}
             {(!isGated || module.free) && (

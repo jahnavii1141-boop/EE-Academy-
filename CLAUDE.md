@@ -43,7 +43,8 @@ Dead/unused components (safe to ignore, not rendered): `HomeOffer.jsx`, `Testimo
 - The amount **charged** comes from the Paddle price ID `NEXT_PUBLIC_PADDLE_BASIC_PRICE_ID` — it must equal the displayed price. **Never change the price ID in code to "fix" a mismatch; flag it** (Paddle prices are immutable — a new price means a new ID).
 - The old $149 Premium Paddle price is kept for historical buyers; the site no longer references it.
 - Free tier = EE Planner + Research Question Checker + first free lessons.
-- Entitlement caveat: the AI guide (Guide 12) and AI agent are still gated to `tier==='premium'`, so a $89 buyer (tier `basic`) is paywalled there until that mapping is changed — owner decision pending.
+- The **AI guide** (Guide 12, `ai-module`) is **included** in the $89 course — it gates on `hasPaid` (`premium:false` in `courseCatalog.js`, 2026-08), like every other paid guide. No premium tier needed; existing paid buyers get it too.
+- Still open: the **AI agent** (Supervisor Reply Drafter, `/api/ai-agent`) gives paid users a **3-use free trial** and only `tier==='premium'` gets unlimited. So $89 buyers currently get the trial, not unlimited (this caps API cost). Owner decision pending: lift the cap for $89 buyers, keep the trial, or trim it from the card.
 
 ## Deploy workflow
 Work on branch `feat/dashboard-missions`. Gate every deploy on `npm run build` (must exit 0).
@@ -57,6 +58,7 @@ funnel, auth/Clerk flow, faceless brand) lives in Claude's `protected-features` 
 This file is the operational quick-reference; that memory has the reasoning.
 
 ## Changelog (most recent first)
+- **2026-08-20**: **AI guide (Guide 12) now included** in the $89 course — gates on `hasPaid` (was `tier==='premium'`). Removed vestigial "Premium/Standard" lesson labels + paywall wording. AI agent still trial-capped for paid users (pending owner decision).
 - **2026-08-20**: Paddle price confirmed **$89** by owner — displayed price matches the amount charged, checkout is consistent.
 - **2026-08**: Re-linked **Study Calendar** in the sidebar (was orphaned by the course-first dashboard rebuild).
 - **2026-08**: Added the `/pricing` **"What you get access to"** tools section — 4 groups (Plan it / Research it / Write it / Work with your supervisor), one WebP screenshot each (`public/pricing/`), lazy-loaded below the fold.
