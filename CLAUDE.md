@@ -57,6 +57,7 @@ funnel, auth/Clerk flow, faceless brand) lives in Claude's `protected-features` 
 This file is the operational quick-reference; that memory has the reasoning.
 
 ## Changelog (most recent first)
+- **2026-08-20**: Paddle price confirmed **$89** by owner — displayed price matches the amount charged, checkout is consistent.
 - **2026-08**: Re-linked **Study Calendar** in the sidebar (was orphaned by the course-first dashboard rebuild).
 - **2026-08**: Added the `/pricing` **"What you get access to"** tools section — 4 groups (Plan it / Research it / Write it / Work with your supervisor), one WebP screenshot each (`public/pricing/`), lazy-loaded below the fold.
 - **2026-08**: Course price **$79 → $89** sitewide (displayed copy only — Paddle price must match).
