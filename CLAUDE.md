@@ -58,6 +58,7 @@ funnel, auth/Clerk flow, faceless brand) lives in Claude's `protected-features` 
 This file is the operational quick-reference; that memory has the reasoning.
 
 ## Changelog (most recent first)
+- **2026-08-20**: Dropped the "| The Extended Essay Academy" brand suffix from page titles (root `title.template` → `'%s'`; removed hardcoded suffixes on legal/auth pages).
 - **2026-08-20**: **AI guide (Guide 12) now included** in the $89 course — gates on `hasPaid` (was `tier==='premium'`). Removed vestigial "Premium/Standard" lesson labels + paywall wording. AI agent still trial-capped for paid users (pending owner decision).
 - **2026-08-20**: Paddle price confirmed **$89** by owner — displayed price matches the amount charged, checkout is consistent.
 - **2026-08**: Re-linked **Study Calendar** in the sidebar (was orphaned by the course-first dashboard rebuild).
