@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useAuth } from '@clerk/nextjs'
-import Link from 'next/link'
 import AnimateIn from './ui/AnimateIn'
 import { PADDLE_CONFIG, PRICING } from '../config/paddle'
 import { getPaddle } from '../lib/paddle'
@@ -16,13 +15,6 @@ const COURSE_FEATURES = [
   'Supervisor Reply Drafter',
   'All templates & SOPs (downloadable)',
   '32/34 essay full breakdown',
-]
-
-// What's free, no account needed
-const FREE_ITEMS = [
-  'EE Planner',
-  'Research Question Checker',
-  'The first 3 lessons',
 ]
 
 function Check() {
@@ -94,31 +86,6 @@ export default function Pricing() {
     <section id="pricing" className="py-16 px-6" style={{ background: '#fafafa' }}>
       <div className="max-w-md mx-auto">
 
-        {/* ── Free block ── */}
-        <AnimateIn>
-          <div className="mb-5 rounded-2xl border border-emerald-200 bg-emerald-50 p-6">
-            <div className="flex items-center gap-2.5 mb-4">
-              <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 flex-shrink-0">FREE</span>
-              <p className="text-sm font-semibold text-emerald-900">No account needed to read the lessons</p>
-            </div>
-            <ul className="space-y-2 mb-5">
-              {FREE_ITEMS.map((f, i) => (
-                <li key={i} className="flex items-start gap-2.5 text-sm text-emerald-800">
-                  <svg className="w-4 h-4 flex-shrink-0 mt-0.5" viewBox="0 0 16 16" fill="none">
-                    <circle cx="8" cy="8" r="8" fill="#059669" fillOpacity="0.15" />
-                    <path d="M5 8l2 2 4-4" stroke="#059669" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <Link href="/course/module-1"
-              className="inline-flex items-center gap-1 text-sm font-semibold text-emerald-700 hover:text-emerald-900 transition-colors">
-              Start lesson 1 →
-            </Link>
-          </div>
-        </AnimateIn>
-
         {/* ── The full course — single card ── */}
         <AnimateIn delay={0.05}>
           <div className="rounded-2xl border border-navy/10 bg-white p-7 flex flex-col">
@@ -129,7 +96,7 @@ export default function Pricing() {
             </div>
             <p className="text-[13px] text-navy/50 mt-1">one-time payment · lifetime access</p>
             <p className="text-[12px] text-navy/40 mt-1.5">
-              ${PRICING.course.price} for the first 50 students, then $99.
+              Early-bird pricing — ${PRICING.course.price} for the first 50 students, then $99.
             </p>
 
             <ul className="space-y-2.5 my-7">
