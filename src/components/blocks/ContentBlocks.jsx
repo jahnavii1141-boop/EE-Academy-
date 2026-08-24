@@ -326,6 +326,22 @@ export function VideoBlock({ youtubeId, title }) {
   )
 }
 
+// ─── Embed — generic same-origin iframe (e.g. a static tool) ──────────────────
+export function EmbedBlock({ src, title, height }) {
+  if (!src) return <Placeholder text={`[[EMBED: ${title || 'add src'}]]`} />
+  return (
+    <div className="my-8 rounded-lg overflow-hidden" style={{ border: '1px solid rgba(26,26,30,0.12)' }}>
+      <iframe
+        src={src}
+        title={title || 'Embed'}
+        className="w-full block"
+        style={{ border: 0, height: height || 640 }}
+        loading="lazy"
+      />
+    </div>
+  )
+}
+
 // ─── Master switch ─────────────────────────────────────────────────────────────
 export default function ContentBlock({ block }) {
   switch (block.type) {
@@ -355,6 +371,7 @@ export default function ContentBlock({ block }) {
     case 'code':             return <CodeBlock text={block.text} />
     case 'lesson-cards':     return <LessonCards />
     case 'video':            return <VideoBlock youtubeId={block.youtubeId} title={block.title} />
+    case 'embed':            return <EmbedBlock src={block.src} title={block.title} height={block.height} />
     default:                 return null
   }
 }

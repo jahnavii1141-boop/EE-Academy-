@@ -87,10 +87,10 @@ const CONTENT = [
   { type: 'cta-box', text: `Use our IB Pathway Finder (built around the IB framework) to ask yourself the right questions —`, href: `/dashboard/tools`, buttonText: `start here` },
 
   { type: 'paragraph', text: `Once you've done that, let's build your schedule.` },
-  // PLACEHOLDER — EE calendar tool embed. NOTE for the tool build (separate task):
-  // the lessons shown in the calendar must be clickable and linked to the actual
-  // lessons. Owner to fill / build.
-  { type: 'placeholder', text: `[[EMBED: EE calendar tool — lessons clickable, linked to the actual lessons]]` },
+  // EE calendar embedded from its public static tool. (Making the lessons shown
+  // inside the calendar clickable/linked to the actual lessons is a separate task
+  // on /tools/study-calendar.html.)
+  { type: 'embed', src: `/tools/study-calendar.html`, title: `EE calendar`, height: 680 },
 
   // Closing CTAs — plain-text links (no buttons, no boxes).
   { type: 'cta-box', text: `Access the #1 space for all your EE concerns —`, href: `/pricing`, buttonText: `$89` },
