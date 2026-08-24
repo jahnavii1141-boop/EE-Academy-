@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { COURSE_CATALOG } from '../../data/courseCatalog'
 
 // Anthropic-Academy-style reader (2026-07 rebuild): typography carries the
 // hierarchy. Near-black text, one accent (navy) for links only, space and thin
@@ -284,6 +285,27 @@ export function CodeBlock({ text }) {
   )
 }
 
+// ─── Lesson cards — little clickable cards, one per course lesson ─────────────
+export function LessonCards() {
+  return (
+    <div className="my-8 grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+      {COURSE_CATALOG.map((m) => (
+        <Link
+          key={m.id}
+          href={`/course/${m.id}`}
+          className="block rounded-xl border px-3.5 py-3 no-underline transition-colors hover:bg-[rgba(46,50,80,0.03)]"
+          style={{ borderColor: 'rgba(26,26,30,0.12)', color: INK }}
+        >
+          <span className="block text-[0.7rem] font-semibold" style={{ color: 'rgba(26,26,30,0.45)' }}>
+            Guide {m.number}{m.free ? ' · Free' : ''}
+          </span>
+          <span className="block text-[0.9rem] font-medium leading-snug mt-1">{m.title}</span>
+        </Link>
+      ))}
+    </div>
+  )
+}
+
 // ─── Master switch ─────────────────────────────────────────────────────────────
 export default function ContentBlock({ block }) {
   switch (block.type) {
@@ -311,6 +333,7 @@ export default function ContentBlock({ block }) {
     case 'key-takeaway':     return <KeyTakeaway items={block.items} />
     case 'progress-check':   return <ProgressCheck moduleId={block.moduleId} items={block.items} />
     case 'code':             return <CodeBlock text={block.text} />
+    case 'lesson-cards':     return <LessonCards />
     default:                 return null
   }
 }

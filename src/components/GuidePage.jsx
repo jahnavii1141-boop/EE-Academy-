@@ -10,6 +10,7 @@ export default function GuidePage({
   content = [],
   relatedGuides = [],
   faqItems = [],
+  hideDefaultCta = false,
 }) {
   const canonicalUrl = canonical || 'https://theextendedessay.com/guides'
 
@@ -18,7 +19,10 @@ export default function GuidePage({
   // any inline cta-box blocks and reuse their intent to pick the single end CTA:
   // research-oriented guides send the reader into the EE Dump (which works with
   // no account — first sources free), the rest into free lesson 1.
-  const articleContent = content.filter((b) => b?.type !== 'cta-box')
+  // When hideDefaultCta is set, the page supplies its own inline CTAs (rendered
+  // as plain-text links), so we keep cta-box blocks in the body and skip the
+  // boxed end CTA below.
+  const articleContent = hideDefaultCta ? content : content.filter((b) => b?.type !== 'cta-box')
   const ctaToDump = content.some(
     (b) => b?.type === 'cta-box' && (b.href || '').includes('dump'),
   )
@@ -110,8 +114,9 @@ export default function GuidePage({
           </div>
         </div>
 
-        {/* The single end-of-article CTA — no account required either way. */}
-        {ctaToDump ? (
+        {/* The single end-of-article CTA — no account required either way.
+            Skipped when the page supplies its own inline CTAs (hideDefaultCta). */}
+        {!hideDefaultCta && (ctaToDump ? (
           <div className="my-10 rounded-2xl bg-navy text-center p-8">
             <h3 className="font-serif text-xl font-bold text-cream mb-2">Build your research dump — free</h3>
             <p className="text-steel text-sm mb-6 max-w-md mx-auto">
@@ -127,7 +132,7 @@ export default function GuidePage({
             </p>
             <Link href="/course/module-1" className="btn-primary-light text-sm">Start lesson 1 →</Link>
           </div>
-        )}
+        ))}
 
         {/* Related Guides */}
         {relatedGuides.length > 0 && (
