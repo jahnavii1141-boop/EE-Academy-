@@ -60,15 +60,10 @@ const CONTENT = [
   { type: 'paragraph', text: `Citations are born from one fundamental fact: research is built on past research, which is built on past research.` },
   { type: 'paragraph', text: `It never ends. So you must cite.` },
   { type: 'paragraph', text: `The IB suggests the cite-as-you-go technique. When you cite as you go, you don't have to rush at the last minute to get your footnotes or bibliography together.` },
-  { type: 'paragraph', text: `This tool is called the EE Dump — a mixture of a method I created to organise research.` },
-  // PLACEHOLDER — "Read more" link to Module 4 (EE Dump); owner to fill in a later task
-  { type: 'placeholder', text: `[[LINK: "Read more" → Module 4 · EE Dump]]` },
+  { type: 'cta-box', text: `This tool is called the EE Dump — a mixture of a method I created to organise research.`, href: `/course/module-5`, buttonText: `Read more` },
   { type: 'paragraph', text: `Now that you've done your basic research and it's perfectly organised, you can head into the bibliography section, where everything is auto-cited. No rushing at the last minute.` },
-  { type: 'paragraph', text: `The tool is here:` },
-  // PLACEHOLDER — EE Dump tool link; owner to fill in a later task
-  { type: 'placeholder', text: `[[TOOL LINK: EE Dump]]` },
-  // PLACEHOLDER — video; owner to fill in a later task
-  { type: 'placeholder', text: `[[VIDEO]]` },
+  { type: 'cta-box', text: `The tool is here:`, href: `/dump`, buttonText: `Open the EE Dump` },
+  { type: 'video', youtubeId: `LAoHyV6opB0`, title: `How the EE Dump works` },
 
   { type: 'heading', text: `The 15-Minute Pre-Submission Checklist` },
   { type: 'list', items: [

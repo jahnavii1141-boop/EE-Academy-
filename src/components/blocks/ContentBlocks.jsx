@@ -306,6 +306,26 @@ export function LessonCards() {
   )
 }
 
+// ─── Video — responsive YouTube (privacy-enhanced) embed ──────────────────────
+export function VideoBlock({ youtubeId, title }) {
+  if (!youtubeId) return <Placeholder text={`[[VIDEO: ${title || 'add youtube id'}]]`} />
+  return (
+    <div className="my-8" style={{ maxWidth: 720 }}>
+      <div className="relative w-full rounded-lg overflow-hidden" style={{ paddingBottom: '56.25%', background: '#000' }}>
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+          title={title || 'Video'}
+          className="absolute inset-0 w-full h-full"
+          style={{ border: 0 }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+          loading="lazy"
+        />
+      </div>
+    </div>
+  )
+}
+
 // ─── Master switch ─────────────────────────────────────────────────────────────
 export default function ContentBlock({ block }) {
   switch (block.type) {
@@ -334,6 +354,7 @@ export default function ContentBlock({ block }) {
     case 'progress-check':   return <ProgressCheck moduleId={block.moduleId} items={block.items} />
     case 'code':             return <CodeBlock text={block.text} />
     case 'lesson-cards':     return <LessonCards />
+    case 'video':            return <VideoBlock youtubeId={block.youtubeId} title={block.title} />
     default:                 return null
   }
 }
