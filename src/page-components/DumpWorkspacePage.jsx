@@ -429,8 +429,23 @@ export default function DumpWorkspacePage() {
       {/* ── Research Dump tab ── */}
       {activeTab === 'dump' && (
         <div className="flex-1 overflow-y-auto p-6">
+          {/* Walkthrough video */}
+          <div className="mb-6" style={{ maxWidth: 720 }}>
+            <div className="relative w-full rounded-xl overflow-hidden"
+              style={{ paddingBottom: '56.25%', background: '#000', border: '1px solid #f0f0f0' }}>
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/LAoHyV6opB0"
+                title="How the EE Dump works"
+                className="absolute inset-0 w-full h-full"
+                style={{ border: 0 }}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          </div>
           {entries.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-full gap-4">
+            <div className="flex flex-col items-center justify-center py-16 gap-4">
               <Quote size={36} strokeWidth={1} style={{ color: '#ddd' }} />
               <div className="text-center">
                 <p className="text-sm font-medium mb-1" style={{ color: '#888' }}>Nothing dumped yet</p>

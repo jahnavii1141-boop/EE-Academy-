@@ -51,7 +51,7 @@ const CSP = [
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
-  "frame-src 'self' https://*.paddle.com https://giphy.com https://*.clerk.accounts.dev https://challenges.cloudflare.com",
+  "frame-src 'self' https://*.paddle.com https://giphy.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com",
   "connect-src 'self' https://*.clerk.accounts.dev https://clerk.theextendedessay.com https://*.supabase.co https://api.paddle.com https://sandbox-api.paddle.com https://cdn.paddle.com",
   "object-src 'none'",
   "base-uri 'self'",
