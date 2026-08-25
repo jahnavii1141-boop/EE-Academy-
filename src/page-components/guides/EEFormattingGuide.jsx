@@ -107,7 +107,7 @@ const RELATED = [
 ]
 
 const FAQ = [
-  { question: 'Does the IB require a specific font?', answer: 'The IB recommends a standard academic font. Times New Roman 12pt is universally accepted and signals professionalism. Some schools may have their own requirements — check with your supervisor.' },
+  { question: 'Does the IB require a specific font?', answer: `No — the IB doesn't mandate a specific font. It recommends 12pt (as part of MLA formatting) and leaves the typeface up to you, as long as it reads formally. Times New Roman is the safe, standard choice — it's the usual MLA font — but something like EB Garamond works just as well. Whatever you pick, keep it 12pt and consistent, and check whether your school has its own requirement.` },
   { question: 'Do the title page and bibliography count toward the 4,000-word limit?', answer: 'No. The word count includes only the introduction, body, and conclusion. The title page, table of contents, bibliography, and appendices are excluded.' },
   { question: 'Should I use MLA or APA citation style?', answer: 'The IB accepts both. MLA is generally recommended for humanities and social science EEs. APA is common in sciences and psychology. Pick one and use it consistently — never mix styles.' },
 ]
