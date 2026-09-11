@@ -1,4 +1,5 @@
 import { createServiceClient } from '../../../src/lib/supabase'
+import { upsertSubscriber } from '../../../src/lib/mailerlite'
 
 const FROM = 'The Extended Essay Academy <hello@theextendedessay.com>'
 
@@ -175,6 +176,12 @@ export async function POST(request) {
       // Send welcome email to user
       await sendEmail({ apiKey, to: email, subject: 'Welcome to EE Academy — start here', html: welcomeHtml(email) })
     }
+
+    // Sync the subscriber to MailerLite (upsert by email). Fail-soft — never
+    // block the signup on it; no-ops unless MAILERLITE_API_KEY is set.
+    upsertSubscriber({ email })
+      .then((r) => { if (!r.ok && !r.skipped) console.error('[Subscribe] MailerLite sync failed:', r.status, r.error) })
+      .catch(() => {})
 
     // Always notify yourself (even for re-signups)
     sendEmail({ apiKey, to: 'gia432hz@gmail.com', subject: `New signup: ${email}`, html: `<p>${email} · ${source}</p>` }).catch(() => {})
