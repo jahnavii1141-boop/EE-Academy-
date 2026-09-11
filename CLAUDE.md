@@ -58,6 +58,8 @@ funnel, auth/Clerk flow, faceless brand) lives in Claude's `protected-features` 
 This file is the operational quick-reference; that memory has the reasoning.
 
 ## Changelog (most recent first)
+- **2026-09-11**: **MailerLite sync** wired into `/api/subscribe` (`src/lib/mailerlite.js`, `POST /subscribers` upsert on the connect.mailerlite.com JSON API). Additive alongside Resend (Resend still sends the welcome/transactional email); fail-soft and no-ops unless `MAILERLITE_API_KEY` is set. Optional `MAILERLITE_GROUP_ID` groups new subscribers. Both keys documented in `.env.example` — add them to `.env.local` + Vercel to activate.
+- **2026-09-11**: Added the **founder quote** section to the landing page (`LandingFounderQuote.jsx`, between "What this is" and the price). Faceless — signed "The Founder".
 - **2026-08-22**: Pricing card — labeled the $89 as **early-bird pricing** ("$89 for the first 50 students, then $99"); removed the green **FREE block** from `/pricing` (free tools still shown in the "What you get access to" section + hero).
 - **2026-08-20**: Added **Google Analytics 4** (gtag.js, `G-F7K52Q1M15`) via `GoogleAnalytics.jsx` in the root layout — every page, once (alongside PostHog).
 - **2026-08-20**: Dropped the "| The Extended Essay Academy" brand suffix from page titles (root `title.template` → `'%s'`; removed hardcoded suffixes on legal/auth pages).
