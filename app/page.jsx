@@ -2,6 +2,7 @@ import LandingHero from '../src/components/landing/LandingHero'
 import CourseInOrder from '../src/components/landing/CourseInOrder'
 import WhyThisExists from '../src/components/landing/WhyThisExists'
 import WhatThisIs from '../src/components/landing/WhatThisIs'
+import LandingFounderQuote from '../src/components/landing/LandingFounderQuote'
 import LandingPrice from '../src/components/landing/LandingPrice'
 import LandingFAQ from '../src/components/landing/LandingFAQ'
 
@@ -108,6 +109,7 @@ export default function HomePage() {
         <CourseInOrder />
         <WhyThisExists />
         <WhatThisIs />
+        <LandingFounderQuote />
         <LandingPrice />
         <LandingFAQ />
       </main>
