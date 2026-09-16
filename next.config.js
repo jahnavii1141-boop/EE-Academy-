@@ -47,12 +47,12 @@ const nextConfig = {
 // eslint-disable-next-line no-unused-vars
 const CSP = [
   "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.paddle.com https://*.clerk.accounts.dev https://clerk.theextendedessay.com https://challenges.cloudflare.com",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.paddle.com https://*.clerk.accounts.dev https://clerk.theextendedessay.com https://challenges.cloudflare.com https://assets.calendly.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' data: blob: https:",
-  "frame-src 'self' https://*.paddle.com https://giphy.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com",
-  "connect-src 'self' https://*.clerk.accounts.dev https://clerk.theextendedessay.com https://*.supabase.co https://api.paddle.com https://sandbox-api.paddle.com https://cdn.paddle.com",
+  "frame-src 'self' https://*.paddle.com https://giphy.com https://*.clerk.accounts.dev https://challenges.cloudflare.com https://www.youtube-nocookie.com https://www.youtube.com https://calendly.com",
+  "connect-src 'self' https://*.clerk.accounts.dev https://clerk.theextendedessay.com https://*.supabase.co https://api.paddle.com https://sandbox-api.paddle.com https://cdn.paddle.com https://calendly.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",

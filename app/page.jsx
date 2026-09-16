@@ -1,8 +1,13 @@
 import LandingHero from '../src/components/landing/LandingHero'
+import LandingProblem from '../src/components/landing/LandingProblem'
+import LandingHoursLost from '../src/components/landing/LandingHoursLost'
+import LandingFreeVsPaid from '../src/components/landing/LandingFreeVsPaid'
 import CourseInOrder from '../src/components/landing/CourseInOrder'
-import WhyThisExists from '../src/components/landing/WhyThisExists'
-import WhatThisIs from '../src/components/landing/WhatThisIs'
+import LandingVsTutor from '../src/components/landing/LandingVsTutor'
+import LandingBookCall from '../src/components/landing/LandingBookCall'
+import LandingWrittenBy from '../src/components/landing/LandingWrittenBy'
 import LandingFounderQuote from '../src/components/landing/LandingFounderQuote'
+import LandingStartFree from '../src/components/landing/LandingStartFree'
 import LandingPrice from '../src/components/landing/LandingPrice'
 import LandingFAQ from '../src/components/landing/LandingFAQ'
 
@@ -102,14 +107,21 @@ export default function HomePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ORG_JSON_LD) }} />
       <main>
-        {/* One lessons-first landing (2026-08): hero → course list → why it
-            exists → what it is/isn't → price → FAQ. The primary action opens a
-            lesson, never an auth screen. */}
+        {/* Landing (2026-09): problem-first, help-vs-tutor framing. The
+            narrative — problem → count your lost hours → free vs. the hard part
+            → the course list → vs. a tutor → book a call → who wrote it →
+            founder note → start free — ends on the free lessons, never an auth
+            screen. Price + FAQ stay for the Offer/FAQ schema and conversion. */}
         <LandingHero />
+        <LandingProblem />
+        <LandingHoursLost />
+        <LandingFreeVsPaid />
         <CourseInOrder />
-        <WhyThisExists />
-        <WhatThisIs />
+        <LandingVsTutor />
+        <LandingBookCall />
+        <LandingWrittenBy />
         <LandingFounderQuote />
+        <LandingStartFree />
         <LandingPrice />
         <LandingFAQ />
       </main>

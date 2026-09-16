@@ -11,15 +11,15 @@ export default function LandingHero() {
       />
       <div className="relative z-10 max-w-3xl mx-auto px-6 py-24 sm:py-28">
         <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] mb-6">
-          A 32/34 Extended Essay, taken apart lesson by lesson.
+          IB Extended Essay help
         </h1>
         <p className="text-lg text-steel leading-relaxed max-w-xl mb-8">
-          A step-by-step course through the whole EE — choosing a question, reading, structuring,
-          drafting, the reflections. Every stage traced through an essay that scored 32/34.
+          The whole Extended Essay, shown once — properly — through one real 32/34 essay. So you
+          get the A without spending your Diploma on it.
         </p>
         <ContinueOrStartCTA className="btn-primary-light inline-flex" />
         <p className="text-sm text-steel/70 mt-4">
-          First 5 lessons are open. No account needed to read them.
+          The first five guides are open. No account, no card.
         </p>
       </div>
     </section>
