@@ -9,11 +9,14 @@ const DP_SUBJECTS = [
   'Biology', 'Business Management', 'Chemistry', 'Computer Science', 'Economics',
   'English A: Literature', 'English A: Language & Literature', 'English B',
   'Environmental Systems & Societies', 'Geography', 'Global Politics', 'History',
-  'Language B', 'Mathematics', 'Music', 'Philosophy', 'Physics', 'Psychology',
-  'Social & Cultural Anthropology', 'Visual Arts', 'World Studies (interdisciplinary)',
+  'Language B', 'Literature and Performance', 'Mathematics', 'Music', 'Philosophy',
+  'Physics', 'Psychology', 'Social & Cultural Anthropology', 'Visual Arts',
 ]
-// Subjects the IB does not allow on the interdisciplinary pathway
-const INTERDISC_EXCLUDED = new Set(['Environmental Systems & Societies', 'Literature & Performance'])
+// Subjects the IB restricts to the subject-focused pathway (not allowed on the
+// interdisciplinary pathway). Strings must match DP_SUBJECTS exactly. The
+// interdisciplinary pathway is itself the successor to the old World Studies EE,
+// so World Studies is not offered as a combinable subject.
+const INTERDISC_EXCLUDED = new Set(['Environmental Systems & Societies', 'Literature and Performance'])
 
 const btn = 'rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors'
 const primary = `${btn} bg-navy text-cream hover:bg-navy/90`
@@ -135,7 +138,7 @@ export default function EEPathwayFinder() {
           <label className={label}>DP subject</label>
           <select className={field} value={a.subject1} onChange={e => set({ subject1: e.target.value })}>
             <option value="">Choose a subject…</option>
-            {DP_SUBJECTS.filter(s => s !== 'World Studies (interdisciplinary)').map(s => <option key={s} value={s}>{s}</option>)}
+            {DP_SUBJECTS.map(s => <option key={s} value={s}>{s}</option>)}
           </select>
           <Nav back={() => setStep('single')} next={() => setStep('concepts')} nextDisabled={!a.subject1} />
         </Question>
@@ -166,7 +169,7 @@ export default function EEPathwayFinder() {
               onChange={e => set({ framework: e.target.value })} />
           </div>
           <p className="text-[12px] text-steel mt-3 leading-relaxed">
-            Note: Environmental Systems &amp; Societies and Literature &amp; Performance can only be used on the subject-focused pathway, so they're excluded here.
+            Note: Environmental Systems &amp; Societies and Literature and Performance can only be used on the subject-focused pathway, so they&rsquo;re excluded here.
           </p>
           <Nav back={() => setStep('combine')} next={() => setStep('concepts')} nextDisabled={!a.subject1 || !a.subject2} />
         </Question>
