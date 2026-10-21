@@ -3,12 +3,7 @@
 import GuidePage from '../../components/GuidePage'
 
 const CONTENT = [
-  { type: 'paragraph', text: 'Formatting is the most boring part of your EE — but it\'s also the easiest way to signal professionalism. Examiners see hundreds of essays. The properly formatted ones immediately say "this student is serious" before they\'ve read a word.' },
-  { type: 'heading', text: 'The Non-Negotiable Formatting Rules' },
-  { type: 'icon-card', icon: 'FileText', title: 'Font', text: 'Times New Roman, 12pt. No exceptions. The universal academic standard.' },
-  { type: 'icon-card', icon: 'Layout', title: 'Spacing', text: 'Double-spaced throughout. Exceptions: block quotes and bibliography entries.' },
-  { type: 'icon-card', icon: 'Clipboard', title: 'Margins', text: '2.54 cm (1 inch) on all sides. Usually the default — double-check.' },
-  { type: 'icon-card', icon: 'BookOpen', title: 'Alignment', text: 'Left-aligned, not justified. Justified creates uneven word spacing.' },
+  { type: 'paragraph', text: 'The Extended Essay has a hard 4,000-word limit, and examiners stop reading when they reach it. Just as important is knowing what actually counts toward those words and what sits outside them — so you don\'t burn word count on the wrong things or get caught out near the deadline.' },
   { type: 'heading', text: 'Word Count: What Counts and What Doesn\'t' },
   { type: 'comparison-table', headers: ['Included in Word Count', 'NOT Included'], rows: [
     ['All body text', 'Title page'],
@@ -28,46 +23,26 @@ const CONTENT = [
     ['Discussion', '500–700', '12–18%'],
     ['Conclusion', '300–400', '8–10%'],
   ]},
-  { type: 'heading', text: 'Title Page Requirements' },
-  { type: 'numbered-steps', items: [
-    'Title of your EE',
-    'Research question',
-    'Subject',
-    'Word count',
-    'Session (e.g., May 2026)',
-  ]},
-  { type: 'warning-box', text: 'Do NOT include: your name, school name, or any identifying information. IB requires anonymous marking. No borders, colours, images, or decorative elements.' },
-  { type: 'heading', text: 'The 15-Minute Formatting Checklist' },
-  { type: 'numbered-steps', items: [
-    'Font and spacing are correct throughout',
-    'Page numbers are in place (starting from first content page)',
-    'Title page has all required elements and no personal info',
-    'Table of contents matches actual page numbers',
-    'Headings are consistent in style and hierarchy',
-    'Citations are consistent throughout',
-    'Bibliography is complete and alphabetically ordered',
-    'Word count is under 4,000',
-    'One final spell-check and proofread',
-  ]},
+  { type: 'paragraph', text: 'These are guidelines, not rules — the balance shifts by subject. But if your analysis is under roughly a third of the essay, that is usually a sign you are describing more than you are arguing.' },
+  { type: 'cta-box', text: 'Formatting — font, spacing, margins, the title page, and the pre-submission checklist — is covered in its own guide.', href: '/guides/ee-formatting-guide', buttonText: 'Read the EE Formatting Guide' },
   { type: 'cta-box', label: 'Free tool', text: 'Track your sources as you research and generate your MLA bibliography automatically with the EE Dump.', href: '/dashboard/dump', buttonText: 'Try EE Dump free' },
   { type: 'key-takeaway', items: [
     '4,000 words is a hard limit — don\'t exceed it',
-    'Times New Roman 12pt, double-spaced, left-aligned, 1-inch margins',
-    'Spend 35% of words on analysis, 15% on intro + conclusion',
-    'Run the 15-minute checklist before submission',
+    'Body text, citations, headings and footnotes count; the title page, contents, tables, bibliography and appendices don\'t',
+    'Spend roughly 35% of your words on analysis, ~15% on intro + conclusion',
   ]},
 ]
 
 const RELATED = [
-  { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'Map your sections to criteria.' },
-  { href: '/guides/ee-criteria-breakdown', title: 'Criteria Breakdown', description: 'Criterion D rewards proper formatting.' },
+  { href: '/guides/ee-formatting-guide', title: 'EE Formatting Guide', description: 'Font, spacing, margins, and title page rules.' },
+  { href: '/guides/extended-essay-structure', title: 'EE Structure Template', description: 'Map your sections to the criteria.' },
 ]
 
 export default function EEWordCountGuide() {
   return (
     <GuidePage
-      title="Extended Essay Word Count & Formatting Rules"
-      description="Everything you need to know about EE formatting: word count limits, what's included, font requirements, title page rules, and the 15-minute checklist."
+      title="IB Extended Essay Word Count"
+      description="The 4,000-word EE limit: what counts, what doesn't, and how to balance your sections."
       canonical="/guides/ee-word-count"
       content={CONTENT}
       relatedGuides={RELATED}

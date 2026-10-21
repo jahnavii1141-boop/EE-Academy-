@@ -2,7 +2,7 @@ import PricingPage from '../../src/page-components/PricingPage'
 import CaptureOnMount from '../../src/components/analytics/CaptureOnMount'
 
 export const metadata = {
-  title: 'IB Extended Essay Course — Pricing',
+  title: 'IB Extended Essay — Pricing',
   description: 'The full IB Extended Essay system — 14 lessons, planner, essay editor, and templates. $89 one-time, lifetime access.',
   alternates: { canonical: 'https://theextendedessay.com/pricing' },
 }
