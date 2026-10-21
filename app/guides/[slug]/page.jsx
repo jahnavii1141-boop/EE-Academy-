@@ -38,8 +38,8 @@ const GUIDE_META = {
     Component: () => import('../../../src/page-components/guides/EESubjectsGuide'),
   },
   'ee-word-count': {
-    title: 'IB Extended Essay Word Count: Rules & Section Balance',
-    description: '4,000 words — not a word over. What counts toward the limit, section balance guide, and the silent word count mistakes that quietly weaken your grade.',
+    title: 'IB Extended Essay Word Count: What Counts & the 4,000 Limit',
+    description: 'The 4,000-word EE limit explained: exactly what counts, what doesn\'t, whether you can go over, section-by-section word targets, and the mistakes that cost marks.',
     Component: () => import('../../../src/page-components/guides/EEWordCountGuide'),
   },
   'ee-conclusion': {

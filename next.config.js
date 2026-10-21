@@ -10,6 +10,15 @@ const nextConfig = {
   skipTrailingSlashRedirect: true,
   async redirects() {
     return [
+      // Host canonicalisation (SOP 6): the www twin of ee-formatting-guide was
+      // indexed separately from the apex, splitting the site's biggest page.
+      // 301 every www request to the apex so one host owns the ranking signal.
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.theextendedessay.com' }],
+        destination: 'https://theextendedessay.com/:path*',
+        permanent: true,
+      },
       // /dump is intentionally NOT redirected — it serves the public, no-account
       // EE Dump (app/dump/page.jsx). /dashboard/dump renders the same tool inside
       // the app shell for signed-in navigation.
