@@ -306,21 +306,52 @@ export function LessonCards() {
   )
 }
 
-// ─── Video — responsive YouTube (privacy-enhanced) embed ──────────────────────
+// ─── Video — responsive YouTube embed with a click-to-load facade ─────────────
+// The thumbnail (a small image) paints instantly; the heavy YouTube player JS +
+// cookies only load when the user actually clicks play (then autoplays). This
+// avoids the black-box lag of mounting the iframe on page load.
 export function VideoBlock({ youtubeId, title }) {
+  const [playing, setPlaying] = useState(false)
   if (!youtubeId) return <Placeholder text={`[[VIDEO: ${title || 'add youtube id'}]]`} />
   return (
     <div className="my-8" style={{ maxWidth: 720 }}>
       <div className="relative w-full rounded-lg overflow-hidden" style={{ paddingBottom: '56.25%', background: '#000' }}>
-        <iframe
-          src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
-          title={title || 'Video'}
-          className="absolute inset-0 w-full h-full"
-          style={{ border: 0 }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-          loading="lazy"
-        />
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1`}
+            title={title || 'Video'}
+            className="absolute inset-0 w-full h-full"
+            style={{ border: 0 }}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          />
+        ) : (
+          <button
+            type="button"
+            onClick={() => setPlaying(true)}
+            aria-label={title ? `Play video: ${title}` : 'Play video'}
+            className="absolute inset-0 w-full h-full group cursor-pointer"
+            style={{ border: 0, padding: 0, background: 'transparent' }}
+          >
+            <img
+              src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+              alt={title || 'Video thumbnail'}
+              className="absolute inset-0 w-full h-full"
+              style={{ objectFit: 'cover' }}
+              loading="lazy"
+            />
+            <span className="absolute inset-0 flex items-center justify-center">
+              <span
+                className="flex items-center justify-center rounded-2xl transition-transform group-hover:scale-110"
+                style={{ width: 68, height: 48, background: 'rgba(20,20,20,0.78)' }}
+              >
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </span>
+          </button>
+        )}
       </div>
     </div>
   )
