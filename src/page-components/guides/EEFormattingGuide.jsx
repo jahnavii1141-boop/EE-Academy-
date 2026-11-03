@@ -25,6 +25,8 @@ const CONTENT = [
     [`Your candidate number / student ID`, `A cover image or logo`],
   ] },
 
+  { type: 'video', youtubeId: `V24kLFqjM60`, title: `Setting up your title page` },
+
   { type: 'heading', text: `Bold, Italics, Underline` },
   { type: 'icon-card', title: `Bold`, text: `Use for key terms when you first introduce and define them. For example, the first time you mention "Porter's Five Forces" in your analysis, bold it. After that, leave it normal. For citations — using bold can make it easier for examiners to see the work you have cited.` },
   { type: 'icon-card', title: `Italics`, text: `Use for titles of books, journals, and major works (e.g., The People's Choice). Foreign words or phrases. Technical terms on first introduction.` },
