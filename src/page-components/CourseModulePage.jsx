@@ -6,6 +6,8 @@ import { COURSE_CATALOG } from '../data/courseCatalog'
 import { useModuleProgress } from '../hooks/useModuleProgress'
 import ContentRenderer from '../components/blocks/ContentRenderer'
 import PostModuleGate from '../components/PostModuleGate'
+import CheckoutButton from '../components/CheckoutButton'
+import { PRICING } from '../config/paddle'
 import posthog from 'posthog-js'
 
 // ─── Sidebar ───────────────────────────────────────────────────────────────────
@@ -163,12 +165,11 @@ function PaywallBanner({ isPremiumOnly, isSignedIn, moduleId }) {
           </svg>
         </div>
         <h3 className="font-semibold text-[#2E3250] text-xl mb-2" style={{ letterSpacing: '-0.02em' }}>
-          {isPremiumOnly ? 'A Premium lesson' : 'Unlock the full course'}
+          Unlock the full course
         </h3>
         <p className="text-sm max-w-xs mx-auto mb-8 leading-relaxed" style={{ color: '#999' }}>
-          {isPremiumOnly
-            ? 'This lesson is part of Premium — the full course plus the writing tools and AI guidance.'
-            : 'Unlock the rest of the course — all 14 lessons, the complete writing system, and the real 32/34 essay marked line by line.'}
+          Unlock the rest of the course — all 14 lessons, the complete writing system, and the real
+          32/34 essay marked line by line.
         </p>
         <div className="flex flex-col sm:flex-row gap-2.5 justify-center items-center">
           {!isSignedIn && (
@@ -178,13 +179,19 @@ function PaywallBanner({ isPremiumOnly, isSignedIn, moduleId }) {
               Sign in
             </Link>
           )}
-          <Link href="/pricing"
-            className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90"
-            style={{ background: '#2E3250', color: '#fff' }}>
-            {isPremiumOnly ? 'See Premium →' : 'See plans →'}
-          </Link>
+          <CheckoutButton
+            source="lesson_paywall"
+            className="text-sm font-semibold px-6 py-2.5 rounded-xl transition-all hover:opacity-90 disabled:opacity-60"
+            style={{ background: '#2E3250', color: '#fff' }}
+          >
+            Get the full course — ${PRICING.course.price} →
+          </CheckoutButton>
         </div>
-        <p className="text-xs mt-6" style={{ color: '#ccc' }}>30-day money-back guarantee · Lifetime access</p>
+        <p className="text-xs mt-6" style={{ color: '#aaa' }}>
+          <Link href="/pricing" className="underline underline-offset-2 hover:text-[#555]">See what&rsquo;s included</Link>
+          <span className="mx-1.5">·</span>
+          30-day money-back guarantee · Lifetime access
+        </p>
       </div>
     </div>
   )

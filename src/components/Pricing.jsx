@@ -1,10 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { useAuth } from '@clerk/nextjs'
 import AnimateIn from './ui/AnimateIn'
-import { PADDLE_CONFIG, PRICING } from '../config/paddle'
-import { getPaddle } from '../lib/paddle'
+import CheckoutButton from './CheckoutButton'
+import { PRICING } from '../config/paddle'
 
 // ── The full course ($89) — single tier ──────────────────────────────────────
 const COURSE_FEATURES = [
@@ -35,51 +33,6 @@ function CheckItem({ text }) {
   )
 }
 
-// ── Checkout button (Paddle overlay or fallback URL) ─────────────────────────
-function CheckoutButton({ href, priceId, children, className, style }) {
-  const [isLoading, setIsLoading] = useState(false)
-  const { userId } = useAuth()
-
-  const handleCheckout = async () => {
-    if (isLoading) return
-    setIsLoading(true)
-    try {
-      if (PADDLE_CONFIG.clientToken && priceId) {
-        const Paddle = await getPaddle({
-          environment: PADDLE_CONFIG.environment,
-          clientToken: PADDLE_CONFIG.clientToken,
-        })
-        if (Paddle) {
-          Paddle.Checkout.open({
-            items: [{ priceId, quantity: 1 }],
-            // Pass clerk_user_id if already signed in — webhook uses it to grant access instantly.
-            // If not signed in, leave empty — verify-payment handles it after sign-up.
-            customData: userId ? { clerk_user_id: userId } : {},
-            settings: {
-              displayMode: 'overlay',
-              theme: 'light',
-              // After payment → onboarding (Clerk middleware prompts sign-in if needed,
-              // preserving the ?_ptxn param so verify-payment can grant access post sign-up).
-              successUrl: `${window.location.origin}/onboarding?_ptxn={checkout.id}`,
-            },
-          })
-          return
-        }
-      }
-      window.location.href = href
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
-  return (
-    <button type="button" onClick={handleCheckout} disabled={isLoading}
-      className={className} style={style}>
-      {isLoading ? 'Opening…' : children}
-    </button>
-  )
-}
-
 // ── Main Pricing section ─────────────────────────────────────────────────────
 export default function Pricing() {
   return (
@@ -104,8 +57,7 @@ export default function Pricing() {
             </ul>
 
             <CheckoutButton
-              href={PADDLE_CONFIG.basicUrl}
-              priceId={PADDLE_CONFIG.basicPriceId}
+              source="pricing_page"
               className="w-full py-3 rounded-xl text-sm font-semibold transition-all mt-auto"
               style={{ background: '#0a0a0a', color: '#fff' }}
             >

@@ -4,6 +4,8 @@ import { useState, useEffect, useCallback } from 'react'
 import { useAuth } from '@clerk/nextjs'
 import { Copy, Trash2, Plus, ExternalLink, BookOpen, X, Check, Quote, Lock } from 'lucide-react'
 import Link from 'next/link'
+import CheckoutButton from '../components/CheckoutButton'
+import { PRICING } from '../config/paddle'
 
 const FREE_DUMP_LIMIT = 7
 
@@ -242,19 +244,20 @@ function DumpPaywall() {
         <p style={{ fontSize: 13, color: '#888', lineHeight: 1.6, marginBottom: 24 }}>
           Free users can save up to {FREE_DUMP_LIMIT} research entries. Upgrade to dump unlimited paragraphs and build your full bibliography.
         </p>
-        <Link
-          href="/pricing"
+        <CheckoutButton
+          source="dump_paywall"
           style={{
-            display: 'block', width: '100%', padding: '11px 0',
+            display: 'block', width: '100%', padding: '11px 0', border: 'none', cursor: 'pointer',
             background: '#2E3250', color: '#fff', borderRadius: 12,
-            fontSize: 13, fontWeight: 600, textDecoration: 'none',
+            fontSize: 13, fontWeight: 600,
             letterSpacing: '-0.01em',
           }}
         >
-          Unlock unlimited →
-        </Link>
+          Get the full course — ${PRICING.course.price} →
+        </CheckoutButton>
         <p style={{ fontSize: 11, color: '#bbb', marginTop: 14 }}>
-          One-time · lifetime access
+          <Link href="/pricing" style={{ color: '#999', textDecoration: 'underline' }}>See what&rsquo;s included</Link>
+          {' · one-time · lifetime access'}
         </p>
       </div>
     </div>

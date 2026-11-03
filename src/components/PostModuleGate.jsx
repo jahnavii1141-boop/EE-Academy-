@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import CheckoutButton from './CheckoutButton'
+import { PRICING } from '../config/paddle'
 
 export default function PostModuleGate() {
   return (
@@ -14,13 +16,21 @@ export default function PostModuleGate() {
         Unlock the full writing system
       </h3>
       <p className="text-sm leading-relaxed mb-6 max-w-sm mx-auto" style={{ color: '#888' }}>
-        The rest of the guides cover the full research and writing process — including the exact framework behind a real 32/34 essay.
+        The rest of the guides cover the full research and writing process — including the exact
+        framework behind a real 32/34 essay.
       </p>
-      <Link href="/pricing"
-        className="inline-flex items-center text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90"
-        style={{ background: '#0a0a0a', color: '#fff' }}>
-        See plans →
-      </Link>
+      <CheckoutButton
+        source="post_module_gate"
+        className="inline-flex items-center text-sm font-semibold px-6 py-3 rounded-xl transition-all hover:opacity-90 disabled:opacity-60"
+        style={{ background: '#0a0a0a', color: '#fff' }}
+      >
+        Get the full course — ${PRICING.course.price} →
+      </CheckoutButton>
+      <p className="text-xs mt-4" style={{ color: '#aaa' }}>
+        <Link href="/pricing" className="underline underline-offset-2 hover:text-[#555]">See what&rsquo;s included</Link>
+        <span className="mx-1.5">·</span>
+        30-day money-back guarantee
+      </p>
     </div>
   )
 }

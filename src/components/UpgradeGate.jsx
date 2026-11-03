@@ -1,12 +1,14 @@
 'use client'
 
 import Link from 'next/link'
+import CheckoutButton from './CheckoutButton'
+import { PRICING } from '../config/paddle'
 
-// Shows a locked state overlay when user doesn't have the required tier
-// requiredTier: 'standard' | 'premium'
-export default function UpgradeGate({ requiredTier = 'standard', toolName = 'this feature' }) {
-  const isPremium = requiredTier === 'premium'
-
+// Locked-state overlay for a paid tool/feature. Single tier now, so the moment
+// a user hits this they get a clear, direct "buy" (opens Paddle checkout) — not
+// a detour to the pricing page. `requiredTier` is accepted but ignored (kept so
+// existing callers don't break).
+export default function UpgradeGate({ requiredTier, toolName = 'This feature' }) {
   return (
     <div className="h-full flex items-center justify-center p-8">
       <div className="max-w-sm w-full text-center">
@@ -16,21 +18,22 @@ export default function UpgradeGate({ requiredTier = 'standard', toolName = 'thi
             <path d="M7 11V7a5 5 0 0110 0v4" />
           </svg>
         </div>
-        <h2 className="font-serif text-xl font-bold text-navy mb-2">
-          {isPremium ? 'Premium feature' : 'Full access required'}
-        </h2>
+        <h2 className="font-serif text-xl font-bold text-navy mb-2">Part of the full course</h2>
         <p className="text-sm text-ink-soft leading-relaxed mb-6">
-          {isPremium
-            ? `${toolName} is included in the Premium plan — upgrade to unlock the full toolkit.`
-            : `${toolName} requires a Standard or Premium plan. Enroll to get access to all 14 modules.`}
+          {toolName} comes with the full course — all 14 lessons, the writing tools, and the real
+          32/34 essay marked line by line.
         </p>
-        <Link
-          href="/pricing"
-          className="inline-block bg-navy text-cream text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-navy/90 transition-colors"
+        <CheckoutButton
+          source="upgrade_gate"
+          className="inline-block bg-navy text-cream text-sm font-semibold px-6 py-2.5 rounded-xl hover:bg-navy/90 transition-colors disabled:opacity-60"
         >
-          {isPremium ? 'Upgrade to Premium →' : 'View Plans →'}
-        </Link>
-        <p className="text-xs text-navy/30 mt-4">30-day money-back guarantee</p>
+          Get the full course — ${PRICING.course.price} →
+        </CheckoutButton>
+        <p className="text-xs text-navy/40 mt-4">
+          <Link href="/pricing" className="underline underline-offset-2 hover:text-navy">See what&rsquo;s included</Link>
+          <span className="mx-1.5">·</span>
+          30-day money-back guarantee
+        </p>
       </div>
     </div>
   )
