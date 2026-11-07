@@ -12,14 +12,15 @@ import LandingPrice from '../src/components/landing/LandingPrice'
 import LandingFAQ from '../src/components/landing/LandingFAQ'
 
 export const metadata = {
-  // Keyword-first, single brand. `absolute` avoids the template appending a
-  // second "| The Extended Essay Academy".
-  title: { absolute: 'IB Extended Essay: Free Guides, Templates & a Real 32/34 Example' },
-  description: 'Free step-by-step IB Extended Essay course — 5 free modules, 16 subject workbooks, a real 32/34 example essay, and the official IB guide. Start free.',
+  // Positioning-led title ("the one place for your EE") with the "IB Extended
+  // Essay" keyword kept inline. `absolute` stops the root template appending a
+  // brand suffix.
+  title: { absolute: 'The one place for your IB Extended Essay' },
+  description: 'Everything for your IB Extended Essay in one place — free step-by-step guides, templates, a real 32/34 example, and the tools to write your own. Start free.',
   alternates: { canonical: 'https://theextendedessay.com/' },
   openGraph: {
-    title: 'IB Extended Essay: Free Guides, Templates & a Real 32/34 Example',
-    description: 'Free step-by-step IB Extended Essay course — 5 free modules, 16 subject workbooks, a real 32/34 example essay, and the official IB guide. Start free.',
+    title: 'The one place for your IB Extended Essay',
+    description: 'Everything for your IB Extended Essay in one place — free step-by-step guides, templates, a real 32/34 example, and the tools to write your own. Start free.',
     url: 'https://theextendedessay.com/',
     images: [{ url: 'https://theextendedessay.com/feather-hero.png' }],
   },
