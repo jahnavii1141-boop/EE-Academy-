@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { UserButton, useUser } from '@clerk/nextjs'
+import posthog from 'posthog-js'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -83,7 +84,17 @@ export default function Navbar() {
               <Link href="/sign-in" className="text-sm font-medium text-ink-soft hover:text-navy transition-colors">
                 Sign in
               </Link>
-              <Link href="/course/module-1" className="btn-primary text-sm">Start reading</Link>
+              {/* Homepage sign-up entry (J, 2026-11): identify users before the
+                  dashboard instead of only at a paywall. Free lessons stay
+                  reachable from the hero / Start-free CTAs, so /course/module-1
+                  is not orphaned. */}
+              <Link
+                href="/sign-up"
+                onClick={() => { try { posthog.capture('signup_cta_click', { source: 'nav' }) } catch (e) { /* optional */ } }}
+                className="btn-primary text-sm"
+              >
+                Create free account
+              </Link>
             </>
           )}
         </div>
@@ -132,7 +143,13 @@ export default function Navbar() {
           ) : (
             <>
               <Link href="/sign-in" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-ink-soft hover:text-navy">Sign in</Link>
-              <Link href="/course/module-1" onClick={() => setMenuOpen(false)} className="btn-primary text-sm text-center">Start reading</Link>
+              <Link
+                href="/sign-up"
+                onClick={() => { setMenuOpen(false); try { posthog.capture('signup_cta_click', { source: 'nav_mobile' }) } catch (e) { /* optional */ } }}
+                className="btn-primary text-sm text-center"
+              >
+                Create free account
+              </Link>
             </>
           )}
         </div>
