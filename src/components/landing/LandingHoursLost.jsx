@@ -18,7 +18,7 @@ const ROWS = [
   {
     key: 'sources',
     lead: 'Re-finding sources.',
-    body: 'Hunting for a quote you know you read somewhere, because you never noted where it came from.',
+    body: 'Searching for a quote you know you read somewhere, because you never noted where it came from.',
   },
   {
     key: 'drafts',
@@ -45,7 +45,7 @@ export default function LandingHoursLost() {
           How many hours have you already lost?
         </h2>
         <p className="text-[1.0625rem] leading-[1.75] text-navy/80 mb-8">
-          Be honest. Count only the time that produced nothing you kept.
+          Count only the time that produced nothing you kept.
         </p>
 
         <div className="rounded-2xl border border-navy/10 bg-white overflow-hidden">
@@ -86,11 +86,11 @@ export default function LandingHoursLost() {
 
         <div className="space-y-4 text-[1.0625rem] leading-[1.75] text-navy/90 mt-8">
           <p>
-            Now put that number next to your IAs, your papers, and the mocks you haven&rsquo;t started.
+            Now weigh that figure against your IAs, your other papers, and the mock exams still ahead.
           </p>
           <p>
-            That&rsquo;s what this is for. Not getting you an A you could probably scrape anyway.
-            Getting you there without spending your Diploma on it.
+            That is what this is for: not a grade you could likely reach eventually, but reaching it
+            efficiently — without the Extended Essay taking over your Diploma.
           </p>
         </div>
       </div>

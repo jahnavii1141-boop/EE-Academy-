@@ -1,10 +1,10 @@
 // "What you get free, that tutors charge for" — draws the line between the
 // finite, published stuff (free here) and the hard part (the course).
 const HARD_PARTS = [
-  'How to research so your sources build an argument instead of a pile',
-  'How to find an angle that’s yours, not the one four other students in your cohort picked',
+  'How to research so your sources build an argument, rather than a collection of summaries',
+  'How to find an original angle, not the one four other students in your cohort chose',
   'How to turn description into analysis — the single reason most EEs drop from an A to a B',
-  'How to plan backwards from your deadline instead of panicking forwards from today',
+  'How to plan backwards from your deadline, rather than working forward in a rush from today',
 ]
 
 export default function LandingFreeVsPaid() {
@@ -17,10 +17,10 @@ export default function LandingFreeVsPaid() {
         <div className="space-y-4 text-[1.0625rem] leading-[1.75] text-navy/90">
           <p>The criteria. The word count rules. The formatting. The templates. The checklist.</p>
           <p>
-            None of that is worth paying for. It&rsquo;s published, it&rsquo;s finite, and you can
-            read it in an afternoon. It&rsquo;s all on this site, free, no account.
+            None of it is worth paying for. It is published, finite, and freely available — all of it
+            is on this site, with no account required.
           </p>
-          <p className="font-semibold text-navy">What&rsquo;s actually hard is the part nobody hands you:</p>
+          <p className="font-semibold text-navy">The difficult part is the one no guide hands you:</p>
         </div>
 
         <ul className="mt-5 space-y-3">
@@ -33,8 +33,8 @@ export default function LandingFreeVsPaid() {
         </ul>
 
         <p className="text-[1.0625rem] leading-[1.75] text-navy/90 mt-6">
-          That&rsquo;s the course. Fourteen guides, following one real 32/34 essay from research
-          question to final draft. The first five are open. No account, no card.
+          That is the course: fourteen guides that follow one real 32/34 essay from research question
+          to final draft. The first five are open to read, with no account required.
         </p>
       </div>
     </section>

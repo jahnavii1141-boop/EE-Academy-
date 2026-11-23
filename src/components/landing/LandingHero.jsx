@@ -1,26 +1,23 @@
 import ContinueOrStartCTA from './ContinueOrStartCTA'
 
-// One hero. One button, and it opens a lesson. No Google button, no second CTA,
-// no "free to start" line — the open lessons make that argument themselves.
+// Minimal, centred hero in the spirit of a clean academic resource site:
+// a large serif title, a short programme subtitle, and one understated action.
+// Deliberately spare — the first impression is calm, not a sales pitch.
 export default function LandingHero() {
   return (
     <section className="relative overflow-hidden bg-navy-deep">
       <div
-        className="absolute left-1/3 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[560px] h-[380px] rounded-full opacity-[0.08] blur-3xl pointer-events-none"
-        style={{ background: 'radial-gradient(ellipse, #DDD9C4 0%, transparent 70%)' }}
+        className="absolute inset-0 opacity-[0.08] blur-3xl pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse at 50% 35%, #DDD9C4 0%, transparent 60%)' }}
       />
-      <div className="relative z-10 max-w-3xl mx-auto px-6 py-24 sm:py-28">
-        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-cream leading-[1.1] mb-6">
-          IB Extended Essay help
+      <div className="relative z-10 max-w-3xl mx-auto px-6 py-28 sm:py-36 lg:py-40 text-center">
+        <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-cream leading-[1.05] mb-5">
+          Extended Essay
         </h1>
-        <p className="text-lg text-steel leading-relaxed max-w-xl mb-8">
-          The whole Extended Essay, shown once — properly — through one real 32/34 essay. So you
-          get the A without spending your Diploma on it.
+        <p className="text-lg sm:text-xl text-steel tracking-wide mb-10">
+          IB Diploma Programme
         </p>
         <ContinueOrStartCTA className="btn-primary-light inline-flex" />
-        <p className="text-sm text-steel/70 mt-4">
-          The first five guides are open. No account, no card.
-        </p>
       </div>
     </section>
   )

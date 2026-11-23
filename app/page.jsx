@@ -4,7 +4,6 @@ import LandingHoursLost from '../src/components/landing/LandingHoursLost'
 import LandingFreeVsPaid from '../src/components/landing/LandingFreeVsPaid'
 import CourseInOrder from '../src/components/landing/CourseInOrder'
 import LandingVsTutor from '../src/components/landing/LandingVsTutor'
-import LandingBookCall from '../src/components/landing/LandingBookCall'
 import LandingWrittenBy from '../src/components/landing/LandingWrittenBy'
 import LandingFounderQuote from '../src/components/landing/LandingFounderQuote'
 import LandingStartFree from '../src/components/landing/LandingStartFree'
@@ -110,7 +109,7 @@ export default function HomePage() {
       <main>
         {/* Landing (2026-09): problem-first, help-vs-tutor framing. The
             narrative — problem → count your lost hours → free vs. the hard part
-            → the course list → vs. a tutor → book a call → who wrote it →
+            → the course list → vs. a tutor → who wrote it →
             founder note → start free — ends on the free lessons, never an auth
             screen. Price + FAQ stay for the Offer/FAQ schema and conversion. */}
         <LandingHero />
@@ -119,7 +118,6 @@ export default function HomePage() {
         <LandingFreeVsPaid />
         <CourseInOrder />
         <LandingVsTutor />
-        <LandingBookCall />
         <LandingWrittenBy />
         <LandingFounderQuote />
         <LandingStartFree />

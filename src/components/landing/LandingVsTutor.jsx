@@ -2,7 +2,7 @@
 // comparison tables stay real tables, not styled divs). Scrolls on narrow
 // screens rather than breaking the page width.
 const ROWS = [
-  { label: 'Cost', tutor: 'Hourly, recurring', academy: 'One payment, keeps going' },
+  { label: 'Cost', tutor: 'Hourly, recurring', academy: 'A single payment, kept for good' },
   { label: 'When you get help', tutor: 'When you’ve booked a slot', academy: 'Whenever you open it' },
   { label: 'Pace', tutor: 'Their calendar', academy: 'Your timeline' },
   {
@@ -20,7 +20,7 @@ export default function LandingVsTutor() {
           How this compares to a tutor
         </h2>
         <p className="text-[1.0625rem] leading-[1.75] text-navy/90 mb-8">
-          A good tutor helps. The problem isn&rsquo;t quality, it&rsquo;s shape.
+          A good tutor helps. The limitation is not the quality of the help, but its shape.
         </p>
 
         <div className="overflow-x-auto rounded-2xl border border-navy/10 bg-white">
@@ -45,8 +45,8 @@ export default function LandingVsTutor() {
         </div>
 
         <p className="text-[1.0625rem] leading-[1.75] text-navy/90 mt-8">
-          The EE is not a subject you need explained. It&rsquo;s a process you need shown. Once,
-          properly, by someone who&rsquo;s done it.
+          The Extended Essay is not a subject to be explained; it is a process to be shown — once,
+          properly, by someone who has done it.
         </p>
       </div>
     </section>

@@ -10,15 +10,15 @@ export default function LandingStartFree() {
     <section className="bg-navy-deep px-6 py-24">
       <div className="max-w-2xl mx-auto text-center">
         <h2 className="font-serif text-3xl sm:text-4xl font-bold text-cream mb-4">Start free</h2>
-        <p className="text-steel text-lg mb-8">Five guides, no account, no card.</p>
+        <p className="text-steel text-lg mb-8">Five guides, with no account required.</p>
 
         <ContinueOrStartCTA className="btn-primary-light inline-flex" />
 
         <p className="text-[15px] leading-[1.7] text-steel/90 mt-10 max-w-xl mx-auto">
-          Not ready? The tools are free too. The{' '}
-          <Link href="/dump" className="text-cream underline underline-offset-2 hover:opacity-80">EE Dump</Link>{' '}
-          for organising research and auto-building your MLA bibliography, the{' '}
-          <Link href="/dashboard/tools" className="text-cream underline underline-offset-2 hover:opacity-80">Pathway Finder</Link>,
+          The tools are free as well: the{' '}
+          <Link href="/dump" className="text-cream underline underline-offset-2 hover:opacity-80">EE Dump</Link>,
+          for organising your research and generating your MLA bibliography; the{' '}
+          <Link href="/dashboard/tools" className="text-cream underline underline-offset-2 hover:opacity-80">Pathway Finder</Link>;
           and the{' '}
           <Link href="/tools/study-calendar.html" className="text-cream underline underline-offset-2 hover:opacity-80">study calendar</Link>.
         </p>
